@@ -1,1 +1,1 @@
-# Welcome to Quant Macro Finance
+# Quant Macro Finance
