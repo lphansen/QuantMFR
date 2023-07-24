@@ -1,0 +1,1547 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Small Noise Expansion &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uncertainexpansion';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Shock Elasticity Computation" href="shockelasticity.html" />
+    <link rel="prev" title="1. Five-minute guide to solving the DSGE model using the Expansion Suite" href="quickguide.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="quickguide.html">1. Five-minute guide to solving the DSGE model using the Expansion Suite <a class="anchor" id="s1"></a></a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Small Noise Expansion</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="shockelasticity.html">Shock Elasticity Computation</a></li>
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Funcertainexpansion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/uncertainexpansion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Small Noise Expansion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Small Noise Expansion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-setup">1 Underlying setup</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-contribution">2.3 Second-order contribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">3 Algorithm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-1">3.1 Approach 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">3.1.1: Step 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">3.1.2: Step 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">3.1.3: Step 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">3.1.4: Step 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-2">3.2 Approach 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adjustment-cost-example">4 Adjustment cost example</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#production">4.1 Production</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foc-on-investment">4.2 FOC on Investment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#state-and-jump-variables">4.3 State and jump variables</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">5 Computation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-specifications">5.1 Model specifications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">5.1.1 Model parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-and-equilibrium-and-conditions">5.1.2 Optimization and equilibrium and conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state">5.1.3 Steady state</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-of-consumption-growth">5.1.4 Approximation of consumption growth</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-model">5.2 Solving the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5.3 Results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities">6 Shock elasticities</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-elasticities">6.1 Compute elasticities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-elasticities">6.2 Plot elasticities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exposure-elasticity">6.2.1 Exposure elasticity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#price-elasticity">6.2.1 Price elasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/uncertainexpansion.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="small-noise-expansion">
+<h1>Small Noise Expansion<a class="headerlink" href="#small-noise-expansion" title="Permalink to this heading">#</a></h1>
+<p>A nonlinear DSGE model typicaly cannot be solved quasi-analytically.  We consider  a small-noise expansion method to find an approximate solution modified to incorporate recursive utility formulation motivated by robustness or risk concerns.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="underlying-setup">
+<h1>1 Underlying setup<a class="headerlink" href="#underlying-setup" title="Permalink to this heading">#</a></h1>
+<p>The model’s equilibrium conditions are described by a system of possibly nonlinear, expectational difference equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbb{E}[{N_{t+1}^*Q_{t+1}^* \psi_1(X_t, J_t, X_{t+1}, J_{t+1})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &amp;= 0 \tag{1}\\
+  \phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &amp;= 0 
+\tag{2} \end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> state vector, <span class="math notranslate nohighlight">\(J_t\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> jump vector, and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard normal.  The real variable <span class="math notranslate nohighlight">\({\sf q}\)</span> is nonnegative and it scales the shock <span class="math notranslate nohighlight">\(W_{t+1}\)</span>.  The stochastic processes <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(J\)</span> depend implicitly on <span class="math notranslate nohighlight">\({\sf q}\)</span>.  In effect, we study a family of models and their solutions indexed by <span class="math notranslate nohighlight">\({\sf q}\)</span>.  We suppose that the limit <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> emerges from a deterministic model for which the equations pin down a steady-state, stable equilbrium solution to the equations (1) and (2).</p>
+<p>The first set of <span class="math notranslate nohighlight">\(m\)</span> equations is forward looking and hence involve expectations along with contributions <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span> from recursive utility.  For instance, the first-order necessary condition for optimal investment contributes to a forward-looking equation with, say the investment to capital ratio or its logarithm as a jump variable. The second set of <span class="math notranslate nohighlight">\(n\)</span> equations give the dynamic evolution of the state vector.  A central part of the solution is to express the jump vector as a function of the state vector.  The stochastic equilibrium is then solved by imposing stochastic stability.</p>
+<p>We feature models in which economic agents have preferences given by the recursive specification of preferences:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+V_t &amp; =\left[(1-\beta)\left(C_t\right)^{1-\rho}+\beta\left(R_t\right)^{1-\rho}\right]^{\frac{1}{1-\rho}}
+\tag{3} \\
+R_t &amp; =\mathbb{E}\left[\left(V_{t+1}\right)^{1-\gamma} \mid \mathfrak{A}_t\right]^{\frac{1}{1-\gamma}}
+\tag{4}\end{align}
+\end{split}\]</div>
+<p>In equation (3), <span class="math notranslate nohighlight">\(0 &lt; \beta &lt; 1\)</span> is a subjective discount factor and <span class="math notranslate nohighlight">\(\rho\)</span> depicts  attitudes toward intertemporal substitution.[^1]  In equation (4),
+<span class="math notranslate nohighlight">\(\gamma\)</span> depicts attitudes towards risk or <span class="math notranslate nohighlight">\(\xi = \frac 1 {\gamma - 1}\)</span> is penalty parameter used to capture concerns about model misspecification.</p>
+<p>For computational and conceptual reasons, we find it
+advantageous to work with the logarithm <span class="math notranslate nohighlight">\({\widehat V}_t = \log V_t\)</span>.  The corresponding recursions for <span class="math notranslate nohighlight">\({\widehat  V}_t\)</span> expressed in terms of the logarithm of consumption
+<span class="math notranslate nohighlight">\({\hat  C}_t\)</span> are
+$<span class="math notranslate nohighlight">\(
+\begin{align} 
+{\widehat  V}_t &amp; = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right]
+\tag{5} \\
+{\widehat  R}_t &amp; = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
+\tag{6} \end{align}
+\)</span>$</p>
+<p>Construct
+$<span class="math notranslate nohighlight">\(
+\begin{align}
+N_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \gamma) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right] \tag{7} \\
+Q_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \rho) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right]. \tag{8} 
+\end{align}
+\)</span><span class="math notranslate nohighlight">\(
+Notice that \)</span>N_{t+1}^<em><span class="math notranslate nohighlight">\( has expectation one conditioned on \)</span>{\mathfrak A}<em>t<span class="math notranslate nohighlight">\( and induces a change of probability measure motived by a robustness adjustment to potential model misspecification.    The expansion treats the approximation of \)</span>N</em>{t+1}^</em><span class="math notranslate nohighlight">\( and \)</span> Q_{t+1}^<em><span class="math notranslate nohighlight">\( differently.  Both are computed in a separate step from the solution to equation (1) given \)</span>N_{t+1}^</em><span class="math notranslate nohighlight">\( and \)</span>Q_{t+1}^*<span class="math notranslate nohighlight">\(.  The implied one-period stochastic discount factor 
+\)</span><span class="math notranslate nohighlight">\(
+\beta N_{t+1}^*Q_{t+1}^* \left( \frac {C_{t+1}}{C_t} \right)^{-\rho}
+\)</span>$
+where the last contribution is familiar from models with time separable, power utility preferences.</p>
+<p>We restrict <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span>, and index it by the parameter <span class="math notranslate nohighlight">\({\sf q}\)</span> according to:
+$<span class="math notranslate nohighlight">\(
+\xi = \frac {1 - \gamma}{\sf q},  \;\;\;\; \xi_o = \frac {\sf q} {1 - \gamma_o} .  
+\)</span><span class="math notranslate nohighlight">\(
+This embedding makes the uncertainty adjustments matter at a lower order.  It has a particularly nice interpretation when we interpret the recursion as a way to represent a preference for robustness to potential model misspecification.  We take \)</span>{\sf q} = 1$ as the economy of interest.</p>
+<p>[^1] Formally, <span class="math notranslate nohighlight">\({\frac {1}{\rho}}\)</span> is the elasticity of intertemporal substitution.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="approximating-widehat-v-t">
+<h1>2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span><a class="headerlink" href="#approximating-widehat-v-t" title="Permalink to this heading">#</a></h1>
+<section id="zeroth-order-contribution">
+<h2>2.1 Zeroth-order contribution<a class="headerlink" href="#zeroth-order-contribution" title="Permalink to this heading">#</a></h2>
+<p>We assume that the first difference in the logarithm of consumption is stationary For models with production, this representation will become part of the derived expansion. For order zero, we presume a constant growth rate:
+$<span class="math notranslate nohighlight">\(
+{\widehat C}_{t+1}^0 - {\widehat  C}_t^0  = \eta_c .
+\)</span><span class="math notranslate nohighlight">\(
+The order-zero approximation of (5), \)</span>{\widehat  V}_t^0 - {\widehat  C}<em>t^0 =\eta</em>{v-c}<span class="math notranslate nohighlight">\(, is determined by 
+\)</span><span class="math notranslate nohighlight">\(
+\exp\left[(1-\rho) {\left( \eta_{v - c} \right) }\right] = {\frac {1 - \beta} { 1 - \beta \exp \left[ (1 - \rho) \eta_c \right]}} .
+\)</span>$</p>
+</section>
+<section id="first-order-contribution">
+<h2>2.2 First-order contribution<a class="headerlink" href="#first-order-contribution" title="Permalink to this heading">#</a></h2>
+<p>The first-order approximation of <span class="math notranslate nohighlight">\({\widehat V}_t\)</span> net of <span class="math notranslate nohighlight">\({\widehat C}_t^1\)</span> is given by
+$<span class="math notranslate nohighlight">\(
+{\widehat  V}_t^1 - {\widehat  C}_t^1 = \lambda \left( {\widehat  R}_t^1 - {\widehat  C}_t^1 \right)
+\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(
+{\widehat  R}_t^1 - {\widehat  C}_t^1 =  \left({\frac 1 {1 - \gamma_o}} \right) \log {\mathbb  E}  \left( \exp \left[ (1 - \gamma_o) \left[ \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1}^1\right) + 
+\left({\widehat C}_{t+1}^1 - {\widehat C}_{t}^1
+\right)   \right] \right] \mid {\mathfrak A}_t \right)\
+\)</span><span class="math notranslate nohighlight">\(
+and \)</span>0 &lt; \lambda &lt; 1<span class="math notranslate nohighlight">\(  satisfies 
+\)</span><span class="math notranslate nohighlight">\(
+\begin{align*}
+\lambda  &amp; = \beta \exp \left[(1-\rho) \eta_c \right]
+\end{align*}
+\)</span><span class="math notranslate nohighlight">\(
+Combining these equations gives the following equation to be solved 
+\)</span><span class="math notranslate nohighlight">\(
+\begin{align*} 
+{\widehat  V}_t^1 - {\widehat  C}_t^1
+= &amp; \lambda \left({\frac 1 {1 - \gamma_o}} \right) \log {\mathbb  E}  \left( \exp \left[ (1 - \gamma_o) \left[ \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1}^1\right) + 
+\left({\widehat C}_{t+1}^1 - {\widehat C}_{t}^1
+\right)   \right] \right] \mid {\mathfrak A}_t \right)
+\tag{9} \end{align*} 
+\)</span>$</p>
+</section>
+<section id="second-order-contribution">
+<h2>2.3 Second-order contribution<a class="headerlink" href="#second-order-contribution" title="Permalink to this heading">#</a></h2>
+<p>The second-order approximation is:
+$<span class="math notranslate nohighlight">\(
+{\widehat  V}_t^2 - {\widehat  C}_t^2 = \lambda \left( {\widehat  R}_t^2 - {\widehat  C}_t^2 \right) +  (1- \rho) (1-\lambda) \lambda  \left( {\widehat  R}_t^1 - {\widehat  C}_t^1\right)^2
+\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(
+{\widehat  R}_t^2  =  E \left( N_{t+1}^0  {\widehat V}^2_{t+1} \mid {\mathfrak A}_t \right),
+\)</span><span class="math notranslate nohighlight">\(
+and \)</span>N_{t+1}^0<span class="math notranslate nohighlight">\( is given by
+\)</span><span class="math notranslate nohighlight">\(
+N_{t+1}^0 = \exp \left[\left(1-\gamma_o\right)\left(\widehat{V}_{t+1}^1-\widehat{R}_t^1\right)\right]
+\)</span>$</p>
+<p>Combining these formulas, gives the following equation to be solved:
+$<span class="math notranslate nohighlight">\(
+{\widehat  V}_t^2 - {\widehat  C}_t^2 = \lambda 
+{\mathbb E}  \left[ N_{t+1}^0 \left({\widehat V}^2_{t+1} - {\widehat C}_{t+1}^2 \right) \mid {\mathfrak A}_t \right]  + \lambda  {\mathbb E}  \left[ N_{t+1}^0 \left( {\widehat C}^2_{t+1} - {\widehat C}_{t}^2 \right) \mid {\mathfrak A}_t \right] + \frac{(1- \rho) (1-\lambda)}{\lambda } \left[ \left( {\widehat  V}_t^1 - {\widehat  C}_t^1\right)^2 \right] . \tag{10}
+\)</span>$</p>
+<p>The formual for <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span> also happens to be the zeroth-order approximation to <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> given by definition (8).  Since <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span> is positive and has conditional mean equal to one, it induces a change in probability distribution whereby <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a multivariate normal with mean <span class="math notranslate nohighlight">\(\mu^o\)</span> and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>.  The algorithm uses this change of probability distribution in the computations.  The first-order contribution to <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is<br />
+$<span class="math notranslate nohighlight">\(
+N_{t+1}^1=\left(\frac{1-\gamma_o}{2}\right) N_{t+1}^0\left(\widehat{V}_{t+1}^2-\widehat{R}_t^2\right)
+\)</span>$</p>
+<p>The algorithm also uses the following approximation formulas for <span class="math notranslate nohighlight">\(Q_t^*\)</span> given by definition {9}
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+Q_{t+1}^0 &amp;= \exp \left[(\rho-1)\left(\widehat{V}_{t+1}^0-\widehat{R}_t^0\right)\right]=1 \\
+Q_{t+1}^1 &amp;= \left.\frac{d}{d {\sf q}} \exp \left[(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right]\right|_{\mathbf{q}=0}=(\rho-1)\left(\widehat{V}_{t+1}^1-\widehat{R}_t^1\right) \\
+Q_{t+1}^2 &amp;= \left.\frac{d^2}{d \mathsf{q}^2} \exp \left[(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right]\right|_{\mathbf{q}=0}=(\rho-1)^2\left(\widehat{V}_{t+1}^1-\widehat{R}_t^1\right)^2+(\rho-1)\left(\widehat{V}_{t+1}^2-\widehat{R}_t^2\right)
+\end{aligned}
+\)</span>$</p>
+<p>The code will produce the coefficient inputs into the following formulas:
+$<span class="math notranslate nohighlight">\(
+\widehat{V}_{t+1}^1-\widehat{R}_t^1=\frac{1}{1-\gamma_o}\left[\mu^0 \cdot\left(W_{t+1}-\mu^0\right)+\frac{1}{2} \mu^0 \cdot \mu^0\right]
+\)</span><span class="math notranslate nohighlight">\(
+and 
+\)</span><span class="math notranslate nohighlight">\(
+\begin{aligned}
+\widehat{V}_{t+1}^2-\widehat{R}_t^2= &amp; \frac{1}{2}\left(W_{t+1}-\mu^0\right)^{\prime} \Upsilon_2^2\left(W_{t+1}-\mu^0\right)-\frac{1}{2} \operatorname{tr}\left(\Upsilon_2^2\right)+\left(W_{t+1}-\mu^0\right)^{\prime}\left(\Upsilon_1^2 X_t^1+\Upsilon_0^2\right)
+\end{aligned}
+\)</span>$</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="algorithm">
+<h1>3 Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this heading">#</a></h1>
+<section id="approach-1">
+<h2>3.1 Approach 1<a class="headerlink" href="#approach-1" title="Permalink to this heading">#</a></h2>
+<p>The algorithm initializes <span class="math notranslate nohighlight">\(\mu^0, \Upsilon^2_0, \Upsilon^2_1,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon^2_2\)</span> at zero.  It uses the first and second order approximations of Schmidt-Grohe and Uribe (2004) and Lombardo and Uhlig (2018) with some modifications.</p>
+<section id="step-1">
+<h3>3.1.1: Step 1<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h3>
+<p>Take as input <span class="math notranslate nohighlight">\(\mu^0, \Upsilon^2_0, \Upsilon^2_1,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon^2_2\)</span>.  Transform the first-order and second-order approximations for the state evolution by using the probability induced by <span class="math notranslate nohighlight">\(N_{t+1}^0.\)</span>  Under this distribution, <span class="math notranslate nohighlight">\(W_{t+1}\)</span> has a conditional distribution with a mean given by <span class="math notranslate nohighlight">\(\mu^0\)</span> and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>.</p>
+</section>
+<section id="step-2">
+<h3>3.1.2: Step 2<a class="headerlink" href="#step-2" title="Permalink to this heading">#</a></h3>
+<p>When solving for the first-order approximation, an additional term needs to added to the forward equation system to accomodate the recursive utility adjustment:
+$<span class="math notranslate nohighlight">\(
+\bar{H}^1 \stackrel{\text { def }}{=} \frac{(\rho-1)}{2\left(1-\gamma_o\right)}\left|\mu^o\right|^2 H_{t+1}^0 
+\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(
+H_{t+1}^0 =  \psi_1(X_t^0, J_t^0,  X_{t+1}^0, J_{t+1}^0, 0,0)
+\)</span>$
+and is time invariant.</p>
+</section>
+<section id="step-3">
+<h3>3.1.3: Step 3<a class="headerlink" href="#step-3" title="Permalink to this heading">#</a></h3>
+<p>When solving for the second-order approximation, an additional term needs to be added to the forward equation system to accomodate the recursive utility adjustment:
+$<span class="math notranslate nohighlight">\(
+\begin{aligned} 
+{\bar H}^2_t  \stackrel{\text { def }}{=} &amp;\left(1-\gamma_o\right) \Theta_2^1\left(\Upsilon_1^2 X_t^1+\Upsilon_0^2\right) \\
+&amp; +(\rho-1) \mu^o \cdot\left(\Upsilon_1^2 X_t^1+\Upsilon_0^2\right) H_{t+1}^0 \\
+&amp; + 2 \frac{(\rho-1)}{\left(1-\gamma_o\right)}\left[\Theta_2^1 \mu^0+\frac{1}{2} \mu^0 \cdot \mu^0\left(\Theta_0^1+\Theta_1^1 X_t^1\right)\right] \\
+&amp; + \left(\frac{1-\rho}{1-\gamma_o}\right){ }^2\left(\left|\mu^0\right|^2+\frac{1}{4}\left|\mu^0\right|^4\right)
+\end{aligned} 
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\Theta_0^1, \Theta_1^1,<span class="math notranslate nohighlight">\( and \)</span>\Theta_2^1<span class="math notranslate nohighlight">\( come from expressing the first-order approximation, \)</span>H_{t+1}^1,<span class="math notranslate nohighlight">\( of 
+\)</span><span class="math notranslate nohighlight">\(
+H_{t+1} \stackrel{\text { def }}{=}  \psi_1(X_t, J_t, X_{t+1}, J_{t+1})
+\)</span><span class="math notranslate nohighlight">\(
+as
+\)</span><span class="math notranslate nohighlight">\(
+H_{t+1}^1=\Theta_0^1+\Theta_1^1 X_t^1+\Theta_2^1\left(W_{t+1}-\mu^0\right)
+\)</span>$</p>
+</section>
+<section id="step-4">
+<h3>3.1.4: Step 4<a class="headerlink" href="#step-4" title="Permalink to this heading">#</a></h3>
+<p>Compute an upated <span class="math notranslate nohighlight">\(\mu^0, \Upsilon^2_0, \Upsilon^2_1,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon^2_2\)</span> and return to Step 1.</p>
+<p>The algorithm continues until it reaches a numerical convergence.</p>
+</section>
+</section>
+<section id="approach-2">
+<h2>3.2 Approach 2<a class="headerlink" href="#approach-2" title="Permalink to this heading">#</a></h2>
+<p>In this aproach, we use an alternative approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> given by
+$<span class="math notranslate nohighlight">\(
+\log {\widetilde N}_{t+1} =  \left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] - \log {\mathbb E} \left( \exp\left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] \mid {\mathfrak A}_t \right)
+\)</span><span class="math notranslate nohighlight">\(
+The induced distribution of \)</span>W_{t+1}<span class="math notranslate nohighlight">\( is normal, with mean \)</span>\tilde{\mu}_t<span class="math notranslate nohighlight">\( and variance \)</span>\widetilde{\Sigma}<span class="math notranslate nohighlight">\(. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for \)</span>\tilde{\mu}_t<span class="math notranslate nohighlight">\( is affine in \)</span>X_t^1$.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="adjustment-cost-example">
+<h1>4 Adjustment cost example<a class="headerlink" href="#adjustment-cost-example" title="Permalink to this heading">#</a></h1>
+<section id="production">
+<h2>4.1 Production<a class="headerlink" href="#production" title="Permalink to this heading">#</a></h2>
+<p>Consider a model recursive utility preferences and an AK technology with adjustment costs.</p>
+<div class="math notranslate nohighlight">
+\[
+{C_t} + {I_t}  = {\mathbf a}K_t\tag{12}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+K_{t+1}  = K_t \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\tag{13}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{14}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> is a scalar. <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is a shock vector containing 2 entries.  For the purposes of computation, we divide the first two equations by <span class="math notranslate nohighlight">\(K_t\)</span>.</p>
+</section>
+<section id="foc-on-investment">
+<h2>4.2 FOC on Investment<a class="headerlink" href="#foc-on-investment" title="Permalink to this heading">#</a></h2>
+<p>The consumer’s stochastic discount factor is
+$<span class="math notranslate nohighlight">\(
+\frac{S_{t+1}}{S_t} = \beta \left(\frac{V_{t+1}}{R_t}\right)^{1-\gamma} \left(\frac{V_{t+1}}{R_t}\right)^{\rho-1} \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
+\)</span><span class="math notranslate nohighlight">\(
+The first-order condition for investment is:
+\)</span><span class="math notranslate nohighlight">\(
+MC_t \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}  \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t) \right) \mid \mathfrak{A}_t\right] - MC_t  = 0.  
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>MK_{t+1}<span class="math notranslate nohighlight">\( is the co-state associated with the capital evolution and \)</span>MC_t<span class="math notranslate nohighlight">\( is the multiplier associated with the production relation. Dividing this first-order condition by \)</span>MC_t<span class="math notranslate nohighlight">\( gives:
+\)</span><span class="math notranslate nohighlight">\(
+\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}  \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right) \mid \mathfrak{A}_t\right] - 1  = 0,\tag{15}
+\)</span>$
+which is the equation we use in computation.</p>
+<p>The co-state equation satisfies:
+\begin{align*}
+&amp; MC_t \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right]\cr &amp;  - MK_t + {\mathbf a} MC_t = 0
+\end{align*}
+Dividing this equation by <span class="math notranslate nohighlight">\(MC_t\)</span> gives:
+$<span class="math notranslate nohighlight">\(
+ \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1}  \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right] - \frac {MK_t}{MC_t} + {\mathbf a}  = 0,
+\tag{16}\)</span>$
+which is the equation we use in computation.</p>
+</section>
+<section id="state-and-jump-variables">
+<h2>4.3 State and jump variables<a class="headerlink" href="#state-and-jump-variables" title="Permalink to this heading">#</a></h2>
+<p>This formulation has two state variables: <span class="math notranslate nohighlight">\(\log K_{t} - \log K_{t-1},\)</span> and <span class="math notranslate nohighlight">\(Z_{t}\)</span>; and has three jump variables:
+<span class="math notranslate nohighlight">\(\log C_t - \log K_t,\log I_t - \log K_t\)</span> and <span class="math notranslate nohighlight">\(\log MK_t - \log MC_t\)</span>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="computation">
+<h1>5 Computation<a class="headerlink" href="#computation" title="Permalink to this heading">#</a></h1>
+<p>We use Expansion Suite to approximate the solution to the adjustment cost model described above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="c1"># !git clone https://github.com/lphansen/RiskUncertaintyValue # Uncomment this when running on Google Colab</span>
+<span class="c1"># workdir = os.getcwd() + &#39;/RiskUncertaintyValue&#39;             # Uncomment this when running on Google Colab</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">workdir</span><span class="o">+</span><span class="s1">&#39;/src&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">anp</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.container { width:97% !important; }&lt;/style&gt;&quot;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">uncertain_expansion</span> <span class="kn">import</span> <span class="n">uncertain_expansion</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/hqin/.local/lib/python3.8/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version &gt;=1.16.5 and &lt;1.23.0 is required for this version of SciPy (detected version 1.23.5
+  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
+</pre></div>
+</div>
+<div class="output text_html"><style>.container { width:97% !important; }</style></div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.container { width:97% !important; }&lt;/style&gt;&quot;</span><span class="p">))</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">uncertain_expansion</span> <span class="kn">import</span> <span class="n">uncertain_expansion</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;uncertain_expansion&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="model-specifications">
+<h2>5.1 Model specifications<a class="headerlink" href="#model-specifications" title="Permalink to this heading">#</a></h2>
+<section id="model-parameters">
+<h3>5.1.1 Model parameters<a class="headerlink" href="#model-parameters" title="Permalink to this heading">#</a></h3>
+<p>In this numerical example, we set the preference parameters as
+$<span class="math notranslate nohighlight">\(
+\gamma=10,\quad
+\rho=\frac{4}{3},\quad
+\beta=\exp(-0.0025)
+\)</span><span class="math notranslate nohighlight">\(
+and the other model parameters as
+\)</span><span class="math notranslate nohighlight">\(
+\begin{aligned}
+{\mathbf a}&amp;=0.0288\\
+\phi_1&amp;=0.0114\\
+\phi_2&amp;=88\\
+\alpha_k&amp;=0.0088\\
+\sigma_k&amp;=0.01\begin{bmatrix}0.477 \\ 0\end{bmatrix}\\
+\mathbb{A}&amp;=\exp(-0.014)\\
+\mathbb{B}&amp;=0.01\begin{bmatrix}0.011 &amp; 0.025 \end{bmatrix}\\
+\end{aligned}
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">γ</span> <span class="o">=</span> <span class="mf">10.</span>
+<span class="n">ρ</span> <span class="o">=</span> <span class="mf">4.</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">β</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0025</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.0288</span>
+<span class="n">ϕ_2</span> <span class="o">=</span> <span class="mf">88.</span>
+<span class="n">ϕ_1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">ϕ_2</span>
+<span class="n">α_k</span> <span class="o">=</span> <span class="mf">0.0088</span>
+<span class="n">σ_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.477</span><span class="p">],[</span><span class="mi">0</span><span class="p">]])</span> <span class="o">*</span> <span class="mf">0.01</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.014</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.011</span><span class="p">,</span><span class="mf">0.025</span><span class="p">]])</span> <span class="o">*</span> <span class="mf">0.01</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="optimization-and-equilibrium-and-conditions">
+<h3>5.1.2 Optimization and equilibrium and conditions<a class="headerlink" href="#optimization-and-equilibrium-and-conditions" title="Permalink to this heading">#</a></h3>
+<p>In Expansion Suite, the equilibrium conditions are specified as a function that takes the jump variables <span class="math notranslate nohighlight">\(J\)</span>, the state variables <span class="math notranslate nohighlight">\(X\)</span>, the shock variables <span class="math notranslate nohighlight">\(W\)</span>, the perturbation parameter <span class="math notranslate nohighlight">\({\sf q}\)</span>, and the model parameters as input, and returns the <span class="math notranslate nohighlight">\(\psi_1,\psi_2,\phi\)</span> or the the left-hand side of Equation (1) and (2) before taking expectation as output.</p>
+<p>In the adjustment cost model, there are 5 equilibrium conditions, given in Equation (12) to (16). Recall that
+$<span class="math notranslate nohighlight">\(
+J_t=\begin{bmatrix}
+    \log\frac{C_t}{K_t}\\
+    \log\frac{I_t}{K_t}\\
+    \log{\frac{MK_t}{MC_t}}
+\end{bmatrix}, \quad
+X_t=\begin{bmatrix}
+    Z_t\\ 
+    \log K_t - \log K_{t-1}\\
+\end{bmatrix},\quad
+W_{t+1},\quad
+{\sf q}\in\mathbb{R}.
+\)</span>$</p>
+<p>The equilibrium condition function specification in the Expansion Suite codes takes the following form:</p>
+<p>The first input <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> is an array containing, in this order: <span class="math notranslate nohighlight">\(\log Q^*_t\)</span>, <span class="math notranslate nohighlight">\(J_t\)</span>, and <span class="math notranslate nohighlight">\(X_t\)</span>, where <span class="math notranslate nohighlight">\(Q^*_t\)</span> appears in Equation (8). Similarly, the second input <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> is an array containing <span class="math notranslate nohighlight">\(\log Q^*_{t+1}\)</span>, <span class="math notranslate nohighlight">\(J_{t+1}\)</span>, and <span class="math notranslate nohighlight">\(X_{t+1}\)</span>. the third input <code class="docutils literal notranslate"><span class="pre">W_tp1</span></code> corresponds to <span class="math notranslate nohighlight">\(W_{t+1}\)</span> and the fourth input <code class="docutils literal notranslate"><span class="pre">q</span></code> corresponds to <span class="math notranslate nohighlight">\({\sf q}\)</span>. Note that the number of jump variables equals the number of forward-looking equilibrium conditions. The number of state variables equals to the number of state evolution equations.</p>
+<p>The fifth input <code class="docutils literal notranslate"><span class="pre">mode</span></code> determines the output of the equilibrium condition function. By default, the function returns the left-hand side of Equation (1) and (2) before taking expectation.  Set it as <code class="docutils literal notranslate"><span class="pre">psi1</span></code>, <code class="docutils literal notranslate"><span class="pre">psi2</span></code>, <code class="docutils literal notranslate"><span class="pre">phi</span></code> to return <span class="math notranslate nohighlight">\(\psi_1,\psi_2,\phi\)</span> respectivley. The <code class="docutils literal notranslate"><span class="pre">psi1</span></code> mode specification is necessary. Other modes are optional.</p>
+<p>The model parameters are passed to the function via the last input <code class="docutils literal notranslate"><span class="pre">*args</span></code>, in which the first 3 must be the <span class="math notranslate nohighlight">\(\gamma,\beta,\rho\)</span> in the recursive utility.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eq_ac</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    Var_t : array_like</span>
+<span class="sd">        Vector of jump and state variables in the current period.</span>
+
+<span class="sd">    Var_tp1 : array_like</span>
+<span class="sd">        Vector of jump and state variables in the next period.</span>
+
+<span class="sd">    W_tp1 : array_like</span>
+<span class="sd">        Vector of shock variables in the next period.</span>
+
+<span class="sd">    q : float</span>
+<span class="sd">        Perturbation parameter.</span>
+<span class="sd">    </span>
+<span class="sd">    mode : string</span>
+<span class="sd">        By default, this function returns the LHS of equation (1) and (2). Set mode to &#39;psi1&#39;, &#39;psi2&#39;, or &#39;phi&#39; to return the corresponding function in the equilibrium conditions.</span>
+<span class="sd">    </span>
+<span class="sd">    args : tuple of float/ndarray</span>
+<span class="sd">        Preference and model parameters.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    out : numpy ndarray</span>
+<span class="sd">        Equilibrium condition, psi1, psi2, or phi, depending on :mode:.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Unpack model parameters</span>
+    <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">σ_k</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">args</span>
+
+    <span class="c1"># Unpack model variables</span>
+    <span class="n">q_t</span><span class="p">,</span> <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">mkmc_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">gk_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">q_tp1</span><span class="p">,</span> <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">mkmc_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="c1"># Compute log SDF, excluding the change of measure</span>
+    <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="p">(</span><span class="n">cmk_tp1</span><span class="o">+</span><span class="n">gk_tp1</span><span class="o">-</span><span class="n">cmk_t</span><span class="p">)</span>
+    <span class="n">g_dep</span> <span class="o">=</span> <span class="o">-</span> <span class="n">α_k</span> <span class="o">+</span> <span class="n">Z_t</span> <span class="o">+</span> <span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@W_tp1</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span><span class="p">(</span><span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@σ_k</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    
+    <span class="c1">#### psi1 ####</span>
+
+    <span class="c1"># Investment ratio</span>
+    <span class="n">psi1_1</span> <span class="o">=</span> <span class="mf">0.</span>
+
+    <span class="c1"># FOC for consumption/investment</span>
+    <span class="n">psi1_2</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">mkmc_tp1</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ϕ_1</span><span class="o">*</span><span class="n">ϕ_2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">ϕ_1</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">))</span> <span class="o">+</span> <span class="mf">1.</span><span class="o">*</span><span class="n">g_dep</span><span class="p">)</span>
+
+    <span class="c1"># Costate equation</span>
+    <span class="n">psi1_3</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">mkmc_tp1</span> <span class="o">+</span> <span class="n">gk_tp1</span><span class="p">)</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">mkmc_tp1</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ϕ_1</span><span class="o">*</span><span class="n">ϕ_2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">ϕ_1</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">))</span> <span class="o">+</span> <span class="mf">1.</span><span class="o">*</span><span class="n">g_dep</span> <span class="o">+</span> <span class="n">imk_t</span><span class="p">)</span>
+
+    <span class="c1">#### psi2 ####</span>
+
+    <span class="c1"># Investment ratio</span>
+    <span class="n">psi2_1</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">cmk_t</span><span class="p">)</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">)</span>
+
+    <span class="c1"># FOC for consumption/investment</span>
+    <span class="n">psi2_2</span> <span class="o">=</span> <span class="mf">1.</span>
+
+    <span class="c1"># Costate equation</span>
+    <span class="n">psi2_3</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mkmc_t</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span>
+
+    <span class="c1">#### phi ####</span>
+
+    <span class="c1"># State evoluion processes</span>
+    <span class="n">phi_1</span> <span class="o">=</span> <span class="n">Z_tp1</span> <span class="o">-</span> <span class="n">A</span><span class="o">*</span><span class="n">Z_t</span> <span class="o">-</span> <span class="n">B</span><span class="nd">@W_tp1</span>
+    <span class="n">phi_2</span> <span class="o">=</span> <span class="n">gk_tp1</span> <span class="o">-</span> <span class="n">ϕ_1</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">))</span> <span class="o">-</span> <span class="n">g_dep</span>
+    
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;psi1&#39;</span><span class="p">:</span>
+        <span class="c1"># The psi1 mode specification is necessary for the equilibrium condition function</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">psi1_1</span><span class="p">,</span> <span class="n">psi1_2</span><span class="p">,</span> <span class="n">psi1_3</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;psi2&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">psi2_1</span><span class="p">,</span> <span class="n">psi2_2</span><span class="p">,</span> <span class="n">psi2_3</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;phi&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">phi_1</span><span class="p">,</span> <span class="n">phi_2</span><span class="p">])</span>
+    
+    <span class="c1"># State evolution equations should follow the forward-looking equations</span>
+    <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="n">psi1_1</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">q_tp1</span><span class="p">)</span> <span class="o">-</span> <span class="n">psi2_1</span><span class="p">,</span>
+        <span class="n">psi1_2</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">q_tp1</span><span class="p">)</span> <span class="o">-</span> <span class="n">psi2_2</span><span class="p">,</span>
+        <span class="n">psi1_3</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">q_tp1</span><span class="p">)</span> <span class="o">-</span> <span class="n">psi2_3</span><span class="p">,</span>
+        <span class="n">phi_1</span><span class="p">,</span> <span class="n">phi_2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="steady-state">
+<h3>5.1.3 Steady state<a class="headerlink" href="#steady-state" title="Permalink to this heading">#</a></h3>
+<p>The steady state of the model is obtained by putting <span class="math notranslate nohighlight">\(X_t=X_{t+1}=\bar{X}\)</span> and <span class="math notranslate nohighlight">\(J_t=J_{t+1}=\bar{J}\)</span> and <span class="math notranslate nohighlight">\({\sf q}=0\)</span>, then solve Equation (1) and (2) for <span class="math notranslate nohighlight">\((\bar{X},\bar{J})\)</span>. Usually this can be done analytically. Otherwise, we may solve the equations numerically.</p>
+<p>In Expansion Suite, we define a function that takes model parameters as input, and returns <span class="math notranslate nohighlight">\((\bar{X},\bar{J})\)</span> as output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ss_ac</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+
+    <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">σ_k</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">args</span>
+
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">imk</span><span class="p">):</span>
+        <span class="n">g_k</span> <span class="o">=</span> <span class="n">ϕ_1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span> <span class="n">ϕ_2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">-</span> <span class="n">α_k</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span><span class="p">(</span><span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@σ_k</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="n">g_k</span>
+        <span class="n">g_dep</span> <span class="o">=</span> <span class="o">-</span><span class="n">α_k</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span><span class="p">(</span><span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@σ_k</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">mkmc</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ϕ_1</span><span class="o">*</span><span class="n">ϕ_2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">ϕ_1</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">+</span> <span class="n">g_dep</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">mkmc</span> <span class="o">+</span> <span class="n">g_k</span><span class="p">)</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">mkmc</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ϕ_1</span><span class="o">*</span><span class="n">ϕ_2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">ϕ_1</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">+</span> <span class="n">g_dep</span> <span class="o">+</span> <span class="n">imk</span><span class="p">)</span><span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mkmc</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span>
+
+    <span class="n">imk</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+    <span class="n">cmk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span>
+    <span class="n">g_k</span> <span class="o">=</span> <span class="n">ϕ_1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">ϕ_2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">-</span> <span class="n">α_k</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span><span class="p">(</span><span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@σ_k</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="n">g_k</span>
+    <span class="n">g_dep</span> <span class="o">=</span> <span class="o">-</span> <span class="n">α_k</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span><span class="p">(</span><span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@σ_k</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">mkmc</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ϕ_1</span><span class="o">*</span><span class="n">ϕ_2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">ϕ_1</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">+</span> <span class="n">g_dep</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="n">cmk</span><span class="p">,</span> <span class="n">imk</span><span class="p">,</span> <span class="n">mkmc</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">g_k</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="approximation-of-consumption-growth">
+<h3>5.1.4 Approximation of consumption growth<a class="headerlink" href="#approximation-of-consumption-growth" title="Permalink to this heading">#</a></h3>
+<p>To approximate <span class="math notranslate nohighlight">\(\widehat{V}_t\)</span> and <span class="math notranslate nohighlight">\(\widehat{R}_t\)</span>, we find it convenient to compute <span class="math notranslate nohighlight">\(\widehat{V}_t-\widehat{C}_t\)</span> and <span class="math notranslate nohighlight">\(\widehat{R}_t-\widehat{C}_t\)</span> instead, as in Equation (9) and (10). Note that we need an additional variable <span class="math notranslate nohighlight">\(\log\frac{C_{t+1}}{C_t}=\widehat{C}_{t+1}-\widehat{C}_t\)</span>, which we need to approximate from the jump and state variables.</p>
+<p>For the adjustment cost model, we compute consumption growth as
+$<span class="math notranslate nohighlight">\(
+\log{\frac{C_{t+1}}{C_t}} = \log{\frac{C_{t+1}}{K_{t+1}}}+\log{\frac{K_{t+1}}{K_{t}}}-\log{\frac{C_{t}}{K_{t}}}
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gc_ac</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    
+    <span class="c1"># Unpack model parameters</span>
+    <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">σ_k</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">args</span>
+
+    <span class="c1"># Unpack model variables</span>
+    <span class="n">q_t</span><span class="p">,</span> <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">mkmc_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">gk_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">q_tp1</span><span class="p">,</span> <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">mkmc_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+    <span class="c1"># Compute log consumption growth</span>
+    <span class="n">gc_tp1</span> <span class="o">=</span> <span class="n">cmk_tp1</span> <span class="o">+</span> <span class="n">gk_tp1</span> <span class="o">-</span> <span class="n">cmk_t</span>
+    
+    <span class="k">return</span> <span class="n">gc_tp1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="solving-the-model">
+<h2>5.2 Solving the model<a class="headerlink" href="#solving-the-model" title="Permalink to this heading">#</a></h2>
+<p>To use Expansion Suite to solve the adjustment cost model, we need to specify the following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">eq</span></code> : <em>callable</em></p>
+<ul class="simple">
+<li><p>Equilibrium condition. See section 5.1.2.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">ss</span></code> : <em>callable</em></p>
+<ul class="simple">
+<li><p>Steady State. See section 5.1.3.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">var_shape</span></code>: <em>tuple of int</em></p>
+<ul class="simple">
+<li><p>Triple of integers <span class="math notranslate nohighlight">\((n_J,n_X,n_W)\)</span> where <span class="math notranslate nohighlight">\(n_J\)</span> is the number of jump variables, <span class="math notranslate nohighlight">\(n_X\)</span> is the number of state variables, and <span class="math notranslate nohighlight">\(n_W\)</span> is the number of shocks.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">args</span></code> : <em>tuple of float or ndarray</em></p>
+<ul class="simple">
+<li><p>Model parameters. See section 5.1.1.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">gc</span></code>: <em>callable</em></p>
+<ul class="simple">
+<li><p>Approximated log consumption growth. See section 5.1.4.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">approach</span></code> : <em>string</em></p>
+<ul class="simple">
+<li><p>If equal to ‘1’, then solve the model using approach 1 (see Appendix C); If equal to ‘2’, then use approach 2 (see Appendix D). Function raise exception if other values are provided. The default is ‘1’.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">init_util</span></code>: <em>dict, or None</em></p>
+<ul class="simple">
+<li><p>Initialization of <span class="math notranslate nohighlight">\(\mu^0, \Upsilon_0^2, \Upsilon_1^2,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon_2^2\)</span>. Users may provide a dictionary that maps the keys <code class="docutils literal notranslate"><span class="pre">mu_0</span></code>, <code class="docutils literal notranslate"><span class="pre">Upsilon_0</span></code>, <code class="docutils literal notranslate"><span class="pre">Upsilon_1</span></code>, <code class="docutils literal notranslate"><span class="pre">Upsilon_2</span></code> to the corresponding matrices for initialization. If <em>None</em>, zero matrices are used.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">iter_tol</span></code> : <em>float</em></p>
+<ul class="simple">
+<li><p>The iteration stops when the maximum absolute difference of the results in this and the previous iteration is less than this value.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">max_iter</span></code> : <em>int</em></p>
+<ul class="simple">
+<li><p>Maximum number of iterations.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eq</span> <span class="o">=</span> <span class="n">eq_ac</span>
+<span class="n">ss</span> <span class="o">=</span> <span class="n">ss_ac</span>
+<span class="n">gc</span> <span class="o">=</span> <span class="n">gc_ac</span>
+<span class="n">var_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">σ_k</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">init_util</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">iter_tol</span> <span class="o">=</span> <span class="mf">1e-8</span>
+<span class="n">max_iter</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">approach</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">uncertain_expansion</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span> <span class="n">var_shape</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">gc</span><span class="p">,</span> <span class="n">approach</span><span class="p">,</span> <span class="n">init_util</span><span class="p">,</span> <span class="n">iter_tol</span><span class="p">,</span> <span class="n">max_iter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 1: error = 1.13368125
+Iteration 2: error = 9.23705556e-14
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="results">
+<h2>5.3 Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<p>Expansion Suite returns results as a class called <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code>, which contains the following attributes:</p>
+<p><code class="docutils literal notranslate"><span class="pre">J1_t</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>Jump Variables first order approximation, time <span class="math notranslate nohighlight">\(t\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">J2_t</span></code>: LinQuadVar</p>
+<ul class="simple">
+<li><p>Jump Variables second order approximation, time <span class="math notranslate nohighlight">\(t\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">X1_tp1</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>State Variables first order approximation, time <span class="math notranslate nohighlight">\(t+1\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">X2_tp1</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>State Variables second order approximation, time <span class="math notranslate nohighlight">\(t+1\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">util_sol</span></code> : <em>dict</em></p>
+<ul class="simple">
+<li><p>Solutions of the continuation values, including <span class="math notranslate nohighlight">\(\mu^0, \Upsilon_0^2, \Upsilon_1^2,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon_2^2\)</span> etc.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">vmr1_tp1</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>First order approximation of continuation values <span class="math notranslate nohighlight">\(\widehat{V}^1_{t+1}-\widehat{R}^1_t\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">vmr2_tp1</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>Second order approximation of continuation values <span class="math notranslate nohighlight">\(\widehat{V}^2_{t+1}-\widehat{R}^2_t\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">gc_tp1</span></code>: <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>Approximation of consumption growth <span class="math notranslate nohighlight">\(\widehat{C}_{t+1}-\widehat{C}_t\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">gc0_tp1</span></code>: <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>Zeroth order approximation of consumption growth <span class="math notranslate nohighlight">\(\widehat{C}^0_{t+1}-\widehat{C}^0_t\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">gc1_tp1</span></code>: <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>First order approximation of consumption growth <span class="math notranslate nohighlight">\(\widehat{C}^1_{t+1}-\widehat{C}^1_t\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">gc2_tp1</span></code>: <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>Second order approximation of consumption growth <span class="math notranslate nohighlight">\(\widehat{C}^2_{t+1}-\widehat{C}^2_t\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">ss</span></code> : <em>(n_JX, ) ndarray</em></p>
+<ul class="simple">
+<li><p>Steady states.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">log_N_tilde</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>Approximation for the log change of measure</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\log {\widetilde N}_{t+1} =  \left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] - \log {\mathbb E} \left( \exp\left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] \mid {\mathfrak A}_t \right)
+\]</div>
+<p>First-order expansion results for the jump variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;J1_t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coeffs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;x&#39;: array([[11.86631795,  0.        , -0.        ],
+        [-5.55579317, -0.        ,  0.        ],
+        [-3.4660476 ,  0.        ,  0.        ]]),
+ &#39;c&#39;: array([[-0.0909965 ],
+        [ 0.04260443],
+        [ 0.02657928]])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Second-order expansion results for the jump variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;J2_t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coeffs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;x2&#39;: array([[11.86631795,  0.        , -0.        ],
+        [-5.55579317, -0.        ,  0.        ],
+        [-3.4660476 ,  0.        ,  0.        ]]),
+ &#39;xx&#39;: array([[-52.60228226,  -0.        ,   0.        ,  -0.        ,  -0.        ,  -0.        ,  -0.        ,  -0.        ,  -0.        ],
+        [-72.16533233,   0.        ,  -0.        ,   0.        ,   0.        ,   0.        ,   0.        ,   0.        ,   0.        ],
+        [-37.77804264,  -0.        ,   0.        ,  -0.        ,  -0.        ,  -0.        ,   0.        ,  -0.        ,  -0.        ]]),
+ &#39;x&#39;: array([[ 1.14794484, -0.        , -0.        ],
+        [ 0.94705223,  0.        , -0.        ],
+        [ 0.47974191, -0.        , -0.        ]]),
+ &#39;c&#39;: array([[-0.0214435 ],
+        [ 0.00434782],
+        [ 0.00313838]])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>First-order expansion results for the state evolution equations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;X1_tp1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coeffs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;x&#39;: array([[ 0.98609754, -0.        ],
+        [ 0.95989634,  0.        ]]),
+ &#39;w&#39;: array([[ 0.00011,  0.00025],
+        [ 0.00477, -0.     ]]),
+ &#39;c&#39;: array([[-0.        ],
+        [ 0.00030753]])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Second-order expansion results for the state evolution equations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;X2_tp1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coeffs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;x2&#39;: array([[ 0.98609754, -0.        ],
+        [ 0.95989634,  0.        ]]),
+ &#39;xx&#39;: array([[ 0.       ,  0.       ,  0.       ,  0.       ],
+        [-0.4391863, -0.       ,  0.       ,  0.       ]]),
+ &#39;x&#39;: array([[ 0.        ,  0.        ],
+        [ 0.00558269, -0.        ]]),
+ &#39;c&#39;: array([[0.        ],
+        [0.00003619]])}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="shock-elasticities">
+<h1>6 Shock elasticities<a class="headerlink" href="#shock-elasticities" title="Permalink to this heading">#</a></h1>
+<p>This section illustrates how to use the results from Expansion Suite to compute shock elasticities of a stochastic process, for example, consumption growth.</p>
+<section id="compute-elasticities">
+<h2>6.1 Compute elasticities<a class="headerlink" href="#compute-elasticities" title="Permalink to this heading">#</a></h2>
+<p>To compute exposure elasticity, we may use the <code class="docutils literal notranslate"><span class="pre">exposure_elasticity</span></code> function. The function takes 6 inputs:</p>
+<p><code class="docutils literal notranslate"><span class="pre">log_M_growth</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>Consumption growth process, can be loaded from the <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code> attribute <code class="docutils literal notranslate"><span class="pre">gc_tp1</span></code>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">X1_tp1</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>First order expansion of the state evolution processes, can be loaded from the <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code> attribute <code class="docutils literal notranslate"><span class="pre">X1_tp1</span></code>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">X2_tp1</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>Second order expansion of the state evolution processes, can be loaded from the <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code> attribute <code class="docutils literal notranslate"><span class="pre">X2_tp1</span></code>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">T</span></code> : <em>int</em></p>
+<ul class="simple">
+<li><p>Time horizon (in month).</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">shock</span></code> : <em>int</em></p>
+<ul class="simple">
+<li><p>The shock component we are interested in, <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">shock</span> <span class="pre">&lt;=</span> <span class="pre">n_W-1</span></code>.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">percentile</span></code> : <em>float</em></p>
+<ul class="simple">
+<li><p>The percentile of the elasticity we want to compute, <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">percentile</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code>. For example, set <code class="docutils literal notranslate"><span class="pre">percentile</span> <span class="pre">=</span> <span class="pre">0.5</span></code> to compute the median.</p></li>
+</ul>
+<p>To compute price elasticity, we may use the <code class="docutils literal notranslate"><span class="pre">price_elasticity</span></code> function. The function takes 7 inputs. In addition to the 6 described above, we also need</p>
+<p><code class="docutils literal notranslate"><span class="pre">log_S_growth</span></code> : <em>LinQuadVar</em></p>
+<ul class="simple">
+<li><p>Approximation of the log stochastic discount factor, which can be computed using attributes of <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code>.</p></li>
+</ul>
+<p>Recall that
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+\frac{S_{t+1}}{S_t} &amp; =  \beta N_{t+1}^*\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}  \exp \left[(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right] \\
+&amp; = N_{t+1}^* \exp \left(\widehat{S}_{t+1}-\widehat{S}_t\right)
+\end{aligned}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\log N^*<em>{t+1}<span class="math notranslate nohighlight">\( is from Section 4.3 in the notes and is approximated by `log_N_tilde` in the model solution:
+\)</span><span class="math notranslate nohighlight">\(
+\log {\widetilde N}_{t+1} =  \left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] - \log {\mathbb E} \left( \exp\left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] \mid {\mathfrak A}_t \right)
+\)</span><span class="math notranslate nohighlight">\(
+and
+\)</span><span class="math notranslate nohighlight">\(
+\widehat{S}_{t+1}-\widehat{S}_t \stackrel{\text { def }}{=}\log\beta-\rho\left(\widehat{C}_{t+1}-\widehat{C}_t\right)+(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_{t}\right).
+\)</span><span class="math notranslate nohighlight">\(
+We follow approach 3 in the note (Section 4.3) and approximate \)</span>\widehat{S}</em>{t+1}-\widehat{S}_t<span class="math notranslate nohighlight">\( as
+\)</span><span class="math notranslate nohighlight">\(
+\widehat{S}_{t+1}-\widehat{S}_t \approx\left[\widehat{S}_{t+1}^0-\widehat{S}_t^0\right]+\left[\widehat{S}_{t+1}^1-\widehat{S}_t^1\right]+\frac{1}{2}\left[\widehat{S}_{t+1}^2-\widehat{S}_t^2\right]
+\)</span><span class="math notranslate nohighlight">\(
+where
+\)</span><span class="math notranslate nohighlight">\(
+\begin{aligned}
+\widehat{S}_{t+1}^0-\widehat{S}_t^0 
+    &amp;= \log \beta-\rho \eta_c^0 \\
+\widehat{S}_{t+1}^1-\widehat{S}_t^1
+    &amp;=-\rho\left(\widehat{C}_{t+1}^1- \widehat{C}_t^1\right)+(\rho-1)\left(\widehat{V}_{t+1}^1-\widehat{R}_t^1\right) \\
+\widehat{S}_{t+1}^2-\widehat{S}_t^2 
+    &amp;=-\rho\left(\widehat{C}_{t+1}^2-\widehat{C}_t^2\right)+(\rho-1)\left(\widehat{V}_{t+1}^2-\widehat{R}_{t}^2\right)
+\end{aligned}
+\)</span>$</p>
+<p>These are implemented in the function <code class="docutils literal notranslate"><span class="pre">calc_SDF</span></code> below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">elasticity</span> <span class="kn">import</span> <span class="n">exposure_elasticity</span><span class="p">,</span> <span class="n">price_elasticity</span>
+<span class="kn">from</span> <span class="nn">lin_quad</span> <span class="kn">import</span> <span class="n">LinQuadVar</span>
+
+<span class="k">def</span> <span class="nf">calc_SDF</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function uses results from Expansion Suite and compute the log SDF using Approach 3 in the note (Section 4.3).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    res : ModelSolution</span>
+<span class="sd">        Model solution returned by Expansion Suite.</span>
+
+<span class="sd">    args : tuple of float/string</span>
+<span class="sd">        Preference and model parameters.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    log_SDF : LinQuadVar</span>
+<span class="sd">        Approximation of log SDF.</span>
+
+<span class="sd">    gc_tp1 : LinQuadVar</span>
+<span class="sd">        Approximation of log consumption growth process; from res[&#39;gc_tp1&#39;].</span>
+
+<span class="sd">    X1_tp1 : LinQuadVar</span>
+<span class="sd">        First order expansion of the state evolution process; from res[&#39;X1_tp1&#39;].</span>
+
+<span class="sd">    X2_tp1 : LinQuadVar</span>
+<span class="sd">        Second order expansion of the state evolution process; from res[&#39;X2_tp1&#39;].</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n_J</span><span class="p">,</span> <span class="n">n_X</span><span class="p">,</span> <span class="n">n_W</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;var_shape&#39;</span><span class="p">]</span>
+    <span class="n">β</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ρ</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">X1_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;X1_tp1&#39;</span><span class="p">]</span>
+    <span class="n">X2_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;X2_tp1&#39;</span><span class="p">]</span>
+
+    <span class="n">gc_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;gc_tp1&#39;</span><span class="p">]</span>
+    <span class="n">gc0_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;gc0_tp1&#39;</span><span class="p">]</span>
+    <span class="n">gc1_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;gc1_tp1&#39;</span><span class="p">]</span>
+    <span class="n">gc2_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;gc2_tp1&#39;</span><span class="p">]</span>
+
+    <span class="n">vmr1_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;vmr1_tp1&#39;</span><span class="p">]</span>
+    <span class="n">vmr2_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;vmr2_tp1&#39;</span><span class="p">]</span>
+    <span class="n">log_N_tilde</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;log_N_tilde&#39;</span><span class="p">]</span>
+
+    <span class="n">S0_tp1</span> <span class="o">=</span> <span class="n">LinQuadVar</span><span class="p">({</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">gc0_tp1</span><span class="p">]])},</span> <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_X</span><span class="p">,</span><span class="n">n_W</span><span class="p">))</span>
+    <span class="n">S1_tp1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ρ</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">vmr1_tp1</span> <span class="o">-</span><span class="n">ρ</span><span class="o">*</span><span class="n">gc1_tp1</span>
+    <span class="n">S2_tp1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ρ</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">vmr2_tp1</span> <span class="o">-</span><span class="n">ρ</span><span class="o">*</span><span class="n">gc2_tp1</span>
+
+    <span class="n">log_SDF</span> <span class="o">=</span> <span class="n">S0_tp1</span> <span class="o">+</span> <span class="n">S1_tp1</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span><span class="n">S2_tp1</span> <span class="o">+</span> <span class="n">log_N_tilde</span>
+
+    <span class="k">return</span> <span class="n">log_SDF</span><span class="p">,</span> <span class="n">gc_tp1</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute the 25-th, 50-th, and 75-th percentile of the exposure and price elasticities for 30 years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute shock elasticity for 30 years</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">360</span>
+
+<span class="c1"># Compute shock elasticity at 1st quartile, median, and 3rd quartile</span>
+<span class="n">quantile</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]</span>
+
+<span class="c1"># Compute log SDF; load consumption growth and state evolution processes from model solution</span>
+<span class="n">log_SDF</span><span class="p">,</span> <span class="n">gc_tp1</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span> <span class="o">=</span> <span class="n">calc_SDF</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="c1"># Compute each component of the exposure elasticity for consumption growth process</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">exposure_elasticity</span><span class="p">(</span><span class="n">gc_tp1</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">quantile</span><span class="p">]</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">exposure_elasticity</span><span class="p">(</span><span class="n">gc_tp1</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">quantile</span><span class="p">]</span>
+
+<span class="c1"># Compute each component of price elasticity for consumption growth process</span>
+<span class="n">price_elas_shock_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">price_elasticity</span><span class="p">(</span><span class="n">gc_tp1</span><span class="p">,</span> <span class="n">log_SDF</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">quantile</span><span class="p">]</span>
+<span class="n">price_elas_shock_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">price_elasticity</span><span class="p">(</span><span class="n">gc_tp1</span><span class="p">,</span> <span class="n">log_SDF</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">quantile</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-elasticities">
+<h2>6.2 Plot elasticities<a class="headerlink" href="#plot-elasticities" title="Permalink to this heading">#</a></h2>
+<p>In this section, we plot the exposure and the price elasticities of the consumption growth process computed above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.3g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shock_labl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Shock component 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Shock component 2&#39;</span><span class="p">]</span>
+<span class="n">line_labl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Q1&#39;</span><span class="p">,</span> <span class="s1">&#39;Q2&#39;</span><span class="p">,</span> <span class="s1">&#39;Q3&#39;</span><span class="p">]</span>
+<span class="n">line_color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+<span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">line_labl</span>
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exposure-elasticity">
+<h3>6.2.1 Exposure elasticity<a class="headerlink" href="#exposure-elasticity" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">expo_elas_shock_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">expo_elas_shock_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">expo_elas_shock_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">expo_elas_shock_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">expo_elas_shock_1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">expo_elas_shock_1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0_plot</span><span class="p">,</span> <span class="n">expo_elas_shock_1_plot</span><span class="p">]</span> 
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">line_labl</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">line_color</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">line_labl</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exposure elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">shock_labl</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.02</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.02</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Exposure Elasticity of Consumption Growth&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8bcc457d7ab0febce912382edcf688a7ff9ca9d87da6079c33065f4c20e29b0f.png" src="_images/8bcc457d7ab0febce912382edcf688a7ff9ca9d87da6079c33065f4c20e29b0f.png" />
+</div>
+</div>
+</section>
+<section id="price-elasticity">
+<h3>6.2.1 Price elasticity<a class="headerlink" href="#price-elasticity" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">price_elas_shock_0_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">price_elas_shock_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">price_elas_shock_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">price_elas_shock_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">price_elas_shock_1_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">price_elas_shock_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">price_elas_shock_1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">price_elas_shock_1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">price_elas_shock_0_plot</span><span class="p">,</span> <span class="n">price_elas_shock_1_plot</span><span class="p">]</span> 
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>  <span class="n">x</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">line_labl</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">line_color</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">line_labl</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">shock_labl</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Price Elasticity of Consumption Growth&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d1407ddae2f2086e792cdc7b5db25e7b1788cc4a0604de65e44be89d32a00349.png" src="_images/d1407ddae2f2086e792cdc7b5db25e7b1788cc4a0604de65e44be89d32a00349.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h1>
+<p>[1] Lombardo, Giovanni and Harald Uhlig. 2018. A Theory of Pruning. <em>International Economic Review</em> 59 (4):1825–1836.</p>
+<p>[2] Schmitt-Grohe, Stephanie and Mart ́ın Uribe. 2004. Solving Dynamic General Equilibrium Models Using a Second-Order Approximation to the Policy Function. <em>Journal of Economic Dynamics and Control</em> 28 (4):755–775.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="quickguide.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1. Five-minute guide to solving the DSGE model using the Expansion Suite <a class="anchor" id="s1"></a></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="shockelasticity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Shock Elasticity Computation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Small Noise Expansion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-setup">1 Underlying setup</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-contribution">2.3 Second-order contribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">3 Algorithm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-1">3.1 Approach 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">3.1.1: Step 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">3.1.2: Step 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">3.1.3: Step 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">3.1.4: Step 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-2">3.2 Approach 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adjustment-cost-example">4 Adjustment cost example</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#production">4.1 Production</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foc-on-investment">4.2 FOC on Investment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#state-and-jump-variables">4.3 State and jump variables</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">5 Computation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-specifications">5.1 Model specifications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">5.1.1 Model parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-and-equilibrium-and-conditions">5.1.2 Optimization and equilibrium and conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state">5.1.3 Steady state</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-of-consumption-growth">5.1.4 Approximation of consumption growth</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-model">5.2 Solving the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5.3 Results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities">6 Shock elasticities</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-elasticities">6.1 Compute elasticities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-elasticities">6.2 Plot elasticities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exposure-elasticity">6.2.1 Exposure elasticity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#price-elasticity">6.2.1 Price elasticity</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

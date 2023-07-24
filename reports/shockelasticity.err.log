@@ -1,0 +1,68 @@
+Traceback (most recent call last):
+  File "/home/hqin/.local/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/software/python-anaconda-2020.11-el8-x86_64/lib/python3.8/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/software/python-anaconda-2020.11-el8-x86_64/lib/python3.8/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/software/python-anaconda-2020.11-el8-x86_64/lib/python3.8/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/software/python-anaconda-2020.11-el8-x86_64/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/software/python-anaconda-2020.11-el8-x86_64/lib/python3.8/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/software/python-anaconda-2020.11-el8-x86_64/lib/python3.8/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/software/python-anaconda-2020.11-el8-x86_64/lib/python3.8/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import os
+import sys
+workdir = os.getcwd()
+# !git clone https://github.com/lphansen/RiskUncertaintyValue # Please uncomment this line when running on the google colab
+# workdir = os.getcwd() + '/RiskUncertaintyValue'             # Please uncomment this line when running on the google colab
+sys.path.insert(0, workdir+'/src')
+from IPython.display import display, HTML
+display(HTML("<style>.container { width:97% !important; }</style>"))
+import numpy as np
+np.set_printoptions(suppress=True)
+from scipy.stats import norm
+from numba import njit, prange
+
+from lin_quad import LinQuadVar
+from lin_quad_util import next_period, log_E_exp, kron_prod, distance
+from utilities import mat, vec, sym
+from elasticity import exposure_elasticity, price_elasticity
+
+"""
+Python object 'LinQuadVar' stores the coefficients of a variable that has the linear-quadratic structure as shown in equations (1) and (2).
+Below is an example of constructing a variable using the 'LinQuadVar'.
+"""
+
+n_Y = 1 # The dimension of the LinQuadVar, here we construct a one dimensional (scalar) LinQuadVar
+n_X = 2 # The dimension of state variables, X_t
+n_W = 4 # The dimension of shocks, W_t
+lq = LinQuadVar({'c': np.array([[0.0015]]),                                         # The constant term
+                'x': np.array([[1., 0.]]),                                          # The coefficients on X_{1,t}
+                'w': np.array([[0., 0., 0.0078, 0.  ]]),                            # The coefficients on W_{t+1}
+                'x2': np.array([[0.5, 0.]]),                                        # The coefficients on X_{2,t}
+                'xw': np.array([[0.,  0.,  0.,  0.,  0.,  0., 0.0039, 0.]])},       # The coefficients on X_{1, t} \otimes W_{t+1}
+                shape = (n_Y, n_X, n_W))                                            # The dimensions of LinQuadVar, X_t, and, W_t
+
+## Display the coefficients of the LinQuadVar
+lq.coeffs
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 14[0m
+[1;32m     11[0m [38;5;28;01mfrom[39;00m [38;5;21;01mscipy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mstats[39;00m [38;5;28;01mimport[39;00m norm
+[1;32m     12[0m [38;5;28;01mfrom[39;00m [38;5;21;01mnumba[39;00m [38;5;28;01mimport[39;00m njit, prange
+[0;32m---> 14[0m [38;5;28;01mfrom[39;00m [38;5;21;01mlin_quad[39;00m [38;5;28;01mimport[39;00m LinQuadVar
+[1;32m     15[0m [38;5;28;01mfrom[39;00m [38;5;21;01mlin_quad_util[39;00m [38;5;28;01mimport[39;00m next_period, log_E_exp, kron_prod, distance
+[1;32m     16[0m [38;5;28;01mfrom[39;00m [38;5;21;01mutilities[39;00m [38;5;28;01mimport[39;00m mat, vec, sym
+
+[0;31mModuleNotFoundError[0m: No module named 'lin_quad'
+ModuleNotFoundError: No module named 'lin_quad'
+
