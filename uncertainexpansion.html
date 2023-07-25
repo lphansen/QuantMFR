@@ -489,8 +489,7 @@ where the last contribution is familiar from models with time separable, power u
 \]</div>
 <p>This embedding makes the uncertainty adjustments matter at a lower order.  It has a particularly nice interpretation when we interpret the recursion as a way to represent a preference for robustness to potential model misspecification.  We take <span class="math notranslate nohighlight">\({\sf q} = 1\)</span> as the economy of interest.</p>
 <p>[1] Formally, <span class="math notranslate nohighlight">\({ \frac {1}{\rho}}\)</span> is the elasticity of intertemporal substitution.
-$<span class="math notranslate nohighlight">\(
-\)</span>$</p>
+<br><br></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="approximating-widehat-v-t">
 <h1>2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span><a class="headerlink" href="#approximating-widehat-v-t" title="Permalink to this heading">#</a></h1>
@@ -556,11 +555,12 @@ $<span class="math notranslate nohighlight">\(
 \[
 N_{t+1}^0 = \exp \left[\left(1-\gamma_o\right)\left(\widehat{V}_{t+1}^1-\widehat{R}_t^1\right)\right]
 \]</div>
-<p>Combining these formulas, gives the following equation to be solved:
-$<span class="math notranslate nohighlight">\(
+<p>Combining these formulas, gives the following equation to be solved:</p>
+<div class="math notranslate nohighlight">
+\[
 {\widehat  V}_t^2 - {\widehat  C}_t^2 = \lambda 
 {\mathbb E}  \left[ N_{t+1}^0 \left({\widehat V}^2_{t+1} - {\widehat C}_{t+1}^2 \right) \mid {\mathfrak A}_t \right]  + \lambda  {\mathbb E}  \left[ N_{t+1}^0 \left( {\widehat C}^2_{t+1} - {\widehat C}_{t}^2 \right) \mid {\mathfrak A}_t \right] + \frac{(1- \rho) (1-\lambda)}{\lambda } \left[ \left( {\widehat  V}_t^1 - {\widehat  C}_t^1\right)^2 \right] . \tag{10}
-\)</span>$</p>
+\]</div>
 <p>The formula for <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span> also happens to be the zeroth-order approximation to <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> given by definition (8).  Since <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span> is positive and has conditional mean equal to one, it induces a change in probability distribution whereby <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a multivariate normal with mean <span class="math notranslate nohighlight">\(\mu^o\)</span> and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>.  The algorithm uses this change of probability distribution in the computations.  The first-order contribution to <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -587,7 +587,7 @@ Q_{t+1}^2 &amp;= \left.\frac{d^2}{d \mathsf{q}^2} \exp \left[(\rho-1)\left(\wide
 \widehat{V}_{t+1}^2-\widehat{R}_t^2= &amp; \frac{1}{2}\left(W_{t+1}-\mu^0\right)^{\prime} \Upsilon_2^2\left(W_{t+1}-\mu^0\right)-\frac{1}{2} \operatorname{tr}\left(\Upsilon_2^2\right)+\left(W_{t+1}-\mu^0\right)^{\prime}\left(\Upsilon_1^2 X_t^1+\Upsilon_0^2\right)
 \end{aligned}
 \]</div>
-</section>
+<br></section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="algorithm">
 <h1>3 Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this heading">#</a></h1>
@@ -600,15 +600,17 @@ Q_{t+1}^2 &amp;= \left.\frac{d^2}{d \mathsf{q}^2} \exp \left[(\rho-1)\left(\wide
 </section>
 <section id="step-2">
 <h3>3.1.2: Step 2<a class="headerlink" href="#step-2" title="Permalink to this heading">#</a></h3>
-<p>When solving for the first-order approximation, an additional term needs to added to the forward equation system to accomodate the recursive utility adjustment:
-$<span class="math notranslate nohighlight">\(
+<p>When solving for the first-order approximation, an additional term needs to added to the forward equation system to accomodate the recursive utility adjustment:</p>
+<div class="math notranslate nohighlight">
+\[
 \bar{H}^1 \stackrel{\text { def }}{=} \frac{(\rho-1)}{2\left(1-\gamma_o\right)}\left|\mu^o\right|^2 H_{t+1}^0 
-\)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
 H_{t+1}^0 =  \psi_1(X_t^0, J_t^0,  X_{t+1}^0, J_{t+1}^0, 0,0)
-\)</span>$
-and is time invariant.</p>
+\]</div>
+<p>and is time invariant.</p>
 </section>
 <section id="step-3">
 <h3>3.1.3: Step 3<a class="headerlink" href="#step-3" title="Permalink to this heading">#</a></h3>
@@ -641,11 +643,12 @@ H_{t+1}^1=\Theta_0^1+\Theta_1^1 X_t^1+\Theta_2^1\left(W_{t+1}-\mu^0\right)
 </section>
 <section id="approach-2">
 <h2>3.2 Approach 2<a class="headerlink" href="#approach-2" title="Permalink to this heading">#</a></h2>
-<p>In this aproach, we use an alternative approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> given by
-$<span class="math notranslate nohighlight">\(
+<p>In this aproach, we use an alternative approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> given by</p>
+<div class="math notranslate nohighlight">
+\[
 \log {\widetilde N}_{t+1} =  \left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] - \log {\mathbb E} \left( \exp\left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] \mid {\mathfrak A}_t \right)
-\)</span><span class="math notranslate nohighlight">\(
-The induced distribution of \)</span>W_{t+1}<span class="math notranslate nohighlight">\( is normal, with mean \)</span>\tilde{\mu}_t<span class="math notranslate nohighlight">\( and variance \)</span>\widetilde{\Sigma}<span class="math notranslate nohighlight">\(. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for \)</span>\tilde{\mu}_t<span class="math notranslate nohighlight">\( is affine in \)</span>X_t^1$.</p>
+\]</div>
+<p>The induced distribution of <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is normal, with mean <span class="math notranslate nohighlight">\(\tilde{\mu}_t\)</span> and variance <span class="math notranslate nohighlight">\(\widetilde{\Sigma}\)</span>. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for <span class="math notranslate nohighlight">\(\tilde{\mu}_t\)</span> is affine in <span class="math notranslate nohighlight">\(X_t^1\)</span>.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="adjustment-cost-example">
@@ -669,28 +672,36 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{14}
 </section>
 <section id="foc-on-investment">
 <h2>4.2 FOC on Investment<a class="headerlink" href="#foc-on-investment" title="Permalink to this heading">#</a></h2>
-<p>The consumer’s stochastic discount factor is
-$<span class="math notranslate nohighlight">\(
+<p>The consumer’s stochastic discount factor is</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{S_{t+1}}{S_t} = \beta \left(\frac{V_{t+1}}{R_t}\right)^{1-\gamma} \left(\frac{V_{t+1}}{R_t}\right)^{\rho-1} \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
-\)</span><span class="math notranslate nohighlight">\(
-The first-order condition for investment is:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The first-order condition for investment is:</p>
+<div class="math notranslate nohighlight">
+\[
 MC_t \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}  \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t) \right) \mid \mathfrak{A}_t\right] - MC_t  = 0.  
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>MK_{t+1}<span class="math notranslate nohighlight">\( is the co-state associated with the capital evolution and \)</span>MC_t<span class="math notranslate nohighlight">\( is the multiplier associated with the production relation. Dividing this first-order condition by \)</span>MC_t<span class="math notranslate nohighlight">\( gives:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(MK_{t+1}\)</span> is the co-state associated with the capital evolution and <span class="math notranslate nohighlight">\(MC_t\)</span> is the multiplier associated with the production relation. Dividing this first-order condition by <span class="math notranslate nohighlight">\(MC_t\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}  \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right) \mid \mathfrak{A}_t\right] - 1  = 0,\tag{15}
-\)</span>$
-which is the equation we use in computation.</p>
-<p>The co-state equation satisfies:
+\]</div>
+<p>which is the equation we use in computation.</p>
+<p>The co-state equation satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{align*}
 &amp; MC_t \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right]\cr &amp;  - MK_t + {\mathbf a} MC_t = 0
 \end{align*}
-Dividing this equation by <span class="math notranslate nohighlight">\(MC_t\)</span> gives:
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>Dividing this equation by <span class="math notranslate nohighlight">\(MC_t\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[
  \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1}  \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right] - \frac {MK_t}{MC_t} + {\mathbf a}  = 0,
-\tag{16}\)</span>$
-which is the equation we use in computation.</p>
+\tag{16}
+\]</div>
+<p>which is the equation we use in computation.</p>
 </section>
 <section id="state-and-jump-variables">
 <h2>4.3 State and jump variables<a class="headerlink" href="#state-and-jump-variables" title="Permalink to this heading">#</a></h2>
@@ -741,14 +752,16 @@ which is the equation we use in computation.</p>
 <h2>5.1 Model specifications<a class="headerlink" href="#model-specifications" title="Permalink to this heading">#</a></h2>
 <section id="model-parameters">
 <h3>5.1.1 Model parameters<a class="headerlink" href="#model-parameters" title="Permalink to this heading">#</a></h3>
-<p>In this numerical example, we set the preference parameters as
-$<span class="math notranslate nohighlight">\(
+<p>In this numerical example, we set the preference parameters as</p>
+<div class="math notranslate nohighlight">
+\[
 \gamma=10,\quad
 \rho=\frac{4}{3},\quad
 \beta=\exp(-0.0025)
-\)</span><span class="math notranslate nohighlight">\(
-and the other model parameters as
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and the other model parameters as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 {\mathbf a}&amp;=0.0288\\
 \phi_1&amp;=0.0114\\
@@ -758,7 +771,7 @@ and the other model parameters as
 \mathbb{A}&amp;=\exp(-0.014)\\
 \mathbb{B}&amp;=0.01\begin{bmatrix}0.011 &amp; 0.025 \end{bmatrix}\\
 \end{aligned}
-\)</span>$</p>
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">γ</span> <span class="o">=</span> <span class="mf">10.</span>
@@ -779,8 +792,9 @@ and the other model parameters as
 <section id="optimization-and-equilibrium-and-conditions">
 <h3>5.1.2 Optimization and equilibrium and conditions<a class="headerlink" href="#optimization-and-equilibrium-and-conditions" title="Permalink to this heading">#</a></h3>
 <p>In Expansion Suite, the equilibrium conditions are specified as a function that takes the jump variables <span class="math notranslate nohighlight">\(J\)</span>, the state variables <span class="math notranslate nohighlight">\(X\)</span>, the shock variables <span class="math notranslate nohighlight">\(W\)</span>, the perturbation parameter <span class="math notranslate nohighlight">\({\sf q}\)</span>, and the model parameters as input, and returns the <span class="math notranslate nohighlight">\(\psi_1,\psi_2,\phi\)</span> or the the left-hand side of Equation (1) and (2) before taking expectation as output.</p>
-<p>In the adjustment cost model, there are 5 equilibrium conditions, given in Equation (12) to (16). Recall that
-$<span class="math notranslate nohighlight">\(
+<p>In the adjustment cost model, there are 5 equilibrium conditions, given in Equation (12) to (16). Recall that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 J_t=\begin{bmatrix}
     \log\frac{C_t}{K_t}\\
     \log\frac{I_t}{K_t}\\
@@ -792,7 +806,7 @@ X_t=\begin{bmatrix}
 \end{bmatrix},\quad
 W_{t+1},\quad
 {\sf q}\in\mathbb{R}.
-\)</span>$</p>
+\end{split}\]</div>
 <p>The equilibrium condition function specification in the Expansion Suite codes takes the following form:</p>
 <p>The first input <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> is an array containing, in this order: <span class="math notranslate nohighlight">\(\log Q^*_t\)</span>, <span class="math notranslate nohighlight">\(J_t\)</span>, and <span class="math notranslate nohighlight">\(X_t\)</span>, where <span class="math notranslate nohighlight">\(Q^*_t\)</span> appears in Equation (8). Similarly, the second input <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> is an array containing <span class="math notranslate nohighlight">\(\log Q^*_{t+1}\)</span>, <span class="math notranslate nohighlight">\(J_{t+1}\)</span>, and <span class="math notranslate nohighlight">\(X_{t+1}\)</span>. the third input <code class="docutils literal notranslate"><span class="pre">W_tp1</span></code> corresponds to <span class="math notranslate nohighlight">\(W_{t+1}\)</span> and the fourth input <code class="docutils literal notranslate"><span class="pre">q</span></code> corresponds to <span class="math notranslate nohighlight">\({\sf q}\)</span>. Note that the number of jump variables equals the number of forward-looking equilibrium conditions. The number of state variables equals to the number of state evolution equations.</p>
 <p>The fifth input <code class="docutils literal notranslate"><span class="pre">mode</span></code> determines the output of the equilibrium condition function. By default, the function returns the left-hand side of Equation (1) and (2) before taking expectation.  Set it as <code class="docutils literal notranslate"><span class="pre">psi1</span></code>, <code class="docutils literal notranslate"><span class="pre">psi2</span></code>, <code class="docutils literal notranslate"><span class="pre">phi</span></code> to return <span class="math notranslate nohighlight">\(\psi_1,\psi_2,\phi\)</span> respectivley. The <code class="docutils literal notranslate"><span class="pre">psi1</span></code> mode specification is necessary. Other modes are optional.</p>
@@ -923,10 +937,11 @@ W_{t+1},\quad
 <section id="approximation-of-consumption-growth">
 <h3>5.1.4 Approximation of consumption growth<a class="headerlink" href="#approximation-of-consumption-growth" title="Permalink to this heading">#</a></h3>
 <p>To approximate <span class="math notranslate nohighlight">\(\widehat{V}_t\)</span> and <span class="math notranslate nohighlight">\(\widehat{R}_t\)</span>, we find it convenient to compute <span class="math notranslate nohighlight">\(\widehat{V}_t-\widehat{C}_t\)</span> and <span class="math notranslate nohighlight">\(\widehat{R}_t-\widehat{C}_t\)</span> instead, as in Equation (9) and (10). Note that we need an additional variable <span class="math notranslate nohighlight">\(\log\frac{C_{t+1}}{C_t}=\widehat{C}_{t+1}-\widehat{C}_t\)</span>, which we need to approximate from the jump and state variables.</p>
-<p>For the adjustment cost model, we compute consumption growth as
-$<span class="math notranslate nohighlight">\(
+<p>For the adjustment cost model, we compute consumption growth as</p>
+<div class="math notranslate nohighlight">
+\[
 \log{\frac{C_{t+1}}{C_t}} = \log{\frac{C_{t+1}}{K_{t+1}}}+\log{\frac{K_{t+1}}{K_{t}}}-\log{\frac{C_{t}}{K_{t}}}
-\)</span>$</p>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gc_ac</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -1186,27 +1201,32 @@ Iteration 2: error = 9.23705556e-14
 <ul class="simple">
 <li><p>Approximation of the log stochastic discount factor, which can be computed using attributes of <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code>.</p></li>
 </ul>
-<p>Recall that
-$<span class="math notranslate nohighlight">\(
+<p>Recall that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 \frac{S_{t+1}}{S_t} &amp; =  \beta N_{t+1}^*\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}  \exp \left[(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right] \\
 &amp; = N_{t+1}^* \exp \left(\widehat{S}_{t+1}-\widehat{S}_t\right)
 \end{aligned}
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\log N^*<em>{t+1}<span class="math notranslate nohighlight">\( is from Section 4.3 in the notes and is approximated by `log_N_tilde` in the model solution:
-\)</span><span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\({\log N^*_{t+1}}\)</span> is from Section 4.3 in the notes and is approximated by <code class="docutils literal notranslate"><span class="pre">log_N_tilde</span></code> in the model solution:</p>
+<div class="math notranslate nohighlight">
+\[
 \log {\widetilde N}_{t+1} =  \left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] - \log {\mathbb E} \left( \exp\left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] \mid {\mathfrak A}_t \right)
-\)</span><span class="math notranslate nohighlight">\(
-and
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
 \widehat{S}_{t+1}-\widehat{S}_t \stackrel{\text { def }}{=}\log\beta-\rho\left(\widehat{C}_{t+1}-\widehat{C}_t\right)+(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_{t}\right).
-\)</span><span class="math notranslate nohighlight">\(
-We follow approach 3 in the note (Section 4.3) and approximate \)</span>\widehat{S}</em>{t+1}-\widehat{S}_t<span class="math notranslate nohighlight">\( as
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>We follow approach 3 in the note (Section 4.3) and approximate <span class="math notranslate nohighlight">\(\widehat{S}_{t+1}-\widehat{S}_t\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
 \widehat{S}_{t+1}-\widehat{S}_t \approx\left[\widehat{S}_{t+1}^0-\widehat{S}_t^0\right]+\left[\widehat{S}_{t+1}^1-\widehat{S}_t^1\right]+\frac{1}{2}\left[\widehat{S}_{t+1}^2-\widehat{S}_t^2\right]
-\)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 \widehat{S}_{t+1}^0-\widehat{S}_t^0 
     &amp;= \log \beta-\rho \eta_c^0 \\
@@ -1215,7 +1235,7 @@ where
 \widehat{S}_{t+1}^2-\widehat{S}_t^2 
     &amp;=-\rho\left(\widehat{C}_{t+1}^2-\widehat{C}_t^2\right)+(\rho-1)\left(\widehat{V}_{t+1}^2-\widehat{R}_{t}^2\right)
 \end{aligned}
-\)</span>$</p>
+\end{split}\]</div>
 <p>These are implemented in the function <code class="docutils literal notranslate"><span class="pre">calc_SDF</span></code> below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
