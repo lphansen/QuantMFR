@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -523,16 +524,11 @@ Y_{t+1}(\mathrm q)-Y_t({\sf q}) \approx Y_{t+1}^0-Y_{t}^0+ {\sf q} (Y_{t+1}^1 -Y
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>.container { width:97% !important; }</style></div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">lin_quad</span> <span class="kn">import</span> <span class="n">LinQuadVar</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">lin_quad_util</span> <span class="kn">import</span> <span class="n">next_period</span><span class="p">,</span> <span class="n">log_E_exp</span><span class="p">,</span> <span class="n">kron_prod</span><span class="p">,</span> <span class="n">distance</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="n">sym</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;lin_quad&#39;
+<div class="output text_html"><style>.container { width:97% !important; }</style></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;c&#39;: array([[0.0015]]),
+ &#39;x&#39;: array([[1., 0.]]),
+ &#39;w&#39;: array([[0.    , 0.    , 0.0078, 0.    ]]),
+ &#39;x2&#39;: array([[0.5, 0. ]]),
+ &#39;xw&#39;: array([[0.    , 0.    , 0.    , 0.    , 0.    , 0.    , 0.0039, 0.    ]])}
 </pre></div>
 </div>
 </div>
@@ -593,7 +589,7 @@ variable by <span class="math notranslate nohighlight">\(W_1\)</span> and taking
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_Φ_star</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes :math:`\Phi^*_{0,t-1}`, :math:`\Phi^*_{1,t-1}`, :math:`\Phi^*_{2,t-1}`, :math:`\Phi^*_{3,t-1}` in equation (4).</span>
 
 <span class="sd">    Parameters</span>
@@ -667,7 +663,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">M_mapping</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">second_order</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
+    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Computes coefficients of a LinQuadVar after one iteration of M mapping</span>
 
 <span class="sd">    Parameters</span>
@@ -697,7 +693,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
         <span class="k">return</span> <span class="n">log_E_exp</span><span class="p">(</span><span class="n">log_M_growth</span> <span class="o">+</span> <span class="n">next_period</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">))</span>
     
 <span class="k">def</span> <span class="nf">Q_mapping</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">second_order</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
+    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Computes limiting coefficients of a LinQuadVar by recursively applying the M mapping operator till convergence, returns the eigenvalue and eigenvector.</span>
 
 <span class="sd">    Parameters</span>
@@ -761,7 +757,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_elasticity_coeff</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes :math:`\mu_{t,0}`, :math:`\mu_{t,1}`, :math:`\tilde{\Sigma}_t`. Corresponding formulas can be found in [3], Jaroslav and Hansen (2014), Appendix B.</span>
 
 <span class="sd">    Parameters</span>
@@ -876,7 +872,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exposure_elasticity</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes exposure elasticity for M.</span>
 
 <span class="sd">    Parameters</span>
@@ -946,7 +942,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">price_elasticity</span><span class="p">(</span><span class="n">log_G_growth</span><span class="p">,</span> <span class="n">log_S_growth</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes price elasticity.</span>
 
 <span class="sd">    Parameters</span>
@@ -1036,7 +1032,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@njit</span>
 <span class="k">def</span> <span class="nf">_compute_percentile</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Ax_mean</span><span class="p">,</span> <span class="n">x_cov</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute percentile of the scalar Ax, where A is vector coefficient and x follows multivariate normal distribution.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -1253,7 +1249,7 @@ X_{t+1}^2 = &amp; \begin{bmatrix} 0.979 &amp; 0 \\ 0 &amp; 0.987 \end{bmatrix} X
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_SDF</span><span class="p">(</span><span class="n">res</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
+    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This function loads external results for the long-run risk model with different rho values, and then calculates the SDF.</span>
 
 <span class="sd">    Parameters</span>
