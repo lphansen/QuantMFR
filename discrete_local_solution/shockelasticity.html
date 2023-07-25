@@ -413,7 +413,8 @@ document.write(`
 <ul class="simple">
 <li><p>Section 1 introduces the exponential–quadratic framework. It supposes this structure emerges as an approximation with the approximation taken as input into the computer code.</p></li>
 <li><p>Section 2 presents shock elasticity formulas for both exposure and price elasticities.</p></li>
-<li><p>Section 3 provides an illustration using the long-run risk model [1].</p></li>
+<li><p>Section 3 provides an illustration using the long-run risk model [1].
+<br></p></li>
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exponential-linear-quadratic-framework">
@@ -433,11 +434,11 @@ X_{t+1}^2&amp;= \Theta_{20}^x+\Theta_{21}^x X_{t}^1+\Theta_{22}^xX_{t}^2+\Theta_
 \[
 X_{t+1}(\sf{q})=\psi \left[X_t(\sf{q}), \sf{q} W_{t+1}, \sf{q}\right]
 \]</div>
-<p>parameterized by <span class="math notranslate nohighlight">\(\sf q\)</span>. Following [4], we calculate a second-order approximation of stochastic processes
-around the ``small noise’’ limit <span class="math notranslate nohighlight">\({\sf q} = 0\)</span>:</p>
+<p>parameterized by <span class="math notranslate nohighlight">\(\mathrm q\)</span>. Following [4], we calculate a second-order approximation of stochastic processes
+around the ``small noise’’ limit <span class="math notranslate nohighlight">\({\mathrm q} = 0\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-X_t(\mathrm {q}) \approx X_{0, t}+ {\sf q} X_{1, t}+\frac{{\sf q}^2}{2} X_{2, t}
+X_t(\mathrm {q}) \approx X_{0, t}+ {\mathrm q} X_{1, t}+\frac{{\mathrm q}^2}{2} X_{2, t}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(X_{t}^m\)</span> is the date <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(m^{th}\)</span>-order derivatitve approximation. This gives a version of the system (1) where:</p>
 <div class="math notranslate nohighlight">
@@ -464,12 +465,12 @@ Y_{t+1} - Y_t = \Theta_0^y + \Theta_{1}^y X_{1,t} + \Theta_{2}^y X_{2,t} + \left
 <p>Again we could derive this by embedding the <span class="math notranslate nohighlight">\(Y\)</span> process in a parameterized family of processes with increments given by</p>
 <div class="math notranslate nohighlight">
 \[
-Y_{t+1}(\sf q)-Y_t({\sf q})=\kappa\left[X_t({\sf q}), {\sf q} W_{t+1}, {\sf q}\right]
+Y_{t+1}(\mathrm q)-Y_t{\mathrm q}=\kappa\left[X_{t}{\mathrm q}), {\mathrm q} W_{t+1}, {\mathrm q}\right]
 \]</div>
 <p>We approximate the resulting processes as:</p>
 <div class="math notranslate nohighlight">
 \[
-Y_{t+1}(\mathrm q)-Y_t({\sf q}) \approx Y_{t+1}^0-Y_{t}^0+ {\sf q} (Y_{t+1}^1 -Y_{t}^1)+\frac{{\sf q}^2}{2} (Y_{t+1}^2-Y_{t}^2)
+Y_{t+1}(\mathrm q)-Y_t({\mathrm q}) \approx Y_{t+1}^0-Y_{t}^0+ {\mathrm q} (Y_{t+1}^1 -Y_{t}^1)+\frac{{\mathrm q}^2}{2} (Y_{t+1}^2-Y_{t}^2)
 \]</div>
 <p>Following the steps of our approximation of <span class="math notranslate nohighlight">\(X\)</span>, we write</p>
 <div class="math notranslate nohighlight">
@@ -481,7 +482,7 @@ Y_{t+1}(\mathrm q)-Y_t({\sf q}) \approx Y_{t+1}^0-Y_{t}^0+ {\sf q} (Y_{t+1}^1 -Y
 \Theta_3^y &amp;=   \frac 1 2 \kappa_{1,1}  &amp;  &amp;
 \end{aligned}
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\kappa_i\)</span> is the derivative of <span class="math notranslate nohighlight">\(\kappa\)</span> with respect to argument <span class="math notranslate nohighlight">\(i\)</span> evaluated at <span class="math notranslate nohighlight">\((\bar x, 0, 0)\)</span> and similarly for the second derivatives.  We set <span class="math notranslate nohighlight">\({\sf q} = 1\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\kappa_i\)</span> is the derivative of <span class="math notranslate nohighlight">\(\kappa\)</span> with respect to argument <span class="math notranslate nohighlight">\(i\)</span> evaluated at <span class="math notranslate nohighlight">\((\bar x, 0, 0)\)</span> and similarly for the second derivatives.  We set <span class="math notranslate nohighlight">\({\mathrm q} = 1\)</span>.</p>
 <p>In what follows, <span class="math notranslate nohighlight">\(M\)</span> will be a macro growth process, a stochastic discount factor process, or a product of the two. The user inputs are the quadratic specifications in equation (1) and equation (2).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
