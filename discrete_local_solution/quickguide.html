@@ -523,12 +523,13 @@ document.write(`
 Z_{t+1} &amp;= {\mathbb A} Z_t + \mathbb{B} W_{t+1}
 \end{aligned}
 \end{split}\]</div>
-<p>where we have
-$<span class="math notranslate nohighlight">\(
+<p>where we have</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{aligned}
 \frac{S_{t+1}}{S_t}&amp; = \beta \left(\frac{V_{t+1}}{R_t}\right)^{1-\gamma} \left(\frac{V_{t+1}}{R_t}\right)^{\rho-1} \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
 \end{aligned}
-\)</span>$</p>
+\]</div>
 <p>The model has one jump variable (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent jump variables):</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\log C_t - \log K_t\)</span> : Log consumption over capital</p></li>
@@ -560,12 +561,11 @@ $<span class="math notranslate nohighlight">\(
 <li><p>The log change of measure is skipped in the specification of equilibrium conditions.</p></li>
 </ul>
 </li>
-<li><p>By default (without <code class="docutils literal notranslate"><span class="pre">mode</span></code> specification), the function needs to return the LHS of each equilibrium condition before taking expectation.</p>
+<li><p>By default (without <code class="docutils literal notranslate"><span class="pre">mode</span></code> specification), the function needs to return the LHS of each equilibrium condition before taking expectation.</p></li>
+</ol>
 <ul class="simple">
 <li><p>The state-evolution equations should follow the forward-looking conditions.</p></li>
 </ul>
-</li>
-</ol>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
