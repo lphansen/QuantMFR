@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'discrete_local_solution/shockelasticity';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1 Sluggish Two Capital Model" href="../continuous_global_solution/Twocap.html" />
+    <link rel="next" title="Sluggish Two Capital Model" href="../continuous_global_solution/Twocap.html" />
     <link rel="prev" title="Uncertain Expansion Methods" href="uncertainexpansion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -161,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Solution</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="quickguide.html">Quick Guide to Expansion1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickguide.html">Quick Guide to Expansion</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="uncertainexpansion.html">Uncertain Expansion Methods</a></li>
@@ -181,7 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Continuous Global Solution</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/Twocap.html">1 Sluggish Two Capital Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/Twocap.html">Sluggish Two Capital Model</a></li>
+
 
 
 </ul>
@@ -590,7 +591,7 @@ variable by <span class="math notranslate nohighlight">\(W_1\)</span> and taking
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_Φ_star</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes :math:`\Phi^*_{0,t-1}`, :math:`\Phi^*_{1,t-1}`, :math:`\Phi^*_{2,t-1}`, :math:`\Phi^*_{3,t-1}` in equation (4).</span>
 
 <span class="sd">    Parameters</span>
@@ -658,13 +659,13 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 \exp(\eta) 
  \left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)'\Phi_3^e x_1\right]
 \]</div>
-<p>which is an eigenvalue equation where <span class="math notranslate nohighlight">\(\exp\left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)'\Phi_3^e x_1\right]\)</span> is a postive eigenfunction and <span class="math notranslate nohighlight">\(\exp(\eta)\)</span> is a positive eigenvalue. [^1]</p>
+<p>which is an eigenvalue equation where <span class="math notranslate nohighlight">\(\exp\left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)'\Phi_3^e x_1\right]\)</span> is a postive eigenfunction and <span class="math notranslate nohighlight">\(\exp(\eta)\)</span> is a positive eigenvalue. <sup>[1]</sup></p>
 <p>The codes below solve the eigenvalue problem using the  <em>M_mapping</em>.</p>
 <p>[1]: This eigenvalue problem is the so called Perron-Frobenius problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">M_mapping</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">second_order</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Computes coefficients of a LinQuadVar after one iteration of M mapping</span>
 
 <span class="sd">    Parameters</span>
@@ -694,7 +695,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
         <span class="k">return</span> <span class="n">log_E_exp</span><span class="p">(</span><span class="n">log_M_growth</span> <span class="o">+</span> <span class="n">next_period</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">))</span>
     
 <span class="k">def</span> <span class="nf">Q_mapping</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">second_order</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Computes limiting coefficients of a LinQuadVar by recursively applying the M mapping operator till convergence, returns the eigenvalue and eigenvector.</span>
 
 <span class="sd">    Parameters</span>
@@ -758,7 +759,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_elasticity_coeff</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes :math:`\mu_{t,0}`, :math:`\mu_{t,1}`, :math:`\tilde{\Sigma}_t`. Corresponding formulas can be found in [3], Jaroslav and Hansen (2014), Appendix B.</span>
 
 <span class="sd">    Parameters</span>
@@ -873,7 +874,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exposure_elasticity</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes exposure elasticity for M.</span>
 
 <span class="sd">    Parameters</span>
@@ -943,7 +944,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">price_elasticity</span><span class="p">(</span><span class="n">log_G_growth</span><span class="p">,</span> <span class="n">log_S_growth</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes price elasticity.</span>
 
 <span class="sd">    Parameters</span>
@@ -1033,7 +1034,7 @@ L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@njit</span>
 <span class="k">def</span> <span class="nf">_compute_percentile</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Ax_mean</span><span class="p">,</span> <span class="n">x_cov</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute percentile of the scalar Ax, where A is vector coefficient and x follows multivariate normal distribution.</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -1250,7 +1251,7 @@ X_{t+1}^2 = &amp; \begin{bmatrix} 0.979 &amp; 0 \\ 0 &amp; 0.987 \end{bmatrix} X
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_SDF</span><span class="p">(</span><span class="n">res</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This function loads external results for the long-run risk model with different rho values, and then calculates the SDF.</span>
 
 <span class="sd">    Parameters</span>
@@ -1462,7 +1463,7 @@ Current paramter settings
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">1 Sluggish Two Capital Model</p>
+        <p class="prev-next-title">Sluggish Two Capital Model</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
