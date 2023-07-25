@@ -394,38 +394,49 @@ document.write(`
 <h2>1.2 Endogenous State Evolution<a class="headerlink" href="#endogenous-state-evolution" title="Permalink to this heading">#</a></h2>
 <p>We next a model with two capital stocks and sluggish adjustment.
 $<span class="math notranslate nohighlight">\(
-d K_t^j=K_t^j\left[\Phi_j\left(\frac{I_t^j}{K_t^j}\right)+\beta_j Z_t-\eta_j\right] d t+K_t^j \sqrt{Z_t^2} \sigma_j d B_t
+\begin{align}
+&amp; d K_t^j=K_t^j\left[\Phi_j\left(\frac{I_t^j}{K_t^j}\right)+\beta_j Z_t-\eta_j\right] d t+K_t^j \sqrt{Z_t^2} \sigma_j d B_t
+\end{align}
 \)</span>$</p>
-<p>for <span class="math notranslate nohighlight">\(j=1,2\)</span>. Suppose that output equation is now
-$<span class="math notranslate nohighlight">\(
-C_t+I_t^1+I_t^2=\alpha K_t^a
-\)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\(
-K_t^a=\left[(1-\zeta)\left(K_t^1\right)^{(1-\kappa)}+\zeta\left(K_t^2\right)^{(1-\kappa)}\right]^{\frac{1}{1-\kappa}}
-\)</span><span class="math notranslate nohighlight">\(
-for \)</span>0 \leqslant \zeta&lt;1<span class="math notranslate nohighlight">\(.
-Form two new state variables. One is \)</span>\log Y_t=\log K_t^2-\log K_t^1<span class="math notranslate nohighlight">\( and the other is \)</span>\log K_t^a<span class="math notranslate nohighlight">\(. where Notice that
-\)</span><span class="math notranslate nohighlight">\(
-\begin{aligned}
-\frac{K_t^2}{K_t^a} &amp; =\left[(1-\zeta)\left(Y_t\right)^{(\kappa-1)}+\zeta\right]^{\frac{1}{\kappa-1}} \\
-\frac{K_t^1}{K_t^a} &amp; =\left[(1-\zeta)+\zeta\left(Y_t\right)^{(1-\kappa)}\right]^{\frac{1}{\kappa-1}}
-\end{aligned}
-\)</span><span class="math notranslate nohighlight">\(
-Then we have state equations:
-\)</span><span class="math notranslate nohighlight">\(
-\begin{aligned}
-d \log Y_t= &amp; {\left[\Phi_2\left(\frac{I_t^2}{K_t^2}\right)-\Phi_1\left(\frac{I_t^1}{K_t^1}\right)+\left(\beta_2-\beta_1\right) Z_t-\eta_2+\eta_1\right] d t } \\
+<p>for <span class="math notranslate nohighlight">\(j=1,2\)</span>. Suppose that output equation is now</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+&amp; C_t+I_t^1+I_t^2=\alpha K_t^a
+\end{align}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+&amp; K_t^a=\left[(1-\zeta)\left(K_t^1\right)^{(1-\kappa)}+\zeta\left(K_t^2\right)^{(1-\kappa)}\right]^{\frac{1}{1-\kappa}}
+\end{align}
+\]</div>
+<p>for <span class="math notranslate nohighlight">\(0 \leqslant \zeta&lt;1\)</span>.
+Form two new state variables. One is <span class="math notranslate nohighlight">\(\log Y_t=\log K_t^2-\log K_t^1\)</span> and the other is <span class="math notranslate nohighlight">\(\log K_t^a\)</span>. where Notice that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp; \frac{K_t^2}{K_t^a} &amp; =\left[(1-\zeta)\left(Y_t\right)^{(\kappa-1)}+\zeta\right]^{\frac{1}{\kappa-1}} \\
+&amp; \frac{K_t^1}{K_t^a} &amp; =\left[(1-\zeta)+\zeta\left(Y_t\right)^{(1-\kappa)}\right]^{\frac{1}{\kappa-1}}
+\end{align}
+\end{split}\]</div>
+<p>Then we have state equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp; d \log Y_t= &amp; {\left[\Phi_2\left(\frac{I_t^2}{K_t^2}\right)-\Phi_1\left(\frac{I_t^1}{K_t^1}\right)+\left(\beta_2-\beta_1\right) Z_t-\eta_2+\eta_1\right] d t } \\
 &amp; -\frac{Z_t^2}{2}\left(\left|\sigma_2\right|^2-\left|\sigma_1\right|^2\right) d t+\sqrt{Z_t^2}\left(\sigma_2-\sigma_1\right) d B_t
-\end{aligned}
-\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
-\begin{aligned}
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
 d \log K_t^a= &amp; (1-\zeta)\left(\frac{K_t^1}{K_t^a}\right)^{1-\kappa}\left(\left[\Phi_1\left(\frac{I_t^1}{K_t^1}\right)+\beta_1 Z_t-\eta_1\right] d t+\sqrt{Z_t^2} \sigma_1 d B_t\right) \\
 &amp; +\zeta\left(\frac{K_t^2}{K_t^a}\right)^{1-\kappa}\left(\left[\Phi_2\left(\frac{I_t^2}{K_t^2}\right)+\beta_2 Z_t-\eta_2\right] d t+\sqrt{Z_t^2} \sigma_2 d B_t\right) \\
 &amp; +\left(\frac{Z_t^2}{2}\right) \operatorname{trace}\left\{\Sigma\left(\widehat{Y}_t\right)\right\} d t
-\end{aligned}
-\)</span>$</p>
+\end{align}
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Sigma(y)\)</span> is defined below.</p>
 </section>
 <section id="hjb-equation">
@@ -433,9 +444,10 @@ d \log K_t^a= &amp; (1-\zeta)\left(\frac{K_t^1}{K_t^a}\right)^{1-\kappa}\left(\l
 <p>Rewirte the equation
 \begin{equation*}
 k_a=\left[(1-\zeta)\left(k_1\right)^{(1-\kappa)}+\zeta\left(k_2\right)^{(1-\kappa)}\right]^{\frac{1}{1-\kappa}}
-\end{equation*}
-Then the HJB equation is
-$<span class="math notranslate nohighlight">\(
+\end{equation*}</p>
+<p>Then the HJB equation is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{split}
 0=\max _{i_1, i_2}\Bigg\{&amp;\left(\frac{\delta}{1-\rho}\right)\left(c^{1-\rho} \exp [(\rho-1) v]-1\right) \\
 &amp; +(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}\left[\Phi_1\left(i_1\right)+\beta_1 z-\eta_1\right] \\
@@ -453,7 +465,7 @@ $<span class="math notranslate nohighlight">\(
 \end{array}\right]\right\} \\
 &amp; +\frac{(1-\gamma) z_2}{2}\left|(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa} \sigma_1{ }^{\prime}+\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa} \sigma_2{ }^{\prime}+\left(\sigma_2-\sigma_1\right)^{\prime} \frac{\partial v}{\partial \hat{y}}+\sigma_z{ }^{\prime} \frac{\partial v}{\partial z}\right|^2\Bigg\},
 \end{split}
-\)</span>$</p>
+\end{split}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -470,47 +482,48 @@ $<span class="math notranslate nohighlight">\(
 <p>subject to</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{aligned}
+\begin{align}
 c &amp; =\alpha-i_1\left(\frac{k_1}{k_a}\right)-i_2\left(\frac{k_2}{k_a}\right) \\
 \frac{k_1}{k_a} &amp; =\left[(1-\zeta)+\zeta y^{1-\kappa}\right]^{\frac{1}{\kappa-1}} \\
 \frac{k_2}{k_a} &amp; =\left[(1-\zeta) y^{\kappa-1}+\zeta\right]^{\...frac{1}{\kappa-1}}
-\end{aligned}
+\end{align}
 \end{split}\]</div>
 </section>
 <section id="quadratic-adjustment-cost-function">
 <h2>1.4 Quadratic adjustment cost function<a class="headerlink" href="#quadratic-adjustment-cost-function" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
-\begin{aligned}
+\begin{align}
 \Phi_i(i)=i-\frac{\phi_i}{2}i^2
-\end{aligned}
+\end{align}
 \]</div>
 <p>this implies
 $<span class="math notranslate nohighlight">\(
-\begin{aligned}
+\begin{align}
     \Phi_i(i)'=1-{\phi_i}i
-\end{aligned}
+\end{align}
 \)</span>$</p>
 </section>
 <section id="first-order-condition-and-hessian-matrix">
 <h2>1.5 First order condition and Hessian Matrix<a class="headerlink" href="#first-order-condition-and-hessian-matrix" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{aligned}
+\begin{align}
 \delta \exp [(\rho-1) v] c^{-\rho}(\frac{k_1}{k_a}) &amp;=({1-\phi i_1})[(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}] \\
 \delta \exp [(\rho-1) v]c^{-\rho}(\frac{k_2}{k_a})&amp;=({1-\phi i_2})[\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}+\frac{\partial v}{\partial \hat{y}}] \\
 c &amp;= \alpha-i_1\left(\frac{k_1}{k_a}\right)-i_2\left(\frac{k_2}{k_a}\right)
-\end{aligned}
+\end{align}
 \end{split}\]</div>
-<p>Hessian Matrix
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
+<p>Hessian Matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
     \begin{bmatrix}
 -\delta \exp [(\rho-1) v] \rho c^{-\rho-1}(\frac{k_1}{k_a})^2 -\phi_1[(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}]&amp;-\delta \exp [(\rho-1) v] \rho c^{-\rho-1}(\frac{k_1}{k_a}\frac{k_2}{k_a})\\
 -\delta \exp [(\rho-1) v] \rho c^{-\rho-1}(\frac{k_1}{k_a}\frac{k_2}{k_a})&amp;-\delta \exp [(\rho-1) v] \rho c^{-\rho-1}(\frac{k_2}{k_a})^2-\phi_2[\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}+\frac{\partial v}{\partial \hat{y}}] 
 \end{bmatrix}
-\end{aligned}
-\)</span>$</p>
+\end{align}
+\end{split}\]</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="calibration">
