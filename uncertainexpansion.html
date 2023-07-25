@@ -170,7 +170,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
 <li class="toctree-l1"><a class="reference internal" href="shockelasticity.html">Shock Elasticity Computation50</a></li>
 
 
@@ -374,7 +373,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-setup">1 Underlying setup</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1 Underlying setup</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>
@@ -489,59 +487,6 @@ $<span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
 This embedding makes the uncertainty adjustments matter at a lower order.  It has a particularly nice interpretation when we interpret the recursion as a way to represent a preference for robustness to potential model misspecification.  We take \)</span>{\sf q} = 1$ as the economy of interest.</p>
 <!-- <div id="fn1"><p> Formally, ${\frac {1}{\rho}}$ is the elasticity of intertemporal substitution.</p> </div> --></section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>1 Underlying setup<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p>The model’s equilibrium conditions are described by a system of possibly nonlinear, expectational difference equations</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\mathbb{E}[{N_{t+1}^*Q_{t+1}^* \psi_1(X_t, J_t, X_{t+1}, J_{t+1})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &amp;= 0 \tag{1}\\
-  \phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &amp;= 0 
-\tag{2} \end{align}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> state vector, <span class="math notranslate nohighlight">\(J_t\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> jump vector, and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard normal.  The real variable <span class="math notranslate nohighlight">\({\sf q}\)</span> is nonnegative and it scales the shock <span class="math notranslate nohighlight">\(W_{t+1}\)</span>.  The stochastic processes <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(J\)</span> depend implicitly on <span class="math notranslate nohighlight">\({\sf q}\)</span>.  In effect, we study a family of models and their solutions indexed by <span class="math notranslate nohighlight">\({\sf q}\)</span>.  We suppose that the limit <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> emerges from a deterministic model for which the equations pin down a steady-state, stable equilbrium solution to the equations (1) and (2).</p>
-<p>The first set of <span class="math notranslate nohighlight">\(m\)</span> equations is forward looking and hence involve expectations along with contributions <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span> from recursive utility.  For instance, the first-order necessary condition for optimal investment contributes to a forward-looking equation with, say the investment to capital ratio or its logarithm as a jump variable. The second set of <span class="math notranslate nohighlight">\(n\)</span> equations give the dynamic evolution of the state vector.  A central part of the solution is to express the jump vector as a function of the state vector.  The stochastic equilibrium is then solved by imposing stochastic stability.</p>
-<p>We feature models in which economic agents have preferences given by the recursive specification of preferences:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-V_t &amp; =\left[(1-\beta)\left(C_t\right)^{1-\rho}+\beta\left(R_t\right)^{1-\rho}\right]^{\frac{1}{1-\rho}}
-\tag{3} \\
-R_t &amp; =\mathbb{E}\left[\left(V_{t+1}\right)^{1-\gamma} \mid \mathfrak{A}_t\right]^{\frac{1}{1-\gamma}}
-\tag{4}\end{align}
-\end{split}\]</div>
-<p>In equation (3), <span class="math notranslate nohighlight">\(0 &lt; \beta &lt; 1\)</span> is a subjective discount factor and <span class="math notranslate nohighlight">\(\rho\)</span> depicts  attitudes toward intertemporal substitution.[^1]  In equation (4),
-<span class="math notranslate nohighlight">\(\gamma\)</span> depicts attitudes towards risk or <span class="math notranslate nohighlight">\(\xi = \frac 1 {\gamma - 1}\)</span> is penalty parameter used to capture concerns about model misspecification.</p>
-<p>For computational and conceptual reasons, we find it
-advantageous to work with the logarithm <span class="math notranslate nohighlight">\({\widehat V}_t = \log V_t\)</span>.  The corresponding recursions for <span class="math notranslate nohighlight">\({\widehat  V}_t\)</span> expressed in terms of the logarithm of consumption
-<span class="math notranslate nohighlight">\({\hat  C}_t\)</span> are</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align} 
-{\widehat  V}_t &amp; = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right]
-\tag{5} \\
-{\widehat  R}_t &amp; = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
-\tag{6} \end{align}
-\end{split}\]</div>
-<p>Construct
-$<span class="math notranslate nohighlight">\(
-\begin{align}
-N_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \gamma) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right] \tag{7} \\
-Q_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \rho) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right]. \tag{8} 
-\end{align}
-\)</span><span class="math notranslate nohighlight">\(
-Notice that \)</span>N_{t+1}^<em><span class="math notranslate nohighlight">\( has expectation one conditioned on \)</span>{\mathfrak A}<em>t<span class="math notranslate nohighlight">\( and induces a change of probability measure motived by a robustness adjustment to potential model misspecification.    The expansion treats the approximation of \)</span>N</em>{t+1}^</em><span class="math notranslate nohighlight">\( and \)</span> Q_{t+1}^<em><span class="math notranslate nohighlight">\( differently.  Both are computed in a separate step from the solution to equation (1) given \)</span>N_{t+1}^</em><span class="math notranslate nohighlight">\( and \)</span>Q_{t+1}^*<span class="math notranslate nohighlight">\(.  The implied one-period stochastic discount factor 
-\)</span><span class="math notranslate nohighlight">\(
-\beta N_{t+1}^*Q_{t+1}^* \left( \frac {C_{t+1}}{C_t} \right)^{-\rho}
-\)</span>$
-where the last contribution is familiar from models with time separable, power utility preferences.</p>
-<p>We restrict <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span>, and index it by the parameter <span class="math notranslate nohighlight">\({\sf q}\)</span> according to:
-$<span class="math notranslate nohighlight">\(
-\xi = \frac {1 - \gamma}{\sf q},  \;\;\;\; \xi_o = \frac {\sf q} {1 - \gamma_o} .  
-\)</span><span class="math notranslate nohighlight">\(
-This embedding makes the uncertainty adjustments matter at a lower order.  It has a particularly nice interpretation when we interpret the recursion as a way to represent a preference for robustness to potential model misspecification.  We take \)</span>{\sf q} = 1$ as the economy of interest.</p>
-<p>[^1] Formally, <span class="math notranslate nohighlight">\({\frac {1}{\rho}}\)</span> is the elasticity of intertemporal substitution.</p>
-</section>
 <section class="tex2jax_ignore mathjax_ignore" id="approximating-widehat-v-t">
 <h1>2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span><a class="headerlink" href="#approximating-widehat-v-t" title="Permalink to this heading">#</a></h1>
 <section id="zeroth-order-contribution">
@@ -1497,7 +1442,6 @@ where
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-setup">1 Underlying setup</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1 Underlying setup</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>
