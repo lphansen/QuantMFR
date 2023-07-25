@@ -411,7 +411,7 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-methods">
 <h1>Uncertain Expansion Methods<a class="headerlink" href="#uncertain-expansion-methods" title="Permalink to this heading">#</a></h1>
 <p>A nonlinear DSGE model typically cannot be solved quasi-analytically.  We consider  a small-noise expansion method to find an approximate solution modified to incorporate recursive utility formulation motivated by robustness or risk concerns.</p>
-</section>
+<br></section>
 <section class="tex2jax_ignore mathjax_ignore" id="underlying-setup">
 <h1>1 Underlying setup<a class="headerlink" href="#underlying-setup" title="Permalink to this heading">#</a></h1>
 <p>The model’s equilibrium conditions are described by a system of possibly nonlinear, expectational difference equations</p>
@@ -446,7 +446,7 @@ advantageous to work with the logarithm <span class="math notranslate nohighligh
 {\widehat  R}_t &amp; = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
 \tag{6} \end{align}
 \end{split}\]</div>
-<p>Construct</p>
+<p>Construct:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -454,11 +454,12 @@ N_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \gamma) \left({\wide
 Q_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \rho) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right]. \tag{8} 
 \end{align}
 \end{split}\]</div>
-<p>Notice that <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> has expectation one conditioned on <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> and induces a change of probability measure motived by a robustness adjustment to potential model misspecification.    The expansion treats the approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\( Q_{t+1}^*\)</span> differently.  Both are computed in a separate step from the solution to equation (1) given <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span>.  The implied one-period stochastic discount factor
-$<span class="math notranslate nohighlight">\(
+<p>Notice that <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> has expectation one conditioned on <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> and induces a change of probability measure motived by a robustness adjustment to potential model misspecification.    The expansion treats the approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\( Q_{t+1}^*\)</span> differently.  Both are computed in a separate step from the solution to equation (1) given <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span>.  The implied one-period stochastic discount factor</p>
+<div class="math notranslate nohighlight">
+\[
 \beta N_{t+1}^*Q_{t+1}^* \left( \frac {C_{t+1}}{C_t} \right)^{-\rho}
-\)</span>$
-where the last contribution is familiar from models with time separable, power utility preferences.</p>
+\]</div>
+<p>where the last contribution is familiar from models with time separable, power utility preferences.</p>
 <p>We restrict <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span>, and index it by the parameter <span class="math notranslate nohighlight">\({\sf q}\)</span> according to:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -512,7 +513,7 @@ where the last contribution is familiar from models with time separable, power u
 = &amp; \lambda \left({\frac 1 {1 - \gamma_o}} \right) \log {\mathbb  E}  \left( \exp \left[ (1 - \gamma_o) \left[ \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1}^1\right) + 
 \left({\widehat C}_{t+1}^1 - {\widehat C}_{t}^1
 \right)   \right] \right] \mid {\mathfrak A}_t \right)
-\tag{9} \end{align*} 
+[9] \end{align*} 
 \]</div>
 </section>
 <section id="second-order-contribution">
@@ -564,7 +565,8 @@ Q_{t+1}^2 &amp;= \left.\frac{d^2}{d \mathsf{q}^2} \exp \left[(\rho-1)\left(\wide
 \widehat{V}_{t+1}^2-\widehat{R}_t^2= &amp; \frac{1}{2}\left(W_{t+1}-\mu^0\right)^{\prime} \Upsilon_2^2\left(W_{t+1}-\mu^0\right)-\frac{1}{2} \operatorname{tr}\left(\Upsilon_2^2\right)+\left(W_{t+1}-\mu^0\right)^{\prime}\left(\Upsilon_1^2 X_t^1+\Upsilon_0^2\right)
 \end{aligned}
 \]</div>
-<br></section>
+<p><br><br></p>
+</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="algorithm">
 <h1>3 Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this heading">#</a></h1>
@@ -625,7 +627,8 @@ H_{t+1}^1=\Theta_0^1+\Theta_1^1 X_t^1+\Theta_2^1\left(W_{t+1}-\mu^0\right)
 \[
 \log {\widetilde N}_{t+1} =  \left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] - \log {\mathbb E} \left( \exp\left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] \mid {\mathfrak A}_t \right)
 \]</div>
-<p>The induced distribution of <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is normal, with mean <span class="math notranslate nohighlight">\(\tilde{\mu}_t\)</span> and variance <span class="math notranslate nohighlight">\(\widetilde{\Sigma}\)</span>. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for <span class="math notranslate nohighlight">\(\tilde{\mu}_t\)</span> is affine in <span class="math notranslate nohighlight">\(X_t^1\)</span>.</p>
+<p>The induced distribution of <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is normal, with mean <span class="math notranslate nohighlight">\(\tilde{\mu}_t\)</span> and variance <span class="math notranslate nohighlight">\(\widetilde{\Sigma}\)</span>. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for <span class="math notranslate nohighlight">\(\tilde{\mu}_t\)</span> is affine in <span class="math notranslate nohighlight">\(X_t^1\)</span>.
+<br><br></p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="adjustment-cost-example">
