@@ -446,15 +446,14 @@ But it is sometimes of interest when nonlinearities are present.</p>
 {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0}\right) H_1({\sf r}) \mid X_0 \right].
 \end{align}
 \]</div>
-<p>The code also computes the date shifted counterpart
-$$
+<p>The code also computes the date shifted counterpart</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{align}
-{\varepsilon}<em>{G}^+(x,t) - {\varepsilon}</em>{SG}^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}</p>
-<ul class="simple">
-<li><p>\frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} .
+{\varepsilon}_{G}^+(x,t) - {\varepsilon}_{SG}^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
+- \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} . 
 \end{align}
-$$</p></li>
-</ul>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
