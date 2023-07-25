@@ -501,7 +501,7 @@ dY_t &amp;= \mu_M(X_t)dt - \frac 1 2 \vert\sigma_M (X_t)\vert^2  + \sigma_M (X_t
 {\epsilon}_M^+(x) &amp; = \frac{{\mathbb E}\left[ \left(
 \frac {M_t}{M_0}\right) \nu(X_t) \cdot \sigma_M(X_t)  \mid X_0 = x \right] }
 {{\mathbb E}\left[ \left(
-\frac {M_t}{M_0}\right) \mid X_0 = x \right]} \label{eq:shock2}\tag{3}
+\frac {M_t}{M_0}\right) \mid X_0 = x \right]} \tag{3}
 \end{align}
 \]</div>
 <p>The code computes</p>
@@ -509,9 +509,9 @@ dY_t &amp;= \mu_M(X_t)dt - \frac 1 2 \vert\sigma_M (X_t)\vert^2  + \sigma_M (X_t
 \[\begin{split}
 \begin{align}
 &amp;{\mathbb E}\left[ \left(
-\frac {M_t}{M_0}\right)  \mid X_0 = x \right] \label{eq1} \tag{4} \\
+\frac {M_t}{M_0}\right)  \mid X_0 = x \right]  \tag{4} \\
 &amp;{\mathbb E}\left[ \left(
-\frac {M_t}{M_0}\right) \nu(X_t)  \cdot \sigma_M(X_t)  \mid X_0 = x \right] \label{eq2} \tag{5}
+\frac {M_t}{M_0}\right) \nu(X_t)  \cdot \sigma_M(X_t)  \mid X_0 = x \right] \tag{5}
 \end{align}
 \end{split}\]</div>
 <p>by using the Feynman_Kac formula. Define</p>
@@ -532,7 +532,7 @@ dY_t &amp;= \mu_M(X_t)dt - \frac 1 2 \vert\sigma_M (X_t)\vert^2  + \sigma_M (X_t
 \left\{ {\sigma_X}' \left( \frac {\partial^2 \phi }{\partial  xx'} \right) {\sigma_X} \right\}\tag{7}
 \end{align}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\phi_0 = 1\)</span> for \eqref{eq1} and <span class="math notranslate nohighlight">\(\phi_0 = \nu \cdot \sigma_M\)</span> for \eqref{eq2}.</p>
+<p>where <span class="math notranslate nohighlight">\(\phi_0 = 1\)</span> for (4) and <span class="math notranslate nohighlight">\(\phi_0 = \nu \cdot \sigma_M\)</span> for (5).</p>
 </section>
 <section id="stochastic-discount-factor-process">
 <h2>2.2 Stochastic discount factor process<a class="headerlink" href="#stochastic-discount-factor-process" title="Permalink to this heading">#</a></h2>
@@ -575,13 +575,14 @@ Given the consumption and continuation-value evolution,</p>
 \gamma &amp; = \textrm{risk aversion or aversion to model misspecification} 
 \end{align} 
 \]</div>
-<p>The martingale uncertainty contribution to the stochastic discount factor process and the evolution of its  logarithmic counterpart are of particular interest.
-$$</p>
-<p>\begin{align}
+<p>The martingale uncertainty contribution to the stochastic discount factor process and the evolution of its  logarithmic counterpart are of particular interest.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 dN_t &amp; = N_t \sigma_N(X_t) dW_t \cr
 d \log N_t &amp;= - \frac 1 2 \vert \sigma_N(X_t) \vert^2 dt + \sigma_N(X_t) dW_t
 \end{align}
-$$</p>
+\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[
@@ -689,18 +690,22 @@ where \)</span>a_0, a_1<span class="math notranslate nohighlight">\( are scalars
 <p>Finally, we have one optional argument:</p>
 <p><code class="docutils literal notranslate"><span class="pre">betterCP</span></code>: (Boolean)</p>
 <ul class="simple">
-<li><p>True by default. If False, the program will use the following finite difference approximation scheme for cross partials:
-$<span class="math notranslate nohighlight">\(
+<li><p>True by default. If False, the program will use the following finite difference approximation scheme for cross partials:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 f_{x y}(x, y)=\frac{f(x+h, y+k)-f(x+h, y-k)-f(x-h, y+k)+f(x-h, y-k)}{4 h k}
-\)</span><span class="math notranslate nohighlight">\(
-if True, the program will use the alternative finite difference approximation for cross partials. With the alternative approximation, one can have a better chance of preserving monotonicity:
-\)</span><span class="math notranslate nohighlight">\(
-\begin{aligned}
+\end{align}
+\]</div>
+<p>if True, the program will use the alternative finite difference approximation for cross partials. With the alternative approximation, one can have a better chance of preserving monotonicity:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
 f_{x y}(x, y)= &amp; \frac{1}{2 h k}(f(x+h, y+k)-f(x+h, y)-f(x, y+k) \\
 &amp; +2 f(x, y)-f(x-h, y)-f(x, y-k)+f(x-h, y-k))
-\end{aligned}
-\)</span>$</p></li>
-</ul>
+\end{align}
+\end{split}\]</div>
 <p>The function returns exposure and price elasticities. Suppose the user inputs <span class="math notranslate nohighlight">\(l\)</span> starting points (i.e. <span class="math notranslate nohighlight">\(\mathrm{x} 0\)</span> has <span class="math notranslate nohighlight">\(l\)</span> rows) and <span class="math notranslate nohighlight">\(T\)</span> time periods. Then the function will return the following:</p>
 <p><code class="docutils literal notranslate"><span class="pre">expoElas</span></code>:</p>
 <ul class="simple">
