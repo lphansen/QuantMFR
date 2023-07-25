@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Uncertain Expansion Methods50 &#8212; Quant Macro Finance</title>
+    <title>Uncertain Expansion Methods &#8212; Quant Macro Finance</title>
   
   
   
@@ -162,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="quickguide.html">Quick Guide to Expansion1</a></li>
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uncertain Expansion Methods50</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uncertain Expansion Methods</a></li>
 
 
 
@@ -362,7 +362,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Uncertain Expansion Methods50</h1>
+    <h1>Uncertain Expansion Methods</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,7 +372,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods50</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-setup">1 Underlying setup</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1 Underlying setup</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
@@ -433,8 +433,8 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/uncertainexpansion.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-methods50">
-<h1>Uncertain Expansion Methods50<a class="headerlink" href="#uncertain-expansion-methods50" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-methods">
+<h1>Uncertain Expansion Methods<a class="headerlink" href="#uncertain-expansion-methods" title="Permalink to this heading">#</a></h1>
 <p>A nonlinear DSGE model typicaly cannot be solved quasi-analytically.  We consider  a small-noise expansion method to find an approximate solution modified to incorporate recursive utility formulation motivated by robustness or risk concerns.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="underlying-setup">
@@ -477,9 +477,9 @@ $<span class="math notranslate nohighlight">\(
 N_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \gamma) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right] \tag{7} \\
 Q_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \rho) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right]. \tag{8} 
 \end{align}
-\)</span><span class="math notranslate nohighlight">\(
-Notice that \)</span>N_{t+1}^<em><span class="math notranslate nohighlight">\( has expectation one conditioned on \)</span>{\mathfrak A}<em>t<span class="math notranslate nohighlight">\( and induces a change of probability measure motived by a robustness adjustment to potential model misspecification.    The expansion treats the approximation of \)</span>N</em>{t+1}^</em><span class="math notranslate nohighlight">\( and \)</span> Q_{t+1}^<em><span class="math notranslate nohighlight">\( differently.  Both are computed in a separate step from the solution to equation (1) given \)</span>N_{t+1}^</em><span class="math notranslate nohighlight">\( and \)</span>Q_{t+1}^*<span class="math notranslate nohighlight">\(.  The implied one-period stochastic discount factor 
-\)</span><span class="math notranslate nohighlight">\(
+\)</span>$</p>
+<p>Notice that <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> has expectation one conditioned on <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> and induces a change of probability measure motived by a robustness adjustment to potential model misspecification.    The expansion treats the approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\( Q_{t+1}^*\)</span> differently.  Both are computed in a separate step from the solution to equation (1) given <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span>.  The implied one-period stochastic discount factor
+$<span class="math notranslate nohighlight">\(
 \beta N_{t+1}^*Q_{t+1}^* \left( \frac {C_{t+1}}{C_t} \right)^{-\rho}
 \)</span>$
 where the last contribution is familiar from models with time separable, power utility preferences.</p>
@@ -1495,7 +1495,7 @@ where
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods50</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-setup">1 Underlying setup</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1 Underlying setup</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
