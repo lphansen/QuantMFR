@@ -171,7 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="shockelasticity.html">Shock Elasticity Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shockelasticity.html">Shock Elasticity Computation1</a></li>
 
 
 
@@ -509,23 +509,27 @@ document.write(`
 <h1>1. Five-minute guide to solving the DSGE model using the Expansion Suite <a class="anchor" id="s1"></a><a class="headerlink" href="#five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a" title="Permalink to this heading">#</a></h1>
 <p>Suppose we would like to solve an adjustment cost model. Its equilibrium conditions include</p>
 <ul class="simple">
-<li><p>Three forward-looking conditions
-$<span class="math notranslate nohighlight">\(
+<li><p>Three forward-looking conditions</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 \frac{C_t}{K_t} + \frac{I_t}{K_t}  &amp;= {\mathbf a}\\
 \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - 1  &amp;= 0\\
 \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
 +(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - \frac{MK_t}{MC_t}+{\mathbf a}&amp;= 0
 \end{aligned}
-\)</span>$</p></li>
-<li><p>Two state-evolution equations
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Two state-evolution equations</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 \frac{K_{t+1}}{K_t} &amp;=  \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\\
 Z_{t+1} &amp;= {\mathbb A} Z_t + \mathbb{B} W_{t+1}
 \end{aligned}
-\)</span>$</p></li>
-</ul>
+\end{split}\]</div>
 <p>where we have
 $<span class="math notranslate nohighlight">\(
 \begin{aligned}
