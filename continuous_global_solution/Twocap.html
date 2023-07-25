@@ -381,10 +381,13 @@ document.write(`
 <section id="exogenous-state-evolution">
 <h2>1.1 Exogenous State Evolution<a class="headerlink" href="#exogenous-state-evolution" title="Permalink to this heading">#</a></h2>
 <p>We presume that there are two underlying exogenous processes that evolve as solutions to stochastic dfferential equations</p>
-<p>\begin{aligned}
-&amp; d Z_t^1=-\mathrm{a}<em>{11} Z_t^1 d t+\sqrt{Z_t^2} \sigma_1 \cdot d B_t \
-&amp; d Z_t^2=-\mathrm{a}</em>{22}\left(Z_t^2-1\right) d t+\sqrt{Z_t^2} \sigma_2 \cdot d B_t
-\end{aligned}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp; d Z_t^1=-\mathrm{a}_{11} Z_t^1 d t+\sqrt{Z_t^2} \sigma_1 \cdot d B_t \\
+&amp; d Z_t^2=-\mathrm{a}_{22}\left(Z_t^2-1\right) d t+\sqrt{Z_t^2} \sigma_2 \cdot d B_t
+\end{align}
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathrm{a}_{11}&gt;0, \mathrm{a}_{22}&gt;\frac{1}{2}\left|\sigma_2\right|^2\)</span>. In addition, <span class="math notranslate nohighlight">\(\sigma_1, \sigma_2\)</span>, are <span class="math notranslate nohighlight">\(d\)</span>-dimensional vectors of real numbers. The <span class="math notranslate nohighlight">\(Z^1\)</span> process governs the conditional mean of the stochastic component to technology growth and the process <span class="math notranslate nohighlight">\(Z^2\)</span> captures the exogenous component to aggregate stochastic volatility. Notice that <span class="math notranslate nohighlight">\(\sqrt{Z^2}\)</span> scales the Brownian increment to both of the first two processes. The local variance of the exogenous technology shifter is <span class="math notranslate nohighlight">\(Z_t^2\left|\sigma_1\right|^2\)</span>, and the local variance for the stochastic volatility process is <span class="math notranslate nohighlight">\(Z_t^2\left|\sigma_2\right|^2\)</span>. The stochastic variance process <span class="math notranslate nohighlight">\(Z^2\)</span> is a special cases a Feller square root processes and is normalized to have unconditional mean one.</p>
 </section>
 <section id="endogenous-state-evolution">

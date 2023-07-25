@@ -1,7 +1,12 @@
 # Quant Macro Finance
-Quant Macro Finance (QMF) is a series of self-contained online texts intended to accompany Professor Lars Peter Hansen's lectures on Asset Pricing II.
-QMF provides students with the pedagogical and coding resources required to solve <b>dynamic stochastic general equilibrium models</b> (DSGE).
-<br>
-The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Models in continuous time are easier to solve computationally than in discrete time, but often cannot be used to solve higher-dimensional models. Local methods, which are based on 
-<br>
+Quant Macro Finance (QMF) is a series of self-contained online texts intended to accompany Professor Lars Peter Hansen's lectures on Asset Pricing I.
+QMF provides students with the pedagogical and coding resources required to solve <b>dynamic stochastic general equilibrium models</b> (DSGE). The objective is to observe how varying modelling assumptions and parameters can affect:
+<u1>
+<li> <i>Stationary densities</i>, the distribution of variables of interest under stationarity, and </li>
+<li> <i>Shock-exposure elasticities</i>, which capture the exposure of macroeconomic processes to shocks at different points in time </li>
+<li> <i>Shock-price elasticities</i>, which capture changes in risk compensations associated with shock exposures at different points in time</li>
+<br><br>
+</u1>
+The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Models in continuous time are computationally easier to solve than in discrete time, but encounter problems in higher dimensions. Local methods are based on perturbing a shock parameter $q$ around the steady state, 
+<br><br>
 You can find Professor Hansen's lecture notes <a href = "https://larspeterhansen.org/class-notes/">here</a>.
