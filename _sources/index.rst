@@ -1,7 +1,7 @@
-.. toctree: :
+.. toctree::
 
-    quickguide
+    discrete_local_approximation/quickguide.ipynb
 
-.. toctree: :
+.. toctree::
 
-    shockelasticity
+    continuous_global_solution/Twocap.ipynb
