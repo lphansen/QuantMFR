@@ -170,6 +170,13 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="shockelasticity.html">
+                        Shock Elasticity Computation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../continuous_global_solution/Twocap.html">
                         Sluggish Two Capital Model
                       </a>
@@ -269,6 +276,13 @@ document.write(`
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="uncertainexpansion.html">
                         Uncertain Expansion Methods
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="shockelasticity.html">
+                        Shock Elasticity Computation
                       </a>
                     </li>
                 
@@ -566,7 +580,12 @@ Z_{t+1} &amp;= {\mathbb A} Z_t + \mathbb{B} W_{t+1}
 &amp;\frac{K_{t+1}}{K_t} - \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\\
 &amp;Z_{t+1} - {\mathbb A} Z_t + \mathbb{B} W_{t+1}
 \end{bmatrix}\end{split}\]</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eq_ac</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
     
@@ -605,6 +624,7 @@ Z_{t+1} &amp;= {\mathbb A} Z_t + \mathbb{B} W_{t+1}
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <section id="model-steady-state-function-a-class-anchor-id-s1-2-a">
