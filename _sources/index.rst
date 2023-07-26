@@ -1,7 +1,5 @@
 .. toctree::
+   :maxdepth: 2
 
-    discrete_local_approximation/quickguide.ipynb
-
-.. toctree::
-
-    continuous_global_solution/Twocap.ipynb
+   continuous_global_solution/Twocap
+   ...
