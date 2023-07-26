@@ -452,25 +452,11 @@ Y_{t+1}(\mathrm q)-Y_t({\mathrm q}) \approx Y_{t+1}^0-Y_{t}^0+ {\mathrm q} (Y_{t
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\kappa_i\)</span> is the derivative of <span class="math notranslate nohighlight">\(\kappa\)</span> with respect to argument <span class="math notranslate nohighlight">\(i\)</span> evaluated at <span class="math notranslate nohighlight">\((\bar x, 0, 0)\)</span> and similarly for the second derivatives.  We set <span class="math notranslate nohighlight">\({\mathrm q} = 1\)</span>.</p>
 <p>In what follows, <span class="math notranslate nohighlight">\(M\)</span> will be a macro growth process, a stochastic discount factor process, or a product of the two. The user inputs are the quadratic specifications in equation (1) and equation (2).</p>
-<p><button id="toggleCodeBtn">Show/Hide Code</button></p>
-<script>
-function toggleCodeCells() {
-  const codeCells = document.querySelectorAll(".code_cell");
-  codeCells.forEach(cell => {
-    const showHideTag = "cell1"; // The tag name you assigned to the code cells
-    const hasTag = cell.classList.contains(showHideTag);
-    const outputs = cell.querySelectorAll(".output");
-    outputs.forEach(output => {
-      output.style.display = hasTag ? (output.style.display === "none" ? "block" : "none") : "block";
-    });
-  });
-}
-
-const toggleButton = document.getElementById("toggleCodeBtn");
-toggleButton.addEventListener("click", toggleCodeCells);
-</script><div class="cell tag_cell1 docutils container">
+<div class="cell tag_cell1 docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">toggle</span><span class="p">::</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 <span class="c1"># !git clone https://github.com/lphansen/RiskUncertaintyValue # Please uncomment this line when running on the google colab</span>
