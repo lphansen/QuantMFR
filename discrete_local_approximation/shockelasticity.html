@@ -454,14 +454,17 @@ Y_{t+1}(\mathrm q)-Y_t({\mathrm q}) \approx Y_{t+1}^0-Y_{t}^0+ {\mathrm q} (Y_{t
 <p>In what follows, <span class="math notranslate nohighlight">\(M\)</span> will be a macro growth process, a stochastic discount factor process, or a product of the two. The user inputs are the quadratic specifications in equation (1) and equation (2).</p>
 <p><button id="toggleCodeBtn">Show/Hide Code</button></p>
 <script>
-const toggleCodeCells = () => {
+function toggleCodeCells() {
   const codeCells = document.querySelectorAll(".code_cell");
   codeCells.forEach(cell => {
     const showHideTag = "cell1"; // The tag name you assigned to the code cells
     const hasTag = cell.classList.contains(showHideTag);
-    cell.style.display = hasTag ? (cell.style.display === "none" ? "block" : "none") : "block";
+    const outputs = cell.querySelectorAll(".output");
+    outputs.forEach(output => {
+      output.style.display = hasTag ? (output.style.display === "none" ? "block" : "none") : "block";
+    });
   });
-};
+}
 
 const toggleButton = document.getElementById("toggleCodeBtn");
 toggleButton.addEventListener("click", toggleCodeCells);
