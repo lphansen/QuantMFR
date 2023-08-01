@@ -664,8 +664,8 @@ MC_t \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="c1"># !git clone https://github.com/lphansen/RiskUncertaintyValue # Uncomment this when running on Google Colab</span>
-<span class="c1"># workdir = os.getcwd() + &#39;/RiskUncertaintyValue&#39;             # Uncomment this when running on Google Colab</span>
+<span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/lphansen/RiskUncertaintyValue<span class="w"> </span>
+<span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/RiskUncertaintyValue&#39;</span>             
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">workdir</span><span class="o">+</span><span class="s1">&#39;/src&#39;</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">anp</span>
