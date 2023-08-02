@@ -1,6 +1,12 @@
 # Quant Macro Finance
 Quant Macro Finance (QMF) is a series of self-contained online texts intended to accompany Professor Lars Peter Hansen's lectures on Asset Pricing I.
-![cartoon](images/Cartoon.png)
+
+```{image} images/Cartoon.png
+:alt: fishy
+:class: bg-primary mb-1
+:align: center
+```
+
 <!-- QMF provides students with the pedagogical and coding resources required to solve dynamic stochastic general equilibrium models under uncertainty and to compute corresponding:
 <br>
 - <i>Stationary densities</i>, the distribution of variables of interest under stationarity, </li>
