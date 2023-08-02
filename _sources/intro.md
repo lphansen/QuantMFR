@@ -13,10 +13,10 @@ QMF provides students with the pedagogical and coding resources required to solv
 <br>
 The structure of QMF is as follows:
 <u1>
-<li> {doc}'Page </discrete_local_approximation/uncertainexpansion.ipynb>'
+<li> [Page](../discrete_local_approximation/uncertainexpansion.ipynb>)
 
 
-<br?>
+<br>
 <p>The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Local methods are based on perturbing around the steady state in order to approximate policy and valuation functions in a neighbourhood around the steady state, whereas global methods allow us to compute these functions across the domain.</p>
 <br><br>
 You can find Professor Hansen's lecture notes <a href = "https://larspeterhansen.org/class-notes/">here</a>. 
