@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quick Guide to Expansion" href="discrete_local_approximation/quickguide.html" />
+    <link rel="next" title="Introduction" href="theory/Recursive.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -148,7 +148,29 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theoretical Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="theory/Recursive.html">Introduction</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="theory/uncertainexpansion.html">Uncertain Expansion Methods</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="theory/shockelasticity.html">Shock Elasticity Computation</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="discrete_local_approximation/quickguide.html">Quick Guide to Expansion</a></li>
 
@@ -322,27 +344,28 @@ document.write(`
 - <i>Shock-exposure elasticities</i>, which capture the exposure of macroeconomic processes to shocks over different investment horizons, and </li>
 - <i>Shock-price elasticities</i>, which capture changes in risk compensations associated with shock exposures over different investment horizons</li>
 <br> -->
-<p>The structure of QMF is as follows:
-<br>
-First, we explain the theoretical framework for solving nonlinear DSGE models with uncertainty and computing shock elasticites.</p>
+<p>First, we explain the theoretical framework for solving nonlinear DSGE models with uncertainty and computing shock elasticites.</p>
 <ol class="arabic simple">
-<li><p><span class="xref myst">Recursive Utility</span></p></li>
-<li><p><span class="xref myst">Uncertain Expansion</span></p></li>
-<li><p><span class="xref myst">Shock Elasticity</span></p></li>
+<li><p><a class="reference internal" href="theory/Recursive.html"><span class="doc std std-doc">Recursive Utility</span></a></p></li>
+<li><p><a class="reference internal" href="theory/uncertainexpansion.html"><span class="doc std std-doc">Uncertain Expansion</span></a></p></li>
+<li><p><a class="reference internal" href="theory/shockelasticity.html"><span class="doc std std-doc">Shock Elasticities</span></a></p></li>
 </ol>
 <p>Second, we introduce toolboxes used to approximate solutions and compute shock elasticities in discrete time.</p>
 <ol class="arabic simple" start="4">
 <li><p><a class="reference internal" href="discrete_local_approximation/quickguide.html"><span class="doc std std-doc">Quick Guide to Expansion</span></a></p></li>
-<li><p>[Shock Elasticity Computation]</p></li>
+<li><p>[Computing Elasticities in Discrete Time]</p></li>
 </ol>
 <p>Then, we provide extensions via continuous time, two-capital models and financial intermediaries.</p>
 <ol class="arabic simple" start="6">
-<li></li>
+<li><p>[Two Capital Model]</p></li>
+<li><p>[Computing Elasticities in Continuous TIme]</p></li>
 </ol>
 <br>
 <p>The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Local methods are based on perturbing around the steady state in order to approximate policy and valuation functions in a neighbourhood around the steady state, whereas global methods allow us to compute these functions across the domain.</p>
 <br><br>
 You can find Professor Hansen's lecture notes <a href = "https://larspeterhansen.org/class-notes/">here</a>. <div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
 </div>
@@ -380,11 +403,11 @@ You can find Professor Hansen's lecture notes <a href = "https://larspeterhansen
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="discrete_local_approximation/quickguide.html"
+       href="theory/Recursive.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Quick Guide to Expansion</p>
+        <p class="prev-next-title">Introduction</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -6,22 +6,21 @@ Quant Macro Finance (QMF) is a series of self-contained online texts intended to
 - <i>Shock-exposure elasticities</i>, which capture the exposure of macroeconomic processes to shocks over different investment horizons, and </li>
 - <i>Shock-price elasticities</i>, which capture changes in risk compensations associated with shock exposures over different investment horizons</li>
 <br> -->
-The structure of QMF is as follows:
-<br>
 First, we explain the theoretical framework for solving nonlinear DSGE models with uncertainty and computing shock elasticites.
 
 1. [Recursive Utility](theory/Recursive.md)
 2. [Uncertain Expansion](theory/uncertainexpansion.ipynb)
-3. [Shock Elasticity](theory/shockelasticity.ipynb)
+3. [Shock Elasticities](theory/shockelasticity.ipynb)
 
 Second, we introduce toolboxes used to approximate solutions and compute shock elasticities in discrete time.
 
 4. [Quick Guide to Expansion](discrete_local_approximation/quickguide.ipynb)
-5. [Shock Elasticity Computation]
+5. [Computing Elasticities in Discrete Time]
 
 Then, we provide extensions via continuous time, two-capital models and financial intermediaries. 
 
-6. 
+6. [Two Capital Model]
+7. [Computing Elasticities in Continuous TIme]
 
 <br>
 <p>The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Local methods are based on perturbing around the steady state in order to approximate policy and valuation functions in a neighbourhood around the steady state, whereas global methods allow us to compute these functions across the domain.</p>
