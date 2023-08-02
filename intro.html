@@ -153,25 +153,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="discrete_local_approximation/quickguide.html">Quick Guide to Expansion</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="discrete_local_approximation/uncertainexpansion.html">Uncertain Expansion Methods</a></li>
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="discrete_local_approximation/shockelasticity.html">Shock Elasticity Computation</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="discrete_local_approximation/Recursive.html">Introduction</a></li>
-
-
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Continuous Global Solution</span></p>
 <ul class="nav bd-sidenav">
@@ -334,17 +315,30 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="quant-macro-finance">
 <h1>Quant Macro Finance<a class="headerlink" href="#quant-macro-finance" title="Permalink to this heading">#</a></h1>
-<p>Quant Macro Finance (QMF) is a series of self-contained online texts intended to accompany Professor Lars Peter Hansen’s lectures on Asset Pricing I.
-QMF provides students with the pedagogical and coding resources required to solve dynamic stochastic general equilibrium models under uncertainty and to compute corresponding:
-<br></p>
-<ul class="simple">
-<li><p><i>Stationary densities</i>, the distribution of variables of interest under stationarity, and </li></p></li>
-<li><p><i>Shock-exposure elasticities</i>, which capture the exposure of macroeconomic processes to shocks over different investment horizons </li></p></li>
-<li><p><i>Shock-price elasticities</i>, which capture changes in risk compensations associated with shock exposures over different investment horizons</li>
+<p>Quant Macro Finance (QMF) is a series of self-contained online texts intended to accompany Professor Lars Peter Hansen’s lectures on Asset Pricing I.</p>
+<!-- QMF provides students with the pedagogical and coding resources required to solve dynamic stochastic general equilibrium models under uncertainty and to compute corresponding:
 <br>
-The structure of QMF is as follows:</p></li>
-<li><p><a class="reference internal" href="discrete_local_approximation/uncertainexpansion.html"><span class="doc std std-doc">Page</span></a></p></li>
-</ul>
+- <i>Stationary densities</i>, the distribution of variables of interest under stationarity, </li>
+- <i>Shock-exposure elasticities</i>, which capture the exposure of macroeconomic processes to shocks over different investment horizons, and </li>
+- <i>Shock-price elasticities</i>, which capture changes in risk compensations associated with shock exposures over different investment horizons</li>
+<br> -->
+<p>The structure of QMF is as follows:
+<br>
+First, we explain the theoretical framework for solving nonlinear DSGE models with uncertainty and computing shock elasticites.</p>
+<ol class="arabic simple">
+<li><p><span class="xref myst">Recursive Utility</span></p></li>
+<li><p><span class="xref myst">Uncertain Expansion</span></p></li>
+<li><p><span class="xref myst">Shock Elasticity</span></p></li>
+</ol>
+<p>Second, we introduce toolboxes used to approximate solutions and compute shock elasticities in discrete time.</p>
+<ol class="arabic simple" start="4">
+<li><p><a class="reference internal" href="discrete_local_approximation/quickguide.html"><span class="doc std std-doc">Quick Guide to Expansion</span></a></p></li>
+<li><p>[Shock Elasticity Computation]</p></li>
+</ol>
+<p>Then, we provide extensions via continuous time, two-capital models and financial intermediaries.</p>
+<ol class="arabic simple" start="6">
+<li></li>
+</ol>
 <br>
 <p>The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Local methods are based on perturbing around the steady state in order to approximate policy and valuation functions in a neighbourhood around the steady state, whereas global methods allow us to compute these functions across the domain.</p>
 <br><br>
