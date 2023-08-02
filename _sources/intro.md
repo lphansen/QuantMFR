@@ -13,7 +13,7 @@ QMF provides students with the pedagogical and coding resources required to solv
 <br>
 The structure of QMF is as follows:
 <u1>
-<li> [Page](../discrete_local_approximation/uncertainexpansion.ipynb>)
+<li> [Page](discrete_local_approximation/uncertainexpansion.ipynb)
 
 
 <br>
