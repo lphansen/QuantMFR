@@ -1,4 +1,4 @@
-# Recursive Utility
+# Discrete Shock Elasticity
 
 At the height of 
 

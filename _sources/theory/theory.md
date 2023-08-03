@@ -38,10 +38,4 @@ The answer depends on society's aversion to ambiguity and model misspecification
 
 ## 1.2 Reinterpretation of Recursive Utility
 
-The homogeneous of degree one representation of recursive utility is
-
-
-
-
-
-Consider the following setup:
+.. (tbc)
