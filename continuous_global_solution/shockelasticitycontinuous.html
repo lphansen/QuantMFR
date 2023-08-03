@@ -62,8 +62,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'continuous_global_solution/shockelasticitycontinuous';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -152,7 +151,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theoretical Framework</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../theory/theory.html">Introduction to Theoretical Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/theory.html">Recursive Utility Framework</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion.html">Uncertain Expansion Methods</a></li>
 
 
@@ -162,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="../theory/shockelasticity.html">Shock Elasticity Computation</a></li>
+
+
 
 
 
@@ -357,7 +359,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/shockelasticity.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="shock-elasticity-continuous">
+<section id="shock-elasticity-continuous">
 <h1>Shock Elasticity Continuous<a class="headerlink" href="#shock-elasticity-continuous" title="Permalink to this heading">#</a></h1>
 <p>Shock elasticities quantify the (local) exposures of macroeconomic cash flows to shocks over alternative investment horizons and the corresponding prices or investors’ compensations. This Jupyter notebook provides the computations for the shock elasticities for models with equilibrium outcomes represented as a continuous-time diffusion. This notebook implements methods and formulas developed in [1] and [2].</p>
 <ul class="simple">
@@ -366,78 +368,78 @@ document.write(`
 <li><p>Section 3 provides an illustration using an intermediary asset pricing model, see [3], [4], and [5].</p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="shock-elasticities">
+<section id="shock-elasticities">
 <h1>1. Shock Elasticities<a class="headerlink" href="#shock-elasticities" title="Permalink to this heading">#</a></h1>
-<p>Suppose that the logarithms of macroeconomic aggregate and stochastic discount factor processes that interest us grow or decay stochastically over time with increments that are modeled as a stationary Markov process.   Let <span class="math notranslate nohighlight">\(Y\)</span> be the logarithm of such a process. The process <span class="math notranslate nohighlight">\(Y\)</span> displays linear growth or decay. Refer to its exponential <span class="math notranslate nohighlight">\(M = \exp(Y)\)</span> as a multiplicative process.</p>
-<p>Shock elasticities are constructed using local changes in the exposure to shocks.  For instance, consider a shock, <span class="math notranslate nohighlight">\(W_1\)</span> that is distributed as a multivariate standard normal.  We introduce a parameterized family of random variables <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> where</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>Suppose that the logarithms of macroeconomic aggregate and stochastic discount factor processes that interest us grow or decay stochastically over time with increments that are modeled as a stationary Markov process.   Let $Y$ be the logarithm of such a process. The process $Y$ displays linear growth or decay. Refer to its exponential $M = \exp(Y)$ as a multiplicative process.</p>
+<p>Shock elasticities are constructed using local changes in the exposure to shocks.  For instance, consider a shock, $W_1$ that is distributed as a multivariate standard normal.  We introduce a parameterized family of random variables $H_1({\sf r})$ where</p>
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fa7df120-1555-40fb-abdf-6924bfc7c458">
+<span class="eqno">(22)<a class="headerlink" href="#equation-fa7df120-1555-40fb-abdf-6924bfc7c458" title="Permalink to this equation">#</a></span>\[\begin{align}
 \log H_1({\sf r}) = {\sf r}\nu(X_0)  W_1 - \frac {\sf r^2} 2 |\nu(X_0)|^2.
-\end{align}
-\]</div>
-<p>where we normalize the row vector <span class="math notranslate nohighlight">\(\nu\)</span> so that <span class="math notranslate nohighlight">\({\mathbb E} \left[|\nu(X_0)|^2\right] = 1.\)</span>
-Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> is positive and has conditional expectation equal to one. Consider:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+\end{align}\]</div>
+<p>$$</p>
+<p>where we normalize the row vector $\nu$ so that ${\mathbb E} \left[|\nu(X_0)|^2\right] = 1.$
+Notice that $H_1({\sf r})$ is positive and has conditional expectation equal to one. Consider:</p>
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-55981363-ed3c-448a-8b6c-4bfd0a8cd7f6">
+<span class="eqno">(23)<a class="headerlink" href="#equation-55981363-ed3c-448a-8b6c-4bfd0a8cd7f6" title="Permalink to this equation">#</a></span>\[\begin{align}
 {\mathbb E} \left[ \left( \frac {M_t}{M_0} \right) H_1({\sf r}) \mid X_0 \right].
-\end{align}
-\]</div>
-<p>The scaling by <span class="math notranslate nohighlight">\(H_1\)</span> has two distinct functions depending on the application:</p>
+\end{align}\]</div>
+<p>$$</p>
+<p>The scaling by $H_1$ has two distinct functions depending on the application:</p>
 <ul class="simple">
-<li><p>it changes the distribution of <span class="math notranslate nohighlight">\(W_1\)</span> by giving it a conditional mean <span class="math notranslate nohighlight">\({\sf r} \nu(X_0)\)</span></p></li>
-<li><p>it changes the exposure of <span class="math notranslate nohighlight">\(\log M_t - \log M_0,\)</span> and hence <span class="math notranslate nohighlight">\(M_t/M_0,\)</span> to the shock <span class="math notranslate nohighlight">\(W_t\)</span> through the addition of <span class="math notranslate nohighlight">\({\sf r}\nu(X_0) \cdot W_1.\)</span></p></li>
+<li><p>it changes the distribution of $W_1$ by giving it a conditional mean ${\sf r} \nu(X_0)$</p></li>
+<li><p>it changes the exposure of $\log M_t - \log M_0,$ and hence $M_t/M_0,$ to the shock $W_t$ through the addition of ${\sf r}\nu(X_0) \cdot W_1.$</p></li>
 </ul>
-<p>The first of these applications provides a distributional version of an impulse response function.  It matches exactly for the linear, log-normal model, in which case the <span class="math notranslate nohighlight">\(x\)</span> plays no role. Once we include nonlinearities, the state <span class="math notranslate nohighlight">\(x\)</span> can matter along with the time horizon <span class="math notranslate nohighlight">\(t\)</span>.  The second application explores the intertemporal asset pricing by determining the implied compensations for the changes in the exposures.</p>
-<p>Our computations are local, performed by computing derivatives with respect to <span class="math notranslate nohighlight">\({\sf r},\)</span> and evaluating those derivatives at <span class="math notranslate nohighlight">\(\sf r =0:\)</span></p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>The first of these applications provides a distributional version of an impulse response function.  It matches exactly for the linear, log-normal model, in which case the $x$ plays no role. Once we include nonlinearities, the state $x$ can matter along with the time horizon $t$.  The second application explores the intertemporal asset pricing by determining the implied compensations for the changes in the exposures.</p>
+<p>Our computations are local, performed by computing derivatives with respect to ${\sf r},$ and evaluating those derivatives at $\sf r =0:$</p>
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4d00d7e3-e18c-4b4e-9c07-444658fa6d4e">
+<span class="eqno">(24)<a class="headerlink" href="#equation-4d00d7e3-e18c-4b4e-9c07-444658fa6d4e" title="Permalink to this equation">#</a></span>\[\begin{align}
 \varepsilon_M(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac { M_t}{M_0} \right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} = \frac {\nu(x) \cdot {\mathbb E} \left[ \left( \frac {M_t}{M_0} \right)  W_1 \mid X_0 = x\right]}{{\mathbb E} \left[ \left( \frac {M_t}{M_0} \right)\mid X_0 = x\right]}
-\end{align}
-\]</div>
-<p>Since this formula includes the differentiation of logarithms and<span class="math notranslate nohighlight">\({\mathbb E} \left[|\nu(X_0)|^2\right] = 1\)</span>, we refer to this calculation as an elasticity.  Note that one possibility is to let <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> be a coordinate vector.</p>
+\end{align}\]</div>
+<p>$$</p>
+<p>Since this formula includes the differentiation of logarithms and${\mathbb E} \left[|\nu(X_0)|^2\right] = 1$, we refer to this calculation as an elasticity.  Note that one possibility is to let $\nu(X_0)$ be a coordinate vector.</p>
 <p>The code also computes:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2ef44c4e-9718-4175-857e-61a0579c2821">
+<span class="eqno">(25)<a class="headerlink" href="#equation-2ef44c4e-9718-4175-857e-61a0579c2821" title="Permalink to this equation">#</a></span>\[\begin{align}
 {\varepsilon}_M^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac {M_t}{M_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} =  \frac {{\mathbb E} \left[ \left( \frac {M_t}{M_0} \right) \nu(X_{t-1}) \cdot W_t \mid X_0 = x\right]}
 {{\mathbb E} \left[ \left( \frac {M_t}{M_0} \right)\mid X_0 = x\right]}
-\end{align}
-\]</div>
-<p>This calculation is degenerate in the case of linear log-normal specifications as it is constant over <span class="math notranslate nohighlight">\(t\)</span>.<br />
+\end{align}\]</div>
+<p>$$</p>
+<p>This calculation is degenerate in the case of linear log-normal specifications as it is constant over $t$.<br />
 But it is sometimes of interest when nonlinearities are present.</p>
 <p>To represent the building blocks of asset pricing, the code computes shock price elasticities of the form:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f86db1c6-714f-4d23-bdee-9cafb62eb52e">
+<span class="eqno">(26)<a class="headerlink" href="#equation-f86db1c6-714f-4d23-bdee-9cafb62eb52e" title="Permalink to this equation">#</a></span>\[\begin{align}
 \varepsilon_{G}(x,t) - \varepsilon_{SG}(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
 - \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0}\right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} 
-\end{align}
-\]</div>
+\end{align}\]</div>
+<p>$$</p>
 <p>where</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-013a2590-22fd-4028-b42c-d5c6943531a8">
+<span class="eqno">(27)<a class="headerlink" href="#equation-013a2590-22fd-4028-b42c-d5c6943531a8" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac {{\mathbb E} \left[ \left(\frac {G_t}{G_0}\right) H_1({\sf r}) \mid X_0 \right]}{{\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0} \right) H_1({\sf r}) \mid X_0 \right]}
-\end{align}
-\]</div>
-<p>is the expected return on a payoff <span class="math notranslate nohighlight">\(\frac {G_t}{G_0} H_1({\sf r}),\)</span>  with cost</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+\end{align}\]</div>
+<p>$$</p>
+<p>is the expected return on a payoff $\frac {G_t}{G_0} H_1({\sf r}),$  with cost</p>
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fc4e85ea-f5d5-4860-a76f-605b5a37cc06">
+<span class="eqno">(28)<a class="headerlink" href="#equation-fc4e85ea-f5d5-4860-a76f-605b5a37cc06" title="Permalink to this equation">#</a></span>\[\begin{align}
 {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0}\right) H_1({\sf r}) \mid X_0 \right].
-\end{align}
-\]</div>
+\end{align}\]</div>
+<p>$$</p>
 <p>The code also computes the date shifted counterpart</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d2b8682d-71dc-455b-851e-60903f537cac">
+<span class="eqno">(29)<a class="headerlink" href="#equation-d2b8682d-71dc-455b-851e-60903f537cac" title="Permalink to this equation">#</a></span>\[\begin{align}
 {\varepsilon}_{G}^+(x,t) - {\varepsilon}_{SG}^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
 - \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} . 
-\end{align}
-\]</div>
+\end{align}\]</div>
+<p>$$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -461,168 +463,168 @@ But it is sometimes of interest when nonlinearities are present.</p>
 <div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="continuous-time-framework">
+<section id="continuous-time-framework">
 <h1>2. Continuous-time framework<a class="headerlink" href="#continuous-time-framework" title="Permalink to this heading">#</a></h1>
 <section id="basic-setup">
 <h2>2.1 Basic setup<a class="headerlink" href="#basic-setup" title="Permalink to this heading">#</a></h2>
 <p>Suppose a continuous-time diffusion model:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-95938507-043c-4d46-bcfe-8375337443c3">
+<span class="eqno">(30)<a class="headerlink" href="#equation-95938507-043c-4d46-bcfe-8375337443c3" title="Permalink to this equation">#</a></span>\[\begin{align}
 dX_t &amp; = \mu_X(X_t)dt + \sigma_X(X_t) dW_t \tag{1}\cr
 dM_t &amp; = M_t \mu_M(X_t)dt + M_t \sigma_M(X_t) dW_t \notag\cr 
 dY_t &amp;= \mu_M(X_t)dt - \frac 1 2 \vert\sigma_M (X_t)\vert^2  + \sigma_M (X_t) dW_t\notag
-\end{align}
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(X\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional process and <span class="math notranslate nohighlight">\(W\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional Brownian motion and
-<span class="math notranslate nohighlight">\(Y = \log M.\)</span></p>
+\end{align}\]</div>
+<p>$$</p>
+<p>where $X$ is an $n$-dimensional process and $W$ is an $m$-dimensional Brownian motion and
+$Y = \log M.$</p>
 <p>The two types of shock elasticities of interest are:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a98fc2cf-edef-4ab5-8452-4646d3a630dd">
+<span class="eqno">(31)<a class="headerlink" href="#equation-a98fc2cf-edef-4ab5-8452-4646d3a630dd" title="Permalink to this equation">#</a></span>\[\begin{align}
 \epsilon_M(x) &amp;= \nu(x)\cdot \left[ {\sigma_X(x)}' \left(\frac {\partial}{\partial x}\log {\mathbb E}\left[ \left(
 \frac {M_t}{M_0}\right)  \mid X_0 = x \right] \right) + \sigma_M(x) \right] \label{eq:shock1}\tag{2}\cr
 {\epsilon}_M^+(x) &amp; = \frac{{\mathbb E}\left[ \left(
 \frac {M_t}{M_0}\right) \nu(X_t) \cdot \sigma_M(X_t)  \mid X_0 = x \right] }
 {{\mathbb E}\left[ \left(
 \frac {M_t}{M_0}\right) \mid X_0 = x \right]} \tag{3}
-\end{align}
-\]</div>
+\end{align}\]</div>
+<p>$$</p>
 <p>The code computes</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-44d8bfa9-631d-4224-b28c-da57fcd6b8ab">
+<span class="eqno">(32)<a class="headerlink" href="#equation-44d8bfa9-631d-4224-b28c-da57fcd6b8ab" title="Permalink to this equation">#</a></span>\[\begin{align}
 &amp;{\mathbb E}\left[ \left(
 \frac {M_t}{M_0}\right)  \mid X_0 = x \right]  \tag{4} \\
 &amp;{\mathbb E}\left[ \left(
 \frac {M_t}{M_0}\right) \nu(X_t)  \cdot \sigma_M(X_t)  \mid X_0 = x \right] \tag{5}
-\end{align}
-\end{split}\]</div>
+\end{align}\]</div>
+<p>$$</p>
 <p>by using the Feynman_Kac formula. Define</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3affa294-2de1-4440-8612-f2793174649f">
+<span class="eqno">(33)<a class="headerlink" href="#equation-3affa294-2de1-4440-8612-f2793174649f" title="Permalink to this equation">#</a></span>\[\begin{align}
 \phi_t(x) = {\mathbb E}\left[ \left(
 \frac {M_t}{M_0}\right) \phi_0(X_t)   \mid X_0 = x \right]\tag{6}.
-\end{align}
-\]</div>
-<p>Then <span class="math notranslate nohighlight">\(\phi_t\)</span> satisfies:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align} 
+\end{align}\]</div>
+<p>$$</p>
+<p>Then $\phi_t$ satisfies:</p>
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-46a057b2-82a4-4eec-8f60-b8b13bf58e51">
+<span class="eqno">(34)<a class="headerlink" href="#equation-46a057b2-82a4-4eec-8f60-b8b13bf58e51" title="Permalink to this equation">#</a></span>\[\begin{align} 
 \frac {\partial \phi}{\partial t} = &amp; \mu_M \phi  
 +  \left(\mu_X  + \sigma_X {\sigma_M}' \right) \cdot \frac {\partial \phi}{\partial x} \notag\cr
 &amp; + {\frac 1 2} {\rm trace}
 \left\{ {\sigma_X}' \left( \frac {\partial^2 \phi }{\partial  xx'} \right) {\sigma_X} \right\}\tag{7}
-\end{align}
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\phi_0 = 1\)</span> for (4) and <span class="math notranslate nohighlight">\(\phi_0 = \nu \cdot \sigma_M\)</span> for (5).</p>
+\end{align}\]</div>
+<p>$$</p>
+<p>where $\phi_0 = 1$ for (4) and $\phi_0 = \nu \cdot \sigma_M$ for (5).</p>
 </section>
 <section id="stochastic-discount-factor-process">
 <h2>2.2 Stochastic discount factor process<a class="headerlink" href="#stochastic-discount-factor-process" title="Permalink to this heading">#</a></h2>
 <p>Represent the stochastic discount factor evolution and the evolution of its logarithm as:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-18aaed77-e8fb-4cc1-8dd2-85f18512c5f8">
+<span class="eqno">(35)<a class="headerlink" href="#equation-18aaed77-e8fb-4cc1-8dd2-85f18512c5f8" title="Permalink to this equation">#</a></span>\[\begin{align}
 d S_t &amp; = S_t \mu_S(X_t) dt + S_t \sigma_S(X_t) dW_t \notag\cr
 d \log S_t &amp; = {\hat \mu}_S(X_t) dt  + \sigma_S(X_t) dW_t.\tag{8}
-\end{align}
-\]</div>
-<p>where <span class="math notranslate nohighlight">\({\hat \mu}_S(X_t) =  \mu_S(X_t) - \frac 1 2 \vert \sigma_S(X_t) \vert^2.\)</span>  The instantaneous risk-free rate is
-<span class="math notranslate nohighlight">\(- \mu_S(X_t)\)</span> and the local price vector for exposure to the Brownian increment is <span class="math notranslate nohighlight">\(-\sigma_S(X_t).\)</span></p>
+\end{align}\]</div>
+<p>$$</p>
+<p>where ${\hat \mu}_S(X_t) =  \mu_S(X_t) - \frac 1 2 \vert \sigma_S(X_t) \vert^2.$  The instantaneous risk-free rate is
+$- \mu_S(X_t)$ and the local price vector for exposure to the Brownian increment is $-\sigma_S(X_t).$</p>
 <p>Also represent the consumption and continuation value evolution and the evolution of their logarithm as:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0120a941-5214-451c-8921-81341758df1e">
+<span class="eqno">(36)<a class="headerlink" href="#equation-0120a941-5214-451c-8921-81341758df1e" title="Permalink to this equation">#</a></span>\[\begin{align}
 d C_t &amp; = C_t \mu_C(X_t) dt + C_t \sigma_C(X_t) dW_t \notag \cr 
 d \log C_t &amp; = \mu_C(X_t) dt - \frac 1 2 \vert \sigma_C(X_t) \vert^2 dt + \sigma_C(X_t) dW_t \tag{9}\cr 
 d V_t &amp; = V_t \mu_V(X_t) dt + V_t \sigma_V(X_t) dW_t \notag \cr
 d \log V_t &amp; = \mu_V(X_t) dt - \frac 1 2 \vert \sigma_V(X_t) \vert^2 dt + \sigma_V(X_t) dW_t \notag.  
-\end{align}
-\]</div>
-<p>where <span class="math notranslate nohighlight">\({\hat \mu}_C(X_t) =  \mu_C(X_t) - \frac 1 2 \vert \sigma_C(X_t) \vert^2\)</span> and <span class="math notranslate nohighlight">\({\hat \mu}_V(X_t) =  \mu_V(X_t) - \frac 1 2 \vert \sigma_V(X_t) \vert^2.\)</span></p>
+\end{align}\]</div>
+<p>$$</p>
+<p>where ${\hat \mu}_C(X_t) =  \mu_C(X_t) - \frac 1 2 \vert \sigma_C(X_t) \vert^2$ and ${\hat \mu}_V(X_t) =  \mu_V(X_t) - \frac 1 2 \vert \sigma_V(X_t) \vert^2.$</p>
 <p>The code computes the evolutions in terms of logarithms for reasons of numerically convenient.<br />
 Given the consumption and continuation-value evolution,</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f2a931de-6160-4716-88e2-29a8d8488aa8">
+<span class="eqno">(37)<a class="headerlink" href="#equation-f2a931de-6160-4716-88e2-29a8d8488aa8" title="Permalink to this equation">#</a></span>\[\begin{align}
 {\hat \mu}_S(X_t)  &amp; = - \delta - \rho {\hat \mu}_C(X_t) + \frac {(\gamma - 1)(\rho - \gamma) } 2 \vert \sigma_V(X_t) \vert^2 \cr
 \sigma_S(X_t) &amp; = - \rho \sigma_C(X_t) + (\rho - \gamma) \sigma_V(X_t)
-\end{align} 
-\]</div>
+\end{align}\]</div>
+<p>$$</p>
 <p>where</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c4cc2eed-e362-428b-99df-06c0b7e0db2c">
+<span class="eqno">(38)<a class="headerlink" href="#equation-c4cc2eed-e362-428b-99df-06c0b7e0db2c" title="Permalink to this equation">#</a></span>\[\begin{align}
 \delta &amp; = \textrm{subjective rate of discount} \cr
 \rho &amp; = \textrm{reciprocal of the intertemporal elasticity of substitution} \cr
 \gamma &amp; = \textrm{risk aversion or aversion to model misspecification} 
-\end{align} 
-\]</div>
+\end{align}\]</div>
+<p>$$</p>
 <p>The martingale uncertainty contribution to the stochastic discount factor process and the evolution of its  logarithmic counterpart are of particular interest.</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f3e86b9e-d237-4d96-984d-8a4ad6c58ca4">
+<span class="eqno">(39)<a class="headerlink" href="#equation-f3e86b9e-d237-4d96-984d-8a4ad6c58ca4" title="Permalink to this equation">#</a></span>\[\begin{align}
 dN_t &amp; = N_t \sigma_N(X_t) dW_t \cr
 d \log N_t &amp;= - \frac 1 2 \vert \sigma_N(X_t) \vert^2 dt + \sigma_N(X_t) dW_t
-\end{align}
-\]</div>
+\end{align}\]</div>
+<p>$$</p>
 <p>where</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-58a60a13-78b2-4540-8f69-a7ed0e6b7eb9">
+<span class="eqno">(40)<a class="headerlink" href="#equation-58a60a13-78b2-4540-8f69-a7ed0e6b7eb9" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sigma_N(X_t)= (1 - \gamma) \sigma_V(X_t) .
-\end{align}
-\]</div>
-<p>Use <span class="math notranslate nohighlight">\(N\)</span> in place of <span class="math notranslate nohighlight">\(S\)</span> to obtain the uncertainty component to the shock price elasticities.</p>
+\end{align}\]</div>
+<p>$$</p>
+<p>Use $N$ in place of $S$ to obtain the uncertainty component to the shock price elasticities.</p>
 </section>
 <section id="shock-exposure-elasticity-and-price-elasticity">
 <h2>2.3 Shock Exposure Elasticity and Price Elasticity<a class="headerlink" href="#shock-exposure-elasticity-and-price-elasticity" title="Permalink to this heading">#</a></h2>
-<p>For this continuous-time setup, the code computes the shock exposure elasticity or impulse response function for a process, <span class="math notranslate nohighlight">\(G\)</span>, using formula \eqref{eq:shock1} and \eqref{eq:shock2}, the corresponding shock price elasticity using</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
+<p>For this continuous-time setup, the code computes the shock exposure elasticity or impulse response function for a process, $G$, using formula \eqref{eq:shock1} and \eqref{eq:shock2}, the corresponding shock price elasticity using</p>
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0477bbef-897f-4e76-bcda-d09f0c8f8b12">
+<span class="eqno">(41)<a class="headerlink" href="#equation-0477bbef-897f-4e76-bcda-d09f0c8f8b12" title="Permalink to this equation">#</a></span>\[\begin{align}
 &amp; \varepsilon_G(x, t)-\varepsilon_{SG}(x, t) \\
 &amp; \varepsilon_G^+(x, t)-\varepsilon_{SG}^+(x, t)
-\end{align}
-\end{split}\]</div>
+\end{align}\]</div>
+<p>$$</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">
+<section id="an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">
 <h1>3. An Illustration using an intermediary asset pricing model [3], [4], [5]<a class="headerlink" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5" title="Permalink to this heading">#</a></h1>
 <section id="computing-shock-elasticities-computeelas">
 <h2>3.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code><a class="headerlink" href="#computing-shock-elasticities-computeelas" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">computeElas</span></code> is the function that computes the shock exposure and price elasticities (both the first and second types). It takes in the following arguments:</p>
 <p><code class="docutils literal notranslate"><span class="pre">stateMat</span></code>: (Tuple)</p>
 <ul class="simple">
-<li><p>A tuple containing a numpy-array formatted domain for each of the states. For example, suppose the model has two state variables and each state variable has 100 grid points. The stateMat argument would be a tuple containing two numpy arrays of shape <span class="math notranslate nohighlight">\((100\)</span>,<span class="math notranslate nohighlight">\() .\)</span></p></li>
+<li><p>A tuple containing a numpy-array formatted domain for each of the states. For example, suppose the model has two state variables and each state variable has 100 grid points. The stateMat argument would be a tuple containing two numpy arrays of shape $(100$,$) .$</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">model</span></code>:(Dictionary)</p>
 <ul>
 <li><p>A dictionary that contains the information described in (1), (8), and (9). Specifically, it has the following keys:</p>
 <p><code class="docutils literal notranslate"><span class="pre">muX</span></code>: (Function)</p>
 <ul class="simple">
-<li><p>A function that computes the drifts of the state variables (i.e. <span class="math notranslate nohighlight">\(\mu_X\)</span> as in (1)) for each of the grid points in stateMat. Suppose there are <span class="math notranslate nohighlight">\(n\)</span> state variables. Given a <span class="math notranslate nohighlight">\(k \times n\)</span> numpy matrix points, where each row represents a point, <code class="docutils literal notranslate"><span class="pre">model['muX'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times n\)</span> numpy matrix, with each row corresponding to the drift vector of the state variables.</p></li>
+<li><p>A function that computes the drifts of the state variables (i.e. $\mu_X$ as in (1)) for each of the grid points in stateMat. Suppose there are $n$ state variables. Given a $k \times n$ numpy matrix points, where each row represents a point, <code class="docutils literal notranslate"><span class="pre">model['muX'](points)</span></code> must return a $k \times n$ numpy matrix, with each row corresponding to the drift vector of the state variables.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">sigmaX</span></code>:</p>
 <ul class="simple">
-<li><p>(List of functions) A list of functions, where each function computes the diffusion of a state variable (i.e. <span class="math notranslate nohighlight">\(\sigma_X\)</span> as in (1)) in order of the list (i.e. the first element of the list computes the diffusion of the first state variable in stateMat). For example, suppose there are <span class="math notranslate nohighlight">\(n\)</span> state variables and <span class="math notranslate nohighlight">\(m\)</span> shocks. <code class="docutils literal notranslate"><span class="pre">model['sigmaX']</span></code> is a list of two elements. Further suppose that points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix, where each row represents a point. Then <code class="docutils literal notranslate"><span class="pre">model['sigmaX'][0](points)</span></code> returns a <span class="math notranslate nohighlight">\(k \times m\)</span> matrix that contains the diffusion of the first state variable at these points.</p></li>
+<li><p>(List of functions) A list of functions, where each function computes the diffusion of a state variable (i.e. $\sigma_X$ as in (1)) in order of the list (i.e. the first element of the list computes the diffusion of the first state variable in stateMat). For example, suppose there are $n$ state variables and $m$ shocks. <code class="docutils literal notranslate"><span class="pre">model['sigmaX']</span></code> is a list of two elements. Further suppose that points is a $k \times n$ matrix, where each row represents a point. Then <code class="docutils literal notranslate"><span class="pre">model['sigmaX'][0](points)</span></code> returns a $k \times m$ matrix that contains the diffusion of the first state variable at these points.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">muC</span></code>: (Function)</p>
 <ul class="simple">
-<li><p>Similar to muX, a function that computes <span class="math notranslate nohighlight">\(\mu_C\)</span>, the drift of the perturbed process, as in (9). Suppose there are <span class="math notranslate nohighlight">\(n\)</span> state variables. <code class="docutils literal notranslate"><span class="pre">model['muC'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times 1\)</span> numpy matrix, where points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix. Note: the number of columns of points is <span class="math notranslate nohighlight">\(n\)</span>, but the dimensions of the output are <span class="math notranslate nohighlight">\(k \times 1\)</span>. Note that <span class="math notranslate nohighlight">\(C\)</span> is not limited to consumption process. It could be a general process <span class="math notranslate nohighlight">\(G\)</span> as shown in section 2.3.</p></li>
+<li><p>Similar to muX, a function that computes $\mu_C$, the drift of the perturbed process, as in (9). Suppose there are $n$ state variables. <code class="docutils literal notranslate"><span class="pre">model['muC'](points)</span></code> must return a $k \times 1$ numpy matrix, where points is a $k \times n$ matrix. Note: the number of columns of points is $n$, but the dimensions of the output are $k \times 1$. Note that $C$ is not limited to consumption process. It could be a general process $G$ as shown in section 2.3.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">sigmaC</span></code>: (Function)</p>
 <ul class="simple">
-<li><p>A function that computes <span class="math notranslate nohighlight">\(\sigma_C\)</span>, the diffusion of the perturbed process, as in (9). Suppose points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix. Then <code class="docutils literal notranslate"><span class="pre">model['sigmaC'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times m\)</span> matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number of state variables and <span class="math notranslate nohighlight">\(m\)</span> is the number of shocks (Note that <span class="math notranslate nohighlight">\(m\)</span> is not necessarily equal to <span class="math notranslate nohighlight">\(n\)</span> ). Note that <span class="math notranslate nohighlight">\(C\)</span> is not limited to consumption process. It could be a general process <span class="math notranslate nohighlight">\(G\)</span> as shown in section 2.3.</p></li>
+<li><p>A function that computes $\sigma_C$, the diffusion of the perturbed process, as in (9). Suppose points is a $k \times n$ matrix. Then <code class="docutils literal notranslate"><span class="pre">model['sigmaC'](points)</span></code> must return a $k \times m$ matrix, where $n$ is the number of state variables and $m$ is the number of shocks (Note that $m$ is not necessarily equal to $n$ ). Note that $C$ is not limited to consumption process. It could be a general process $G$ as shown in section 2.3.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">muS</span></code>: (Function)</p>
 <ul class="simple">
-<li><p>Similar to muX and muC, a function that computes <span class="math notranslate nohighlight">\(\mu_S\)</span>, the drift of the stochastic discount factor, as in (6). Using the same example, <code class="docutils literal notranslate"><span class="pre">model['muS'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times 1\)</span> numpy matrix, where points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix.</p></li>
+<li><p>Similar to muX and muC, a function that computes $\mu_S$, the drift of the stochastic discount factor, as in (6). Using the same example, <code class="docutils literal notranslate"><span class="pre">model['muS'](points)</span></code> must return a $k \times 1$ numpy matrix, where points is a $k \times n$ matrix.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">sigmaS</span></code>: (Function)</p>
 <ul class="simple">
-<li><p>A function that computes <span class="math notranslate nohighlight">\(\sigma_S\)</span>, the diffusion of the perturbed process, as in (6). Suppose points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix. Then <code class="docutils literal notranslate"><span class="pre">model['sigmaS'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times m\)</span> matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number of state variables and <span class="math notranslate nohighlight">\(m\)</span> is the number of shocks.</p></li>
+<li><p>A function that computes $\sigma_S$, the diffusion of the perturbed process, as in (6). Suppose points is a $k \times n$ matrix. Then <code class="docutils literal notranslate"><span class="pre">model['sigmaS'](points)</span></code> must return a $k \times m$ matrix, where $n$ is the number of state variables and $m$ is the number of shocks.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">dt</span></code>: (Float)</p>
 <ul class="simple">
@@ -637,17 +639,17 @@ d \log N_t &amp;= - \frac 1 2 \vert \sigma_N(X_t) \vert^2 dt + \sigma_N(X_t) dW_
 <p><code class="docutils literal notranslate"><span class="pre">bc</span></code>: (Dictionary)</p>
 <ul class="simple">
 <li><p>A dictionary that specifies the boundary conditions in this form:
-$<span class="math notranslate nohighlight">\(
-0=a_0+a_1\phi+a_2 \cdot \frac{\partial}{\partial x'}\phi \label{eq:what}\tag{10}
-\)</span><span class="math notranslate nohighlight">\(
-for all \)</span>t<span class="math notranslate nohighlight">\(  
-where \)</span>a_0, a_1<span class="math notranslate nohighlight">\( are scalars,  and  \)</span>a_2<span class="math notranslate nohighlight">\( is a  \)</span>1 \times n$ vectors. The user should configure <code class="docutils literal notranslate"><span class="pre">bc</span></code> in this way:</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">a0</span></code>: a scalar that corresponds to <span class="math notranslate nohighlight">\(a_0\)</span> in \eqref{eq:what}</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">level</span></code>: a scalar that corresponds to <span class="math notranslate nohighlight">\(a_1\)</span> in \eqref{eq:what}</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">first</span></code>: a <span class="math notranslate nohighlight">\(1 \times n\)</span> numpy matrix that corresponds to <span class="math notranslate nohighlight">\(a_2\)</span> in \eqref{eq:what}</p></li>
+$$
+0=a_0+a_1\phi+a_2 \cdot \frac{\partial}{\partial x’}\phi \label{eq:what}\tag{10}
+$$
+for all $t$<br />
+where $a_0, a_1$ are scalars,  and  $a_2$ is a  $1 \times n$ vectors. The user should configure <code class="docutils literal notranslate"><span class="pre">bc</span></code> in this way:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a0</span></code>: a scalar that corresponds to $a_0$ in \eqref{eq:what}</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level</span></code>: a scalar that corresponds to $a_1$ in \eqref{eq:what}</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first</span></code>: a $1 \times n$ numpy matrix that corresponds to $a_2$ in \eqref{eq:what}</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">natural</span></code>: a boolean (True or False) that determines whether to use natural boundaries; if True, the fields above would be ignored.   ``Natural boundaries’’ are implemented by effectly assuming constant second derivatives at boundaries.</p></li>
 </ul>
-<p>For example, to implement the boundary conditions <span class="math notranslate nohighlight">\(0= \begin{bmatrix} 1 &amp; 1 &amp; 1 \end{bmatrix} \cdot  \frac{\partial}{\partial x} \phi\)</span>, one should set up bc by doing:</p>
+<p>For example, to implement the boundary conditions $0= \begin{bmatrix} 1 &amp; 1 &amp; 1 \end{bmatrix} \cdot  \frac{\partial}{\partial x} \phi$, one should set up bc by doing:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bc</span> <span class="o">=</span> <span class="p">{}</span>
@@ -661,7 +663,7 @@ where \)</span>a_0, a_1<span class="math notranslate nohighlight">\( are scalars
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">x0</span></code> : (numpy matrix)</p>
 <ul class="simple">
-<li><p>A numpy matrix that contains all the starting points (i.e. <span class="math notranslate nohighlight">\(x\)</span> in (6)). For <span class="math notranslate nohighlight">\(l\)</span> starting points, <span class="math notranslate nohighlight">\(\mathrm{x} 0\)</span> should be an <span class="math notranslate nohighlight">\(l \times n\)</span> matrix ( <span class="math notranslate nohighlight">\(n\)</span> being the number of states).</p></li>
+<li><p>A numpy matrix that contains all the starting points (i.e. $x$ in (6)). For $l$ starting points, $\mathrm{x} 0$ should be an $l \times n$ matrix ( $n$ being the number of states).</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">usePardiso</span></code>: (Boolean)</p>
 <ul class="simple">
@@ -669,31 +671,31 @@ where \)</span>a_0, a_1<span class="math notranslate nohighlight">\( are scalars
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">iparms</span></code>: (Dictionary)</p>
 <ul class="simple">
-<li><p>If usePardiso is set to True, Pardiso’s default parameters will be used. The iparms parameter allows the user to input a dictionary with changes for those default parameters. Note that while the Pardiso site indexes the parameters at one, this function argument indexes them at zero. For example, a user wishing to set what is listed on the website as iparm(1) to <span class="math notranslate nohighlight">\(-1\)</span> would set iparms <span class="math notranslate nohighlight">\(=\{0:-1\}\)</span>.</p></li>
+<li><p>If usePardiso is set to True, Pardiso’s default parameters will be used. The iparms parameter allows the user to input a dictionary with changes for those default parameters. Note that while the Pardiso site indexes the parameters at one, this function argument indexes them at zero. For example, a user wishing to set what is listed on the website as iparm(1) to $-1$ would set iparms $={0:-1}$.</p></li>
 </ul>
 <p>Finally, we have one optional argument:</p>
 <p><code class="docutils literal notranslate"><span class="pre">betterCP</span></code>: (Boolean)</p>
 <ul class="simple">
 <li><p>True by default. If False, the program will use the following finite difference approximation scheme for cross partials:</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bb714a86-9d39-42be-a8ad-35f93243c3d7">
+<span class="eqno">(42)<a class="headerlink" href="#equation-bb714a86-9d39-42be-a8ad-35f93243c3d7" title="Permalink to this equation">#</a></span>\[\begin{align}
 f_{x y}(x, y)=\frac{f(x+h, y+k)-f(x+h, y-k)-f(x-h, y+k)+f(x-h, y-k)}{4 h k}
-\end{align}
-\]</div>
+\end{align}\]</div>
+<p>$$</p>
 <p>if True, the program will use the alternative finite difference approximation for cross partials. With the alternative approximation, one can have a better chance of preserving monotonicity:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
+<p>$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ac3784a4-be0c-43bf-b0b0-2f260d172e2c">
+<span class="eqno">(43)<a class="headerlink" href="#equation-ac3784a4-be0c-43bf-b0b0-2f260d172e2c" title="Permalink to this equation">#</a></span>\[\begin{align}
 f_{x y}(x, y)= &amp; \frac{1}{2 h k}(f(x+h, y+k)-f(x+h, y)-f(x, y+k) \\
 &amp; +2 f(x, y)-f(x-h, y)-f(x, y-k)+f(x-h, y-k))
-\end{align}
-\end{split}\]</div>
-<p>The function returns exposure and price elasticities. Suppose the user inputs <span class="math notranslate nohighlight">\(l\)</span> starting points (i.e. <span class="math notranslate nohighlight">\(\mathrm{x} 0\)</span> has <span class="math notranslate nohighlight">\(l\)</span> rows) and <span class="math notranslate nohighlight">\(T\)</span> time periods. Then the function will return the following:</p>
+\end{align}\]</div>
+<p>$$</p>
+<p>The function returns exposure and price elasticities. Suppose the user inputs $l$ starting points (i.e. $\mathrm{x} 0$ has $l$ rows) and $T$ time periods. Then the function will return the following:</p>
 <p><code class="docutils literal notranslate"><span class="pre">expoElas</span></code>:</p>
 <ul class="simple">
-<li><p>an object with two attributes: the firstType and secondType. Each attribute is an <span class="math notranslate nohighlight">\(l \times k \times T\)</span> matrix. The first index corresponds to the starting point, the second index corresponds to the shock number, and the third corresponds to time. As the name suggests, firstType is the first type shock exposure elasticities for the <span class="math notranslate nohighlight">\(i\)</span> th starting point (the <span class="math notranslate nohighlight">\(i\)</span> th row in input <span class="math notranslate nohighlight">\(\mathrm{x} 0\)</span> ) up to <span class="math notranslate nohighlight">\(T\)</span> time periods, whereas secondType is the second type shock exposure elasticities.</p></li>
+<li><p>an object with two attributes: the firstType and secondType. Each attribute is an $l \times k \times T$ matrix. The first index corresponds to the starting point, the second index corresponds to the shock number, and the third corresponds to time. As the name suggests, firstType is the first type shock exposure elasticities for the $i$ th starting point (the $i$ th row in input $\mathrm{x} 0$ ) up to $T$ time periods, whereas secondType is the second type shock exposure elasticities.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">priceElas</span></code>:</p>
 <ul class="simple">
@@ -1166,7 +1168,7 @@ Wall time: 16min 59s
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="reference">
+<section id="reference">
 <h1>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h1>
 <p>[1], Borovička, Jaroslav, Lars Peter Hansen, and José A. Scheinkman. “Shock elasticities and impulse responses.” Mathematics and Financial Economics 8 (2014): 333-354.</p>
 <p>[2], Hansen, Lars Peter. “Dynamic valuation decomposition within stochastic economies.” Econometrica 80, no. 3 (2012): 911-967.</p>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction to Theoretical Framework &#8212; Quant Macro Finance</title>
+    <title>Recursive Utility Framework &#8212; Quant Macro Finance</title>
   
   
   
@@ -62,8 +62,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'theory/theory';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -153,7 +151,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theoretical Framework</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Theoretical Framework</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Recursive Utility Framework</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="uncertainexpansion.html">Uncertain Expansion Methods</a></li>
 
 
@@ -163,6 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="shockelasticity.html">Shock Elasticity Computation</a></li>
+
+
 
 
 
@@ -321,7 +322,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction to Theoretical Framework</h1>
+    <h1>Recursive Utility Framework</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -331,8 +332,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness-to-model-misspecification">Robustness to Model Misspecification</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Recursive Utility Framework</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#robustnesssz">Robustnessß</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Recursive Utility Framework</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -343,21 +349,26 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-theoretical-framework">
-<h1>Introduction to Theoretical Framework<a class="headerlink" href="#introduction-to-theoretical-framework" title="Permalink to this heading">#</a></h1>
-<p>In early 2020, policymakers across the world were confronted with the decision of how to respond to the COVID-19 outbreak in the face of limited information regarding the disease’s infectiousness and severity. Some countries opted for severe lockdowns, while others adopted a wait-and-see approach.</p>
-<p>Similarly, designing the optimal climate policy requires reckoning with uncertainty surrounding the impact of economic activity on climate change as well as the adoption of new technologies. Should policymakers act under the assumption that a set of models are equally likely, or act under the worst-case scenario? The answer depends on society’s aversion to ambiguity and model misspecification.</p>
-<section id="robustness-to-model-misspecification">
-<h2>Robustness to Model Misspecification<a class="headerlink" href="#robustness-to-model-misspecification" title="Permalink to this heading">#</a></h2>
-<p>The homogeneous of degree one representation of recursive utility is</p>
-<div class="math notranslate nohighlight">
-\[
+  <section id="recursive-utility-framework">
+<h1>Recursive Utility Framework<a class="headerlink" href="#recursive-utility-framework" title="Permalink to this heading">#</a></h1>
+<p>We aim to solve models which employ the following <strong>recursive utility</strong> framework:</p>
+<p>$$
 V_t = \left[ (1 - \beta) \left(C_t\right)^{1-\rho}  + \beta  \left( R_t \right)^{1-\rho} \right]^{\frac 1 {1-\rho}}
-\]</div>
-<p>where
-$<span class="math notranslate nohighlight">\(\label{homog1b}
+$$ (my_label)
+where</p>
+<p>$$\label{homog1b}
 R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} .
-\)</span>$</p>
+$$ (my_label)</p>
+<p>Note that $0&lt;\beta&lt;1$ is a subjective discount factor, $\rho$ is the inverse elasticity of intertemporal substitution and $\gamma$ describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with a</p>
+</section>
+<section id="robustnesssz">
+<h1>Robustnessß<a class="headerlink" href="#robustnesssz" title="Permalink to this heading">#</a></h1>
+<p>In early 2020, policymakers across the world were confronted with the decision of how to respond to the COVID-19 outbreak in the face of limited information regarding the disease’s infectiousness and severity. Some countries opted for severe lockdowns, while others adopted a wait-and-see approach.</p>
+<p>Similarly, designing the optimal climate policy requires reckoning with uncertainty surrounding the impact of economic activity on climate change as well as the adoption of new technologies. Should policymakers act under the assumption that a set of models are equally likely, or act under the worst-case scenario?</p>
+<p>The answer depends on society’s aversion to ambiguity and model misspecification.</p>
+<section id="id1">
+<h2>Recursive Utility Framework<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>The homogeneous of degree one representation of recursive utility is</p>
 <p>Consider the following setup:</p>
 </section>
 </section>
@@ -429,8 +440,13 @@ R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfra
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness-to-model-misspecification">Robustness to Model Misspecification</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Recursive Utility Framework</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#robustnesssz">Robustnessß</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Recursive Utility Framework</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
