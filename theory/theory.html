@@ -333,7 +333,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Recursive Utility Framework</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#robustnesssz">Robustnessß</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness">Robustness</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Recursive Utility Framework</a></li>
 </ul>
 </li>
@@ -360,9 +360,18 @@ where</p>
 R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} .
 $$</p>
 <p>Note that $0&lt;\beta&lt;1$ is a subjective discount factor, $\rho$ is the inverse elasticity of intertemporal substitution and $\gamma$ describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with a</p>
+<p>$$
+\label{eq:value_recur5}
+{\widehat  V}_t = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right]
+$$
+where</p>
+<p>$$
+\label{eq:value_risk6}
+{\widehat  R}<em>t = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}</em>{t+1} \right] \mid {\mathfrak A}_t \right).
+$$</p>
 </section>
-<section id="robustnesssz">
-<h1>Robustnessß<a class="headerlink" href="#robustnesssz" title="Permalink to this heading">#</a></h1>
+<section id="robustness">
+<h1>Robustness<a class="headerlink" href="#robustness" title="Permalink to this heading">#</a></h1>
 <p>In early 2020, policymakers across the world were confronted with the decision of how to respond to the COVID-19 outbreak in the face of limited information regarding the disease’s infectiousness and severity. Some countries opted for severe lockdowns, while others adopted a wait-and-see approach.</p>
 <p>Similarly, designing the optimal climate policy requires reckoning with uncertainty surrounding the impact of economic activity on climate change as well as the adoption of new technologies. Should policymakers act under the assumption that a set of models are equally likely, or act under the worst-case scenario?</p>
 <p>The answer depends on society’s aversion to ambiguity and model misspecification.</p>
@@ -441,7 +450,7 @@ $$</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Recursive Utility Framework</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#robustnesssz">Robustnessß</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness">Robustness</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Recursive Utility Framework</a></li>
 </ul>
 </li>

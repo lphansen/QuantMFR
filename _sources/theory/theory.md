@@ -13,7 +13,18 @@ $$
 
 Note that $0<\beta<1$ is a subjective discount factor, $\rho$ is the inverse elasticity of intertemporal substitution and $\gamma$ describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with a 
 
-# Robustnessß
+$$
+\label{eq:value_recur5}
+{\widehat  V}_t = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right]
+$$
+where
+
+$$
+\label{eq:value_risk6}
+{\widehat  R}_t = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
+$$
+
+# Robustness
 
 In early 2020, policymakers across the world were confronted with the decision of how to respond to the COVID-19 outbreak in the face of limited information regarding the disease's infectiousness and severity. Some countries opted for severe lockdowns, while others adopted a wait-and-see approach.
 
