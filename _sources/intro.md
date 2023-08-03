@@ -4,6 +4,7 @@ Quant Macro Finance (QMF) is a series of self-contained online texts intended to
 ```{image} images/Cartoon.png
 :alt: fishy
 :class: bg-primary mb-1
+:width: 400px
 :align: center
 ```
 

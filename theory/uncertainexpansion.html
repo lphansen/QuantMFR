@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Shock Elasticity Computation" href="shockelasticity.html" />
-    <link rel="prev" title="Introduction" href="Recursive.html" />
+    <link rel="prev" title="Recursive Utility" href="Recursive.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theoretical Framework</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Recursive.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Recursive.html">Recursive Utility</a></li>
 
 
 
@@ -410,8 +410,8 @@ document.write(`
   \phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &amp;= 0 
 \tag{2} \end{align}
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> state vector, <span class="math notranslate nohighlight">\(J_t\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> jump vector, and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard normal.  The real variable <span class="math notranslate nohighlight">\({\sf q}\)</span> is nonnegative and it scales the shock <span class="math notranslate nohighlight">\(W_{t+1}\)</span>.  The stochastic processes <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(J\)</span> depend implicitly on <span class="math notranslate nohighlight">\({\sf q}\)</span>.  In effect, we study a family of models and their solutions indexed by <span class="math notranslate nohighlight">\({\sf q}\)</span>.  We suppose that the limit <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> emerges from a deterministic model for which the equations pin down a steady-state, stable equilbrium solution to the equations (1) and (2).</p>
-<p>The first set of <span class="math notranslate nohighlight">\(m\)</span> equations is forward looking and hence involve expectations along with contributions <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span> from recursive utility.  For instance, the first-order necessary condition for optimal investment contributes to a forward-looking equation with, say the investment to capital ratio or its logarithm as a jump variable. The second set of <span class="math notranslate nohighlight">\(n\)</span> equations give the dynamic evolution of the state vector.  A central part of the solution is to express the jump vector as a function of the state vector.  The stochastic equilibrium is then solved by imposing stochastic stability.</p>
+<p>where <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> state vector, <span class="math notranslate nohighlight">\(J_t\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> jump vector, and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard normal vector.  The real variable <span class="math notranslate nohighlight">\({\sf q}\)</span> is nonnegative and it scales the shock <span class="math notranslate nohighlight">\(W_{t+1}\)</span>.  The stochastic processes <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(J\)</span> depend implicitly on <span class="math notranslate nohighlight">\({\sf q}\)</span>.  In effect, we study a family of models and their solutions indexed by <span class="math notranslate nohighlight">\({\sf q}\)</span>.  We suppose that the limit <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> emerges from a deterministic model for which the equations pin down a steady-state, stable equilbrium solution to the equations (1) and (2).</p>
+<p>The first set of <span class="math notranslate nohighlight">\(m\)</span> equations is forward looking and hence involves expectations along with contributions <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span> from recursive utility.  For instance, the first-order necessary condition for optimal investment contributes to a forward-looking equation with, say the investment to capital ratio or its logarithm as a jump variable. The second set of <span class="math notranslate nohighlight">\(n\)</span> equations gives the dynamic evolution of the state vector.  A central part of the solution is to express the jump vector as a function of the state vector.  The stochastic equilibrium is then solved by imposing stochastic stability.</p>
 <p>We feature models in which economic agents have preferences given by the recursive specification of preferences:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -523,10 +523,15 @@ N_{t+1}^0 = \exp \left[\left(1-\gamma_o\right)\left(\widehat{V}_{t+1}^1-\widehat
 \]</div>
 <p>Combining these formulas, gives the following equation to be solved:</p>
 <div class="math notranslate nohighlight">
-\[
-{\widehat  V}_t^2 - {\widehat  C}_t^2 = \lambda 
-{\mathbb E}  \left[ N_{t+1}^0 \left({\widehat V}^2_{t+1} - {\widehat C}_{t+1}^2 \right) \mid {\mathfrak A}_t \right]  + \lambda  {\mathbb E}  \left[ N_{t+1}^0 \left( {\widehat C}^2_{t+1} - {\widehat C}_{t}^2 \right) \mid {\mathfrak A}_t \right] + \frac{(1- \rho) (1-\lambda)}{\lambda } \left[ \left( {\widehat  V}_t^1 - {\widehat  C}_t^1\right)^2 \right] . \tag{10}
-\]</div>
+\[\begin{split}
+\begin{equation}
+\begin{split}
+{\widehat  V}_t^2 - {\widehat  C}_t^2 = &amp; \lambda 
+{\mathbb E}  \left[ N_{t+1}^0 \left({\widehat V}^2_{t+1} - {\widehat C}_{t+1}^2 \right) \mid {\mathfrak A}_t \right]  + \lambda  {\mathbb E}  \left[ N_{t+1}^0 \left( {\widehat C}^2_{t+1} - {\widehat C}_{t}^2 \right) \mid {\mathfrak A}_t \right] \\ 
+&amp; + \frac{(1- \rho) (1-\lambda)}{\lambda } \left[ \left( {\widehat  V}_t^1 - {\widehat  C}_t^1\right)^2 \right]  \tag{10}
+\end{split}
+\end{equation}
+\end{split}\]</div>
 <p>The formula for <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span> also happens to be the zeroth-order approximation to <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> given by definition (8).  Since <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span> is positive and has conditional mean equal to one, it induces a change in probability distribution whereby <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a multivariate normal with mean <span class="math notranslate nohighlight">\(\mu^o\)</span> and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>.  The algorithm uses this change of probability distribution in the computations.  The first-order contribution to <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1408,7 +1413,7 @@ Iteration 2: error = 9.23705556e-14
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title">Recursive Utility</p>
       </div>
     </a>
     <a class="right-next"
