@@ -62,7 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'discrete_local_approximation/quickguide';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -163,8 +164,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="../theory/shockelasticity.html">Shock Elasticity Computation</a></li>
-
-
 
 
 
@@ -353,7 +352,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linquadvar-split-and-concat-a-class-anchor-id-s2-3-a">2.3 <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> Split and Concat <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-a-linquadvar-a-class-anchor-id-s2-4-a">2.4 Evaluate a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-4"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-conditional-information-time-a-class-anchor-id-s2-5-a">2.5 Adjust Conditional Information Time <a class="anchor" id="s2-5"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-expectation-of-time-t-1-linquadvar-a-class-anchor-id-s2-6-a">2.6 Compute the Expectation of time $t+1$ <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-6"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-expectation-of-time-t-1-linquadvar-a-class-anchor-id-s2-6-a">2.6 Compute the Expectation of time <span class="math notranslate nohighlight">\(t+1\)</span> <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-6"></a></a></li>
 </ul>
 </li>
 </ul>
@@ -369,7 +368,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/quickguide.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section id="quick-guide-to-expansion">
+<section class="tex2jax_ignore mathjax_ignore" id="quick-guide-to-expansion">
 <h1>Quick Guide to Expansion<a class="headerlink" href="#quick-guide-to-expansion" title="Permalink to this heading">#</a></h1>
 <p><strong>Expansion Suite</strong> is an open source Python toolbox for macro-finance research. It solves the nonlinear DSGE model with recursive utility formulation motivated by robustness or risk concerns based on the small-noise expansion method.</p>
 <p>For this notebook</p>
@@ -411,7 +410,7 @@ document.write(`
 <li><p><span class="xref myst">2.3 <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> Split and Concat</span></p></li>
 <li><p><span class="xref myst">2.4 Evaluate a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code></span></p></li>
 <li><p><span class="xref myst">2.5 Adjust Conditional Information Time</span></p></li>
-<li><p><span class="xref myst">2.6 Compute the Expectation of time $t+1$</span></p></li>
+<li><p><span class="xref myst">2.6 Compute the Expectation of time <span class="math notranslate nohighlight">\(t+1\)</span></span></p></li>
 </ul>
 </li>
 </ul>
@@ -452,45 +451,48 @@ document.write(`
 <div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
 </div>
 </section>
-<section id="five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a">
+<section class="tex2jax_ignore mathjax_ignore" id="five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a">
 <h1>1. Five-minute guide to solving the DSGE model using the Expansion Suite <a class="anchor" id="s1"></a><a class="headerlink" href="#five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a" title="Permalink to this heading">#</a></h1>
 <p>Suppose we would like to solve an adjustment cost model. Its equilibrium conditions include</p>
 <ul class="simple">
 <li><p>Three forward-looking conditions</p></li>
 </ul>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-\frac{C_t}{K_t} + \frac{I_t}{K_t}  &amp;= {\mathbf a}\
-\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}<em>t\right] - 1  &amp;= 0\
-\mathbb{E}\left[\left(\frac{S</em>{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
+\frac{C_t}{K_t} + \frac{I_t}{K_t}  &amp;= {\mathbf a}\\
+\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - 1  &amp;= 0\\
+\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
 +(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - \frac{MK_t}{MC_t}+{\mathbf a}&amp;= 0
 \end{aligned}
-$$</p>
+\end{split}\]</div>
 <ul class="simple">
 <li><p>Two state-evolution equations</p></li>
 </ul>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-\frac{K_{t+1}}{K_t} &amp;=  \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\
+\frac{K_{t+1}}{K_t} &amp;=  \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\\
 Z_{t+1} &amp;= {\mathbb A} Z_t + \mathbb{B} W_{t+1}
 \end{aligned}
-$$</p>
+\end{split}\]</div>
 <p>where we have</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \begin{aligned}
 \frac{S_{t+1}}{S_t}&amp; = \beta \left(\frac{V_{t+1}}{R_t}\right)^{1-\gamma} \left(\frac{V_{t+1}}{R_t}\right)^{\rho-1} \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
 \end{aligned}
-$$</p>
-<p>The model has one jump variable (In the expansion suite, $J_t$ is used to represent jump variables):</p>
+\]</div>
+<p>The model has one jump variable (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent jump variables):</p>
 <ul class="simple">
-<li><p>$\log C_t - \log K_t$ : Log consumption over capital</p></li>
-<li><p>$\log I_t - \log K_t$ : Log investment over capital</p></li>
-<li><p>$\log MK_t - \log MC_t$ : Log co-state variable</p></li>
+<li><p><span class="math notranslate nohighlight">\(\log C_t - \log K_t\)</span> : Log consumption over capital</p></li>
+<li><p><span class="math notranslate nohighlight">\(\log I_t - \log K_t\)</span> : Log investment over capital</p></li>
+<li><p><span class="math notranslate nohighlight">\(\log MK_t - \log MC_t\)</span> : Log co-state variable</p></li>
 </ul>
-<p>Two state variables (In the expansion suite, $X_t$ is used to represent state variables):</p>
+<p>Two state variables (In the expansion suite, <span class="math notranslate nohighlight">\(X_t\)</span> is used to represent state variables):</p>
 <ul class="simple">
-<li><p>$\log K_{t} - \log K_{t-1}$ : Log capital growth process</p></li>
-<li><p>$Z_{t}$ : Exogenous state</p></li>
+<li><p><span class="math notranslate nohighlight">\(\log K_{t} - \log K_{t-1}\)</span> : Log capital growth process</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z_{t}\)</span> : Exogenous state</p></li>
 </ul>
 <p>The Expansion Suite only takes <strong>five</strong> necessary inputs to solve the DSGE model.</p>
 <section id="equilibrium-condition-function-a-class-anchor-id-s1-1-a">
@@ -517,57 +519,59 @@ $$</p>
 <ul class="simple">
 <li><p>The state-evolution equations should follow the forward-looking conditions.</p></li>
 </ul>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-95adb720-d438-43ab-a245-9283c128532a">
-<span class="eqno">(7)<a class="headerlink" href="#equation-95adb720-d438-43ab-a245-9283c128532a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
 \tag{1}
 \begin{split}
 \mathbb{E}[{N_{t+1}^*Q_{t+1}^* \psi_1(X_t, J_t, X_{t+1}, J_{t+1})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &amp;= 0  \\
 \phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &amp;= 0 
 \end{split} 
-\end{equation}\]</div>
-<p>$$</p>
+\end{equation}
+\end{split}\]</div>
 <ul class="simple">
 <li><p>In this simple example, we can rewrite the FOC and co-state equation as</p></li>
 </ul>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-\mathbb{E}\left[ N_{t+1}^<em>Q_{t+1}^</em> \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}\frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}<em>t\right] - 1  &amp;= 0\
-\mathbb{E}\left[N</em>{t+1}^<em>Q_{t+1}^</em> \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho} \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
-+(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - \frac{MK_t}{MC_t}+{\mathbf a}&amp;= 0\
+\mathbb{E}\left[ N_{t+1}^*Q_{t+1}^* \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}\frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - 1  &amp;= 0\\
+\mathbb{E}\left[N_{t+1}^*Q_{t+1}^* \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho} \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
++(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - \frac{MK_t}{MC_t}+{\mathbf a}&amp;= 0\\
 \end{aligned}
-$$</p>
+\end{split}\]</div>
 <ul class="simple">
 <li><p>where <code class="docutils literal notranslate"><span class="pre">psi1</span></code> will be a three dimensional array</p></li>
 </ul>
-<p>$$
-\psi_1 =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5abd8554-c786-4c45-8812-9a490a110a3d">
-<span class="eqno">(8)<a class="headerlink" href="#equation-5abd8554-c786-4c45-8812-9a490a110a3d" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\psi_1 = 
+\begin{bmatrix}
 0\\ 
 \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}\frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)}\\
 \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho} \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
-+(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)}\end{bmatrix}\]</div>
-<p>$$</p>
++(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)}\end{bmatrix}
+\end{split}\]</div>
 <ul class="simple">
 <li><p>the <code class="docutils literal notranslate"><span class="pre">psi2</span></code> will also be a three dimensional array</p></li>
 </ul>
-<p>$$
-\psi_2 =</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8c02b62e-c2d4-4169-84dd-0566802e3144">
-<span class="eqno">(9)<a class="headerlink" href="#equation-8c02b62e-c2d4-4169-84dd-0566802e3144" title="Permalink to this equation">#</a></span>\[\begin{bmatrix}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\psi_2 = 
+\begin{bmatrix}
 \frac{C_t}{K_t} + \frac{I_t}{K_t} - {\mathbf a}\\
 1\\
 \frac{MK_t}{MC_t}-{\mathbf a}
-\end{bmatrix}\]</div>
-<p>$$</p>
+\end{bmatrix}
+\end{split}\]</div>
 <ul class="simple">
 <li><p>the <code class="docutils literal notranslate"><span class="pre">phi</span></code> will be a two dimensional array</p></li>
 </ul>
-<p>$$\phi=\begin{bmatrix}
-&amp;\frac{K_{t+1}}{K_t} - \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\
+<div class="math notranslate nohighlight">
+\[\begin{split}\phi=\begin{bmatrix} 
+&amp;\frac{K_{t+1}}{K_t} - \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\\
 &amp;Z_{t+1} - {\mathbb A} Z_t + \mathbb{B} W_{t+1}
-\end{bmatrix}$$</p>
+\end{bmatrix}\end{split}\]</div>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -684,12 +688,13 @@ $$</p>
 <h2>1.5 Log Consumption Growth Function <a class="anchor" id="s1-5"></a><a class="headerlink" href="#log-consumption-growth-function-a-class-anchor-id-s1-5-a" title="Permalink to this heading">#</a></h2>
 <p>The expansion suite deals with the recursive utility in equation (2). We need to specify how to compute the log-growth of consumption using the defined variables <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> in the equilibrium conditions.</p>
 <ul class="simple">
-<li><p>For some models with habits, $C_t$ is replaced with $U_t$, then we need to specify the log growth process for $U_t$ correspondingly.</p></li>
-<li><p>For some models with preference shocks, $C_t = \lambda_t \tilde{C}_t$, we need to specify the log growth process for $\lambda_t \tilde{C}_t$.</p></li>
+<li><p>For some models with habits, <span class="math notranslate nohighlight">\(C_t\)</span> is replaced with <span class="math notranslate nohighlight">\(U_t\)</span>, then we need to specify the log growth process for <span class="math notranslate nohighlight">\(U_t\)</span> correspondingly.</p></li>
+<li><p>For some models with preference shocks, <span class="math notranslate nohighlight">\(C_t = \lambda_t \tilde{C}_t\)</span>, we need to specify the log growth process for <span class="math notranslate nohighlight">\(\lambda_t \tilde{C}_t\)</span>.</p></li>
 </ul>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 V_t=\left[(1-\beta)\left(C_t\right)^{1-\rho}+\beta\left(R_t\right)^{1-\rho}\right]^{\frac{1}{1-\rho}}\tag{2}
-$$</p>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gc_ac</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -875,7 +880,7 @@ Iteration 2: error = 4.97379915e-14
 </section>
 <section id="shock-elasticities-and-irf-a-class-anchor-id-s1-10-a">
 <h2>1.10 Shock Elasticities and IRF <a class="anchor" id="s1-10"></a><a class="headerlink" href="#shock-elasticities-and-irf-a-class-anchor-id-s1-10-a" title="Permalink to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code> has a method <code class="docutils literal notranslate"><span class="pre">elasticities</span></code> to compute the shock elasticities of all jump and state variables by defining a <code class="docutils literal notranslate"><span class="pre">log_SDF_ex</span></code> function, which states the log stochastic discount factor exclusive of the change of measure ${N}^<em><em>{t+1}$ and variable $Q</em>{t+1}^</em>$. Shock elasticities are great tools for nonlinear impulsive response analyses, and in linear models, the shock elasticities correspond to the traditional IRF.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code> has a method <code class="docutils literal notranslate"><span class="pre">elasticities</span></code> to compute the shock elasticities of all jump and state variables by defining a <code class="docutils literal notranslate"><span class="pre">log_SDF_ex</span></code> function, which states the log stochastic discount factor exclusive of the change of measure <span class="math notranslate nohighlight">\({N}^*_{t+1}\)</span> and variable <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span>. Shock elasticities are great tools for nonlinear impulsive response analyses, and in linear models, the shock elasticities correspond to the traditional IRF.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code> also has a method <code class="docutils literal notranslate"><span class="pre">IRF</span></code> to compute the traditional IRF of all jump and state variables. Below we calculate the IRF of all variables with respect to the first shock for 400 periods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -907,7 +912,7 @@ Iteration 2: error = 4.97379915e-14
 </div>
 </section>
 </section>
-<section id="examples-to-use-linquadvar-in-computation-a-class-anchor-id-s2-a">
+<section class="tex2jax_ignore mathjax_ignore" id="examples-to-use-linquadvar-in-computation-a-class-anchor-id-s2-a">
 <h1>2 Examples to use <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation <a class="anchor" id="s2"></a><a class="headerlink" href="#examples-to-use-linquadvar-in-computation-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
 <section id="define-a-linquadvar-a-class-anchor-id-s2-1-a">
 <h2>2.1 Define a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-1"></a><a class="headerlink" href="#define-a-linquadvar-a-class-anchor-id-s2-1-a" title="Permalink to this heading">#</a></h2>
@@ -986,7 +991,7 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
 </section>
 <section id="evaluate-a-linquadvar-a-class-anchor-id-s2-4-a">
 <h2>2.4 Evaluate a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-4"></a><a class="headerlink" href="#evaluate-a-linquadvar-a-class-anchor-id-s2-4-a" title="Permalink to this heading">#</a></h2>
-<p>Given specific values for $X_{t}$, $W_{t+1}$, we can evaluate a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>. Below evaluates all variables at first and second order expansion states equal to 0, together with a multivariate random normal shock.</p>
+<p>Given specific values for <span class="math notranslate nohighlight">\(X_{t}\)</span>, <span class="math notranslate nohighlight">\(W_{t+1}\)</span>, we can evaluate a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>. Below evaluates all variables at first and second order expansion states equal to 0, together with a multivariate random normal shock.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">n_X</span> <span class="p">,</span><span class="mi">1</span><span class="p">])</span>
@@ -1009,7 +1014,7 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
 </section>
 <section id="adjust-conditional-information-time-a-class-anchor-id-s2-5-a">
 <h2>2.5 Adjust Conditional Information Time <a class="anchor" id="s2-5"></a><a class="headerlink" href="#adjust-conditional-information-time-a-class-anchor-id-s2-5-a" title="Permalink to this heading">#</a></h2>
-<p>Since some <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> (e.g. solved jump variables) are expressed as a function of time $t$ state variables without shocks, when we would like to compute its next period expression, $t+1$, with shocks, but still as a function of time $t$ state variables, we can use function <code class="docutils literal notranslate"><span class="pre">next_period</span></code>.</p>
+<p>Since some <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> (e.g. solved jump variables) are expressed as a function of time <span class="math notranslate nohighlight">\(t\)</span> state variables without shocks, when we would like to compute its next period expression, <span class="math notranslate nohighlight">\(t+1\)</span>, with shocks, but still as a function of time <span class="math notranslate nohighlight">\(t\)</span> state variables, we can use function <code class="docutils literal notranslate"><span class="pre">next_period</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmk1_tp1</span> <span class="o">=</span> <span class="n">next_period</span><span class="p">(</span><span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;J1_t&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;X1_tp1&#39;</span><span class="p">])</span>
@@ -1036,8 +1041,8 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
 </div>
 </section>
 <section id="compute-the-expectation-of-time-t-1-linquadvar-a-class-anchor-id-s2-6-a">
-<h2>2.6 Compute the Expectation of time $t+1$ <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-6"></a><a class="headerlink" href="#compute-the-expectation-of-time-t-1-linquadvar-a-class-anchor-id-s2-6-a" title="Permalink to this heading">#</a></h2>
-<p>Suppose the distribution of shock has a constant mean and variance (not state dependent), we can use <code class="docutils literal notranslate"><span class="pre">E</span></code> to compute the expectation of time $t+1$ <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>.</p>
+<h2>2.6 Compute the Expectation of time <span class="math notranslate nohighlight">\(t+1\)</span> <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-6"></a><a class="headerlink" href="#compute-the-expectation-of-time-t-1-linquadvar-a-class-anchor-id-s2-6-a" title="Permalink to this heading">#</a></h2>
+<p>Suppose the distribution of shock has a constant mean and variance (not state dependent), we can use <code class="docutils literal notranslate"><span class="pre">E</span></code> to compute the expectation of time <span class="math notranslate nohighlight">\(t+1\)</span> <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_w</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;util_sol&#39;</span><span class="p">][</span><span class="s1">&#39;μ_0&#39;</span><span class="p">]</span>
@@ -1053,7 +1058,7 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
 \[\begin{split}\displaystyle \mathbb{E}[\log\frac{C_{t+1}^2}{K_{t+1}^2}|\mathfrak{F_t}]=-0.02167+\begin{bmatrix}1.14&amp;2.451e-41\end{bmatrix}X_t^1+\begin{bmatrix}11.71&amp;-1.63e-40\end{bmatrix}X_t^2+X^{1T}_{t}\begin{bmatrix}-51.15&amp;4.666e-39\\-7.867e-39&amp;-2.048e-59\end{bmatrix}X^1_{t}\end{split}\]</div>
 </div>
 </div>
-<p>Suppose the distribution of shock has a state-dependent mean and variance (implied by $\tilde{N}_{t+1}$ shown in the notes), we can use <code class="docutils literal notranslate"><span class="pre">E_N_tp1</span></code> and <code class="docutils literal notranslate"><span class="pre">N_tilde_measure</span></code> to compute the expectation of time $t+1$ <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>.</p>
+<p>Suppose the distribution of shock has a state-dependent mean and variance (implied by <span class="math notranslate nohighlight">\(\tilde{N}_{t+1}\)</span> shown in the notes), we can use <code class="docutils literal notranslate"><span class="pre">E_N_tp1</span></code> and <code class="docutils literal notranslate"><span class="pre">N_tilde_measure</span></code> to compute the expectation of time <span class="math notranslate nohighlight">\(t+1\)</span> <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_cm</span> <span class="o">=</span> <span class="n">N_tilde_measure</span><span class="p">(</span><span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;util_sol&#39;</span><span class="p">][</span><span class="s1">&#39;log_N_tilde&#39;</span><span class="p">],(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_X</span><span class="p">,</span><span class="n">n_W</span><span class="p">))</span>
@@ -1157,7 +1162,7 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linquadvar-split-and-concat-a-class-anchor-id-s2-3-a">2.3 <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> Split and Concat <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-a-linquadvar-a-class-anchor-id-s2-4-a">2.4 Evaluate a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-4"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjust-conditional-information-time-a-class-anchor-id-s2-5-a">2.5 Adjust Conditional Information Time <a class="anchor" id="s2-5"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-expectation-of-time-t-1-linquadvar-a-class-anchor-id-s2-6-a">2.6 Compute the Expectation of time $t+1$ <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-6"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-expectation-of-time-t-1-linquadvar-a-class-anchor-id-s2-6-a">2.6 Compute the Expectation of time <span class="math notranslate nohighlight">\(t+1\)</span> <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-6"></a></a></li>
 </ul>
 </li>
 </ul>

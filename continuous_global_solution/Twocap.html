@@ -62,7 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'continuous_global_solution/Twocap';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -163,8 +164,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="../theory/shockelasticity.html">Shock Elasticity Computation</a></li>
-
-
 
 
 
@@ -357,7 +356,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/Twocap/blob/main/Twocap.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section id="sluggish-two-capital-model">
+<section class="tex2jax_ignore mathjax_ignore" id="sluggish-two-capital-model">
 <h1>Sluggish Two Capital Model<a class="headerlink" href="#sluggish-two-capital-model" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -375,158 +374,159 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="model">
+<section class="tex2jax_ignore mathjax_ignore" id="model">
 <h1>1 Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h1>
 <section id="exogenous-state-evolution">
 <h2>1.1 Exogenous State Evolution<a class="headerlink" href="#exogenous-state-evolution" title="Permalink to this heading">#</a></h2>
 <p>We presume that there are two underlying exogenous processes that evolve as solutions to stochastic dfferential equations</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d7573830-7bae-44e3-a025-9c45990a1cef">
-<span class="eqno">(10)<a class="headerlink" href="#equation-d7573830-7bae-44e3-a025-9c45990a1cef" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
 &amp; d Z_t^1=-\mathrm{a}_{11} Z_t^1 d t+\sqrt{Z_t^2} \sigma_1 \cdot d B_t \\
 &amp; d Z_t^2=-\mathrm{a}_{22}\left(Z_t^2-1\right) d t+\sqrt{Z_t^2} \sigma_2 \cdot d B_t
-\end{align}\]</div>
-<p>$$</p>
-<p>where $\mathrm{a}<em>{11}&gt;0, \mathrm{a}</em>{22}&gt;\frac{1}{2}\left|\sigma_2\right|^2$. In addition, $\sigma_1, \sigma_2$, are $d$-dimensional vectors of real numbers. The $Z^1$ process governs the conditional mean of the stochastic component to technology growth and the process $Z^2$ captures the exogenous component to aggregate stochastic volatility. Notice that $\sqrt{Z^2}$ scales the Brownian increment to both of the first two processes. The local variance of the exogenous technology shifter is $Z_t^2\left|\sigma_1\right|^2$, and the local variance for the stochastic volatility process is $Z_t^2\left|\sigma_2\right|^2$. The stochastic variance process $Z^2$ is a special cases a Feller square root processes and is normalized to have unconditional mean one.</p>
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathrm{a}_{11}&gt;0, \mathrm{a}_{22}&gt;\frac{1}{2}\left|\sigma_2\right|^2\)</span>. In addition, <span class="math notranslate nohighlight">\(\sigma_1, \sigma_2\)</span>, are <span class="math notranslate nohighlight">\(d\)</span>-dimensional vectors of real numbers. The <span class="math notranslate nohighlight">\(Z^1\)</span> process governs the conditional mean of the stochastic component to technology growth and the process <span class="math notranslate nohighlight">\(Z^2\)</span> captures the exogenous component to aggregate stochastic volatility. Notice that <span class="math notranslate nohighlight">\(\sqrt{Z^2}\)</span> scales the Brownian increment to both of the first two processes. The local variance of the exogenous technology shifter is <span class="math notranslate nohighlight">\(Z_t^2\left|\sigma_1\right|^2\)</span>, and the local variance for the stochastic volatility process is <span class="math notranslate nohighlight">\(Z_t^2\left|\sigma_2\right|^2\)</span>. The stochastic variance process <span class="math notranslate nohighlight">\(Z^2\)</span> is a special cases a Feller square root processes and is normalized to have unconditional mean one.</p>
 </section>
 <section id="endogenous-state-evolution">
 <h2>1.2 Endogenous State Evolution<a class="headerlink" href="#endogenous-state-evolution" title="Permalink to this heading">#</a></h2>
 <p>We next a model with two capital stocks and sluggish adjustment.</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4e0c74ba-782d-4fb3-a770-8fa907ea8b65">
-<span class="eqno">(11)<a class="headerlink" href="#equation-4e0c74ba-782d-4fb3-a770-8fa907ea8b65" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 &amp; d K_t^j=K_t^j\left[\Phi_j\left(\frac{I_t^j}{K_t^j}\right)+\beta_j Z_t-\eta_j\right] d t+K_t^j \sqrt{Z_t^2} \sigma_j d B_t
-\end{align}\]</div>
-<p>$$</p>
-<p>for $j=1,2$. Suppose that output equation is now</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ea27f8af-9fdb-4c72-a8de-19ef64c1b31f">
-<span class="eqno">(12)<a class="headerlink" href="#equation-ea27f8af-9fdb-4c72-a8de-19ef64c1b31f" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}
+\]</div>
+<p>for <span class="math notranslate nohighlight">\(j=1,2\)</span>. Suppose that output equation is now</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 &amp; C_t+I_t^1+I_t^2=\alpha K_t^a
-\end{align}\]</div>
-<p>$$</p>
+\end{align}
+\]</div>
 <p>where</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b2f71c3d-3c64-4987-86d4-6d60248039e5">
-<span class="eqno">(13)<a class="headerlink" href="#equation-b2f71c3d-3c64-4987-86d4-6d60248039e5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 &amp; K_t^a=\left[(1-\zeta)\left(K_t^1\right)^{(1-\kappa)}+\zeta\left(K_t^2\right)^{(1-\kappa)}\right]^{\frac{1}{1-\kappa}}
-\end{align}\]</div>
-<p>$$</p>
-<p>for $0 \leqslant \zeta&lt;1$.
-Form two new state variables. One is $\log Y_t=\log K_t^2-\log K_t^1$ and the other is $\log K_t^a$. where Notice that</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cd95c5e4-ef7d-4023-bea2-7b4261259cba">
-<span class="eqno">(14)<a class="headerlink" href="#equation-cd95c5e4-ef7d-4023-bea2-7b4261259cba" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}
+\]</div>
+<p>for <span class="math notranslate nohighlight">\(0 \leqslant \zeta&lt;1\)</span>.
+Form two new state variables. One is <span class="math notranslate nohighlight">\(\log Y_t=\log K_t^2-\log K_t^1\)</span> and the other is <span class="math notranslate nohighlight">\(\log K_t^a\)</span>. where Notice that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
 &amp; \frac{K_t^2}{K_t^a} &amp; =\left[(1-\zeta)\left(Y_t\right)^{(\kappa-1)}+\zeta\right]^{\frac{1}{\kappa-1}} \\
 &amp; \frac{K_t^1}{K_t^a} &amp; =\left[(1-\zeta)+\zeta\left(Y_t\right)^{(1-\kappa)}\right]^{\frac{1}{\kappa-1}}
-\end{align}\]</div>
-<p>$$</p>
+\end{align}
+\end{split}\]</div>
 <p>Then we have state equations:</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5d4b380c-9bc0-42c5-9414-7c74962284b0">
-<span class="eqno">(15)<a class="headerlink" href="#equation-5d4b380c-9bc0-42c5-9414-7c74962284b0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
 d \log Y_t= &amp; {\left[\Phi_2\left(\frac{I_t^2}{K_t^2}\right)-\Phi_1\left(\frac{I_t^1}{K_t^1}\right)+\left(\beta_2-\beta_1\right) Z_t-\eta_2+\eta_1\right] d t } \\
 &amp; -\frac{Z_t^2}{2}\left(\left|\sigma_2\right|^2-\left|\sigma_1\right|^2\right) d t+\sqrt{Z_t^2}\left(\sigma_2-\sigma_1\right) d B_t
-\end{align}\]</div>
-<p>$$</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9695941b-9354-4a84-a83b-a019f08b695e">
-<span class="eqno">(16)<a class="headerlink" href="#equation-9695941b-9354-4a84-a83b-a019f08b695e" title="Permalink to this equation">#</a></span>\[\begin{align}
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
 d \log K_t^a= &amp; (1-\zeta)\left(\frac{K_t^1}{K_t^a}\right)^{1-\kappa}\left(\left[\Phi_1\left(\frac{I_t^1}{K_t^1}\right)+\beta_1 Z_t-\eta_1\right] d t+\sqrt{Z_t^2} \sigma_1 d B_t\right) \\
 &amp; +\zeta\left(\frac{K_t^2}{K_t^a}\right)^{1-\kappa}\left(\left[\Phi_2\left(\frac{I_t^2}{K_t^2}\right)+\beta_2 Z_t-\eta_2\right] d t+\sqrt{Z_t^2} \sigma_2 d B_t\right) \\
 &amp; +\left(\frac{Z_t^2}{2}\right) \operatorname{trace}\left\{\Sigma\left(\widehat{Y}_t\right)\right\} d t
-\end{align}\]</div>
-<p>$$</p>
-<p>where $\Sigma(y)$ is defined below.</p>
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Sigma(y)\)</span> is defined below.</p>
 </section>
 <section id="hjb-equation">
 <h2>1.3 HJB Equation<a class="headerlink" href="#hjb-equation" title="Permalink to this heading">#</a></h2>
 <p>Rewirte the equation</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
+<p>\begin{equation*}
 k_a=\left[(1-\zeta)\left(k_1\right)^{(1-\kappa)}+\zeta\left(k_2\right)^{(1-\kappa)}\right]^{\frac{1}{1-\kappa}}
-\end{equation*}\]</div>
+\end{equation*}</p>
 <p>Then the HJB equation is</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{split}
-0=\max _{i_1, i_2}\Bigg{&amp;\left(\frac{\delta}{1-\rho}\right)\left(c^{1-\rho} \exp [(\rho-1) v]-1\right) \
-&amp; +(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}\left[\Phi_1\left(i_1\right)+\beta_1 z-\eta_1\right] \
-&amp; +\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}\left[\Phi_2\left(i_2\right)+\beta_2 z-\eta_2\right]+\left(\frac{z_2}{2}\right) \text { trace }\left{\Sigma\left(\frac{k_1}{k_a}, \frac{k_2}{k_a}\right)\right} \
-&amp; +\frac{\partial v}{\partial \hat{y}}\left[\Phi_2\left(i_2\right)-\Phi_1\left(i_1\right)+\left(\beta_2-\beta_1\right) z-\eta_2+\eta_1-\frac{z_2}{2}\left(\left|\sigma_2\right|^2-\left|\sigma_1\right|^2\right)\right] \
-&amp; +\mu_z \cdot \frac{\partial v}{\partial z}+\frac{z_2}{2} \operatorname{trace}\left{\left[\begin{array}{cc}
-\sigma_2-\sigma_1 \
+0=\max _{i_1, i_2}\Bigg\{&amp;\left(\frac{\delta}{1-\rho}\right)\left(c^{1-\rho} \exp [(\rho-1) v]-1\right) \\
+&amp; +(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}\left[\Phi_1\left(i_1\right)+\beta_1 z-\eta_1\right] \\
+&amp; +\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}\left[\Phi_2\left(i_2\right)+\beta_2 z-\eta_2\right]+\left(\frac{z_2}{2}\right) \text { trace }\left\{\Sigma\left(\frac{k_1}{k_a}, \frac{k_2}{k_a}\right)\right\} \\
+&amp; +\frac{\partial v}{\partial \hat{y}}\left[\Phi_2\left(i_2\right)-\Phi_1\left(i_1\right)+\left(\beta_2-\beta_1\right) z-\eta_2+\eta_1-\frac{z_2}{2}\left(\left|\sigma_2\right|^2-\left|\sigma_1\right|^2\right)\right] \\
+&amp; +\mu_z \cdot \frac{\partial v}{\partial z}+\frac{z_2}{2} \operatorname{trace}\left\{\left[\begin{array}{cc}
+\sigma_2-\sigma_1 \\
 \sigma_z
 \end{array}\right]^{\prime}\left[\begin{array}{cc}
-\frac{\partial^2 v}{\partial \hat{y} \partial \hat{y}} &amp; \frac{\partial^2 v}{\partial \hat{y} \partial z^{\prime}} \
+\frac{\partial^2 v}{\partial \hat{y} \partial \hat{y}} &amp; \frac{\partial^2 v}{\partial \hat{y} \partial z^{\prime}} \\
 \frac{\partial^2 v}{\partial z^{\prime} \partial \hat{y}} &amp; \frac{\partial^2 v}{\partial z \partial z^{\prime}}
 \end{array}\right]\left[\begin{array}{c}
-\sigma_2-\sigma_1 \
+\sigma_2-\sigma_1 \\
 \sigma_z
-\end{array}\right]\right} \
-&amp; +\frac{(1-\gamma) z_2}{2}\left|(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa} \sigma_1{ }^{\prime}+\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa} \sigma_2{ }^{\prime}+\left(\sigma_2-\sigma_1\right)^{\prime} \frac{\partial v}{\partial \hat{y}}+\sigma_z{ }^{\prime} \frac{\partial v}{\partial z}\right|^2\Bigg},
+\end{array}\right]\right\} \\
+&amp; +\frac{(1-\gamma) z_2}{2}\left|(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa} \sigma_1{ }^{\prime}+\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa} \sigma_2{ }^{\prime}+\left(\sigma_2-\sigma_1\right)^{\prime} \frac{\partial v}{\partial \hat{y}}+\sigma_z{ }^{\prime} \frac{\partial v}{\partial z}\right|^2\Bigg\},
 \end{split}
-$$</p>
+\end{split}\]</div>
 <p>where</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \Sigma\left(\frac{k_1}{k_a}, \frac{k_2}{k_a}\right)=(\kappa-1)\left[\begin{array}{ll}
 \sigma_1{ }^{\prime} &amp; \sigma_2{ }^{\prime}
 \end{array}\right]\left[\begin{array}{cc}
-(1-\zeta)^2\left(\frac{k_1}{k_a}\right)^{-2 \kappa+2}-\frac{\kappa}{\kappa-1}(1-\zeta)\left(\frac{k_1}{k_a}\right)^{-\kappa+1} &amp; \zeta(1-\zeta)\left(\frac{k_1}{k_a}\right)^{-\kappa+1}\left(\frac{k_2}{k_a}\right)^{-\kappa+1} \
+(1-\zeta)^2\left(\frac{k_1}{k_a}\right)^{-2 \kappa+2}-\frac{\kappa}{\kappa-1}(1-\zeta)\left(\frac{k_1}{k_a}\right)^{-\kappa+1} &amp; \zeta(1-\zeta)\left(\frac{k_1}{k_a}\right)^{-\kappa+1}\left(\frac{k_2}{k_a}\right)^{-\kappa+1} \\
 \zeta(1-\zeta)\left(\frac{k_1}{k_a}\right)^{-\kappa+1}\left(\frac{k_2}{k_a}\right)^{-\kappa+1} &amp; \zeta^2\left(\frac{k_2}{k_a}\right)^{-2 \kappa+2}-\frac{\kappa}{\kappa-1}(1-\zeta)\left(\frac{k_2}{k_a}\right)^{-\kappa+1}
 \end{array}\right]\left[\begin{array}{l}
-\sigma_1 \
+\sigma_1 \\
 \sigma_2
 \end{array}\right]
-$$</p>
+\end{split}\]</div>
 <p>subject to</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5804c03b-8cdd-4ba4-af58-121b502ca04e">
-<span class="eqno">(17)<a class="headerlink" href="#equation-5804c03b-8cdd-4ba4-af58-121b502ca04e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
 c &amp; =\alpha-i_1\left(\frac{k_1}{k_a}\right)-i_2\left(\frac{k_2}{k_a}\right) \\
 \frac{k_1}{k_a} &amp; =\left[(1-\zeta)+\zeta y^{1-\kappa}\right]^{\frac{1}{\kappa-1}} \\
 \frac{k_2}{k_a} &amp; =\left[(1-\zeta) y^{\kappa-1}+\zeta\right]^{\frac{1}{\kappa-1}}
-\end{align}\]</div>
-<p>$$</p>
+\end{align}
+\end{split}\]</div>
 </section>
 <section id="quadratic-adjustment-cost-function">
 <h2>1.4 Quadratic adjustment cost function<a class="headerlink" href="#quadratic-adjustment-cost-function" title="Permalink to this heading">#</a></h2>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e7acff2f-e06b-42f7-989c-31c105d5267a">
-<span class="eqno">(18)<a class="headerlink" href="#equation-e7acff2f-e06b-42f7-989c-31c105d5267a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 \Phi_i(i)=i-\frac{\phi_i}{2}i^2
-\end{align}\]</div>
-<p>$$</p>
+\end{align}
+\]</div>
 <p>this implies</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-32f4bd3e-192d-4c2f-8db1-20d3f20f821d">
-<span class="eqno">(19)<a class="headerlink" href="#equation-32f4bd3e-192d-4c2f-8db1-20d3f20f821d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 \Phi_i(i)'=1-{\phi_i}i
-\end{align}\]</div>
-<p>$$</p>
+\end{align}
+\]</div>
 </section>
 <section id="first-order-condition-and-hessian-matrix">
 <h2>1.5 First order condition and Hessian Matrix<a class="headerlink" href="#first-order-condition-and-hessian-matrix" title="Permalink to this heading">#</a></h2>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a58823e3-8152-4cff-a0c3-b79b027123ce">
-<span class="eqno">(20)<a class="headerlink" href="#equation-a58823e3-8152-4cff-a0c3-b79b027123ce" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
 \delta \exp [(\rho-1) v] c^{-\rho}(\frac{k_1}{k_a}) &amp;=({1-\phi i_1})[(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}] \\
 \delta \exp [(\rho-1) v]c^{-\rho}(\frac{k_2}{k_a})&amp;=({1-\phi i_2})[\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}+\frac{\partial v}{\partial \hat{y}}] \\
 c &amp;= \alpha-i_1\left(\frac{k_1}{k_a}\right)-i_2\left(\frac{k_2}{k_a}\right)
-\end{align}\]</div>
-<p>$$</p>
+\end{align}
+\end{split}\]</div>
 <p>Hessian Matrix</p>
-<p>$$</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7307bb52-2606-4b35-ba6b-6df18900df93">
-<span class="eqno">(21)<a class="headerlink" href="#equation-7307bb52-2606-4b35-ba6b-6df18900df93" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
     \begin{bmatrix}
 -\delta \exp [(\rho-1) v] \rho c^{-\rho-1}(\frac{k_1}{k_a})^2 -\phi_1[(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}]&amp;-\delta \exp [(\rho-1) v] \rho c^{-\rho-1}(\frac{k_1}{k_a}\frac{k_2}{k_a})\\
 -\delta \exp [(\rho-1) v] \rho c^{-\rho-1}(\frac{k_1}{k_a}\frac{k_2}{k_a})&amp;-\delta \exp [(\rho-1) v] \rho c^{-\rho-1}(\frac{k_2}{k_a})^2-\phi_2[\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}+\frac{\partial v}{\partial \hat{y}}] 
 \end{bmatrix}
-\end{align}\]</div>
-<p>$$</p>
+\end{align}
+\end{split}\]</div>
 </section>
 </section>
-<section id="calibration">
+<section class="tex2jax_ignore mathjax_ignore" id="calibration">
 <h1>2 Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading">#</a></h1>
 <table class="table">
 <thead>
@@ -536,75 +536,75 @@ c &amp;= \alpha-i_1\left(\frac{k_1}{k_a}\right)-i_2\left(\frac{k_2}{k_a}\right)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>$\delta$</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\delta\)</span></p></td>
 <td><p>0.002</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>$\gamma$</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\gamma\)</span></p></td>
 <td><p>1.01, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>$\rho$</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\rho\)</span></p></td>
 <td><p>0.67, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>$\kappa$</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\kappa\)</span></p></td>
 <td><p>0.0, 1.0, 2.0, 4.0, 6.0, 8.0, 10.0</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>$\zeta$</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\zeta\)</span></p></td>
 <td><p>0.5, 0.333</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>$\alpha$</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></td>
 <td><p>0.1</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>$\phi_1$</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\phi_1\)</span></p></td>
 <td><p>28</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>$\phi_2$</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\phi_2\)</span></p></td>
 <td><p>28</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>$\eta_1$</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\eta_1\)</span></p></td>
 <td><p>0.01279</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>$\eta_2$</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\eta_2\)</span></p></td>
 <td><p>0.01279</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>$\beta_1$</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\beta_1\)</span></p></td>
 <td><p>0.01, 0.05</p></td>
 <td><p>0.0</p></td>
 </tr>
-<tr class="row-odd"><td><p>$\beta_2$</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\beta_2\)</span></p></td>
 <td><p>0.01, 0.05</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>$\sigma_{k1}$</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sigma_{k1}\)</span></p></td>
 <td><p>0.01<em>sqrt(1.754)</em>[0.477, 0.0, 0.0, 0.0]</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>$\sigma_{k2}$</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sigma_{k2}\)</span></p></td>
 <td><p>0.01<em>sqrt(1.754)</em>[0.0, 0.477, 0.0, 0.0]</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>$a_{11}$</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(a_{11}\)</span></p></td>
 <td><p>0.014</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>$a_{22}$</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(a_{22}\)</span></p></td>
 <td><p>0.013</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>$\sigma_{z1}$</p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sigma_{z1}\)</span></p></td>
 <td><p>[0.011<em>sqrt(0.5), 0.011</em>sqrt(0.5), 0.025, 0.0]</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>$\sigma_{z2}$</p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\sigma_{z2}\)</span></p></td>
 <td><p>[0.3<em>sqrt(0.5), 0.3</em>sqrt(0.5), 0.0, 0.3]</p></td>
 <td><p>[0.1<em>sqrt(0.5), 0.1</em>sqrt(0.5), 0.0, 0.1]</p></td>
 </tr>
@@ -720,7 +720,7 @@ c &amp;= \alpha-i_1\left(\frac{k_1}{k_a}\right)-i_2\left(\frac{k_2}{k_a}\right)
 </div>
 </div>
 </section>
-<section id="solve-for-the-hjb-equations">
+<section class="tex2jax_ignore mathjax_ignore" id="solve-for-the-hjb-equations">
 <h1>3 Solve for the HJB equations<a class="headerlink" href="#solve-for-the-hjb-equations" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'theory/theory';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -162,8 +164,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="shockelasticity.html">Shock Elasticity Computation</a></li>
-
-
 
 
 
@@ -349,28 +349,32 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="recursive-utility-framework">
+  <section class="tex2jax_ignore mathjax_ignore" id="recursive-utility-framework">
 <h1>Recursive Utility Framework<a class="headerlink" href="#recursive-utility-framework" title="Permalink to this heading">#</a></h1>
 <p>We aim to solve models which employ the following <strong>recursive utility</strong> framework:</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 V_t = \left[ (1 - \beta) \left(C_t\right)^{1-\rho}  + \beta  \left( R_t \right)^{1-\rho} \right]^{\frac 1 {1-\rho}}
-$$
-where</p>
-<p>$$\label{homog1b}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\label{homog1b}
 R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} .
-$$</p>
-<p>Note that $0&lt;\beta&lt;1$ is a subjective discount factor, $\rho$ is the inverse elasticity of intertemporal substitution and $\gamma$ describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with a</p>
-<p>$$
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(0&lt;\beta&lt;1\)</span> is a subjective discount factor, <span class="math notranslate nohighlight">\(\rho\)</span> is the inverse elasticity of intertemporal substitution and <span class="math notranslate nohighlight">\(\gamma\)</span> describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with a</p>
+<div class="math notranslate nohighlight">
+\[
 \label{eq:value_recur5}
 {\widehat  V}_t = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right]
-$$
-where</p>
-<p>$$
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
 \label{eq:value_risk6}
-{\widehat  R}<em>t = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}</em>{t+1} \right] \mid {\mathfrak A}_t \right).
-$$</p>
+{\widehat  R}_t = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
+\]</div>
 </section>
-<section id="robustness">
+<section class="tex2jax_ignore mathjax_ignore" id="robustness">
 <h1>Robustness<a class="headerlink" href="#robustness" title="Permalink to this heading">#</a></h1>
 <p>In early 2020, policymakers across the world were confronted with the decision of how to respond to the COVID-19 outbreak in the face of limited information regarding the disease’s infectiousness and severity. Some countries opted for severe lockdowns, while others adopted a wait-and-see approach.</p>
 <p>Similarly, designing the optimal climate policy requires reckoning with uncertainty surrounding the impact of economic activity on climate change as well as the adoption of new technologies. Should policymakers act under the assumption that a set of models are equally likely, or act under the worst-case scenario?</p>
