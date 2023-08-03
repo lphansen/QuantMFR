@@ -4,7 +4,7 @@ Quant Macro Finance (QMF) is a series of self-contained online texts intended to
 ```{image} images/Cartoon.png
 :alt: fishy
 :class: bg-primary mb-1
-:width: 400px
+:width: 700px
 :align: center
 ```
 
@@ -14,6 +14,7 @@ Quant Macro Finance (QMF) is a series of self-contained online texts intended to
 - <i>Shock-exposure elasticities</i>, which capture the exposure of macroeconomic processes to shocks over different investment horizons, and </li>
 - <i>Shock-price elasticities</i>, which capture changes in risk compensations associated with shock exposures over different investment horizons</li>
 <br> -->
+
 First, we explain the theoretical framework for solving nonlinear DSGE models with uncertainty and computing shock elasticites.
 
 1. [Recursive Utility](theory/Recursive.md)

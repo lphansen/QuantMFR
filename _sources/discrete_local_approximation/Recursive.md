@@ -1,33 +1,4 @@
----
-abstract: |
-  We describe an approximation method that allows macroeconomic
-  uncertainty to have first order implications. We assume risk averse
-  economic decision makers with recursive utility preferences or closely
-  related preferences that also the express concerns about model
-  misspecification. We show how to explore model implications for
-  (nonstandard) first and second-order approximations to equilibria of
-  dynamic stochastic models. We modify first and second order
-  approximations routinely used in the macroeconomics literature in ways
-  that focus on macroeconomic uncertainty. Our uncertainty adjustments
-  are captured by a change in probability measure. By design, implied
-  approximations of stochastic discount factors represent market or
-  shadow asset values have exponential linear quadratic representations
-  that give rise to tractable formulas for asset valuation over
-  alternative investment horizons. Furthermore, our approximations apply
-  to production-based macro-finance models with opportunities to invest
-  in diverse forms of capital. We use this framework to advance our
-  understanding of alternative preference specifications and their
-  implications for production and asset pricing.
-author:
-- Borovička, Jaroslav (NYU)
-- Lars Peter Hansen (University of Chicago)
-- Thomas J. Sargent (NYU)
-bibliography:
-- expand_bib.bib
-title: Exploring Recursive Utility[^1]
----
-
-# Introduction
+# Recursive Utility
 
 We use an approximation method to explore implications of the recursive
 utility preference specification of [@KrepsPorteus:1978] and
