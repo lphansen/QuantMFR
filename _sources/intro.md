@@ -17,7 +17,7 @@ Quant Macro Finance (QMF) is a series of self-contained online texts intended to
 
 First, we explain the theoretical framework for solving nonlinear DSGE models with uncertainty and computing shock elasticites.
 
-1. [Recursive Utility](theory/Recursive.md)
+1. [Introduction](theory/theory.md)
 2. [Uncertain Expansion](theory/uncertainexpansion.ipynb)
 3. [Shock Elasticities](theory/shockelasticity.ipynb)
 
@@ -32,6 +32,6 @@ Then, we provide extensions via continuous time, two-capital models and financia
 7. [Computing Elasticities in Continuous TIme]
 
 <br>
-<p>The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Local methods are based on perturbing around the steady state in order to approximate policy and valuation functions in a neighbourhood around the steady state, whereas global methods allow us to compute these functions across the domain.</p>
-<br><br>
+<!-- <p>The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Local methods are based on perturbing around the steady state in order to approximate policy and valuation functions in a neighbourhood around the steady state, whereas global methods allow us to compute these functions across the domain.</p>
+<br><br> -->
 You can find Professor Hansen's lecture notes <a href = "https://larspeterhansen.org/class-notes/">here</a>. 
