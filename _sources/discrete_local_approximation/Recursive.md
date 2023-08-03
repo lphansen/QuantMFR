@@ -1,5 +1,7 @@
 # Recursive Utility
 
+At the height of 
+
 We use an approximation method to explore implications of the recursive
 utility preference specification of [@KrepsPorteus:1978] and
 [@EpsteinZin:1989] and counterparts to these preferences that capture

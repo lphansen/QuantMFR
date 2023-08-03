@@ -11,7 +11,7 @@ $$\label{homog1b}
 R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} .
 $$ 
 
-Note that $0<\beta<1$ is a subjective discount factor, $\rho$ is the inverse elasticity of intertemporal substitution and $\gamma$ describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with a 
+Note that $0<\beta<1$ is a subjective discount factor, $\rho$ is the inverse elasticity of intertemporal substitution and $\gamma$ describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with logs of the above equation:
 
 $$
 \label{eq:value_recur5}
@@ -24,7 +24,11 @@ $$
 {\widehat  R}_t = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
 $$
 
-# Robustness
+While $\gamma$ is usually interpreted as a measure of risk aversion, we now turn to an alternative interpretation which allows us to incorporate ambiguity aversion into our models.
+
+## 1 Robustness
+
+## 1.1 Motivation for Ambiguity Aversion
 
 In early 2020, policymakers across the world were confronted with the decision of how to respond to the COVID-19 outbreak in the face of limited information regarding the disease's infectiousness and severity. Some countries opted for severe lockdowns, while others adopted a wait-and-see approach.
 
@@ -32,7 +36,7 @@ Similarly, designing the optimal climate policy requires reckoning with uncertai
 
 The answer depends on society's aversion to ambiguity and model misspecification.
 
-## Recursive Utility Framework
+## 1.2 Reinterpretation of Recursive Utility
 
 The homogeneous of degree one representation of recursive utility is
 
