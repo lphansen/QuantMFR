@@ -4,12 +4,12 @@ We aim to solve models which employ the following **recursive utility** framewor
 
 $$
 V_t = \left[ (1 - \beta) \left(C_t\right)^{1-\rho}  + \beta  \left( R_t \right)^{1-\rho} \right]^{\frac 1 {1-\rho}}
-$$ (my_label)
+$$
 where
 
 $$\label{homog1b}
 R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} .
-$$ (my_label)
+$$ 
 
 Note that $0<\beta<1$ is a subjective discount factor, $\rho$ is the inverse elasticity of intertemporal substitution and $\gamma$ describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with a 
 
