@@ -170,13 +170,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/Recursive.html">Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/quickguide.html">Solving Discrete Model</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/Recursive.html">Discrete Shock Elasticity</a></li>
 
 
 
-
-
-<li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/quickguide.html">Quick Guide to Expansion</a></li>
 
 
 </ul>
@@ -338,7 +338,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-setup">1 Underlying setup</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#framework-for-solving-dsge">1 Framework for Solving DSGE</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>
@@ -401,9 +401,9 @@ document.write(`
 <h1>Uncertain Expansion Methods<a class="headerlink" href="#uncertain-expansion-methods" title="Permalink to this heading">#</a></h1>
 <p>A nonlinear DSGE model typically cannot be solved quasi-analytically.  We consider  a small-noise expansion method to find an approximate solution modified to incorporate recursive utility formulation motivated by robustness or risk concerns.</p>
 <br></section>
-<section class="tex2jax_ignore mathjax_ignore" id="underlying-setup">
-<h1>1 Underlying setup<a class="headerlink" href="#underlying-setup" title="Permalink to this heading">#</a></h1>
-<p>The model’s equilibrium conditions are described by a system of possibly nonlinear, expectational difference equations</p>
+<section class="tex2jax_ignore mathjax_ignore" id="framework-for-solving-dsge">
+<h1>1 Framework for Solving DSGE<a class="headerlink" href="#framework-for-solving-dsge" title="Permalink to this heading">#</a></h1>
+<p>A DSGE model’s equilibrium conditions can be described by a system of possibly nonlinear, expectational difference equations:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -411,8 +411,10 @@ document.write(`
   \phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &amp;= 0 
 \tag{2} \end{align}
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> state vector, <span class="math notranslate nohighlight">\(J_t\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> jump vector, and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard normal vector.  The real variable <span class="math notranslate nohighlight">\({\sf q}\)</span> is nonnegative and it scales the shock <span class="math notranslate nohighlight">\(W_{t+1}\)</span>.  The stochastic processes <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(J\)</span> depend implicitly on <span class="math notranslate nohighlight">\({\sf q}\)</span>.  In effect, we study a family of models and their solutions indexed by <span class="math notranslate nohighlight">\({\sf q}\)</span>.  We suppose that the limit <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> emerges from a deterministic model for which the equations pin down a steady-state, stable equilbrium solution to the equations (1) and (2).</p>
-<p>The first set of <span class="math notranslate nohighlight">\(m\)</span> equations is forward looking and hence involves expectations along with contributions <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span> from recursive utility.  For instance, the first-order necessary condition for optimal investment contributes to a forward-looking equation with, say the investment to capital ratio or its logarithm as a jump variable. The second set of <span class="math notranslate nohighlight">\(n\)</span> equations gives the dynamic evolution of the state vector.  A central part of the solution is to express the jump vector as a function of the state vector.  The stochastic equilibrium is then solved by imposing stochastic stability.</p>
+<p>where <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> state vector, <span class="math notranslate nohighlight">\(J_t\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> jump vector, and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard normal vector.</p>
+<p>You can think of <span class="math notranslate nohighlight">\({\sf q}\)</span> as a parameter which scales the shock <span class="math notranslate nohighlight">\(W_{t+1}\)</span>. The stochastic processes <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(J\)</span> depend implicitly on <span class="math notranslate nohighlight">\({\sf q}\)</span>. We solve for equilibrium by imposing stochastic stability, i.e. <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> .</p>
+<p>The first set of <span class="math notranslate nohighlight">\(m\)</span> equations is forward looking and hence involves expectations along with contributions <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span> from recursive utility.  For instance, the first-order necessary condition for optimal investment contributes to a forward-looking equation with, say the investment to capital ratio or its logarithm as a jump variable.</p>
+<p>The second set of <span class="math notranslate nohighlight">\(n\)</span> equations gives the dynamic evolution of the state vector.  Part of our desired solution is to express the jump vector as a function of the state vector.</p>
 <p>We feature models in which economic agents have preferences given by the recursive specification of preferences:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1445,7 +1447,7 @@ Iteration 2: error = 9.23705556e-14
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#underlying-setup">1 Underlying setup</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#framework-for-solving-dsge">1 Framework for Solving DSGE</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>
