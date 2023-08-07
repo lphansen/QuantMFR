@@ -430,37 +430,31 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code></p></td>
 <td><p>array-like</p></td>
-<td><p>Vector of jump and state variables in the current period</p></td>
-<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+<td><p>Vector of jump and state variables in the next period</p></td>
+<td><p><span class="math notranslate nohighlight">\((X_(t+1), J_(t+1))\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">W_tp1</span></code></p></td>
 <td><p>array-like</p></td>
-<td><p>Vector of jump and state variables in the current period</p></td>
-<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+<td><p>Vector of shock variables in the nextperiod</p></td>
+<td><p><span class="math notranslate nohighlight">\((W_(t+1))\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">q</span></code></p></td>
-<td><p>array-like</p></td>
-<td><p>Vector of jump and state variables in the current period</p></td>
-<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+<td><p>float</p></td>
+<td><p>Perturbation parameter</p></td>
+<td><p><span class="math notranslate nohighlight">\(q\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mode</span></code></p></td>
-<td><p>array-like</p></td>
-<td><p>Vector of jump and state variables in the current period</p></td>
-<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+<td><p>string</p></td>
+<td><p>By default, this function returns the LHS of equation (1) and (2). Set mode to ‘psi1’, ‘psi2’, or ‘phi’ to return the corresponding function in the equilibrium conditions</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">args</span></code></p></td>
-<td><p>array-like</p></td>
-<td><p>Vector of jump and state variables in the current period</p></td>
-<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+<td><p>tuple of float/ndarray</p></td>
+<td><p>Preference and model parameters</p></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p><code class="docutils literal notranslate"><span class="pre">Var_t</span></code> : array_like; Vector of jump and state variables in the current period.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> : array_like; Vector of jump and state variables in the next period.</p>
-<p><code class="docutils literal notranslate"><span class="pre">W_tp1</span></code> : array_like; Vector of shock variables in the next period.</p>
-<p><code class="docutils literal notranslate"><span class="pre">q</span></code> : float; Perturbation parameter.</p>
-<p><code class="docutils literal notranslate"><span class="pre">mode</span></code> : string; By default, this function returns the LHS of equation (1) and (2). Set mode to ‘psi1’, ‘psi2’, or ‘phi’ to return the corresponding function in the equilibrium conditions.</p>
-<p><code class="docutils literal notranslate"><span class="pre">args</span></code> : tuple of float/ndarray; Preference and model parameters.</p>
 <p><strong>Definition of input variables for the following functions:</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Var_t</span></code> : array_like; Vector of jump and state variables in the current period.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> : array_like; Vector of jump and state variables in the next period.</p>
