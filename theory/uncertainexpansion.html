@@ -170,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/quickguide.html">Solving Discrete Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/quickguide.html">Uncertain Expansion Method: Computation</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/Recursive.html">Discrete Shock Elasticity</a></li>
@@ -413,55 +413,12 @@ document.write(`
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> state vector, <span class="math notranslate nohighlight">\(J_t\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> jump vector, and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard normal vector.</p>
 <p>You can think of <span class="math notranslate nohighlight">\({\sf q}\)</span> as a parameter which scales the shock <span class="math notranslate nohighlight">\(W_{t+1}\)</span>. The stochastic processes <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(J\)</span> depend implicitly on <span class="math notranslate nohighlight">\({\sf q}\)</span>. We solve for equilibrium by imposing stochastic stability, i.e. <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> .</p>
-<p>The first set of <span class="math notranslate nohighlight">\(m\)</span> equations is forward looking and hence involves expectations along with contributions <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span> from recursive utility.  For instance, the first-order necessary condition for optimal investment contributes to a forward-looking equation with, say the investment to capital ratio or its logarithm as a jump variable.</p>
-<p>The second set of <span class="math notranslate nohighlight">\(n\)</span> equations gives the dynamic evolution of the state vector.  Part of our desired solution is to express the jump vector as a function of the state vector.</p>
-<p>We feature models in which economic agents have preferences given by the recursive specification of preferences:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-V_t &amp; =\left[(1-\beta)\left(C_t\right)^{1-\rho}+\beta\left(R_t\right)^{1-\rho}\right]^{\frac{1}{1-\rho}}
-\tag{3} \\
-R_t &amp; =\mathbb{E}\left[\left(V_{t+1}\right)^{1-\gamma} \mid \mathfrak{A}_t\right]^{\frac{1}{1-\gamma}}
-\tag{4}\end{align}
-\end{split}\]</div>
-<p>In equation (3), <span class="math notranslate nohighlight">\(0 &lt; \beta &lt; 1\)</span> is a subjective discount factor and <span class="math notranslate nohighlight">\(\rho\)</span> depicts  attitudes toward intertemporal substitution.<sup><a href="#fn1">[1]</a></sup>  In equation (4),
-<span class="math notranslate nohighlight">\(\gamma\)</span> depicts attitudes towards risk or <span class="math notranslate nohighlight">\(\xi = \frac 1 {\gamma - 1}\)</span> is penalty parameter used to capture concerns about model misspecification.</p>
-<p>For computational and conceptual reasons, we find it
-advantageous to work with the logarithm <span class="math notranslate nohighlight">\({\widehat V}_t = \log V_t\)</span>.  The corresponding recursions for <span class="math notranslate nohighlight">\({\widehat  V}_t\)</span> expressed in terms of the logarithm of consumption
-<span class="math notranslate nohighlight">\({\hat  C}_t\)</span> are</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align} 
-{\widehat  V}_t &amp; = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right]
-\tag{5} \\
-{\widehat  R}_t &amp; = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
-\tag{6} \end{align}
-\end{split}\]</div>
-<p>Construct:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-N_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \gamma) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right] \tag{7} \\
-Q_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \rho) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right]. \tag{8} 
-\end{align}
-\end{split}\]</div>
-<p>Notice that <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> has expectation one conditioned on <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> and induces a change of probability measure motived by a robustness adjustment to potential model misspecification.    The expansion treats the approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\( Q_{t+1}^*\)</span> differently.  Both are computed in a separate step from the solution to equation (1) given <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span>.  The implied one-period stochastic discount factor</p>
-<div class="math notranslate nohighlight">
-\[
-\beta N_{t+1}^*Q_{t+1}^* \left( \frac {C_{t+1}}{C_t} \right)^{-\rho}
-\]</div>
-<p>where the last contribution is familiar from models with time separable, power utility preferences.</p>
-<p>We restrict <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span>, and index it by the parameter <span class="math notranslate nohighlight">\({\sf q}\)</span> according to:</p>
-<div class="math notranslate nohighlight">
-\[
-\xi = \frac {1 - \gamma}{\sf q},  \;\;\;\; \xi_o = \frac {\sf q} {1 - \gamma_o} .  
-\]</div>
-<p>This embedding makes the uncertainty adjustments matter at a lower order.  It has a particularly nice interpretation when we interpret the recursion as a way to represent a preference for robustness to potential model misspecification.  We take <span class="math notranslate nohighlight">\({\sf q} = 1\)</span> as the economy of interest.</p>
-<p>[1] Formally, <span class="math notranslate nohighlight">\({ \frac {1}{\rho}}\)</span> is the elasticity of intertemporal substitution.
-<br><br></p>
+<p>The first set of <span class="math notranslate nohighlight">\(m\)</span> equations is forward looking and hence involves expectations along with contributions <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span> from recursive utility.  For instance, the first-order necessary condition for optimal investment might contribute a forward-looking equation with the investment to capital ratio as a jump variable.</p>
+<p>The second set of <span class="math notranslate nohighlight">\(n\)</span> equations gives the dynamic evolution of the state vector. For instance, the law of motion for capital contributes one such equation. Part of our desired solution is to express the jump vector as a function of the state vector.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="approximating-widehat-v-t">
 <h1>2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span><a class="headerlink" href="#approximating-widehat-v-t" title="Permalink to this heading">#</a></h1>
+<p>Consider the</p>
 <section id="zeroth-order-contribution">
 <h2>2.1 Zeroth-order contribution<a class="headerlink" href="#zeroth-order-contribution" title="Permalink to this heading">#</a></h2>
 <p>We assume that the first difference in the logarithm of consumption is stationary For models with production, this representation will become part of the derived expansion. For order zero, we presume a constant growth rate:</p>

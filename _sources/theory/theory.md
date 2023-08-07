@@ -39,3 +39,23 @@ The answer depends on society's aversion to ambiguity and model misspecification
 ## 1.2 Reinterpretation of Recursive Utility
 
 .. (tbc)
+
+Notice that $N_{t+1}^*$ has expectation one conditioned on ${\mathfrak A}_t$ and induces a change of probability measure motived by a robustness adjustment to potential model misspecification.    The expansion treats the approximation of $N_{t+1}^*$ and $ Q_{t+1}^*$ differently.  Both are computed in a separate step from the solution to equation (1) given $N_{t+1}^*$ and $Q_{t+1}^*$.  The implied one-period stochastic discount factor 
+
+$$
+\beta N_{t+1}^*Q_{t+1}^* \left( \frac {C_{t+1}}{C_t} \right)^{-\rho}
+$$
+
+where the last contribution is familiar from models with time separable, power utility preferences.  
+
+We restrict $\gamma > 1$, and index it by the parameter ${\sf q}$ according to:
+
+$$
+\xi = \frac {1 - \gamma}{\sf q},  \;\;\;\; \xi_o = \frac {\sf q} {1 - \gamma_o} .  
+$$
+
+This embedding makes the uncertainty adjustments matter at a lower order.  It has a particularly nice interpretation when we interpret the recursion as a way to represent a preference for robustness to potential model misspecification.  We take ${\sf q} = 1$ as the economy of interest.
+
+
+[1] Formally, ${ \frac {1}{\rho}}$ is the elasticity of intertemporal substitution.
+<br><br>

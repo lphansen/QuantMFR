@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Solving Discrete Model &#8212; Quant Macro Finance</title>
+    <title>Uncertain Expansion Method: Computation &#8212; Quant Macro Finance</title>
   
   
   
@@ -170,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Solving Discrete Model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uncertain Expansion Method: Computation</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="Recursive.html">Discrete Shock Elasticity</a></li>
@@ -327,7 +327,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Solving Discrete Model</h1>
+    <h1>Uncertain Expansion Method: Computation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -337,7 +337,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Solving Discrete Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Method: Computation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a">1. Five-minute guide to solving the DSGE model using the Expansion Suite <a class="anchor" id="s1"></a></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-steady-state-function-a-class-anchor-id-s1-2-a">1.2 Model Steady State Function <a class="anchor" id="s1-2"></a></a></li>
@@ -373,52 +373,94 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/quickguide.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="solving-discrete-model">
-<h1>Solving Discrete Model<a class="headerlink" href="#solving-discrete-model" title="Permalink to this heading">#</a></h1>
-<p><strong>Expansion Suite</strong> is an open source Python toolbox for macro-finance research. It solves the nonlinear DSGE model with recursive utility formulation motivated by robustness or risk concerns based on the small-noise expansion method.</p>
-<p>For this notebook</p>
-<ul class="simple">
-<li><p>Section 1 provides a five-minute guide to solving the DSGE model using the expansion suite, as well as how to</p>
-<ul>
-<li><p>compute shock elasticities and IRF</p></li>
-<li><p>approximate and simulate variables based on model solutions.</p></li>
-</ul>
-</li>
-<li><p>Section 2 provides examples of <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> computations, including</p>
-<ul>
-<li><p>constructions, operations, and evaluations</p></li>
-<li><p>adjusting time periods</p></li>
-<li><p>computing expectations</p></li>
-</ul>
-</li>
-</ul>
-<p><strong>Table of Contents</strong></p>
-<ul class="simple">
-<li><p><span class="xref myst">1. Five-minute guide to solving the DSGE model using the Expansion Suite</span></p>
-<ul>
-<li><p><span class="xref myst">1.1 Equilibrium Condition Function</span></p></li>
-<li><p><span class="xref myst">1.2 Model Steady State Function</span></p></li>
-<li><p><span class="xref myst">1.3 Model Variable Dimension Array</span></p></li>
-<li><p><span class="xref myst">1.4 Model Parameter Calibration Tuple</span></p></li>
-<li><p><span class="xref myst">1.5 Log Consumption Growth Function</span></p></li>
-<li><p><span class="xref myst">1.6 Solve the BY model using the Expansion Suite</span></p></li>
-<li><p><span class="xref myst">1.7 Model Solutions</span></p></li>
-<li><p><span class="xref myst">1.8 Approximate Variables</span></p></li>
-<li><p><span class="xref myst">1.9 Model Simulations</span></p></li>
-<li><p><span class="xref myst">1.10 Shock Elasticities and IRF</span></p></li>
-</ul>
-</li>
-<li><p><span class="xref myst">2. Examples to use <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation</span></p>
-<ul>
-<li><p><span class="xref myst">2.1 Define a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> </span></p></li>
-<li><p><span class="xref myst">2.2 <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> Operations</span></p></li>
-<li><p><span class="xref myst">2.3 <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> Split and Concat</span></p></li>
-<li><p><span class="xref myst">2.4 Evaluate a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code></span></p></li>
-<li><p><span class="xref myst">2.5 Adjust Conditional Information Time</span></p></li>
-<li><p><span class="xref myst">2.6 Compute the Expectation of time <span class="math notranslate nohighlight">\(t+1\)</span></span></p></li>
-</ul>
-</li>
-</ul>
+<section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-method-computation">
+<h1>Uncertain Expansion Method: Computation<a class="headerlink" href="#uncertain-expansion-method-computation" title="Permalink to this heading">#</a></h1>
+<p>We previously covered the <a class="reference internal" href="../theory/theory.html"><span class="doc std std-doc">recursive utility framework</span></a> and the <a class="reference internal" href="../theory/uncertainexpansion.html"><span class="doc std std-doc">small-noise expansion method</span></a>. This section covers the usage of <strong>Expansion Suite</strong>, an open source Python toolbox which uses these methods to solve discrete nonlinear DSGE models.</p>
+<!-- For this notebook 
+
+- Section 1 provides a five-minute guide to solving the DSGE model using the expansion suite, as well as how to 
+    - compute shock elasticities and IRF
+    - approximate and simulate variables based on model solutions. 
+
+
+- Section 2 provides examples of `LinQuadVar` computations, including
+    - constructions, operations, and evaluations
+    - adjusting time periods
+    - computing expectations -->
+<!-- **Table of Contents**
+* [1. Five-minute guide to solving the DSGE model using the Expansion Suite](#s1)
+    * [1.1 Equilibrium Condition Function](#s1-1)
+    * [1.2 Model Steady State Function](#s1-2)
+    * [1.3 Model Variable Dimension Array](#s1-3)
+    * [1.4 Model Parameter Calibration Tuple](#s1-4)
+    * [1.5 Log Consumption Growth Function](#s1-5)
+    * [1.6 Solve the BY model using the Expansion Suite](#s1-6)
+    * [1.7 Model Solutions](#s1-7)
+    * [1.8 Approximate Variables](#s1-8)
+    * [1.9 Model Simulations](#s1-9)
+    * [1.10 Shock Elasticities and IRF](#s1-10)
+* [2. Examples to use `LinQuadVar` in Computation](#s2)
+    * [2.1 Define a `LinQuadVar` ](#s2-1)
+    * [2.2 `LinQuadVar` Operations](#s2-2)
+    * [2.3 `LinQuadVar` Split and Concat](#s2-3)
+    * [2.4 Evaluate a `LinQuadVar`](#s2-4)
+    * [2.5 Adjust Conditional Information Time](#s2-5)
+    * [2.6 Compute the Expectation of time $t+1$](#s2-6) --><p>Consider the framework previously introduced:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\mathbb{E}[{N_{t+1}^*Q_{t+1}^* \psi_1(X_t, J_t, X_{t+1}, J_{t+1})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &amp;= 0 \tag{1}\\
+  \phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &amp;= 0 
+\tag{2} \end{align}
+\end{split}\]</div>
+<p><code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code> takes the following inputs:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Corresponds to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Var_t</span></code></p></td>
+<td><p>array-like</p></td>
+<td><p>Vector of jump and state variables in the current period</p></td>
+<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code></p></td>
+<td><p>array-like</p></td>
+<td><p>Vector of jump and state variables in the current period</p></td>
+<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">W_tp1</span></code></p></td>
+<td><p>array-like</p></td>
+<td><p>Vector of jump and state variables in the current period</p></td>
+<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">q</span></code></p></td>
+<td><p>array-like</p></td>
+<td><p>Vector of jump and state variables in the current period</p></td>
+<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mode</span></code></p></td>
+<td><p>array-like</p></td>
+<td><p>Vector of jump and state variables in the current period</p></td>
+<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">args</span></code></p></td>
+<td><p>array-like</p></td>
+<td><p>Vector of jump and state variables in the current period</p></td>
+<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">Var_t</span></code> : array_like; Vector of jump and state variables in the current period.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> : array_like; Vector of jump and state variables in the next period.</p>
+<p><code class="docutils literal notranslate"><span class="pre">W_tp1</span></code> : array_like; Vector of shock variables in the next period.</p>
+<p><code class="docutils literal notranslate"><span class="pre">q</span></code> : float; Perturbation parameter.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mode</span></code> : string; By default, this function returns the LHS of equation (1) and (2). Set mode to ‘psi1’, ‘psi2’, or ‘phi’ to return the corresponding function in the equilibrium conditions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">args</span></code> : tuple of float/ndarray; Preference and model parameters.</p>
 <p><strong>Definition of input variables for the following functions:</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Var_t</span></code> : array_like; Vector of jump and state variables in the current period.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> : array_like; Vector of jump and state variables in the next period.</p>
@@ -1147,7 +1189,7 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Solving Discrete Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Method: Computation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a">1. Five-minute guide to solving the DSGE model using the Expansion Suite <a class="anchor" id="s1"></a></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-steady-state-function-a-class-anchor-id-s1-2-a">1.2 Model Steady State Function <a class="anchor" id="s1-2"></a></a></li>

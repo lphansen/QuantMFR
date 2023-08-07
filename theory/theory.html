@@ -170,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/quickguide.html">Solving Discrete Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/quickguide.html">Uncertain Expansion Method: Computation</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/Recursive.html">Discrete Shock Elasticity</a></li>
@@ -388,6 +388,20 @@ R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfra
 <section id="reinterpretation-of-recursive-utility">
 <h2>1.2 Reinterpretation of Recursive Utility<a class="headerlink" href="#reinterpretation-of-recursive-utility" title="Permalink to this heading">#</a></h2>
 <p>.. (tbc)</p>
+<p>Notice that <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> has expectation one conditioned on <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> and induces a change of probability measure motived by a robustness adjustment to potential model misspecification.    The expansion treats the approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\( Q_{t+1}^*\)</span> differently.  Both are computed in a separate step from the solution to equation (1) given <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span>.  The implied one-period stochastic discount factor</p>
+<div class="math notranslate nohighlight">
+\[
+\beta N_{t+1}^*Q_{t+1}^* \left( \frac {C_{t+1}}{C_t} \right)^{-\rho}
+\]</div>
+<p>where the last contribution is familiar from models with time separable, power utility preferences.</p>
+<p>We restrict <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span>, and index it by the parameter <span class="math notranslate nohighlight">\({\sf q}\)</span> according to:</p>
+<div class="math notranslate nohighlight">
+\[
+\xi = \frac {1 - \gamma}{\sf q},  \;\;\;\; \xi_o = \frac {\sf q} {1 - \gamma_o} .  
+\]</div>
+<p>This embedding makes the uncertainty adjustments matter at a lower order.  It has a particularly nice interpretation when we interpret the recursion as a way to represent a preference for robustness to potential model misspecification.  We take <span class="math notranslate nohighlight">\({\sf q} = 1\)</span> as the economy of interest.</p>
+<p>[1] Formally, <span class="math notranslate nohighlight">\({ \frac {1}{\rho}}\)</span> is the elasticity of intertemporal substitution.
+<br><br></p>
 </section>
 </section>
 
