@@ -1,5 +1,5 @@
 # Quant Macro Finance
-Quant Macro Finance (QMF) is a series of self-contained online texts intended to accompany Professor Lars Peter Hansen's lectures on Asset Pricing I.
+Quant Macro Finance (QMF) is a series of online texts intended to accompany *Risk, Uncertainty and Value* by Thomas Sargent and Lars Peter Hansen. 
 
 ```{image} images/Cartoon.png
 :alt: fishy
