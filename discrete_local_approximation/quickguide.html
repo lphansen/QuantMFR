@@ -342,15 +342,16 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ak-model-with-recursive-utility">1 AK Model with Recursive Utility</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup-a-class-anchor-id-s1-1-a">1.1 Model Setup <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-conditions-a-class-anchor-id-s1-2-a">1.2 First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-the-model-a-class-anchor-id-s1-3-a">1.3 Adapting the Model <a class="anchor" id="s1-3"></a></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-a-class-anchor-id-s2-a">2 Computation <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">2.1 Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-steady-state-function-a-class-anchor-id-s1-2-a">1.2 Model Steady State Function <a class="anchor" id="s1-2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-variable-dimension-array-a-class-anchor-id-s1-3-a">1.3 Model Variable Dimension Array <a class="anchor" id="s1-3"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameter-calibration-tuple-a-class-anchor-id-s1-4-a">1.4 Model Parameter Calibration Tuple <a class="anchor" id="s1-4"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-consumption-growth-function-a-class-anchor-id-s1-5-a">1.5 Log Consumption Growth Function <a class="anchor" id="s1-5"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-a-class-anchor-id-s2-3-a">2.1 Libraries <a class="anchor" id="s2-3"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s2-2-a">2.2 Equilibrium Condition Function <a class="anchor" id="s2-2"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-function-a-class-anchor-id-s2-3-a">2.3 Steady State Function <a class="anchor" id="s2-3"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-number-of-variables-a-class-anchor-id-s2-4-a">2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-5-a">2.5 Model Parameters <a class="anchor" id="s2-5"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-6-a">2.5 Model Parameters <a class="anchor" id="s2-6"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-the-one-capital-adjustment-model-using-the-expansion-suite-a-class-anchor-id-s1-6-a">1.6 Solve the One-Capital Adjustment Model using the Expansion Suite <a class="anchor" id="s1-6"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-solutions-a-class-anchor-id-s1-7-a">1.7 Model Solutions <a class="anchor" id="s1-7"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-variables-a-class-anchor-id-s1-8-a">1.8 Approximate Variables <a class="anchor" id="s1-8"></a></a></li>
@@ -519,12 +520,50 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
  \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1}  \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right] - \frac {MK_t}{MC_t} + {\mathbf a}  = 0,
 \tag{8}
 \]</div>
-<p>Note that the stochastic discount factor can be expressed as:</p>
+<p>Equations 4 and 5 are the law of motion equations, while equations 6, 7, and 8 are the forward-looking equations.
+<br></p>
+</section>
+<section id="adapting-the-model-a-class-anchor-id-s1-3-a">
+<h2>1.3 Adapting the Model <a class="anchor" id="s1-3"></a><a class="headerlink" href="#adapting-the-model-a-class-anchor-id-s1-3-a" title="Permalink to this heading">#</a></h2>
+<p>We want to write our FOCs and law of motion equations in the form of equations 1 and 2.</p>
+<p>First note that the stochastic discount factor can be expressed as:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{S_{t+1}}{S_t} = \beta \left(\frac{V_{t+1}}{R_t}\right)^{1-\gamma} \left(\frac{V_{t+1}}{R_t}\right)^{\rho-1} \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
 \]</div>
-<p>Equations 4 and 5 are the law of motion equations (<span class="math notranslate nohighlight">\(\phi\)</span>), while equations 6, 7, and 8 are the forward-looking equations (<span class="math notranslate nohighlight">\(\psi_1\)</span> and <span class="math notranslate nohighlight">\(psi_2\)</span>).</p>
+<p>Hence, we can rewrite equations 7 and 8 as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbb{E}\left[ N_{t+1}^*Q_{t+1}^* \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}\frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - 1  &amp;= 0\\
+\mathbb{E}\left[N_{t+1}^*Q_{t+1}^* \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho} \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
++(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - \frac{MK_t}{MC_t}+{\mathbf a}&amp;= 0\\
+\end{aligned}
+\end{split}\]</div>
+<p>Finally, we can write express our five equations as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\psi_1 = 
+\begin{bmatrix}
+0\\ 
+\beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}\frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)}\\
+\beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho} \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
++(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)}\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\psi_2 = 
+\begin{bmatrix}
+\frac{C_t}{K_t} + \frac{I_t}{K_t} - {\mathbf a}\\
+1\\
+\frac{MK_t}{MC_t}-{\mathbf a}
+\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\phi=\begin{bmatrix} 
+&amp;\frac{K_{t+1}}{K_t} - \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\\
+&amp;Z_{t+1} - {\mathbb A} Z_t + \mathbb{B} W_{t+1}
+\end{bmatrix}\end{split}\]</div>
 <p>The model has one jump variable (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent jump variables):</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\log C_t - \log K_t\)</span> : Log consumption over capital</p></li>
@@ -540,10 +579,15 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="computation-a-class-anchor-id-s2-a">
 <h1>2 Computation <a class="anchor" id="s2"></a><a class="headerlink" href="#computation-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
-<section id="libraries">
-<h2>2.1 Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">#</a></h2>
+<section id="libraries-a-class-anchor-id-s2-3-a">
+<h2>2.1 Libraries <a class="anchor" id="s2-3"></a><a class="headerlink" href="#libraries-a-class-anchor-id-s2-3-a" title="Permalink to this heading">#</a></h2>
 <p>Begin by installing the following libraries and downloading <code class="docutils literal notranslate"><span class="pre">RiskUncertaintyValue</span></code>, which contains the functions required to solve the model:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -571,7 +615,12 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
+</details>
 </div>
+</section>
+<section id="equilibrium-condition-function-a-class-anchor-id-s2-2-a">
+<h2>2.2 Equilibrium Condition Function <a class="anchor" id="s2-2"></a><a class="headerlink" href="#equilibrium-condition-function-a-class-anchor-id-s2-2-a" title="Permalink to this heading">#</a></h2>
+<p>The first input for <code class="docutils literal notranslate"><span class="pre">uncertain_expansion</span></code> requires us to define the equilibrium conditions for the model. Therefore we define a function <code class="docutils literal notranslate"><span class="pre">eq</span></code> which takes in a list of jump and state variables as inputs, and outputs the equilibrium equations in the form of equations 1 and 2. The inputs required:</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Variable</p></th>
@@ -613,84 +662,18 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </tr>
 </tbody>
 </table>
-</section>
-<section id="equilibrium-condition-function-a-class-anchor-id-s1-1-a">
-<h2>1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a><a class="headerlink" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a" title="Permalink to this heading">#</a></h2>
-<p>The Equilibrium Condition Function takes the form of the next cell.</p>
-<p>Note that:</p>
-<ol class="arabic simple">
-<li><p>At the beginning of this function, we need to specify the parameters and variables used in the equilibrium conditions.</p>
-<ul class="simple">
-<li><p>The first components of <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> are fixed as <code class="docutils literal notranslate"><span class="pre">q_t</span></code> or <code class="docutils literal notranslate"><span class="pre">q_tp1</span></code>. (See Exploring Recursive Utility Appendix for details.)</p></li>
-<li><p>State variables need to follow jump variables.</p></li>
-<li><p>The number of jump variables (except <code class="docutils literal notranslate"><span class="pre">q_t</span></code> and <code class="docutils literal notranslate"><span class="pre">q_tp1</span></code>) should equal the number of forward-looking equilibrium conditions.</p></li>
-<li><p>The number of state variables should equal to the number of state evolution equations.</p></li>
-</ul>
-</li>
-<li><p>Then we specify each equilibrium condition using above specified parameter and variables.</p>
-<ul class="simple">
-<li><p>The algorithm requires us to rewrite the equilibrium conditions in the form as equation (1). We need to find what <code class="docutils literal notranslate"><span class="pre">psi1</span></code> is in our equilibrium conditions, specify what  <code class="docutils literal notranslate"><span class="pre">psi1</span></code> look like, and then return it using <code class="docutils literal notranslate"><span class="pre">psi1</span></code> mode.</p></li>
-<li><p>The log change of measure is skipped in the specification of equilibrium conditions.</p></li>
-</ul>
-</li>
-<li><p>By default (without <code class="docutils literal notranslate"><span class="pre">mode</span></code> specification), the function needs to return the LHS of each equilibrium condition before taking expectation.</p></li>
-</ol>
-<ul class="simple">
-<li><p>The state-evolution equations should follow the forward-looking conditions.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{equation}
-\tag{1}
-\begin{split}
-\mathbb{E}[{N_{t+1}^*Q_{t+1}^* \psi_1(X_t, J_t, X_{t+1}, J_{t+1})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &amp;= 0  \\
-\phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &amp;= 0 
-\end{split} 
-\end{equation}
-\end{split}\]</div>
-<ul class="simple">
-<li><p>In this simple example, we can rewrite the FOC and co-state equation as</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbb{E}\left[ N_{t+1}^*Q_{t+1}^* \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}\frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - 1  &amp;= 0\\
-\mathbb{E}\left[N_{t+1}^*Q_{t+1}^* \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho} \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
-+(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - \frac{MK_t}{MC_t}+{\mathbf a}&amp;= 0\\
-\end{aligned}
-\end{split}\]</div>
-<ul class="simple">
-<li><p>where <code class="docutils literal notranslate"><span class="pre">psi1</span></code> will be a three dimensional array</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\psi_1 = 
-\begin{bmatrix}
-0\\ 
-\beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}\frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)}\\
-\beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho} \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
-+(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)}\end{bmatrix}
-\end{split}\]</div>
-<ul class="simple">
-<li><p>the <code class="docutils literal notranslate"><span class="pre">psi2</span></code> will also be a three dimensional array</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\psi_2 = 
-\begin{bmatrix}
-\frac{C_t}{K_t} + \frac{I_t}{K_t} - {\mathbf a}\\
-1\\
-\frac{MK_t}{MC_t}-{\mathbf a}
-\end{bmatrix}
-\end{split}\]</div>
-<ul class="simple">
-<li><p>the <code class="docutils literal notranslate"><span class="pre">phi</span></code> will be a two dimensional array</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}\phi=\begin{bmatrix} 
-&amp;\frac{K_{t+1}}{K_t} - \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\\
-&amp;Z_{t+1} - {\mathbb A} Z_t + \mathbb{B} W_{t+1}
-\end{bmatrix}\end{split}\]</div>
+<p>While writing out <code class="docutils literal notranslate"><span class="pre">eq</span></code>, ensure that:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- The first components of `Var_t` and `Var_tp1` are fixed as `q_t` or `q_tp1`.
+
+- State variables follow jump variables.
+
+- The number of jump variables (except `q_t` and `q_tp1`) equals the number of forward-looking equilibrium conditions. 
+
+- The number of state variables equals to the number of state evolution equations.
+</pre></div>
+</div>
+<p>Note that the log change of measure is skipped in the specification of equilibrium conditions.</p>
+<p>For the example model, we write:</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -707,11 +690,11 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
     <span class="n">q_t</span><span class="p">,</span> <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">mkmc_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">gk_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
     <span class="n">q_tp1</span><span class="p">,</span> <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">mkmc_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
-    <span class="c1"># Intermedite varibles that facilitates computation</span>
+    <span class="c1"># Intermediate varibles that facilitate computation</span>
     <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="p">(</span><span class="n">cmk_tp1</span><span class="o">+</span><span class="n">gk_tp1</span><span class="o">-</span><span class="n">cmk_t</span><span class="p">)</span>
     <span class="n">g_dep</span> <span class="o">=</span> <span class="o">-</span><span class="n">α_k</span> <span class="o">+</span> <span class="n">Z_t</span> <span class="o">+</span> <span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@W_tp1</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span><span class="p">(</span><span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@σ_k</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
     
-    <span class="c1">## Forward-looking conditions</span>
+    <span class="c1">## Forward-looking conditions (taken from Section 1.3)</span>
     <span class="n">psi1_1</span> <span class="o">=</span> <span class="mf">0.</span>
     <span class="n">psi1_2</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">mkmc_tp1</span> <span class="o">+</span> <span class="n">gk_tp1</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">θ_2</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">)))</span>
     <span class="n">psi1_3</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">mkmc_tp1</span> <span class="o">+</span> <span class="n">gk_tp1</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="p">(</span><span class="n">θ_2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">))</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span> <span class="n">θ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">)))</span>
@@ -720,7 +703,7 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
     <span class="n">psi2_2</span> <span class="o">=</span> <span class="mf">1.</span>
     <span class="n">psi2_3</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mkmc_t</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span>
 
-    <span class="c1"># State evoluion processes</span>
+    <span class="c1"># State evolution processes (taken from Section 1.3)</span>
     <span class="n">phi_1</span> <span class="o">=</span> <span class="n">Z_tp1</span> <span class="o">-</span> <span class="n">A</span><span class="o">*</span><span class="n">Z_t</span> <span class="o">-</span> <span class="n">B</span><span class="nd">@W_tp1</span>
     <span class="n">phi_2</span> <span class="o">=</span> <span class="n">gk_tp1</span> <span class="o">-</span> <span class="n">θ_1</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">θ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">))</span> <span class="o">-</span> <span class="n">g_dep</span>
     
@@ -738,17 +721,23 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </details>
 </div>
 </section>
-<section id="model-steady-state-function-a-class-anchor-id-s1-2-a">
-<h2>1.2 Model Steady State Function <a class="anchor" id="s1-2"></a><a class="headerlink" href="#model-steady-state-function-a-class-anchor-id-s1-2-a" title="Permalink to this heading">#</a></h2>
-<p>This function takes model parameters as input and outputs the steady states for each variable following the variable order specified in <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code>.</p>
-<ul class="simple">
-<li><p>The first one will always be 0, since the steady state of <code class="docutils literal notranslate"><span class="pre">q_t</span></code> is 0.</p></li>
-</ul>
-<div class="cell docutils container">
+<section id="steady-state-function-a-class-anchor-id-s2-3-a">
+<h2>2.3 Steady State Function <a class="anchor" id="s2-3"></a><a class="headerlink" href="#steady-state-function-a-class-anchor-id-s2-3-a" title="Permalink to this heading">#</a></h2>
+<p>This function takes model parameters as input and outputs the steady states for each variable following the variable order specified in <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code>. To find the steady state, we remove the time subscripts from each variable and solve the system of equations.</p>
+<p>Note that the first entry of the output array will always be 0, since the steady state of <code class="docutils literal notranslate"><span class="pre">q_t</span></code> is 0.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ss_ac</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 
     <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">θ_1</span><span class="p">,</span> <span class="n">θ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">σ_k</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">args</span>
+
+
+    <span class="c1">#Simplify system of equations (write each variable in terms of imk)</span>
 
     <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">imk</span><span class="p">):</span>
         <span class="n">g_k</span> <span class="o">=</span> <span class="n">θ_1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span> <span class="n">θ_2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">-</span> <span class="n">α_k</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span><span class="p">(</span><span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@σ_k</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
@@ -757,7 +746,10 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
         <span class="n">mkmc</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span>  <span class="o">+</span> <span class="n">g_k</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">θ_2</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">)))</span> <span class="p">)</span>
         <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">mkmc</span> <span class="o">+</span> <span class="n">g_k</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="p">(</span><span class="n">θ_2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span> <span class="n">θ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">)))</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mkmc</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span>
 
+    <span class="c1">#Find steady state value of imk by finding root of f(imk)</span>
     <span class="n">imk</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+    <span class="c1">#Find steady state values of other variables by plugging in steady state value of imk</span>
     <span class="n">cmk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span>
     <span class="n">g_k</span> <span class="o">=</span> <span class="n">θ_1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">θ_2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">-</span> <span class="n">α_k</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span><span class="p">(</span><span class="n">σ_k</span><span class="o">.</span><span class="n">T</span><span class="nd">@σ_k</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
     <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="n">g_k</span>
@@ -768,11 +760,13 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </pre></div>
 </div>
 </div>
+</details>
 </div>
+<br>
 </section>
-<section id="model-variable-dimension-array-a-class-anchor-id-s1-3-a">
-<h2>1.3 Model Variable Dimension Array <a class="anchor" id="s1-3"></a><a class="headerlink" href="#model-variable-dimension-array-a-class-anchor-id-s1-3-a" title="Permalink to this heading">#</a></h2>
-<p>Specify a simple numpy array for <code class="docutils literal notranslate"><span class="pre">(n_J,</span> <span class="pre">n_X,</span> <span class="pre">n_W)</span></code>. The dimensions for jump variables, state variables, and shock variables in the model.</p>
+<section id="specifying-number-of-variables-a-class-anchor-id-s2-4-a">
+<h2>2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a><a class="headerlink" href="#specifying-number-of-variables-a-class-anchor-id-s2-4-a" title="Permalink to this heading">#</a></h2>
+<p>We need to specify the number of jump variables, state and shock variables as an array <code class="docutils literal notranslate"><span class="pre">(n_J,</span> <span class="pre">n_X,</span> <span class="pre">n_W)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -780,10 +774,11 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </div>
 </div>
 </div>
+<br>
 </section>
-<section id="model-parameter-calibration-tuple-a-class-anchor-id-s1-4-a">
-<h2>1.4 Model Parameter Calibration Tuple <a class="anchor" id="s1-4"></a><a class="headerlink" href="#model-parameter-calibration-tuple-a-class-anchor-id-s1-4-a" title="Permalink to this heading">#</a></h2>
-<p>Specify all the model parameters using a Python tuple. The first three are fixed recursive utility parameters, γ, β, ρ.</p>
+<section id="model-parameters-a-class-anchor-id-s2-5-a">
+<h2>2.5 Model Parameters <a class="anchor" id="s2-5"></a><a class="headerlink" href="#model-parameters-a-class-anchor-id-s2-5-a" title="Permalink to this heading">#</a></h2>
+<p>Next, we need to specify all the model parameters using a Python tuple. Here, we use the specification described in <insert reference here></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">γ</span> <span class="o">=</span> <span class="mf">10.</span>
@@ -802,9 +797,11 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </div>
 </div>
 </div>
+<br>
 </section>
-<section id="log-consumption-growth-function-a-class-anchor-id-s1-5-a">
-<h2>1.5 Log Consumption Growth Function <a class="anchor" id="s1-5"></a><a class="headerlink" href="#log-consumption-growth-function-a-class-anchor-id-s1-5-a" title="Permalink to this heading">#</a></h2>
+<section id="model-parameters-a-class-anchor-id-s2-6-a">
+<h2>2.5 Model Parameters <a class="anchor" id="s2-6"></a><a class="headerlink" href="#model-parameters-a-class-anchor-id-s2-6-a" title="Permalink to this heading">#</a></h2>
+<p>Next, we need to specify all the model parameters using a Python tuple. Here, we use the specification described in <insert reference here></p>
 <p>The expansion suite deals with the recursive utility in equation (2). We need to specify how to compute the log-growth of consumption using the defined variables <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> in the equilibrium conditions.</p>
 <ul class="simple">
 <li><p>For some models with habits, <span class="math notranslate nohighlight">\(C_t\)</span> is replaced with <span class="math notranslate nohighlight">\(U_t\)</span>, then we need to specify the log growth process for <span class="math notranslate nohighlight">\(U_t\)</span> correspondingly.</p></li>
@@ -1265,15 +1262,16 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ak-model-with-recursive-utility">1 AK Model with Recursive Utility</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup-a-class-anchor-id-s1-1-a">1.1 Model Setup <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-conditions-a-class-anchor-id-s1-2-a">1.2 First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-the-model-a-class-anchor-id-s1-3-a">1.3 Adapting the Model <a class="anchor" id="s1-3"></a></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-a-class-anchor-id-s2-a">2 Computation <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">2.1 Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-steady-state-function-a-class-anchor-id-s1-2-a">1.2 Model Steady State Function <a class="anchor" id="s1-2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-variable-dimension-array-a-class-anchor-id-s1-3-a">1.3 Model Variable Dimension Array <a class="anchor" id="s1-3"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameter-calibration-tuple-a-class-anchor-id-s1-4-a">1.4 Model Parameter Calibration Tuple <a class="anchor" id="s1-4"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-consumption-growth-function-a-class-anchor-id-s1-5-a">1.5 Log Consumption Growth Function <a class="anchor" id="s1-5"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-a-class-anchor-id-s2-3-a">2.1 Libraries <a class="anchor" id="s2-3"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s2-2-a">2.2 Equilibrium Condition Function <a class="anchor" id="s2-2"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-function-a-class-anchor-id-s2-3-a">2.3 Steady State Function <a class="anchor" id="s2-3"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-number-of-variables-a-class-anchor-id-s2-4-a">2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-5-a">2.5 Model Parameters <a class="anchor" id="s2-5"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-6-a">2.5 Model Parameters <a class="anchor" id="s2-6"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-the-one-capital-adjustment-model-using-the-expansion-suite-a-class-anchor-id-s1-6-a">1.6 Solve the One-Capital Adjustment Model using the Expansion Suite <a class="anchor" id="s1-6"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-solutions-a-class-anchor-id-s1-7-a">1.7 Model Solutions <a class="anchor" id="s1-7"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-variables-a-class-anchor-id-s1-8-a">1.8 Approximate Variables <a class="anchor" id="s1-8"></a></a></li>
