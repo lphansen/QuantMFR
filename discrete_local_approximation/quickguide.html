@@ -339,14 +339,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Method: Computation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-two-capital-model">1 Example of Two Capital Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ak-model-with-recursive-utility">1 AK Model with Recursive Utility</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup-a-class-anchor-id-s1-1-a">1.1 Model Setup <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-conditions-a-class-anchor-id-s1-2-a">1.2 First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a">1. Five-minute guide to solving the DSGE model using the Expansion Suite <a class="anchor" id="s1"></a></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-a-class-anchor-id-s2-a">2 Computation <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">2.1 Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-steady-state-function-a-class-anchor-id-s1-2-a">1.2 Model Steady State Function <a class="anchor" id="s1-2"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-variable-dimension-array-a-class-anchor-id-s1-3-a">1.3 Model Variable Dimension Array <a class="anchor" id="s1-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameter-calibration-tuple-a-class-anchor-id-s1-4-a">1.4 Model Parameter Calibration Tuple <a class="anchor" id="s1-4"></a></a></li>
@@ -478,27 +478,27 @@ document.write(`
 <p>The output is of class <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code>, which stores the coefficients for the linear-quadratic approximation for the jump and state variables; continuation values; consumption growth; and log change of measure, as well as the steady-state values of each variables.</p>
 <p>We will now walk through the computation using a simple example.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="example-of-two-capital-model">
-<h1>1 Example of Two Capital Model<a class="headerlink" href="#example-of-two-capital-model" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="ak-model-with-recursive-utility">
+<h1>1 AK Model with Recursive Utility<a class="headerlink" href="#ak-model-with-recursive-utility" title="Permalink to this heading">#</a></h1>
 <section id="model-setup-a-class-anchor-id-s1-1-a">
 <h2>1.1 Model Setup <a class="anchor" id="s1-1"></a><a class="headerlink" href="#model-setup-a-class-anchor-id-s1-1-a" title="Permalink to this heading">#</a></h2>
 <p>Consider the following recursive utility maximization problem with AK technology:</p>
 <div class="math notranslate nohighlight">
 \[
-\max_{C_t, I_t} V_t = \left[ (1 - \beta) \left(C_t\right)^{1-\rho}  + \beta  \left( R_t \right)^{1-\rho} \right]^{\frac 1 {1-\rho}}\tag{1}
+\max_{C_t, I_t} V_t = \left[ (1 - \beta) \left(C_t\right)^{1-\rho}  + \beta  \left( R_t \right)^{1-\rho} \right]^{\frac 1 {1-\rho}}\tag{3}
 \]</div>
 <p>such that</p>
 <div class="math notranslate nohighlight">
 \[
-{C_t} + {I_t}  = {\mathbf a}K_t\tag{3}
+K_{t+1}  = K_t \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\tag{4}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-K_{t+1}  = K_t \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\tag{3}
+Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{4}
+{C_t} + {I_t}  = {\mathbf a}K_t\tag{6}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta_1\)</span> and <span class="math notranslate nohighlight">\(\theta_2\)</span> are adjustment cost parameters which determine the efficiency of converting investment to capital, and <span class="math notranslate nohighlight">\(\alpha_k\)</span> is depreciation.
 <span class="math notranslate nohighlight">\(Z_t\)</span> governs the (scalar) conditional mean of (stochastic) technology growth while <span class="math notranslate nohighlight">\(\sigma_k\)</span> governs the stochastic volatility of technology growth.
@@ -507,6 +507,71 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{4}
 </section>
 <section id="first-order-conditions-a-class-anchor-id-s1-2-a">
 <h2>1.2 First-Order Conditions <a class="anchor" id="s1-2"></a><a class="headerlink" href="#first-order-conditions-a-class-anchor-id-s1-2-a" title="Permalink to this heading">#</a></h2>
+<p>We present the first-order conditions for the above model. You can access a step-by-step derivation <a class="reference download internal" download="" href="../_downloads/f8f0b84b204f0cefbd07716b828b250f/AKderive.pdf"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<p>For investment:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}  \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right) \mid \mathfrak{A}_t\right] - 1  = 0,\tag{7}
+\]</div>
+<p>For capital:</p>
+<div class="math notranslate nohighlight">
+\[
+ \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1}  \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right] - \frac {MK_t}{MC_t} + {\mathbf a}  = 0,
+\tag{8}
+\]</div>
+<p>Note that the stochastic discount factor can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{S_{t+1}}{S_t} = \beta \left(\frac{V_{t+1}}{R_t}\right)^{1-\gamma} \left(\frac{V_{t+1}}{R_t}\right)^{\rho-1} \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
+\]</div>
+<p>Equations 4 and 5 are the law of motion equations (<span class="math notranslate nohighlight">\(\phi\)</span>), while equations 6, 7, and 8 are the forward-looking equations (<span class="math notranslate nohighlight">\(\psi_1\)</span> and <span class="math notranslate nohighlight">\(psi_2\)</span>).</p>
+<p>The model has one jump variable (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent jump variables):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\log C_t - \log K_t\)</span> : Log consumption over capital</p></li>
+<li><p><span class="math notranslate nohighlight">\(\log I_t - \log K_t\)</span> : Log investment over capital</p></li>
+<li><p><span class="math notranslate nohighlight">\(\log MK_t - \log MC_t\)</span> : Log co-state variable</p></li>
+</ul>
+<p>and two state variables (In the expansion suite, <span class="math notranslate nohighlight">\(X_t\)</span> is used to represent state variables):</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\log K_{t} - \log K_{t-1}\)</span> : Log capital growth process</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z_{t}\)</span> : Exogenous technology</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="computation-a-class-anchor-id-s2-a">
+<h1>2 Computation <a class="anchor" id="s2"></a><a class="headerlink" href="#computation-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
+<section id="libraries">
+<h2>2.1 Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">#</a></h2>
+<p>Begin by installing the following libraries and downloading <code class="docutils literal notranslate"><span class="pre">RiskUncertaintyValue</span></code>, which contains the functions required to solve the model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/lphansen/RiskUncertaintyValue<span class="w"> </span>
+<span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/RiskUncertaintyValue&#39;</span>             
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">workdir</span><span class="o">+</span><span class="s1">&#39;/src&#39;</span><span class="p">)</span>                        
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">anp</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">BY_example_sol</span> <span class="kn">import</span> <span class="n">disp</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.container { width:97% !important; }&lt;/style&gt;&quot;</span><span class="p">))</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">lin_quad</span> <span class="kn">import</span> <span class="n">LinQuadVar</span>
+<span class="kn">from</span> <span class="nn">lin_quad_util</span> <span class="kn">import</span> <span class="n">E</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="n">next_period</span><span class="p">,</span> <span class="n">cal_E_ww</span><span class="p">,</span> <span class="n">lq_sum</span><span class="p">,</span> <span class="n">N_tilde_measure</span><span class="p">,</span> <span class="n">E_N_tp1</span>
+<span class="kn">from</span> <span class="nn">uncertain_expansion</span> <span class="kn">import</span> <span class="n">uncertain_expansion</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
+</div>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Variable</p></th>
@@ -551,83 +616,6 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{4}
 </section>
 <section id="equilibrium-condition-function-a-class-anchor-id-s1-1-a">
 <h2>1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a><a class="headerlink" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/lphansen/RiskUncertaintyValue<span class="w"> </span>
-<span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/RiskUncertaintyValue&#39;</span>             
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">workdir</span><span class="o">+</span><span class="s1">&#39;/src&#39;</span><span class="p">)</span>                        
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">anp</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">BY_example_sol</span> <span class="kn">import</span> <span class="n">disp</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.container { width:97% !important; }&lt;/style&gt;&quot;</span><span class="p">))</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">lin_quad</span> <span class="kn">import</span> <span class="n">LinQuadVar</span>
-<span class="kn">from</span> <span class="nn">lin_quad_util</span> <span class="kn">import</span> <span class="n">E</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="n">next_period</span><span class="p">,</span> <span class="n">cal_E_ww</span><span class="p">,</span> <span class="n">lq_sum</span><span class="p">,</span> <span class="n">N_tilde_measure</span><span class="p">,</span> <span class="n">E_N_tp1</span>
-<span class="kn">from</span> <span class="nn">uncertain_expansion</span> <span class="kn">import</span> <span class="n">uncertain_expansion</span>
-<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
-</div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a">
-<h1>1. Five-minute guide to solving the DSGE model using the Expansion Suite <a class="anchor" id="s1"></a><a class="headerlink" href="#five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a" title="Permalink to this heading">#</a></h1>
-<p>Suppose we would like to solve an adjustment cost model. Its equilibrium conditions include</p>
-<ul class="simple">
-<li><p>Three forward-looking conditions</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\frac{C_t}{K_t} + \frac{I_t}{K_t}  &amp;= {\mathbf a}\\
-\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - 1  &amp;= 0\\
-\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
-+(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - \frac{MK_t}{MC_t}+{\mathbf a}&amp;= 0
-\end{aligned}
-\end{split}\]</div>
-<ul class="simple">
-<li><p>Two state-evolution equations</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\frac{K_{t+1}}{K_t} &amp;=  \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\\
-Z_{t+1} &amp;= {\mathbb A} Z_t + \mathbb{B} W_{t+1}
-\end{aligned}
-\end{split}\]</div>
-<p>where we have</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{aligned}
-\frac{S_{t+1}}{S_t}&amp; = \beta \left(\frac{V_{t+1}}{R_t}\right)^{1-\gamma} \left(\frac{V_{t+1}}{R_t}\right)^{\rho-1} \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
-\end{aligned}
-\]</div>
-<p>The model has one jump variable (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent jump variables):</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\log C_t - \log K_t\)</span> : Log consumption over capital</p></li>
-<li><p><span class="math notranslate nohighlight">\(\log I_t - \log K_t\)</span> : Log investment over capital</p></li>
-<li><p><span class="math notranslate nohighlight">\(\log MK_t - \log MC_t\)</span> : Log co-state variable</p></li>
-</ul>
-<p>Two state variables (In the expansion suite, <span class="math notranslate nohighlight">\(X_t\)</span> is used to represent state variables):</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\log K_{t} - \log K_{t-1}\)</span> : Log capital growth process</p></li>
-<li><p><span class="math notranslate nohighlight">\(Z_{t}\)</span> : Exogenous state</p></li>
-</ul>
-<p>The Expansion Suite only takes <strong>five</strong> necessary inputs to solve the DSGE model.</p>
-<section id="id1">
-<h2>1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>The Equilibrium Condition Function takes the form of the next cell.</p>
 <p>Note that:</p>
 <ol class="arabic simple">
@@ -1274,14 +1262,14 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Method: Computation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-two-capital-model">1 Example of Two Capital Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ak-model-with-recursive-utility">1 AK Model with Recursive Utility</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup-a-class-anchor-id-s1-1-a">1.1 Model Setup <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-conditions-a-class-anchor-id-s1-2-a">1.2 First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#five-minute-guide-to-solving-the-dsge-model-using-the-expansion-suite-a-class-anchor-id-s1-a">1. Five-minute guide to solving the DSGE model using the Expansion Suite <a class="anchor" id="s1"></a></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-a-class-anchor-id-s2-a">2 Computation <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">2.1 Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s1-1-a">1.1 Equilibrium Condition Function <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-steady-state-function-a-class-anchor-id-s1-2-a">1.2 Model Steady State Function <a class="anchor" id="s1-2"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-variable-dimension-array-a-class-anchor-id-s1-3-a">1.3 Model Variable Dimension Array <a class="anchor" id="s1-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameter-calibration-tuple-a-class-anchor-id-s1-4-a">1.4 Model Parameter Calibration Tuple <a class="anchor" id="s1-4"></a></a></li>
