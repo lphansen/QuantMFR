@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'discrete_local_approximation/quickguide';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Discrete Shock Elasticity" href="Recursive.html" />
-    <link rel="prev" title="Shock Elasticity Computation" href="../theory/shockelasticity.html" />
+    <link rel="next" title="Sluggish Two Capital Model" href="../continuous_global_solution/Twocap.html" />
+    <link rel="prev" title="Uncertain Expansion Methods" href="../theory/uncertainexpansion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,20 +162,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../theory/shockelasticity.html">Shock Elasticity Computation</a></li>
-
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Uncertain Expansion Method: Computation</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="Recursive.html">Discrete Shock Elasticity</a></li>
-
 
 
 
@@ -184,11 +174,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Continuous Global Solution</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/Twocap.html">Sluggish Two Capital Model</a></li>
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Shock Elasticity Continuous</a></li>
-
 
 
 
@@ -345,15 +330,18 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-the-model-a-class-anchor-id-s1-3-a">1.3 Adapting the Model <a class="anchor" id="s1-3"></a></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-a-class-anchor-id-s2-a">2 Computation <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-a-class-anchor-id-s2-a">2 Inputs <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-a-class-anchor-id-s2-3-a">2.1 Libraries <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s2-2-a">2.2 Equilibrium Condition Function <a class="anchor" id="s2-2"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-function-a-class-anchor-id-s2-3-a">2.3 Steady State Function <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-number-of-variables-a-class-anchor-id-s2-4-a">2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-5-a">2.5 Model Parameters <a class="anchor" id="s2-5"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-6-a">2.5 Model Parameters <a class="anchor" id="s2-6"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-the-one-capital-adjustment-model-using-the-expansion-suite-a-class-anchor-id-s1-6-a">1.6 Solve the One-Capital Adjustment Model using the Expansion Suite <a class="anchor" id="s1-6"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-solutions-a-class-anchor-id-s1-7-a">1.7 Model Solutions <a class="anchor" id="s1-7"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-growth-consumption-a-class-anchor-id-s2-6-a">2.6 Log Growth Consumption <a class="anchor" id="s2-6"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-growth-consumption-a-class-anchor-id-s2-7-a">2.7 Log Growth Consumption <a class="anchor" id="s2-7"></a></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-solution">3 Model Solution</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-growth-consumption-a-class-anchor-id-s3-1-a">3.1 Log Growth Consumption <a class="anchor" id="s3-1">&gt;</a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-variables-a-class-anchor-id-s1-8-a">1.8 Approximate Variables <a class="anchor" id="s1-8"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-simulations-a-class-anchor-id-s1-9-a">1.9 Model Simulations <a class="anchor" id="s1-9"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities-and-irf-a-class-anchor-id-s1-10-a">1.10 Shock Elasticities and IRF <a class="anchor" id="s1-10"></a></a></li>
@@ -577,8 +565,8 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="computation-a-class-anchor-id-s2-a">
-<h1>2 Computation <a class="anchor" id="s2"></a><a class="headerlink" href="#computation-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="inputs-a-class-anchor-id-s2-a">
+<h1>2 Inputs <a class="anchor" id="s2"></a><a class="headerlink" href="#inputs-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
 <section id="libraries-a-class-anchor-id-s2-3-a">
 <h2>2.1 Libraries <a class="anchor" id="s2-3"></a><a class="headerlink" href="#libraries-a-class-anchor-id-s2-3-a" title="Permalink to this heading">#</a></h2>
 <p>Begin by installing the following libraries and downloading <code class="docutils literal notranslate"><span class="pre">RiskUncertaintyValue</span></code>, which contains the functions required to solve the model:</p>
@@ -767,19 +755,30 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 <section id="specifying-number-of-variables-a-class-anchor-id-s2-4-a">
 <h2>2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a><a class="headerlink" href="#specifying-number-of-variables-a-class-anchor-id-s2-4-a" title="Permalink to this heading">#</a></h2>
 <p>We need to specify the number of jump variables, state and shock variables as an array <code class="docutils literal notranslate"><span class="pre">(n_J,</span> <span class="pre">n_X,</span> <span class="pre">n_W)</span></code>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <br>
 </section>
 <section id="model-parameters-a-class-anchor-id-s2-5-a">
 <h2>2.5 Model Parameters <a class="anchor" id="s2-5"></a><a class="headerlink" href="#model-parameters-a-class-anchor-id-s2-5-a" title="Permalink to this heading">#</a></h2>
 <p>Next, we need to specify all the model parameters using a Python tuple. Here, we use the specification described in <insert reference here></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">γ</span> <span class="o">=</span> <span class="mf">10.</span>
 <span class="n">ρ</span> <span class="o">=</span> <span class="mf">4.</span><span class="o">/</span><span class="mi">3</span>
@@ -796,20 +795,21 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <br>
 </section>
-<section id="model-parameters-a-class-anchor-id-s2-6-a">
-<h2>2.5 Model Parameters <a class="anchor" id="s2-6"></a><a class="headerlink" href="#model-parameters-a-class-anchor-id-s2-6-a" title="Permalink to this heading">#</a></h2>
-<p>Next, we need to specify all the model parameters using a Python tuple. Here, we use the specification described in <insert reference here></p>
-<p>The expansion suite deals with the recursive utility in equation (2). We need to specify how to compute the log-growth of consumption using the defined variables <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> in the equilibrium conditions.</p>
+<section id="log-growth-consumption-a-class-anchor-id-s2-6-a">
+<h2>2.6 Log Growth Consumption <a class="anchor" id="s2-6"></a><a class="headerlink" href="#log-growth-consumption-a-class-anchor-id-s2-6-a" title="Permalink to this heading">#</a></h2>
+<p>Finally, we need to specify how to compute the log-growth of consumption <span class="math notranslate nohighlight">\(\log{C_{t+1}/C_t}\)</span> using the defined variables <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> in the equilibrium conditions.</p>
 <ul class="simple">
-<li><p>For some models with habits, <span class="math notranslate nohighlight">\(C_t\)</span> is replaced with <span class="math notranslate nohighlight">\(U_t\)</span>, then we need to specify the log growth process for <span class="math notranslate nohighlight">\(U_t\)</span> correspondingly.</p></li>
-<li><p>For some models with preference shocks, <span class="math notranslate nohighlight">\(C_t = \lambda_t \tilde{C}_t\)</span>, we need to specify the log growth process for <span class="math notranslate nohighlight">\(\lambda_t \tilde{C}_t\)</span>.</p></li>
+<li><p>In habit formation models, <span class="math notranslate nohighlight">\(C_t\)</span> is replaced with <span class="math notranslate nohighlight">\(U_t\)</span>, in which case we would specify the log growth process for <span class="math notranslate nohighlight">\(U_t\)</span> correspondingly.</p></li>
+<li><p>For some models with preference shocks, <span class="math notranslate nohighlight">\(C_t = \lambda_t \tilde{C}_t\)</span>, we would need to specify the log growth process for <span class="math notranslate nohighlight">\(\lambda_t \tilde{C}_t\)</span>.</p></li>
 </ul>
+<p>In this example, we simply use the decomposition:</p>
 <div class="math notranslate nohighlight">
 \[
-V_t=\left[(1-\beta)\left(C_t\right)^{1-\rho}+\beta\left(R_t\right)^{1-\rho}\right]^{\frac{1}{1-\rho}}\tag{2}
+\log{C_{t+1}/C_t} = \log{C_{t+1}/K_t+1} + \log{K_{t+1}/K_t} - \log{C_t/K_t}
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -830,12 +830,18 @@ V_t=\left[(1-\beta)\left(C_t\right)^{1-\rho}+\beta\left(R_t\right)^{1-\rho}\righ
 </div>
 </div>
 </div>
+<br>
 </section>
-<section id="solve-the-one-capital-adjustment-model-using-the-expansion-suite-a-class-anchor-id-s1-6-a">
-<h2>1.6 Solve the One-Capital Adjustment Model using the Expansion Suite <a class="anchor" id="s1-6"></a><a class="headerlink" href="#solve-the-one-capital-adjustment-model-using-the-expansion-suite-a-class-anchor-id-s1-6-a" title="Permalink to this heading">#</a></h2>
-<p>The expansion suite takes the above five necessary inputs to solve a model. The solution is stored in a class named <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code>(Please refer to uncertainexpansion.ipynb for details.) under the Linear Quadratic Framework. The computation of the framework is built on a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> class.</p>
-<p>See <a class="reference external" href="https://github.com/lphansen/RiskUncertaintyValue/blob/main/src/uncertain_expansion.py">src/uncertain_expansion.py</a> for source code of expansion suite.</p>
-<div class="cell docutils container">
+<section id="log-growth-consumption-a-class-anchor-id-s2-7-a">
+<h2>2.7 Log Growth Consumption <a class="anchor" id="s2-7"></a><a class="headerlink" href="#log-growth-consumption-a-class-anchor-id-s2-7-a" title="Permalink to this heading">#</a></h2>
+<p>Now we are able to use steps 2.1 to 2.5 as inputs to the <code class="docutils literal notranslate"><span class="pre">uncertain_expansion</span></code> function. The solution is stored in a class named <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code>(Please refer to uncertainexpansion.ipynb for details.) under the Linear Quadratic Framework.</p>
+<p>See <a class="reference external" href="https://github.com/lphansen/RiskUncertaintyValue/blob/main/src/uncertain_expansion.py">src/uncertain_expansion.py</a> for the source code of the expansion suite.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve the One-Capital Adjustment Model</span>
 <span class="n">eq</span> <span class="o">=</span> <span class="n">eq_ac</span>
@@ -854,10 +860,14 @@ Iteration 2: error = 4.97379915e-14
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
-<section id="model-solutions-a-class-anchor-id-s1-7-a">
-<h2>1.7 Model Solutions <a class="anchor" id="s1-7"></a><a class="headerlink" href="#model-solutions-a-class-anchor-id-s1-7-a" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="model-solution">
+<h1>3 Model Solution<a class="headerlink" href="#model-solution" title="Permalink to this heading">#</a></h1>
+<section id="log-growth-consumption-a-class-anchor-id-s3-1-a">
+<h2>3.1 Log Growth Consumption <a class="anchor" id="s3-1">&gt;</a><a class="headerlink" href="#log-growth-consumption-a-class-anchor-id-s3-1-a" title="Permalink to this heading">#</a></h2>
 <p>Below cells display analytical forms of the approximation results for jump variables and state variables. These variables are all stored as <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1223,20 +1233,20 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../theory/shockelasticity.html"
+       href="../theory/uncertainexpansion.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Shock Elasticity Computation</p>
+        <p class="prev-next-title">Uncertain Expansion Methods</p>
       </div>
     </a>
     <a class="right-next"
-       href="Recursive.html"
+       href="../continuous_global_solution/Twocap.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Discrete Shock Elasticity</p>
+        <p class="prev-next-title">Sluggish Two Capital Model</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1265,15 +1275,18 @@ See <a class="reference external" href="https://github.com/lphansen/RiskUncertai
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-the-model-a-class-anchor-id-s1-3-a">1.3 Adapting the Model <a class="anchor" id="s1-3"></a></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-a-class-anchor-id-s2-a">2 Computation <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-a-class-anchor-id-s2-a">2 Inputs <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-a-class-anchor-id-s2-3-a">2.1 Libraries <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium-condition-function-a-class-anchor-id-s2-2-a">2.2 Equilibrium Condition Function <a class="anchor" id="s2-2"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-function-a-class-anchor-id-s2-3-a">2.3 Steady State Function <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-number-of-variables-a-class-anchor-id-s2-4-a">2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-5-a">2.5 Model Parameters <a class="anchor" id="s2-5"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-6-a">2.5 Model Parameters <a class="anchor" id="s2-6"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-the-one-capital-adjustment-model-using-the-expansion-suite-a-class-anchor-id-s1-6-a">1.6 Solve the One-Capital Adjustment Model using the Expansion Suite <a class="anchor" id="s1-6"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-solutions-a-class-anchor-id-s1-7-a">1.7 Model Solutions <a class="anchor" id="s1-7"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-growth-consumption-a-class-anchor-id-s2-6-a">2.6 Log Growth Consumption <a class="anchor" id="s2-6"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-growth-consumption-a-class-anchor-id-s2-7-a">2.7 Log Growth Consumption <a class="anchor" id="s2-7"></a></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-solution">3 Model Solution</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-growth-consumption-a-class-anchor-id-s3-1-a">3.1 Log Growth Consumption <a class="anchor" id="s3-1">&gt;</a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-variables-a-class-anchor-id-s1-8-a">1.8 Approximate Variables <a class="anchor" id="s1-8"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-simulations-a-class-anchor-id-s1-9-a">1.9 Model Simulations <a class="anchor" id="s1-9"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities-and-irf-a-class-anchor-id-s1-10-a">1.10 Shock Elasticities and IRF <a class="anchor" id="s1-10"></a></a></li>
