@@ -1,0 +1,1284 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>MFRSuite &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'continuous_global_solution/MFRSuite';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Sluggish Two Capital Model" href="Twocap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theoretical Framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/theory.html">Recursive Utility Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion.html">Uncertain Expansion Methods</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../discrete_local_approximation/quickguide.html">Uncertain Expansion Method: Computation</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Continuous Global Solution</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Twocap.html">Sluggish Two Capital Model</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">MFRSuite</a></li>
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/continuous_global_solution/MFRSuite.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MFRSuite</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MFRSuite</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#production">Production</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-market">Financial Market</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#households">Households</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#market-clearing">Market Clearing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb">HJB</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">Computing Equilibrium</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">Wealth Share Evolution</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">Capital Price Evolution</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-rate-and-risk-price">Interest Rate and Risk Price</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-wedge">Risk Wedge</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">Policy Function</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><a href="https://colab.research.google.com/github/lphansen/MFRSuite/blob/main/MFRSuite.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="mfrsuite">
+<h1>MFRSuite<a class="headerlink" href="#mfrsuite" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/lphansen/MFRSuite
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>/content/MFRSuite/mfrSuite<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>bash<span class="w"> </span>install.sh
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mfr.modelSoln</span> <span class="k">as</span> <span class="nn">m</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="production">
+<h1>Production<a class="headerlink" href="#production" title="Permalink to this heading">#</a></h1>
+<p>Capital Evolution
+$<span class="math notranslate nohighlight">\(
+d k_{j, t}=k_{j, t}\left[\left(g_t+\iota_{j, t}-\delta\right) d t+\sqrt{s_t} \sigma \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}\right]
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(g_t\)</span> is exogenous productivity growth, <span class="math notranslate nohighlight">\(\iota_{j . t}\)</span> denotes the investment rate, <span class="math notranslate nohighlight">\(\delta\)</span> is depreciation</p></li>
+</ul>
+<p>Exogenous States
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+d g_t &amp; =\lambda_g\left(\bar{g}-g_t\right) d t+\sqrt{s_t} \sigma_g \cdot d Z_t \\
+d s_t &amp; =\lambda_s\left(\bar{s}-s_t\right) d t+\sqrt{s_t} \sigma_s \cdot d Z_t \\
+d \varsigma_t &amp; =\lambda_{\varsigma}\left(\bar{\varsigma}-\varsigma_t\right) d t+\sqrt{\varsigma_t} \sigma_{\varsigma} \cdot d Z_t
+\end{aligned}
+\)</span>$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="financial-market">
+<h1>Financial Market<a class="headerlink" href="#financial-market" title="Permalink to this heading">#</a></h1>
+<p>Capital Price
+$<span class="math notranslate nohighlight">\(
+d q_t=q_t\left[\mu_{q, t} d t+\sigma_{q, t} \cdot d Z_t\right]
+\)</span>$</p>
+<p>SDF
+$<span class="math notranslate nohighlight">\(
+d S_t=-S_t\left[r_t d t+\pi_t \cdot d Z_t\right]
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r\)</span> is the short-term interest rate, and <span class="math notranslate nohighlight">\(\pi\)</span> denotes the <span class="math notranslate nohighlight">\(d \times 1\)</span> vector of risk prices associated with <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
+</ul>
+<p>Return on Capital
+$<span class="math notranslate nohighlight">\(
+d R_{j, t}^k:=\frac{a_j k_{j, t}-\Phi\left(\iota_{j, t}\right) k_{j, t}}{q_t k_{j, t}} d t+\frac{d\left(q_t k_{j, t}\right)}{q_t k_{j, t}}
+\)</span>$</p>
+<ul class="simple">
+<li><p>dividend yields <span class="math notranslate nohighlight">\(\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}\)</span></p></li>
+<li><p>capital gain <span class="math notranslate nohighlight">\(\frac{d\left(q_t k_{j, t}\right)}{q_t k_{j, t}}\)</span></p>
+<ul>
+<li><p>Adjustment costs <span class="math notranslate nohighlight">\(\Phi(x)=\phi^{-1}[\exp (\phi x)-1]\)</span></p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+d R_{j, t}^k=\underbrace{\left[\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}+\iota_{j, t}-\delta+g_t+\mu_{q, t}+\sigma_{K, t} \cdot \sigma_{q, t}\right]}_{:=\mu_{R, j, t}} d t+\underbrace{\left[\sigma_{K, t}+\sigma_{q, t}\right]}_{:=\sigma_{R, t}} \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}
+\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="households">
+<h1>Households<a class="headerlink" href="#households" title="Permalink to this heading">#</a></h1>
+<p>Preference
+$<span class="math notranslate nohighlight">\(
+U_{j, t}=\mathbb{E}\left[\int_0^{\infty} \varphi_j\left(c_{j, t+s}, U_{j, t+s}\right) d s \mid \mathcal{F}_t\right]
+\)</span>$</p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\varphi_j(c, U):=\rho_j \frac{1-\gamma_j}{1-\psi_j} U\left(c^{1-\psi_j}\left[\left(1-\gamma_j\right) U\right]^{-\frac{1-\psi_j}{1-\gamma_j}}-1\right)\)</span></p></li>
+</ul>
+<p>Dynamic Budget Constraints
+$<span class="math notranslate nohighlight">\(
+\frac{d n_{j, t}}{n_{j, t}}=\left(\mu_{n_j, t}-c_{j, t} / n_{j, t}\right) d t+\sigma_{n_j, t} \cdot d Z_t+\tilde{\sigma}_{n_j, t} d Z_{j, t}
+\)</span>$</p>
+<ul class="simple">
+<li><p>where
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+\mu_{n_j, t} &amp; :=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t \\
+\sigma_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t}+\theta_{j, t} \\
+\tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
+\end{aligned}
+\)</span>$</p>
+<ul>
+<li><p>which comes from
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+\mu_{n_j, t}&amp;=\frac{q_tk_{j,t}\mu_{R, j, t}-(1-\chi_{j,t})q_tk_{j,t}\left(r_t+\sigma_{R, t} \cdot \pi_t\right)-(\chi_{j, t} q_t k_{j, t}-n_{j, t})r_t+\theta_{j, t}n_{j,t}\pi_t}{n_{j, t}}\\
+&amp;=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t 
+\end{aligned}
+\)</span>$</p></li>
+</ul>
+</li>
+<li><p>total asset <span class="math notranslate nohighlight">\(q_tk_{j,t}\)</span></p></li>
+<li><p>equity issuances <span class="math notranslate nohighlight">\((1-\chi_{j,t})q_tk_{j,t}\)</span>,</p>
+<ul>
+<li><p>equity dividend <span class="math notranslate nohighlight">\(\left(r_t+\sigma_{R, t} \cdot \pi_t\right) d t+\sigma_{R, t} \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}\)</span></p></li>
+</ul>
+</li>
+<li><p>risk-free short debt <span class="math notranslate nohighlight">\(\chi_{j, t} q_t k_{j, t}-n_{j, t}\)</span>,</p>
+<ul>
+<li><p>risk-free rate <span class="math notranslate nohighlight">\(r_tdt\)</span></p></li>
+</ul>
+</li>
+<li><p>excess return on capital</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)\)</span></p></li>
+</ul>
+</li>
+<li><p>excess return compensation to equity investors</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t\)</span></p></li>
+</ul>
+</li>
+<li><p>Derivative hedging positions <span class="math notranslate nohighlight">\(\theta_{j, t} n_{j, t}\)</span></p>
+<ul>
+<li><p>payout per unit <span class="math notranslate nohighlight">\(\pi_t d t+d Z_t\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Equity Constraint
+$<span class="math notranslate nohighlight">\(
+\chi_{j, t} \geq \underline{\chi}_j
+\)</span>$</p>
+<p>Hedging Constraint
+$<span class="math notranslate nohighlight">\(
+\theta_{i t} \in \Theta_j
+\)</span>$</p>
+<p>Borrowing Constraint
+$<span class="math notranslate nohighlight">\(
+\frac{\chi_{j, t} q_t k_{j, t}}{n_{j, t}} \sigma_{R, t} \leq \bar{\beta}_j
+\)</span>$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="market-clearing">
+<h1>Market Clearing<a class="headerlink" href="#market-clearing" title="Permalink to this heading">#</a></h1>
+<p>Goods market clearing
+$<span class="math notranslate nohighlight">\(
+\int_{\mathbb{J} \in \mathbb{J}_h} c_{j, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(a_j-\Phi\left(\iota_{j, t}\right)\right) k_{j, t} d j .
+\)</span><span class="math notranslate nohighlight">\(
+Capital market clearing
+\)</span><span class="math notranslate nohighlight">\(
+\int_{\mathbb{J}_e \cup \mathbb{J}_h} k_{j, t} d j=K_t 
+\)</span><span class="math notranslate nohighlight">\(
+Equity market clearing
+\)</span><span class="math notranslate nohighlight">\(
+\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(1-\chi_{j, t}\right) q_t k_{j, t} \sigma_{R, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h} \theta_{j, t} n_{j, t} d j .
+\)</span><span class="math notranslate nohighlight">\(
+Bond market clearing
+\)</span><span class="math notranslate nohighlight">\(
+\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(q_t k_{j, t}-n_{j, t}\right) d j=0
+\)</span>$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="hjb">
+<h1>HJB<a class="headerlink" href="#hjb" title="Permalink to this heading">#</a></h1>
+<p>HJB equation
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+0=\max \frac{\rho}{1-\psi}\left[(c / n)^{1-\psi} \xi^{\psi-1}-1\right]+\mu_n-c / n+\mu_X \cdot \partial_X \ln \xi-\frac{\gamma}{2}\left(\left\|\sigma_n\right\|^2+\tilde{\sigma}_n^2\right) \\
++(1-\gamma) \sigma_n \cdot \sigma_X^{\prime} \partial_X \ln \xi+\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi \sigma_X\right)+(1-\gamma)\left\|\sigma_X^{\prime} \partial_X \ln \xi\right\|^2\right]
+\end{aligned}
+\)</span>$</p>
+<p>FOC on investment
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+\Phi(\iota) &amp;=\phi^{-1}[\exp (\phi \iota)-1]\\
+\iota(q) &amp; =\phi^{-1} \log (q) \\
+\Phi(\iota(q)) &amp; =\phi^{-1}(q-1) .
+\end{aligned}
+\)</span>$</p>
+<p>FOC on consumption
+$<span class="math notranslate nohighlight">\(
+c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
+\)</span>$</p>
+<p>HJB equation with optimized investment and consumption
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+0=\max &amp; \frac{\psi}{1-\psi} \rho^{1 / \psi} \xi^{1-1 / \psi}-\frac{\rho}{1-\psi}+\mu_n-\frac{\gamma}{2}\left(\left\|\sigma_n\right\|^2+\tilde{\sigma}_n^2\right)+\left[\mu_X+(1-\gamma) \sigma_X \sigma_n\right] \cdot \partial_X \ln \xi \\+&amp;\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi \sigma_X\right)+(1-\gamma)\left\|\sigma_X^{\prime} \partial_X \ln \xi\right\|^2\right]
+\end{aligned}
+\)</span>$</p>
+<ul class="simple">
+<li><p>where</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mu_{n_j, t} &amp; :=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t \\
+\sigma_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t}+\theta_{j, t} \\
+\tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
+\end{aligned}
+\end{split}\]</div>
+<p>Households FOC on choices of leverage <span class="math notranslate nohighlight">\(q k_h / n_h \geq 0\)</span>
+$<span class="math notranslate nohighlight">\(
+\begin{gathered}
+\mu_{R, h}-r+\left(1-\gamma_h\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_h \leq \gamma_h\left(\sigma_{n_h} \cdot \sigma_R+\tilde{\sigma}_{n_h} \sqrt{\varsigma}\right) 
+\end{gathered}
+\)</span><span class="math notranslate nohighlight">\(
+Households FOC on market hedges \)</span>\theta<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\begin{gathered}
+\pi+\left(1-\gamma_h\right) \sigma_X^{\prime} \partial_X \ln \xi_h=\gamma_h \sigma_{n_h} .
+\end{gathered}
+\)</span>$</p>
+<ul>
+<li><p>Households Euler Equation
+$<span class="math notranslate nohighlight">\(
+\left\{\begin{array}{lll}
+\mu_{R, h}-r \leq \pi \cdot \sigma_R, &amp; \text { if } &amp; k_h=0 \\
+\mu_{R, h}-r=\pi \cdot \sigma_R+\gamma_h \varsigma q k_h / n_h, &amp; \text { if } &amp; k_h&gt;0
+\end{array}\right.
+\)</span>$</p>
+<ul>
+<li><p>Optimal Risk Allocation
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+\sigma_{n_h} &amp; =\frac{q k_h}{n_h} \sigma_R+\theta_h=\frac{\pi}{\gamma_h}+\frac{1-\gamma_h}{\gamma_h} \sigma_X^{\prime} \partial_X \ln \xi_h \\
+\beta_h &amp; =\frac{q k_h}{n_h} \begin{cases}=\frac{\Delta_h^{+}}{\gamma_h \varsigma}, &amp; \text { if } \varsigma&gt;0 \\
+\geq 0, &amp; \text { if } \varsigma=0 .\end{cases}
+\end{aligned}
+\)</span>$</p>
+<ul>
+<li><p>gap between the households’ expected return on capital and the risk-premium paid by the market</p>
+<p><span class="math notranslate nohighlight">\(\Delta_{h, t}:=\mu_{R, h, t}-r_t-\pi_t \cdot \sigma_{R, t}\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Expert FOC on choices of leverage <span class="math notranslate nohighlight">\(q k_e / n_e \geq 0\)</span>
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+&amp; \mu_{R, e}-r-(1-\chi) \pi \cdot \sigma_R+\chi\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e=\gamma_e \chi\left(\sigma_R \cdot \sigma_{n_e}+\sqrt{\varsigma} \tilde{\sigma}_{n_e}\right) 
+\end{aligned}
+\)</span><span class="math notranslate nohighlight">\(
+Experts FOC on equity retention \)</span>\chi \geq \underline{\chi}<span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\begin{aligned}
+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e \leq \gamma_e\left(\sigma_R \cdot \sigma_{n_e}+\sqrt{\varsigma} \tilde{\sigma}_{n_e}\right),
+\end{aligned}
+\)</span>$</p>
+<ul>
+<li><p>Expert Euler Equation
+$<span class="math notranslate nohighlight">\(
+\begin{cases}\pi \cdot \sigma_R \leq \mu_{R, e}-r, &amp; \text { if } \quad \chi=\underline{\chi} \\ \pi \cdot \sigma_R=\mu_{R, e}-r, &amp; \text { if } \quad \chi&gt;\underline{\chi} .\end{cases}
+\)</span>$</p>
+<ul>
+<li><p>Optimal Leverage
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+\beta_e&amp;:=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right]\\
+\sigma_{n_e}&amp;=\beta_e \sigma_R
+\end{aligned}
+\)</span>$</p>
+<ul>
+<li><p>wedge between expected return and risk-premium</p>
+<p><span class="math notranslate nohighlight">\(\Delta_{e, t}:=\underline{\chi}^{-1}\left[\mu_{R, e, t}-r_t-\pi_t \cdot \sigma_{R, t}\right]\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Households Value Function
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+0= &amp; \frac{\psi_h}{1-\psi_h} \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}-\frac{\rho_h}{1-\psi_h}+r+\frac{1}{2 \gamma_h}\left(\|\pi\|^2+\left(\gamma_h \beta_h \sqrt{\varsigma}\right)^2\right)+\left[\mu_X+\frac{1-\gamma_h}{\gamma_h} \sigma_X \pi\right] \cdot \partial_X \ln \xi_h \\
+&amp; +\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi_h \sigma_X\right)+\frac{1-\gamma_h}{\gamma_h}\left\|\sigma_X^{\prime} \partial_X \ln \xi_h\right\|^2\right]
+\end{aligned}
+\)</span>$</p>
+<p>Experts Value Function
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+0= &amp; \frac{\psi_h}{1-\psi_h} \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}-\frac{\rho_h}{1-\psi_h}+r+\frac{1}{2 \gamma_h}\left(\|\pi\|^2+\left(\gamma_h \beta_h \sqrt{\varsigma}\right)^2\right)+\left[\mu_X+\frac{1-\gamma_h}{\gamma_h} \sigma_X \pi\right] \cdot \partial_X \ln \xi_h \\
+&amp; +\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi_h \sigma_X\right)+\frac{1-\gamma_h}{\gamma_h}\left\|\sigma_X^{\prime} \partial_X \ln \xi_h\right\|^2\right]
+\end{aligned}
+\)</span>$</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="computing-equilibrium">
+<h1>Computing Equilibrium<a class="headerlink" href="#computing-equilibrium" title="Permalink to this heading">#</a></h1>
+<p>Define
+$<span class="math notranslate nohighlight">\(
+\kappa_t:=\frac{K_{e, t}}{K_t}
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+w_t:=\int_{\mathbb{J}_e} n_{j, t} d j /\left(q_t K_t\right)
+\]</div>
+<p>Euler Inequalities</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\kappa=1 \text { and } \chi&gt;\underline{\chi}\)</span>
+$<span class="math notranslate nohighlight">\(
+\mu_{R, e}-r=\pi \cdot \sigma_R&gt;\mu_{R, h}-r
+\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\kappa=1 \text { and } \chi=\underline{\chi}\)</span>
+$<span class="math notranslate nohighlight">\(
+\mu_{R, e}-r&gt;\pi \cdot \sigma_R&gt;\mu_{R, h}-r
+\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\kappa&lt;1 \text { and } \chi&gt;\underline{\chi}\)</span>
+$<span class="math notranslate nohighlight">\(
+\mu_{R, e}-r&gt;\mu_{R, h}-r \geq \pi \cdot \sigma_R
+\)</span>$</p></li>
+</ol>
+<p>Slackness Condition
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+&amp; 0=\min \left(1-\kappa, \Delta_h^{+}-\Delta_h\right) \\
+&amp; 0=\min \left(\chi-\underline{\chi}, \Delta_e\right) \\
+&amp; 0=(1-\kappa)(\chi-\underline{\chi})\left(a_e-a_h\right) .
+\end{aligned}
+\)</span>$</p>
+<p>Goods Market Condition with optimized investment and consumption
+$<span class="math notranslate nohighlight">\(
+\int_{\mathbb{J} \in \mathbb{J}_h} c_{j, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(a_j-\Phi\left(\iota_{j, t}\right)\right) k_{j, t} d j .
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
+\]</div>
+<p>Capital Price
+$<span class="math notranslate nohighlight">\(
+q(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+q w \rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}=(1-\kappa) a_h+\kappa a_e-\Phi(\iota(q))
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+w \rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}+1 / \phi}
+\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="wealth-share-evolution">
+<h1>Wealth Share Evolution<a class="headerlink" href="#wealth-share-evolution" title="Permalink to this heading">#</a></h1>
+<p>Capital Evolution
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+\frac{d K_t}{K_t} &amp; =\mu_{K, t} d t+\sigma_{K, t} \cdot d Z_t \\
+\mu_{K, t} &amp; :=g_t+\iota\left(q_t\right)-\delta
+\end{aligned}
+\)</span>$</p>
+<p>Net Wealth Evolution
+$<span class="math notranslate nohighlight">\(
+\frac{d n_{j, t}}{n_{j, t}}=\left(\mu_{n_j, t}-c_{j, t} / n_{j, t}\right) d t+\sigma_{n_j, t} \cdot d Z_t+\tilde{\sigma}_{n_j, t} d Z_{j, t}
+\)</span>$</p>
+<ul class="simple">
+<li><p>where</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mu_{n_j, t} &amp; :=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t \\
+\sigma_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t}+\theta_{j, t} \\
+\tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\beta_h:=\frac{q k_h}{n_h}\\
+\beta_e:=\frac{\chi q k_e}{n_e}\\
+\Delta_{h, t}:=\mu_{R, h, t}-r_t-\pi_t \cdot \sigma_{R, t}\\
+\Delta_{e, t}:=\underline{\chi}^{-1}\left[\mu_{R, e, t}-r_t-\pi_t \cdot \sigma_{R, t}\right]
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \frac{d N_{h, t}}{N_{h, t}}=\left[r_t-\rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}-\lambda_d+\sigma_{n_h, t} \cdot \pi_t+\beta_{h, t} \Delta_{h, t}+\frac{(1-\nu) \lambda_d}{1-w_t}\right] d t+\sigma_{n_h, t} \cdot d Z_t \\
+&amp; \frac{d N_{e, t}}{N_{e, t}}=\left[r_t-\rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}-\lambda_d+\sigma_{n_e, t} \cdot \pi_t+\beta_{e, t} \Delta_{e, t}+\frac{\nu \lambda_d}{w_t}\right] d t+\sigma_{n_e, t} \cdot d Z_t .
+\end{aligned}
+\end{split}\]</div>
+<p>Wealth Share Evolution
+$<span class="math notranslate nohighlight">\(
+w=\frac{N_e}{N_e+N_h}
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+d w=w(1-w)\left[\frac{d N_e}{N_e}-\frac{d N_h}{N_h}\right]-w(1-w)\left[w \frac{d\left[N_e\right]}{N_e^2}-(1-w) \frac{d\left[N_h\right]}{N_h^2}+(1-2 w) \frac{d\left[N_e, N_h\right]}{N_e N_h}\right] .
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(1-\chi_{j, t}\right) q_t k_{j, t} \sigma_{R, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h} \theta_{j, t} n_{j, t} d j .
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\sigma_{n_h} &amp; =\frac{1-\chi \kappa}{1-w} \sigma_R \\
+\sigma_{n_e} &amp; =\frac{\chi \kappa}{w} \sigma_R .
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mu_w= &amp; w(1-w)\left[\rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}-\rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}+\beta_e \Delta_e-\beta_h \Delta_h\right] \\
+&amp; +(\chi \kappa-w) \sigma_R \cdot\left(\pi-\sigma_R\right)+\lambda_d(\nu-w) \\
+\sigma_w= &amp; (\chi \kappa-w) \sigma_R .
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="capital-price-evolution">
+<h1>Capital Price Evolution<a class="headerlink" href="#capital-price-evolution" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+d q\left(X_t\right) &amp; =\left[\mu_X\left(X_t\right) \cdot \partial_X q\left(X_t\right)+\frac{1}{2} \operatorname{tr}\left(\sigma_X\left(X_t\right)^{\prime} \partial_{X X^{\prime}} q\left(X_t\right) \sigma_X\left(X_t\right)\right)\right] d t \\
+&amp; +\left[\sigma_X\left(X_t\right)^{\prime} \partial_X q\left(X_t\right)\right] \cdot d Z_t
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mu_q=\frac{1}{q}\left[\mu_X \cdot \partial_X q+\frac{1}{2} \operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} q \sigma_X\right)\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sigma_q=\frac{(\chi \kappa-w)\left(\partial_w \ln q\right) \sqrt{s} \sigma+\left(\partial_g \ln q\right) \sqrt{s} \sigma_g+\left(\partial_s \ln q\right) \sqrt{s} \sigma_s+\left(\partial_{\varsigma} \ln q\right) \sqrt{\varsigma} \sigma_{\varsigma}}{1-(\chi \kappa-w) \partial_w \ln q}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sigma_R=\sigma_K+\sigma_q
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sigma_R=\frac{\sqrt{s} \sigma+\left(\partial_g \ln q\right) \sqrt{s} \sigma_g+\left(\partial_s \ln q\right) \sqrt{s} \sigma_s+\left(\partial_{\varsigma} \ln q\right) \sqrt{\varsigma} \sigma_{\varsigma}}{1-(\chi \kappa-w) \partial_w \ln q} .
+\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="interest-rate-and-risk-price">
+<h1>Interest Rate and Risk Price<a class="headerlink" href="#interest-rate-and-risk-price" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(q_t k_{j, t}-n_{j, t}\right) d j=0
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+r+(1-w)\left(\sigma_{n_h} \cdot \pi+\beta_h \Delta_h-\rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}\right)+w\left(\sigma_{n_e} \cdot \pi+\beta_e \Delta_e\right. &amp; \left.-\rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}\right) \\
+&amp; =\mu_q+\mu_K+\sigma_K \cdot \sigma_q
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+(1-w) \sigma_{n_h}+w \sigma_{n_e}=\sigma_R
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta_h \Delta_h-\rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}\right) \\
+&amp; -w\left(\beta_e \Delta_e-\rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}\right) .
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\pi=\gamma_h \frac{1-\chi \kappa}{1-w} \sigma_R+\left(\gamma_h-1\right) \sigma_X^{\prime} \partial_X \ln \xi_h
+\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="risk-wedge">
+<h1>Risk Wedge<a class="headerlink" href="#risk-wedge" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[
+\beta_e:=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right],
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta_e=\gamma_e \frac{\chi \kappa}{w}\left(\left\|\sigma_R\right\|^2+\varsigma\right)-\gamma_h \frac{1-\chi \kappa}{1-w}\left\|\sigma_R\right\|^2-\sigma_R^{\prime} \sigma_X^{\prime} \partial_X \ln \left(\frac{\xi_h^{\gamma_h-1}}{\xi_e^{\gamma_e-1}}\right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mu_{R, e}-\mu_{R, h}=\mu_{R, e}-r-\pi \cdot \sigma_R+\pi \cdot \sigma_R-\left(\mu_{R, h}-r\right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mu_{R, j, t}=\left[\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}+\iota_{j, t}-\delta+g_t+\mu_{q, t}+\sigma_{K, t} \cdot \sigma_{q, t}\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta_{e, t}:=\underline{\chi}^{-1}\left[\mu_{R, e, t}-r_t-\pi_t \cdot \sigma_{R, t}\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta_{h, t}:=\mu_{R, h, t}-r_t-\pi_t \cdot \sigma_{R, t}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta_h=\underline{\chi} \Delta_e-\frac{a_e-a_h}{q}
+\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="policy-function">
+<h1>Policy Function<a class="headerlink" href="#policy-function" title="Permalink to this heading">#</a></h1>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\beta_h &amp; =\frac{q k_h}{n_h} \begin{cases}=\frac{\Delta_h^{+}}{\gamma_h \varsigma}, &amp; \text { if } \varsigma&gt;0 \\
+\geq 0, &amp; \text { if } \varsigma=0 .\end{cases}
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Delta_h^{+}=\frac{1-\kappa}{1-w} \gamma_h \varsigma
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+&amp; 0=\min \left(1-\kappa, \Delta_h^{+}-\Delta_h\right)
+\end{aligned}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{gathered}
+0=\min \left\{1-\kappa, w \gamma_h(1-\chi \kappa)\left\|\sigma_R\right\|^2+w \gamma_h\left(\frac{1-\kappa}{\underline{\chi}}\right) \varsigma-(1-w) \gamma_e \chi \kappa\left(\left\|\sigma_R\right\|^2+\varsigma\right)\right. \\
+\left.+w(1-w) \frac{a_e-a_h}{\underline{\chi} q}+w(1-w) \sigma_R^{\prime} \sigma_X^{\prime} \partial_X \ln \left(\frac{\xi_h^{\gamma_h-1}}{\xi_e^{\gamma_e-1}}\right)\right\} .
+\end{gathered}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+&amp; 0=\min \left(\chi-\underline{\chi}, \Delta_e\right)
+\end{aligned}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+0=\min \{\chi-\underline{\chi} &amp; ,(1-w) \gamma_e \chi \kappa\left(\left\|\sigma_R\right\|^2+\varsigma\right)-w \gamma_h(1-\chi \kappa)\left\|\sigma_R\right\|^2 \\
+&amp; \left.-w(1-w) \sigma_R^{\prime} \sigma_X^{\prime} \partial_X \ln \left(\frac{\xi_h^{\gamma_h-1}}{\xi_e^{\gamma_e-1}}\right)\right\} .
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+&amp; 0=(1-\kappa)(\chi-\underline{\chi})\left(a_e-a_h\right) .
+\end{aligned}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+0= &amp; \min \left\{\chi-\underline{\chi},(1-w) \gamma_e \varsigma\left(\partial_w \ln q\right)^2(\chi-w)^3+(1-w) \gamma_e \varsigma\left(\partial_w \ln q\right)\left(w \partial_w \ln q-2\right)(\chi-w)^2\right. \\
+&amp; +\left[\left((1-w) \gamma_e+w \gamma_h\right)\left\|D_{\tilde{X}}\right\|^2+(1-w) \gamma_e \varsigma\left(1-2 w \partial_w \ln q\right)+\left(\partial_w \ln q\right) D_{\xi, \tilde{X}}-D_{\xi, w}\right](\chi-w) \\
+&amp; \left.+w(1-w)\left(\gamma_e-\gamma_h\right)\left\|D_{\tilde{X}}\right\|^2+w(1-w) \gamma_e \varsigma-D_{\xi, \tilde{X}}\right\} .
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+0= &amp; \min \left\{\chi-\underline{\chi},(1-w) \gamma_e \varsigma\left(\partial_w \ln q\right)^2(\chi-w)^3+(1-w) \gamma_e \varsigma\left(\partial_w \ln q\right)\left(w \partial_w \ln q-2\right)(\chi-w)^2\right. \\
+&amp; +\left[\left((1-w) \gamma_e+w \gamma_h\right)\left\|D_{\tilde{X}}\right\|^2+(1-w) \gamma_e \varsigma\left(1-2 w \partial_w \ln q\right)+\left(\partial_w \ln q\right) D_{\xi, \tilde{X}}-D_{\xi, w}\right](\chi-w) \\
+&amp; \left.+w(1-w)\left(\gamma_e-\gamma_h\right)\left\|D_{\tilde{X}}\right\|^2+w(1-w) \gamma_e \varsigma-D_{\xi, \tilde{X}}\right\} .
+\end{aligned}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\sigma_{\tilde{X}} &amp; :=\left(\sqrt{s} \sigma_g, \sqrt{s} \sigma_s, \sqrt{\varsigma} \sigma_{\varsigma}\right)^{\prime} \\
+D_{\tilde{X}} &amp; :=\sigma_K+\sigma_{\tilde{X}}^{\prime} \partial_{\tilde{X}} \ln q \\
+D_{\xi, w} &amp; :=w(1-w)\left\|D_{\tilde{X}}\right\|^2 \partial_w\left[\ln \left(\xi_h^{\gamma_h-1}\right)-\ln \left(\xi_e^{\gamma_e-1}\right)\right] \\
+D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \cdot \partial_{\tilde{X}}\left[\ln \left(\xi_h^{\gamma_h-1}\right)-\ln \left(\xi_e^{\gamma_e-1}\right)\right] .
+\end{aligned}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataname</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">paramsDefault</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1">## Dimensionality params</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;nDims&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mi">3</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;nShocks&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1">## Grid parameters </span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;numSds&#39;</span><span class="p">]</span>            <span class="o">=</span> <span class="mi">5</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;uselogW&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;nWealth&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mi">100</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;nZ&#39;</span><span class="p">]</span>                <span class="o">=</span> <span class="mi">30</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;nV&#39;</span><span class="p">]</span>                <span class="o">=</span> <span class="mi">30</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;nVtilde&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1">## Economic params</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;nu_newborn&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;lambda_d&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;lambda_Z&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="mf">0.252</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;lambda_V&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="mf">0.156</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;lambda_Vtilde&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="mf">1.38</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;delta_e&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;delta_h&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;a_e&#39;</span><span class="p">]</span>               <span class="o">=</span> <span class="mf">0.14</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;a_h&#39;</span><span class="p">]</span>               <span class="o">=</span> <span class="mf">0.135</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_e&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_h&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;phi&#39;</span><span class="p">]</span>               <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_e&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_h&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;equityIss&#39;</span><span class="p">]</span>         <span class="o">=</span> <span class="mi">2</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;chiUnderline&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;alpha_K&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="c1">## Alogirthm behavior and results savings params</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;method&#39;</span><span class="p">]</span>            <span class="o">=</span> <span class="mi">2</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span>                <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;dtInner&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;tol&#39;</span><span class="p">]</span>               <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;innerTol&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="mf">1e-5</span>
+
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;verbatim&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;maxIters&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="mi">4000</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;maxItersInner&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="mi">2000000</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;iparm_2&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mi">28</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;iparm_3&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mi">0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;iparm_28&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="mi">0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;iparm_31&#39;</span><span class="p">]</span>          <span class="o">=</span> <span class="mi">0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;overwrite&#39;</span><span class="p">]</span>         <span class="o">=</span> <span class="s1">&#39;Yes&#39;</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;exportFreq&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;CGscale&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;hhCap&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mi">1</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;preLoad&#39;</span><span class="p">]</span>           <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+
+<span class="c1"># Domain params</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;Vtilde_bar&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;Z_bar&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;V_bar&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_K_norm&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="mf">0.04</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_Z_norm&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="mf">0.0141</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_V_norm&#39;</span><span class="p">]</span>      <span class="o">=</span> <span class="mf">0.132</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_Vtilde_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;wMin&#39;</span><span class="p">]</span>              <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;wMax&#39;</span><span class="p">]</span>              <span class="o">=</span> <span class="mf">0.99</span>
+
+<span class="c1">## Shock correlation params</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov11&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov12&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov13&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov14&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov21&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov22&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov23&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov24&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov31&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov32&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov33&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov34&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov41&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov42&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov43&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;cov44&#39;</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="n">psi_e</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_e&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">psi_h</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_h&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">gamma_e</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_e&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">gamma_h</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_h&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">a_e</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;a_e&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">a_h</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;a_h&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">chiUnderline</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:0.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;chiUnderline&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+
+<span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;nVtilde&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="n">folder_name</span> <span class="o">=</span> <span class="s1">&#39;output/&#39;</span><span class="o">+</span><span class="n">dataname</span><span class="o">+</span><span class="s1">&#39;/WZV_chiUnderline_&#39;</span> <span class="o">+</span> <span class="n">chiUnderline</span> <span class="o">+</span> <span class="s1">&#39;_a_e_&#39;</span> <span class="o">+</span> <span class="n">a_e</span> <span class="o">+</span> <span class="s1">&#39;_a_h_&#39;</span> <span class="o">+</span> <span class="n">a_h</span>  <span class="o">+</span> <span class="s1">&#39;_gamma_e_&#39;</span> <span class="o">+</span> <span class="n">gamma_e</span> <span class="o">+</span> <span class="s1">&#39;_gamma_h_&#39;</span> <span class="o">+</span> <span class="n">gamma_h</span> <span class="o">+</span> <span class="s1">&#39;_psi_e_&#39;</span> <span class="o">+</span> <span class="n">psi_e</span> <span class="o">+</span> <span class="s1">&#39;_psi_h_&#39;</span> <span class="o">+</span> <span class="n">psi_h</span>
+<span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;nV&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="n">folder_name</span> <span class="o">=</span> <span class="s1">&#39;output/&#39;</span><span class="o">+</span><span class="n">dataname</span><span class="o">+</span><span class="s1">&#39;/WZVtilde_chiUnderline_&#39;</span> <span class="o">+</span> <span class="n">chiUnderline</span> <span class="o">+</span> <span class="s1">&#39;_a_e_&#39;</span> <span class="o">+</span> <span class="n">a_e</span> <span class="o">+</span> <span class="s1">&#39;_a_h_&#39;</span> <span class="o">+</span> <span class="n">a_h</span>  <span class="o">+</span> <span class="s1">&#39;_gamma_e_&#39;</span> <span class="o">+</span> <span class="n">gamma_e</span> <span class="o">+</span> <span class="s1">&#39;_gamma_h_&#39;</span> <span class="o">+</span> <span class="n">gamma_h</span> <span class="o">+</span> <span class="s1">&#39;_psi_e_&#39;</span> <span class="o">+</span> <span class="n">psi_e</span> <span class="o">+</span> <span class="s1">&#39;_psi_h_&#39;</span> <span class="o">+</span> <span class="n">psi_h</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error: either nV or nVtilde must be zero&#39;</span><span class="p">)</span>
+
+<span class="c1"># params[&#39;preLoad&#39;]          = folder_name </span>
+<span class="n">params</span><span class="p">[</span><span class="s1">&#39;folderName&#39;</span><span class="p">]</span>        <span class="o">=</span> <span class="n">folder_name</span>
+
+<span class="c1">#### Now, create a Model</span>
+<span class="n">Model</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Solve the model</span>
+<span class="c1">#------------------------------------------#</span>
+
+<span class="c1">#### This step is very simple: use the .solve() method.</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">Model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="n">Model</span><span class="o">.</span><span class="n">printInfo</span><span class="p">()</span> <span class="c1">## This step is optional: it prints out information regarding time, number of iterations, etc.</span>
+<span class="n">Model</span><span class="o">.</span><span class="n">printParams</span><span class="p">()</span> <span class="c1">## This step is optional: it prints out the parameteres used.</span>
+<span class="n">Model</span><span class="o">.</span><span class="n">computeStatDent</span><span class="p">()</span> <span class="c1"># Compustes the stationary density of the model.</span>
+<span class="n">Model</span><span class="o">.</span><span class="n">dumpData</span><span class="p">()</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">solve_time</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">MFR_time_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;solve_time&#39;</span><span class="p">:</span> <span class="n">solve_time</span><span class="p">}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/MFR_time_info.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">MFR_time_info</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+
+<span class="c1"># %%</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">Model</span><span class="o">.</span><span class="n">computeShockElas</span><span class="p">(</span><span class="n">pcts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;W&#39;</span><span class="p">:[</span><span class="mf">.5</span><span class="p">],</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]},</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">perturb</span> <span class="o">=</span> <span class="s1">&#39;Ce&#39;</span><span class="p">,</span> <span class="n">bc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;natural&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/ExpertsExpoConsumption.pkl&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>   
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">expoElas</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/ExpertsPriceConsumption.pkl&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>   
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">priceElasExperts</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="n">Model</span><span class="o">.</span><span class="n">computeShockElas</span><span class="p">(</span><span class="n">pcts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;W&#39;</span><span class="p">:[</span><span class="mf">.5</span><span class="p">],</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]},</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">perturb</span> <span class="o">=</span> <span class="s1">&#39;Ch&#39;</span><span class="p">,</span> <span class="n">bc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;natural&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/HouseholdsExpoConsumption.pkl&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>   
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">expoElas</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/HouseholdsPriceConsumption.pkl&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>   
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">priceElasHouseholds</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">solve_time</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">Ela_time_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;solve_time&#39;</span><span class="p">:</span> <span class="n">solve_time</span><span class="p">}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/Ela_time_info.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">Ela_time_info</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+<span class="n">Model</span><span class="o">.</span><span class="n">dumpData</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+<span class="c1">##### This method can only be called after the model is solved.</span>
+<span class="n">pcts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;W&#39;</span><span class="p">:[</span><span class="mf">.5</span><span class="p">],</span><span class="s1">&#39;Z&#39;</span><span class="p">:[</span><span class="mf">.5</span><span class="p">],</span><span class="s1">&#39;V&#39;</span><span class="p">:[</span><span class="mf">.25</span><span class="p">,</span><span class="mf">.5</span><span class="p">,</span><span class="mf">.75</span><span class="p">]}</span>
+
+<span class="c1"># 48 year time periods</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">48</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Natural boundatry conditions</span>
+<span class="n">bc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;natural&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">}</span>
+
+<span class="c1"># Use defaults starting points</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([])</span>
+
+<span class="c1">## Create input stateMat for shock elasticities, a tuple of ranges of the state space</span>
+<span class="n">Model</span><span class="o">.</span><span class="n">stateMatInput</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;nDims&#39;</span><span class="p">]):</span>
+    <span class="c1">## Note that i starts at zero but our variable names start at 1.</span>
+    <span class="n">Model</span><span class="o">.</span><span class="n">stateMatInput</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">stateMat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">]),</span>
+                                <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">stateMat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">]),</span>
+                                <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">stateMat</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">]))</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+<span class="c1">## Create dictionary to store model</span>
+<span class="k">if</span> <span class="n">Model</span><span class="o">.</span><span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">Model</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">allPcts</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">## Find points</span>
+<span class="k">if</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">allPts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">stateVar</span> <span class="ow">in</span> <span class="n">Model</span><span class="o">.</span><span class="n">stateVarList</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">Model</span><span class="o">.</span><span class="n">dent</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">dent</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0001</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Stationary density not computed or degenerate.&quot;</span><span class="p">)</span>
+        <span class="n">allPts</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">Model</span><span class="o">.</span><span class="n">inverseCDFs</span><span class="p">[</span><span class="n">stateVar</span><span class="p">](</span><span class="n">pct</span><span class="p">)</span> <span class="k">for</span> <span class="n">pct</span> <span class="ow">in</span> <span class="n">pcts</span><span class="p">[</span><span class="n">stateVar</span><span class="p">]])</span>
+        <span class="n">allPcts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pcts</span><span class="p">[</span><span class="n">stateVar</span><span class="p">])</span>
+    <span class="n">Model</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">allPts</span><span class="p">)))</span>
+    <span class="n">allPcts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">allPcts</span><span class="p">))]</span>
+    <span class="n">Model</span><span class="o">.</span><span class="n">pcts</span> <span class="o">=</span> <span class="n">pcts</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">Model</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">points</span>
+
+<span class="n">modelsol</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;dent&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">dent</span><span class="p">,</span>
+    <span class="s1">&#39;muCe&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">muCe</span><span class="p">(),</span>
+    <span class="s1">&#39;muCh&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">muCh</span><span class="p">(),</span>
+    <span class="s1">&#39;muSe&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">muSe</span><span class="p">(),</span>
+    <span class="s1">&#39;muSh&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">muSh</span><span class="p">(),</span>
+    <span class="s1">&#39;muX&#39;</span>  <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">muX</span><span class="p">(),</span>
+    <span class="s1">&#39;muNh&#39;</span>  <span class="p">:</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([((</span><span class="mi">1</span><span class="o">-</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_h&#39;</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_h&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_h&#39;</span><span class="p">])</span><span class="o">*</span>\
+                                    <span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">sigmaSh</span><span class="p">()[:,</span><span class="n">s</span><span class="p">]</span><span class="o">+</span>\
+                                     <span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_h&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">Model</span><span class="o">.</span><span class="n">sigmaCh</span><span class="p">()[:,</span><span class="n">s</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span>\
+                                    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;nDims&#39;</span><span class="p">])],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s1">&#39;muNe&#39;</span>  <span class="p">:</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([((</span><span class="mi">1</span><span class="o">-</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_e&#39;</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_e&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_e&#39;</span><span class="p">])</span><span class="o">*</span>\
+                                    <span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">sigmaSe</span><span class="p">()[:,</span><span class="n">s</span><span class="p">]</span><span class="o">+</span>\
+                                     <span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_e&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">Model</span><span class="o">.</span><span class="n">sigmaCe</span><span class="p">()[:,</span><span class="n">s</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span>\
+                                    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;nDims&#39;</span><span class="p">])],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s1">&#39;sigmaSe&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">sigmaSe</span><span class="p">(),</span>
+    <span class="s1">&#39;sigmaSh&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">sigmaSh</span><span class="p">(),</span>
+    <span class="s1">&#39;sigmaCe&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">sigmaCe</span><span class="p">(),</span>
+    <span class="s1">&#39;sigmaCh&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">sigmaCh</span><span class="p">(),</span>
+    <span class="s1">&#39;sigmaX&#39;</span>  <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">sigmaXList</span><span class="p">,</span>
+    <span class="s1">&#39;sigmaNh&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_h&#39;</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_h&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_h&#39;</span><span class="p">])</span><span class="o">*</span>\
+                                    <span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">sigmaSh</span><span class="p">()</span><span class="o">+</span>\
+                                     <span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_h&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">Model</span><span class="o">.</span><span class="n">sigmaCh</span><span class="p">()),</span>
+    <span class="s1">&#39;sigmaNe&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_e&#39;</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_e&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;gamma_e&#39;</span><span class="p">])</span><span class="o">*</span>\
+                                    <span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">sigmaSe</span><span class="p">()</span><span class="o">+</span>\
+                                     <span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;rho_e&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">Model</span><span class="o">.</span><span class="n">sigmaCe</span><span class="p">()),</span>
+    <span class="s1">&#39;stateMatInput&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">stateMatInput</span><span class="p">,</span>
+    <span class="s1">&#39;gridSizeList&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">gridSizeList</span><span class="p">,</span>
+    <span class="s1">&#39;x0&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">x0</span><span class="p">,</span>
+    <span class="s1">&#39;nDims&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;nDims&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;nShocks&#39;</span> <span class="p">:</span> <span class="n">Model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;nShocks&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/model_ela_preload.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">modelsol</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./continuous_global_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Twocap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sluggish Two Capital Model</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MFRSuite</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#production">Production</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-market">Financial Market</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#households">Households</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#market-clearing">Market Clearing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb">HJB</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">Computing Equilibrium</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">Wealth Share Evolution</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">Capital Price Evolution</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-rate-and-risk-price">Interest Rate and Risk Price</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-wedge">Risk Wedge</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">Policy Function</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

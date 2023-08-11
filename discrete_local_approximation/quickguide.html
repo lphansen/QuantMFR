@@ -177,6 +177,18 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/MFRSuite.html">MFRSuite</a></li>
+
+
+
+
+
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -883,19 +895,19 @@ Iteration 2: error = 4.97379915e-14
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">JXn_t</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
-<td><p>Approximation of jump and state variables at time <span class="math notranslate nohighlight">\(t\)</span>. Replace <code class="docutils literal notranslate"><span class="pre">n</span></code> with <code class="docutils literal notranslate"><span class="pre">0,1,2</span></code> to get the zeroth, first and second-order contribution. Delete <code class="docutils literal notranslate"><span class="pre">n</span></code> to get the full approximation.</p></td>
+<td><p>Approximation of jump and state variables at time <span class="math notranslate nohighlight">\(t\)</span>. Replace <code class="docutils literal notranslate"><span class="pre">n</span></code> with <code class="docutils literal notranslate"><span class="pre">0,1,2</span></code> to get the zeroth, first and second-order contribution. Omit <code class="docutils literal notranslate"><span class="pre">n</span></code> to get the full approximation. The variables are indexed in the order specified in Section 2.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Jn_t</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
-<td><p>Jump variables approximation at time <span class="math notranslate nohighlight">\(t\)</span>. Replace <code class="docutils literal notranslate"><span class="pre">n</span></code> with <code class="docutils literal notranslate"><span class="pre">0,1,2</span></code> to get the zeroth, first and second-order approximation.</p></td>
+<td><p>Same as <code class="docutils literal notranslate"><span class="pre">JXn_t</span></code> but limited to jump variables. Omitted <code class="docutils literal notranslate"><span class="pre">n</span></code> option is not available.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">X1_tp1</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Xn_tp1</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
-<td><p>State variables first order approximation, time <span class="math notranslate nohighlight">\(t+1\)</span></p></td>
+<td><p>Same as <code class="docutils literal notranslate"><span class="pre">JXn_t</span></code> but limited to state variables. Omitted <code class="docutils literal notranslate"><span class="pre">n</span></code> option is not available.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">X2_tp2</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">JXn_t_tilde</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
-<td><p>State variables second order approximation, time <span class="math notranslate nohighlight">\(t+1\)</span></p></td>
+<td><p>Same as <code class="docutils literal notranslate"><span class="pre">JXn_t</span></code> but using distorted measure. This variation is also available for <code class="docutils literal notranslate"><span class="pre">Jn_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Xn_tp1</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">util_sol</span></code></p></td>
 <td><p><em>dict</em></p></td>

@@ -67,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'continuous_global_solution/Twocap';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MFRSuite" href="MFRSuite.html" />
     <link rel="prev" title="Uncertain Expansion Method: Computation" href="../discrete_local_approximation/quickguide.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -173,6 +174,18 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Continuous Global Solution</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Sluggish Two Capital Model</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="MFRSuite.html">MFRSuite</a></li>
+
+
+
+
+
+
+
+
 
 
 
@@ -350,15 +363,66 @@ document.write(`
 <h1>Sluggish Two Capital Model<a class="headerlink" href="#sluggish-two-capital-model" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">Pkg</span>
-<span class="n">using</span> <span class="n">Optim</span>
-<span class="n">using</span> <span class="n">Roots</span>
-<span class="n">using</span> <span class="n">NPZ</span>
-<span class="n">using</span> <span class="n">Distributed</span>
-<span class="n">using</span> <span class="n">CSV</span>
-<span class="n">using</span> <span class="n">Tables</span>
-<span class="n">using</span> <span class="n">ArgParse</span>
-<span class="n">using</span> <span class="n">Interpolations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">shell</span>
+set -e
+
+#---------------------------------------------------#
+JULIA_VERSION=&quot;1.8.2&quot; # any version ≥ 0.7.0
+JULIA_PACKAGES=&quot;IJulia BenchmarkTools&quot;
+JULIA_PACKAGES_IF_GPU=&quot;CUDA&quot; # or CuArrays for older Julia versions
+JULIA_NUM_THREADS=2
+#---------------------------------------------------#
+
+if [ -z `which julia` ]; then
+  # Install Julia
+  JULIA_VER=`cut -d &#39;.&#39; -f -2 &lt;&lt;&lt; &quot;$JULIA_VERSION&quot;`
+  echo &quot;Installing Julia $JULIA_VERSION on the current Colab Runtime...&quot;
+  BASE_URL=&quot;https://julialang-s3.julialang.org/bin/linux/x64&quot;
+  URL=&quot;$BASE_URL/$JULIA_VER/julia-$JULIA_VERSION-linux-x86_64.tar.gz&quot;
+  wget -nv $URL -O /tmp/julia.tar.gz # -nv means &quot;not verbose&quot;
+  tar -x -f /tmp/julia.tar.gz -C /usr/local --strip-components 1
+  rm /tmp/julia.tar.gz
+
+  # Install Packages
+  nvidia-smi -L &amp;&gt; /dev/null &amp;&amp; export GPU=1 || export GPU=0
+  if [ $GPU -eq 1 ]; then
+    JULIA_PACKAGES=&quot;$JULIA_PACKAGES $JULIA_PACKAGES_IF_GPU&quot;
+  fi
+  for PKG in `echo $JULIA_PACKAGES`; do
+    echo &quot;Installing Julia package $PKG...&quot;
+    julia -e &#39;using Pkg; pkg&quot;add &#39;$PKG&#39;; precompile;&quot;&#39; &amp;&gt; /dev/null
+  done
+
+  # Install kernel and rename it to &quot;julia&quot;
+  echo &quot;Installing IJulia kernel...&quot;
+  julia -e &#39;using IJulia; IJulia.installkernel(&quot;julia&quot;, env=Dict(
+      &quot;JULIA_NUM_THREADS&quot;=&gt;&quot;&#39;&quot;$JULIA_NUM_THREADS&quot;&#39;&quot;))&#39;
+  KERNEL_DIR=`julia -e &quot;using IJulia; print(IJulia.kerneldir())&quot;`
+  KERNEL_NAME=`ls -d &quot;$KERNEL_DIR&quot;/julia*`
+  mv -f $KERNEL_NAME &quot;$KERNEL_DIR&quot;/julia  
+
+  echo &#39;&#39;
+  echo &quot;Successfully installed `julia -v`!&quot;
+  echo &quot;Please reload this page (press Ctrl+R, ⌘+R, or the F5 key) then&quot;
+  echo &quot;jump to the &#39;Checking the Installation&#39; section.&quot;
+fi
+
+using Pkg
+Pkg.add(&quot;Optim&quot;)
+Pkg.add(&quot;Roots&quot;)
+Pkg.add(&quot;NPZ&quot;)
+Pkg.add(&quot;Distributed&quot;)
+Pkg.add(&quot;CSV&quot;)
+Pkg.add(&quot;Tables&quot;)
+Pkg.add(&quot;Interpolations&quot;)
+
+using Optim
+using Roots
+using NPZ
+using Distributed
+using CSV
+using Tables
+using Interpolations
 </pre></div>
 </div>
 </div>
@@ -1027,6 +1091,15 @@ Convegence time (minutes): 0.1782075119
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Uncertain Expansion Method: Computation</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="MFRSuite.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MFRSuite</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
