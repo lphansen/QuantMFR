@@ -406,21 +406,24 @@ d \varsigma_t &amp; =\lambda_{\varsigma}\left(\bar{\varsigma}-\varsigma_t\right)
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="financial-market">
 <h1>Financial Market<a class="headerlink" href="#financial-market" title="Permalink to this heading">#</a></h1>
-<p>Capital Price
-$<span class="math notranslate nohighlight">\(
+<p>Capital Price</p>
+<div class="math notranslate nohighlight">
+\[
 d q_t=q_t\left[\mu_{q, t} d t+\sigma_{q, t} \cdot d Z_t\right]
-\)</span>$</p>
-<p>SDF
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>SDF</p>
+<div class="math notranslate nohighlight">
+\[
 d S_t=-S_t\left[r_t d t+\pi_t \cdot d Z_t\right]
-\)</span>$</p>
+\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(r\)</span> is the short-term interest rate, and <span class="math notranslate nohighlight">\(\pi\)</span> denotes the <span class="math notranslate nohighlight">\(d \times 1\)</span> vector of risk prices associated with <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
 </ul>
-<p>Return on Capital
-$<span class="math notranslate nohighlight">\(
+<p>Return on Capital</p>
+<div class="math notranslate nohighlight">
+\[
 d R_{j, t}^k:=\frac{a_j k_{j, t}-\Phi\left(\iota_{j, t}\right) k_{j, t}}{q_t k_{j, t}} d t+\frac{d\left(q_t k_{j, t}\right)}{q_t k_{j, t}}
-\)</span>$</p>
+\]</div>
 <ul class="simple">
 <li><p>dividend yields <span class="math notranslate nohighlight">\(\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}\)</span></p></li>
 <li><p>capital gain <span class="math notranslate nohighlight">\(\frac{d\left(q_t k_{j, t}\right)}{q_t k_{j, t}}\)</span></p>
@@ -436,122 +439,137 @@ d R_{j, t}^k=\underbrace{\left[\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}+\io
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="households">
 <h1>Households<a class="headerlink" href="#households" title="Permalink to this heading">#</a></h1>
-<p>Preference
-$<span class="math notranslate nohighlight">\(
+<p>Preference</p>
+<div class="math notranslate nohighlight">
+\[
 U_{j, t}=\mathbb{E}\left[\int_0^{\infty} \varphi_j\left(c_{j, t+s}, U_{j, t+s}\right) d s \mid \mathcal{F}_t\right]
-\)</span>$</p>
+\]</div>
 <ul class="simple">
 <li><p>where <span class="math notranslate nohighlight">\(\varphi_j(c, U):=\rho_j \frac{1-\gamma_j}{1-\psi_j} U\left(c^{1-\psi_j}\left[\left(1-\gamma_j\right) U\right]^{-\frac{1-\psi_j}{1-\gamma_j}}-1\right)\)</span></p></li>
 </ul>
-<p>Dynamic Budget Constraints
-$<span class="math notranslate nohighlight">\(
+<p>Dynamic Budget Constraints</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{d n_{j, t}}{n_{j, t}}=\left(\mu_{n_j, t}-c_{j, t} / n_{j, t}\right) d t+\sigma_{n_j, t} \cdot d Z_t+\tilde{\sigma}_{n_j, t} d Z_{j, t}
-\)</span>$</p>
-<ul class="simple">
-<li><p>where
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-\mu_{n_j, t} &amp; :=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t \\
-\sigma_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t}+\theta_{j, t} \\
-\tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
-\end{aligned}
-\)</span>$</p>
+\]</div>
 <ul>
-<li><p>which comes from
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-\mu_{n_j, t}&amp;=\frac{q_tk_{j,t}\mu_{R, j, t}-(1-\chi_{j,t})q_tk_{j,t}\left(r_t+\sigma_{R, t} \cdot \pi_t\right)-(\chi_{j, t} q_t k_{j, t}-n_{j, t})r_t+\theta_{j, t}n_{j,t}\pi_t}{n_{j, t}}\\
-&amp;=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t 
-\end{aligned}
-\)</span>$</p></li>
+<li><p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+  \mu_{n_j, t} &amp; :=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t \\
+  \sigma_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t}+\theta_{j, t} \\
+  \tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
+  \end{aligned}
+  \end{split}\]</div>
+<ul>
+<li><p>which comes from</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    \mu_{n_j, t}&amp;=\frac{q_tk_{j,t}\mu_{R, j, t}-(1-\chi_{j,t})q_tk_{j,t}\left(r_t+\sigma_{R, t} \cdot \pi_t\right)-(\chi_{j, t} q_t k_{j, t}-n_{j, t})r_t+\theta_{j, t}n_{j,t}\pi_t}{n_{j, t}}\\
+    &amp;=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t 
+    \end{aligned}
+    \end{split}\]</div>
+</li>
 </ul>
 </li>
 <li><p>total asset <span class="math notranslate nohighlight">\(q_tk_{j,t}\)</span></p></li>
 <li><p>equity issuances <span class="math notranslate nohighlight">\((1-\chi_{j,t})q_tk_{j,t}\)</span>,</p>
-<ul>
+<ul class="simple">
 <li><p>equity dividend <span class="math notranslate nohighlight">\(\left(r_t+\sigma_{R, t} \cdot \pi_t\right) d t+\sigma_{R, t} \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}\)</span></p></li>
 </ul>
 </li>
 <li><p>risk-free short debt <span class="math notranslate nohighlight">\(\chi_{j, t} q_t k_{j, t}-n_{j, t}\)</span>,</p>
-<ul>
+<ul class="simple">
 <li><p>risk-free rate <span class="math notranslate nohighlight">\(r_tdt\)</span></p></li>
 </ul>
 </li>
 <li><p>excess return on capital</p>
-<ul>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)\)</span></p></li>
 </ul>
 </li>
 <li><p>excess return compensation to equity investors</p>
-<ul>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t\)</span></p></li>
 </ul>
 </li>
 <li><p>Derivative hedging positions <span class="math notranslate nohighlight">\(\theta_{j, t} n_{j, t}\)</span></p>
-<ul>
+<ul class="simple">
 <li><p>payout per unit <span class="math notranslate nohighlight">\(\pi_t d t+d Z_t\)</span></p></li>
 </ul>
 </li>
 </ul>
-<p>Equity Constraint
-$<span class="math notranslate nohighlight">\(
+<p>Equity Constraint</p>
+<div class="math notranslate nohighlight">
+\[
 \chi_{j, t} \geq \underline{\chi}_j
-\)</span>$</p>
-<p>Hedging Constraint
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>Hedging Constraint</p>
+<div class="math notranslate nohighlight">
+\[
 \theta_{i t} \in \Theta_j
-\)</span>$</p>
-<p>Borrowing Constraint
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>Borrowing Constraint</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{\chi_{j, t} q_t k_{j, t}}{n_{j, t}} \sigma_{R, t} \leq \bar{\beta}_j
-\)</span>$</p>
+\]</div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="market-clearing">
 <h1>Market Clearing<a class="headerlink" href="#market-clearing" title="Permalink to this heading">#</a></h1>
-<p>Goods market clearing
-$<span class="math notranslate nohighlight">\(
+<p>Goods market clearing</p>
+<div class="math notranslate nohighlight">
+\[
 \int_{\mathbb{J} \in \mathbb{J}_h} c_{j, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(a_j-\Phi\left(\iota_{j, t}\right)\right) k_{j, t} d j .
-\)</span><span class="math notranslate nohighlight">\(
-Capital market clearing
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Capital market clearing</p>
+<div class="math notranslate nohighlight">
+\[
 \int_{\mathbb{J}_e \cup \mathbb{J}_h} k_{j, t} d j=K_t 
-\)</span><span class="math notranslate nohighlight">\(
-Equity market clearing
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Equity market clearing</p>
+<div class="math notranslate nohighlight">
+\[
 \int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(1-\chi_{j, t}\right) q_t k_{j, t} \sigma_{R, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h} \theta_{j, t} n_{j, t} d j .
-\)</span><span class="math notranslate nohighlight">\(
-Bond market clearing
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Bond market clearing
+$<span class="math notranslate nohighlight">\(
 \int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(q_t k_{j, t}-n_{j, t}\right) d j=0
 \)</span>$</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="hjb">
 <h1>HJB<a class="headerlink" href="#hjb" title="Permalink to this heading">#</a></h1>
-<p>HJB equation
-$<span class="math notranslate nohighlight">\(
+<p>HJB equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 0=\max \frac{\rho}{1-\psi}\left[(c / n)^{1-\psi} \xi^{\psi-1}-1\right]+\mu_n-c / n+\mu_X \cdot \partial_X \ln \xi-\frac{\gamma}{2}\left(\left\|\sigma_n\right\|^2+\tilde{\sigma}_n^2\right) \\
 +(1-\gamma) \sigma_n \cdot \sigma_X^{\prime} \partial_X \ln \xi+\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi \sigma_X\right)+(1-\gamma)\left\|\sigma_X^{\prime} \partial_X \ln \xi\right\|^2\right]
 \end{aligned}
-\)</span>$</p>
-<p>FOC on investment
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>FOC on investment</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 \Phi(\iota) &amp;=\phi^{-1}[\exp (\phi \iota)-1]\\
 \iota(q) &amp; =\phi^{-1} \log (q) \\
 \Phi(\iota(q)) &amp; =\phi^{-1}(q-1) .
 \end{aligned}
-\)</span>$</p>
-<p>FOC on consumption
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>FOC on consumption</p>
+<div class="math notranslate nohighlight">
+\[
 c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
-\)</span>$</p>
-<p>HJB equation with optimized investment and consumption
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>HJB equation with optimized investment and consumption</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 0=\max &amp; \frac{\psi}{1-\psi} \rho^{1 / \psi} \xi^{1-1 / \psi}-\frac{\rho}{1-\psi}+\mu_n-\frac{\gamma}{2}\left(\left\|\sigma_n\right\|^2+\tilde{\sigma}_n^2\right)+\left[\mu_X+(1-\gamma) \sigma_X \sigma_n\right] \cdot \partial_X \ln \xi \\+&amp;\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi \sigma_X\right)+(1-\gamma)\left\|\sigma_X^{\prime} \partial_X \ln \xi\right\|^2\right]
 \end{aligned}
-\)</span>$</p>
+\end{split}\]</div>
 <ul class="simple">
 <li><p>where</p></li>
 </ul>
@@ -563,35 +581,39 @@ $<span class="math notranslate nohighlight">\(
 \tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
 \end{aligned}
 \end{split}\]</div>
-<p>Households FOC on choices of leverage <span class="math notranslate nohighlight">\(q k_h / n_h \geq 0\)</span>
-$<span class="math notranslate nohighlight">\(
+<p>Households FOC on choices of leverage <span class="math notranslate nohighlight">\(q k_h / n_h \geq 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \begin{gathered}
 \mu_{R, h}-r+\left(1-\gamma_h\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_h \leq \gamma_h\left(\sigma_{n_h} \cdot \sigma_R+\tilde{\sigma}_{n_h} \sqrt{\varsigma}\right) 
 \end{gathered}
-\)</span><span class="math notranslate nohighlight">\(
-Households FOC on market hedges \)</span>\theta<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Households FOC on market hedges <span class="math notranslate nohighlight">\(\theta\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \begin{gathered}
 \pi+\left(1-\gamma_h\right) \sigma_X^{\prime} \partial_X \ln \xi_h=\gamma_h \sigma_{n_h} .
 \end{gathered}
-\)</span>$</p>
+\]</div>
 <ul>
-<li><p>Households Euler Equation
-$<span class="math notranslate nohighlight">\(
-\left\{\begin{array}{lll}
-\mu_{R, h}-r \leq \pi \cdot \sigma_R, &amp; \text { if } &amp; k_h=0 \\
-\mu_{R, h}-r=\pi \cdot \sigma_R+\gamma_h \varsigma q k_h / n_h, &amp; \text { if } &amp; k_h&gt;0
-\end{array}\right.
-\)</span>$</p>
+<li><p>Households Euler Equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \left\{\begin{array}{lll}
+  \mu_{R, h}-r \leq \pi \cdot \sigma_R, &amp; \text { if } &amp; k_h=0 \\
+  \mu_{R, h}-r=\pi \cdot \sigma_R+\gamma_h \varsigma q k_h / n_h, &amp; \text { if } &amp; k_h&gt;0
+  \end{array}\right.
+  \end{split}\]</div>
 <ul>
-<li><p>Optimal Risk Allocation
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-\sigma_{n_h} &amp; =\frac{q k_h}{n_h} \sigma_R+\theta_h=\frac{\pi}{\gamma_h}+\frac{1-\gamma_h}{\gamma_h} \sigma_X^{\prime} \partial_X \ln \xi_h \\
-\beta_h &amp; =\frac{q k_h}{n_h} \begin{cases}=\frac{\Delta_h^{+}}{\gamma_h \varsigma}, &amp; \text { if } \varsigma&gt;0 \\
-\geq 0, &amp; \text { if } \varsigma=0 .\end{cases}
-\end{aligned}
-\)</span>$</p>
+<li><p>Optimal Risk Allocation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    \sigma_{n_h} &amp; =\frac{q k_h}{n_h} \sigma_R+\theta_h=\frac{\pi}{\gamma_h}+\frac{1-\gamma_h}{\gamma_h} \sigma_X^{\prime} \partial_X \ln \xi_h \\
+    \beta_h &amp; =\frac{q k_h}{n_h} \begin{cases}=\frac{\Delta_h^{+}}{\gamma_h \varsigma}, &amp; \text { if } \varsigma&gt;0 \\
+    \geq 0, &amp; \text { if } \varsigma=0 .\end{cases}
+    \end{aligned}
+    \end{split}\]</div>
 <ul>
 <li><p>gap between the households’ expected return on capital and the risk-premium paid by the market</p>
 <p><span class="math notranslate nohighlight">\(\Delta_{h, t}:=\mu_{R, h, t}-r_t-\pi_t \cdot \sigma_{R, t}\)</span></p>
@@ -601,31 +623,35 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </li>
 </ul>
-<p>Expert FOC on choices of leverage <span class="math notranslate nohighlight">\(q k_e / n_e \geq 0\)</span>
-$<span class="math notranslate nohighlight">\(
+<p>Expert FOC on choices of leverage <span class="math notranslate nohighlight">\(q k_e / n_e \geq 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \begin{aligned}
 &amp; \mu_{R, e}-r-(1-\chi) \pi \cdot \sigma_R+\chi\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e=\gamma_e \chi\left(\sigma_R \cdot \sigma_{n_e}+\sqrt{\varsigma} \tilde{\sigma}_{n_e}\right) 
 \end{aligned}
-\)</span><span class="math notranslate nohighlight">\(
-Experts FOC on equity retention \)</span>\chi \geq \underline{\chi}<span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Experts FOC on equity retention <span class="math notranslate nohighlight">\(\chi \geq \underline{\chi}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 \begin{aligned}
 \pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e \leq \gamma_e\left(\sigma_R \cdot \sigma_{n_e}+\sqrt{\varsigma} \tilde{\sigma}_{n_e}\right),
 \end{aligned}
-\)</span>$</p>
+\]</div>
 <ul>
-<li><p>Expert Euler Equation
-$<span class="math notranslate nohighlight">\(
-\begin{cases}\pi \cdot \sigma_R \leq \mu_{R, e}-r, &amp; \text { if } \quad \chi=\underline{\chi} \\ \pi \cdot \sigma_R=\mu_{R, e}-r, &amp; \text { if } \quad \chi&gt;\underline{\chi} .\end{cases}
-\)</span>$</p>
+<li><p>Expert Euler Equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{cases}\pi \cdot \sigma_R \leq \mu_{R, e}-r, &amp; \text { if } \quad \chi=\underline{\chi} \\ \pi \cdot \sigma_R=\mu_{R, e}-r, &amp; \text { if } \quad \chi&gt;\underline{\chi} .\end{cases}
+  \end{split}\]</div>
 <ul>
-<li><p>Optimal Leverage
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-\beta_e&amp;:=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right]\\
-\sigma_{n_e}&amp;=\beta_e \sigma_R
-\end{aligned}
-\)</span>$</p>
+<li><p>Optimal Leverage</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{aligned}
+    \beta_e&amp;:=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right]\\
+    \sigma_{n_e}&amp;=\beta_e \sigma_R
+    \end{aligned}
+    \end{split}\]</div>
 <ul>
 <li><p>wedge between expected return and risk-premium</p>
 <p><span class="math notranslate nohighlight">\(\Delta_{e, t}:=\underline{\chi}^{-1}\left[\mu_{R, e, t}-r_t-\pi_t \cdot \sigma_{R, t}\right]\)</span></p>
@@ -635,20 +661,22 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </li>
 </ul>
-<p>Households Value Function
-$<span class="math notranslate nohighlight">\(
+<p>Households Value Function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 0= &amp; \frac{\psi_h}{1-\psi_h} \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}-\frac{\rho_h}{1-\psi_h}+r+\frac{1}{2 \gamma_h}\left(\|\pi\|^2+\left(\gamma_h \beta_h \sqrt{\varsigma}\right)^2\right)+\left[\mu_X+\frac{1-\gamma_h}{\gamma_h} \sigma_X \pi\right] \cdot \partial_X \ln \xi_h \\
 &amp; +\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi_h \sigma_X\right)+\frac{1-\gamma_h}{\gamma_h}\left\|\sigma_X^{\prime} \partial_X \ln \xi_h\right\|^2\right]
 \end{aligned}
-\)</span>$</p>
-<p>Experts Value Function
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>Experts Value Function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 0= &amp; \frac{\psi_h}{1-\psi_h} \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}-\frac{\rho_h}{1-\psi_h}+r+\frac{1}{2 \gamma_h}\left(\|\pi\|^2+\left(\gamma_h \beta_h \sqrt{\varsigma}\right)^2\right)+\left[\mu_X+\frac{1-\gamma_h}{\gamma_h} \sigma_X \pi\right] \cdot \partial_X \ln \xi_h \\
 &amp; +\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi_h \sigma_X\right)+\frac{1-\gamma_h}{\gamma_h}\left\|\sigma_X^{\prime} \partial_X \ln \xi_h\right\|^2\right]
 \end{aligned}
-\)</span>$</p>
+\end{split}\]</div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="computing-equilibrium">
 <h1>Computing Equilibrium<a class="headerlink" href="#computing-equilibrium" title="Permalink to this heading">#</a></h1>
@@ -702,17 +730,19 @@ q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="wealth-share-evolution">
 <h1>Wealth Share Evolution<a class="headerlink" href="#wealth-share-evolution" title="Permalink to this heading">#</a></h1>
-<p>Capital Evolution
-$<span class="math notranslate nohighlight">\(
+<p>Capital Evolution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 \frac{d K_t}{K_t} &amp; =\mu_{K, t} d t+\sigma_{K, t} \cdot d Z_t \\
 \mu_{K, t} &amp; :=g_t+\iota\left(q_t\right)-\delta
 \end{aligned}
-\)</span>$</p>
-<p>Net Wealth Evolution
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>Net Wealth Evolution</p>
+<div class="math notranslate nohighlight">
+\[
 \frac{d n_{j, t}}{n_{j, t}}=\left(\mu_{n_j, t}-c_{j, t} / n_{j, t}\right) d t+\sigma_{n_j, t} \cdot d Z_t+\tilde{\sigma}_{n_j, t} d Z_{j, t}
-\)</span>$</p>
+\]</div>
 <ul class="simple">
 <li><p>where</p></li>
 </ul>
@@ -738,10 +768,11 @@ $<span class="math notranslate nohighlight">\(
 &amp; \frac{d N_{e, t}}{N_{e, t}}=\left[r_t-\rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}-\lambda_d+\sigma_{n_e, t} \cdot \pi_t+\beta_{e, t} \Delta_{e, t}+\frac{\nu \lambda_d}{w_t}\right] d t+\sigma_{n_e, t} \cdot d Z_t .
 \end{aligned}
 \end{split}\]</div>
-<p>Wealth Share Evolution
-$<span class="math notranslate nohighlight">\(
+<p>Wealth Share Evolution</p>
+<div class="math notranslate nohighlight">
+\[
 w=\frac{N_e}{N_e+N_h}
-\)</span>$</p>
+\]</div>
 <div class="math notranslate nohighlight">
 \[
 d w=w(1-w)\left[\frac{d N_e}{N_e}-\frac{d N_h}{N_h}\right]-w(1-w)\left[w \frac{d\left[N_e\right]}{N_e^2}-(1-w) \frac{d\left[N_h\right]}{N_h^2}+(1-2 w) \frac{d\left[N_e, N_h\right]}{N_e N_h}\right] .
