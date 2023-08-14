@@ -179,6 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Comparative Valuation Dynamics in Models with Financing Restrictions</a></li>
 
 
+
 </ul>
 
     </div>
@@ -344,6 +345,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">2.2.6 Policy Function</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-the-model-using-mfr-suite">3 Solve the Model using MFR Suite</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration">3.1 Calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-model-and-compute-the-stationary-density">3.2 Solving the Model and Compute the Stationary Density</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-shock-elasticity">3.3 Compute the Shock Elasticity</a></li>
 </ul>
 </li>
 </ul>
@@ -948,6 +955,13 @@ D_{\xi, w} &amp; :=w(1-w)\left\|D_{\tilde{X}}\right\|^2 \partial_w\left[\ln \lef
 D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \cdot \partial_{\tilde{X}}\left[\ln \left(\xi_h^{\gamma_h-1}\right)-\ln \left(\xi_e^{\gamma_e-1}\right)\right] .
 \end{aligned}
 \end{split}\]</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="solve-the-model-using-mfr-suite">
+<h1>3 Solve the Model using MFR Suite<a class="headerlink" href="#solve-the-model-using-mfr-suite" title="Permalink to this heading">#</a></h1>
+<section id="calibration">
+<h2>3.1 Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataname</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
@@ -1059,6 +1073,9 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
 </div>
 </div>
 </div>
+</section>
+<section id="solving-the-model-and-compute-the-stationary-density">
+<h2>3.2 Solving the Model and Compute the Stationary Density<a class="headerlink" href="#solving-the-model-and-compute-the-stationary-density" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Solve the model</span>
@@ -1076,9 +1093,16 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
 <span class="n">MFR_time_info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;solve_time&#39;</span><span class="p">:</span> <span class="n">solve_time</span><span class="p">}</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/MFR_time_info.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">MFR_time_info</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
-
-<span class="c1"># %%</span>
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-the-shock-elasticity">
+<h2>3.3 Compute the Shock Elasticity<a class="headerlink" href="#compute-the-shock-elasticity" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
 <span class="n">Model</span><span class="o">.</span><span class="n">computeShockElas</span><span class="p">(</span><span class="n">pcts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;W&#39;</span><span class="p">:[</span><span class="mf">.5</span><span class="p">],</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]},</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">perturb</span> <span class="o">=</span> <span class="s1">&#39;Ce&#39;</span><span class="p">,</span> <span class="n">bc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;natural&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/ExpertsExpoConsumption.pkl&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>   
@@ -1096,13 +1120,7 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">folder_name</span> <span class="o">+</span> <span class="s2">&quot;/Ela_time_info.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">Ela_time_info</span><span class="p">,</span><span class="n">f</span><span class="p">)</span>
 <span class="n">Model</span><span class="o">.</span><span class="n">dumpData</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%</span>
+
 <span class="c1">##### This method can only be called after the model is solved.</span>
 <span class="n">pcts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;W&#39;</span><span class="p">:[</span><span class="mf">.5</span><span class="p">],</span><span class="s1">&#39;Z&#39;</span><span class="p">:[</span><span class="mf">.5</span><span class="p">],</span><span class="s1">&#39;V&#39;</span><span class="p">:[</span><span class="mf">.25</span><span class="p">,</span><span class="mf">.5</span><span class="p">,</span><span class="mf">.75</span><span class="p">]}</span>
 
@@ -1185,7 +1203,6 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
 </div>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1264,6 +1281,12 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">2.2.6 Policy Function</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-the-model-using-mfr-suite">3 Solve the Model using MFR Suite</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration">3.1 Calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-model-and-compute-the-stationary-density">3.2 Solving the Model and Compute the Stationary Density</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-shock-elasticity">3.3 Compute the Shock Elasticity</a></li>
 </ul>
 </li>
 </ul>
