@@ -403,10 +403,13 @@ document.write(`
 d k_{j, t}=k_{j, t}\left[\left(g_t+\iota_{j, t}-\delta\right) d t+\sqrt{s_t} \sigma \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}\right]
 \]</div>
 <ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(j \in \{e, h\}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(g_t\)</span> is exogenous productivity growth, <span class="math notranslate nohighlight">\(\iota_{j . t}\)</span> denotes the investment rate, <span class="math notranslate nohighlight">\(\delta\)</span> is depreciation.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\{Z_t\}\)</span> is a d dimensional standard Brownian motion with independent components which represents aggregate shock. <span class="math notranslate nohighlight">\(\{Z_{j, t}\}\)</span> is a one-dimensional idiosyncratic Brownian motion, independent of <span class="math notranslate nohighlight">\(Z\)</span> and <span class="math notranslate nohighlight">\(Z_j\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(s_t\)</span> is aggregate stochastic variance, and <span class="math notranslate nohighlight">\(\varsigma_t\)</span> is idiosyncratic stochastic variance.</p></li>
 </ul>
-<p>Exogenous States</p>
+<p>Investment is subject to adjustment costs. By investing <span class="math notranslate nohighlight">\(\iota_{j, t}\)</span>, agent <span class="math notranslate nohighlight">\(j\)</span> pays <span class="math notranslate nohighlight">\(\Phi(\iota_{j, t})k_{j, t}\)</span>.</p>
+<p>Exogenous states evolve according to</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -415,18 +418,16 @@ d s_t &amp; =\lambda_s\left(\bar{s}-s_t\right) d t+\sqrt{s_t} \sigma_s \cdot d Z
 d \varsigma_t &amp; =\lambda_{\varsigma}\left(\bar{\varsigma}-\varsigma_t\right) d t+\sqrt{\varsigma_t} \sigma_{\varsigma} \cdot d Z_t
 \end{aligned}
 \end{split}\]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(s_t\)</span> is aggregate stochastic variance, and <span class="math notranslate nohighlight">\(\varsigma_t\)</span> is idiosyncratic stochastic variance</p></li>
-</ul>
 </section>
 <section id="financial-market">
 <h2>1.2 Financial Market<a class="headerlink" href="#financial-market" title="Permalink to this heading">#</a></h2>
-<p>Capital Price</p>
+<p>Capital price evolves as</p>
 <div class="math notranslate nohighlight">
 \[
 d q_t=q_t\left[\mu_{q, t} d t+\sigma_{q, t} \cdot d Z_t\right]
 \]</div>
-<p>SDF</p>
+<p>where both the drift and the diffusion are endogenous.</p>
+<p>SDF evolves as</p>
 <div class="math notranslate nohighlight">
 \[
 d S_t=-S_t\left[r_t d t+\pi_t \cdot d Z_t\right]
@@ -434,19 +435,13 @@ d S_t=-S_t\left[r_t d t+\pi_t \cdot d Z_t\right]
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(r\)</span> is the short-term interest rate, and <span class="math notranslate nohighlight">\(\pi\)</span> denotes the <span class="math notranslate nohighlight">\(d \times 1\)</span> vector of risk prices associated with <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
 </ul>
-<p>Return on Capital</p>
+<p>To ensure complete markets, we introduce zero-cost insurance contracts (futures) associated with the aggregate shocks <span class="math notranslate nohighlight">\(Z_t\)</span>.</p>
+<p>The return on capital is defined by</p>
 <div class="math notranslate nohighlight">
 \[
 d R_{j, t}^k:=\frac{a_j k_{j, t}-\Phi\left(\iota_{j, t}\right) k_{j, t}}{q_t k_{j, t}} d t+\frac{d\left(q_t k_{j, t}\right)}{q_t k_{j, t}}
 \]</div>
-<ul class="simple">
-<li><p>dividend yields <span class="math notranslate nohighlight">\(\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}\)</span></p></li>
-<li><p>capital gain <span class="math notranslate nohighlight">\(\frac{d\left(q_t k_{j, t}\right)}{q_t k_{j, t}}\)</span></p>
-<ul>
-<li><p>Adjustment costs <span class="math notranslate nohighlight">\(\Phi(x)=\phi^{-1}[\exp (\phi x)-1]\)</span></p></li>
-</ul>
-</li>
-</ul>
+<p>by It\a=o</p>
 <div class="math notranslate nohighlight">
 \[
 d R_{j, t}^k=\underbrace{\left[\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}+\iota_{j, t}-\delta+g_t+\mu_{q, t}+\sigma_{K, t} \cdot \sigma_{q, t}\right]}_{:=\mu_{R, j, t}} d t+\underbrace{\left[\sigma_{K, t}+\sigma_{q, t}\right]}_{:=\sigma_{R, t}} \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}
