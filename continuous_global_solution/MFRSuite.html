@@ -370,8 +370,8 @@ document.write(`
 <h1>Comparative Valuation Dynamics in Models with Financing Restrictions<a class="headerlink" href="#comparative-valuation-dynamics-in-models-with-financing-restrictions" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git clone https://github.com/lphansen/MFRSuite
-<span class="o">!</span><span class="nb">cd</span> /content/MFRSuite/mfrSuite <span class="o">&amp;&amp;</span> bash install.sh
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/lphansen/MFRSuite
+<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>/content/MFRSuite/mfrSuite<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>bash<span class="w"> </span>install.sh
 </pre></div>
 </div>
 </div>
@@ -393,15 +393,18 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="model">
 <h1>1 Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h1>
+<p>Our model is based on Brunnermeier and Sannikov (2016), adding heterogeneous recursive preferences, overlapping generations of agents, an exogeneous TFP growth rate, both aggregate and idiosyncratic volatility shocks, and additional types of financial frictions.</p>
 <section id="production">
 <h2>1.1 Production<a class="headerlink" href="#production" title="Permalink to this heading">#</a></h2>
-<p>Capital Evolution</p>
+<p>There are two types of agents, experts and households, denoted by <span class="math notranslate nohighlight">\(e\)</span> and <span class="math notranslate nohighlight">\(h\)</span>, respectively. Each agent produces with an A-K technology, an agent with <span class="math notranslate nohighlight">\(k_{j, t}\)</span> capital produces <span class="math notranslate nohighlight">\(a_j k_{j, t}\)</span> units of consumption goods. We assume <span class="math notranslate nohighlight">\(a_h \leq a_e\)</span>.</p>
+<p>Quality-adjusted capital is accumulated via investment net of depreciation, as well as exogenous productivity gains:</p>
 <div class="math notranslate nohighlight">
 \[
 d k_{j, t}=k_{j, t}\left[\left(g_t+\iota_{j, t}-\delta\right) d t+\sqrt{s_t} \sigma \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}\right]
 \]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(g_t\)</span> is exogenous productivity growth, <span class="math notranslate nohighlight">\(\iota_{j . t}\)</span> denotes the investment rate, <span class="math notranslate nohighlight">\(\delta\)</span> is depreciation</p></li>
+<li><p><span class="math notranslate nohighlight">\(g_t\)</span> is exogenous productivity growth, <span class="math notranslate nohighlight">\(\iota_{j . t}\)</span> denotes the investment rate, <span class="math notranslate nohighlight">\(\delta\)</span> is depreciation.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{Z_t\}\)</span> is a d dimensional standard Brownian motion with independent components which represents aggregate shock. <span class="math notranslate nohighlight">\(\{Z_{j, t}\}\)</span> is a one-dimensional idiosyncratic Brownian motion, independent of <span class="math notranslate nohighlight">\(Z\)</span> and <span class="math notranslate nohighlight">\(Z_j\)</span>.</p></li>
 </ul>
 <p>Exogenous States</p>
 <div class="math notranslate nohighlight">
