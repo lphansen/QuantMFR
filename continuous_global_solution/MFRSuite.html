@@ -536,10 +536,11 @@ U_{j, t}=\mathbb{E}\left[\int_0^{\infty} \varphi_j\left(c_{j, t+s}, U_{j, t+s}\r
 \[
 \int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(1-\chi_{j, t}\right) q_t k_{j, t} \sigma_{R, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h} \theta_{j, t} n_{j, t} d j .
 \]</div>
-<p>Bond market clearing
-$<span class="math notranslate nohighlight">\(
+<p>Bond market clearing</p>
+<div class="math notranslate nohighlight">
+\[
 \int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(q_t k_{j, t}-n_{j, t}\right) d j=0
-\)</span>$</p>
+\]</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="hjb-equations-and-equilibrium">
@@ -687,10 +688,11 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 <h2>2.2 Computing Equilibrium<a class="headerlink" href="#computing-equilibrium" title="Permalink to this heading">#</a></h2>
 <section id="capital-price">
 <h3>2.2.1 Capital Price<a class="headerlink" href="#capital-price" title="Permalink to this heading">#</a></h3>
-<p>Define
-$<span class="math notranslate nohighlight">\(
+<p>Define</p>
+<div class="math notranslate nohighlight">
+\[
 \kappa_t:=\frac{K_{e, t}}{K_t}
-\)</span>$</p>
+\]</div>
 <div class="math notranslate nohighlight">
 \[
 w_t:=\int_{\mathbb{J}_e} n_{j, t} d j /\left(q_t K_t\right)
@@ -710,26 +712,29 @@ $<span class="math notranslate nohighlight">\(
 \mu_{R, e}-r&gt;\mu_{R, h}-r \geq \pi \cdot \sigma_R
 \)</span>$</p></li>
 </ol>
-<p>Slackness Condition
-$<span class="math notranslate nohighlight">\(
+<p>Slackness Condition</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 &amp; 0=\min \left(1-\kappa, \Delta_h^{+}-\Delta_h\right) \\
 &amp; 0=\min \left(\chi-\underline{\chi}, \Delta_e\right) \\
 &amp; 0=(1-\kappa)(\chi-\underline{\chi})\left(a_e-a_h\right) .
 \end{aligned}
-\)</span>$</p>
-<p>Goods Market Condition with optimized investment and consumption
-$<span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>Goods Market Condition with optimized investment and consumption</p>
+<div class="math notranslate nohighlight">
+\[
 \int_{\mathbb{J} \in \mathbb{J}_h} c_{j, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(a_j-\Phi\left(\iota_{j, t}\right)\right) k_{j, t} d j .
-\)</span>$</p>
+\]</div>
 <div class="math notranslate nohighlight">
 \[
 c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 \]</div>
-<p>Capital Price
-$<span class="math notranslate nohighlight">\(
+<p>Capital Price</p>
+<div class="math notranslate nohighlight">
+\[
 q(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+q w \rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}=(1-\kappa) a_h+\kappa a_e-\Phi(\iota(q))
-\)</span>$</p>
+\]</div>
 <div class="math notranslate nohighlight">
 \[
 q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+w \rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}+1 / \phi}
@@ -848,6 +853,7 @@ r+(1-w)\left(\sigma_{n_h} \cdot \pi+\beta_h \Delta_h-\rho_h^{1 / \psi_h} \xi_h^{
 \[
 (1-w) \sigma_{n_h}+w \sigma_{n_e}=\sigma_R
 \]</div>
+<p>Interest rate</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -855,6 +861,7 @@ r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta
 &amp; -w\left(\beta_e \Delta_e-\rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}\right) .
 \end{aligned}
 \end{split}\]</div>
+<p>Risk price</p>
 <div class="math notranslate nohighlight">
 \[
 \pi=\gamma_h \frac{1-\chi \kappa}{1-w} \sigma_R+\left(\gamma_h-1\right) \sigma_X^{\prime} \partial_X \ln \xi_h
@@ -862,6 +869,7 @@ r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta
 </section>
 <section id="risk-wedge">
 <h3>2.2.5 Risk Wedge<a class="headerlink" href="#risk-wedge" title="Permalink to this heading">#</a></h3>
+<p>Expert risk wedge</p>
 <div class="math notranslate nohighlight">
 \[
 \beta_e:=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right],
@@ -870,6 +878,7 @@ r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta
 \[
 \Delta_e=\gamma_e \frac{\chi \kappa}{w}\left(\left\|\sigma_R\right\|^2+\varsigma\right)-\gamma_h \frac{1-\chi \kappa}{1-w}\left\|\sigma_R\right\|^2-\sigma_R^{\prime} \sigma_X^{\prime} \partial_X \ln \left(\frac{\xi_h^{\gamma_h-1}}{\xi_e^{\gamma_e-1}}\right)
 \]</div>
+<p>Household risk wedge</p>
 <div class="math notranslate nohighlight">
 \[
 \mu_{R, e}-\mu_{R, h}=\mu_{R, e}-r-\pi \cdot \sigma_R+\pi \cdot \sigma_R-\left(\mu_{R, h}-r\right)
