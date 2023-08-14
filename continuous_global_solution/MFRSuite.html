@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>MFRSuite &#8212; Quant Macro Finance</title>
+    <title>Comparative Valuation Dynamics in Models with Financing Restrictions &#8212; Quant Macro Finance</title>
   
   
   
@@ -176,16 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">MFRSuite</a></li>
-
-
-
-
-
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Comparative Valuation Dynamics in Models with Financing Restrictions</a></li>
 
 
 </ul>
@@ -324,7 +315,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>MFRSuite</h1>
+    <h1>Comparative Valuation Dynamics in Models with Financing Restrictions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -334,18 +325,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MFRSuite</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#production">Production</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-market">Financial Market</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#households">Households</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#market-clearing">Market Clearing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb">HJB</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">Computing Equilibrium</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">Wealth Share Evolution</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">Capital Price Evolution</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-rate-and-risk-price">Interest Rate and Risk Price</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-wedge">Risk Wedge</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">Policy Function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Comparative Valuation Dynamics in Models with Financing Restrictions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model">1 Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#production">1.1 Production</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-market">1.2 Financial Market</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#households">1.3 Households</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-clearing">1.4 Market Clearing</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations-and-equilibrium">2 HJB Equations and Equilibrium</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations">2.1 HJB equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">2.2 Computing Equilibrium</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price">2.2.1 Capital Price</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">2.2.2 Wealth Share Evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">2.2.3 Capital Price Evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-rate-and-risk-price">2.2.4 Interest Rate and Risk Price</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-wedge">2.2.5 Risk Wedge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">2.2.6 Policy Function</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -359,12 +359,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/MFRSuite/blob/main/MFRSuite.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="mfrsuite">
-<h1>MFRSuite<a class="headerlink" href="#mfrsuite" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="comparative-valuation-dynamics-in-models-with-financing-restrictions">
+<h1>Comparative Valuation Dynamics in Models with Financing Restrictions<a class="headerlink" href="#comparative-valuation-dynamics-in-models-with-financing-restrictions" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/lphansen/MFRSuite
-<span class="o">!</span><span class="nb">cd</span><span class="w"> </span>/content/MFRSuite/mfrSuite<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>bash<span class="w"> </span>install.sh
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git clone https://github.com/lphansen/MFRSuite
+<span class="o">!</span><span class="nb">cd</span> /content/MFRSuite/mfrSuite <span class="o">&amp;&amp;</span> bash install.sh
 </pre></div>
 </div>
 </div>
@@ -384,8 +384,10 @@ document.write(`
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="production">
-<h1>Production<a class="headerlink" href="#production" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="model">
+<h1>1 Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h1>
+<section id="production">
+<h2>1.1 Production<a class="headerlink" href="#production" title="Permalink to this heading">#</a></h2>
 <p>Capital Evolution</p>
 <div class="math notranslate nohighlight">
 \[
@@ -403,9 +405,12 @@ d s_t &amp; =\lambda_s\left(\bar{s}-s_t\right) d t+\sqrt{s_t} \sigma_s \cdot d Z
 d \varsigma_t &amp; =\lambda_{\varsigma}\left(\bar{\varsigma}-\varsigma_t\right) d t+\sqrt{\varsigma_t} \sigma_{\varsigma} \cdot d Z_t
 \end{aligned}
 \end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(s_t\)</span> is aggregate stochastic variance, and <span class="math notranslate nohighlight">\(\varsigma_t\)</span> is idiosyncratic stochastic variance</p></li>
+</ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="financial-market">
-<h1>Financial Market<a class="headerlink" href="#financial-market" title="Permalink to this heading">#</a></h1>
+<section id="financial-market">
+<h2>1.2 Financial Market<a class="headerlink" href="#financial-market" title="Permalink to this heading">#</a></h2>
 <p>Capital Price</p>
 <div class="math notranslate nohighlight">
 \[
@@ -437,8 +442,8 @@ d R_{j, t}^k:=\frac{a_j k_{j, t}-\Phi\left(\iota_{j, t}\right) k_{j, t}}{q_t k_{
 d R_{j, t}^k=\underbrace{\left[\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}+\iota_{j, t}-\delta+g_t+\mu_{q, t}+\sigma_{K, t} \cdot \sigma_{q, t}\right]}_{:=\mu_{R, j, t}} d t+\underbrace{\left[\sigma_{K, t}+\sigma_{q, t}\right]}_{:=\sigma_{R, t}} \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="households">
-<h1>Households<a class="headerlink" href="#households" title="Permalink to this heading">#</a></h1>
+<section id="households">
+<h2>1.3 Households<a class="headerlink" href="#households" title="Permalink to this heading">#</a></h2>
 <p>Preference</p>
 <div class="math notranslate nohighlight">
 \[
@@ -453,26 +458,16 @@ U_{j, t}=\mathbb{E}\left[\int_0^{\infty} \varphi_j\left(c_{j, t+s}, U_{j, t+s}\r
 \frac{d n_{j, t}}{n_{j, t}}=\left(\mu_{n_j, t}-c_{j, t} / n_{j, t}\right) d t+\sigma_{n_j, t} \cdot d Z_t+\tilde{\sigma}_{n_j, t} d Z_{j, t}
 \]</div>
 <ul>
-<li><p>where</p>
+<li><p>where <span class="math notranslate nohighlight">\(n_t\)</span> stands for personal net worth</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
   \begin{aligned}
-  \mu_{n_j, t} &amp; :=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t \\
+  \mu_{n_j, t} &amp; :=\frac{q_tk_{j,t}\mu_{R, j, t}-(1-\chi_{j,t})q_tk_{j,t}\left(r_t+\sigma_{R, t} \cdot \pi_t\right)-(\chi_{j, t} q_t k_{j, t}-n_{j, t})r_t+\theta_{j, t}n_{j,t}\pi_t}{n_{j, t}}\\
+  &amp;\ = r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t \\
   \sigma_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t}+\theta_{j, t} \\
   \tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
   \end{aligned}
   \end{split}\]</div>
-<ul>
-<li><p>which comes from</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-    \begin{aligned}
-    \mu_{n_j, t}&amp;=\frac{q_tk_{j,t}\mu_{R, j, t}-(1-\chi_{j,t})q_tk_{j,t}\left(r_t+\sigma_{R, t} \cdot \pi_t\right)-(\chi_{j, t} q_t k_{j, t}-n_{j, t})r_t+\theta_{j, t}n_{j,t}\pi_t}{n_{j, t}}\\
-    &amp;=r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t 
-    \end{aligned}
-    \end{split}\]</div>
-</li>
-</ul>
 </li>
 <li><p>total asset <span class="math notranslate nohighlight">\(q_tk_{j,t}\)</span></p></li>
 <li><p>equity issuances <span class="math notranslate nohighlight">\((1-\chi_{j,t})q_tk_{j,t}\)</span>,</p>
@@ -517,8 +512,8 @@ U_{j, t}=\mathbb{E}\left[\int_0^{\infty} \varphi_j\left(c_{j, t+s}, U_{j, t+s}\r
 \frac{\chi_{j, t} q_t k_{j, t}}{n_{j, t}} \sigma_{R, t} \leq \bar{\beta}_j
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="market-clearing">
-<h1>Market Clearing<a class="headerlink" href="#market-clearing" title="Permalink to this heading">#</a></h1>
+<section id="market-clearing">
+<h2>1.4 Market Clearing<a class="headerlink" href="#market-clearing" title="Permalink to this heading">#</a></h2>
 <p>Goods market clearing</p>
 <div class="math notranslate nohighlight">
 \[
@@ -539,8 +534,11 @@ $<span class="math notranslate nohighlight">\(
 \int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(q_t k_{j, t}-n_{j, t}\right) d j=0
 \)</span>$</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="hjb">
-<h1>HJB<a class="headerlink" href="#hjb" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="hjb-equations-and-equilibrium">
+<h1>2 HJB Equations and Equilibrium<a class="headerlink" href="#hjb-equations-and-equilibrium" title="Permalink to this heading">#</a></h1>
+<section id="hjb-equations">
+<h2>2.1 HJB equations<a class="headerlink" href="#hjb-equations" title="Permalink to this heading">#</a></h2>
 <p>HJB equation</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -678,8 +676,10 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 \end{aligned}
 \end{split}\]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="computing-equilibrium">
-<h1>Computing Equilibrium<a class="headerlink" href="#computing-equilibrium" title="Permalink to this heading">#</a></h1>
+<section id="computing-equilibrium">
+<h2>2.2 Computing Equilibrium<a class="headerlink" href="#computing-equilibrium" title="Permalink to this heading">#</a></h2>
+<section id="capital-price">
+<h3>2.2.1 Capital Price<a class="headerlink" href="#capital-price" title="Permalink to this heading">#</a></h3>
 <p>Define
 $<span class="math notranslate nohighlight">\(
 \kappa_t:=\frac{K_{e, t}}{K_t}
@@ -728,8 +728,8 @@ q(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+q w \rho_e^{1 / \psi_e} \xi_e^{1
 q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+w \rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}+1 / \phi}
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="wealth-share-evolution">
-<h1>Wealth Share Evolution<a class="headerlink" href="#wealth-share-evolution" title="Permalink to this heading">#</a></h1>
+<section id="wealth-share-evolution">
+<h3>2.2.2 Wealth Share Evolution<a class="headerlink" href="#wealth-share-evolution" title="Permalink to this heading">#</a></h3>
 <p>Capital Evolution</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -754,6 +754,7 @@ q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1
 \tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
 \end{aligned}
 \end{split}\]</div>
+<p>Given</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \beta_h:=\frac{q k_h}{n_h}\\
@@ -797,8 +798,8 @@ d w=w(1-w)\left[\frac{d N_e}{N_e}-\frac{d N_h}{N_h}\right]-w(1-w)\left[w \frac{d
 \end{aligned}
 \end{split}\]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="capital-price-evolution">
-<h1>Capital Price Evolution<a class="headerlink" href="#capital-price-evolution" title="Permalink to this heading">#</a></h1>
+<section id="capital-price-evolution">
+<h3>2.2.3 Capital Price Evolution<a class="headerlink" href="#capital-price-evolution" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -823,8 +824,8 @@ d q\left(X_t\right) &amp; =\left[\mu_X\left(X_t\right) \cdot \partial_X q\left(X
 \sigma_R=\frac{\sqrt{s} \sigma+\left(\partial_g \ln q\right) \sqrt{s} \sigma_g+\left(\partial_s \ln q\right) \sqrt{s} \sigma_s+\left(\partial_{\varsigma} \ln q\right) \sqrt{\varsigma} \sigma_{\varsigma}}{1-(\chi \kappa-w) \partial_w \ln q} .
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="interest-rate-and-risk-price">
-<h1>Interest Rate and Risk Price<a class="headerlink" href="#interest-rate-and-risk-price" title="Permalink to this heading">#</a></h1>
+<section id="interest-rate-and-risk-price">
+<h3>2.2.4 Interest Rate and Risk Price<a class="headerlink" href="#interest-rate-and-risk-price" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 \int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(q_t k_{j, t}-n_{j, t}\right) d j=0
@@ -852,8 +853,8 @@ r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta
 \pi=\gamma_h \frac{1-\chi \kappa}{1-w} \sigma_R+\left(\gamma_h-1\right) \sigma_X^{\prime} \partial_X \ln \xi_h
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="risk-wedge">
-<h1>Risk Wedge<a class="headerlink" href="#risk-wedge" title="Permalink to this heading">#</a></h1>
+<section id="risk-wedge">
+<h3>2.2.5 Risk Wedge<a class="headerlink" href="#risk-wedge" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[
 \beta_e:=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right],
@@ -883,8 +884,8 @@ r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta
 \Delta_h=\underline{\chi} \Delta_e-\frac{a_e-a_h}{q}
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="policy-function">
-<h1>Policy Function<a class="headerlink" href="#policy-function" title="Permalink to this heading">#</a></h1>
+<section id="policy-function">
+<h3>2.2.6 Policy Function<a class="headerlink" href="#policy-function" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -909,6 +910,7 @@ r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta
 \left.+w(1-w) \frac{a_e-a_h}{\underline{\chi} q}+w(1-w) \sigma_R^{\prime} \sigma_X^{\prime} \partial_X \ln \left(\frac{\xi_h^{\gamma_h-1}}{\xi_e^{\gamma_e-1}}\right)\right\} .
 \end{gathered}
 \end{split}\]</div>
+<p>Equity position <span class="math notranslate nohighlight">\(\chi\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \begin{aligned}
@@ -922,20 +924,13 @@ r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta
 &amp; \left.-w(1-w) \sigma_R^{\prime} \sigma_X^{\prime} \partial_X \ln \left(\frac{\xi_h^{\gamma_h-1}}{\xi_e^{\gamma_e-1}}\right)\right\} .
 \end{aligned}
 \end{split}\]</div>
+<p>Expert capital fraction <span class="math notranslate nohighlight">\(\kappa\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \begin{aligned}
 &amp; 0=(1-\kappa)(\chi-\underline{\chi})\left(a_e-a_h\right) .
 \end{aligned}
 \]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-0= &amp; \min \left\{\chi-\underline{\chi},(1-w) \gamma_e \varsigma\left(\partial_w \ln q\right)^2(\chi-w)^3+(1-w) \gamma_e \varsigma\left(\partial_w \ln q\right)\left(w \partial_w \ln q-2\right)(\chi-w)^2\right. \\
-&amp; +\left[\left((1-w) \gamma_e+w \gamma_h\right)\left\|D_{\tilde{X}}\right\|^2+(1-w) \gamma_e \varsigma\left(1-2 w \partial_w \ln q\right)+\left(\partial_w \ln q\right) D_{\xi, \tilde{X}}-D_{\xi, w}\right](\chi-w) \\
-&amp; \left.+w(1-w)\left(\gamma_e-\gamma_h\right)\left\|D_{\tilde{X}}\right\|^2+w(1-w) \gamma_e \varsigma-D_{\xi, \tilde{X}}\right\} .
-\end{aligned}
-\end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -1189,6 +1184,8 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
 </div>
 </div>
 </section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1248,18 +1245,27 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MFRSuite</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#production">Production</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-market">Financial Market</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#households">Households</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#market-clearing">Market Clearing</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb">HJB</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">Computing Equilibrium</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">Wealth Share Evolution</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">Capital Price Evolution</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-rate-and-risk-price">Interest Rate and Risk Price</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-wedge">Risk Wedge</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">Policy Function</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Comparative Valuation Dynamics in Models with Financing Restrictions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model">1 Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#production">1.1 Production</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-market">1.2 Financial Market</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#households">1.3 Households</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-clearing">1.4 Market Clearing</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations-and-equilibrium">2 HJB Equations and Equilibrium</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations">2.1 HJB equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">2.2 Computing Equilibrium</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price">2.2.1 Capital Price</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">2.2.2 Wealth Share Evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">2.2.3 Capital Price Evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-rate-and-risk-price">2.2.4 Interest Rate and Risk Price</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-wedge">2.2.5 Risk Wedge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#policy-function">2.2.6 Policy Function</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
   </nav></div>
