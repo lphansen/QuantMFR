@@ -374,7 +374,7 @@ document.write(`
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/quickguide.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-method-computation">
-<h1>Uncertain Expansion Method: Computation<a class="headerlink" href="#uncertain-expansion-method-computation" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Uncertain Expansion Method: Computation</a><a class="headerlink" href="#uncertain-expansion-method-computation" title="Permalink to this heading">#</a></h1>
 <p>We previously covered the <a class="reference internal" href="../theory/theory.html"><span class="doc std std-doc">recursive utility framework</span></a> and the <a class="reference internal" href="../theory/uncertainexpansion.html"><span class="doc std std-doc">small-noise expansion method</span></a>. This section covers the usage of <code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code>, an open source Python toolbox which uses these methods to solve discrete nonlinear DSGE models.</p>
 <!-- For this notebook 
 
@@ -405,7 +405,18 @@ document.write(`
     * [2.3 `LinQuadVar` Split and Concat](#s2-3)
     * [2.4 Evaluate a `LinQuadVar`](#s2-4)
     * [2.5 Adjust Conditional Information Time](#s2-5)
-    * [2.6 Compute the Expectation of time $t+1$](#s2-6) --><p>Consider the framework previously introduced:</p>
+    * [2.6 Compute the Expectation of time $t+1$](#s2-6) -->
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#uncertain-expansion-method-computation" id="id1">Uncertain Expansion Method: Computation</a></p></li>
+<li><p><a class="reference internal" href="#ak-model-with-recursive-utility" id="id2">1 AK Model with Recursive Utility</a></p></li>
+<li><p><a class="reference internal" href="#inputs-a-class-anchor-id-s2-a" id="id3">2 Inputs <a class="anchor" id="s2"></a></a></p></li>
+<li><p><a class="reference internal" href="#outputs" id="id4">3 Outputs</a></p></li>
+<li><p><a class="reference internal" href="#examples-to-use-linquadvar-in-computation-a-class-anchor-id-s2-a" id="id5">2 Examples to use <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation <a class="anchor" id="s2"></a></a></p></li>
+</ul>
+</nav>
+<p>Consider the framework previously introduced:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -470,10 +481,11 @@ document.write(`
 </table>
 <p>The output is of class <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code>, which stores the coefficients for the linear-quadratic approximation for the jump and state variables; continuation values; consumption growth; and log change of measure, as well as the steady-state values of each variables.</p>
 <p>We will now walk through the computation using a simple example.
+<br>
 <br></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="ak-model-with-recursive-utility">
-<h1>1 AK Model with Recursive Utility<a class="headerlink" href="#ak-model-with-recursive-utility" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">1 AK Model with Recursive Utility</a><a class="headerlink" href="#ak-model-with-recursive-utility" title="Permalink to this heading">#</a></h1>
 <section id="model-setup-a-class-anchor-id-s1-1-a">
 <h2>1.1 Model Setup <a class="anchor" id="s1-1"></a><a class="headerlink" href="#model-setup-a-class-anchor-id-s1-1-a" title="Permalink to this heading">#</a></h2>
 <p>Consider the following recursive utility maximization problem with AK technology:</p>
@@ -510,9 +522,7 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 <p>For capital:</p>
 <div class="math notranslate nohighlight">
 \[
-\begin{align*}
  \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1}  \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right] - \frac {MK_t}{MC_t} + {\mathbf a}  = 0, \tag{8}
-\begin{align*}
 \]</div>
 <p>Equations 4 and 5 are the law of motion equations, while equations 6, 7, and 8 are the forward-looking equations.
 <br></p>
@@ -570,10 +580,12 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 <li><p><span class="math notranslate nohighlight">\(Z_{t}\)</span> : Exogenous technology</p></li>
 </ul>
 <br>
+<br>
+<br>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="inputs-a-class-anchor-id-s2-a">
-<h1>2 Inputs <a class="anchor" id="s2"></a><a class="headerlink" href="#inputs-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">2 Inputs <a class="anchor" id="s2"></a></a><a class="headerlink" href="#inputs-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
 <section id="libraries-a-class-anchor-id-s2-3-a">
 <h2>2.1 Libraries <a class="anchor" id="s2-3"></a><a class="headerlink" href="#libraries-a-class-anchor-id-s2-3-a" title="Permalink to this heading">#</a></h2>
 <p>Begin by installing the following libraries and downloading <code class="docutils literal notranslate"><span class="pre">RiskUncertaintyValue</span></code>, which contains the functions required to solve the model:</p>
@@ -609,7 +621,28 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;RiskUncertaintyValue&#39;...
+remote: Enumerating objects: 475, done.
+remote: Counting objects: 100% (140/140), done.
+remote: Compressing objects: 100% (80/80), done.
+remote: Total 475 (delta 77), reused 107 (delta 60), pack-reused 335
+Receiving objects: 100% (475/475), 2.84 MiB | 22.18 MiB/s, done.
+Resolving deltas: 100% (261/261), done.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">3</span><span class="n">f5655a12691</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;/RiskUncertaintyValue&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">workdir</span><span class="o">+</span><span class="s1">&#39;/src&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">autograd.numpy</span> <span class="k">as</span> <span class="nn">anp</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
 </details>
 </div>
 </section>
@@ -870,10 +903,12 @@ Iteration 2: error = 4.97379915e-14
 </details>
 </div>
 <br>
+<br>
+<br>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="outputs">
-<h1>3 Outputs<a class="headerlink" href="#outputs" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id4" role="doc-backlink">3 Outputs</a><a class="headerlink" href="#outputs" title="Permalink to this heading">#</a></h1>
 <section id="list-of-outputs-a-class-anchor-id-s3-1-a">
 <h2>3.1 List of Outputs <a class="anchor" id="s3-1">&gt;</a><a class="headerlink" href="#list-of-outputs-a-class-anchor-id-s3-1-a" title="Permalink to this heading">#</a></h2>
 <p>We now examine the contents of <code class="docutils literal notranslate"><span class="pre">ModelSol</span></code>, which contains the attributes listed below. Each approximation is stored in a class <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>, which contains the coefficients for <span class="math notranslate nohighlight">\(X_{1,t}, X_{2,t}, X_{1,t}'X_{1,t}, W_{t+1}, W_{t+1}'W_{t+1}, X_{1,t}'W_{t+1}\)</span> and the constant.</p>
@@ -891,11 +926,11 @@ Iteration 2: error = 4.97379915e-14
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Jn_t</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
-<td><p>Same as <code class="docutils literal notranslate"><span class="pre">JXn_t</span></code> but limited to jump variables. Omitted <code class="docutils literal notranslate"><span class="pre">n</span></code> option is not available.</p></td>
+<td><p>Same as <code class="docutils literal notranslate"><span class="pre">JXn_t</span></code> but limited to jump variables.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Xn_tp1</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
-<td><p>Same as <code class="docutils literal notranslate"><span class="pre">JXn_t</span></code> but limited to state variables. Omitted <code class="docutils literal notranslate"><span class="pre">n</span></code> option is not available.</p></td>
+<td><p>Same as <code class="docutils literal notranslate"><span class="pre">JXn_t</span></code> but limited to state variables.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">JXn_t_tilde</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
@@ -903,35 +938,19 @@ Iteration 2: error = 4.97379915e-14
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">util_sol</span></code></p></td>
 <td><p><em>dict</em></p></td>
-<td><p>Solutions of the continuation values, including <span class="math notranslate nohighlight">\(\mu^0, \Upsilon_0^2, \Upsilon_1^2,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon_2^2\)</span> etc.</p></td>
+<td><p>Dictionary containing solutions of the continuation values, including <span class="math notranslate nohighlight">\(\mu^0, \Upsilon_0^2, \Upsilon_1^2,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon_2^2\)</span> etc.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vmr1_tp1</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">vmrn_tp1</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
-<td><p>First order approximation of continuation values <span class="math notranslate nohighlight">\(\widehat{V}^1_{t+1}-\widehat{R}^1_t\)</span></p></td>
+<td><p>Approximation of continuation values <span class="math notranslate nohighlight">\(\widehat{V}^1_{t+1}-\widehat{R}^1_t\)</span> . Replace <code class="docutils literal notranslate"><span class="pre">n</span></code> with <code class="docutils literal notranslate"><span class="pre">0,1,2</span></code> to get the zeroth, first and second-order contribution. Omit <code class="docutils literal notranslate"><span class="pre">n</span></code> to get the full approximation.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">vmr2_tp1</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gcn_tp1</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
-<td><p>Second order approximation of continuation values <span class="math notranslate nohighlight">\(\widehat{V}^1_{t+1}-\widehat{R}^1_t\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gc_tp1</span></code></p></td>
-<td><p><em>LinQuadVar</em></p></td>
-<td><p>Approximation of consumption growth <span class="math notranslate nohighlight">\(\widehat{C}_{t+1}-\widehat{C}_t\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gc0_tp1</span></code></p></td>
-<td><p><em>LinQuadVar</em></p></td>
-<td><p>Zeroth order approximation of consumption growth <span class="math notranslate nohighlight">\(\widehat{C}^0_{t+1}-\widehat{C}^0_t\)</span></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gc1_tp1</span></code></p></td>
-<td><p><em>LinQuadVar</em></p></td>
-<td><p>First order approximation of consumption growth <span class="math notranslate nohighlight">\(\widehat{C}^0_{t+1}-\widehat{C}^0_t\)</span></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gc2_tp1</span></code></p></td>
-<td><p><em>LinQuadVar</em></p></td>
-<td><p>Second order approximation of consumption growth <span class="math notranslate nohighlight">\(\widehat{C}^0_{t+1}-\widehat{C}^0_t\)</span></p></td>
+<td><p>Approximation of consumption growth <span class="math notranslate nohighlight">\(\widehat{C}_{t+1}-\widehat{C}_t\)</span> . Replace <code class="docutils literal notranslate"><span class="pre">n</span></code> with <code class="docutils literal notranslate"><span class="pre">0,1,2</span></code> to get the zeroth, first and second-order contribution. Omit <code class="docutils literal notranslate"><span class="pre">n</span></code> to get the full approximation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ss</span></code></p></td>
 <td><p><em>dict</em></p></td>
-<td><p>Steady states</p></td>
+<td><p>Steady states for state and jump variables</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log_N_tilde</span></code></p></td>
 <td><p><em>LinQuadVar</em></p></td>
@@ -939,13 +958,8 @@ Iteration 2: error = 4.97379915e-14
 </tr>
 </tbody>
 </table>
-<p>For example, we can obtain the coefficients for the first-order approximation of <span class="math notranslate nohighlight">\(\log{C_t/K_t}\)</span> in the following way, noting that <code class="docutils literal notranslate"><span class="pre">cmk_t</span></code> was listed as the first jump variable above.</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<p>For example, we can obtain the coefficients for the first-order contribution of <span class="math notranslate nohighlight">\(\log{C_t/K_t}\)</span> in the following way, noting that <code class="docutils literal notranslate"><span class="pre">cmk_t</span></code> was listed as the first jump variable when we specified the equilibrum conditions.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Log consumption over capital approximation results, shown in the LinQuadVar coefficients form</span>
 <span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;JX1_t&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coeffs</span>
@@ -957,14 +971,9 @@ Iteration 2: error = 4.97379915e-14
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<p>We can also display the full second-order approximation of <span class="math notranslate nohighlight">\(\log{C_t/K_t}\)</span> using the <code class="docutils literal notranslate"><span class="pre">disp</span></code> function, which renders a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> object in LATEX form.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Log consumption over capital approximation results, shown in the Latex analytical form</span>
 <span class="n">disp</span><span class="p">(</span><span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;JX_t&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">log</span><span class="se">\\</span><span class="s1">frac</span><span class="si">{C_t}{K_t}</span><span class="s1">&#39;</span><span class="p">)</span> 
@@ -972,10 +981,16 @@ Iteration 2: error = 4.97379915e-14
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\begin{split}\displaystyle \log\frac{C_t}{K_t}=-4.793+\begin{bmatrix}12.45&amp;-2.248e-19\end{bmatrix}X_t^1+\begin{bmatrix}5.938&amp;-1.1e-19\end{bmatrix}X_t^2+X^{1T}_{t}\begin{bmatrix}-26.3&amp;2.438e-18\\-1.82e-18&amp;-4.52e-38\end{bmatrix}X^1_{t}\end{split}\]</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">6776</span><span class="n">b5f81778</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">## Log consumption over capital approximation results, shown in the Latex analytical form</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">disp</span><span class="p">(</span><span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;JX_t&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">log</span><span class="se">\\</span><span class="s1">frac</span><span class="si">{C_t}{K_t}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;disp&#39; is not defined
+</pre></div>
 </div>
-</details>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1122,7 +1137,7 @@ Iteration 2: error = 4.97379915e-14
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="examples-to-use-linquadvar-in-computation-a-class-anchor-id-s2-a">
-<h1>2 Examples to use <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation <a class="anchor" id="s2"></a><a class="headerlink" href="#examples-to-use-linquadvar-in-computation-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id5" role="doc-backlink">2 Examples to use <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation <a class="anchor" id="s2"></a></a><a class="headerlink" href="#examples-to-use-linquadvar-in-computation-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
 <section id="define-a-linquadvar-a-class-anchor-id-s2-1-a">
 <h2>2.1 Define a <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> <a class="anchor" id="s2-1"></a><a class="headerlink" href="#define-a-linquadvar-a-class-anchor-id-s2-1-a" title="Permalink to this heading">#</a></h2>
 <p>Below we extract the steady states for the state evolution processes from the previous model solution, and construct it as a 2-dimensional LinQuadVar.</p>

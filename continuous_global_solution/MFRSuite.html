@@ -332,6 +332,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-market">1.2 Financial Market</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#households">1.3 Households</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-clearing">1.4 Market Clearing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#competitive-equilibrium">1.5 Competitive Equilibrium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-equilibrium">1.6 Markov Equilibrium</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations-and-equilibrium">2 HJB Equations and Equilibrium</a><ul class="visible nav section-nav flex-column">
@@ -441,81 +443,52 @@ d S_t=-S_t\left[r_t d t+\pi_t \cdot d Z_t\right]
 \[
 d R_{j, t}^k:=\frac{a_j k_{j, t}-\Phi\left(\iota_{j, t}\right) k_{j, t}}{q_t k_{j, t}} d t+\frac{d\left(q_t k_{j, t}\right)}{q_t k_{j, t}}
 \]</div>
-<p>by It\a=o</p>
+<p>by Ito’s lemma</p>
 <div class="math notranslate nohighlight">
 \[
 d R_{j, t}^k=\underbrace{\left[\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}+\iota_{j, t}-\delta+g_t+\mu_{q, t}+\sigma_{K, t} \cdot \sigma_{q, t}\right]}_{:=\mu_{R, j, t}} d t+\underbrace{\left[\sigma_{K, t}+\sigma_{q, t}\right]}_{:=\sigma_{R, t}} \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}
 \]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_{K, t} := \sqrt{s_t}\sigma\)</span></p>
 </section>
 <section id="households">
 <h2>1.3 Households<a class="headerlink" href="#households" title="Permalink to this heading">#</a></h2>
-<p>Preference</p>
+<p>To achieve a stationary wealth distribution, we assume a “perpetual youth” OLG structure. The birth rate and Poisson perish rate is <span class="math notranslate nohighlight">\(\lambda_d\)</span>. a <span class="math notranslate nohighlight">\(\nu\)</span> fraction of newborns become experts. which <span class="math notranslate nohighlight">\(1 - \nu\)</span> become household. Dying agents’ wealth is pooled and redistributed equally to newborns, regardless of their occupation designation.</p>
+<p>We assume the continuous-time recursive preferences of Duffie and Epstein (1992)</p>
 <div class="math notranslate nohighlight">
 \[
 U_{j, t}=\mathbb{E}\left[\int_0^{\infty} \varphi_j\left(c_{j, t+s}, U_{j, t+s}\right) d s \mid \mathcal{F}_t\right]
 \]</div>
 <ul class="simple">
-<li><p>where <span class="math notranslate nohighlight">\(\varphi_j(c, U):=\rho_j \frac{1-\gamma_j}{1-\psi_j} U\left(c^{1-\psi_j}\left[\left(1-\gamma_j\right) U\right]^{-\frac{1-\psi_j}{1-\gamma_j}}-1\right)\)</span></p></li>
+<li><p>where
+$<span class="math notranslate nohighlight">\(
+\varphi_j(c, U):=\rho_j \frac{1-\gamma_j}{1-\psi_j} U\left(c^{1-\psi_j}\left[\left(1-\gamma_j\right) U\right]^{-\frac{1-\psi_j}{1-\gamma_j}}-1\right)
+\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(1/\psi_j &gt; 0\)</span> denotes the elasticity of intertemporal substitution</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma_j &gt; 0\)</span> denotes relative risk aversion</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho_j &gt; 0\)</span> denotes the subjective discount rate (inclusive of death rate)</p></li>
 </ul>
-<p>Dynamic Budget Constraints</p>
+<p><img alt="Balance sheets of experts and households" src="../_images/balance_sheet.PNG" /></p>
+<p>The balance sheets of experts and households are shown in the figure. To hold a quantity of capital <span class="math notranslate nohighlight">\(k_{j, t}\)</span>, an agent needs to raise <span class="math notranslate nohighlight">\(q_t k_{j, t}\)</span>. The use personal net worth <span class="math notranslate nohighlight">\(n_{j, t}\)</span>, equity issuances <span class="math notranslate nohighlight">\((1 - \chi_{j,t})q_t k_{j, t}\)</span>, and risk-free short term debt <span class="math notranslate nohighlight">\(\chi_{j, t}q_t k_{j, t} - n_{j, t}\)</span>. They owe short term creditors <span class="math notranslate nohighlight">\(r_t dt\)</span> per unit of short term debt issued, and pay out <span class="math notranslate nohighlight">\((r_t + \sigma_{R, t}\pi_t)dt + \sigma_{R,t}dZ_t + \sqrt{\varsigma}dZ_{j, t}\)</span> per unit of equity issued. Agents must retain a fraction <span class="math notranslate nohighlight">\(\underline{\chi}_j \in [0, 1]\)</span> of exposure to their assets, with a constraint <span class="math notranslate nohighlight">\(\chi_{j, t} \geq \underline{\chi}_j\)</span>, sometimes called a “skin-in-the-game” constraint. They may also hedge their risk exposures through positions <span class="math notranslate nohighlight">\(\theta_{j, t}n_{j, t}\)</span> in derivatives markets that pay <span class="math notranslate nohighlight">\(\pi_t dt + dZ_t\)</span> per unit, with constraint <span class="math notranslate nohighlight">\(\theta_{j, t} \in \Theta_j\)</span>.
+The dynamic budget constraints is</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{d n_{j, t}}{n_{j, t}}=\left(\mu_{n_j, t}-c_{j, t} / n_{j, t}\right) d t+\sigma_{n_j, t} \cdot d Z_t+\tilde{\sigma}_{n_j, t} d Z_{j, t}
 \]</div>
-<ul>
-<li><p>where <span class="math notranslate nohighlight">\(n_t\)</span> stands for personal net worth</p>
+<p>where <span class="math notranslate nohighlight">\(n_t\)</span> stands for personal net worth</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-  \begin{aligned}
-  \mu_{n_j, t} &amp; :=\frac{q_tk_{j,t}\mu_{R, j, t}-(1-\chi_{j,t})q_tk_{j,t}\left(r_t+\sigma_{R, t} \cdot \pi_t\right)-(\chi_{j, t} q_t k_{j, t}-n_{j, t})r_t+\theta_{j, t}n_{j,t}\pi_t}{n_{j, t}}\\
-  &amp;\ = r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t \\
-  \sigma_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t}+\theta_{j, t} \\
-  \tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
-  \end{aligned}
-  \end{split}\]</div>
-</li>
-<li><p>total asset <span class="math notranslate nohighlight">\(q_tk_{j,t}\)</span></p></li>
-<li><p>equity issuances <span class="math notranslate nohighlight">\((1-\chi_{j,t})q_tk_{j,t}\)</span>,</p>
+\begin{aligned}
+\mu_{n_j, t} &amp; :=\frac{q_tk_{j,t}\mu_{R, j, t}-(1-\chi_{j,t})q_tk_{j,t}\left(r_t+\sigma_{R, t} \cdot \pi_t\right)-(\chi_{j, t} q_t k_{j, t}-n_{j, t})r_t+\theta_{j, t}n_{j,t}\pi_t}{n_{j, t}}\\
+&amp;\ = r_t+\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)-\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t+\theta_{j, t} \cdot \pi_t \\
+\sigma_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t}+\theta_{j, t} \\
+\tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
+\end{aligned}
+\end{split}\]</div>
 <ul class="simple">
-<li><p>equity dividend <span class="math notranslate nohighlight">\(\left(r_t+\sigma_{R, t} \cdot \pi_t\right) d t+\sigma_{R, t} \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)\)</span> is the excess return earned on the capital. $</p></li>
+<li><p><span class="math notranslate nohighlight">\(\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t\)</span> is expected excess return compensation owed to outside equity investors.</p></li>
 </ul>
-</li>
-<li><p>risk-free short debt <span class="math notranslate nohighlight">\(\chi_{j, t} q_t k_{j, t}-n_{j, t}\)</span>,</p>
-<ul class="simple">
-<li><p>risk-free rate <span class="math notranslate nohighlight">\(r_tdt\)</span></p></li>
-</ul>
-</li>
-<li><p>excess return on capital</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)\)</span></p></li>
-</ul>
-</li>
-<li><p>excess return compensation to equity investors</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t\)</span></p></li>
-</ul>
-</li>
-<li><p>Derivative hedging positions <span class="math notranslate nohighlight">\(\theta_{j, t} n_{j, t}\)</span></p>
-<ul class="simple">
-<li><p>payout per unit <span class="math notranslate nohighlight">\(\pi_t d t+d Z_t\)</span></p></li>
-</ul>
-</li>
-</ul>
-<p>Equity Constraint</p>
-<div class="math notranslate nohighlight">
-\[
-\chi_{j, t} \geq \underline{\chi}_j
-\]</div>
-<p>Hedging Constraint</p>
-<div class="math notranslate nohighlight">
-\[
-\theta_{i t} \in \Theta_j
-\]</div>
-<p>Borrowing Constraint</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{\chi_{j, t} q_t k_{j, t}}{n_{j, t}} \sigma_{R, t} \leq \bar{\beta}_j
-\]</div>
+<p>Agents choose <span class="math notranslate nohighlight">\((\iota_j, k_j, \chi_j, \theta_j, c_j)\)</span> to maximize utility subject to their budget constraint, equity constraint, hedging constraint, short-sale constraint <span class="math notranslate nohighlight">\(k_{j, t} \geq 0\)</span>, and solvency constraint <span class="math notranslate nohighlight">\(\eta_{j, t} \geq 0\)</span>.</p>
 </section>
 <section id="market-clearing">
 <h2>1.4 Market Clearing<a class="headerlink" href="#market-clearing" title="Permalink to this heading">#</a></h2>
@@ -540,9 +513,28 @@ U_{j, t}=\mathbb{E}\left[\int_0^{\infty} \varphi_j\left(c_{j, t+s}, U_{j, t+s}\r
 \int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(q_t k_{j, t}-n_{j, t}\right) d j=0
 \]</div>
 </section>
+<section id="competitive-equilibrium">
+<h2>1.5 Competitive Equilibrium<a class="headerlink" href="#competitive-equilibrium" title="Permalink to this heading">#</a></h2>
+<p>A competitive equilibrium is a set of price and allocation processes, <span class="math notranslate nohighlight">\((r_t, \pi_t, q_t)\)</span> and <span class="math notranslate nohighlight">\((c_{j, t}, n_{j, t}, k_{j, t}, \chi_{j, t}, \theta_{j, t})\)</span>, such that agents solve their optimization problems. taking price processes as given, and the previous market clearing condisions hold. We will look for a symmetric equilibrium of the model, in which all agents within the same class use the same strategy.</p>
+</section>
+<section id="markov-equilibrium">
+<h2>1.6 Markov Equilibrium<a class="headerlink" href="#markov-equilibrium" title="Permalink to this heading">#</a></h2>
+<p>The state variables in this economy are <span class="math notranslate nohighlight">\((K_t, w_t, g_t, s_t, \varsigma_t)\)</span>. Scale all growing quantities with <span class="math notranslate nohighlight">\(K_t\)</span>, in the de-trended economy <span class="math notranslate nohighlight">\(X_t := (w_t, g_t, s_t, \varsigma_t)\)</span> serves as a state variable. The dynamics for <span class="math notranslate nohighlight">\(X\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+dX_t = \mu_X(X_t)dt + \sigma_X(X_t)dZ_t
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_X\)</span> is a <span class="math notranslate nohighlight">\(4*1\)</span> vector and <span class="math notranslate nohighlight">\(\sigma_X\)</span> is a <span class="math notranslate nohighlight">\(4*d\)</span> matrix. <span class="math notranslate nohighlight">\(w\)</span> is endogenous and the rest 3 are exogenous.</p>
+<p>We define experts’ net worth share
+$<span class="math notranslate nohighlight">\(
+w_t:=\int_{\mathbb{J}_e} n_{j, t} d j /\left(q_t K_t\right)
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\mathbb{J}_e$ is the set of experts.</p>
+</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="hjb-equations-and-equilibrium">
 <h1>2 HJB Equations and Equilibrium<a class="headerlink" href="#hjb-equations-and-equilibrium" title="Permalink to this heading">#</a></h1>
+<p>Here we only show the important steps to get the final results. Please refer to the appendix A in Hansen, Khorrami, and Tourre (2018) for details in derivation.</p>
 <section id="hjb-equations">
 <h2>2.1 HJB equations<a class="headerlink" href="#hjb-equations" title="Permalink to this heading">#</a></h2>
 <p>HJB equation</p>
@@ -599,17 +591,16 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 \pi+\left(1-\gamma_h\right) \sigma_X^{\prime} \partial_X \ln \xi_h=\gamma_h \sigma_{n_h} .
 \end{gathered}
 \]</div>
-<ul>
-<li><p>Households Euler Equation</p>
+<p>Subtracting the equations above, we have households’ euler equation</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-  \left\{\begin{array}{lll}
-  \mu_{R, h}-r \leq \pi \cdot \sigma_R, &amp; \text { if } &amp; k_h=0 \\
-  \mu_{R, h}-r=\pi \cdot \sigma_R+\gamma_h \varsigma q k_h / n_h, &amp; \text { if } &amp; k_h&gt;0
-  \end{array}\right.
-  \end{split}\]</div>
-<ul>
-<li><p>Optimal Risk Allocation</p>
+\left\{\begin{array}{lll}
+\mu_{R, h}-r \leq \pi \cdot \sigma_R, &amp; \text { if } &amp; k_h=0 \\
+\mu_{R, h}-r=\pi \cdot \sigma_R+\gamma_h \varsigma q k_h / n_h, &amp; \text { if } &amp; k_h&gt;0
+\end{array}\right.
+\end{split}\]</div>
+<p>That implies when household’s expected capital return is below what they can earn with exposure to aggregate risk via futures contracts, they do not hold any capital. When they do hold capital, the expected return on such capital is equal to conpensation for aggreagate risk (via <span class="math notranslate nohighlight">\(\pi \sigma_R\)</span>) plus a compensation for taking idiosyncratic risk (via <span class="math notranslate nohighlight">\(\gamma\varsigma q k_h / n_h\)</span>).</p>
+<p>Households’ optimal risk allocations are</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
     \begin{aligned}
@@ -617,14 +608,10 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
     \beta_h &amp; =\frac{q k_h}{n_h} \begin{cases}=\frac{\Delta_h^{+}}{\gamma_h \varsigma}, &amp; \text { if } \varsigma&gt;0 \\
     \geq 0, &amp; \text { if } \varsigma=0 .\end{cases}
     \end{aligned}
-    \end{split}\]</div>
+\end{split}\]</div>
 <ul>
 <li><p>gap between the households’ expected return on capital and the risk-premium paid by the market</p>
 <p><span class="math notranslate nohighlight">\(\Delta_{h, t}:=\mu_{R, h, t}-r_t-\pi_t \cdot \sigma_{R, t}\)</span></p>
-</li>
-</ul>
-</li>
-</ul>
 </li>
 </ul>
 <p>Expert FOC on choices of leverage <span class="math notranslate nohighlight">\(q k_e / n_e \geq 0\)</span></p>
@@ -641,31 +628,26 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 \pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e \leq \gamma_e\left(\sigma_R \cdot \sigma_{n_e}+\sqrt{\varsigma} \tilde{\sigma}_{n_e}\right),
 \end{aligned}
 \]</div>
-<ul>
-<li><p>Expert Euler Equation</p>
+<p>Expert euler equation is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-  \begin{cases}\pi \cdot \sigma_R \leq \mu_{R, e}-r, &amp; \text { if } \quad \chi=\underline{\chi} \\ \pi \cdot \sigma_R=\mu_{R, e}-r, &amp; \text { if } \quad \chi&gt;\underline{\chi} .\end{cases}
-  \end{split}\]</div>
-<ul>
-<li><p>Optimal Leverage</p>
+\begin{cases}\pi \cdot \sigma_R \leq \mu_{R, e}-r, &amp; \text { if } \quad \chi=\underline{\chi} \\ \pi \cdot \sigma_R=\mu_{R, e}-r, &amp; \text { if } \quad \chi&gt;\underline{\chi} .\end{cases}
+\end{split}\]</div>
+<p>The interpretation of the Euler Equation is straightforward: if the risk-premium <span class="math notranslate nohighlight">\(\pi_t \sigma_{R,t}\)</span> required to be paid to the market for issuing equity is lower than the expected excess return that experts earn on their capital, they will issue as much equity as they can, and bounce against their constraint <span class="math notranslate nohighlight">\(\underline\chi\)</span>.</p>
+<p>The optimal leverage is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-    \begin{aligned}
-    \beta_e&amp;:=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right]\\
-    \sigma_{n_e}&amp;=\beta_e \sigma_R
-    \end{aligned}
-    \end{split}\]</div>
+\begin{aligned}
+\beta_e&amp;:=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right]\\
+\sigma_{n_e}&amp;=\beta_e \sigma_R
+\end{aligned}
+\end{split}\]</div>
 <ul>
 <li><p>wedge between expected return and risk-premium</p>
 <p><span class="math notranslate nohighlight">\(\Delta_{e, t}:=\underline{\chi}^{-1}\left[\mu_{R, e, t}-r_t-\pi_t \cdot \sigma_{R, t}\right]\)</span></p>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Households Value Function</p>
+<p>Substituting the optimal choice to the HJB, we have households value function</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -673,7 +655,7 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 &amp; +\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi_h \sigma_X\right)+\frac{1-\gamma_h}{\gamma_h}\left\|\sigma_X^{\prime} \partial_X \ln \xi_h\right\|^2\right]
 \end{aligned}
 \end{split}\]</div>
-<p>Experts Value Function</p>
+<p>and experts value function</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -681,31 +663,24 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 &amp; +\frac{1}{2}\left[\operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} \ln \xi_h \sigma_X\right)+\frac{1-\gamma_h}{\gamma_h}\left\|\sigma_X^{\prime} \partial_X \ln \xi_h\right\|^2\right]
 \end{aligned}
 \end{split}\]</div>
+<p>Boundary conditions will be discussed below.</p>
 </section>
 <section id="computing-equilibrium">
 <h2>2.2 Computing Equilibrium<a class="headerlink" href="#computing-equilibrium" title="Permalink to this heading">#</a></h2>
 <section id="capital-price">
 <h3>2.2.1 Capital Price<a class="headerlink" href="#capital-price" title="Permalink to this heading">#</a></h3>
-<p>Define</p>
-<div class="math notranslate nohighlight">
-\[
-\kappa_t:=\frac{K_{e, t}}{K_t}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-w_t:=\int_{\mathbb{J}_e} n_{j, t} d j /\left(q_t K_t\right)
-\]</div>
-<p>Euler Inequalities</p>
+<p>To characterize equilibrium, we must determine (i) q and its dynamcis as a function of <span class="math notranslate nohighlight">\(X\)</span>; (ii) <span class="math notranslate nohighlight">\(r, \pi, \delta_e and \delta_h\)</span> as a function of <span class="math notranslate nohighlight">\(X\)</span>; and (iii) the dynamics of X. Because of the consrtaints <span class="math notranslate nohighlight">\(\chi \geq \underline \chi\)</span> and <span class="math notranslate nohighlight">\(k_h \geq 0\)</span>, the state space must be partitioned into regions in which various constellations of constraints bind.</p>
+<p>Define <span class="math notranslate nohighlight">\(\kappa_t:=\frac{K_{e, t}}{K_t}\)</span> and thus we have 3 cases to consider, depending on the Euler inequalities for households and experts</p>
 <ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(\kappa=1 \text { and } \chi&gt;\underline{\chi}\)</span>
+<li><p><span class="math notranslate nohighlight">\(\kappa=1 \text { and } \chi&gt;\underline{\chi}\)</span>, all the capital is managed by experts, but they are wealthy enough that their skin-in-the-game constraint is not binding
 $<span class="math notranslate nohighlight">\(
 \mu_{R, e}-r=\pi \cdot \sigma_R&gt;\mu_{R, h}-r
 \)</span>$</p></li>
-<li><p><span class="math notranslate nohighlight">\(\kappa=1 \text { and } \chi=\underline{\chi}\)</span>
+<li><p><span class="math notranslate nohighlight">\(\kappa=1 \text { and } \chi=\underline{\chi}\)</span>, all the capital is managed by experts, but the skin-in-the-game constraint is binding
 $<span class="math notranslate nohighlight">\(
 \mu_{R, e}-r&gt;\pi \cdot \sigma_R&gt;\mu_{R, h}-r
 \)</span>$</p></li>
-<li><p><span class="math notranslate nohighlight">\(\kappa&lt;1 \text { and } \chi&gt;\underline{\chi}\)</span>
+<li><p><span class="math notranslate nohighlight">\(\kappa&lt;1 \text { and } \chi&gt;\underline{\chi}\)</span>, experts’ net worth and risk-bearing capacity is low and some capital is held by households who are less productive
 $<span class="math notranslate nohighlight">\(
 \mu_{R, e}-r&gt;\mu_{R, h}-r \geq \pi \cdot \sigma_R
 \)</span>$</p></li>
@@ -719,16 +694,7 @@ $<span class="math notranslate nohighlight">\(
 &amp; 0=(1-\kappa)(\chi-\underline{\chi})\left(a_e-a_h\right) .
 \end{aligned}
 \end{split}\]</div>
-<p>Goods Market Condition with optimized investment and consumption</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{\mathbb{J} \in \mathbb{J}_h} c_{j, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(a_j-\Phi\left(\iota_{j, t}\right)\right) k_{j, t} d j .
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
-\]</div>
-<p>Capital Price</p>
+<p>We can solve the capital price from the goods market clearing condition</p>
 <div class="math notranslate nohighlight">
 \[
 q(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+q w \rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}=(1-\kappa) a_h+\kappa a_e-\Phi(\iota(q))
@@ -737,10 +703,7 @@ q(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+q w \rho_e^{1 / \psi_e} \xi_e^{1
 \[
 q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+w \rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}+1 / \phi}
 \]</div>
-</section>
-<section id="wealth-share-evolution">
-<h3>2.2.2 Wealth Share Evolution<a class="headerlink" href="#wealth-share-evolution" title="Permalink to this heading">#</a></h3>
-<p>Capital Evolution</p>
+<p>We can solve the evolution of capital by time-differenciating the capital market clearing condition, using the laws of motion for individual capital stocks, the common investment rate, and the law of large numbers</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -748,6 +711,9 @@ q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1
 \mu_{K, t} &amp; :=g_t+\iota\left(q_t\right)-\delta
 \end{aligned}
 \end{split}\]</div>
+</section>
+<section id="wealth-share-evolution">
+<h3>2.2.2 Wealth Share Evolution<a class="headerlink" href="#wealth-share-evolution" title="Permalink to this heading">#</a></h3>
 <p>Net Wealth Evolution</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1275,6 +1241,8 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#financial-market">1.2 Financial Market</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#households">1.3 Households</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#market-clearing">1.4 Market Clearing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#competitive-equilibrium">1.5 Competitive Equilibrium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-equilibrium">1.6 Markov Equilibrium</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations-and-equilibrium">2 HJB Equations and Equilibrium</a><ul class="visible nav section-nav flex-column">
