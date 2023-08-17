@@ -345,6 +345,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations-and-equilibrium">2 HJB Equations and Equilibrium</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations">2.1 HJB equations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">2.2 Computing Equilibrium</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price">2.2.1 Capital Price</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">2.2.2 Wealth Share Evolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">2.2.3 Capital Price Evolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor">2.2.4 Stochastic Discount Factor</a></li>
@@ -381,18 +382,6 @@ document.write(`
 <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
 <span class="w">    </span><span class="nx">TeX</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">equationNumbers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">autoNumber</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;AMS&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
 <span class="p">});</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/javascript">MathJax.Hub.Config({
-    TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%javascript</span>
 <span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Queue</span><span class="p">(</span>
 <span class="w">  </span><span class="p">[</span><span class="s2">&quot;resetEquationNumbers&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">MathJax</span><span class="p">.</span><span class="nx">InputJax</span><span class="p">.</span><span class="nx">TeX</span><span class="p">],</span>
 <span class="w">  </span><span class="p">[</span><span class="s2">&quot;PreProcess&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">],</span>
@@ -575,8 +564,15 @@ w_t:=\int_{\mathbb{J}_e} n_{j, t} d j /\left(q_t K_t\right)
 <p>In this section, we will show the solution method of this model. we apply a dynamic programming approach to solve agents’ optimization problems, which delivers a pair of Hamilton-Jacobi-Bellman (HJB) equations. Each is a 4-dimensional second-order nonlinear partial differential equation (PDE) for agents’ value functions. Next, we use the market clearing conditions and constraints to solve for all equilibrium objects, in terms of the state variables and the value functions. By reinserting these equilibrium prices and dynamics in the HJB equations, the entire equilibrium fixed point problem boils down to solving a pair of PDEs for agents’ value
 functions.</p>
 <p>Here we only show the final results. Please unfold to see more detailed derivation or refer to the appendix A in the original paper.</p>
+<style>
+.summary {
+    font-weight: bold;
+    color: blue;
+    cursor: pointer;
+}
+</style>
 <details>
-    <summary>Click to expand detailed derivations!</summary>
+<summary><b><font color="blue">Click to expand detailed derivations!</font></b></summary>
 <section id="hjb-equations">
 <h2>2.1 HJB equations<a class="headerlink" href="#hjb-equations" title="Permalink to this heading">#</a></h2>
 <p>HJB equation</p>
@@ -710,10 +706,9 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 </section>
 <section id="computing-equilibrium">
 <h2>2.2 Computing Equilibrium<a class="headerlink" href="#computing-equilibrium" title="Permalink to this heading">#</a></h2>
-<details> 
-<summary>Click to see detailed derivations</summary>
-### 2.2.1 Capital Price
-<p>To characterize equilibrium, we must determine (i) q and its dynamcis as a function of <span class="math notranslate nohighlight">\(X\)</span>; (ii) <span class="math notranslate nohighlight">\(r, \pi, \delta_e and \delta_h\)</span> as a function of <span class="math notranslate nohighlight">\(X\)</span>; and (iii) the dynamics of X. Because of the consrtaints <span class="math notranslate nohighlight">\(\chi \geq \underline \chi\)</span> and <span class="math notranslate nohighlight">\(k_h \geq 0\)</span>, the state space must be partitioned into regions in which various constellations of constraints bind.</p>
+<section id="capital-price">
+<h3>2.2.1 Capital Price<a class="headerlink" href="#capital-price" title="Permalink to this heading">#</a></h3>
+<p>To characterize equilibrium, we must determine (i) q and its dynamcis as a function of <span class="math notranslate nohighlight">\(X\)</span>; (ii) <span class="math notranslate nohighlight">\(r, \pi, \delta_e and \delta_h\)</span> as a function of <span class="math notranslate nohighlight">\(X\)</span>; and (iii) the dynamics of <span class="math notranslate nohighlight">\(X\)</span>. Because of the consrtaints <span class="math notranslate nohighlight">\(\chi \geq \underline \chi\)</span> and <span class="math notranslate nohighlight">\(k_h \geq 0\)</span>, the state space must be partitioned into regions in which various constellations of constraints bind.</p>
 <p>Define <span class="math notranslate nohighlight">\(\kappa_t:=\frac{K_{e, t}}{K_t}\)</span> and thus we have 3 cases to consider, depending on the Euler inequalities for households and experts (here we assume <span class="math notranslate nohighlight">\(a_e &gt; a_h\)</span>, the case when <span class="math notranslate nohighlight">\(a_e = a_h\)</span> is shown in appendix A.3.1 of the original)</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(\kappa=1 \text { and } \chi&gt;\underline{\chi}\)</span>, all the capital is managed by experts, but they are wealthy enough that their skin-in-the-game constraint is not binding
@@ -729,6 +724,8 @@ $<span class="math notranslate nohighlight">\(
 \mu_{R, e}-r&gt;\mu_{R, h}-r \geq \pi \cdot \sigma_R
 \)</span>$</p></li>
 </ol>
+<details> 
+<summary><b><font color="blue">Click to expand detailed derivations</font></b></summary>
 <p>Combining these conditions with the definitions of <span class="math notranslate nohighlight">\(\delta_e\)</span> and <span class="math notranslate nohighlight">\(\delta_h\)</span>, we summarize the constraints with 3 slackness conditions</p>
 <p>\begin{align}
 &amp; 0=\min \left(1-\kappa, \Delta_h^{+}-\Delta_h\right) \tag{eq: 40} \
@@ -753,6 +750,7 @@ q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1
 \mu_{K, t} &amp; :=g_t+\iota\left(q_t\right)-\delta
 \end{aligned}
 \end{split}\]</div>
+</section>
 <section id="wealth-share-evolution">
 <h3>2.2.2 Wealth Share Evolution<a class="headerlink" href="#wealth-share-evolution" title="Permalink to this heading">#</a></h3>
 <p>Remember we have the dynamic budget constraints for agents</p>
@@ -902,6 +900,7 @@ r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta
 <section id="policy-function">
 <h3>2.2.6 Policy Function<a class="headerlink" href="#policy-function" title="Permalink to this heading">#</a></h3>
 <p>Combining equations (eq:63) and (eq:64) with complementary slackness conditions (eq:40), (eq:41), and (eq:42), we have</p>
+</details>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{gathered}
@@ -1265,6 +1264,7 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations-and-equilibrium">2 HJB Equations and Equilibrium</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations">2.1 HJB equations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">2.2 Computing Equilibrium</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price">2.2.1 Capital Price</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">2.2.2 Wealth Share Evolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">2.2.3 Capital Price Evolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor">2.2.4 Stochastic Discount Factor</a></li>
