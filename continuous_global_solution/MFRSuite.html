@@ -345,7 +345,6 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations-and-equilibrium">2 HJB Equations and Equilibrium</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations">2.1 HJB equations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">2.2 Computing Equilibrium</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price">2.2.1 Capital Price</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">2.2.2 Wealth Share Evolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">2.2.3 Capital Price Evolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor">2.2.4 Stochastic Discount Factor</a></li>
@@ -575,7 +574,9 @@ w_t:=\int_{\mathbb{J}_e} n_{j, t} d j /\left(q_t K_t\right)
 <h1>2 HJB Equations and Equilibrium<a class="headerlink" href="#hjb-equations-and-equilibrium" title="Permalink to this heading">#</a></h1>
 <p>In this section, we will show the solution method of this model. we apply a dynamic programming approach to solve agents’ optimization problems, which delivers a pair of Hamilton-Jacobi-Bellman (HJB) equations. Each is a 4-dimensional second-order nonlinear partial differential equation (PDE) for agents’ value functions. Next, we use the market clearing conditions and constraints to solve for all equilibrium objects, in terms of the state variables and the value functions. By reinserting these equilibrium prices and dynamics in the HJB equations, the entire equilibrium fixed point problem boils down to solving a pair of PDEs for agents’ value
 functions.</p>
-<p>Here we only show the important steps to get the final results. Please refer to the appendix A in the original paper for more detailed derivation.</p>
+<p>Here we only show the final results. Please unfold to see more detailed derivation or refer to the appendix A in the original paper.</p>
+<details>
+    <summary>Click to expand detailed derivations!</summary>
 <section id="hjb-equations">
 <h2>2.1 HJB equations<a class="headerlink" href="#hjb-equations" title="Permalink to this heading">#</a></h2>
 <p>HJB equation</p>
@@ -688,6 +689,7 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 <p><span class="math notranslate nohighlight">\(\Delta_{e, t}:=\underline{\chi}^{-1}\left[\mu_{R, e, t}-r_t-\pi_t \cdot \sigma_{R, t}\right]\)</span></p>
 </li>
 </ul>
+</details>
 <p>Substituting the optimal choice to the HJB, we have households value function</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -708,10 +710,11 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 </section>
 <section id="computing-equilibrium">
 <h2>2.2 Computing Equilibrium<a class="headerlink" href="#computing-equilibrium" title="Permalink to this heading">#</a></h2>
-<section id="capital-price">
-<h3>2.2.1 Capital Price<a class="headerlink" href="#capital-price" title="Permalink to this heading">#</a></h3>
+<details> 
+<summary>Click to see detailed derivations</summary>
+### 2.2.1 Capital Price
 <p>To characterize equilibrium, we must determine (i) q and its dynamcis as a function of <span class="math notranslate nohighlight">\(X\)</span>; (ii) <span class="math notranslate nohighlight">\(r, \pi, \delta_e and \delta_h\)</span> as a function of <span class="math notranslate nohighlight">\(X\)</span>; and (iii) the dynamics of X. Because of the consrtaints <span class="math notranslate nohighlight">\(\chi \geq \underline \chi\)</span> and <span class="math notranslate nohighlight">\(k_h \geq 0\)</span>, the state space must be partitioned into regions in which various constellations of constraints bind.</p>
-<p>Define <span class="math notranslate nohighlight">\(\kappa_t:=\frac{K_{e, t}}{K_t}\)</span> and thus we have 3 cases to consider, depending on the Euler inequalities for households and experts (here we assume <span class="math notranslate nohighlight">\(a_e &gt; a_h\)</span>, the case when <span class="math notranslate nohighlight">\(a_e = a_h\)</span> is shown in appendix A.3.1 of the original paper)</p>
+<p>Define <span class="math notranslate nohighlight">\(\kappa_t:=\frac{K_{e, t}}{K_t}\)</span> and thus we have 3 cases to consider, depending on the Euler inequalities for households and experts (here we assume <span class="math notranslate nohighlight">\(a_e &gt; a_h\)</span>, the case when <span class="math notranslate nohighlight">\(a_e = a_h\)</span> is shown in appendix A.3.1 of the original)</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(\kappa=1 \text { and } \chi&gt;\underline{\chi}\)</span>, all the capital is managed by experts, but they are wealthy enough that their skin-in-the-game constraint is not binding
 $<span class="math notranslate nohighlight">\(
@@ -750,7 +753,6 @@ q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1
 \mu_{K, t} &amp; :=g_t+\iota\left(q_t\right)-\delta
 \end{aligned}
 \end{split}\]</div>
-</section>
 <section id="wealth-share-evolution">
 <h3>2.2.2 Wealth Share Evolution<a class="headerlink" href="#wealth-share-evolution" title="Permalink to this heading">#</a></h3>
 <p>Remember we have the dynamic budget constraints for agents</p>
@@ -1263,7 +1265,6 @@ D_{\xi, \tilde{X}} &amp; :=w(1-w)\left(\sigma_{\tilde{X}} D_{\tilde{X}}\right) \
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations-and-equilibrium">2 HJB Equations and Equilibrium</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hjb-equations">2.1 HJB equations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-equilibrium">2.2 Computing Equilibrium</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price">2.2.1 Capital Price</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wealth-share-evolution">2.2.2 Wealth Share Evolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-price-evolution">2.2.3 Capital Price Evolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor">2.2.4 Stochastic Discount Factor</a></li>
