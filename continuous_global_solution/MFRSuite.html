@@ -661,17 +661,23 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 \end{split}\]</div>
 <p>That implies when household’s expected capital return is below what they can earn with exposure to aggregate risk via futures contracts, they do not hold any capital. When they do hold capital, the expected return on such capital is equal to conpensation for aggreagate risk (via <span class="math notranslate nohighlight">\(\pi \sigma_R\)</span>) plus a compensation for taking idiosyncratic risk (via <span class="math notranslate nohighlight">\(\gamma\varsigma q k_h / n_h\)</span>).</p>
 <p>Households’ optimal risk allocations are</p>
-<p>\begin{equation}
-\sigma_{n_h}  =\frac{q k_h}{n_h} \sigma_R+\theta_h=\frac{\pi}{\gamma_h}+\frac{1-\gamma_h}{\gamma_h} \sigma_X^{\prime} \partial_X \ln \xi_h
-\tag{eq: 32}
-\end{equation}</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\sigma_{n_h}  =\frac{q k_h}{n_h} \sigma_R+\theta_h=\frac{\pi}{\gamma_h}+\frac{1-\gamma_h}{\gamma_h} \sigma_X^{\prime} \partial_X \ln \xi_h 
+\tag{eq: 32} 
+\end{equation} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
 \begin{aligned}
-\beta_h &amp; =\frac{q k_h}{n_h} \begin{cases}=\frac{\Delta_h^{+}}{\gamma_h \varsigma}, &amp; \text { if } \varsigma&gt;0 \
+\beta_h &amp; =\frac{q k_h}{n_h} \begin{cases}=\frac{\Delta_h^{+}}{\gamma_h \varsigma}, &amp; \text { if } \varsigma&gt;0 \\
 \geq 0, &amp; \text { if } \varsigma=0 .\end{cases}
 \end{aligned}
 \tag{eq: 33 }
-\end{equation}</p>
+\end{equation}
+\end{split}\]</div>
 <ul>
 <li><p>gap between the households’ expected return on capital and the risk-premium paid by the market</p>
 <p><span class="math notranslate nohighlight">\(\Delta_{h, t}:=\mu_{R, h, t}-r_t-\pi_t \cdot \sigma_{R, t}\)</span></p>
@@ -698,13 +704,19 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 \end{split}\]</div>
 <p>The interpretation of the Euler Equation is straightforward: if the risk-premium <span class="math notranslate nohighlight">\(\pi_t \sigma_{R,t}\)</span> required to be paid to the market for issuing equity is lower than the expected excess return that experts earn on their capital, they will issue as much equity as they can, and bounce against their constraint <span class="math notranslate nohighlight">\(\underline\chi\)</span>.</p>
 <p>The optimal leverage is</p>
-<p>\begin{equation}
-\beta_e :=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left|\sigma_R\right|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right]
-\tag{eq: 36}
-\end{equation}</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
+\beta_e :=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right] 
+\tag{eq: 36} 
+\end{equation} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation}
 \sigma_{n_e} =\beta_e \sigma_R \nonumber
-\end{equation}</p>
+\end{equation}
+\]</div>
 <ul>
 <li><p>wedge between expected return and risk-premium</p>
 <p><span class="math notranslate nohighlight">\(\Delta_{e, t}:=\underline{\chi}^{-1}\left[\mu_{R, e, t}-r_t-\pi_t \cdot \sigma_{R, t}\right]\)</span></p>
