@@ -429,19 +429,19 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="model">
 <h1>1 Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h1>
-<p>Our model is based on Brunnermeier and Sannikov (2016), adding heterogeneous recursive preferences, overlapping generations of agents, an exogeneous TFP growth rate, both aggregate and idiosyncratic volatility shocks, and additional types of financial frictions.</p>
+<p>Our model is…</p>
+<!-- based on Brunnermeier and Sannikov (2016), adding heterogeneous recursive preferences, overlapping generations of agents, an exogeneous TFP growth rate, both aggregate and idiosyncratic volatility shocks, and additional types of financial frictions.  -->
 <section id="production">
 <h2>1.1 Production<a class="headerlink" href="#production" title="Permalink to this heading">#</a></h2>
-<p>There are two types of agents, experts and households, denoted by <span class="math notranslate nohighlight">\(e\)</span> and <span class="math notranslate nohighlight">\(h\)</span>, respectively. Each agent produces with an A-K technology, an agent with <span class="math notranslate nohighlight">\(k_{j, t}\)</span> capital produces <span class="math notranslate nohighlight">\(a_j k_{j, t}\)</span> units of consumption goods. We assume <span class="math notranslate nohighlight">\(a_h \leq a_e\)</span>.</p>
+<p>There are two types of agents, experts and households, denoted by <span class="math notranslate nohighlight">\(e\)</span> and <span class="math notranslate nohighlight">\(h\)</span>, respectively. Each group has a continuum of agents indexed by <span class="math notranslate nohighlight">\(j\)</span>; the sets of experts and households are denoted by <span class="math notranslate nohighlight">\(\mathbb J_e\)</span> and <span class="math notranslate nohighlight">\(\mathbb J_h\)</span>. Each agent produces with an A-K technology, an agent with <span class="math notranslate nohighlight">\(k_{j, t}\)</span> capital produces <span class="math notranslate nohighlight">\(a_j k_{j, t}\)</span> units of consumption goods. We assume <span class="math notranslate nohighlight">\(a_h \leq a_e\)</span>.</p>
 <p>Quality-adjusted capital is accumulated via investment net of depreciation, as well as exogenous productivity gains:</p>
 <div class="math notranslate nohighlight">
 \[
 d k_{j, t}=k_{j, t}\left[\left(g_t+\iota_{j, t}-\delta\right) d t+\sqrt{s_t} \sigma \cdot d Z_t+\sqrt{\varsigma_t} d Z_{j, t}\right]
 \]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(j \in \{e, h\}\)</span>, <span class="math notranslate nohighlight">\(\mathbb{J}_j\)</span> is the set of agents <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(g_t\)</span> is exogenous productivity growth, <span class="math notranslate nohighlight">\(\iota_{j . t}\)</span> denotes the investment rate, <span class="math notranslate nohighlight">\(\delta\)</span> is depreciation.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\{Z_t\}\)</span> is a d dimensional standard Brownian motion with independent components which represents aggregate shock. <span class="math notranslate nohighlight">\(\{Z_{j, t}\}\)</span> is a one-dimensional idiosyncratic Brownian motion, independent of <span class="math notranslate nohighlight">\(Z\)</span> and <span class="math notranslate nohighlight">\(Z_j\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{Z_t\}\)</span> is a d dimensional standard Brownian motion with independent components which represents aggregate shock. <span class="math notranslate nohighlight">\(\{Z_{j, t}\}\)</span> is a one-dimensional idiosyncratic Brownian motion, independent of <span class="math notranslate nohighlight">\(Z\)</span> and <span class="math notranslate nohighlight">\(Z_{-j}\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(s_t\)</span> is aggregate stochastic variance, and <span class="math notranslate nohighlight">\(\varsigma_t\)</span> is idiosyncratic stochastic variance.</p></li>
 </ul>
 <p>Investment is subject to adjustment costs. By investing <span class="math notranslate nohighlight">\(\iota_{j, t}\)</span>, agent <span class="math notranslate nohighlight">\(j\)</span> pays <span class="math notranslate nohighlight">\(\Phi(\iota_{j, t})k_{j, t}\)</span>.</p>
@@ -462,9 +462,6 @@ d \varsigma_t &amp; =\lambda_{\varsigma}\left(\bar{\varsigma}-\varsigma_t\right)
 \[
 d q_t=q_t\left[\mu_{q, t} d t+\sigma_{q, t} \cdot d Z_t\right]
 \]</div>
-<ul class="simple">
-<li><p>where both the drift and the diffusion are endogenous.</p></li>
-</ul>
 <p>SDF evolves as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -472,6 +469,7 @@ d S_t=-S_t\left[r_t d t+\pi_t \cdot d Z_t\right]
 \]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(r\)</span> is the short-term interest rate, and <span class="math notranslate nohighlight">\(\pi\)</span> denotes the <span class="math notranslate nohighlight">\(d \times 1\)</span> vector of risk prices associated with <span class="math notranslate nohighlight">\(Z\)</span>.</p></li>
+<li><p>where both the drifts <span class="math notranslate nohighlight">\(\{\mu_{q, t}, r_t\}\)</span> and the diffusions <span class="math notranslate nohighlight">\(\{\sigma_{q, t}, \pi_t\}\)</span> are endogenous.</p></li>
 </ul>
 <p>To ensure complete markets, we introduce zero-cost insurance contracts (futures) associated with the aggregate shocks <span class="math notranslate nohighlight">\(Z_t\)</span>.</p>
 <p>The return on capital is defined by</p>
@@ -490,7 +488,7 @@ d R_{j, t}^k=\underbrace{\left[\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}+\io
 </section>
 <section id="agents">
 <h2>1.3 Agents<a class="headerlink" href="#agents" title="Permalink to this heading">#</a></h2>
-<p>To achieve a stationary wealth distribution, we assume a “perpetual youth” OLG structure. The birth rate and Poisson perish rate is <span class="math notranslate nohighlight">\(\lambda_d\)</span>. A <span class="math notranslate nohighlight">\(\nu\)</span> fraction of newborns become experts, while the rest <span class="math notranslate nohighlight">\(1 - \nu\)</span> become household. Dying agents’ wealth is pooled and redistributed equally to newborns, regardless of their occupation designation.</p>
+<p>To achieve a stationary wealth distribution, we assume a “perpetual youth” OLG structure. The birth rate and Poisson perish rate is <span class="math notranslate nohighlight">\(\lambda_d\)</span>. A <span class="math notranslate nohighlight">\(\nu\)</span> fraction of newborns become experts, while the rest <span class="math notranslate nohighlight">\(1 - \nu\)</span> become households. Dying agents’ wealth is pooled and redistributed equally to newborns, regardless of their occupation designation.</p>
 <p>We assume the continuous-time recursive preferences of Duffie and Epstein (1992)</p>
 <div class="math notranslate nohighlight">
 \[
@@ -509,13 +507,16 @@ U_{j, t}=\mathbb{E}\left[\int_0^{\infty} \varphi_j\left(c_{j, t+s}, U_{j, t+s}\r
 <li><p><span class="math notranslate nohighlight">\(\rho_j &gt; 0\)</span> denotes the subjective discount rate (inclusive of death rate)</p></li>
 </ul>
 <p><img alt="Balance sheets of experts and households" src="../_images/balance_sheet.PNG" /></p>
+<p>Format of this figure to be changed…</p>
 <p>The balance sheets of experts and households are shown in the figure. To hold a quantity of capital <span class="math notranslate nohighlight">\(k_{j, t}\)</span>, an agent needs to raise <span class="math notranslate nohighlight">\(q_t k_{j, t}\)</span> in financing. They use personal net worth <span class="math notranslate nohighlight">\(n_{j, t}\)</span>, equity issuances <span class="math notranslate nohighlight">\((1 - \chi_{j,t})q_t k_{j, t}\)</span>, and risk-free short term debt <span class="math notranslate nohighlight">\(\chi_{j, t}q_t k_{j, t} - n_{j, t}\)</span>. They owe short term creditors <span class="math notranslate nohighlight">\(r_t dt\)</span> per unit of short term debt issued, and pay out <span class="math notranslate nohighlight">\((r_t + \sigma_{R, t}\pi_t)dt + \sigma_{R,t}dZ_t + \sqrt{\varsigma}dZ_{j, t}\)</span> per unit of equity issued. Agents must retain a fraction <span class="math notranslate nohighlight">\(\underline{\chi}_j \in [0, 1]\)</span> of exposure to their assets, with a constraint <span class="math notranslate nohighlight">\(\chi_{j, t} \geq \underline{\chi}_j\)</span>, sometimes called a “skin-in-the-game” constraint. They may also hedge their risk exposures through positions <span class="math notranslate nohighlight">\(\theta_{j, t}n_{j, t}\)</span> in derivatives markets that pay <span class="math notranslate nohighlight">\(\pi_t dt + dZ_t\)</span> per unit, with constraint <span class="math notranslate nohighlight">\(\theta_{j, t} \in \Theta_j\)</span>.
 The dynamic budget constraints are</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{d n_{j, t}}{n_{j, t}}=\left(\mu_{n_j, t}-c_{j, t} / n_{j, t}\right) d t+\sigma_{n_j, t} \cdot d Z_t+\tilde{\sigma}_{n_j, t} d Z_{j, t}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(n_t\)</span> stands for personal net worth</p>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(n_t\)</span> stands for personal net worth</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -526,7 +527,7 @@ The dynamic budget constraints are</p>
 \end{aligned}
 \end{split}\]</div>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)\)</span> is the excess return earned on the capital. $</p></li>
+<li><p><span class="math notranslate nohighlight">\(\left(q_t k_{j, t} / n_{j, t}\right)\left(\mu_{R, j, t}-r_t\right)\)</span> is the excess return earned on the capital.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\left(1-\chi_{j, t}\right)\left(q_t k_{j, t} / n_{j, t}\right) \sigma_{R, t} \cdot \pi_t\)</span> is expected excess return compensation owed to outside equity investors.</p></li>
 </ul>
 <p>Agents choose <span class="math notranslate nohighlight">\((\iota_j, k_j, \chi_j, \theta_j, c_j)\)</span> to maximize utility subject to their budget constraint, equity constraint, hedging constraint, short-sale constraint <span class="math notranslate nohighlight">\(k_{j, t} \geq 0\)</span>, and solvency constraint <span class="math notranslate nohighlight">\(\eta_{j, t} \geq 0\)</span>.</p>
@@ -544,15 +545,15 @@ The dynamic budget constraints are</p>
 \int_{\mathbb{J}_e \cup \mathbb{J}_h} k_{j, t} d j=K_t 
 \]</div>
 <p>Equity market clearing</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(1-\chi_{j, t}\right) q_t k_{j, t} \sigma_{R, t} d j=\int_{\mathbb{J}_e \cup \mathbb{J}_h} \theta_{j, t} n_{j, t} d j .
-\]</div>
+<p>\begin{equation}
+\int_{\mathbb{J}<em>e \cup \mathbb{J}<em>h}\left(1-\chi</em>{j, t}\right) q_t k</em>{j, t} \sigma_{R, t} d j=\int_{\mathbb{J}<em>e \cup \mathbb{J}<em>h} \theta</em>{j, t} n</em>{j, t} d j .
+\tag{eq: 19}
+\end{equation}</p>
 <p>Bond market clearing</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{\mathbb{J}_e \cup \mathbb{J}_h}\left(q_t k_{j, t}-n_{j, t}\right) d j=0
-\]</div>
+<p>\begin{equation}
+\int_{\mathbb{J}<em>e \cup \mathbb{J}<em>h}\left(q_t k</em>{j, t}-n</em>{j, t}\right) d j=0
+\tag{eq: 20}
+\end{equation}</p>
 </section>
 <section id="competitive-equilibrium">
 <h2>1.5 Competitive Equilibrium<a class="headerlink" href="#competitive-equilibrium" title="Permalink to this heading">#</a></h2>
@@ -560,16 +561,16 @@ The dynamic budget constraints are</p>
 </section>
 <section id="markov-equilibrium">
 <h2>1.6 Markov Equilibrium<a class="headerlink" href="#markov-equilibrium" title="Permalink to this heading">#</a></h2>
+<p>We define experts’ net worth share
+$<span class="math notranslate nohighlight">\(
+w_t:=\int_{\mathbb{J}_e} n_{j, t} d j /\left(q_t K_t\right)
+\)</span>$</p>
 <p>The state variables in this economy are <span class="math notranslate nohighlight">\((K_t, w_t, g_t, s_t, \varsigma_t)\)</span>. Scale all growing quantities with <span class="math notranslate nohighlight">\(K_t\)</span>, in the de-trended economy <span class="math notranslate nohighlight">\(X_t := (w_t, g_t, s_t, \varsigma_t)\)</span> serves as a state variable. The dynamics for <span class="math notranslate nohighlight">\(X\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
 dX_t = \mu_X(X_t)dt + \sigma_X(X_t)dZ_t
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu_X\)</span> is a <span class="math notranslate nohighlight">\(4*1\)</span> vector and <span class="math notranslate nohighlight">\(\sigma_X\)</span> is a <span class="math notranslate nohighlight">\(4*d\)</span> matrix. <span class="math notranslate nohighlight">\(w\)</span> is endogenous and the rest 3 are exogenous.</p>
-<p>We define experts’ net worth share
-$<span class="math notranslate nohighlight">\(
-w_t:=\int_{\mathbb{J}_e} n_{j, t} d j /\left(q_t K_t\right)
-\)</span>$</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="hjb-equations-and-equilibrium">
@@ -588,7 +589,7 @@ functions.</p>
 <summary><b><font color="blue">Click to expand detailed derivations!</font></b></summary>
 <section id="hjb-equations">
 <h2>2.1 HJB equations<a class="headerlink" href="#hjb-equations" title="Permalink to this heading">#</a></h2>
-<p>HJB equation</p>
+<p>The continuation value <span class="math notranslate nohighlight">\(U_j\)</span> is a function of wealth and teh aggregate state vector: <span class="math notranslate nohighlight">\(U_{j, t} = U_j(n_t, X_t)\)</span>. Thus we have the following HJB equation</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -598,13 +599,14 @@ functions.</p>
 \end{split}\]</div>
 <p>FOC on investment</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\Phi(\iota) &amp;=\phi^{-1}[\exp (\phi \iota)-1]\\
-\iota(q) &amp; =\phi^{-1} \log (q) \\
-\Phi(\iota(q)) &amp; =\phi^{-1}(q-1) .
-\end{aligned}
-\end{split}\]</div>
+\[
+\Phi'(\iota) = q
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\Phi(\iota) =\phi^{-1}[\exp (\phi \iota)-1]\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\Phi(\iota(q)) = \phi^{-1}(q - 1)
+\]</div>
 <p>FOC on consumption</p>
 <div class="math notranslate nohighlight">
 \[
@@ -652,14 +654,17 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 \end{split}\]</div>
 <p>That implies when household’s expected capital return is below what they can earn with exposure to aggregate risk via futures contracts, they do not hold any capital. When they do hold capital, the expected return on such capital is equal to conpensation for aggreagate risk (via <span class="math notranslate nohighlight">\(\pi \sigma_R\)</span>) plus a compensation for taking idiosyncratic risk (via <span class="math notranslate nohighlight">\(\gamma\varsigma q k_h / n_h\)</span>).</p>
 <p>Households’ optimal risk allocations are</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-    \begin{aligned}
-    \sigma_{n_h} &amp; =\frac{q k_h}{n_h} \sigma_R+\theta_h=\frac{\pi}{\gamma_h}+\frac{1-\gamma_h}{\gamma_h} \sigma_X^{\prime} \partial_X \ln \xi_h \\
-    \beta_h &amp; =\frac{q k_h}{n_h} \begin{cases}=\frac{\Delta_h^{+}}{\gamma_h \varsigma}, &amp; \text { if } \varsigma&gt;0 \\
-    \geq 0, &amp; \text { if } \varsigma=0 .\end{cases}
-    \end{aligned}
-\end{split}\]</div>
+<p>\begin{equation}
+\sigma_{n_h}  =\frac{q k_h}{n_h} \sigma_R+\theta_h=\frac{\pi}{\gamma_h}+\frac{1-\gamma_h}{\gamma_h} \sigma_X^{\prime} \partial_X \ln \xi_h
+\tag{eq: 32}
+\end{equation}</p>
+<p>\begin{equation}
+\begin{aligned}
+\beta_h &amp; =\frac{q k_h}{n_h} \begin{cases}=\frac{\Delta_h^{+}}{\gamma_h \varsigma}, &amp; \text { if } \varsigma&gt;0 \
+\geq 0, &amp; \text { if } \varsigma=0 .\end{cases}
+\end{aligned}
+\tag{eq: 33 }
+\end{equation}</p>
 <ul>
 <li><p>gap between the households’ expected return on capital and the risk-premium paid by the market</p>
 <p><span class="math notranslate nohighlight">\(\Delta_{h, t}:=\mu_{R, h, t}-r_t-\pi_t \cdot \sigma_{R, t}\)</span></p>
@@ -686,13 +691,13 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 \end{split}\]</div>
 <p>The interpretation of the Euler Equation is straightforward: if the risk-premium <span class="math notranslate nohighlight">\(\pi_t \sigma_{R,t}\)</span> required to be paid to the market for issuing equity is lower than the expected excess return that experts earn on their capital, they will issue as much equity as they can, and bounce against their constraint <span class="math notranslate nohighlight">\(\underline\chi\)</span>.</p>
 <p>The optimal leverage is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\beta_e&amp;:=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left\|\sigma_R\right\|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right]\\
-\sigma_{n_e}&amp;=\beta_e \sigma_R
-\end{aligned}
-\end{split}\]</div>
+<p>\begin{equation}
+\beta_e :=\frac{\chi q k_e}{n_e}=\frac{1}{\gamma_e\left(\left|\sigma_R\right|^2+\varsigma\right)}\left[\Delta_e+\pi \cdot \sigma_R+\left(1-\gamma_e\right)\left(\sigma_X \sigma_R\right) \cdot \partial_X \ln \xi_e\right]
+\tag{eq: 36}
+\end{equation}</p>
+<p>\begin{equation}
+\sigma_{n_e} =\beta_e \sigma_R \nonumber
+\end{equation}</p>
 <ul>
 <li><p>wedge between expected return and risk-premium</p>
 <p><span class="math notranslate nohighlight">\(\Delta_{e, t}:=\underline{\chi}^{-1}\left[\mu_{R, e, t}-r_t-\pi_t \cdot \sigma_{R, t}\right]\)</span></p>
@@ -719,8 +724,8 @@ c_{j, t}=\rho_j^{1 / \psi_j} \xi_{j, t}^{1-1 / \psi_j} n_{j, t}
 </section>
 <section id="computing-equilibrium">
 <h2>2.2 Computing Equilibrium<a class="headerlink" href="#computing-equilibrium" title="Permalink to this heading">#</a></h2>
-<p>To characterize equilibrium, we must determine (i) q and its dynamcis as a function of <span class="math notranslate nohighlight">\(X\)</span>; (ii) <span class="math notranslate nohighlight">\(r, \pi, \delta_e and \delta_h\)</span> as a function of <span class="math notranslate nohighlight">\(X\)</span>; and (iii) the dynamics of <span class="math notranslate nohighlight">\(X\)</span>. Because of the consrtaints <span class="math notranslate nohighlight">\(\chi \geq \underline \chi\)</span> and <span class="math notranslate nohighlight">\(k_h \geq 0\)</span>, the state space must be partitioned into regions in which various constellations of constraints bind.</p>
-<p>Define <span class="math notranslate nohighlight">\(\kappa_t:=\frac{K_{e, t}}{K_t}\)</span> and thus we have 3 cases to consider, depending on the Euler inequalities for households and experts (here we assume <span class="math notranslate nohighlight">\(a_e &gt; a_h\)</span>, the case when <span class="math notranslate nohighlight">\(a_e = a_h\)</span> is shown in appendix A.3.1 of the original)</p>
+<p>To characterize equilibrium, we must determine (i) q and its dynamics as a function of <span class="math notranslate nohighlight">\(X\)</span>; (ii) <span class="math notranslate nohighlight">\(r, \pi, \delta_e\)</span> and <span class="math notranslate nohighlight">\(\delta_h\)</span> as a function of <span class="math notranslate nohighlight">\(X\)</span>; and (iii) the dynamics of <span class="math notranslate nohighlight">\(X\)</span>. Because of the constraints <span class="math notranslate nohighlight">\(\chi \geq \underline \chi\)</span> and <span class="math notranslate nohighlight">\(k_h \geq 0\)</span>, the state space must be partitioned into regions in which various constellations of constraints bind.</p>
+<p>Define <span class="math notranslate nohighlight">\(\kappa_t:=\frac{K_{e, t}}{K_t}\)</span> and thus we have 3 cases to consider, depending on the Euler inequalities for households and experts (here we assume <span class="math notranslate nohighlight">\(a_e &gt; a_h\)</span>, the case when <span class="math notranslate nohighlight">\(a_e = a_h\)</span> is shown in appendix A.3.1 of the original paper)</p>
 <ol class="arabic simple">
 <li><p><span class="math notranslate nohighlight">\(\kappa=1 \text { and } \chi&gt;\underline{\chi}\)</span>, all the capital is managed by experts, but they are wealthy enough that their skin-in-the-game constraint is not binding
 $<span class="math notranslate nohighlight">\(
@@ -738,11 +743,18 @@ $<span class="math notranslate nohighlight">\(
 <details> 
 <summary><b><font color="blue">Click to expand detailed derivations</font></b></summary>
 <p>Combining these conditions with the definitions of <span class="math notranslate nohighlight">\(\delta_e\)</span> and <span class="math notranslate nohighlight">\(\delta_h\)</span>, we summarize the constraints with 3 slackness conditions</p>
-<p>\begin{align}
-&amp; 0=\min \left(1-\kappa, \Delta_h^{+}-\Delta_h\right) \tag{eq: 40} \
-&amp; 0=\min \left(\chi-\underline{\chi}, \Delta_e\right) \tag{eq: 41} \
-&amp; 0=(1-\kappa)(\chi-\underline{\chi})\left(a_e-a_h\right) \tag{eq: 42} .
-\end{align}</p>
+<p>\begin{equation}
+0 = \min \left(1-\kappa, \Delta_h^{+}-\Delta_h\right)
+\tag{eq:40}
+\end{equation}</p>
+<p>\begin{equation}
+0 = \min \left(\chi-\underline{\chi}, \Delta_e\right)
+\tag{eq:41}
+\end{equation}</p>
+<p>\begin{equation}
+0 = (1-\kappa)(\chi-\underline{\chi})\left(a_e-a_h\right)
+\tag{eq:42}
+\end{equation}</p>
 <p>We will use these conditions to consider state space partitions later. Before that, we will first analyze conditions that apply across the state space.</p>
 <section id="capital-price">
 <h3>2.2.1 Capital Price<a class="headerlink" href="#capital-price" title="Permalink to this heading">#</a></h3>
@@ -756,13 +768,10 @@ q(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+q w \rho_e^{1 / \psi_e} \xi_e^{1
 q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}+w \rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}+1 / \phi}
 \]</div>
 <p>We can solve the evolution of capital by time-differenciating the capital market clearing condition, using the laws of motion for individual capital stocks, the common investment rate, and the law of large numbers</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\frac{d K_t}{K_t} &amp; =\mu_{K, t} d t+\sigma_{K, t} \cdot d Z_t \\
-\mu_{K, t} &amp; :=g_t+\iota\left(q_t\right)-\delta
-\end{aligned}
-\end{split}\]</div>
+<p>\begin{align}
+\frac{d K_t}{K_t} &amp; =\mu_{K, t} d t+\sigma_{K, t} \cdot d Z_t \tag{eq:45} \
+\mu_{K, t} &amp; :=g_t+\iota\left(q_t\right)-\delta \tag{eq: 46}
+\end{align}</p>
 </section>
 <section id="wealth-share-evolution">
 <h3>2.2.2 Wealth Share Evolution<a class="headerlink" href="#wealth-share-evolution" title="Permalink to this heading">#</a></h3>
@@ -782,15 +791,12 @@ q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1
 \tilde{\sigma}_{n_j, t} &amp; :=\chi_{j, t}\left(q_t k_{j, t} / n_{j, t}\right) \sqrt{\varsigma_t}
 \end{aligned}
 \end{split}\]</div>
-<p>Combining law of motion of wealth with the optimal leverage of agents \ref{}, law of large number, and definition of aggregate worth <span class="math notranslate nohighlight">\(N_{h, t} = \int_{\mathbb J_h}n_{j, t}dj\)</span> and <span class="math notranslate nohighlight">\(N_{e, t} = \int_{\mathbb J_e}n_{j, t}dj\)</span>, evolutions for aggregate household and expert net worths are</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-&amp; \frac{d N_{h, t}}{N_{h, t}}=\left[r_t-\rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}-\lambda_d+\sigma_{n_h, t} \cdot \pi_t+\beta_{h, t} \Delta_{h, t}+\frac{(1-\nu) \lambda_d}{1-w_t}\right] d t+\sigma_{n_h, t} \cdot d Z_t \\
-&amp; \frac{d N_{e, t}}{N_{e, t}}=\left[r_t-\rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}-\lambda_d+\sigma_{n_e, t} \cdot \pi_t+\beta_{e, t} \Delta_{e, t}+\frac{\nu \lambda_d}{w_t}\right] d t+\sigma_{n_e, t} \cdot d Z_t .
-\end{aligned}
-\end{split}\]</div>
-<p>Combining risk decisions \ref, equity market clearing, and definition of <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(\kappa\)</span>, we have</p>
+<p>Combining law of motion of wealth with the optimal leverage of agents (eq:32) and (eq:36), law of large number, and definitions of aggregate worth <span class="math notranslate nohighlight">\(N_{h, t} = \int_{\mathbb J_h}n_{j, t}dj\)</span> and <span class="math notranslate nohighlight">\(N_{e, t} = \int_{\mathbb J_e}n_{j, t}dj\)</span>, evolutions for aggregate household and expert net worths are</p>
+<p>\begin{align}
+&amp; \frac{d N_{h, t}}{N_{h, t}}=\left[r_t-\rho_h^{1 / \psi_h} \xi_h^{1-1 / \psi_h}-\lambda_d+\sigma_{n_h, t} \cdot \pi_t+\beta_{h, t} \Delta_{h, t}+\frac{(1-\nu) \lambda_d}{1-w_t}\right] d t+\sigma_{n_h, t} \cdot d Z_t \tag{eq: 47} \
+&amp; \frac{d N_{e, t}}{N_{e, t}}=\left[r_t-\rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}-\lambda_d+\sigma_{n_e, t} \cdot \pi_t+\beta_{e, t} \Delta_{e, t}+\frac{\nu \lambda_d}{w_t}\right] d t+\sigma_{n_e, t} \cdot d Z_t .\tag{eq:48}
+\end{align}</p>
+<p>Combining risk decisions (eq:32) and (eq:36), equity market clearing (eq:19), and definition of <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(\kappa\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma_{n_h} = \frac{1 - \chi\kappa}{1 - w}\sigma_R
@@ -799,15 +805,11 @@ q=\frac{(1-\kappa) a_h+\kappa a_e+1 / \phi}{(1-w) \rho_h^{1 / \psi_h} \xi_h^{1-1
 \[
 \sigma_{n_e} = \frac{\chi\kappa}{w}\sigma_R
 \]</div>
-<p>Wealth Share Evolution</p>
+<p>By Ito’s formula, wealth share <span class="math notranslate nohighlight">\(w=\frac{N_e}{N_e+N_h}\)</span> evolves as</p>
 <div class="math notranslate nohighlight">
 \[
-w=\frac{N_e}{N_e+N_h}
-\]</div>
-<p>Using Ito’s formula
-$<span class="math notranslate nohighlight">\(
 d w=w(1-w)\left[\frac{d N_e}{N_e}-\frac{d N_h}{N_h}\right]-w(1-w)\left[w \frac{d\left[N_e\right]}{N_e^2}-(1-w) \frac{d\left[N_h\right]}{N_h^2}+(1-2 w) \frac{d\left[N_e, N_h\right]}{N_e N_h}\right] .
-\)</span>$</p>
+\]</div>
 <p>Thus we have
 $<span class="math notranslate nohighlight">\(
 \begin{aligned}
@@ -818,10 +820,10 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 <p>Now we are able to write the law of motion of state vector <span class="math notranslate nohighlight">\(X_t\)</span>
 $<span class="math notranslate nohighlight">\(
-\mu_X = (\mu_w, \lambda_g(\overline g - g), \lambda_s(\overline s - s), \lambda_\varsigma(\overline \varsigma - \varsigma))
+\mu_X = (\mu_w, \lambda_g(\overline g - g), \lambda_s(\overline s - s), \lambda_\varsigma(\overline \varsigma - \varsigma))'
 \)</span><span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(
-\sigma_X = (\sigma_w, \sqrt{s}\sigma_g, \sqrt{s}\sigma_s, \sqrt{s}\sigma_\varsigma)
+\sigma_X = (\sigma_w, \sqrt{s}\sigma_g, \sqrt{s}\sigma_s, \sqrt{s}\sigma_\varsigma)'
 \)</span>$</p>
 </section>
 <section id="capital-price-evolution">
@@ -829,23 +831,23 @@ $<span class="math notranslate nohighlight">\(
 <p>By Ito’s lemma
 $<span class="math notranslate nohighlight">\(
 \begin{aligned}
-d q\left(X_t\right) &amp; =\left[\mu_X\left(X_t\right) \cdot \partial_X q\left(X_t\right)+\frac{1}{2} \operatorname{tr}\left(\sigma_X\left(X_t\right)^{\prime} \partial_{X X^{\prime}} q\left(X_t\right) \sigma_X\left(X_t\right)\right)\right] d t \\
-&amp; +\left[\sigma_X\left(X_t\right)^{\prime} \partial_X q\left(X_t\right)\right] \cdot d Z_t
+d q\left(X_t\right) &amp; =\left[\mu_X\left(X_t\right) \cdot \partial_X q\left(X_t\right)+\frac{1}{2} \operatorname{tr}\left(\sigma_X\left(X_t\right)^{\prime} \partial_{X X^{\prime}} q\left(X_t\right) \sigma_X\left(X_t\right)\right)\right] d t  \\
+&amp; +\left[\sigma_X\left(X_t\right)^{\prime} \partial_X q\left(X_t\right)\right] \cdot d Z_t 
 \end{aligned}
 \)</span>$</p>
 <div class="math notranslate nohighlight">
 \[
 \mu_q=\frac{1}{q}\left[\mu_X \cdot \partial_X q+\frac{1}{2} \operatorname{tr}\left(\sigma_X^{\prime} \partial_{X X^{\prime}} q \sigma_X\right)\right]
 \]</div>
+<p>Using <span class="math notranslate nohighlight">\(\sigma_R=\sigma_K+\sigma_q\)</span>, we have</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma_q=\frac{(\chi \kappa-w)\left(\partial_w \ln q\right) \sqrt{s} \sigma+\left(\partial_g \ln q\right) \sqrt{s} \sigma_g+\left(\partial_s \ln q\right) \sqrt{s} \sigma_s+\left(\partial_{\varsigma} \ln q\right) \sqrt{\varsigma} \sigma_{\varsigma}}{1-(\chi \kappa-w) \partial_w \ln q}
 \]</div>
+<ul class="simple">
+<li><p>where <span class="math notranslate nohighlight">\(\sqrt{s}\sigma = \sigma_K\)</span></p></li>
+</ul>
 <p>And we can solve <span class="math notranslate nohighlight">\(\sigma_R\)</span> based on <span class="math notranslate nohighlight">\(\sigma_q\)</span></p>
-<div class="math notranslate nohighlight">
-\[
-\sigma_R=\sigma_K+\sigma_q
-\]</div>
 <div class="math notranslate nohighlight">
 \[
 \sigma_R=\frac{\sqrt{s} \sigma+\left(\partial_g \ln q\right) \sqrt{s} \sigma_g+\left(\partial_s \ln q\right) \sqrt{s} \sigma_s+\left(\partial_{\varsigma} \ln q\right) \sqrt{\varsigma} \sigma_{\varsigma}}{1-(\chi \kappa-w) \partial_w \ln q} .
@@ -853,7 +855,7 @@ d q\left(X_t\right) &amp; =\left[\mu_X\left(X_t\right) \cdot \partial_X q\left(X
 </section>
 <section id="stochastic-discount-factor">
 <h3>2.2.4 Stochastic Discount Factor<a class="headerlink" href="#stochastic-discount-factor" title="Permalink to this heading">#</a></h3>
-<p>Time-differentiate the bond market clearing condition \ref, using the evolutions of <span class="math notranslate nohighlight">\(N_h\)</span> and <span class="math notranslate nohighlight">\(N_e\)</span> \ref, and K in \ref, by equating the drift terms and diffusion terms</p>
+<p>Time-differentiate the bond market clearing condition (eq:20), using the evolutions of <span class="math notranslate nohighlight">\(N_h\)</span> and <span class="math notranslate nohighlight">\(N_e\)</span> (eq:47) and (eq: 48), and K in (eq:45), by equating the drift terms and diffusion terms</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -865,7 +867,7 @@ r+(1-w)\left(\sigma_{n_h} \cdot \pi+\beta_h \Delta_h-\rho_h^{1 / \psi_h} \xi_h^{
 \[
 (1-w) \sigma_{n_h}+w \sigma_{n_e}=\sigma_R
 \]</div>
-<p>Interest rate (drift of SDF)</p>
+<p>we can solve interest rate (drift of SDF)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -873,37 +875,20 @@ r=\mu_q &amp; +\mu_K+\sigma_K \cdot \sigma_q-\sigma_R \cdot \pi-(1-w)\left(\beta
 &amp; -w\left(\beta_e \Delta_e-\rho_e^{1 / \psi_e} \xi_e^{1-1 / \psi_e}\right) .
 \end{aligned}
 \end{split}\]</div>
-<p>Risk price (diffusion of SDF)</p>
-<div class="math notranslate nohighlight">
-\[
-\pi=\gamma_h \frac{1-\chi \kappa}{1-w} \sigma_R+\left(\gamma_h-1\right) \sigma_X^{\prime} \partial_X \ln \xi_h
-\]</div>
+<p>and risk price (diffusion of SDF)</p>
+<p>\begin{equation}
+\pi=\gamma_h \frac{1-\chi \kappa}{1-w} \sigma_R+\left(\gamma_h-1\right) \sigma_X^{\prime} \partial_X \ln \xi_h \tag{eq: 62}
+\end{equation}</p>
 </section>
 <section id="risk-wedge">
 <h3>2.2.5 Risk Wedge<a class="headerlink" href="#risk-wedge" title="Permalink to this heading">#</a></h3>
-<p>Therefore, we have solved for <span class="math notranslate nohighlight">\((q, r, \pi, \phi_q, \sigma_q, \phi_X, \sigma_X)\)</span>, taking as given <span class="math notranslate nohighlight">\(\chi, \kappa, \Delta_e, \Delta_h, \epsilon_e, \epsilon_h\)</span> and all derivatives of <span class="math notranslate nohighlight">\(\epsilon_h\)</span> and <span class="math notranslate nohighlight">\(\epsilon_e\)</span>. In the next step, we solve for <span class="math notranslate nohighlight">\(\chi, \kappa, \Delta_e, \Delta_h\)</span>.</p>
-<p>Combining \ref and households’ risk price, we have</p>
+<p>Therefore, we have solved for <span class="math notranslate nohighlight">\((q, r, \pi, \phi_q, \sigma_q, \phi_X, \sigma_X)\)</span>, taking as given <span class="math notranslate nohighlight">\(\chi, \kappa, \Delta_e, \Delta_h, \xi_e, \xi_h\)</span> and all derivatives of <span class="math notranslate nohighlight">\(\xi_h\)</span> and <span class="math notranslate nohighlight">\(\xi_e\)</span>. In the next step, we solve for <span class="math notranslate nohighlight">\(\chi, \kappa, \Delta_e, \Delta_h\)</span>.</p>
+<p>Combining (eq: 36) and households’ risk price (eq:62), we have</p>
 <p>\begin{equation}
 \Delta_e=\gamma_e \frac{\chi \kappa}{w}\left(\left|\sigma_R\right|^2+\varsigma\right)-\gamma_h \frac{1-\chi \kappa}{1-w}\left|\sigma_R\right|^2-\sigma_R^{\prime} \sigma_X^{\prime} \partial_X \ln \left(\frac{\xi_h^{\gamma_h-1}}{\xi_e^{\gamma_e-1}}\right)
 \tag{eq: 63}
 \end{equation}</p>
-<p>Household risk wedge</p>
-<div class="math notranslate nohighlight">
-\[
-\mu_{R, e}-\mu_{R, h}=\mu_{R, e}-r-\pi \cdot \sigma_R+\pi \cdot \sigma_R-\left(\mu_{R, h}-r\right)
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\mu_{R, j, t}=\left[\frac{a_j-\Phi\left(\iota_{j, t}\right)}{q_t}+\iota_{j, t}-\delta+g_t+\mu_{q, t}+\sigma_{K, t} \cdot \sigma_{q, t}\right]
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\Delta_{e, t}:=\underline{\chi}^{-1}\left[\mu_{R, e, t}-r_t-\pi_t \cdot \sigma_{R, t}\right]
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\Delta_{h, t}:=\mu_{R, h, t}-r_t-\pi_t \cdot \sigma_{R, t}
-\]</div>
+<p>Combining (eq:7), (eq:34), (eq:37), we have</p>
 <p>\begin{equation}
 \Delta_h=\underline{\chi} \Delta_e-\frac{a_e-a_h}{q}
 \tag{eq: 64}
