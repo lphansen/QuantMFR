@@ -523,19 +523,19 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 </section>
 <section id="first-order-conditions-a-class-anchor-id-s1-2-a">
 <h2>1.2 First-Order Conditions <a class="anchor" id="s1-2"></a><a class="headerlink" href="#first-order-conditions-a-class-anchor-id-s1-2-a" title="Permalink to this heading">#</a></h2>
-<p>We present the first-order conditions for the above model. You can access a step-by-step derivation <a class="reference download internal" download="" href="../_downloads/f8f0b84b204f0cefbd07716b828b250f/AKderive.pdf"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
-<p>For investment:</p>
+<p>We present the first-order conditions for the above model. Let <span class="math notranslate nohighlight">\(MK_{t+1}\)</span> be the co-state variable for the capital law of motion (equation 4) and  <span class="math notranslate nohighlight">\(MC_{t+1}\)</span> be the co-state variable for the consumption-investment allocation (equation 6). You can access a step-by-step derivation <a class="reference download internal" download="" href="../_downloads/f8f0b84b204f0cefbd07716b828b250f/AKderive.pdf"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<p>FOC for investment:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}  \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right) \mid \mathfrak{A}_t\right] - 1  = 0,\tag{7}
 \]</div>
-<p>For capital:</p>
+<p>FOC for capital:</p>
 <div class="math notranslate nohighlight">
 \[
- \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1}  \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right] - \frac {MK_t}{MC_t} + {\mathbf a}  = 0, \tag{8}
+\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1}  \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] {\mathfrak A}_t \right] - \frac {MK_t}{MC_t} + {\mathbf a}  = 0, \tag{8}
 \]</div>
-<p>Equations 4 and 5 are the law of motion equations, while equations 6, 7, and 8 are the forward-looking equations.
-<br></p>
+<p>Equations 4 and 5 are the law of motion equations, while equations 6, 7, and 8 are the forward-looking equations.</p>
+<br>
 </section>
 <section id="adapting-the-model-a-class-anchor-id-s1-3-a">
 <h2>1.3 Adapting the Model <a class="anchor" id="s1-3"></a><a class="headerlink" href="#adapting-the-model-a-class-anchor-id-s1-3-a" title="Permalink to this heading">#</a></h2>
@@ -578,7 +578,7 @@ Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{5}
 &amp;\frac{K_{t+1}}{K_t} - \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\\
 &amp;Z_{t+1} - {\mathbb A} Z_t + \mathbb{B} W_{t+1}
 \end{bmatrix}\end{split}\]</div>
-<p>The model has one jump variable (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent jump variables):</p>
+<p>The model has three jump variables (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent the array of jump variables):</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\log C_t - \log K_t\)</span> : Log consumption over capital</p></li>
 <li><p><span class="math notranslate nohighlight">\(\log I_t - \log K_t\)</span> : Log investment over capital</p></li>
