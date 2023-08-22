@@ -338,7 +338,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticity Continuous</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities">1. Shock Elasticities</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities">1. Shock Elasticities</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2 Shock Elasticities</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">2. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">2.1 Basic setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">2.2 Stochastic discount factor process</a></li>
@@ -376,35 +380,61 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="shock-elasticities">
 <h1>1. Shock Elasticities<a class="headerlink" href="#shock-elasticities" title="Permalink to this heading">#</a></h1>
+<section id="functionals">
+<h2>1.1 Functionals<a class="headerlink" href="#functionals" title="Permalink to this heading">#</a></h2>
 <p>Suppose <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span> dimensional, stationary, ergodic Markov process governed by the following relationship:</p>
 <div class="math notranslate nohighlight">
 \[
-X_{t+1} = \phi{X_t, W_{t+1}}, \tag(1)
+X_{t+1} = \phi \left{X_t, W_{t+1}}\right,\tag{1}
 \]</div>
 <p>Where <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is a <span class="math notranslate nohighlight">\(k\)</span> dimensional i.i.d. shock process.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title">Example 1</p>
+<p>A typical example of an additive functional is:
+$<span class="math notranslate nohighlight">\(
+Y_{t+1} - Y_t = \beta(X_t) + \alpha(X_t) \cdot W_{t+1}
+\)</span>$</p>
+</aside>
 <p>We call a process <span class="math notranslate nohighlight">\(Y\)</span> an <strong>additive functional</strong> if it evolves as:</p>
 <div class="math notranslate nohighlight">
 \[
-Y_{t+1} - Y_t = \kappa{X_t, W_{t+1}}, \tag(2)
+Y_{t+1} - Y_t = \kappa \left{X_t, W_{t+1}}\right,\tag{2}
 \]</div>
 <p>Where <span class="math notranslate nohighlight">\(Y_{t+1} - Y_t\)</span> inherits the stationarity of <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
 <p>We are interested in macroeconomic processes whose <em>logarithms</em> behave as in equation 2. We can think of these as processes whose percentage change over time is stationary.</p>
-<p>Sometimes, we are also interested in the <em>levels</em> of these processes <span class="math notranslate nohighlight">\(\exp(Y)\)</span>, which we call <strong>multiplicative functionals</strong>, since:</p>
+<p>Sometimes, we are also interested in the <em>levels</em> of these processes <span class="math notranslate nohighlight">\(\exp(Y)\)</span>, which we call <strong>multiplicative functionals</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-\exp(Y_t+1)/\exp(Y_t) = \exp(\kappa{X_t, W_{t+1}})
+\exp(Y_t+1)/\exp(Y_t) = \exp(\kappa \left{X_t, W_{t+1}}\right),\tag{3}
 \]</div>
-<p>Note that the product of two multiplicative functionals is also a multiplicative functional.</p>
-<aside class="margin sidebar">
-<p class="sidebar-title">Example 1</p>
-<p>A typical example of an additive functional is:</p>
+<p>In particular, we are interested in two types of multiplicative functionals:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(G\)</span>, which captures macroeconomic growth</p></li>
+<li><p><span class="math notranslate nohighlight">\(S\)</span>, which captures stochastic discounting</p></li>
+</ul>
+<br>
+</section>
+<section id="id1">
+<h2>1.2 Shock Elasticities<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Consider an asset whose payoff in each period evolves as a multiplicative functional:</p>
 <div class="math notranslate nohighlight">
 \[
-Y_{t+1} - Y_t = \beta(X_t) + \alpha(X_t) \cdot W_{t+1}
+\log \left(G_t)\right - \log \left(G_{t-1})\right = \beta \left (X_{t-1}) \right + \alpha \left (X_{t-1}) \right \cdot W_{t}
 \]</div>
-</aside>
-<p>Suppose that the logarithms of macroeconomic aggregate and stochastic discount factor processes that interest us grow or decay stochastically over time with increments that are modeled as a stationary Markov process.   Let <span class="math notranslate nohighlight">\(Y\)</span> be the logarithm of such a process. The process <span class="math notranslate nohighlight">\(Y\)</span> displays linear growth or decay. Refer to its exponential <span class="math notranslate nohighlight">\(M = \exp(Y)\)</span> as a multiplicative process.</p>
-<p>Shock elasticities are constructed using local changes in the exposure to shocks.  For instance, consider a shock, <span class="math notranslate nohighlight">\(W_1\)</span> that is distributed as a multivariate standard normal.  We introduce a parameterized family of random variables <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> where</p>
+<p>We can write the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+\log \left(G_t)\right = $\log \left(G_0)\right$ + \sum_{s=0}^{t-1} (\beta \left (X_{s}) \right + \alpha \left (X_{s}) \right \cdot W_{s+1})
+\]</div>
+<!-- $$
+G_t / G_0 = \exp( \sum_{s=0}^{t-1} (\beta_g \left (X_{s}) \right + \alpha_g \left (X_{s}) \right \cdot W_{s+1}))
+$$ -->
+<p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>. The direction of exposure <span class="math notranslate nohighlight">\(nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\log \left(G_0)\right$ + (\beta \left (X_{0}) \right + \left \alpha \left (X_{0}) \right + \nu \left (X_{0}) \right \right \cdot W_{1}) + \sum_{s=1}^{t-1} (\beta_g \left (X_{s}) \right + \alpha_g \left (X_{s}) \right \cdot W_{s+1})
+\]</div>
+<p>Suppose we want to know how a small change in exposure to risk at time <span class="math notranslate nohighlight">\(1\)</span> affects the payoff at time <span class="math notranslate nohighlight">\(t\)</span>. We parameterize a family of payoffs <span class="math notranslate nohighlight">\(G_t H_1({\sf r})\)</span>, where:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
@@ -495,6 +525,7 @@ But it is sometimes of interest when nonlinearities are present.</p>
 <div class="cell_output docutils container">
 <div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
 </div>
+</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="continuous-time-framework">
 <h1>2. Continuous-time framework<a class="headerlink" href="#continuous-time-framework" title="Permalink to this heading">#</a></h1>
@@ -1269,7 +1300,11 @@ Wall time: 16min 59s
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticity Continuous</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities">1. Shock Elasticities</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities">1. Shock Elasticities</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2 Shock Elasticities</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">2. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">2.1 Basic setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">2.2 Stochastic discount factor process</a></li>
