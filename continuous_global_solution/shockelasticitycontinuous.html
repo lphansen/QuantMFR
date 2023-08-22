@@ -398,14 +398,14 @@ Y_{t+1} - Y_t = \beta(X_t) + \alpha(X_t) \cdot W_{t+1}
 <p>We call a process <span class="math notranslate nohighlight">\(Y\)</span> an <strong>additive functional</strong> if it evolves as:</p>
 <div class="math notranslate nohighlight">
 \[
-Y_{t+1} - Y_t = \kappa \left{X_t, W_{t+1}}\right,\tag{2}
+Y_{t+1} - Y_t = \kappa \left(X_t, W_{t+1}\right),\tag{2}
 \]</div>
 <p>Where <span class="math notranslate nohighlight">\(Y_{t+1} - Y_t\)</span> inherits the stationarity of <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
 <p>We are interested in macroeconomic processes whose <em>logarithms</em> behave as in equation 2. We can think of these as processes whose percentage change over time is stationary.</p>
 <p>Sometimes, we are also interested in the <em>levels</em> of these processes <span class="math notranslate nohighlight">\(\exp(Y)\)</span>, which we call <strong>multiplicative functionals</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
-\exp(Y_t+1)/\exp(Y_t) = \exp(\kappa \left{X_t, W_{t+1}}\right),\tag{3}
+\exp(Y_t+1)/\exp(Y_t) = \exp(\kappa \left(X_t, W_{t+1}\right)),\tag{3}
 \]</div>
 <p>In particular, we are interested in two types of multiplicative functionals:</p>
 <ul class="simple">
@@ -432,7 +432,7 @@ $$ -->
 <p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>. The direction of exposure <span class="math notranslate nohighlight">\(nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> becomes:</p>
 <div class="math notranslate nohighlight">
 \[
-\log \left(G_0)\right$ + (\beta \left (X_{0}) \right + \left \alpha \left (X_{0}) \right + \nu \left (X_{0}) \right \right \cdot W_{1}) + \sum_{s=1}^{t-1} (\beta_g \left (X_{s}) \right + \alpha_g \left (X_{s}) \right \cdot W_{s+1})
+\log \left(G_{0}\right) + (\beta \left (X_{0} \right) + \left( \alpha \left (X_{0} \right) + \nu \left (X_{0} \right) \right) \cdot W_{1}) + \sum_{s=1}^{t-1} (\beta_g \left (X_{s} \right) + \alpha_g \left (X_{s} \right) \cdot W_{s+1})
 \]</div>
 <p>Suppose we want to know how a small change in exposure to risk at time <span class="math notranslate nohighlight">\(1\)</span> affects the payoff at time <span class="math notranslate nohighlight">\(t\)</span>. We parameterize a family of payoffs <span class="math notranslate nohighlight">\(G_t H_1({\sf r})\)</span>, where:</p>
 <div class="math notranslate nohighlight">
