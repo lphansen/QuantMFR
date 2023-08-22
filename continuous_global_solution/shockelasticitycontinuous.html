@@ -385,15 +385,16 @@ document.write(`
 <p>Suppose <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span> dimensional, stationary, ergodic Markov process governed by the following relationship:</p>
 <div class="math notranslate nohighlight">
 \[
-X_{t+1} = \phi \left{X_t, W_{t+1}}\right,\tag{1}
+X_{t+1} = \phi \left(X_t, W_{t+1}\right),\tag{1}
 \]</div>
 <p>Where <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is a <span class="math notranslate nohighlight">\(k\)</span> dimensional i.i.d. shock process.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title">Example 1</p>
-<p>A typical example of an additive functional is:
-$<span class="math notranslate nohighlight">\(
+<p>A typical example of an additive functional is:</p>
+<div class="math notranslate nohighlight">
+\[
 Y_{t+1} - Y_t = \beta(X_t) + \alpha(X_t) \cdot W_{t+1}
-\)</span>$</p>
+\]</div>
 </aside>
 <p>We call a process <span class="math notranslate nohighlight">\(Y\)</span> an <strong>additive functional</strong> if it evolves as:</p>
 <div class="math notranslate nohighlight">
@@ -424,29 +425,29 @@ Y_{t+1} - Y_t = \kappa \left(X_t, W_{t+1}\right),\tag{2}
 <p>We can write the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[
-\log \left(G_t \right) = \log \left(G_{0}\right) + \sum_{s=0}^{t-1} (\beta \left (X_{s} \right) + \alpha \left (X_{s} \right) \cdot W_{s+1})
+\log \left(G_t \right) - \log \left(G_{0}\right) = \sum_{s=0}^{t-1} (\beta \left (X_{s} \right) + \alpha \left (X_{s} \right) \cdot W_{s+1})
 \]</div>
 <!-- $$
 G_t / G_0 = \exp( \sum_{s=0}^{t-1} (\beta_g \left (X_{s}) \right + \alpha_g \left (X_{s}) \right \cdot W_{s+1}))
 $$ -->
-<p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>. The direction of exposure <span class="math notranslate nohighlight">\(nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> becomes:</p>
+<p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>. The direction of exposure <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> becomes:</p>
 <div class="math notranslate nohighlight">
 \[
-\log \left(G_{0}\right) + (\beta \left (X_{0} \right) + \left( \alpha \left (X_{0} \right) + \nu \left (X_{0} \right) \right) \cdot W_{1}) + \sum_{s=1}^{t-1} (\beta_g \left (X_{s} \right) + \alpha_g \left (X_{s} \right) \cdot W_{s+1})
+\beta \left (X_{0} \right) + \left( \alpha \left (X_{0} \right) + r\nu \left (X_{0} \right) \right) \cdot W_{1} + \sum_{s=1}^{t-1} (\beta_g \left (X_{s} \right) + \alpha_g \left (X_{s} \right) \cdot W_{s+1})
 \]</div>
-<p>Suppose we want to know how a small change in exposure to risk at time <span class="math notranslate nohighlight">\(1\)</span> affects the payoff at time <span class="math notranslate nohighlight">\(t\)</span>. We parameterize a family of payoffs <span class="math notranslate nohighlight">\(G_t H_1({\sf r})\)</span>, where:</p>
+<p>This motivates our definition for <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span>, which can be thought of as a variable that alters the exposure of <span class="math notranslate nohighlight">\(G\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
 \log H_1({\sf r}) = {\sf r}\nu(X_0)  W_1 - \frac {\sf r^2} 2 |\nu(X_0)|^2.
 \end{align}
 \]</div>
-<p>where we normalize the row vector <span class="math notranslate nohighlight">\(\nu\)</span> so that <span class="math notranslate nohighlight">\({\mathbb E} \left[|\nu(X_0)|^2\right] = 1.\)</span>
-Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> is positive and has conditional expectation equal to one. Consider:</p>
+<p>We normalize the row vector <span class="math notranslate nohighlight">\(\nu\)</span> so that <span class="math notranslate nohighlight">\({\mathbb E} \left[|\nu(X_0)|^2\right] = 1.\)</span>
+Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> is positive and has conditional expectation equal to one. Hence, <span class="math notranslate nohighlight">\(\frac {G_t}{G_0} H_1({\sf r})\)</span> gives us a family of payoffs parameterized by <span class="math notranslate nohighlight">\(r\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-{\mathbb E} \left[ \left( \frac {M_t}{M_0} \right) H_1({\sf r}) \mid X_0 \right].
+{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right].
 \end{align}
 \]</div>
 <p>The scaling by <span class="math notranslate nohighlight">\(H_1\)</span> has two distinct functions depending on the application:</p>
