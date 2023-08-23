@@ -342,6 +342,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure">1.2 Shock Exposure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticities">1.3 Shock-Exposure Elasticities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-price-elasticities">1.4 Shock-Price Elasticities</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">2. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
@@ -418,25 +419,21 @@ Y_{t+1} - Y_t = \kappa \left(X_t, W_{t+1}\right),\tag{2}
 </section>
 <section id="shock-exposure">
 <h2>1.2 Shock Exposure<a class="headerlink" href="#shock-exposure" title="Permalink to this heading">#</a></h2>
-<p>Consider an asset whose payoff in each period evolves as a multiplicative functional:</p>
+<!-- Consider an asset whose payoff in each period evolves as a multiplicative functional:
+
+$$
+\log \left(G_t \right) - \log \left(G_{t-1}\right) = \beta \left(X_{t-1}\right) + \alpha \left(X_{t-1}\right) \cdot W_{t},\tag{4}
+(\beta \left (X_{s} \right) + \alpha \left (X_{s} \right) \cdot W_{s+1})
+$$ -->
+<p>Suppose we have an asset <span class="math notranslate nohighlight">\(G\)</span> whose payoff in each period evolves as a multiplicative functional. We can write the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[
-\log \left(G_t \right) - \log \left(G_{t-1}\right) = \beta \left(X_{t-1}\right) + \alpha \left(X_{t-1}\right) \cdot W_{t}, ,\tag{4}
-\]</div>
-<p>We can write the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> as:</p>
-<div class="math notranslate nohighlight">
-\[
-\log \left(G_t \right) - \log \left(G_{0}\right) = \sum_{s=0}^{t-1} (\beta \left (X_{s} \right) + \alpha \left (X_{s} \right) \cdot W_{s+1}),\tag{5}
+\log \left(G_t \right) = \log \left(G_{0}\right) + \sum_{s=0}^{t-1} \kappa(X_t, W_{t+1}),\tag{5}
 \]</div>
 <!-- $$
 G_t / G_0 = \exp( \sum_{s=0}^{t-1} (\beta_g \left (X_{s}) \right + \alpha_g \left (X_{s}) \right \cdot W_{s+1}))
 $$ -->
-<p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>. The direction of exposure <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> becomes:</p>
-<div class="math notranslate nohighlight">
-\[
-\beta \left (X_{0} \right) + \left( \alpha \left (X_{0} \right) + r\nu \left (X_{0} \right) \right) \cdot W_{1} + \sum_{s=1}^{t-1} (\beta_g \left (X_{s} \right) + \alpha_g \left (X_{s} \right) \cdot W_{s+1}),\tag{6}
-\]</div>
-<p>This motivates our definition for <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span>, which can be thought of as a variable that alters the exposure of <span class="math notranslate nohighlight">\(G\)</span>:</p>
+<p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>, where the direction of exposure <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the time <span class="math notranslate nohighlight">\(t\)</span> payoff becomes <span class="math notranslate nohighlight">\(G_t H_1(r)\)</span>, where:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
@@ -444,19 +441,24 @@ $$ -->
 \end{align}
 \]</div>
 <p>We normalize the row vector <span class="math notranslate nohighlight">\(\nu\)</span> so that <span class="math notranslate nohighlight">\({\mathbb E} \left[|\nu(X_0)|^2\right] = 1.\)</span>
-Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> is positive and has conditional expectation equal to one. Thus, we obtain a family of expected payoffs parameterized by <span class="math notranslate nohighlight">\(r\)</span>:</p>
+Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> is positive and has conditional expectation equal to one.</p>
+<p><span class="math notranslate nohighlight">\(H_1(r)\)</span> can be interpreted in two ways:</p>
+<ul class="simple">
+<li><p>It changes the distribution of <span class="math notranslate nohighlight">\(W_1\)</span> by giving it a conditional mean <span class="math notranslate nohighlight">\({\sf r} \nu(X_0)\)</span></p></li>
+<li><p>It changes the exposure of <span class="math notranslate nohighlight">\(\log M_t - \log M_0,\)</span> and hence <span class="math notranslate nohighlight">\(M_t/M_0,\)</span> to the shock <span class="math notranslate nohighlight">\(W_t\)</span> through the addition of <span class="math notranslate nohighlight">\({\sf r}\nu(X_0) \cdot W_1.\)</span></p></li>
+</ul>
+<!-- Then the log payoff at time $t$ becomes:
+
+$$
+\beta \left (X_{0} \right) + \left( \alpha \left (X_{0} \right) + r\nu \left (X_{0} \right) \right) \cdot W_{1} + \sum_{s=1}^{t-1} (\beta_g \left (X_{s} \right) + \alpha_g \left (X_{s} \right) \cdot W_{s+1}),\tag{6}
+$$ -->
+<p>Thus, we obtain a family of expected payoffs parameterized by <span class="math notranslate nohighlight">\(r\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
 {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right],\tag{8}
 \end{align}
 \]</div>
-<p>Apart from changing the exposure of <span class="math notranslate nohighlight">\(G_t/G_0\)</span> to the shock <span class="math notranslate nohighlight">\(W_1\)</span>, we can also think of <span class="math notranslate nohighlight">\(H_1\)</span> as changing the distribution of <span class="math notranslate nohighlight">\(W_1\)</span> by giving it a conditional mean <span class="math notranslate nohighlight">\(r \nu(X_0)\)</span>.</p>
-<!-- The scaling by $H_1$ has two distinct functions depending on the application:
-
-- it changes the distribution of $W_1$ by giving it a conditional mean ${\sf r} \nu(X_0)$
-
-- it changes the exposure of $\log M_t - \log M_0,$ and hence $M_t/M_0,$ to the shock $W_t$ through the addition of ${\sf r}\nu(X_0) \cdot W_1.$ -->
 <!-- The first of these applications provides a distributional version of an impulse response function.  It matches exactly for the linear, log-normal model, in which case the $x$ plays no role. Once we include nonlinearities, the state $x$ can matter along with the time horizon $t$.  The second application explores the intertemporal asset pricing by determining the implied compensations for the changes in the exposures.  -->
 <br>
 </section>
@@ -473,28 +475,32 @@ Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> i
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-\varepsilon_G(x,t) = \frac {1}{{\mathbb E} \left[{G_t}{G_0} H_1(r)\right]} {\mathbb E} \left[{G_t}{G_0} \frac {d{H_1(r)}} {d{\sf r}} \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
-= \frac {1}{{\mathbb E} \left[\frac{G_t}{G_0} H_1(r)\right]} {\mathbb E} \left[{G_t}{G_0} \left( \nu(X_0) W_1 - r |\nu(X_0)|^2 \right) H_1(r) \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
-= \frac {\nu(x) \cdot {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)  W_1 \mid X_0 = x\right]}{{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)\mid X_0 = x\right]},\tag{11}
+\varepsilon_G(x,t) = \frac {1}{{\mathbb E} \left[\frac{G_t}{G_0} H_1(r)\right]} {\mathbb E} \left[\frac{G_t}{G_0} \frac {d{H_1(r)}} {d{\sf r}} \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
+= \frac {1}{{\mathbb E} \left[\frac{G_t}{G_0} H_1(r)\right]} {\mathbb E} \left[\frac{G_t}{G_0} \left( \nu(X_0) W_1 - r |\nu(X_0)|^2 \right) H_1(r) \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
+= \frac {\nu(x) \cdot {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)  W_1 \mid X_0 = x\right]}{{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)\mid X_0 = x\right]},\tag{10}
 \end{align}
 \end{split}\]</div>
-<p>Our computations are local, performed by computing derivatives with respect to <span class="math notranslate nohighlight">\({\sf r},\)</span> and evaluating those derivatives at <span class="math notranslate nohighlight">\(\sf r =0:\)</span></p>
-<div class="math notranslate nohighlight">
-\[
+<p>We can also calculate an equivalent elasticity for shocks at time <span class="math notranslate nohighlight">\(t\)</span>:
+$<span class="math notranslate nohighlight">\(
+\begin{align}
+{\varepsilon}_G^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac {G_t}{G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} =  \frac {{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) \nu(X_{t-1}) \cdot W_t \mid X_0 = x\right]}
+{{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)\mid X_0 = x\right]},\tag{11}
+\end{align}
+\)</span>$</p>
+<p>This calculation is degenerate in the case of linear log-normal specifications as it is constant over <span class="math notranslate nohighlight">\(t\)</span>.<br />
+But it is sometimes of interest when nonlinearities are present.</p>
+<!-- 
+Our computations are local, performed by computing derivatives with respect to ${\sf r},$ and evaluating those derivatives at $\sf r =0:$
+
+$$
 \begin{align}
 \varepsilon_M(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac { M_t}{M_0} \right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} = \frac {\nu(x) \cdot {\mathbb E} \left[ \left( \frac {M_t}{M_0} \right)  W_1 \mid X_0 = x\right]}{{\mathbb E} \left[ \left( \frac {M_t}{M_0} \right)\mid X_0 = x\right]}
 \end{align}
-\]</div>
-<p>The code also computes:</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
-{\varepsilon}_M^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac {M_t}{M_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} =  \frac {{\mathbb E} \left[ \left( \frac {M_t}{M_0} \right) \nu(X_{t-1}) \cdot W_t \mid X_0 = x\right]}
-{{\mathbb E} \left[ \left( \frac {M_t}{M_0} \right)\mid X_0 = x\right]}
-\end{align}
-\]</div>
-<p>This calculation is degenerate in the case of linear log-normal specifications as it is constant over <span class="math notranslate nohighlight">\(t\)</span>.<br />
-But it is sometimes of interest when nonlinearities are present.</p>
+$$ -->
+</section>
+<section id="shock-price-elasticities">
+<h2>1.4 Shock-Price Elasticities<a class="headerlink" href="#shock-price-elasticities" title="Permalink to this heading">#</a></h2>
+<p>We are also interested in how asset prices respond to</p>
 <p>To represent the building blocks of asset pricing, the code computes shock price elasticities of the form:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1326,6 +1332,7 @@ Wall time: 16min 59s
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure">1.2 Shock Exposure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticities">1.3 Shock-Exposure Elasticities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-price-elasticities">1.4 Shock-Price Elasticities</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">2. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
