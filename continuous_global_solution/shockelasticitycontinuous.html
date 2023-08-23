@@ -340,7 +340,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-framework">1. Discrete Framework</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure">1.2 Shock Exposure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterizing-shock-exposure">1.2 Parameterizing Shock Exposure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticities">1.3 Shock-Exposure Elasticities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-price-elasticities">1.4 Shock-Price Elasticities</a></li>
 </ul>
@@ -417,8 +417,8 @@ Y_{t+1} - Y_t = \kappa \left(X_t, W_{t+1}\right),\tag{2}
 </ul>
 <br>
 </section>
-<section id="shock-exposure">
-<h2>1.2 Shock Exposure<a class="headerlink" href="#shock-exposure" title="Permalink to this heading">#</a></h2>
+<section id="parameterizing-shock-exposure">
+<h2>1.2 Parameterizing Shock Exposure<a class="headerlink" href="#parameterizing-shock-exposure" title="Permalink to this heading">#</a></h2>
 <!-- Consider an asset whose payoff in each period evolves as a multiplicative functional:
 
 $$
@@ -433,7 +433,8 @@ $$ -->
 <!-- $$
 G_t / G_0 = \exp( \sum_{s=0}^{t-1} (\beta_g \left (X_{s}) \right + \alpha_g \left (X_{s}) \right \cdot W_{s+1}))
 $$ -->
-<p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>, where the direction of exposure <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the time <span class="math notranslate nohighlight">\(t\)</span> payoff becomes <span class="math notranslate nohighlight">\(\frac{G_t}{G_0} H_1(r)\)</span>, where:</p>
+<p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>, where the direction of exposure <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>.</p>
+<p>Then the time <span class="math notranslate nohighlight">\(t\)</span> payoff becomes <span class="math notranslate nohighlight">\(G_t H_1(r)\)</span>, where:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
@@ -442,7 +443,7 @@ $$ -->
 \]</div>
 <p>We normalize the row vector <span class="math notranslate nohighlight">\(\nu\)</span> so that <span class="math notranslate nohighlight">\({\mathbb E} \left[|\nu(X_0)|^2\right] = 1.\)</span>
 Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> is positive and has conditional expectation equal to one.</p>
-<p>Here we interpret <span class="math notranslate nohighlight">\(H_1(r)\)</span> as a variable which shifts the exposure of <span class="math notranslate nohighlight">\(\frac{G_t}{G_0}\)</span> to <span class="math notranslate nohighlight">\(W_1\)</span>, but we can also intepret <span class="math notranslate nohighlight">\(H_1(r)\)</span> as a variable which changes the distribution of <span class="math notranslate nohighlight">\(W_1\)</span> by giving it a conditional mean <span class="math notranslate nohighlight">\({\sf r} \nu(X_0)\)</span>.</p>
+<p>Here we interpret <span class="math notranslate nohighlight">\(H_1(r)\)</span> as a variable which shifts the exposure of <span class="math notranslate nohighlight">\(G_t\)</span> to <span class="math notranslate nohighlight">\(W_1\)</span>, but we can also intepret <span class="math notranslate nohighlight">\(H_1(r)\)</span> as a variable which changes the distribution of <span class="math notranslate nohighlight">\(W_1\)</span> by giving it a conditional mean <span class="math notranslate nohighlight">\({\sf r} \nu(X_0)\)</span>.</p>
 <!-- Then the log payoff at time $t$ becomes:
 
 $$
@@ -452,7 +453,7 @@ $$ -->
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right],\tag{8}
+{\mathbb E} \left[ \left( G_t \right) H_1({\sf r}) \mid X_0 \right],\tag{8}
 \end{align}
 \]</div>
 <!-- The first of these applications provides a distributional version of an impulse response function.  It matches exactly for the linear, log-normal model, in which case the $x$ plays no role. Once we include nonlinearities, the state $x$ can matter along with the time horizon $t$.  The second application explores the intertemporal asset pricing by determining the implied compensations for the changes in the exposures.  -->
@@ -460,32 +461,32 @@ $$ -->
 </section>
 <section id="shock-exposure-elasticities">
 <h2>1.3 Shock-Exposure Elasticities<a class="headerlink" href="#shock-exposure-elasticities" title="Permalink to this heading">#</a></h2>
-<p>We are interested in determining the percentage change in expected payoff <span class="math notranslate nohighlight">\({\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right]\)</span> corresponding to a small increase in <span class="math notranslate nohighlight">\(W_1\)</span> in direction <span class="math notranslate nohighlight">\(\nu(X_0)\)</span>. Therefore, we want to compute the following <strong>shock-exposure elasticity</strong>:</p>
+<p>We are interested in determining the percentage change in expected payoff <span class="math notranslate nohighlight">\({\mathbb E} \left[ \left( G_t \right) H_1({\sf r}) \mid X_0 \right]\)</span> corresponding to a small increase in <span class="math notranslate nohighlight">\(W_1\)</span> in direction <span class="math notranslate nohighlight">\(\nu(X_0)\)</span>. Therefore, we want to compute the following <strong>shock-exposure elasticity</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\varepsilon_G(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac { G_t}{G_0} \right) H_1({\sf r}) \mid {X_0=x} \right]\vert_{{\sf r} = 0},\tag{9}
+\varepsilon_G(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ G_t H_1({\sf r}) \mid {X_0=x} \right]\vert_{{\sf r} = 0},\tag{9}
 \end{align}
 \]</div>
 <p>We call this expression an elasticity, since we are differentiating a logarithm and our exposure direction <span class="math notranslate nohighlight">\(\alpha_h(X_0) \cdot W_1\)</span> has unit standard deviation. We can rewrite equation 9 in a more tractable form by differentiating:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-\varepsilon_G(x,t) = \frac {1}{{\mathbb E} \left[\frac{G_t}{G_0} H_1(r)\right]} {\mathbb E} \left[\frac{G_t}{G_0} \frac {d{H_1(r)}} {d{\sf r}} \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
-= \frac {1}{{\mathbb E} \left[\frac{G_t}{G_0} H_1(r)\right]} {\mathbb E} \left[\frac{G_t}{G_0} \left( \nu(X_0) W_1 - r |\nu(X_0)|^2 \right) H_1(r) \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
-= \frac {\nu(x) \cdot {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)  W_1 \mid X_0 = x\right]}{{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)\mid X_0 = x\right]},\tag{10}
+\varepsilon_G(x,t) = \frac {1}{{\mathbb E} \left[G_t H_1(r)\right]} {\mathbb E} \left[G_t \frac {d{H_1(r)}} {d{\sf r}} \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
+= \frac {1}{{\mathbb E} \left[G_t H_1(r)\right]} {\mathbb E} \left[G_t \left( \nu(X_0) W_1 - r |\nu(X_0)|^2 \right) H_1(r) \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
+= \frac {\nu(x) \cdot {\mathbb E} \left[ \left( G_t \right)  W_1 \mid X_0 = x\right]}{{\mathbb E} \left[ \left( G_t \right)\mid X_0 = x\right]},\tag{10}
 \end{align}
 \end{split}\]</div>
 <p>We can also calculate an equivalent elasticity for shocks at time <span class="math notranslate nohighlight">\(t\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-{\varepsilon}_G^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac {G_t}{G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} =  \frac {{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) \nu(X_{t-1}) \cdot W_t \mid X_0 = x\right]}
-{{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)\mid X_0 = x\right]},\tag{11}
+{\varepsilon}_G^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(G_t \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} =  \frac {{\mathbb E} \left[ \left( G_t \right) \nu(X_{t-1}) \cdot W_t \mid X_0 = x\right]}
+{{\mathbb E} \left[ \left( G_t \right)\mid X_0 = x\right]},\tag{11}
 \end{align}
 \]</div>
-<p>This calculation is degenerate in the case of linear log-normal specifications as it is constant over <span class="math notranslate nohighlight">\(t\)</span>.<br />
-But it is sometimes of interest when nonlinearities are present.</p>
+<!-- This calculation is degenerate in the case of linear log-normal specifications as it is constant over $t$.  
+But it is sometimes of interest when nonlinearities are present.   -->
 <!-- 
 Our computations are local, performed by computing derivatives with respect to ${\sf r},$ and evaluating those derivatives at $\sf r =0:$
 
@@ -497,12 +498,21 @@ $$ -->
 </section>
 <section id="shock-price-elasticities">
 <h2>1.4 Shock-Price Elasticities<a class="headerlink" href="#shock-price-elasticities" title="Permalink to this heading">#</a></h2>
-<p>We are also interested in how asset prices respond to</p>
+<p>We are also interested in how risk compensations respond to shocks. Let <span class="math notranslate nohighlight">\(S_t\)</span> be the period <span class="math notranslate nohighlight">\(t\)</span> stochastic discount factor. Then the expected time <span class="math notranslate nohighlight">\(t\)</span> return of an asset is given by its payoff divided by its price:</p>
+<div class="math notranslate nohighlight">
+\[
+R_t = \frac {{\mathbb E} [G_t]} {{\mathbb E} [S_t G_t]}
+\]</div>
+<p>Any increase (decrease) in an asset’s risk exposure is compensated by an increase (decrease) in its return. Hence, we can determine the ‘price’ of a shift in an asset’s shock exposure <span class="math notranslate nohighlight">\(H_1(r)\)</span> by evaluating the change in its return:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac {{\mathbb E} [G_t]} {{\mathbb E} [S_t G_t]}
+\]</div>
 <p>To represent the building blocks of asset pricing, the code computes shock price elasticities of the form:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\varepsilon_{G}(x,t) - \varepsilon_{SG}(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
+\varepsilon_{G}(x,t) - \varepsilon_{SG}(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( G_t \right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
 - \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0}\right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} 
 \end{align}
 \]</div>
@@ -510,10 +520,10 @@ $$ -->
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\frac {{\mathbb E} \left[ \left(\frac {G_t}{G_0}\right) H_1({\sf r}) \mid X_0 \right]}{{\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0} \right) H_1({\sf r}) \mid X_0 \right]}
+\frac {{\mathbb E} \left[ \left(G_t\right) H_1({\sf r}) \mid X_0 \right]}{{\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0} \right) H_1({\sf r}) \mid X_0 \right]}
 \end{align}
 \]</div>
-<p>is the expected return on a payoff <span class="math notranslate nohighlight">\(\frac {G_t}{G_0} H_1({\sf r}),\)</span>  with cost</p>
+<p>is the expected return on a payoff <span class="math notranslate nohighlight">\(G_t H_1({\sf r}),\)</span>  with cost</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
@@ -524,7 +534,7 @@ $$ -->
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-{\varepsilon}_{G}^+(x,t) - {\varepsilon}_{SG}^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
+{\varepsilon}_{G}^+(x,t) - {\varepsilon}_{SG}^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( G_t \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
 - \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} . 
 \end{align}
 \]</div>
@@ -1327,7 +1337,7 @@ Wall time: 16min 59s
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-framework">1. Discrete Framework</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure">1.2 Shock Exposure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterizing-shock-exposure">1.2 Parameterizing Shock Exposure</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticities">1.3 Shock-Exposure Elasticities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-price-elasticities">1.4 Shock-Price Elasticities</a></li>
 </ul>
