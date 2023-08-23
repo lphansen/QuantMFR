@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Shock Elasticity Continuous &#8212; Quant Macro Finance</title>
+    <title>Shock Elasticities &#8212; Quant Macro Finance</title>
   
   
   
@@ -186,7 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shock Elasticity Continuous</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shock Elasticities</a></li>
 
 
 
@@ -327,7 +327,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Shock Elasticity Continuous</h1>
+    <h1>Shock Elasticities</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -337,10 +337,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticity Continuous</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities">1. Shock Elasticities</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-framework">1. Discrete Framework</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2 Shock Elasticities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure">1.2 Shock Exposure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticities">1.3 Shock-Exposure Elasticities</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">2. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
@@ -368,8 +369,8 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/shockelasticity.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="shock-elasticity-continuous">
-<h1>Shock Elasticity Continuous<a class="headerlink" href="#shock-elasticity-continuous" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="shock-elasticities">
+<h1>Shock Elasticities<a class="headerlink" href="#shock-elasticities" title="Permalink to this heading">#</a></h1>
 <p>Shock elasticities quantify the (local) exposures of macroeconomic cash flows to shocks over alternative investment horizons and the corresponding prices or investors’ compensations. This Jupyter notebook provides the computations for the shock elasticities for models with equilibrium outcomes represented as a continuous-time diffusion. This notebook implements methods and formulas developed in [1] and [2].</p>
 <ul class="simple">
 <li><p>Section 1 introduces shock elasticities, relates them to impulse response functions, and describes how they can be used to understand the transition mechanisms of shocks within an economic model and their implications for valuation.</p></li>
@@ -378,8 +379,8 @@ document.write(`
 </ul>
 <br>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="shock-elasticities">
-<h1>1. Shock Elasticities<a class="headerlink" href="#shock-elasticities" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="discrete-framework">
+<h1>1. Discrete Framework<a class="headerlink" href="#discrete-framework" title="Permalink to this heading">#</a></h1>
 <section id="functionals">
 <h2>1.1 Functionals<a class="headerlink" href="#functionals" title="Permalink to this heading">#</a></h2>
 <p>Suppose <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span> dimensional, stationary, ergodic Markov process governed by the following relationship:</p>
@@ -403,7 +404,7 @@ Y_{t+1} - Y_t = \kappa \left(X_t, W_{t+1}\right),\tag{2}
 \]</div>
 <p>Where <span class="math notranslate nohighlight">\(Y_{t+1} - Y_t\)</span> inherits the stationarity of <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
 <p>We are interested in macroeconomic processes whose <em>logarithms</em> behave as in equation 2. We can think of these as processes whose percentage change over time is stationary.</p>
-<p>Sometimes, we are also interested in the <em>levels</em> of these processes <span class="math notranslate nohighlight">\(\exp(Y)\)</span>, which we call <strong>multiplicative functionals</strong>:</p>
+<p>Sometimes, we are also interested in the <em>levels</em> of these processes <span class="math notranslate nohighlight">\(\exp(Y)\)</span>, which we call <strong>multiplicative functionals</strong>, satisfying:</p>
 <div class="math notranslate nohighlight">
 \[
 \exp(Y_t+1)/\exp(Y_t) = \exp(\kappa \left(X_t, W_{t+1}\right)),\tag{3}
@@ -415,17 +416,17 @@ Y_{t+1} - Y_t = \kappa \left(X_t, W_{t+1}\right),\tag{2}
 </ul>
 <br>
 </section>
-<section id="id1">
-<h2>1.2 Shock Elasticities<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="shock-exposure">
+<h2>1.2 Shock Exposure<a class="headerlink" href="#shock-exposure" title="Permalink to this heading">#</a></h2>
 <p>Consider an asset whose payoff in each period evolves as a multiplicative functional:</p>
 <div class="math notranslate nohighlight">
 \[
-\log \left(G_t \right) - \log \left(G_{t-1}\right) = \beta \left(X_{t-1}\right) + \alpha \left(X_{t-1}\right) \cdot W_{t}
+\log \left(G_t \right) - \log \left(G_{t-1}\right) = \beta \left(X_{t-1}\right) + \alpha \left(X_{t-1}\right) \cdot W_{t}, ,\tag{4}
 \]</div>
 <p>We can write the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[
-\log \left(G_t \right) - \log \left(G_{0}\right) = \sum_{s=0}^{t-1} (\beta \left (X_{s} \right) + \alpha \left (X_{s} \right) \cdot W_{s+1})
+\log \left(G_t \right) - \log \left(G_{0}\right) = \sum_{s=0}^{t-1} (\beta \left (X_{s} \right) + \alpha \left (X_{s} \right) \cdot W_{s+1}),\tag{5}
 \]</div>
 <!-- $$
 G_t / G_0 = \exp( \sum_{s=0}^{t-1} (\beta_g \left (X_{s}) \right + \alpha_g \left (X_{s}) \right \cdot W_{s+1}))
@@ -433,29 +434,52 @@ $$ -->
 <p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>. The direction of exposure <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the log payoff at time <span class="math notranslate nohighlight">\(t\)</span> becomes:</p>
 <div class="math notranslate nohighlight">
 \[
-\beta \left (X_{0} \right) + \left( \alpha \left (X_{0} \right) + r\nu \left (X_{0} \right) \right) \cdot W_{1} + \sum_{s=1}^{t-1} (\beta_g \left (X_{s} \right) + \alpha_g \left (X_{s} \right) \cdot W_{s+1})
+\beta \left (X_{0} \right) + \left( \alpha \left (X_{0} \right) + r\nu \left (X_{0} \right) \right) \cdot W_{1} + \sum_{s=1}^{t-1} (\beta_g \left (X_{s} \right) + \alpha_g \left (X_{s} \right) \cdot W_{s+1}),\tag{6}
 \]</div>
 <p>This motivates our definition for <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span>, which can be thought of as a variable that alters the exposure of <span class="math notranslate nohighlight">\(G\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\log H_1({\sf r}) = {\sf r}\nu(X_0)  W_1 - \frac {\sf r^2} 2 |\nu(X_0)|^2.
+\log H_1({\sf r}) = {\sf r}\nu(X_0)  W_1 - \frac {\sf r^2} 2 |\nu(X_0)|^2,\tag{7}
 \end{align}
 \]</div>
 <p>We normalize the row vector <span class="math notranslate nohighlight">\(\nu\)</span> so that <span class="math notranslate nohighlight">\({\mathbb E} \left[|\nu(X_0)|^2\right] = 1.\)</span>
-Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> is positive and has conditional expectation equal to one. Hence, <span class="math notranslate nohighlight">\(\frac {G_t}{G_0} H_1({\sf r})\)</span> gives us a family of payoffs parameterized by <span class="math notranslate nohighlight">\(r\)</span>:</p>
+Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> is positive and has conditional expectation equal to one. Thus, we obtain a family of expected payoffs parameterized by <span class="math notranslate nohighlight">\(r\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right].
+{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right],\tag{8}
 \end{align}
 \]</div>
-<p>The scaling by <span class="math notranslate nohighlight">\(H_1\)</span> has two distinct functions depending on the application:</p>
-<ul class="simple">
-<li><p>it changes the distribution of <span class="math notranslate nohighlight">\(W_1\)</span> by giving it a conditional mean <span class="math notranslate nohighlight">\({\sf r} \nu(X_0)\)</span></p></li>
-<li><p>it changes the exposure of <span class="math notranslate nohighlight">\(\log M_t - \log M_0,\)</span> and hence <span class="math notranslate nohighlight">\(M_t/M_0,\)</span> to the shock <span class="math notranslate nohighlight">\(W_t\)</span> through the addition of <span class="math notranslate nohighlight">\({\sf r}\nu(X_0) \cdot W_1.\)</span></p></li>
-</ul>
-<p>The first of these applications provides a distributional version of an impulse response function.  It matches exactly for the linear, log-normal model, in which case the <span class="math notranslate nohighlight">\(x\)</span> plays no role. Once we include nonlinearities, the state <span class="math notranslate nohighlight">\(x\)</span> can matter along with the time horizon <span class="math notranslate nohighlight">\(t\)</span>.  The second application explores the intertemporal asset pricing by determining the implied compensations for the changes in the exposures.</p>
+<p>Apart from changing the exposure of <span class="math notranslate nohighlight">\(G_t/G_0\)</span> to the shock <span class="math notranslate nohighlight">\(W_1\)</span>, we can also think of <span class="math notranslate nohighlight">\(H_1\)</span> as changing the distribution of <span class="math notranslate nohighlight">\(W_1\)</span> by giving it a conditional mean <span class="math notranslate nohighlight">\(r \nu(X_0)\)</span>.</p>
+<!-- The scaling by $H_1$ has two distinct functions depending on the application:
+
+- it changes the distribution of $W_1$ by giving it a conditional mean ${\sf r} \nu(X_0)$
+
+- it changes the exposure of $\log M_t - \log M_0,$ and hence $M_t/M_0,$ to the shock $W_t$ through the addition of ${\sf r}\nu(X_0) \cdot W_1.$ -->
+<!-- The first of these applications provides a distributional version of an impulse response function.  It matches exactly for the linear, log-normal model, in which case the $x$ plays no role. Once we include nonlinearities, the state $x$ can matter along with the time horizon $t$.  The second application explores the intertemporal asset pricing by determining the implied compensations for the changes in the exposures.  -->
+<br>
+</section>
+<section id="shock-exposure-elasticities">
+<h2>1.3 Shock-Exposure Elasticities<a class="headerlink" href="#shock-exposure-elasticities" title="Permalink to this heading">#</a></h2>
+<p>We are interested in determining the percentage change in expected payoff <span class="math notranslate nohighlight">\({\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right]\)</span> corresponding to a small increase in <span class="math notranslate nohighlight">\(W_1\)</span> in direction <span class="math notranslate nohighlight">\(\nu(X_0)\)</span>. Therefore, we want to compute the following <strong>shock-exposure elasticity</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\varepsilon_G(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac { G_t}{G_0} \right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0},\tag{9}
+\end{align}
+\]</div>
+<p>We call this expression an elasticity, since we are differentiating a logarithm and our exposure direction <span class="math notranslate nohighlight">\(\alpha_h(X_0) \cdot W_1\)</span> has unit standard deviation. We can rewrite equation 10 in a more tractable form by differentiating. First note that:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac d {d{\sf r}} H_1(r) = \left( \nu(X_0) W_1 - r |\nu(X_0)|^2 \right) 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\varepsilon_G(x,t) = \frac {1}{{\mathbb E} \left[G_t H_1(r)\right] {\mathbb E}},\tag{11}
+\end{align}
+\]</div>
 <p>Our computations are local, performed by computing derivatives with respect to <span class="math notranslate nohighlight">\({\sf r},\)</span> and evaluating those derivatives at <span class="math notranslate nohighlight">\(\sf r =0:\)</span></p>
 <div class="math notranslate nohighlight">
 \[
@@ -463,7 +487,6 @@ Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> i
 \varepsilon_M(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac { M_t}{M_0} \right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} = \frac {\nu(x) \cdot {\mathbb E} \left[ \left( \frac {M_t}{M_0} \right)  W_1 \mid X_0 = x\right]}{{\mathbb E} \left[ \left( \frac {M_t}{M_0} \right)\mid X_0 = x\right]}
 \end{align}
 \]</div>
-<p>Since this formula includes the differentiation of logarithms and<span class="math notranslate nohighlight">\({\mathbb E} \left[|\nu(X_0)|^2\right] = 1\)</span>, we refer to this calculation as an elasticity.  Note that one possibility is to let <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> be a coordinate vector.</p>
 <p>The code also computes:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1300,10 +1323,11 @@ Wall time: 16min 59s
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticity Continuous</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities">1. Shock Elasticities</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-framework">1. Discrete Framework</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2 Shock Elasticities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure">1.2 Shock Exposure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticities">1.3 Shock-Exposure Elasticities</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">2. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
