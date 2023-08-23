@@ -405,12 +405,12 @@ Y_{t+1} - Y_t = \kappa \left(X_t, W_{t+1}\right),\tag{2}
 \]</div>
 <p>Where <span class="math notranslate nohighlight">\(Y_{t+1} - Y_t\)</span> inherits the stationarity of <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
 <p>We are interested in macroeconomic processes whose <em>logarithms</em> behave as in equation 2. We can think of these as processes whose percentage change over time is stationary.</p>
-<p>Sometimes, we are also interested in the <em>levels</em> of these processes <span class="math notranslate nohighlight">\(\exp(Y)\)</span>, which we call <strong>multiplicative functionals</strong>, satisfying:</p>
+<p>We might also be interested in the <em>levels</em> of these processes <span class="math notranslate nohighlight">\(\exp(Y)\)</span>, which we call <strong>multiplicative functionals</strong>, satisfying:</p>
 <div class="math notranslate nohighlight">
 \[
 \exp(Y_t+1)/\exp(Y_t) = \exp(\kappa \left(X_t, W_{t+1}\right)),\tag{3}
 \]</div>
-<p>In particular, we are interested in two types of multiplicative functionals:</p>
+<p>In particular, we are interested in two cases of multiplicative functionals:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(G\)</span>, which captures macroeconomic growth</p></li>
 <li><p><span class="math notranslate nohighlight">\(S\)</span>, which captures stochastic discounting</p></li>
@@ -433,7 +433,7 @@ $$ -->
 <!-- $$
 G_t / G_0 = \exp( \sum_{s=0}^{t-1} (\beta_g \left (X_{s}) \right + \alpha_g \left (X_{s}) \right \cdot W_{s+1}))
 $$ -->
-<p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>, where the direction of exposure <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the time <span class="math notranslate nohighlight">\(t\)</span> payoff becomes <span class="math notranslate nohighlight">\(G_t H_1(r)\)</span>, where:</p>
+<p>Suppose we were to increase the exposure of asset <span class="math notranslate nohighlight">\(G\)</span> to some linear combination <span class="math notranslate nohighlight">\(\nu\)</span> of the time 1 shocks <span class="math notranslate nohighlight">\(W_1\)</span> by factor <span class="math notranslate nohighlight">\(r\)</span>, where the direction of exposure <span class="math notranslate nohighlight">\(\nu(X_0)\)</span> is allowed to depend on the state <span class="math notranslate nohighlight">\(X_0\)</span>. Then the time <span class="math notranslate nohighlight">\(t\)</span> payoff becomes <span class="math notranslate nohighlight">\(\frac{G_t}{G_0} H_1(r)\)</span>, where:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
@@ -442,11 +442,7 @@ $$ -->
 \]</div>
 <p>We normalize the row vector <span class="math notranslate nohighlight">\(\nu\)</span> so that <span class="math notranslate nohighlight">\({\mathbb E} \left[|\nu(X_0)|^2\right] = 1.\)</span>
 Notice that <span class="math notranslate nohighlight">\(H_1({\sf r})\)</span> is positive and has conditional expectation equal to one.</p>
-<p><span class="math notranslate nohighlight">\(H_1(r)\)</span> can be interpreted in two ways:</p>
-<ul class="simple">
-<li><p>It changes the distribution of <span class="math notranslate nohighlight">\(W_1\)</span> by giving it a conditional mean <span class="math notranslate nohighlight">\({\sf r} \nu(X_0)\)</span></p></li>
-<li><p>It changes the exposure of <span class="math notranslate nohighlight">\(\log M_t - \log M_0,\)</span> and hence <span class="math notranslate nohighlight">\(M_t/M_0,\)</span> to the shock <span class="math notranslate nohighlight">\(W_t\)</span> through the addition of <span class="math notranslate nohighlight">\({\sf r}\nu(X_0) \cdot W_1.\)</span></p></li>
-</ul>
+<p>Here we interpret <span class="math notranslate nohighlight">\(H_1(r)\)</span> as a variable which shifts the exposure of <span class="math notranslate nohighlight">\(\frac{G_t}{G_0}\)</span> to <span class="math notranslate nohighlight">\(W_1\)</span>, but we can also intepret <span class="math notranslate nohighlight">\(H_1(r)\)</span> as a variable which changes the distribution of <span class="math notranslate nohighlight">\(W_1\)</span> by giving it a conditional mean <span class="math notranslate nohighlight">\({\sf r} \nu(X_0)\)</span>.</p>
 <!-- Then the log payoff at time $t$ becomes:
 
 $$
@@ -480,13 +476,14 @@ $$ -->
 = \frac {\nu(x) \cdot {\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)  W_1 \mid X_0 = x\right]}{{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)\mid X_0 = x\right]},\tag{10}
 \end{align}
 \end{split}\]</div>
-<p>We can also calculate an equivalent elasticity for shocks at time <span class="math notranslate nohighlight">\(t\)</span>:
-$<span class="math notranslate nohighlight">\(
+<p>We can also calculate an equivalent elasticity for shocks at time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{align}
 {\varepsilon}_G^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(\frac {G_t}{G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} =  \frac {{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right) \nu(X_{t-1}) \cdot W_t \mid X_0 = x\right]}
 {{\mathbb E} \left[ \left( \frac {G_t}{G_0} \right)\mid X_0 = x\right]},\tag{11}
 \end{align}
-\)</span>$</p>
+\]</div>
 <p>This calculation is degenerate in the case of linear log-normal specifications as it is constant over <span class="math notranslate nohighlight">\(t\)</span>.<br />
 But it is sometimes of interest when nonlinearities are present.</p>
 <!-- 
