@@ -376,6 +376,7 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-methods">
 <h1>Uncertain Expansion Methods<a class="headerlink" href="#uncertain-expansion-methods" title="Permalink to this heading">#</a></h1>
 <p>A nonlinear DSGE model typically cannot be solved quasi-analytically.  We consider  a small-noise expansion method to find an approximate solution modified to incorporate recursive utility formulation motivated by robustness or risk concerns.</p>
+<p>test 5:10pm</p>
 <br><!-- # 1 Framework for Solving DSGE
 A DSGE model's equilibrium conditions can be described by a system of possibly nonlinear, expectational difference equations:
 
@@ -395,10 +396,11 @@ The second set of $n$ equations gives the dynamic evolution of the state vector.
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="small-noise-expansion">
 <h1>1 Small Noise Expansion<a class="headerlink" href="#small-noise-expansion" title="Permalink to this heading">#</a></h1>
-<p>Consider the following class of stochastics processes indexed by a scalar perturbation parameter <span class="math notranslate nohighlight">\(q\)</span>:
-$<span class="math notranslate nohighlight">\(
+<p>Consider the following class of stochastics processes indexed by a scalar perturbation parameter <span class="math notranslate nohighlight">\(q\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 X_{t + 1}(q) = \psi[X_t(q), qW_{t + 1}, q] 
-\)</span>$</p>
+\]</div>
 <p>Denote the zero-order expansion <span class="math notranslate nohighlight">\(q = 0\)</span> limit as:
 $<span class="math notranslate nohighlight">\(
 X_{t+1}^0 = \psi (X_t^0, 0, 0)
@@ -473,13 +475,14 @@ R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfra
 {\widehat  R}_t = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
 \]</div>
 <p>While <span class="math notranslate nohighlight">\(\gamma\)</span> is usually interpreted as a measure of risk aversion, we now turn to an alternative interpretation which allows us to incorporate ambiguity aversion into our models. (Please refer to Section 3.1 in <a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2023/01/2023-01-19-recursive_expansion_LPH.pdf"><em>Exploring Recursive Utility</em></a>  note)</p>
-<p>Construct
-$<span class="math notranslate nohighlight">\(
+<p>Construct</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
 N_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \gamma) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right] \tag{7} \\
 Q_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \rho) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right]. \tag{8} 
 \end{align}
-\)</span>$</p>
+\end{split}\]</div>
 <section id="zeroth-order-contribution">
 <h2>2.1 Zeroth-order contribution<a class="headerlink" href="#zeroth-order-contribution" title="Permalink to this heading">#</a></h2>
 <p>We assume that the first difference in the logarithm of consumption is stationary. For models with production, this representation will become part of the derived expansion. For order zero, we presume a constant growth rate:</p>
