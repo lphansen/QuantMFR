@@ -160,7 +160,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
 <ul class="nav bd-sidenav">
@@ -187,7 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Shock Elasticity Continuous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Shock Elasticities</a></li>
 
 
 
@@ -339,7 +338,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#framework-for-solving-dsge">1 Framework for Solving DSGE</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>
@@ -389,25 +387,46 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-methods">
 <h1>Uncertain Expansion Methods<a class="headerlink" href="#uncertain-expansion-methods" title="Permalink to this heading">#</a></h1>
 <p>A nonlinear DSGE model typically cannot be solved quasi-analytically.  We consider  a small-noise expansion method to find an approximate solution modified to incorporate recursive utility formulation motivated by robustness or risk concerns.</p>
-<br></section>
-<section class="tex2jax_ignore mathjax_ignore" id="framework-for-solving-dsge">
-<h1>1 Framework for Solving DSGE<a class="headerlink" href="#framework-for-solving-dsge" title="Permalink to this heading">#</a></h1>
-<p>A DSGE model’s equilibrium conditions can be described by a system of possibly nonlinear, expectational difference equations:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<br><!-- # 1 Framework for Solving DSGE
+A DSGE model's equilibrium conditions can be described by a system of possibly nonlinear, expectational difference equations:
+
+$$
 \begin{align}
-\mathbb{E}[{N_{t+1}^*Q_{t+1}^* \psi_1(X_t, J_t, X_{t+1}, J_{t+1})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &amp;= 0 \tag{1}\\
-  \phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &amp;= 0 
+\mathbb{E}[{N_{t+1}^*Q_{t+1}^* \psi_1(X_t, J_t, X_{t+1}, J_{t+1})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &= 0 \tag{1}\\
+  \phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &= 0 
 \tag{2} \end{align}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> state vector, <span class="math notranslate nohighlight">\(J_t\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional date <span class="math notranslate nohighlight">\(t\)</span> jump vector, and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard normal vector.</p>
-<p>You can think of <span class="math notranslate nohighlight">\({\sf q}\)</span> as a parameter which scales the shock <span class="math notranslate nohighlight">\(W_{t+1}\)</span>. The stochastic processes <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(J\)</span> depend implicitly on <span class="math notranslate nohighlight">\({\sf q}\)</span>. We solve for equilibrium by imposing stochastic stability, i.e. <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> .</p>
-<p>The first set of <span class="math notranslate nohighlight">\(m\)</span> equations is forward looking and hence involves expectations along with contributions <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> and <span class="math notranslate nohighlight">\(Q_{t+1}^*\)</span> from recursive utility.  For instance, the first-order necessary condition for optimal investment might contribute a forward-looking equation with the investment to capital ratio as a jump variable.</p>
-<p>The second set of <span class="math notranslate nohighlight">\(n\)</span> equations gives the dynamic evolution of the state vector. For instance, the law of motion for capital contributes one such equation. Part of our desired solution is to express the jump vector as a function of the state vector.</p>
+$$
+where $X_t$ is an $n$-dimensional date $t$ state vector, $J_t$ is an $m$-dimensional date $t$ jump vector, and $W_{t+1}$ is distributed as a $k$-dimensional standard normal vector. 
+
+You can think of ${\sf q}$ as a parameter which scales the shock $W_{t+1}$. The stochastic processes $X$ and $J$ depend implicitly on ${\sf q}$. We solve for equilibrium by imposing stochastic stability, i.e. ${\sf q} = 0$ .
+
+The first set of $m$ equations is forward looking and hence involves expectations along with contributions $N_{t+1}^*$ and $Q_{t+1}^*$ from recursive utility.  For instance, the first-order necessary condition for optimal investment might contribute a forward-looking equation with the investment to capital ratio as a jump variable.
+
+The second set of $n$ equations gives the dynamic evolution of the state vector. For instance, the law of motion for capital contributes one such equation. Part of our desired solution is to express the jump vector as a function of the state vector.  -->
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="approximating-widehat-v-t">
 <h1>2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span><a class="headerlink" href="#approximating-widehat-v-t" title="Permalink to this heading">#</a></h1>
-<p>Consider the</p>
+<p>Consider the <strong>recursive utility</strong> preference specification (Kreps and Porteus, 1978; Epstein and Zin, 1989) as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+V_t = \left[ (1 - \beta) \left(C_t\right)^{1-\rho}  + \beta  \left( R_t \right)^{1-\rho} \right]^{\frac 1 {1-\rho}}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[ 
+R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} .
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(0&lt;\beta&lt;1\)</span> is a subjective discount factor, <span class="math notranslate nohighlight">\(\rho\)</span> is the inverse elasticity of intertemporal substitution and <span class="math notranslate nohighlight">\(\gamma\)</span> describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with logs of the above equation:</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat  V}_t = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right]
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat  R}_t = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
+\]</div>
+<p>While <span class="math notranslate nohighlight">\(\gamma\)</span> is usually interpreted as a measure of risk aversion, we now turn to an alternative interpretation which allows us to incorporate ambiguity aversion into our models. (Refer to Section 3.1 in <em>Exploring Recursive Utility</em> note)</p>
 <section id="zeroth-order-contribution">
 <h2>2.1 Zeroth-order contribution<a class="headerlink" href="#zeroth-order-contribution" title="Permalink to this heading">#</a></h2>
 <p>We assume that the first difference in the logarithm of consumption is stationary For models with production, this representation will become part of the derived expansion. For order zero, we presume a constant growth rate:</p>
@@ -948,7 +967,6 @@ MC_t \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#framework-for-solving-dsge">1 Framework for Solving DSGE</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>

@@ -159,7 +159,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Discrete Local Approximation</span></p>
 <ul class="nav bd-sidenav">
@@ -465,14 +464,14 @@ $$ -->
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\varepsilon_G(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ G_t H_1({\sf r}) \mid {X_0=x} \right]\vert_{{\sf r} = 0},\tag{9}
+\varepsilon_g(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ G_t H_1({\sf r}) \mid {X_0=x} \right]\vert_{{\sf r} = 0},\tag{9}
 \end{align}
 \]</div>
 <p>We call this expression an elasticity, since we are differentiating a logarithm and our exposure direction <span class="math notranslate nohighlight">\(\alpha_h(X_0) \cdot W_1\)</span> has unit standard deviation. We can rewrite equation 9 in a more tractable form by differentiating:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
-\varepsilon_G(x,t) = \frac {1}{{\mathbb E} \left[G_t H_1(r)\right]} {\mathbb E} \left[G_t \frac {d{H_1(r)}} {d{\sf r}} \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
+\varepsilon_g(x,t) = \frac {1}{{\mathbb E} \left[G_t H_1(r)\right]} {\mathbb E} \left[G_t \frac {d{H_1(r)}} {d{\sf r}} \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
 = \frac {1}{{\mathbb E} \left[G_t H_1(r)\right]} {\mathbb E} \left[G_t \left( \nu(X_0) W_1 - r |\nu(X_0)|^2 \right) H_1(r) \mid {X_0=x} \right]\vert_{{\sf r} = 0} \\
 = \frac {\nu(x) \cdot {\mathbb E} \left[ \left( G_t \right)  W_1 \mid X_0 = x\right]}{{\mathbb E} \left[ \left( G_t \right)\mid X_0 = x\right]},\tag{10}
 \end{align}
@@ -481,7 +480,7 @@ $$ -->
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-{\varepsilon}_G^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(G_t \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} =  \frac {{\mathbb E} \left[ \left( G_t \right) \nu(X_{t-1}) \cdot W_t \mid X_0 = x\right]}
+{\varepsilon}_g^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left(G_t \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} =  \frac {{\mathbb E} \left[ \left( G_t \right) \nu(X_{t-1}) \cdot W_t \mid X_0 = x\right]}
 {{\mathbb E} \left[ \left( G_t \right)\mid X_0 = x\right]},\tag{11}
 \end{align}
 \]</div>
@@ -503,41 +502,46 @@ $$ -->
 \[
 R_t = \frac {{\mathbb E} [G_t]} {{\mathbb E} [S_t G_t]}
 \]</div>
-<p>Any increase (decrease) in an asset’s risk exposure is compensated by an increase (decrease) in its return. Hence, we can determine the ‘price’ of a shift in an asset’s shock exposure <span class="math notranslate nohighlight">\(H_1(r)\)</span> by evaluating the change in its return:</p>
-<div class="math notranslate nohighlight">
-\[
-\frac {{\mathbb E} [G_t]} {{\mathbb E} [S_t G_t]}
-\]</div>
-<p>To represent the building blocks of asset pricing, the code computes shock price elasticities of the form:</p>
+<p>Any increase (decrease) in an asset’s risk exposure must be compensated by an increase (decrease) in its return. Hence, we can determine the ‘price’ of a shift in an asset’s shock exposure <span class="math notranslate nohighlight">\(H_1(r)\)</span> by evaluating how its return changes in response to a small increase in <span class="math notranslate nohighlight">\(r\)</span>, which gives us our definition for <strong>shock-price elasticity</strong>:</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align}
-\varepsilon_{G}(x,t) - \varepsilon_{SG}(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( G_t \right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
-- \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0}\right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} 
+\varepsilon_{p}(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( G_t \right) H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
+- \frac d {d{\sf r}}\log {\mathbb E} \left[ S_t G_t H_1({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} 
 \end{align}
 \]</div>
-<p>where</p>
+<p>Again, we can compute the shock-price elasticity for a change in <span class="math notranslate nohighlight">\(W_t\)</span> exposure as:</p>
 <div class="math notranslate nohighlight">
 \[
+\begin{align}
+{\varepsilon}_{p}^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( G_t \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
+- \frac d {d{\sf r}}\log {\mathbb E} \left[ S_t G_t  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} . 
+\end{align}
+\]</div>
+<p>Finally, consider how a change in shock exposure changes the value of an asset to an investor. This can be evaluated as the difference between the change in payoff and the change in risk premium corresponding to a small change in <span class="math notranslate nohighlight">\(r\)</span>. Thus the <strong>value elasticity</strong> is given by:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+\begin{align}
+\frac d {d{\sf r}}\log {\mathbb E} \left[ S_t G_t  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} = {\varepsilon}_{g}^+(x,t) - {\varepsilon}_{p}^+(x,t)\\{\varepsilon}_{p}^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( G_t \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
+- \frac d {d{\sf r}}\log {\mathbb E} \left[ S_t G_t  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} . 
+\end{align}
+\end{aligned}\end{align} \]</div>
+<!-- 
+where
+
+$$
 \begin{align}
 \frac {{\mathbb E} \left[ \left(G_t\right) H_1({\sf r}) \mid X_0 \right]}{{\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0} \right) H_1({\sf r}) \mid X_0 \right]}
 \end{align}
-\]</div>
-<p>is the expected return on a payoff <span class="math notranslate nohighlight">\(G_t H_1({\sf r}),\)</span>  with cost</p>
-<div class="math notranslate nohighlight">
-\[
+$$
+
+is the expected return on a payoff $G_t H_1({\sf r}),$  with cost
+
+$$
 \begin{align}
 {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0}\right) H_1({\sf r}) \mid X_0 \right].
 \end{align}
-\]</div>
-<p>The code also computes the date shifted counterpart</p>
-<div class="math notranslate nohighlight">
-\[
-\begin{align}
-{\varepsilon}_{G}^+(x,t) - {\varepsilon}_{SG}^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( G_t \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
-- \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0} \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} . 
-\end{align}
-\]</div>
+$$ -->
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
