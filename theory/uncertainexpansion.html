@@ -412,14 +412,39 @@ $<span class="math notranslate nohighlight">\(
 X_{t+1}^1 =  \begin{bmatrix} \psi_{x'}^1 \cr \psi_{x'}^2 \cr \vdots \cr \psi_{x'} ^n \end{bmatrix} X_t^1 + \begin{bmatrix} \psi_{w'}^1 \cr \psi^2_{w'}
 \cr \vdots \cr \psi^n_{w'} \end{bmatrix} W_{t+1} + \begin{bmatrix} \psi^1_{\sf q}  \cr \psi^2_{\sf q}  \cr \vdots \cr \psi^n_{\sf q}  \end{bmatrix}
 \)</span>$</p>
-<p>\begin{align}
-X_{t+1}^2 =  \hspace{.2cm} &amp; \psi_{x’} X_t^2 + \begin{bmatrix} X_t^{1’} \psi_{xx’}^1 X_t^1 \cr X_t^{1’} \psi_{xx’}^2  X_t^1\cr \vdots \cr X_t^{1’} \psi_{xx’}^n X_t^1 \end{bmatrix} +  2 \begin{bmatrix} X_t^{1’} \psi_{xw’}^1 W_{t+1}  \cr X_t^{1’} \psi_{xw’}^2  W_{t+1} \cr \vdots \cr X_t^{1’} \psi_{xw’}^n W_{t+1}  \end{bmatrix} + \begin{bmatrix} {W_{t+1}}’ \psi_{ww’}^1 W_{t+1}  \cr {W_{t+1}}’ \psi_{ww’}^2  W_{t+1} \cr \vdots \cr {W_{t+1}}’ \psi_{ww’}^n W_{t+1}  \end{bmatrix} \
-&amp; +  2 \begin{bmatrix} \psi^1_{{\sf q}  x’}X_{t}^1 \cr  \psi^2_{{\sf q}  x’}X_{t}^1 \cr \vdots \cr \psi^n_{{\sf q}  x’} X_t^1 \end{bmatrix}</p>
-<ul class="simple">
-<li><p>2 \begin{bmatrix} \psi_{{\sf q}  w’ }^1W_{t+1} \cr \psi_{{\sf q}  w’ }^2 W_{t+1} \cr \vdots \cr \psi^n_{{\sf q}  w’} W_{t+1} \end{bmatrix}</p></li>
-<li><p>\begin{bmatrix} \psi^1_{{\sf q}  {\sf q} } \cr \psi^2_{{\sf q} {\sf q} } \cr \vdots \cr \psi^n_{{\sf q} {\sf q} } \end{bmatrix}
-\end{align}</p></li>
-</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align} 
+X_{t+1}^2 =  \hspace{.2cm} &amp; \psi_{x'} X_t^2 + \begin{bmatrix} X_t^{1'} \psi_{xx'}^1 X_t^1 \cr X_t^{1'} \psi_{xx'}^2  X_t^1\cr \vdots \cr X_t^{1'} \psi_{xx'}^n X_t^1 \end{bmatrix} +  2 \begin{bmatrix} X_t^{1'} \psi_{xw'}^1 W_{t+1}  \cr X_t^{1'} \psi_{xw'}^2  W_{t+1} \cr \vdots \cr X_t^{1'} \psi_{xw'}^n W_{t+1}  \end{bmatrix} + \begin{bmatrix} {W_{t+1}}' \psi_{ww'}^1 W_{t+1}  \cr {W_{t+1}}' \psi_{ww'}^2  W_{t+1} \cr \vdots \cr {W_{t+1}}' \psi_{ww'}^n W_{t+1}  \end{bmatrix} \\ 
+&amp; +  2 \begin{bmatrix} \psi^1_{{\sf q}  x'}X_{t}^1 \cr  \psi^2_{{\sf q}  x'}X_{t}^1 \cr \vdots \cr \psi^n_{{\sf q}  x'} X_t^1 \end{bmatrix}
++ 2 \begin{bmatrix} \psi_{{\sf q}  w' }^1W_{t+1} \cr \psi_{{\sf q}  w' }^2 W_{t+1} \cr \vdots \cr \psi^n_{{\sf q}  w'} W_{t+1} \end{bmatrix}
++ \begin{bmatrix} \psi^1_{{\sf q}  {\sf q} } \cr \psi^2_{{\sf q} {\sf q} } \cr \vdots \cr \psi^n_{{\sf q} {\sf q} } \end{bmatrix}
+\end{align}
+\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(C\)</span> denote consumption and <span class="math notranslate nohighlight">\({\widehat C}\)</span> the logarithm of consumption.    Suppose that the logarithm of consumption evolves as:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation*}
+{\widehat C}_{t+1}  - {\widehat C}_t = \kappa (X_t, {\sf q} W_{t+1}, {\sf q}).  
+\end{equation*}
+Approximate this process by:
+\begin{equation}\label{eqn:exporder2c}
+{\widehat C}_{t+1} - {\widehat C}_t \approx 
+{\widehat C}_{t+1}^0 - {\widehat C}_t^0 + {\sf{q}} \left({\widehat C}_{t+1}^1 - {\widehat C}_t^1 \right)
++ \frac{{\sf q}^2} 2 \left({\widehat C}_{t+1}^2 - {\widehat C}_t^2\right) 
+\end{equation}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+{\widehat C}_{t+1}^0  - {\widehat C}_t^0  = \hspace{.2cm}  &amp; \kappa (X_t^0, 0, 0) \eqdef \eta_0^c \\ 
+{\widehat C}_{t+1}^1  - {\widehat C}_t^1  = \hspace{.2cm} &amp; \kappa_{x'} X_t^1 + \kappa_{w'} W_{t+1} + \kappa_q \\ 
+{\widehat C}_{t+1}^2  - {\widehat C}_t^2  =   \hspace{.2cm}  &amp; \kappa_{x'} X_t^2 + {X_{t}^1}' \kappa_{x,x'} X_t^1 + 2
+{X_{t}^1}' \kappa_{xw'} W_{t+1} + {W_{t+1}}'\kappa_{ww'}W_{t+1} \\ 
+&amp;+ 2 \kappa_{q,x'} X_t^1 +  2 \kappa_{qw'}W_{t+1}  + \kappa_{qq} .
+\end{align*}
+\end{split}\]</div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="approximating-widehat-v-t">
 <h1>2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span><a class="headerlink" href="#approximating-widehat-v-t" title="Permalink to this heading">#</a></h1>
