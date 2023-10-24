@@ -407,11 +407,12 @@ X_{t+1}^0 = \psi (X_t^0, 0, 0)
 $<span class="math notranslate nohighlight">\(
 X_t \approx X_t^0 + q X_t^1 + \frac{q^2}{2}X_t^2
 \)</span>$</p>
-<p>Processes <span class="math notranslate nohighlight">\(X_t^j,j=0,1,2\)</span> have a recursive structure: the stochastic process <span class="math notranslate nohighlight">\(X_t^0\)</span> can be computed first, then the process <span class="math notranslate nohighlight">\(X_t^1\)</span> next (it depends on <span class="math notranslate nohighlight">\(X_t^0\)</span>), and then the process <span class="math notranslate nohighlight">\(X_t^2\)</span> (it depends on both <span class="math notranslate nohighlight">\(X_t^0\)</span> and <span class="math notranslate nohighlight">\(X_t^1\)</span>).
-$<span class="math notranslate nohighlight">\(
+<p>Processes <span class="math notranslate nohighlight">\(X_t^j,j=0,1,2\)</span> have a recursive structure: the stochastic process <span class="math notranslate nohighlight">\(X_t^0\)</span> can be computed first, then the process <span class="math notranslate nohighlight">\(X_t^1\)</span> next (it depends on <span class="math notranslate nohighlight">\(X_t^0\)</span>), and then the process <span class="math notranslate nohighlight">\(X_t^2\)</span> (it depends on both <span class="math notranslate nohighlight">\(X_t^0\)</span> and <span class="math notranslate nohighlight">\(X_t^1\)</span>).</p>
+<div class="math notranslate nohighlight">
+\[
 X_{t+1}^1 =  \begin{bmatrix} \psi_{x'}^1 \cr \psi_{x'}^2 \cr \vdots \cr \psi_{x'} ^n \end{bmatrix} X_t^1 + \begin{bmatrix} \psi_{w'}^1 \cr \psi^2_{w'}
 \cr \vdots \cr \psi^n_{w'} \end{bmatrix} W_{t+1} + \begin{bmatrix} \psi^1_{\sf q}  \cr \psi^2_{\sf q}  \cr \vdots \cr \psi^n_{\sf q}  \end{bmatrix}
-\)</span>$</p>
+\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align} 
@@ -427,8 +428,11 @@ X_{t+1}^2 =  \hspace{.2cm} &amp; \psi_{x'} X_t^2 + \begin{bmatrix} X_t^{1'} \psi
 \begin{equation*}
 {\widehat C}_{t+1}  - {\widehat C}_t = \kappa (X_t, {\sf q} W_{t+1}, {\sf q}).  
 \end{equation*}
-Approximate this process by:
-\begin{equation}\label{eqn:exporder2c}
+\]</div>
+<p>Approximate this process by:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{equation}
 {\widehat C}_{t+1} - {\widehat C}_t \approx 
 {\widehat C}_{t+1}^0 - {\widehat C}_t^0 + {\sf{q}} \left({\widehat C}_{t+1}^1 - {\widehat C}_t^1 \right)
 + \frac{{\sf q}^2} 2 \left({\widehat C}_{t+1}^2 - {\widehat C}_t^2\right) 
@@ -438,7 +442,7 @@ Approximate this process by:
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-{\widehat C}_{t+1}^0  - {\widehat C}_t^0  = \hspace{.2cm}  &amp; \kappa (X_t^0, 0, 0) \eqdef \eta_0^c \\ 
+{\widehat C}_{t+1}^0  - {\widehat C}_t^0  = \hspace{.2cm}  &amp; \kappa (X_t^0, 0, 0) := \eta_0^c \\ 
 {\widehat C}_{t+1}^1  - {\widehat C}_t^1  = \hspace{.2cm} &amp; \kappa_{x'} X_t^1 + \kappa_{w'} W_{t+1} + \kappa_q \\ 
 {\widehat C}_{t+1}^2  - {\widehat C}_t^2  =   \hspace{.2cm}  &amp; \kappa_{x'} X_t^2 + {X_{t}^1}' \kappa_{x,x'} X_t^1 + 2
 {X_{t}^1}' \kappa_{xw'} W_{t+1} + {W_{t+1}}'\kappa_{ww'}W_{t+1} \\ 
