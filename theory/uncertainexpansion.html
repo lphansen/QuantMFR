@@ -412,13 +412,14 @@ $<span class="math notranslate nohighlight">\(
 X_{t+1}^1 =  \begin{bmatrix} \psi_{x'}^1 \cr \psi_{x'}^2 \cr \vdots \cr \psi_{x'} ^n \end{bmatrix} X_t^1 + \begin{bmatrix} \psi_{w'}^1 \cr \psi^2_{w'}
 \cr \vdots \cr \psi^n_{w'} \end{bmatrix} W_{t+1} + \begin{bmatrix} \psi^1_{\sf q}  \cr \psi^2_{\sf q}  \cr \vdots \cr \psi^n_{\sf q}  \end{bmatrix}
 \)</span>$</p>
-<div class="math notranslate nohighlight">
-\[
-X_{t+1}^2 =  \hspace{.2cm} &amp; \psi_{x'} X_t^2 + \begin{bmatrix} X_t^{1'} \psi_{xx'}^1 X_t^1 \cr X_t^{1'} \psi_{xx'}^2  X_t^1\cr \vdots \cr X_t^{1'} \psi_{xx'}^n X_t^1 \end{bmatrix} +  2 \begin{bmatrix} X_t^{1'} \psi_{xw'}^1 W_{t+1}  \cr X_t^{1'} \psi_{xw'}^2  W_{t+1} \cr \vdots \cr X_t^{1'} \psi_{xw'}^n W_{t+1}  \end{bmatrix} + \begin{bmatrix} {W_{t+1}}' \psi_{ww'}^1 W_{t+1}  \cr {W_{t+1}}' \psi_{ww'}^2  W_{t+1} \cr \vdots \cr {W_{t+1}}' \psi_{ww'}^n W_{t+1}  \end{bmatrix} \cr 
-&amp; +  2 \begin{bmatrix} \psi^1_{{\sf q}  x'}X_{t}^1 \cr  \psi^2_{{\sf q}  x'}X_{t}^1 \cr \vdots \cr \psi^n_{{\sf q}  x'} X_t^1 \end{bmatrix}
-+ 2 \begin{bmatrix} \psi_{{\sf q}  w' }^1W_{t+1} \cr \psi_{{\sf q}  w' }^2 W_{t+1} \cr \vdots \cr \psi^n_{{\sf q}  w'} W_{t+1} \end{bmatrix}
-+ \begin{bmatrix} \psi^1_{{\sf q}  {\sf q} } \cr \psi^2_{{\sf q} {\sf q} } \cr \vdots \cr \psi^n_{{\sf q} {\sf q} } \end{bmatrix}
-\]</div>
+<p>\begin{align}
+X_{t+1}^2 =  \hspace{.2cm} &amp; \psi_{x’} X_t^2 + \begin{bmatrix} X_t^{1’} \psi_{xx’}^1 X_t^1 \cr X_t^{1’} \psi_{xx’}^2  X_t^1\cr \vdots \cr X_t^{1’} \psi_{xx’}^n X_t^1 \end{bmatrix} +  2 \begin{bmatrix} X_t^{1’} \psi_{xw’}^1 W_{t+1}  \cr X_t^{1’} \psi_{xw’}^2  W_{t+1} \cr \vdots \cr X_t^{1’} \psi_{xw’}^n W_{t+1}  \end{bmatrix} + \begin{bmatrix} {W_{t+1}}’ \psi_{ww’}^1 W_{t+1}  \cr {W_{t+1}}’ \psi_{ww’}^2  W_{t+1} \cr \vdots \cr {W_{t+1}}’ \psi_{ww’}^n W_{t+1}  \end{bmatrix} \
+&amp; +  2 \begin{bmatrix} \psi^1_{{\sf q}  x’}X_{t}^1 \cr  \psi^2_{{\sf q}  x’}X_{t}^1 \cr \vdots \cr \psi^n_{{\sf q}  x’} X_t^1 \end{bmatrix}</p>
+<ul class="simple">
+<li><p>2 \begin{bmatrix} \psi_{{\sf q}  w’ }^1W_{t+1} \cr \psi_{{\sf q}  w’ }^2 W_{t+1} \cr \vdots \cr \psi^n_{{\sf q}  w’} W_{t+1} \end{bmatrix}</p></li>
+<li><p>\begin{bmatrix} \psi^1_{{\sf q}  {\sf q} } \cr \psi^2_{{\sf q} {\sf q} } \cr \vdots \cr \psi^n_{{\sf q} {\sf q} } \end{bmatrix}
+\end{align}</p></li>
+</ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="approximating-widehat-v-t">
 <h1>2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span><a class="headerlink" href="#approximating-widehat-v-t" title="Permalink to this heading">#</a></h1>
