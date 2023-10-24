@@ -375,6 +375,7 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-method-computation">
 <h1><a class="toc-backref" href="#id1" role="doc-backlink">Uncertain Expansion Method: Computation</a><a class="headerlink" href="#uncertain-expansion-method-computation" title="Permalink to this heading">#</a></h1>
 <p>We previously covered the <a class="reference internal" href="theory.html"><span class="doc std std-doc">recursive utility framework</span></a> and the <a class="reference internal" href="uncertainexpansion.html"><span class="doc std std-doc">small-noise expansion method</span></a>. This section covers the usage of <code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code>, an open source Python toolbox which uses these methods to solve discrete nonlinear DSGE models.</p>
+<p>update: 5:34pm</p>
 <!-- For this notebook 
 
 - Section 1 provides a five-minute guide to solving the DSGE model using the expansion suite, as well as how to 
@@ -621,6 +622,17 @@ $$ -->
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;RiskUncertaintyValue&#39;...
+remote: Enumerating objects: 475, done.
+remote: Counting objects: 100% (140/140), done.
+remote: Compressing objects: 100% (80/80), done.
+remote: Total 475 (delta 77), reused 107 (delta 60), pack-reused 335
+Receiving objects: 100% (475/475), 2.84 MiB | 21.05 MiB/s, done.
+Resolving deltas: 100% (261/261), done.
+</pre></div>
+</div>
+<div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
 </div>
 </section>
 <section id="equilibrium-condition-function-a-class-anchor-id-s2-2-a">
@@ -957,6 +969,10 @@ Iteration 2: error = 4.97379915e-14
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\displaystyle \log\frac{C_t}{K_t}=-4.793+\begin{bmatrix}12.45&amp;-2.248e-19\end{bmatrix}X_t^1+\begin{bmatrix}5.938&amp;-1.1e-19\end{bmatrix}X_t^2+X^{1T}_{t}\begin{bmatrix}-26.3&amp;2.438e-18\\-1.82e-18&amp;-4.52e-38\end{bmatrix}X^1_{t}\end{split}\]</div>
+</div>
 </div>
 <p>Another example:</p>
 <div class="cell docutils container">
@@ -1011,9 +1027,9 @@ Iteration 2: error = 4.97379915e-14
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;c&#39;: array([[0.00030791]]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;x&#39;: array([[ 1.03727514, -0.        ]]),
  &#39;w&#39;: array([[ 0.00415864, -0.00138945]]),
- &#39;x&#39;: array([[ 1.03727514, -0.        ]])}
+ &#39;c&#39;: array([[0.00030791]])}
 </pre></div>
 </div>
 </div>
@@ -1065,12 +1081,138 @@ Iteration 2: error = 4.97379915e-14
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OMP: Info #271: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">elasticity</span> <span class="kn">import</span> <span class="n">exposure_elasticity</span><span class="p">,</span> <span class="n">price_elasticity</span>
+<span class="kn">from</span> <span class="nn">lin_quad</span> <span class="kn">import</span> <span class="n">LinQuadVar</span>
+
+<span class="k">def</span> <span class="nf">calc_SDF</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function uses results from Expansion Suite and compute the log SDF using Approach 3 in the note (Section 4.3).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    res : ModelSolution</span>
+<span class="sd">        Model solution returned by Expansion Suite.</span>
+
+<span class="sd">    args : tuple of float/string</span>
+<span class="sd">        Preference and model parameters.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    log_SDF : LinQuadVar</span>
+<span class="sd">        Approximation of log SDF.</span>
+
+<span class="sd">    gc_tp1 : LinQuadVar</span>
+<span class="sd">        Approximation of log consumption growth process; from res[&#39;gc_tp1&#39;].</span>
+
+<span class="sd">    X1_tp1 : LinQuadVar</span>
+<span class="sd">        First order expansion of the state evolution process; from res[&#39;X1_tp1&#39;].</span>
+
+<span class="sd">    X2_tp1 : LinQuadVar</span>
+<span class="sd">        Second order expansion of the state evolution process; from res[&#39;X2_tp1&#39;].</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n_J</span><span class="p">,</span> <span class="n">n_X</span><span class="p">,</span> <span class="n">n_W</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;var_shape&#39;</span><span class="p">]</span>
+    <span class="n">β</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">ρ</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">X1_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;X1_tp1&#39;</span><span class="p">]</span>
+    <span class="n">X2_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;X2_tp1&#39;</span><span class="p">]</span>
+
+    <span class="n">gc_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;gc_tp1&#39;</span><span class="p">]</span>
+    <span class="n">gc0_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;gc0_tp1&#39;</span><span class="p">]</span>
+    <span class="n">gc1_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;gc1_tp1&#39;</span><span class="p">]</span>
+    <span class="n">gc2_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;gc2_tp1&#39;</span><span class="p">]</span>
+
+    <span class="n">vmr1_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;vmr1_tp1&#39;</span><span class="p">]</span>
+    <span class="n">vmr2_tp1</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;vmr2_tp1&#39;</span><span class="p">]</span>
+    <span class="n">log_N_tilde</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;log_N_tilde&#39;</span><span class="p">]</span>
+
+    <span class="n">S0_tp1</span> <span class="o">=</span> <span class="n">LinQuadVar</span><span class="p">({</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">gc0_tp1</span><span class="p">]])},</span> <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_X</span><span class="p">,</span><span class="n">n_W</span><span class="p">))</span>
+    <span class="n">S1_tp1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ρ</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">vmr1_tp1</span> <span class="o">-</span><span class="n">ρ</span><span class="o">*</span><span class="n">gc1_tp1</span>
+    <span class="n">S2_tp1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ρ</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">vmr2_tp1</span> <span class="o">-</span><span class="n">ρ</span><span class="o">*</span><span class="n">gc2_tp1</span>
+
+    <span class="n">log_SDF</span> <span class="o">=</span> <span class="n">S0_tp1</span> <span class="o">+</span> <span class="n">S1_tp1</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span><span class="n">S2_tp1</span> <span class="o">+</span> <span class="n">log_N_tilde</span>
+
+    <span class="k">return</span> <span class="n">log_SDF</span><span class="p">,</span> <span class="n">gc_tp1</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span>
 </pre></div>
 </div>
 </div>
-</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute shock elasticity for 30 years</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">360</span>
+
+<span class="c1"># Compute shock elasticity at 1st quartile, median, and 3rd quartile</span>
+<span class="n">quantile</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]</span>
+
+<span class="c1"># Compute log SDF; load consumption growth and state evolution processes from model solution</span>
+<span class="n">log_SDF</span><span class="p">,</span> <span class="n">gc_tp1</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span> <span class="o">=</span> <span class="n">calc_SDF</span><span class="p">(</span><span class="n">ModelSol</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="c1"># Compute each component of the exposure elasticity for consumption growth process</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">exposure_elasticity</span><span class="p">(</span><span class="n">gc_tp1</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">quantile</span><span class="p">]</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">exposure_elasticity</span><span class="p">(</span><span class="n">gc_tp1</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">quantile</span><span class="p">]</span>
+
+<span class="c1"># Compute each component of price elasticity for consumption growth process</span>
+<span class="n">price_elas_shock_0</span> <span class="o">=</span> <span class="p">[</span><span class="n">price_elasticity</span><span class="p">(</span><span class="n">gc_tp1</span><span class="p">,</span> <span class="n">log_SDF</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">quantile</span><span class="p">]</span>
+<span class="n">price_elas_shock_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">price_elasticity</span><span class="p">(</span><span class="n">gc_tp1</span><span class="p">,</span> <span class="n">log_SDF</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">quantile</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.3g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span> <span class="o">=</span> <span class="mf">1.4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">shock_labl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Shock component 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Shock component 2&#39;</span><span class="p">]</span>
+<span class="n">line_labl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Q1&#39;</span><span class="p">,</span> <span class="s1">&#39;Q2&#39;</span><span class="p">,</span> <span class="s1">&#39;Q3&#39;</span><span class="p">]</span>
+<span class="n">line_color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+<span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">line_labl</span>
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">expo_elas_shock_0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">expo_elas_shock_0</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">expo_elas_shock_0</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">expo_elas_shock_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">expo_elas_shock_1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">expo_elas_shock_1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()],</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0_plot</span><span class="p">,</span> <span class="n">expo_elas_shock_1_plot</span><span class="p">]</span> 
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">line_labl</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">line_color</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">line_labl</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exposure elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">shock_labl</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.02</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.02</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Exposure Elasticity of Consumption Growth&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7e6576cb2943088efa43a5a9d749e35a6828de5aedae8df407e8c6e9f6c686d6.png" src="../_images/7e6576cb2943088efa43a5a9d749e35a6828de5aedae8df407e8c6e9f6c686d6.png" />
+</div>
 </div>
 <br>
 <br>
