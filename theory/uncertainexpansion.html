@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'theory/uncertainexpansion';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sluggish Two Capital Model" href="../continuous_global_solution/Twocap.html" />
+    <link rel="next" title="Uncertain Expansion Method: Computation" href="quickguide.html" />
     <link rel="prev" title="Recursive Utility Framework" href="theory.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -155,6 +155,11 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="theory.html">Recursive Utility Framework</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Uncertain Expansion Methods</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="quickguide.html">Uncertain Expansion Method: Computation</a></li>
 
 
 
@@ -778,193 +783,9 @@ $$
 \end{aligned}
 $$
 
-These are implemented in the function `calc_SDF` below. --><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from elasticity import exposure_elasticity, price_elasticity</span>
-<span class="c1"># from lin_quad import LinQuadVar</span>
+These are implemented in the function `calc_SDF` below. --><!-- Compute the 25-th, 50-th, and 75-th percentile of the exposure and price elasticities for 30 years. --><!-- ## 6.2 Plot elasticities
 
-<span class="c1"># def calc_SDF(res, *args):</span>
-<span class="c1">#     &quot;&quot;&quot;</span>
-<span class="c1">#     This function uses results from Expansion Suite and compute the log SDF using Approach 3 in the note (Section 4.3).</span>
-
-<span class="c1">#     Parameters</span>
-<span class="c1">#     ----------</span>
-
-<span class="c1">#     res : ModelSolution</span>
-<span class="c1">#         Model solution returned by Expansion Suite.</span>
-
-<span class="c1">#     args : tuple of float/string</span>
-<span class="c1">#         Preference and model parameters.</span>
-
-<span class="c1">#     Returns</span>
-<span class="c1">#     -------</span>
-
-<span class="c1">#     log_SDF : LinQuadVar</span>
-<span class="c1">#         Approximation of log SDF.</span>
-
-<span class="c1">#     gc_tp1 : LinQuadVar</span>
-<span class="c1">#         Approximation of log consumption growth process; from res[&#39;gc_tp1&#39;].</span>
-
-<span class="c1">#     X1_tp1 : LinQuadVar</span>
-<span class="c1">#         First order expansion of the state evolution process; from res[&#39;X1_tp1&#39;].</span>
-
-<span class="c1">#     X2_tp1 : LinQuadVar</span>
-<span class="c1">#         Second order expansion of the state evolution process; from res[&#39;X2_tp1&#39;].</span>
-
-<span class="c1">#     &quot;&quot;&quot;</span>
-
-<span class="c1">#     n_J, n_X, n_W = res[&#39;var_shape&#39;]</span>
-<span class="c1">#     β = args[1]</span>
-<span class="c1">#     ρ = args[2]</span>
-
-<span class="c1">#     X1_tp1 = res[&#39;X1_tp1&#39;]</span>
-<span class="c1">#     X2_tp1 = res[&#39;X2_tp1&#39;]</span>
-
-<span class="c1">#     gc_tp1 = res[&#39;gc_tp1&#39;]</span>
-<span class="c1">#     gc0_tp1 = res[&#39;gc0_tp1&#39;]</span>
-<span class="c1">#     gc1_tp1 = res[&#39;gc1_tp1&#39;]</span>
-<span class="c1">#     gc2_tp1 = res[&#39;gc2_tp1&#39;]</span>
-
-<span class="c1">#     vmr1_tp1 = res[&#39;vmr1_tp1&#39;]</span>
-<span class="c1">#     vmr2_tp1 = res[&#39;vmr2_tp1&#39;]</span>
-<span class="c1">#     log_N_tilde = res[&#39;log_N_tilde&#39;]</span>
-
-<span class="c1">#     S0_tp1 = LinQuadVar({&#39;c&#39;:np.log(β) - ρ*np.array([[gc0_tp1]])}, shape = (1,n_X,n_W))</span>
-<span class="c1">#     S1_tp1 = (ρ-1)*vmr1_tp1 -ρ*gc1_tp1</span>
-<span class="c1">#     S2_tp1 = (ρ-1)*vmr2_tp1 -ρ*gc2_tp1</span>
-
-<span class="c1">#     log_SDF = S0_tp1 + S1_tp1 + 0.5 *S2_tp1 + log_N_tilde</span>
-
-<span class="c1">#     return log_SDF, gc_tp1, X1_tp1, X2_tp1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">lhansen</span><span class="o">/</span><span class="n">quantmfr</span><span class="o">/</span><span class="n">quantmfr</span><span class="o">/</span><span class="n">theory</span><span class="o">/</span><span class="n">uncertainexpansion</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">10</span> <span class="n">line</span> <span class="o">&lt;</span><span class="n">cell</span> <span class="n">line</span><span class="p">:</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2Bmidway3.rcc.uchicago.edu/project/lhansen/quantmfr/quantmfr/theory/uncertainexpansion.ipynb#X12sdnNjb2RlLXJlbW90ZQ%3D%3D?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">elasticity</span> <span class="kn">import</span> <span class="n">exposure_elasticity</span><span class="p">,</span> <span class="n">price_elasticity</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2Bmidway3.rcc.uchicago.edu/project/lhansen/quantmfr/quantmfr/theory/uncertainexpansion.ipynb#X12sdnNjb2RlLXJlbW90ZQ%3D%3D?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">lin_quad</span> <span class="kn">import</span> <span class="n">LinQuadVar</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2Bmidway3.rcc.uchicago.edu/project/lhansen/quantmfr/quantmfr/theory/uncertainexpansion.ipynb#X12sdnNjb2RlLXJlbW90ZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">def</span> <span class="nf">calc_SDF</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">lhansen</span><span class="o">/</span><span class="n">quantmfr</span><span class="o">/</span><span class="n">quantmfr</span><span class="o">/</span><span class="n">theory</span><span class="o">/</span><span class="n">elasticity</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">lin_quad</span> <span class="kn">import</span> <span class="n">LinQuadVar</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">lin_quad_util</span> <span class="kn">import</span> <span class="n">log_E_exp</span><span class="p">,</span> <span class="n">next_period</span><span class="p">,</span> <span class="n">kron_prod</span><span class="p">,</span> <span class="n">M_mapping</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">vec</span><span class="p">,</span> <span class="n">sym</span>
-
-<span class="n">File</span> <span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">lhansen</span><span class="o">/</span><span class="n">quantmfr</span><span class="o">/</span><span class="n">quantmfr</span><span class="o">/</span><span class="n">theory</span><span class="o">/</span><span class="n">lin_quad</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">copy</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">utilities</span> <span class="kn">import</span> <span class="n">mat</span><span class="p">,</span> <span class="n">vec</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;utilities&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<!-- Compute the 25-th, 50-th, and 75-th percentile of the exposure and price elasticities for 30 years. --><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Compute shock elasticity for 30 years</span>
-<span class="c1"># T = 360</span>
-
-<span class="c1"># # Compute shock elasticity at 1st quartile, median, and 3rd quartile</span>
-<span class="c1"># quantile = [0.25, 0.5, 0.75]</span>
-
-<span class="c1"># # Compute log SDF; load consumption growth and state evolution processes from model solution</span>
-<span class="c1"># log_SDF, gc_tp1, X1_tp1, X2_tp1 = calc_SDF(res, *args)</span>
-
-<span class="c1"># # Compute each component of the exposure elasticity for consumption growth process</span>
-<span class="c1"># expo_elas_shock_0 = [exposure_elasticity(gc_tp1, X1_tp1, X2_tp1, T, shock=0, percentile=p) for p in quantile]</span>
-<span class="c1"># expo_elas_shock_1 = [exposure_elasticity(gc_tp1, X1_tp1, X2_tp1, T, shock=1, percentile=p) for p in quantile]</span>
-
-<span class="c1"># # Compute each component of price elasticity for consumption growth process</span>
-<span class="c1"># price_elas_shock_0 = [price_elasticity(gc_tp1, log_SDF, X1_tp1, X2_tp1, T, shock=0, percentile=p) for p in quantile]</span>
-<span class="c1"># price_elas_shock_1 = [price_elasticity(gc_tp1, log_SDF, X1_tp1, X2_tp1, T, shock=1, percentile=p) for p in quantile]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<!-- ## 6.2 Plot elasticities
-
-In this section, we plot the exposure and the price elasticities of the consumption growth process computed above. --><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import matplotlib.pyplot as plt</span>
-<span class="c1"># import seaborn as sns</span>
-<span class="c1"># import pandas as pd</span>
-<span class="c1"># pd.options.display.float_format = &#39;{:.3g}&#39;.format</span>
-<span class="c1"># sns.set(font_scale = 1.4)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shock_labl = [&#39;Shock component 1&#39;, &#39;Shock component 2&#39;]</span>
-<span class="c1"># line_labl = [&#39;Q1&#39;, &#39;Q2&#39;, &#39;Q3&#39;]</span>
-<span class="c1"># line_color = [&#39;green&#39;,&#39;red&#39;,&#39;blue&#39;]</span>
-<span class="c1"># index = [&#39;T&#39;] + line_labl</span>
-<span class="c1"># n_qt = len(quantile)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<!-- ### 6.2.1 Exposure elasticity --><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fig, axes = plt.subplots(1, 2, figsize = (12,5))</span>
-<span class="c1"># expo_elas_shock_0_plot = pd.DataFrame([np.arange(T), expo_elas_shock_0[0].flatten(), expo_elas_shock_0[1].flatten(), expo_elas_shock_0[2].flatten()], index=index).T</span>
-<span class="c1"># expo_elas_shock_1_plot = pd.DataFrame([np.arange(T), expo_elas_shock_1[0].flatten(), expo_elas_shock_1[1].flatten(), expo_elas_shock_1[2].flatten()], index=index).T</span>
-<span class="c1"># plot_elas = [expo_elas_shock_0_plot, expo_elas_shock_1_plot] </span>
-
-<span class="c1"># for i in range(len(plot_elas)):</span>
-<span class="c1">#     for j in range(n_qt):</span>
-<span class="c1">#         sns.lineplot(data=plot_elas[i], x=&#39;T&#39;, y=line_labl[j], ax=axes[i], color=line_color[j], label=line_labl[j])</span>
-<span class="c1">#         axes[i].set_xlabel(&#39;&#39;)</span>
-<span class="c1">#         axes[i].set_ylabel(&#39;Exposure elasticity&#39;)</span>
-<span class="c1">#         axes[i].set_title(shock_labl[i])</span>
-<span class="c1"># axes[0].set_ylim([0,0.02])</span>
-<span class="c1"># axes[1].set_ylim([0,0.02])</span>
-<span class="c1"># fig.suptitle(&#39;Exposure Elasticity of Consumption Growth&#39;)</span>
-<span class="c1"># fig.tight_layout()</span>
-<span class="c1"># plt.show()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/8bcc457d7ab0febce912382edcf688a7ff9ca9d87da6079c33065f4c20e29b0f.png" src="../_images/8bcc457d7ab0febce912382edcf688a7ff9ca9d87da6079c33065f4c20e29b0f.png" />
-</div>
-</div>
-<!-- ### 6.2.1 Price elasticity --><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fig, axes = plt.subplots(1, 2, figsize = (12,5))</span>
-<span class="c1"># price_elas_shock_0_plot = pd.DataFrame([np.arange(T),price_elas_shock_0[0].flatten(),price_elas_shock_0[1].flatten(),price_elas_shock_0[2].flatten()], index = index).T</span>
-<span class="c1"># price_elas_shock_1_plot = pd.DataFrame([np.arange(T),price_elas_shock_1[0].flatten(),price_elas_shock_1[1].flatten(),price_elas_shock_1[2].flatten()], index = index).T</span>
-<span class="c1"># plot_elas = [price_elas_shock_0_plot, price_elas_shock_1_plot] </span>
-
-<span class="c1"># for i in range(len(plot_elas)):</span>
-<span class="c1">#     for j in range(n_qt):</span>
-<span class="c1">#         sns.lineplot(data=plot_elas[i],  x=&#39;T&#39;, y=line_labl[j], ax=axes[i], color=line_color[j], label=line_labl[j])</span>
-<span class="c1">#         axes[i].set_xlabel(&#39;&#39;)</span>
-<span class="c1">#         axes[i].set_ylabel(&#39;Price elasticity&#39;)</span>
-<span class="c1">#         axes[i].set_title(shock_labl[i])</span>
-
-<span class="c1"># axes[0].set_ylim([0,0.2])</span>
-<span class="c1"># axes[1].set_ylim([0,0.2])</span>
-
-<span class="c1"># fig.suptitle(&#39;Price Elasticity of Consumption Growth&#39;)</span>
-<span class="c1"># fig.tight_layout()</span>
-<span class="c1"># plt.show()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/d1407ddae2f2086e792cdc7b5db25e7b1788cc4a0604de65e44be89d32a00349.png" src="../_images/d1407ddae2f2086e792cdc7b5db25e7b1788cc4a0604de65e44be89d32a00349.png" />
-</div>
-</div>
-</section>
+In this section, we plot the exposure and the price elasticities of the consumption growth process computed above. --><!-- ### 6.2.1 Exposure elasticity --><!-- ### 6.2.1 Price elasticity --></section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="reference">
 <h1>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h1>
@@ -1013,11 +834,11 @@ In this section, we plot the exposure and the price elasticities of the consumpt
       </div>
     </a>
     <a class="right-next"
-       href="../continuous_global_solution/Twocap.html"
+       href="quickguide.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Sluggish Two Capital Model</p>
+        <p class="prev-next-title">Uncertain Expansion Method: Computation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
