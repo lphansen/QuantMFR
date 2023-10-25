@@ -15,21 +15,15 @@ Quant Macro Finance (QMF) is a series of online texts intended to accompany *Ris
 - <i>Shock-price elasticities</i>, which capture changes in risk compensations associated with shock exposures over different investment horizons</li>
 <br> -->
 
-First, we explain the theoretical framework for solving nonlinear DSGE models with uncertainty and computing shock elasticites.
+First, we explain the theoretical background and numerical solution of expansion method to solve nonlinear DSGE models with recursive utility function. 
 
-1. [Introduction](theory/theory.md)
-2. [Uncertain Expansion](theory/uncertainexpansion.ipynb)
-3. [Shock Elasticities](theory/shockelasticity.ipynb)
+1. [Uncertain Expansion Theory](theory/uncertainexpansion.ipynb)
+2. [Numerical Solution: Expansion Suite](theory/quickguide.ipynb)
 
-Second, we introduce toolboxes used to approximate solutions and compute shock elasticities in discrete time.
+Second, we introduce frameworks to solve price and exposure elasticity under discrete time and continuous time settings
+4. [Shock Elasticity: Discrete Time](discrete_local_approximation/shockelasticity.ipynb)
+5. [Shock Elasticity: Continuous Time](discrete_local_approximation/shockelasticitycontinuous.ipynb) 
 
-4. [Quick Guide to Expansion](discrete_local_approximation/quickguide.ipynb)
-5. [Computing Elasticities in Discrete Time]
-
-Then, we provide extensions via continuous time, two-capital models and financial intermediaries. 
-
-6. [Two Capital Model]
-7. [Computing Elasticities in Continuous TIme]
 
 <br>
 <!-- <p>The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Local methods are based on perturbing around the steady state in order to approximate policy and valuation functions in a neighbourhood around the steady state, whereas global methods allow us to compute these functions across the domain.</p>

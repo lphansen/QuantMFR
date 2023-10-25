@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Shock Elasticities &#8212; Quant Macro Finance</title>
+    <title>Shock Elasticities: Continuous Time &#8212; Quant Macro Finance</title>
   
   
   
@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'continuous_global_solution/shockelasticitycontinuous';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Shock Elasticity Computation" href="shockelasticity.html" />
+    <link rel="prev" title="Shock Elasticity: Discrete Time" href="shockelasticity.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,12 +152,12 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion.html">Uncertain Expansion Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion.html">Uncertain Expansion Theory</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide.html">Uncertain Expansion Method: Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide.html">Numerical Solution: Expansion Suite</a></li>
 
 
 
@@ -165,16 +165,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticity</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="shockelasticity.html">Shock Elasticity Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shockelasticity.html">Shock Elasticity: Discrete Time</a></li>
 
 
 
 
-
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shock Elasticities</a></li>
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shock Elasticities: Continuous Time</a></li>
 
 
 
@@ -314,7 +310,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Shock Elasticities</h1>
+    <h1>Shock Elasticities: Continuous Time</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -324,23 +320,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-framework">1. Discrete Framework</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterizing-shock-exposure">1.2 Parameterizing Shock Exposure</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities: Continuous Time</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticities">1.3 Shock-Exposure Elasticities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-price-elasticities">1.4 Shock-Price Elasticities</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">2. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">2.1 Basic setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">2.2 Stochastic discount factor process</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticity-and-price-elasticity">2.3 Shock Exposure Elasticity and Price Elasticity</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">1. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">1.1 Basic setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">1.2 Stochastic discount factor process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticity-and-price-elasticity">1.3 Shock Exposure Elasticity and Price Elasticity</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">3. An Illustration using an intermediary asset pricing model [3], [4], [5]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-shock-elasticities-computeelas">3.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities-plots">3.2 Shock Elasticities Plots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">2. An Illustration using an intermediary asset pricing model [3], [4], [5]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-shock-elasticities-computeelas">2.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities-plots">2.2 Shock Elasticities Plots</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
@@ -357,55 +350,62 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/shockelasticity.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="shock-elasticities">
-<h1>Shock Elasticities<a class="headerlink" href="#shock-elasticities" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="shock-elasticities-continuous-time">
+<h1>Shock Elasticities: Continuous Time<a class="headerlink" href="#shock-elasticities-continuous-time" title="Permalink to this heading">#</a></h1>
 <p>Shock elasticities quantify the (local) exposures of macroeconomic cash flows to shocks over alternative investment horizons and the corresponding prices or investors’ compensations. This Jupyter notebook provides the computations for the shock elasticities for models with equilibrium outcomes represented as a continuous-time diffusion. This notebook implements methods and formulas developed in [1] and [2].</p>
 <ul class="simple">
 <li><p>Section 1 introduces shock elasticities, relates them to impulse response functions, and describes how they can be used to understand the transition mechanisms of shocks within an economic model and their implications for valuation.</p></li>
 <li><p>Section 2 gives the continuous-time formulation with a Brownian motion information structure.</p></li>
 <li><p>Section 3 provides an illustration using an intermediary asset pricing model, see [3], [4], and [5].</p></li>
 </ul>
-<br>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="discrete-framework">
-<h1>1. Discrete Framework<a class="headerlink" href="#discrete-framework" title="Permalink to this heading">#</a></h1>
-<section id="functionals">
-<h2>1.1 Functionals<a class="headerlink" href="#functionals" title="Permalink to this heading">#</a></h2>
-<p>Suppose <span class="math notranslate nohighlight">\(X_t\)</span> is an <span class="math notranslate nohighlight">\(n\)</span> dimensional, stationary, ergodic Markov process governed by the following relationship:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>update: 8:29pm</p>
+<!-- <br>
+
+# 1. Discrete Framework
+
+## 1.1 Functionals
+
+Suppose $X_t$ is an $n$ dimensional, stationary, ergodic Markov process governed by the following relationship:
+
+$$
 X_{t+1} = \phi \left(X_t, W_{t+1}\right),\tag{1}
-\]</div>
-<p>Where <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is a <span class="math notranslate nohighlight">\(k\)</span> dimensional i.i.d. shock process.</p>
-<aside class="margin sidebar">
-<p class="sidebar-title">Example 1</p>
-<p>A typical example of an additive functional is:</p>
-<div class="math notranslate nohighlight">
-\[
+$$
+
+Where $W_{t+1}$ is a $k$ dimensional i.i.d. shock process. 
+
+```{margin} Example 1
+A typical example of an additive functional is:
+
+$$
 Y_{t+1} - Y_t = \beta(X_t) + \alpha(X_t) \cdot W_{t+1}
-\]</div>
-</aside>
-<p>We call a process <span class="math notranslate nohighlight">\(Y\)</span> an <strong>additive functional</strong> if it evolves as:</p>
-<div class="math notranslate nohighlight">
-\[
+$$
+
+```
+
+We call a process $Y$ an **additive functional** if it evolves as:
+
+$$
 Y_{t+1} - Y_t = \kappa \left(X_t, W_{t+1}\right),\tag{2}
-\]</div>
-<p>Where <span class="math notranslate nohighlight">\(Y_{t+1} - Y_t\)</span> inherits the stationarity of <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
-<p>We are interested in macroeconomic processes whose <em>logarithms</em> behave as in equation 2. We can think of these as processes whose percentage change over time is stationary.</p>
-<p>We might also be interested in the <em>levels</em> of these processes <span class="math notranslate nohighlight">\(\exp(Y)\)</span>, which we call <strong>multiplicative functionals</strong>, satisfying:</p>
-<div class="math notranslate nohighlight">
-\[
+$$
+
+Where $Y_{t+1} - Y_t$ inherits the stationarity of $X_t$.
+
+We are interested in macroeconomic processes whose *logarithms* behave as in equation 2. We can think of these as processes whose percentage change over time is stationary.
+
+We might also be interested in the *levels* of these processes $\exp(Y)$, which we call **multiplicative functionals**, satisfying:
+
+$$
 \exp(Y_t+1)/\exp(Y_t) = \exp(\kappa \left(X_t, W_{t+1}\right)),\tag{3}
-\]</div>
-<p>In particular, we are interested in two cases of multiplicative functionals:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(G\)</span>, which captures macroeconomic growth</p></li>
-<li><p><span class="math notranslate nohighlight">\(S\)</span>, which captures stochastic discounting</p></li>
-</ul>
+$$
+
+In particular, we are interested in two cases of multiplicative functionals:
+- $G$, which captures macroeconomic growth
+- $S$, which captures stochastic discounting
+
 <br>
-</section>
-<section id="parameterizing-shock-exposure">
-<h2>1.2 Parameterizing Shock Exposure<a class="headerlink" href="#parameterizing-shock-exposure" title="Permalink to this heading">#</a></h2>
+
+## 1.2 Parameterizing Shock Exposure
+
 <!-- Consider an asset whose payoff in each period evolves as a multiplicative functional:
 
 $$
@@ -445,7 +445,6 @@ $$ -->
 \]</div>
 <!-- The first of these applications provides a distributional version of an impulse response function.  It matches exactly for the linear, log-normal model, in which case the $x$ plays no role. Once we include nonlinearities, the state $x$ can matter along with the time horizon $t$.  The second application explores the intertemporal asset pricing by determining the implied compensations for the changes in the exposures.  -->
 <br>
-</section>
 <section id="shock-exposure-elasticities">
 <h2>1.3 Shock-Exposure Elasticities<a class="headerlink" href="#shock-exposure-elasticities" title="Permalink to this heading">#</a></h2>
 <p>We are interested in determining the percentage change in expected payoff <span class="math notranslate nohighlight">\({\mathbb E} \left[ \left( G_t \right) H_1({\sf r}) \mid X_0 \right]\)</span> corresponding to a small increase in <span class="math notranslate nohighlight">\(W_1\)</span> in direction <span class="math notranslate nohighlight">\(\nu(X_0)\)</span>. Therefore, we want to compute the following <strong>shock-exposure elasticity</strong>:</p>
@@ -508,11 +507,11 @@ R_t = \frac {{\mathbb E} [G_t]} {{\mathbb E} [S_t G_t]}
 \]</div>
 <p>Finally, consider how a change in shock exposure changes the value of an asset to an investor. This can be evaluated as the difference between the change in payoff and the change in risk premium corresponding to a small change in <span class="math notranslate nohighlight">\(r\)</span>. Thus the <strong>value elasticity</strong> is given by:</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-\begin{align}
-\frac d {d{\sf r}}\log {\mathbb E} \left[ S_t G_t  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} = {\varepsilon}_{g}^+(x,t) - {\varepsilon}_{p}^+(x,t)\\{\varepsilon}_{p}^+(x,t) = \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( G_t \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
+\[ \begin{align}\begin{aligned}\begin{split}
+\begin{align*}
+&amp; \frac d {d{\sf r}}\log {\mathbb E} \left[ S_t G_t  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} = {\varepsilon}_{g}^+(x,t) - {\varepsilon}_{p}^+(x,t) \\ \end{split}\\{\varepsilon}_{p}^+(x,t) = &amp; \frac d {d{\sf r}}\log {\mathbb E} \left[ \left( G_t \right)  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0}
 - \frac d {d{\sf r}}\log {\mathbb E} \left[ S_t G_t  H_t({\sf r}) \mid X_0 \right]\vert_{{\sf r} = 0} . 
-\end{align}
+\end{align*}
 \end{aligned}\end{align} \]</div>
 <!-- 
 where
@@ -530,6 +529,7 @@ $$
 {\mathbb E} \left[ \left( \frac {S_t G_t}{S_0 G_0}\right) H_1({\sf r}) \mid X_0 \right].
 \end{align}
 $$ -->
+<p>–&gt;</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -555,9 +555,9 @@ $$ -->
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="continuous-time-framework">
-<h1>2. Continuous-time framework<a class="headerlink" href="#continuous-time-framework" title="Permalink to this heading">#</a></h1>
+<h1>1. Continuous-time framework<a class="headerlink" href="#continuous-time-framework" title="Permalink to this heading">#</a></h1>
 <section id="basic-setup">
-<h2>2.1 Basic setup<a class="headerlink" href="#basic-setup" title="Permalink to this heading">#</a></h2>
+<h2>1.1 Basic setup<a class="headerlink" href="#basic-setup" title="Permalink to this heading">#</a></h2>
 <p>Suppose a continuous-time diffusion model:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -612,7 +612,7 @@ dY_t &amp;= \mu_M(X_t)dt - \frac 1 2 \vert\sigma_M (X_t)\vert^2  + \sigma_M (X_t
 <p>where <span class="math notranslate nohighlight">\(\phi_0 = 1\)</span> for (4) and <span class="math notranslate nohighlight">\(\phi_0 = \nu \cdot \sigma_M\)</span> for (5).</p>
 </section>
 <section id="stochastic-discount-factor-process">
-<h2>2.2 Stochastic discount factor process<a class="headerlink" href="#stochastic-discount-factor-process" title="Permalink to this heading">#</a></h2>
+<h2>1.2 Stochastic discount factor process<a class="headerlink" href="#stochastic-discount-factor-process" title="Permalink to this heading">#</a></h2>
 <p>Represent the stochastic discount factor evolution and the evolution of its logarithm as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -670,7 +670,7 @@ d \log N_t &amp;= - \frac 1 2 \vert \sigma_N(X_t) \vert^2 dt + \sigma_N(X_t) dW_
 <p>Use <span class="math notranslate nohighlight">\(N\)</span> in place of <span class="math notranslate nohighlight">\(S\)</span> to obtain the uncertainty component to the shock price elasticities.</p>
 </section>
 <section id="shock-exposure-elasticity-and-price-elasticity">
-<h2>2.3 Shock Exposure Elasticity and Price Elasticity<a class="headerlink" href="#shock-exposure-elasticity-and-price-elasticity" title="Permalink to this heading">#</a></h2>
+<h2>1.3 Shock Exposure Elasticity and Price Elasticity<a class="headerlink" href="#shock-exposure-elasticity-and-price-elasticity" title="Permalink to this heading">#</a></h2>
 <p>For this continuous-time setup, the code computes the shock exposure elasticity or impulse response function for a process, <span class="math notranslate nohighlight">\(G\)</span>, using formula \eqref{eq:shock1} and \eqref{eq:shock2}, the corresponding shock price elasticity using</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -682,9 +682,9 @@ d \log N_t &amp;= - \frac 1 2 \vert \sigma_N(X_t) \vert^2 dt + \sigma_N(X_t) dW_
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">
-<h1>3. An Illustration using an intermediary asset pricing model [3], [4], [5]<a class="headerlink" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5" title="Permalink to this heading">#</a></h1>
+<h1>2. An Illustration using an intermediary asset pricing model [3], [4], [5]<a class="headerlink" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5" title="Permalink to this heading">#</a></h1>
 <section id="computing-shock-elasticities-computeelas">
-<h2>3.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code><a class="headerlink" href="#computing-shock-elasticities-computeelas" title="Permalink to this heading">#</a></h2>
+<h2>2.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code><a class="headerlink" href="#computing-shock-elasticities-computeelas" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">computeElas</span></code> is the function that computes the shock exposure and price elasticities (both the first and second types). It takes in the following arguments:</p>
 <p><code class="docutils literal notranslate"><span class="pre">stateMat</span></code>: (Tuple)</p>
 <ul class="simple">
@@ -978,7 +978,7 @@ Wall time: 16min 59s
 </div>
 </section>
 <section id="shock-elasticities-plots">
-<h2>3.2 Shock Elasticities Plots<a class="headerlink" href="#shock-elasticities-plots" title="Permalink to this heading">#</a></h2>
+<h2>2.2 Shock Elasticities Plots<a class="headerlink" href="#shock-elasticities-plots" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1305,7 +1305,7 @@ Wall time: 16min 59s
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Shock Elasticity Computation</p>
+        <p class="prev-next-title">Shock Elasticity: Discrete Time</p>
       </div>
     </a>
 </div></div>
@@ -1326,23 +1326,20 @@ Wall time: 16min 59s
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-framework">1. Discrete Framework</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functionals">1.1 Functionals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterizing-shock-exposure">1.2 Parameterizing Shock Exposure</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities: Continuous Time</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticities">1.3 Shock-Exposure Elasticities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-price-elasticities">1.4 Shock-Price Elasticities</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">2. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">2.1 Basic setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">2.2 Stochastic discount factor process</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticity-and-price-elasticity">2.3 Shock Exposure Elasticity and Price Elasticity</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">1. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">1.1 Basic setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">1.2 Stochastic discount factor process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticity-and-price-elasticity">1.3 Shock Exposure Elasticity and Price Elasticity</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">3. An Illustration using an intermediary asset pricing model [3], [4], [5]</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-shock-elasticities-computeelas">3.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities-plots">3.2 Shock Elasticities Plots</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">2. An Illustration using an intermediary asset pricing model [3], [4], [5]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-shock-elasticities-computeelas">2.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities-plots">2.2 Shock Elasticities Plots</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>

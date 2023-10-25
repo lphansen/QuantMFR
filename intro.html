@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Uncertain Expansion Methods" href="theory/uncertainexpansion.html" />
+    <link rel="next" title="Uncertain Expansion Theory" href="theory/uncertainexpansion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,12 +150,12 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="theory/uncertainexpansion.html">Uncertain Expansion Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/uncertainexpansion.html">Uncertain Expansion Theory</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="theory/quickguide.html">Uncertain Expansion Method: Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/quickguide.html">Numerical Solution: Expansion Suite</a></li>
 
 
 
@@ -163,14 +163,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticity</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="continuous_global_solution/shockelasticity.html">Shock Elasticity Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuous_global_solution/shockelasticity.html">Shock Elasticity: Discrete Time</a></li>
 
 
 
 
-
-<li class="toctree-l1"><a class="reference internal" href="continuous_global_solution/shockelasticitycontinuous.html">Shock Elasticities</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="continuous_global_solution/shockelasticitycontinuous.html">Shock Elasticities: Continuous Time</a></li>
 
 
 
@@ -332,22 +330,14 @@ document.write(`
 - <i>Shock-exposure elasticities</i>, which capture the exposure of macroeconomic processes to shocks over different investment horizons, and </li>
 - <i>Shock-price elasticities</i>, which capture changes in risk compensations associated with shock exposures over different investment horizons</li>
 <br> -->
-<p>First, we explain the theoretical framework for solving nonlinear DSGE models with uncertainty and computing shock elasticites.</p>
+<p>First, we explain the theoretical background and numerical solution of expansion method to solve nonlinear DSGE models with recursive utility function.</p>
 <ol class="arabic simple">
-<li><p><span class="xref myst">Introduction</span></p></li>
-<li><p><a class="reference internal" href="theory/uncertainexpansion.html"><span class="doc std std-doc">Uncertain Expansion</span></a></p></li>
-<li><p><span class="xref myst">Shock Elasticities</span></p></li>
+<li><p><a class="reference internal" href="theory/uncertainexpansion.html"><span class="doc std std-doc">Uncertain Expansion Theory</span></a></p></li>
+<li><p><a class="reference internal" href="theory/quickguide.html"><span class="doc std std-doc">Numerical Solution: Expansion Suite</span></a></p></li>
 </ol>
-<p>Second, we introduce toolboxes used to approximate solutions and compute shock elasticities in discrete time.</p>
-<ol class="arabic simple" start="4">
-<li><p><span class="xref myst">Quick Guide to Expansion</span></p></li>
-<li><p>[Computing Elasticities in Discrete Time]</p></li>
-</ol>
-<p>Then, we provide extensions via continuous time, two-capital models and financial intermediaries.</p>
-<ol class="arabic simple" start="6">
-<li><p>[Two Capital Model]</p></li>
-<li><p>[Computing Elasticities in Continuous TIme]</p></li>
-</ol>
+<p>Second, we introduce frameworks to solve price and exposure elasticity under discrete time and continuous time settings
+4. <span class="xref myst">Shock Elasticity: Discrete Time</span>
+5. <span class="xref myst">Shock Elasticity: Continuous Time</span></p>
 <br>
 <!-- <p>The series is divided into <i>discrete and local</i> and <i>continuous and global</i> methods. Local methods are based on perturbing around the steady state in order to approximate policy and valuation functions in a neighbourhood around the steady state, whereas global methods allow us to compute these functions across the domain.</p>
 <br><br> -->
@@ -393,7 +383,7 @@ You can find Professor Hansen's lecture notes <a href = "https://larspeterhansen
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Uncertain Expansion Methods</p>
+        <p class="prev-next-title">Uncertain Expansion Theory</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

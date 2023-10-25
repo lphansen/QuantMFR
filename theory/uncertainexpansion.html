@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Uncertain Expansion Methods &#8212; Quant Macro Finance</title>
+    <title>Uncertain Expansion Theory &#8212; Quant Macro Finance</title>
   
   
   
@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'theory/uncertainexpansion';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Uncertain Expansion Method: Computation" href="quickguide.html" />
+    <link rel="next" title="Numerical Solution: Expansion Suite" href="quickguide.html" />
     <link rel="prev" title="Quant Macro Finance" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -153,12 +153,12 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uncertain Expansion Methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uncertain Expansion Theory</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="quickguide.html">Uncertain Expansion Method: Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickguide.html">Numerical Solution: Expansion Suite</a></li>
 
 
 
@@ -166,16 +166,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticity</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Shock Elasticity Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Shock Elasticity: Discrete Time</a></li>
 
 
 
 
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Shock Elasticities</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Shock Elasticities: Continuous Time</a></li>
 
 
 
@@ -315,7 +311,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Uncertain Expansion Methods</h1>
+    <h1>Uncertain Expansion Theory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -325,7 +321,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Theory</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#small-noise-expansion">1 Small Noise Expansion</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
@@ -358,8 +354,8 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/uncertainexpansion.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-methods">
-<h1>Uncertain Expansion Methods<a class="headerlink" href="#uncertain-expansion-methods" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-theory">
+<h1>Uncertain Expansion Theory<a class="headerlink" href="#uncertain-expansion-theory" title="Permalink to this heading">#</a></h1>
 <p>A nonlinear DSGE model typically cannot be solved quasi-analytically.  We consider  a small-noise expansion method to find an approximate solution modified to incorporate recursive utility formulation motivated by robustness or risk concerns.</p>
 <p>test 5:24pm</p>
 <br><!-- # 1 Framework for Solving DSGE
@@ -836,7 +832,7 @@ In this section, we plot the exposure and the price elasticities of the consumpt
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Uncertain Expansion Method: Computation</p>
+        <p class="prev-next-title">Numerical Solution: Expansion Suite</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -858,7 +854,7 @@ In this section, we plot the exposure and the price elasticities of the consumpt
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Methods</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Theory</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#small-noise-expansion">1 Small Noise Expansion</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
