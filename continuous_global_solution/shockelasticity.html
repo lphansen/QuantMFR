@@ -172,8 +172,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
-
 <li class="toctree-l1"><a class="reference internal" href="shockelasticitycontinuous.html">Shock Elasticities</a></li>
 
 
@@ -330,14 +328,6 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticity">2. Shock Elasticity</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-framework">2.1 Analytical framework</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-behavior">2.2 Limiting Behavior</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-operator-mathbb-m-typically-has-a-solution-to-the-following-equation-mathbb-m-left-phi-1-e-x-1-phi-2-e-x-2-frac-1-2-x-1-phi-3-e-x-1-right">The operator <span class="math notranslate nohighlight">\({\mathbb M}\)</span> typically has a solution to the following equation:
-$$
-{\mathbb M} \left[\Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)’\Phi_3^e x_1\right]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#to-express-the-equation-of-interest-differently-consider-the-operator-mathbb-p-that-maps-phi-0-phi-1-x-1-phi-2-x-2-frac-1-2-x-1-phi-3-x-1-into-exp-left-mathbb-m-left-phi-0-phi-1-e-x-1-phi-2-x-2-frac-1-2-x-1-phi-3-x-1-right-right-rewrite-equation-6-as-mathbb-p-left-phi-1-e-x-1-phi-2-e-x-2-frac-1-2-x-1-phi-3-e-x-1-right">To express the equation of interest differently, consider the operator, <span class="math notranslate nohighlight">\({\mathbb P}\)</span> that maps <span class="math notranslate nohighlight">\(\Phi_{0} +\Phi_1 x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\)</span> into <span class="math notranslate nohighlight">\(\exp\left({\mathbb M} \left[ \Phi_{0} +\Phi_1^e x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\right] \right)\)</span>.   Rewrite equation (6) as:
-$$
-{\mathbb P} \left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)’\Phi_3^e x_1\right]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exposure-and-price-elasticities">2.3 Exposure and Price Elasticities</a></li>
 </ul>
 </li>
@@ -377,57 +367,67 @@ $$
 <p>We suppose a linear-quadratic specification of the state dynamics:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{aligned}
+\begin{align*}
 X_{t}^0&amp;= \bar{x}\\
 X_{t+1}^1&amp;=\Theta_{10}^x+\Theta_{11}^x X_{t}^1+\Sigma_{10}^x W_{t+1}\\
 X_{t+1}^2&amp;= \Theta_{20}^x+\Theta_{21}^x X_{t}^1+\Theta_{22}^xX_{t}^2+\Theta_{23}^x\left(X_{t}^1 \otimes X_{t}^1\right) +\Sigma_{20}^x W_{t+1}+\Sigma_{21}^x\left(X_{t}^1 \otimes W_{t+1}\right) +\Sigma_{22}^x\left(W_{t+1} \otimes W_{t+1}\right) .
-\end{aligned}\tag{1}
+\end{align*}
 \end{split}\]</div>
 <p>The code will take the coefficients as inputs.</p>
-<p>One way to construct such a system is to consider a family of the dynamic systems
-$<span class="math notranslate nohighlight">\(
+<p>One way to construct such a system is to consider a family of the dynamic systems</p>
+<div class="math notranslate nohighlight">
+\[
 X_{t+1}(\sf{q})=\psi \left[X_t(\sf{q}), \sf{q} W_{t+1}, \sf{q}\right]
-\)</span><span class="math notranslate nohighlight">\(
-parameterized by \)</span>\sf q<span class="math notranslate nohighlight">\(. Following [4], we calculate a second-order approximation of stochastic processes
-around the ``small noise'' limit \)</span>{\sf q} = 0<span class="math notranslate nohighlight">\(:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>parameterized by <span class="math notranslate nohighlight">\(\sf q\)</span>. Following [4], we calculate a second-order approximation of stochastic processes
+around the ``small noise’’ limit <span class="math notranslate nohighlight">\({\sf q} = 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 X_t(\mathrm {q}) \approx X_{0, t}+ {\sf q} X_{1, t}+\frac{{\sf q}^2}{2} X_{2, t}
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>X_{t}^m<span class="math notranslate nohighlight">\( is the date \)</span>t<span class="math notranslate nohighlight">\(, \)</span>m^{th}<span class="math notranslate nohighlight">\(-order derivatitve approximation. This gives a version of the system (1) where 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(X_{t}^m\)</span> is the date <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(m^{th}\)</span>-order derivatitve approximation. This gives a version of the system (1) where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
 \begin{aligned}
 \bar{x} = &amp;\  \psi(\bar x, 0, 0 ) \\
 \Theta_{11}^x = &amp;\  \psi_1 \\
 \Sigma_{10}^x = &amp;\  \psi_2\\
 \Theta_{10}^x = &amp;\  \psi_3 
-\end{aligned}
-and \)</span>\psi_i<span class="math notranslate nohighlight">\( is the derivative of \)</span>\psi<span class="math notranslate nohighlight">\( with respect to argument \)</span>i<span class="math notranslate nohighlight">\( evaluated at \)</span>(\bar x, 0, 0).$  There are analogous formulas for the remaining matrices.</p>
-<p>For the purposes of the code we take the dynamic state evolution as a starting point with state vector
-$<span class="math notranslate nohighlight">\(
+\end{aligned} 
+\end{split}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\psi_i\)</span> is the derivative of <span class="math notranslate nohighlight">\(\psi\)</span> with respect to argument <span class="math notranslate nohighlight">\(i\)</span> evaluated at <span class="math notranslate nohighlight">\((\bar x, 0, 0)\)</span>.  There are analogous formulas for the remaining matrices.</p>
+<p>For the purposes of the code we take the dynamic state evolution as a starting point with state vector</p>
+<div class="math notranslate nohighlight">
+\[
 X_t = \begin{bmatrix} X_{t}^0 \cr X_{t}^1 \cr X_{t}^2 \end{bmatrix}. 
-\)</span>$
-as the Markov state with evolution</p>
-<p>We suppose that the logarithms of macroeconomic and stochastic discount factor processes that interest us grow or decay stochastically over time with stationary increments.  Let <span class="math notranslate nohighlight">\(Y\)</span> be the logarithm of such a process. The process <span class="math notranslate nohighlight">\(Y\)</span> will display linear growth or decay. We refer to its exponential <span class="math notranslate nohighlight">\(M = \exp(Y)\)</span> as a multiplicative process.  We use multiplicative processes to capture growth or decay in levels. We presume that
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>as the Markov state with evolution</p>
+<p>We suppose that the logarithms of macroeconomic and stochastic discount factor processes that interest us grow or decay stochastically over time with stationary increments.  Let <span class="math notranslate nohighlight">\(Y\)</span> be the logarithm of such a process. The process <span class="math notranslate nohighlight">\(Y\)</span> will display linear growth or decay. We refer to its exponential <span class="math notranslate nohighlight">\(M = \exp(Y)\)</span> as a multiplicative process.  We use multiplicative processes to capture growth or decay in levels. We presume that</p>
+<div class="math notranslate nohighlight">
+\[
 Y_{t+1} - Y_t = \Theta_0^y + \Theta_{1}^y X_{1,t} + \Theta_{2}^y X_{2,t} + \left( X_{1,t} \right)' \Theta_{3}^y X_{1,t} + \Sigma_0^y W_{t+1} + \left(X_{1,t} \right)' \Sigma_1^y W_{t+1} + \left( W_{t+1} \right)' \Sigma_2^y W_{t+1} \tag{2}
-\)</span>$</p>
-<p>Again we could derive this by embedding the <span class="math notranslate nohighlight">\(Y\)</span> process in a parameterized family of processes with increments given by
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>Again we could derive this by embedding the <span class="math notranslate nohighlight">\(Y\)</span> process in a parameterized family of processes with increments given by</p>
+<div class="math notranslate nohighlight">
+\[
 Y_{t+1}(\sf q)-Y_t({\sf q})=\kappa\left[X_t({\sf q}), {\sf q} W_{t+1}, {\sf q}\right]
-\)</span><span class="math notranslate nohighlight">\(
-We approximate the resulting processes as:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>We approximate the resulting processes as:</p>
+<div class="math notranslate nohighlight">
+\[
 Y_{t+1}(\mathrm q)-Y_t({\sf q}) \approx Y_{t+1}^0-Y_{t}^0+ {\sf q} (Y_{t+1}^1 -Y_{t}^1)+\frac{{\sf q}^2}{2} (Y_{t+1}^2-Y_{t}^2)
-\)</span><span class="math notranslate nohighlight">\(
-Following the steps of our approximation of \)</span>X<span class="math notranslate nohighlight">\(, we write
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Following the steps of our approximation of <span class="math notranslate nohighlight">\(X\)</span>, we write</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned} 
 \Theta_0^y &amp;=  \kappa\left({\bar x},0,0 \right) &amp; \Sigma_0^y &amp;=  \kappa_2  \\
 \Theta_1^y &amp;=  \kappa_1 &amp; \Sigma_1^y &amp;=  \kappa_{12} \\
 \Theta_2^y &amp;=  \kappa_{1} &amp; \Sigma_2^y &amp;=  \frac 1 2 \kappa_{22} \\ 
 \Theta_3^y &amp;=   \frac 1 2 \kappa_{1,1}  &amp;  &amp;
 \end{aligned}
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\kappa_i<span class="math notranslate nohighlight">\( is the derivative of \)</span>\kappa<span class="math notranslate nohighlight">\( with respect to argument \)</span>i<span class="math notranslate nohighlight">\( evaluated at \)</span>(\bar x, 0, 0)<span class="math notranslate nohighlight">\( and similarly for the second derivatives.  We set \)</span>{\sf q} = 1$.</p>
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\kappa_i\)</span> is the derivative of <span class="math notranslate nohighlight">\(\kappa\)</span> with respect to argument <span class="math notranslate nohighlight">\(i\)</span> evaluated at <span class="math notranslate nohighlight">\((\bar x, 0, 0)\)</span> and similarly for the second derivatives.  We set <span class="math notranslate nohighlight">\({\sf q} = 1\)</span>.</p>
 <p>In what follows, <span class="math notranslate nohighlight">\(M\)</span> will be a macro growth process, a stochastic discount factor process, or a product of the two. The user inputs are the quadratic specifications in equation (1) and equation (2).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -485,41 +485,52 @@ where \)</span>\kappa_i<span class="math notranslate nohighlight">\( is the deri
 <section id="analytical-framework">
 <h2>2.1 Analytical framework<a class="headerlink" href="#analytical-framework" title="Permalink to this heading">#</a></h2>
 <p>Shock elasticities are used to quantify the date <span class="math notranslate nohighlight">\(t\)</span> impact on values of exposure to the shock <span class="math notranslate nohighlight">\(
-(\alpha_0 + \alpha_1 X_0) \cdot W_1\)</span> at date one. It has the form shown in equation 3:
-$<span class="math notranslate nohighlight">\(
+(\alpha_0 + \alpha_1 X_0) \cdot W_1\)</span> at date one. It has the form shown in equation 3:</p>
+<div class="math notranslate nohighlight">
+\[
 \varepsilon( x, t)=   \frac{(\alpha_0 + \alpha_1 x) \cdot {\mathbb E}\left[\left( \frac {M_t}{M_0}\right) W_1 \mid X_0 = x\right]}{{\mathbb E} \left(\frac {M_t}{M_0}  \mid X_0 = x\right)}\tag{3}
-\)</span>$</p>
-<p>Using the linear-quadratic dynamics of section 1, the computer software computes the logarithm of the denominator of formula (3):
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>Using the linear-quadratic dynamics of section 1, the computer software computes the logarithm of the denominator of formula (3):</p>
+<div class="math notranslate nohighlight">
+\[
 \log {\mathbb E}\left(\frac {M_t}{M_1}  \mid X_1 =x\right) = \Phi_{0, t}^*+\Phi_{1, t}^* x_1 +\Phi_{2, t}^*x_2 +
 {\frac 1 2} (x_1)' \Phi_{3, t}^*x_1 \tag{4}
-\)</span><span class="math notranslate nohighlight">\(
-recursively. Form
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>recursively. Form</p>
+<div class="math notranslate nohighlight">
+\[
 {\mathbb M} \left[ \Phi_{0} +\Phi_1 x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\right] \equiv
 \log {\mathbb E} \left[\left( \frac {M_2}{M_1}\right)\exp\left[\Phi_{0} +\Phi_1 x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\right] \mid X_0 = x \right]  
-\)</span><span class="math notranslate nohighlight">\(
-Conveniently, we can express the outcomes as:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>Conveniently, we can express the outcomes as:</p>
+<div class="math notranslate nohighlight">
+\[
 {\mathbb M} \left[ \Phi_{0} +\Phi_1 x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\right] =
 {\widetilde \Phi}_{0} + {\widetilde \Phi}_1 x_1+ {\widetilde \Phi}_2 x_2 + {\frac 1 2} (x_1)'{\widetilde \Phi}_3 x_1
-\)</span><span class="math notranslate nohighlight">\(
-for some specification of \)</span>{\widetilde \Phi}_i<span class="math notranslate nohighlight">\(, \)</span>i=0,1,2,3<span class="math notranslate nohighlight">\(. In words, the \)</span>{\mathbb M}$ operator maps linear-quadratic functions into linear-quadratic functions.  The code uses this mapping repeatedly.</p>
-<p>By a direct application of the Law of Iterated Expectations we have that
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>for some specification of <span class="math notranslate nohighlight">\({\widetilde \Phi}_i\)</span>, <span class="math notranslate nohighlight">\(i=0,1,2,3\)</span>. In words, the <span class="math notranslate nohighlight">\({\mathbb M}\)</span> operator maps linear-quadratic functions into linear-quadratic functions.  The code uses this mapping repeatedly.</p>
+<p>By a direct application of the Law of Iterated Expectations we have that</p>
+<div class="math notranslate nohighlight">
+\[
 \log {\mathbb E}\left(\frac {M_t}{M_1}  \mid X_1 =x\right) = {\mathbb M}^{t-1}[1]
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>{\mathbb M}^{t-1}[1]<span class="math notranslate nohighlight">\( means to apply the operator \)</span>{\mathbb M}<span class="math notranslate nohighlight">\( \)</span>t-1<span class="math notranslate nohighlight">\( times in succession to a function that is identically one.  Observe that \)</span>{\mathbb M}^{t-1}[1]<span class="math notranslate nohighlight">\( is a function of \)</span>x$.</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\({\mathbb M}^{t-1}[1]\)</span> means to apply the operator <span class="math notranslate nohighlight">\({\mathbb M}\)</span> <span class="math notranslate nohighlight">\(t-1\)</span> times in succession to a function that is identically one.  Observe that <span class="math notranslate nohighlight">\({\mathbb M}^{t-1}[1]\)</span> is a function of <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <p>The function <em>_Φ_star</em> defined below calculates the linear-quadratic dynamic coefficients in <span class="math notranslate nohighlight">\(\mathbb{M}\)</span> mappings and iterations.</p>
 <p>To complete the calculation of the elasticity,
-note that
-$<span class="math notranslate nohighlight">\(\frac{{\mathbb E}\left[\left(\frac { M_t}{M_0}\right)  W_1 \mid X_0=x\right]}{{\mathbb E}\left[\left(\frac {M_t}{M_0}\right)  \mid X_0=x\right]}=
-\frac{{\mathbb E}\left[ \left(\frac {M_1}{M_0}\right)  {\mathbb E}\left(\frac{M_t}{M_1} \mid X_1\right) W_1 \mid X_0=x\right]}{{\mathbb E}\left[\left(\frac {M_1}{M_0}\right)  E\left(\frac{M_t}{M_1} \mid X_1\right) \mid X_0=x\right]} .\)</span><span class="math notranslate nohighlight">\(
-This leads us to construct the nonegative random variable:
-\)</span><span class="math notranslate nohighlight">\(L_{t}\equiv\frac{\left(\frac {M_1}{M_0}\right) \exp\left[ {\mathbb M}^{t-1}[1](X_1) \right]}{{\mathbb E}\left[\left(\frac {M_1}{M_0}\right) \exp\left[ {\mathbb M}^{t-1}[1](X_1) \right]
- \mid X_0=x\right]}\tag{5}\)</span><span class="math notranslate nohighlight">\(
-Notice that \)</span>L_{t}<span class="math notranslate nohighlight">\( depends only date one information and has expectation one conditioned on date zero information. Multiplying this positive random
-variable by \)</span>W_1<span class="math notranslate nohighlight">\( and taking expectations is equivalent to changing the conditional probability distribution and evaluating the conditional expectation of \)</span>W_1<span class="math notranslate nohighlight">\( under this change of measure. Since \)</span>W_1<span class="math notranslate nohighlight">\( is normally distributed, the exponential quadratic construction of \)</span>L_{t}<span class="math notranslate nohighlight">\( implies that \)</span>W_1<span class="math notranslate nohighlight">\( remains normally distributed but with a different mean and covariance matrix.  The computer codes use this observation to evaluate formula (5) by taking an altered conditional expectation of \)</span>W_1<span class="math notranslate nohighlight">\(.  The derivation details to compute the conditional moments under the change of probability measure implied by \)</span>L_t$  can be found in [2], Appendix B, and [3], Appendix A.</p>
+note that</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{{\mathbb E}\left[\left(\frac { M_t}{M_0}\right)  W_1 \mid X_0=x\right]}{{\mathbb E}\left[\left(\frac {M_t}{M_0}\right)  \mid X_0=x\right]}=
+\frac{{\mathbb E}\left[ \left(\frac {M_1}{M_0}\right)  {\mathbb E}\left(\frac{M_t}{M_1} \mid X_1\right) W_1 \mid X_0=x\right]}{{\mathbb E}\left[\left(\frac {M_1}{M_0}\right)  E\left(\frac{M_t}{M_1} \mid X_1\right) \mid X_0=x\right]} .
+\]</div>
+<p>This leads us to construct the nonegative random variable:</p>
+<div class="math notranslate nohighlight">
+\[
+L_{t}\equiv\frac{\left(\frac {M_1}{M_0}\right) \exp\left[ {\mathbb M}^{t-1}[1](X_1) \right]}{{\mathbb E}\left[\left(\frac {M_1}{M_0}\right) \exp\left[ {\mathbb M}^{t-1}[1](X_1) \right]
+ \mid X_0=x\right]} 
+\]</div>
+<p>Notice that <span class="math notranslate nohighlight">\(L_{t}\)</span> depends only date one information and has expectation one conditioned on date zero information. Multiplying this positive random
+variable by <span class="math notranslate nohighlight">\(W_1\)</span> and taking expectations is equivalent to changing the conditional probability distribution and evaluating the conditional expectation of <span class="math notranslate nohighlight">\(W_1\)</span> under this change of measure. Since <span class="math notranslate nohighlight">\(W_1\)</span> is normally distributed, the exponential quadratic construction of <span class="math notranslate nohighlight">\(L_{t}\)</span> implies that <span class="math notranslate nohighlight">\(W_1\)</span> remains normally distributed but with a different mean and covariance matrix.  The computer codes use this observation to evaluate formula (5) by taking an altered conditional expectation of <span class="math notranslate nohighlight">\(W_1\)</span>.  The derivation details to compute the conditional moments under the change of probability measure implied by <span class="math notranslate nohighlight">\(L_t\)</span>  can be found in [2], Appendix B, and [3], Appendix A.</p>
 <p>For the purposes of the code, denote the conditional mean induced by <span class="math notranslate nohighlight">\(L_{t}\)</span> as <span class="math notranslate nohighlight">\(\mu_{t}^0 + \mu_{t}^1 x_1\)</span> and the conditional covariance matrix <span class="math notranslate nohighlight">\({\widetilde \Sigma}_t\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -569,30 +580,30 @@ variable by \)</span>W_1<span class="math notranslate nohighlight">\( and taking
 </section>
 <section id="limiting-behavior">
 <h2>2.2 Limiting Behavior<a class="headerlink" href="#limiting-behavior" title="Permalink to this heading">#</a></h2>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="the-operator-mathbb-m-typically-has-a-solution-to-the-following-equation-mathbb-m-left-phi-1-e-x-1-phi-2-e-x-2-frac-1-2-x-1-phi-3-e-x-1-right">
-<h1>The operator <span class="math notranslate nohighlight">\({\mathbb M}\)</span> typically has a solution to the following equation:
-$$
-{\mathbb M} \left[\Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)’\Phi_3^e x_1\right]<a class="headerlink" href="#the-operator-mathbb-m-typically-has-a-solution-to-the-following-equation-mathbb-m-left-phi-1-e-x-1-phi-2-e-x-2-frac-1-2-x-1-phi-3-e-x-1-right" title="Permalink to this heading">#</a></h1>
-<p>\eta^e +
-\left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)’\Phi_3^e x_1\right] \tag{6}
-$$</p>
-<p>The solution of interest when, it exists, can be deduced by iterating on the <span class="math notranslate nohighlight">\({\mathbb M}\)</span> operator allowing for a constant shift <span class="math notranslate nohighlight">\(\eta^e\)</span>.  This solution gives a characterization of the limiting elasticity.  Construct
-$<span class="math notranslate nohighlight">\(
+<p>The operator <span class="math notranslate nohighlight">\({\mathbb M}\)</span> typically has a solution to the following equation:</p>
+<div class="math notranslate nohighlight">
+\[
+{\mathbb M} \left[\Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)'\Phi_3^e x_1\right] 
+= 
+\eta^e + 
+ \left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)'\Phi_3^e x_1\right] \tag{6} 
+\]</div>
+<p>The solution of interest when, it exists, can be deduced by iterating on the <span class="math notranslate nohighlight">\({\mathbb M}\)</span> operator allowing for a constant shift <span class="math notranslate nohighlight">\(\eta^e\)</span>.  This solution gives a characterization of the limiting elasticity.  Construct</p>
+<div class="math notranslate nohighlight">
+\[
 L_{1,\infty} = \left(\frac {M_1}{M_0} \right)\left(\frac{\exp\left[\Phi_1^e X_{1,1} +\Phi_2^e X_{2,1} + {\frac 1 2} (X_{1,1})'\Phi_3^e X_{1,1} \right]}{ 
 \exp(\eta) \exp\left[ \Phi_1^e X_{1,0} +\Phi_2^e X_{2,0} + {\frac 1 2} (X_{1,0})'\Phi_3^e X_{1,0}\right]} \right) . 
-\)</span><span class="math notranslate nohighlight">\(
-The elasticities are given by conditional linear combinations of conditional expectations of \)</span>W_1$ under this limiting change of measure.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="to-express-the-equation-of-interest-differently-consider-the-operator-mathbb-p-that-maps-phi-0-phi-1-x-1-phi-2-x-2-frac-1-2-x-1-phi-3-x-1-into-exp-left-mathbb-m-left-phi-0-phi-1-e-x-1-phi-2-x-2-frac-1-2-x-1-phi-3-x-1-right-right-rewrite-equation-6-as-mathbb-p-left-phi-1-e-x-1-phi-2-e-x-2-frac-1-2-x-1-phi-3-e-x-1-right">
-<h1>To express the equation of interest differently, consider the operator, <span class="math notranslate nohighlight">\({\mathbb P}\)</span> that maps <span class="math notranslate nohighlight">\(\Phi_{0} +\Phi_1 x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\)</span> into <span class="math notranslate nohighlight">\(\exp\left({\mathbb M} \left[ \Phi_{0} +\Phi_1^e x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\right] \right)\)</span>.   Rewrite equation (6) as:
-$$
-{\mathbb P} \left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)’\Phi_3^e x_1\right]<a class="headerlink" href="#to-express-the-equation-of-interest-differently-consider-the-operator-mathbb-p-that-maps-phi-0-phi-1-x-1-phi-2-x-2-frac-1-2-x-1-phi-3-x-1-into-exp-left-mathbb-m-left-phi-0-phi-1-e-x-1-phi-2-x-2-frac-1-2-x-1-phi-3-x-1-right-right-rewrite-equation-6-as-mathbb-p-left-phi-1-e-x-1-phi-2-e-x-2-frac-1-2-x-1-phi-3-e-x-1-right" title="Permalink to this heading">#</a></h1>
-<p>\exp(\eta)
-\left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)’\Phi_3^e x_1\right]
-$<span class="math notranslate nohighlight">\(
-which is an eigenvalue equation where \)</span>\exp\left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)’\Phi_3^e x_1\right]<span class="math notranslate nohighlight">\( is a postive eigenfunction and \)</span>\exp(\eta)$ is a positive eigenvalue. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+\]</div>
+<p>The elasticities are given by conditional linear combinations of conditional expectations of <span class="math notranslate nohighlight">\(W_1\)</span> under this limiting change of measure.</p>
+<p>To express the equation of interest differently, consider the operator, <span class="math notranslate nohighlight">\({\mathbb P}\)</span> that maps <span class="math notranslate nohighlight">\(\Phi_{0} +\Phi_1 x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\)</span> into <span class="math notranslate nohighlight">\(\exp\left({\mathbb M} \left[ \Phi_{0} +\Phi_1^e x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\right] \right)\)</span>.   Rewrite equation (6) as:</p>
+<div class="math notranslate nohighlight">
+\[
+{\mathbb P} \left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)'\Phi_3^e x_1\right] 
+= 
+\exp(\eta) 
+ \left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)'\Phi_3^e x_1\right]
+\]</div>
+<p>which is an eigenvalue equation where <span class="math notranslate nohighlight">\(\exp\left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)'\Phi_3^e x_1\right]\)</span> is a postive eigenfunction and <span class="math notranslate nohighlight">\(\exp(\eta)\)</span> is a positive eigenvalue. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>The codes below solve the eigenvalue problem using the  <em>M_mapping</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -687,7 +698,7 @@ which is an eigenvalue equation where \)</span>\exp\left[ \Phi_1^e x_1+\Phi_2^e 
 </div>
 </div>
 </div>
-<p>The function <em>_elasticity_coeff</em> defined below calculates the conditional mean induced by <span class="math notranslate nohighlight">\(L_{t}\)</span> as <span class="math notranslate nohighlight">\(\mu_{0,t} + \mu_{1,t} x_1\)</span> and the covariance matrix as <span class="math notranslate nohighlight">\({\widetilde \Sigma}_{t}.\)</span></p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">\_elasticity\_coeff</span></code> defined below calculates the conditional mean induced by <span class="math notranslate nohighlight">\(L_{t}\)</span> as <span class="math notranslate nohighlight">\(\mu_{0,t} + \mu_{1,t} x_1\)</span> and the covariance matrix as <span class="math notranslate nohighlight">\({\widetilde \Sigma}_{t}.\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_elasticity_coeff</span><span class="p">(</span><span class="n">log_M_growth</span><span class="p">,</span> <span class="n">X1_tp1</span><span class="p">,</span> <span class="n">X2_tp1</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
@@ -769,6 +780,7 @@ which is an eigenvalue equation where \)</span>\exp\left[ \Phi_1^e x_1+\Phi_2^e 
 </div>
 </div>
 </div>
+</section>
 <section id="exposure-and-price-elasticities">
 <h2>2.3 Exposure and Price Elasticities<a class="headerlink" href="#exposure-and-price-elasticities" title="Permalink to this heading">#</a></h2>
 <p>We consider two types of multiplicative processes,  one that captures macroeconomic growth, denoted by <span class="math notranslate nohighlight">\(G\)</span>, and another that captures stochastic discounting, denoted by <span class="math notranslate nohighlight">\(S\)</span>.</p>
@@ -779,20 +791,26 @@ which is an eigenvalue equation where \)</span>\exp\left[ \Phi_1^e x_1+\Phi_2^e 
 </ul>
 <p>Consider the pricing of a vector of payoffs <span class="math notranslate nohighlight">\(G_tW_1\)</span> in comparison to the scalar payoff <span class="math notranslate nohighlight">\(G_t\)</span>.</p>
 <!-- - The **shock-exposure elasticity** is constructed as from the ratio of expected payoffs $E[G_tW_1 |X_0 =x]$ relative to $E [G_t | X_0 = x]$. -->
-<ul class="simple">
-<li><p>The <strong>shock-exposure elasticity</strong> is constructed as from the ratio of expected payoffs <span class="math notranslate nohighlight">\(E[G_tW_1 |X_0 =x]\)</span> relative to <span class="math notranslate nohighlight">\(E [G_t | X_0 = x]\)</span>. To calculate shock-exposure elasticity, the multiplicative functional <span class="math notranslate nohighlight">\(M\)</span> is set as <span class="math notranslate nohighlight">\(G\)</span>.
-$<span class="math notranslate nohighlight">\(
-  \varepsilon_{g}( x, t)=   \frac{(\alpha_0 + \alpha_1 x) \cdot {\mathbb E}\left[\left( \frac {G_t}{G_0}\right) W_1 \mid X_0 = x\right]}{{\mathbb E} \left(\frac {G_t}{G_0}  \mid X_0 = x\right)}
-  \)</span>$</p></li>
+<ul>
+<li><p>The <strong>shock-exposure elasticity</strong> is constructed as from the ratio of expected payoffs <span class="math notranslate nohighlight">\(E[G_tW_1 |X_0 =x]\)</span> relative to <span class="math notranslate nohighlight">\(E [G_t | X_0 = x]\)</span>. To calculate shock-exposure elasticity, the multiplicative functional <span class="math notranslate nohighlight">\(M\)</span> is set as <span class="math notranslate nohighlight">\(G\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+    \varepsilon_{g}( x, t)=   \frac{(\alpha_0 + \alpha_1 x) \cdot {\mathbb E}\left[\left( \frac {G_t}{G_0}\right) W_1 \mid X_0 = x\right]}{{\mathbb E} \left(\frac {G_t}{G_0}  \mid X_0 = x\right)}
+    \]</div>
+</li>
 <li><p>This is done by the function <em>_exposure_elasticity</em>. This function uses the <em>_elasticity_coeff</em> defined in the last section.</p></li>
-<li><p>The <strong>shock-price elasticity</strong> includes an adjustment for the values of the payoffs <span class="math notranslate nohighlight">\(E [S_t G_t W_1 | X_0 = x]\)</span> relative to <span class="math notranslate nohighlight">\(E [S_t G_t | X_0 = x]\)</span>. To calculate shock-price elasticity, the multiplicative functional <span class="math notranslate nohighlight">\(M\)</span> is set as the product <span class="math notranslate nohighlight">\(SG\)</span>.
-$<span class="math notranslate nohighlight">\(
+<li><p>The <strong>shock-price elasticity</strong> includes an adjustment for the values of the payoffs <span class="math notranslate nohighlight">\(E [S_t G_t W_1 | X_0 = x]\)</span> relative to <span class="math notranslate nohighlight">\(E [S_t G_t | X_0 = x]\)</span>. To calculate shock-price elasticity, the multiplicative functional <span class="math notranslate nohighlight">\(M\)</span> is set as the product <span class="math notranslate nohighlight">\(SG\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
 \varepsilon_{sg}( x, t)=   \frac{(\alpha_0 + \alpha_1 x) \cdot {\mathbb E}\left[\left( \frac {S_tG_t}{S_0G_0}\right) W_1 \mid X_0 = x\right]}{{\mathbb E} \left(\frac {S_tG_t}{S_0G_0}  \mid X_0 = x\right)}.
-\)</span><span class="math notranslate nohighlight">\(
-The shock-price elasticity is:
-\)</span><span class="math notranslate nohighlight">\(
+\]</div>
+<p>The shock-price elasticity is:</p>
+<div class="math notranslate nohighlight">
+\[
 \varepsilon_{g}( x, t)-\varepsilon_{sg}( x, t)
-\)</span>$</p></li>
+\]</div>
+<ul class="simple">
 <li><p>This computation is done by the function <em>price_elasticity</em>. This function also uses the <em>_elasticity_coeff</em> defined in the last section.</p></li>
 </ul>
 <p>Since the shock elasticity function depends on <span class="math notranslate nohighlight">\(x_1\)</span>, the code computes percentiles of the shock elasticity based on the stationary distribution of <span class="math notranslate nohighlight">\(x_1\)</span>. This is done by the internal function <em>_compute_percentile</em> in <em>exposure_elasticity</em> and <em>price_elasticity</em>.</p>
@@ -991,19 +1009,21 @@ The shock-price elasticity is:
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="an-illustration-using-the-long-run-risk-model-1">
 <h1>3. An Illustration using the Long-Run Risk Model [1]<a class="headerlink" href="#an-illustration-using-the-long-run-risk-model-1" title="Permalink to this heading">#</a></h1>
-<p>This example uses the long-run risk model numerical results in the exponential-linear–quadratic framework to calculate shock elasticities. The variables are expressed in Python <em>LinQuadVar</em> objects, which store the coefficients in linear-quadratic structure. The <em>LinQuadVar</em> allows the add and multiply operations.  Using coefficients from [1], we form the approximation:
-$<span class="math notranslate nohighlight">\(
+<p>This example uses the long-run risk model numerical results in the exponential-linear–quadratic framework to calculate shock elasticities. The variables are expressed in Python <em>LinQuadVar</em> objects, which store the coefficients in linear-quadratic structure. The <em>LinQuadVar</em> allows the add and multiply operations.  Using coefficients from [1], we form the approximation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
 X^0_t = &amp; \begin{bmatrix}0\\1 \end{bmatrix}\cr
 X_{t+1}^1 = &amp; \begin{bmatrix} 0.979 &amp; 0 \\ 0 &amp; 0.987 \end{bmatrix} X_{t}^1 + \begin{bmatrix} 0.0343 &amp; 0 &amp; 0 &amp; 0  \\ 0 &amp;  .0378 &amp; 0 &amp; 0 \end{bmatrix} W_{t+1} \cr
 X_{t+1}^2 = &amp; \begin{bmatrix} 0.979 &amp; 0 \\ 0 &amp; 0.987 \end{bmatrix} X_{t}^2 + \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0.0343 &amp; 0 &amp; 0 &amp; 0  \\ 0 &amp;  0 &amp; 0 &amp; 0 &amp; 0 &amp;  0 &amp; 0 &amp; 0 \end{bmatrix} X_{t}^2\otimes W_{t+1}
 \end{aligned}, 
-\)</span><span class="math notranslate nohighlight">\(
-and the log consumption is approximately
-\)</span><span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>and the log consumption is approximately</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 {\widehat C}_{t+1} - {\widehat C}_t = .01 \times \left(\begin{bmatrix} 0.15\end{bmatrix} + \begin{bmatrix} 1 &amp; 0 \end{bmatrix} X_{t}^1 + \begin{bmatrix}0 &amp; 0 &amp; .78 &amp; 0 \end{bmatrix}W_{t+1}  + 
 \begin{bmatrix} .5 &amp; 0 \end{bmatrix} X_{t}^2 + {X_{t}^1}' \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0.39 &amp; 0  \end{bmatrix}W_{t+1} \right)
-\)</span>$</p>
+\end{split}\]</div>
 <section id="exposure-elasticity-for-consumption-growth">
 <h2>3.1 Exposure Elasticity for Consumption Growth<a class="headerlink" href="#exposure-elasticity-for-consumption-growth" title="Permalink to this heading">#</a></h2>
 <p>To calculate the exposure elasticity for consumption growth using the <em>exposure_elasticity</em> defined above, we need six inputs</p>
@@ -1164,10 +1184,11 @@ and the log consumption is approximately
 \[
 \log S_{t+1}-\log S_t=\log \beta-\rho\left(\widehat{C}_{t+1}-\widehat{C}_t\right)+(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)+\log N_{t+1}^*\tag{7}
 \]</div>
-<p>where
-$<span class="math notranslate nohighlight">\(
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
 \log N_{t+1}^*= (1-\gamma)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)
-\)</span>$</p>
+\]</div>
 <p>and <span class="math notranslate nohighlight">\(\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\)</span> is the logarithm of the risk adjustment continuation value. The random variable <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is positive and has expectation one conditioned on date <span class="math notranslate nohighlight">\(t\)</span> information. It implies a substantively interesting change in the probablity measure.[^2]</p>
 <p>[^2] We approximate the term <span class="math notranslate nohighlight">\(\frac{1}{1-\gamma}\log N_{t+1}^*\)</span>  differently than the <span class="math notranslate nohighlight">\(\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\)</span> in the <span class="math notranslate nohighlight">\((\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\)</span> term.  We use an approximation of the former term that ensures <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is positive and has conditional expectation one.</p>
 <div class="cell docutils container">
@@ -1417,14 +1438,6 @@ Current paramter settings
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticity">2. Shock Elasticity</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-framework">2.1 Analytical framework</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-behavior">2.2 Limiting Behavior</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-operator-mathbb-m-typically-has-a-solution-to-the-following-equation-mathbb-m-left-phi-1-e-x-1-phi-2-e-x-2-frac-1-2-x-1-phi-3-e-x-1-right">The operator <span class="math notranslate nohighlight">\({\mathbb M}\)</span> typically has a solution to the following equation:
-$$
-{\mathbb M} \left[\Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)’\Phi_3^e x_1\right]</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#to-express-the-equation-of-interest-differently-consider-the-operator-mathbb-p-that-maps-phi-0-phi-1-x-1-phi-2-x-2-frac-1-2-x-1-phi-3-x-1-into-exp-left-mathbb-m-left-phi-0-phi-1-e-x-1-phi-2-x-2-frac-1-2-x-1-phi-3-x-1-right-right-rewrite-equation-6-as-mathbb-p-left-phi-1-e-x-1-phi-2-e-x-2-frac-1-2-x-1-phi-3-e-x-1-right">To express the equation of interest differently, consider the operator, <span class="math notranslate nohighlight">\({\mathbb P}\)</span> that maps <span class="math notranslate nohighlight">\(\Phi_{0} +\Phi_1 x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\)</span> into <span class="math notranslate nohighlight">\(\exp\left({\mathbb M} \left[ \Phi_{0} +\Phi_1^e x_1+\Phi_2 x_2 + {\frac 1 2} (x_1)'\Phi_3 x_1\right] \right)\)</span>.   Rewrite equation (6) as:
-$$
-{\mathbb P} \left[ \Phi_1^e x_1+\Phi_2^e x_2 + {\frac 1 2} (x_1)’\Phi_3^e x_1\right]</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exposure-and-price-elasticities">2.3 Exposure and Price Elasticities</a></li>
 </ul>
 </li>
