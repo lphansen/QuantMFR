@@ -368,11 +368,11 @@ document.write(`
 <p>We suppose a linear-quadratic specification of the state dynamics:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
+\begin{aligned}
 X_{t}^0&amp;= \bar{x}\\
 X_{t+1}^1&amp;=\Theta_{10}^x+\Theta_{11}^x X_{t}^1+\Sigma_{10}^x W_{t+1}\\
 X_{t+1}^2&amp;= \Theta_{20}^x+\Theta_{21}^x X_{t}^1+\Theta_{22}^xX_{t}^2+\Theta_{23}^x\left(X_{t}^1 \otimes X_{t}^1\right) +\Sigma_{20}^x W_{t+1}+\Sigma_{21}^x\left(X_{t}^1 \otimes W_{t+1}\right) +\Sigma_{22}^x\left(W_{t+1} \otimes W_{t+1}\right) .
-\end{align*} \tag{1}
+\end{aligned} \tag{1}
 \end{split}\]</div>
 <p>The code will take the coefficients as inputs.</p>
 <p>One way to construct such a system is to consider a family of the dynamic systems</p>
