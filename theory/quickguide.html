@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'theory/quickguide';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sluggish Two Capital Model" href="../continuous_global_solution/Twocap.html" />
+    <link rel="next" title="Shock Elasticity Computation" href="../continuous_global_solution/shockelasticity.html" />
     <link rel="prev" title="Uncertain Expansion Methods" href="uncertainexpansion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -151,9 +151,8 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Theoretical Framework</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="theory.html">Recursive Utility Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uncertainexpansion.html">Uncertain Expansion Methods</a></li>
 
 
@@ -165,13 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Continuous Global Solution</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticity</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/Twocap.html">Sluggish Two Capital Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Shock Elasticity Computation</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/MFRSuite.html">Comparative Valuation Dynamics in Models with Financing Restrictions</a></li>
 
 
 
@@ -374,7 +372,7 @@ document.write(`
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/quickguide.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-method-computation">
 <h1><a class="toc-backref" href="#id1" role="doc-backlink">Uncertain Expansion Method: Computation</a><a class="headerlink" href="#uncertain-expansion-method-computation" title="Permalink to this heading">#</a></h1>
-<p>We previously covered the <a class="reference internal" href="theory.html"><span class="doc std std-doc">recursive utility framework</span></a> and the <a class="reference internal" href="uncertainexpansion.html"><span class="doc std std-doc">small-noise expansion method</span></a>. This section covers the usage of <code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code>, an open source Python toolbox which uses these methods to solve discrete nonlinear DSGE models.</p>
+<p>We previously covered the small-noise expansion method and the recursive utility framework. This section covers the usage of <code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code>, an open source Python toolbox which uses these methods to solve discrete nonlinear DSGE models.</p>
 <p>update: 5:34pm</p>
 <!-- For this notebook 
 
@@ -1420,11 +1418,11 @@ Iteration 2: error = 4.97379915e-14
       </div>
     </a>
     <a class="right-next"
-       href="../continuous_global_solution/Twocap.html"
+       href="../continuous_global_solution/shockelasticity.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Sluggish Two Capital Model</p>
+        <p class="prev-next-title">Shock Elasticity Computation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
