@@ -348,14 +348,16 @@ document.write(`
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/shockelasticity.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="shock-elasticities-continuous-time">
 <h1>Shock Elasticities: Continuous Time<a class="headerlink" href="#shock-elasticities-continuous-time" title="Permalink to this heading">#</a></h1>
-<!-- Shock elasticities quantify the (local) exposures of macroeconomic cash flows to shocks over alternative investment horizons and the corresponding prices or investors’ compensations. This Jupyter notebook provides the computations for the shock elasticities for models with equilibrium outcomes represented as a continuous-time diffusion. This notebook implements methods and formulas developed in [1] and [2].
-- Section 1 introduces shock elasticities, relates them to impulse response functions, and describes how they can be used to understand the transition mechanisms of shocks within an economic model and their implications for valuation.
-- Section 2 gives the continuous-time formulation with a Brownian motion information structure.    
-- Section 3 provides an illustration using an intermediary asset pricing model, see [3], [4], and [5]. --> 
-<p>Reference
-<a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/macroterm_main.pdf">Handbook</a></p>
-<p><a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/Examining-Macroeconomic-Models-through-the-Lens-of-Asset-Pricing.pdf">shock elas paper</a></p>
-<p><a class="reference external" href="https://link.springer.com/article/10.1007/s11579-014-0122-4">shock elas paper2</a></p>
+<p>Shock elasticities quantify the (local) exposures of macroeconomic cash flows to shocks over alternative investment horizons and the corresponding prices or investors’ compensations. This Jupyter notebook provides the computations for the shock elasticities for models with equilibrium outcomes represented as a continuous-time diffusion. This notebook implements methods and formulas developed in <a class="reference external" href="https://link.springer.com/article/10.1007/s11579-014-0122-4">[1]</a> and <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA8070">[2]</a>.</p>
+<ul class="simple">
+<li><p>Section 1 gives the continuous-time formulation with a Brownian motion information structure.</p></li>
+<li><p>Section 2 provides an illustration using an intermediary asset pricing model, see <a class="reference external" href="https://www.aeaweb.org/articles?id=10.1257/aer.104.2.379">[3]</a>, <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S1574004816300155">[4]</a>, and <a class="reference external" href="https://www.zccfe.uzh.ch/dam/jcr:c4a09093-fc00-4953-9f31-701dc0cd3fab/macro-model-print.pdf">[5]</a>.</p></li>
+</ul>
+<p>Please refer to the following paper for further details</p>
+<p><a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/macroterm_main.pdf">“Term Structure of Uncertainty in the Macroeconomy” joint research with Jaroslav Borovička – Handbook of Macroeconomics</a></p>
+<p>And also refer to</p>
+<p><a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/Examining-Macroeconomic-Models-through-the-Lens-of-Asset-Pricing.pdf">“Examining Macroeconomic Models Through the Lens of Asset Pricing” joint research with Jaroslav Borovička – Journal of Econometrics</a></p>
+<p><a class="reference external" href="https://link.springer.com/article/10.1007/s11579-014-0122-4">“Shock elasticities and impulse responses” joint research with Jaroslav Borovička and José A. Scheinkman - Mathematics and Financial Economics</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -1086,11 +1088,11 @@ Wall time: 16min 59s
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="reference">
 <h1>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h1>
-<p>[1], Borovička, Jaroslav, Lars Peter Hansen, and José A. Scheinkman. “Shock elasticities and impulse responses.” Mathematics and Financial Economics 8 (2014): 333-354.</p>
-<p>[2], Hansen, Lars Peter. “Dynamic valuation decomposition within stochastic economies.” Econometrica 80, no. 3 (2012): 911-967.</p>
+<p>[1] Borovička, Jaroslav, Lars Peter Hansen, and José A. Scheinkman. “Shock elasticities and impulse responses.” Mathematics and Financial Economics 8 (2014): 333-354.</p>
+<p>[2] Hansen, Lars Peter. “Dynamic valuation decomposition within stochastic economies.” Econometrica 80, no. 3 (2012): 911-967.</p>
 <p>[3], Brunnermeier, Markus K., and Yuliy Sannikov. “A macroeconomic model with a financial sector.” American Economic Review 104, no. 2 (2014): 379-421.</p>
-<p>[4], Brunnermeier, Markus K., and Yuliy Sannikov. “Macro, money, and finance: A continuous-time approach.” In Handbook of Macroeconomics, vol. 2, pp. 1497-1545. Elsevier, 2016.</p>
-<p>[5], Hansen, Lars Peter, Paymon Khorrami, and Fabrice Tourre. Comparative valuation dynamics in models with financing restrictions. Working Paper, 2018.</p>
+<p>[4] Brunnermeier, Markus K., and Yuliy Sannikov. “Macro, money, and finance: A continuous-time approach.” In Handbook of Macroeconomics, vol. 2, pp. 1497-1545. Elsevier, 2016.</p>
+<p>[5] Hansen, Lars Peter, Paymon Khorrami, and Fabrice Tourre. Comparative valuation dynamics in models with financing restrictions. Working Paper, 2018.</p>
 </section>
 
     <script type="text/x-thebe-config">

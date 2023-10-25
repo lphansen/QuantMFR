@@ -357,7 +357,7 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-theory">
 <h1>Uncertain Expansion Theory<a class="headerlink" href="#uncertain-expansion-theory" title="Permalink to this heading">#</a></h1>
 <p>A nonlinear DSGE model typically cannot be solved quasi-analytically.  We consider  a small-noise expansion method to find an approximate solution modified to incorporate recursive utility formulation motivated by robustness or risk concerns.</p>
-<p><a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2023/01/2023-01-19-recursive_expansion_LPH.pdf">Note</a></p>
+<p>Please refer to <a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2023/01/2023-01-19-recursive_expansion_LPH.pdf"><em>Exploring Recursive Utility</em></a>  note for detailed derivation and explanation.</p>
 <br><!-- # 1 Framework for Solving DSGE
 A DSGE model's equilibrium conditions can be described by a system of possibly nonlinear, expectational difference equations:
 
@@ -382,10 +382,12 @@ The second set of $n$ equations gives the dynamic evolution of the state vector.
 \[
 X_{t + 1}(q) = \psi[X_t(q), qW_{t + 1}, q] 
 \]</div>
-<p>Denote the zero-order expansion <span class="math notranslate nohighlight">\(q = 0\)</span> limit as:
-$<span class="math notranslate nohighlight">\(
+<p>We parameterize this familty so that <span class="math notranslate nohighlight">\(q = 1\)</span> gives the model of interest.</p>
+<p>Denote the zero-order expansion <span class="math notranslate nohighlight">\(q = 0\)</span> limit as:</p>
+<div class="math notranslate nohighlight">
+\[
 X_{t+1}^0 = \psi (X_t^0, 0, 0)
-\)</span>$</p>
+\]</div>
 <p>and assume there exists a second-order expansion of <span class="math notranslate nohighlight">\(X_t\)</span> around <span class="math notranslate nohighlight">\(q = 0\)</span>:
 $<span class="math notranslate nohighlight">\(
 X_t \approx X_t^0 + q X_t^1 + \frac{q^2}{2}X_t^2
@@ -445,7 +447,7 @@ V_t = \left[ (1 - \beta) \left(C_t\right)^{1-\rho}  + \beta  \left( R_t \right)^
 \[ 
 R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} .
 \]</div>
-<p>Note that <span class="math notranslate nohighlight">\(0&lt;\beta&lt;1\)</span> is a subjective discount factor, <span class="math notranslate nohighlight">\(\rho\)</span> is the inverse elasticity of intertemporal substitution and <span class="math notranslate nohighlight">\(\gamma\)</span> describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with logs of the above equation:</p>
+<p>Note that <span class="math notranslate nohighlight">\(0&lt;\beta&lt;1\)</span> is a subjective discount factor, <span class="math notranslate nohighlight">\(\rho\)</span> is the inverse elasticity of intertemporal substitution and <span class="math notranslate nohighlight">\(\gamma\)</span> describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with logs of the above equations:</p>
 <div class="math notranslate nohighlight">
 \[
 {\widehat  V}_t = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right]
@@ -471,7 +473,7 @@ Q_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \rho) \left({\wideha
 \[
 {\widehat C}_{t+1}^0 - {\widehat  C}_t^0  = \eta_c
 \]</div>
-<p>The order-zero approximation of (5), <span class="math notranslate nohighlight">\({\widehat  V}_t^0 - {\widehat  C}_t^0 =\eta_{v-c}\)</span>, is determined by</p>
+<p>The order-zero approximation, <span class="math notranslate nohighlight">\({\widehat  V}_t^0 - {\widehat  C}_t^0 =\eta_{v-c}\)</span>, is determined by</p>
 <div class="math notranslate nohighlight">
 \[
 \exp\left[(1-\rho) {\left( \eta_{v - c} \right) }\right] = {\frac {1 - \beta} { 1 - \beta \exp \left[ (1 - \rho) \eta_c \right]}} .
@@ -511,7 +513,7 @@ Q_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \rho) \left({\wideha
 <p>We guess and verify that</p>
 <div class="math notranslate nohighlight">
 \[
-\hat V_t^1 - \hat C _t ^1 = v_1'X_t^1 + v0
+\hat V_t^1 - \hat C _t ^1 = v_1'X_t^1 + v_0
 \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
@@ -521,6 +523,17 @@ v_1 = \lambda(I - \lambda\psi_{x'})^{-1} \kappa_{x'}
 <div class="math notranslate nohighlight">
 \[
 v_0 = \frac{\lambda}{(1 - \lambda)}(v_1' \psi_q + \kappa_q) + \frac{\lambda(1 - \gamma_0)}{2(1 - \lambda)}|v_1'\psi_{w'} + \kappa_{w'}|^2
+\]</div>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat V}_{t+1}^1 - {\widehat C}_t^1  = {\upsilon_1}' X_{t+1}^1 + \upsilon_0 + \kappa_{x'} X_t^1 + \kappa_{w'} W_{t+1} .
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat V}_{t+1}^1- {\widehat R}_t^1 = \left( {\upsilon_1}'\psi{_w'} + \kappa_{w'} \right) W_{t+1} - \left( \frac { 1 - \gamma_o } 2 \right)
+\vert  {\upsilon_1}'\psi{_w'} + \kappa_{w'} \vert^2 
 \]</div>
 </section>
 <section id="second-order-contribution">

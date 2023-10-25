@@ -20,7 +20,7 @@ First, we explain the theoretical background and numerical solution of expansion
 1. [Uncertain Expansion Theory](theory/uncertainexpansion.ipynb)
 2. [Numerical Solution: Expansion Suite](theory/quickguide.ipynb)
 
-Second, we introduce frameworks to solve price and exposure elasticity under discrete time and continuous time settings 
+Second, we introduce frameworks to solve price and exposure elasticities in both discrete time and continuous time. 
 
 3. [Shock Elasticity: Discrete Time](continuous_global_solution/shockelasticity.ipynb)
 4. [Shock Elasticity: Continuous Time](continuous_global_solution/shockelasticitycontinuous.ipynb) 

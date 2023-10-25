@@ -351,14 +351,17 @@ document.write(`
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/shockelasticity.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="shock-elasticity-discrete-time">
 <h1>Shock Elasticity: Discrete Time<a class="headerlink" href="#shock-elasticity-discrete-time" title="Permalink to this heading">#</a></h1>
-<!-- Shock elasticities quantify the (local) exposures of macroeconomic cash flows to shocks over alternative investment horizons and the corresponding prices or investors’ compensations. This Jupyter notebook provides the computations for the shock elasticities for models that are exponential-quadratic.   This model structure is particularly tractable with quasi-analytical solutions. This notebook implements methods and formulas developed in [2] and [3].    
-- Section 1 introduces the exponential–quadratic framework. It supposes this structure emerges as an approximation with the approximation taken as input into the computer code.  
-- Section 2 presents shock elasticity formulas for both exposure and price elasticities.
-- Section 3 provides an illustration using the long-run risk model [1]. -->
-<p>Reference
-<a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/macroterm_main.pdf">Handbook</a></p>
-<p><a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/Examining-Macroeconomic-Models-through-the-Lens-of-Asset-Pricing.pdf">shock elas paper</a></p>
-<p><a class="reference external" href="https://link.springer.com/article/10.1007/s11579-014-0122-4">shock elas paper2</a></p>
+<p>Shock elasticities quantify the (local) exposures of macroeconomic cash flows to shocks over alternative investment horizons and the corresponding prices or investors’ compensations. This Jupyter notebook provides the computations for the shock elasticities for models that are exponential-quadratic. This model structure is particularly tractable with quasi-analytical solutions. This notebook implements methods and formulas developed in <a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/macroterm_main.pdf">[2]</a> and <a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/Examining-Macroeconomic-Models-through-the-Lens-of-Asset-Pricing.pdf">[3]</a>.</p>
+<ul class="simple">
+<li><p>Section 1 introduces the exponential–quadratic framework. It supposes this structure emerges as an approximation with the approximation taken as input into the computer code.</p></li>
+<li><p>Section 2 presents shock elasticity formulas for both exposure and price elasticities.</p></li>
+<li><p>Section 3 provides an illustration using the long-run risk model <a class="reference external" href="https://www.jstor.org/stable/3694869">[1]</a>.</p></li>
+</ul>
+<p>Please refer to the following paper for further details</p>
+<p><a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/macroterm_main.pdf">“Term Structure of Uncertainty in the Macroeconomy” joint research with Jaroslav Borovička – Handbook of Macroeconomics</a></p>
+<p>And also refer to</p>
+<p><a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/Examining-Macroeconomic-Models-through-the-Lens-of-Asset-Pricing.pdf">“Examining Macroeconomic Models Through the Lens of Asset Pricing” joint research with Jaroslav Borovička – Journal of Econometrics</a></p>
+<p><a class="reference external" href="https://link.springer.com/article/10.1007/s11579-014-0122-4">“Shock elasticities and impulse responses” joint research with Jaroslav Borovička and José A. Scheinkman - Mathematics and Financial Economics</a></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="exponential-linear-quadratic-framework">
 <h1>1. Exponential-linear-quadratic Framework<a class="headerlink" href="#exponential-linear-quadratic-framework" title="Permalink to this heading">#</a></h1>
@@ -369,7 +372,7 @@ document.write(`
 X_{t}^0&amp;= \bar{x}\\
 X_{t+1}^1&amp;=\Theta_{10}^x+\Theta_{11}^x X_{t}^1+\Sigma_{10}^x W_{t+1}\\
 X_{t+1}^2&amp;= \Theta_{20}^x+\Theta_{21}^x X_{t}^1+\Theta_{22}^xX_{t}^2+\Theta_{23}^x\left(X_{t}^1 \otimes X_{t}^1\right) +\Sigma_{20}^x W_{t+1}+\Sigma_{21}^x\left(X_{t}^1 \otimes W_{t+1}\right) +\Sigma_{22}^x\left(W_{t+1} \otimes W_{t+1}\right) .
-\end{align*}
+\end{align*} \tag{1}
 \end{split}\]</div>
 <p>The code will take the coefficients as inputs.</p>
 <p>One way to construct such a system is to consider a family of the dynamic systems</p>
@@ -377,13 +380,13 @@ X_{t+1}^2&amp;= \Theta_{20}^x+\Theta_{21}^x X_{t}^1+\Theta_{22}^xX_{t}^2+\Theta_
 \[
 X_{t+1}(\sf{q})=\psi \left[X_t(\sf{q}), \sf{q} W_{t+1}, \sf{q}\right]
 \]</div>
-<p>parameterized by <span class="math notranslate nohighlight">\(\sf q\)</span>. Following [4], we calculate a second-order approximation of stochastic processes
+<p>parameterized by <span class="math notranslate nohighlight">\(\sf q\)</span>. We calculate a second-order approximation of stochastic processes
 around the ``small noise’’ limit <span class="math notranslate nohighlight">\({\sf q} = 0\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 X_t(\mathrm {q}) \approx X_{0, t}+ {\sf q} X_{1, t}+\frac{{\sf q}^2}{2} X_{2, t}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(X_{t}^m\)</span> is the date <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(m^{th}\)</span>-order derivatitve approximation. This gives a version of the system (1) where</p>
+<p>where <span class="math notranslate nohighlight">\(X_{t}^m\)</span> is the date <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(m^{th}\)</span>-order derivatitve approximation. This gives a version of the system where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} 
 \begin{aligned}
@@ -399,11 +402,11 @@ X_t(\mathrm {q}) \approx X_{0, t}+ {\sf q} X_{1, t}+\frac{{\sf q}^2}{2} X_{2, t}
 \[
 X_t = \begin{bmatrix} X_{t}^0 \cr X_{t}^1 \cr X_{t}^2 \end{bmatrix}. 
 \]</div>
-<p>as the Markov state with evolution</p>
+<p>as the Markov state with evolution.</p>
 <p>We suppose that the logarithms of macroeconomic and stochastic discount factor processes that interest us grow or decay stochastically over time with stationary increments.  Let <span class="math notranslate nohighlight">\(Y\)</span> be the logarithm of such a process. The process <span class="math notranslate nohighlight">\(Y\)</span> will display linear growth or decay. We refer to its exponential <span class="math notranslate nohighlight">\(M = \exp(Y)\)</span> as a multiplicative process.  We use multiplicative processes to capture growth or decay in levels. We presume that</p>
 <div class="math notranslate nohighlight">
 \[
-Y_{t+1} - Y_t = \Theta_0^y + \Theta_{1}^y X_{1,t} + \Theta_{2}^y X_{2,t} + \left( X_{1,t} \right)' \Theta_{3}^y X_{1,t} + \Sigma_0^y W_{t+1} + \left(X_{1,t} \right)' \Sigma_1^y W_{t+1} + \left( W_{t+1} \right)' \Sigma_2^y W_{t+1} \tag{2}
+Y_{t+1} - Y_t = \Theta_0^y + \Theta_{1}^y X_{1,t} + \Theta_{2}^y X_{2,t} + \left( X_{1,t} \right)' \Theta_{3}^y X_{1,t} + \Sigma_0^y W_{t+1} + \left(X_{1,t} \right)' \Sigma_1^y W_{t+1} + \left( W_{t+1} \right)' \Sigma_2^y W_{t+1}  \tag{2}
 \]</div>
 <p>Again we could derive this by embedding the <span class="math notranslate nohighlight">\(Y\)</span> process in a parameterized family of processes with increments given by</p>
 <div class="math notranslate nohighlight">
@@ -1186,8 +1189,8 @@ X_{t+1}^2 = &amp; \begin{bmatrix} 0.979 &amp; 0 \\ 0 &amp; 0.987 \end{bmatrix} X
 \[
 \log N_{t+1}^*= (1-\gamma)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)
 \]</div>
-<p>and <span class="math notranslate nohighlight">\(\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\)</span> is the logarithm of the risk adjustment continuation value. The random variable <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is positive and has expectation one conditioned on date <span class="math notranslate nohighlight">\(t\)</span> information. It implies a substantively interesting change in the probablity measure.[^2]</p>
-<p>[^2] We approximate the term <span class="math notranslate nohighlight">\(\frac{1}{1-\gamma}\log N_{t+1}^*\)</span>  differently than the <span class="math notranslate nohighlight">\(\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\)</span> in the <span class="math notranslate nohighlight">\((\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\)</span> term.  We use an approximation of the former term that ensures <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is positive and has conditional expectation one.</p>
+<p>and <span class="math notranslate nohighlight">\(\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\)</span> is the logarithm of the risk adjustment continuation value. The random variable <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is positive and has expectation one conditioned on date <span class="math notranslate nohighlight">\(t\)</span> information. It implies a substantively interesting change in the probablity measure.</p>
+<p>We approximate the term <span class="math notranslate nohighlight">\(\frac{1}{1-\gamma}\log N_{t+1}^*\)</span>  differently than the <span class="math notranslate nohighlight">\(\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\)</span> in the <span class="math notranslate nohighlight">\((\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\)</span> term.  We use an approximation of the former term that ensures <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is positive and has conditional expectation one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_SDF</span><span class="p">(</span><span class="n">res</span><span class="p">):</span>
@@ -1353,10 +1356,10 @@ Current paramter settings
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="reference">
 <h1>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h1>
-<p>[1], Bansal, Ravi, and Amir Yaron. “Risks for the long run: A potential resolution of asset pricing puzzles.” The journal of Finance 59, no. 4 (2004): 1481-1509.</p>
-<p>[2], Borovička, Jaroslav, and Lars Peter Hansen. “Term structure of uncertainty in the macroeconomy.” In Handbook of Macroeconomics, vol. 2, pp. 1641-1696. Elsevier, 2016.</p>
-<p>[3], Borovička, Jaroslav, and Lars Peter Hansen. “Examining macroeconomic models through the lens of asset pricing.” Journal of Econometrics 183, no. 1 (2014): 67-90.</p>
-<p>[4], Lombardo, Giovanni, and Harald Uhlig. “A theory of pruning.” International Economic Review 59, no. 4 (2018): 1825-1836.</p>
+<p>[1] Bansal, Ravi, and Amir Yaron. “Risks for the long run: A potential resolution of asset pricing puzzles.” The journal of Finance 59, no. 4 (2004): 1481-1509.</p>
+<p>[2] Borovička, Jaroslav, and Lars Peter Hansen. “Term structure of uncertainty in the macroeconomy.” In Handbook of Macroeconomics, vol. 2, pp. 1641-1696. Elsevier, 2016.</p>
+<p>[3] Borovička, Jaroslav, and Lars Peter Hansen. “Examining macroeconomic models through the lens of asset pricing.” Journal of Econometrics 183, no. 1 (2014): 67-90.</p>
+<p>[4] Lombardo, Giovanni, and Harald Uhlig. “A theory of pruning.” International Economic Review 59, no. 4 (2018): 1825-1836.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
