@@ -597,8 +597,7 @@ Q_{t+1}^2 &amp;= \left.\frac{d^2}{d \mathsf{q}^2} \exp \left[(\rho-1)\left(\wide
 <h1>3 Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this heading">#</a></h1>
 <section id="approach-1">
 <h2>3.1 Approach 1<a class="headerlink" href="#approach-1" title="Permalink to this heading">#</a></h2>
-<p>The algorithm initializes <span class="math notranslate nohighlight">\(\mu^0, \Upsilon^2_0, \Upsilon^2_1,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon^2_2\)</span> at zero.  It uses the first and second order approximations of Schmidt-Grohe and Uribe (2004) and Lombardo and Uhlig (2018) with some modifications.<br />
-<span id="id1">[]</span></p>
+<p>The algorithm initializes <span class="math notranslate nohighlight">\(\mu^0, \Upsilon^2_0, \Upsilon^2_1,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon^2_2\)</span> at zero.  It uses the first and second order approximations of Schmidt-Grohe and Uribe (2004) <span id="id1">[<a class="reference internal" href="#id10" title="Stephanie Schmitt-Grohé and Martın Uribe. Solving dynamic general equilibrium models using a second-order approximation to the policy function. Journal of economic dynamics and control, 28(4):755–775, 2004.">SGroheU04</a>]</span> and Lombardo and Uhlig (2018) <span id="id2">[<a class="reference internal" href="#id9" title="Giovanni Lombardo and Harald Uhlig. A theory of pruning. International Economic Review, 59(4):1825–1836, 2018.">LU18</a>]</span> with some modifications.</p>
 <section id="step-1">
 <h3>3.1.1: Step 1<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h3>
 <p>Take as input <span class="math notranslate nohighlight">\(\mu^0, \Upsilon^2_0, \Upsilon^2_1,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon^2_2\)</span>.  Transform the first-order and second-order approximations for the state evolution by using the probability induced by <span class="math notranslate nohighlight">\(N_{t+1}^0.\)</span>  Under this distribution, <span class="math notranslate nohighlight">\(W_{t+1}\)</span> has a conditional distribution with a mean given by <span class="math notranslate nohighlight">\(\mu^0\)</span> and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>.</p>
@@ -797,8 +796,17 @@ In this section, we plot the exposure and the price elasticities of the consumpt
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="reference">
 <h1>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h1>
-<p>[1] Lombardo, Giovanni and Harald Uhlig. 2018. A Theory of Pruning. <em>International Economic Review</em> 59 (4):1825–1836.</p>
-<p>[2] Schmitt-Grohe, Stephanie and Mart ́ın Uribe. 2004. Solving Dynamic General Equilibrium Models Using a Second-Order Approximation to the Policy Function. <em>Journal of Economic Dynamics and Control</em> 28 (4):755–775.</p>
+<div class="docutils container" id="id3">
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">LU18</a><span class="fn-bracket">]</span></span>
+<p>Giovanni Lombardo and Harald Uhlig. A theory of pruning. <em>International Economic Review</em>, 59(4):1825–1836, 2018.</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">SGroheU04</a><span class="fn-bracket">]</span></span>
+<p>Stephanie Schmitt-Grohé and Martın Uribe. Solving dynamic general equilibrium models using a second-order approximation to the policy function. <em>Journal of economic dynamics and control</em>, 28(4):755–775, 2004.</p>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
