@@ -17,8 +17,8 @@ Quant Macro Finance (QMF) is a series of online texts intended to accompany *Ris
 
 First, we explain the theoretical background and numerical solution of expansion method to solve nonlinear DSGE models with recursive utility function. 
 
-1. [Uncertain Expansion Theory](theory/uncertainexpansion.ipynb)
-2. [Numerical Solution: Expansion Suite](theory/quickguide.ipynb)
+1. [Uncertain Expansion Theory](theory/uncertainexpansion_update.ipynb)
+2. [Numerical Solution: Expansion Suite](theory/quickguide_update.ipynb)
 
 Second, we introduce frameworks to solve price and exposure elasticities in both discrete time and continuous time. 
 
