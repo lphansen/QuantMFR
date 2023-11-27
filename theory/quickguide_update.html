@@ -602,7 +602,7 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fatal: destination path &#39;RiskUncertaintyValue&#39; already exists and is not an empty directory.
 </pre></div>
 </div>
-<div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
+</div>
 </div>
 </section>
 <section id="equilibrium-condition-function-a-class-anchor-id-s2-2-a">
@@ -658,6 +658,7 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <li><p>All values are expressed as type <code class="docutils literal notranslate"><span class="pre">float</span></code>. Otherwise, this may cause type errors.</p></li>
 </ul>
 <p>Note that the log change of measure is skipped in the specification of equilibrium conditions.</p>
+<p>Notice that all variables need to be defined in the right order.</p>
 <p>For the example model, we write:</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -1055,7 +1056,7 @@ Iteration 2: error = 3.46944695e-17
     <span class="k">return</span> <span class="n">sdf_ex</span>
 
 <span class="n">expo_elas</span><span class="p">,</span> <span class="n">price_elas</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">elasticities</span><span class="p">(</span><span class="n">log_SDF_ex</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">states</span><span class="p">,</span> <span class="n">controls</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">IRF</span><span class="p">(</span><span class="n">T</span> <span class="o">=</span> <span class="mi">400</span><span class="p">,</span> <span class="n">shock</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> 
+<span class="n">states</span><span class="p">,</span> <span class="n">controls</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">IRF</span><span class="p">(</span><span class="n">T</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">shock</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -1087,8 +1088,6 @@ Iteration 2: error = 3.46944695e-17
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price Elasticity&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Price Elasticity Over Time&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">time_periods</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">401</span><span class="p">))</span>  <span class="c1"># 400 time periods starting from 1</span>
 
 <span class="c1"># Plotting IRF in the third subfigure</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">controls</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IRF&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">)</span>
