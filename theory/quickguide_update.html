@@ -326,8 +326,6 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ak-model-with-recursive-utility">1 AK Model with Recursive Utility</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup-a-class-anchor-id-s1-1-a">1.1 Model Setup <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-conditions-a-class-anchor-id-s1-2-a">1.2 First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2 First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-the-model-a-class-anchor-id-s1-3-a">1.3 Adapting the Model <a class="anchor" id="s1-3"></a></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-a-class-anchor-id-s2-a">2 Inputs <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
@@ -369,7 +367,7 @@ document.write(`
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/quantmfr1_2.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="numerical-solution-expansion-suite">
-<h1><a class="toc-backref" href="#id2" role="doc-backlink">Numerical Solution: Expansion Suite</a><a class="headerlink" href="#numerical-solution-expansion-suite" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Numerical Solution: Expansion Suite</a><a class="headerlink" href="#numerical-solution-expansion-suite" title="Permalink to this heading">#</a></h1>
 <p>We previously covered the small-noise expansion method and the recursive utility framework. This section covers the usage of <code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code>, an open source Python toolbox which uses these methods to solve discrete nonlinear DSGE models.</p>
 <!-- For this notebook 
 
@@ -404,11 +402,11 @@ document.write(`
 <nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#numerical-solution-expansion-suite" id="id2">Numerical Solution: Expansion Suite</a></p></li>
-<li><p><a class="reference internal" href="#ak-model-with-recursive-utility" id="id3">1 AK Model with Recursive Utility</a></p></li>
-<li><p><a class="reference internal" href="#inputs-a-class-anchor-id-s2-a" id="id4">2 Inputs <a class="anchor" id="s2"></a></a></p></li>
-<li><p><a class="reference internal" href="#outputs" id="id5">3 Outputs</a></p></li>
-<li><p><a class="reference internal" href="#using-linquadvar-in-computation-a-class-anchor-id-s2-a" id="id6">4 Using <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation <a class="anchor" id="s2"></a></a></p></li>
+<li><p><a class="reference internal" href="#numerical-solution-expansion-suite" id="id1">Numerical Solution: Expansion Suite</a></p></li>
+<li><p><a class="reference internal" href="#ak-model-with-recursive-utility" id="id2">1 AK Model with Recursive Utility</a></p></li>
+<li><p><a class="reference internal" href="#inputs-a-class-anchor-id-s2-a" id="id3">2 Inputs <a class="anchor" id="s2"></a></a></p></li>
+<li><p><a class="reference internal" href="#outputs" id="id4">3 Outputs</a></p></li>
+<li><p><a class="reference internal" href="#using-linquadvar-in-computation-a-class-anchor-id-s2-a" id="id5">4 Using <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation <a class="anchor" id="s2"></a></a></p></li>
 </ul>
 </nav>
 <p>Consider the framework previously introduced:</p>
@@ -480,7 +478,7 @@ document.write(`
 <br></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="ak-model-with-recursive-utility">
-<h1><a class="toc-backref" href="#id3" role="doc-backlink">1 AK Model with Recursive Utility</a><a class="headerlink" href="#ak-model-with-recursive-utility" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">1 AK Model with Recursive Utility</a><a class="headerlink" href="#ak-model-with-recursive-utility" title="Permalink to this heading">#</a></h1>
 <section id="model-setup-a-class-anchor-id-s1-1-a">
 <h2>1.1 Model Setup <a class="anchor" id="s1-1"></a><a class="headerlink" href="#model-setup-a-class-anchor-id-s1-1-a" title="Permalink to this heading">#</a></h2>
 <p>Consider the following recursive utility maximization problem with AK technology:</p>
@@ -501,7 +499,7 @@ C_t + I_t = \alpha K_t
 \[
 Z_{t+1} = \exp( - \beta_z) Z_t + \sigma_z W_{t+1} 
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\theta_1\)</span> and <span class="math notranslate nohighlight">\(\theta_2\)</span> are adjustment cost parameters which determine the efficiency of converting investment to capital, and <span class="math notranslate nohighlight">\(\alpha_k\)</span> is depreciation.
+<p>where <span class="math notranslate nohighlight">\(\psi\)</span> is adjustment cost parameter which determines the efficiency of converting investment to capital, and <span class="math notranslate nohighlight">\(\eta_k\)</span> is depreciation.
 <span class="math notranslate nohighlight">\(Z_t\)</span> governs the (scalar) conditional mean of (stochastic) technology growth while <span class="math notranslate nohighlight">\(\sigma_k\)</span> governs the stochastic volatility of technology growth.
 <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is a two-dimensional Wiener process which provides the exogenous shocks to this model.</p>
 <p>For the purposes of computation, we divide the first two equations by <span class="math notranslate nohighlight">\(K_t\)</span>.</p>
@@ -518,10 +516,11 @@ Z_{t+1} = \exp( - \beta_z) Z_t + \sigma_z W_{t+1}
 {\widehat G}_{t + 1} - {\widehat G}_t =  \frac 1 \psi \log \left[ 1 + \psi D_t \right] + \beta_k X_t - \eta_k + \sigma_k W_{t+1}
 \]</div>
 <p>Apply the general form of FOC and costate equations and notice in this special case <span class="math notranslate nohighlight">\(\psi^x_d = 0\)</span>, we have</p>
-<p>The FOC is<br />
-$<span class="math notranslate nohighlight">\(
+<p>The FOC is</p>
+<div class="math notranslate nohighlight">
+\[
     \mathbb{E} \left[N^*_{t + 1}Q^*_{t + 1} \beta  \left(\frac{C_{t + 1}}{G_{t + 1}}\right)^{-\rho} \left(\frac{G_{t + 1}}{G_{t}}\right)^{1-\rho} \left(\frac{C_{t}}{G_{t}}\right)^{\rho} \frac{1}{1 + \psi D_t} \widetilde{MG}_{t+1} \right] - 1 = 0
-\)</span>$</p>
+\]</div>
 <p>The law of motion of costate <span class="math notranslate nohighlight">\(\widetilde{MG}\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -563,129 +562,13 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <li><p><span class="math notranslate nohighlight">\(\log G_{t} - \log G_{t-1}\)</span> : Log capital growth process</p></li>
 <li><p><span class="math notranslate nohighlight">\(X_{t}\)</span> : Exogenous technology</p></li>
 </ul>
-</section>
-<section id="id1">
-<h2>1.2 First-Order Conditions <a class="anchor" id="s1-2"></a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>In general, write a triangular system with stochastic growth as:
-$<span class="math notranslate nohighlight">\(
-\begin{aligned}
-X_{t+1}(\mathbf{q}) &amp; =\psi^x\left[D_t(\mathbf{q}), X_t(\mathbf{q}), \mathbf{q} W_{t+1}\right] \\
-\log G_{t+1}(\mathbf{q})-\log G_t(\mathbf{q}) &amp; =\psi^g\left[D_t(\mathbf{q}), X_t(\mathbf{q}), \mathrm{q} W_{t+1}\right]
-\end{aligned}
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>D_t<span class="math notranslate nohighlight">\( is a date \)</span>t<span class="math notranslate nohighlight">\( decision vector for the planner, \)</span>G_t<span class="math notranslate nohighlight">\( is a growth variable, \)</span>X_t<span class="math notranslate nohighlight">\( is the state vector. In addition, we impose
-\)</span><span class="math notranslate nohighlight">\(
-\widehat{C}_t(\mathrm{q})=\kappa\left[D_t(\mathrm{q}), X_t(\mathrm{q})\right]+\widehat{G}_t(\mathrm{q}) \text {. }
-\)</span>$</p>
-<p>In what follows for notational convenience, we will leave the q implicit. We use homogeneity to rewrite the utility recursion:
-$<span class="math notranslate nohighlight">\(
-\widehat{V}_t-\widehat{G}_t=\frac{1}{1-\rho} \log \left[(1-\beta) \exp \left[(1-\rho)\left(\widehat{C}_t-\widehat{G}_t\right)\right]+\beta \exp \left[(1-\rho)\left(\widehat{R}_t-\widehat{G}_t\right)\right]\right]
-\)</span><span class="math notranslate nohighlight">\(
-where
-\)</span><span class="math notranslate nohighlight">\(
-\widehat{R}_t-\widehat{G}_t=\frac{1}{1-\gamma} \log \left(\mathbb{E}\left[\exp \left((1-\gamma)\left[\left(\widehat{V}_{t+1}-\widehat{G}_{t+1}\right)+\left(\widehat{G}_{t+1}-\widehat{G}_t\right)\right]\right) \mid \mathfrak{A}_t\right]\right)
-\)</span>$</p>
-<p>Differetiate the utility recursion with respect to <span class="math notranslate nohighlight">\(D_t\)</span>, we obtain the first-order condtions for <span class="math notranslate nohighlight">\(D_t\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-&amp; (1-\beta) \exp \left[(\rho-1)\left(\widehat{V}_t-\widehat{G}_t\right)\right]\exp \left[(1-\rho)\left(\widehat{C}_t-\widehat{G}_t\right)\right] \kappa_d\left(D_t, X_t\right) \\
-&amp; +\beta \exp \left[(\rho-1)\left(\widehat{V}_t-\widehat{G}_t\right)\right] \exp \left[(1-\rho)\left(\widehat{R}_t-\widehat{G}_t\right)\right]\mathbb{E}\left(\exp \left[(1-\gamma)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right] \psi_{d^{\prime}}^x\left(D_t, X_t, W_{t+1}\right) M X_{t+1} \mid \mathfrak{A}_t\right) \\
-&amp; \beta \exp \left[(\rho-1)\left(\widehat{V}_t-\widehat{G}_t\right)\right] \exp \left[(1-\rho)\left(\widehat{R}_t-\widehat{G}_t\right)\right]\mathbb{E}\left(\exp \left[(1-\gamma)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right] \psi_{d^{\prime}}^g\left(D_t, X_t, W_{t+1}\right) \mid \mathfrak{A}_t\right) \\
-&amp; =0
-\end{aligned}
-\end{split}\]</div>
-<p>where the co-state <span class="math notranslate nohighlight">\(MX_{t+1} = \frac{\partial (\widehat{V}_{t+1}-\widehat{G}_{t+1})}{\partial X_{t+1}}\)</span>.</p>
-<p>Using the envelop theorem, the corresponding co-state equation is given by</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-MX_t = &amp; (1-\beta) \exp \left[(\rho-1)\left(\widehat{V}_t-\widehat{C}_t\right)\right] \kappa_x\left(D_t, X_t\right) \\
-&amp; +\beta \exp \left[(\rho-1)\left(\widehat{V}_t-\widehat{R}_t\right)\right] \mathbb{E}\left(\exp \left[(1-\gamma)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right] \psi_{x^{\prime}}^x\left(D_t, X_t, W_{t+1}\right) M X_{t+1} \mid \mathfrak{A}_t\right) \\
-&amp; \beta \exp \left[(\rho-1)\left(\widehat{V}_t-\widehat{R}_t\right)\right]\mathbb{E}\left(\exp \left[(1-\gamma)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right] \psi_{x^{\prime}}^g\left(D_t, X_t, W_{t+1}\right) \mid \mathfrak{A}_t\right) 
-\end{aligned}
-\end{split}\]</div>
-<p>In the AK model with production, let <span class="math notranslate nohighlight">\(MK_{t+1}\)</span> be the co-state variable for the capital law of motion (4) and  <span class="math notranslate nohighlight">\(MC_{t+1}\)</span> be the co-state variable for the consumption-investment allocation (6). You can access a step-by-step derivation <a class="reference download internal" download="" href="../_downloads/f8f0b84b204f0cefbd07716b828b250f/AKderive.pdf"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
-<p>The FOCs are:</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}  \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right) \mid \mathfrak{A}_t\right] - 1  = 0,\tag{7}
-\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1}  \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right] \\ 
- - \frac{MK_t}{MC_t} + {\mathbf a}  = 0, \tag{8}
-\end{align}
-\end{split}\]</div>
-<!-- $$
-\begin{align*}
-& MC_t \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right]\cr &  - MK_t + {\mathbf a} MC_t = 0
-\end{align*}
-$$ -->
-<!-- Equations 4 and 5 are the law of motion equations, while equations 6, 7, and 8 are the forward-looking equations. --> 
-<br>
-</section>
-<section id="adapting-the-model-a-class-anchor-id-s1-3-a">
-<h2>1.3 Adapting the Model <a class="anchor" id="s1-3"></a><a class="headerlink" href="#adapting-the-model-a-class-anchor-id-s1-3-a" title="Permalink to this heading">#</a></h2>
-<p>We want to write our FOCs and law of motion equations in the form of equations 1 and 2.</p>
-<p>First note that the stochastic discount factor can be expressed as:</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{S_{t+1}}{S_t} = \beta \left(\frac{V_{t+1}}{R_t}\right)^{1-\gamma} \left(\frac{V_{t+1}}{R_t}\right)^{\rho-1} \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
-:= N_{t+1}^*Q_{t+1}^* \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
-\]</div>
-<p>Hence, we can rewrite equations 7 and 8 as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbb{E}\left[ N_{t+1}^*Q_{t+1}^* \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}\frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - 1  &amp;= 0\\
-\mathbb{E}\left[N_{t+1}^*Q_{t+1}^* \beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho} \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
-+(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)} \mid \mathfrak{A}_t\right] - \frac{MK_t}{MC_t}+{\mathbf a}&amp;= 0\\
-\end{aligned}
-\end{split}\]</div>
-<p>Finally, we can write express our five equations as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\psi_1 = 
-\begin{bmatrix}
-0\\ 
-\beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}\frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1}{1+\theta_2\left(\frac{I_t}{K_t}\right)}\\
-\beta\left(\frac{C_{t+1}}{C_t}\right)^{-\rho} \frac {MK_{t+1}}{MC_{t+1}} \frac{K_{t+1}}{K_t} \frac{1
-+(\theta_2-1)\frac{I_t}{K_t}}{1+\theta_2\left(\frac{I_t}{K_t}\right)}\end{bmatrix}
-\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\psi_2 = 
-\begin{bmatrix}
-\frac{C_t}{K_t} + \frac{I_t}{K_t} - {\mathbf a}\\
-1\\
-\frac{MK_t}{MC_t}-{\mathbf a}
-\end{bmatrix}
-\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}\phi=\begin{bmatrix} 
-&amp;\frac{K_{t+1}}{K_t} - \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\\
-&amp;Z_{t+1} - {\mathbb A} Z_t + \mathbb{B} W_{t+1}
-\end{bmatrix}\end{split}\]</div>
-<p>The model has three jump variables (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent the array of jump variables):</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\log C_t - \log K_t\)</span> : Log consumption over capital</p></li>
-<li><p><span class="math notranslate nohighlight">\(\log I_t - \log K_t\)</span> : Log investment over capital</p></li>
-<li><p><span class="math notranslate nohighlight">\(\log MK_t - \log MC_t\)</span> : Log co-state variable</p></li>
-</ul>
-<p>and two state variables (In the expansion suite, <span class="math notranslate nohighlight">\(X_t\)</span> is used to represent state variables):</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\log K_{t} - \log K_{t-1}\)</span> : Log capital growth process</p></li>
-<li><p><span class="math notranslate nohighlight">\(Z_{t}\)</span> : Exogenous technology</p></li>
-</ul>
 <br>
 <br>
 <br>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="inputs-a-class-anchor-id-s2-a">
-<h1><a class="toc-backref" href="#id4" role="doc-backlink">2 Inputs <a class="anchor" id="s2"></a></a><a class="headerlink" href="#inputs-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">2 Inputs <a class="anchor" id="s2"></a></a><a class="headerlink" href="#inputs-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
 <section id="libraries-a-class-anchor-id-s2-3-a">
 <h2>2.1 Libraries <a class="anchor" id="s2-3"></a><a class="headerlink" href="#libraries-a-class-anchor-id-s2-3-a" title="Permalink to this heading">#</a></h2>
 <p>Begin by installing the following libraries and downloading <code class="docutils literal notranslate"><span class="pre">RiskUncertaintyValue</span></code>, which contains the functions required to solve the model:</p>
@@ -993,7 +876,7 @@ Iteration 2: error = 3.46944695e-17
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="outputs">
-<h1><a class="toc-backref" href="#id5" role="doc-backlink">3 Outputs</a><a class="headerlink" href="#outputs" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id4" role="doc-backlink">3 Outputs</a><a class="headerlink" href="#outputs" title="Permalink to this heading">#</a></h1>
 <section id="list-of-outputs-a-class-anchor-id-s3-1-a">
 <h2>3.1 List of Outputs <a class="anchor" id="s3-1"></a><a class="headerlink" href="#list-of-outputs-a-class-anchor-id-s3-1-a" title="Permalink to this heading">#</a></h2>
 <p>We now examine the contents of <code class="docutils literal notranslate"><span class="pre">ModelSol</span></code>, which contains the attributes listed below. Each approximation is stored in a class <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>, which contains the coefficients for <span class="math notranslate nohighlight">\(X_{1,t}, X_{2,t}, X_{1,t}'X_{1,t}, W_{t+1}, W_{t+1}'W_{t+1}, X_{1,t}'W_{t+1}\)</span> and the constant.</p>
@@ -1231,7 +1114,7 @@ Iteration 2: error = 3.46944695e-17
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="using-linquadvar-in-computation-a-class-anchor-id-s2-a">
-<h1><a class="toc-backref" href="#id6" role="doc-backlink">4 Using <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation <a class="anchor" id="s2"></a></a><a class="headerlink" href="#using-linquadvar-in-computation-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id5" role="doc-backlink">4 Using <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation <a class="anchor" id="s2"></a></a><a class="headerlink" href="#using-linquadvar-in-computation-a-class-anchor-id-s2-a" title="Permalink to this heading">#</a></h1>
 <p>In the previous section, we saw how to use <code class="docutils literal notranslate"><span class="pre">uncertain_expansion</span></code> to approximate variables and store their coefficients as <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> objects. In this section, we explore how to manipulate <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> objects for different uses.</p>
 <p>To aid our examples, we first extract the steady states for the state evolution processes from the previous model solution:</p>
 <p>See <a class="reference external" href="https://github.com/lphansen/RiskUncertaintyValue/blob/main/src/lin_quad.py">src/lin_quad.py</a> for source code of <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> definition.</p>
@@ -1244,8 +1127,8 @@ Iteration 2: error = 3.46944695e-17
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;c&#39;: array([[-3.93129532],
-        [ 1.00634613]])}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;c&#39;: array([[-2.71057934],
+        [ 1.5576879 ]])}
 </pre></div>
 </div>
 </div>
@@ -1262,7 +1145,7 @@ Iteration 2: error = 3.46944695e-17
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\displaystyle \log\frac{K_{t+1}}{K_t}=-3.931+\begin{bmatrix}0.9861&amp;0\end{bmatrix}X_t^1+\begin{bmatrix}0.00011&amp;0.00025\end{bmatrix}W_{t+1}+\begin{bmatrix}0.493&amp;0\end{bmatrix}X_t^2\]</div>
+\[\displaystyle \log\frac{K_{t+1}}{K_t}=-2.711+\begin{bmatrix}0.9455&amp;0\end{bmatrix}X_t^1+\begin{bmatrix}0.022&amp;0.05\end{bmatrix}W_{t+1}+\begin{bmatrix}0.4728&amp;0\end{bmatrix}X_t^2\]</div>
 </div>
 </div>
 <p>In the next example, we sum together the contributions for both capital growth and technology:</p>
@@ -1273,16 +1156,16 @@ Iteration 2: error = 3.46944695e-17
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;c&#39;: array([[-3.93129532],
-        [ 1.00667219]]),
- &#39;w&#39;: array([[0.00011, 0.00025],
-        [0.00477, 0.     ]]),
- &#39;x&#39;: array([[0.98609754, 0.        ],
-        [0.9628084 , 0.        ]]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;c&#39;: array([[-2.71057934],
+        [ 1.55804585]]),
+ &#39;w&#39;: array([[0.022  , 0.05   ],
+        [0.00954, 0.     ]]),
+ &#39;x2&#39;: array([[0.47276957, 0.        ],
+        [0.00463556, 0.        ]]),
  &#39;xx&#39;: array([[ 0.        ,  0.        ,  0.        ,  0.        ],
-        [-0.21924476, -0.        ,  0.        ,  0.        ]]),
- &#39;x2&#39;: array([[0.49304877, 0.        ],
-        [0.48000401, 0.        ]])}
+        [-0.00001424, -0.        ,  0.        ,  0.        ]]),
+ &#39;x&#39;: array([[0.94553914, 0.        ],
+        [0.00928281, 0.        ]])}
 </pre></div>
 </div>
 </div>
@@ -1299,7 +1182,7 @@ Iteration 2: error = 3.46944695e-17
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;lin_quad.LinQuadVar at 0x7f9ad3e40b80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;lin_quad.LinQuadVar at 0x7fc194380d90&gt;
 </pre></div>
 </div>
 </div>
@@ -1318,11 +1201,11 @@ Iteration 2: error = 3.46944695e-17
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-4.79592804],
-       [-3.88503366],
-       [ 1.03543888],
-       [-0.00025322],
-       [-0.00712572]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-3.68228516],
+       [-2.70254332],
+       [ 1.56144343],
+       [ 0.01147443],
+       [ 0.02648373]])
 </pre></div>
 </div>
 </div>
@@ -1340,7 +1223,7 @@ Iteration 2: error = 3.46944695e-17
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\displaystyle \log\frac{C_{t+1}^1}{K_{t+1}^1}=-0.09143+\begin{bmatrix}11.71&amp;-1.63e-40\end{bmatrix}X_t^1+\begin{bmatrix}0.001306&amp;0.002969\end{bmatrix}W_{t+1}\]</div>
+\[\displaystyle \log\frac{C_{t+1}^1}{K_{t+1}^1}=-0.02118+\begin{bmatrix}0.04108&amp;-3.647e-40\end{bmatrix}X_t^1+\begin{bmatrix}0.0009558&amp;0.002172\end{bmatrix}W_{t+1}\]</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1352,7 +1235,7 @@ Iteration 2: error = 3.46944695e-17
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\begin{split}\displaystyle \log\frac{C_{t+1}^2}{K_{t+1}^2}=-0.02162+\begin{bmatrix}1.136&amp;2.455e-41\end{bmatrix}X_t^1+\begin{bmatrix}0.0001267&amp;0.000288\end{bmatrix}W_{t+1}+\begin{bmatrix}11.71&amp;-1.63e-40\end{bmatrix}X_t^2+X^{1T}_{t}\begin{bmatrix}-51.15&amp;4.666e-39\\-7.867e-39&amp;-2.048e-59\end{bmatrix}X^1_{t}+X^{1T}_{t}\begin{bmatrix}-0.01141&amp;-0.02594\\1.007e-43&amp;2.289e-43\end{bmatrix}W_{t+1}+W_{t+1}^{T}\begin{bmatrix}-6.365e-07&amp;-1.447e-06\\-1.447e-06&amp;-3.288e-06\end{bmatrix}W_{t+1}\end{split}\]</div>
+\[\begin{split}\displaystyle \log\frac{C_{t+1}^2}{K_{t+1}^2}=-0.0008222+\begin{bmatrix}0.0006544&amp;1.448e-41\end{bmatrix}X_t^1+\begin{bmatrix}1.523e-05&amp;3.46e-05\end{bmatrix}W_{t+1}+\begin{bmatrix}0.04108&amp;-3.647e-40\end{bmatrix}X_t^2+X^{1T}_{t}\begin{bmatrix}-0.0003962&amp;3.544e-41\\-6.531e-41&amp;-3.263e-59\end{bmatrix}X^1_{t}+X^{1T}_{t}\begin{bmatrix}-1.844e-05&amp;-4.191e-05\\6.864e-44&amp;1.56e-43\end{bmatrix}W_{t+1}+W_{t+1}^{T}\begin{bmatrix}-2.145e-07&amp;-4.875e-07\\-4.875e-07&amp;-1.108e-06\end{bmatrix}W_{t+1}\end{split}\]</div>
 </div>
 </div>
 </section>
@@ -1371,7 +1254,7 @@ Iteration 2: error = 3.46944695e-17
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\begin{split}\displaystyle \mathbb{E}[\log\frac{C_{t+1}^2}{K_{t+1}^2}|\mathfrak{F_t}]=-0.02167+\begin{bmatrix}1.14&amp;2.451e-41\end{bmatrix}X_t^1+\begin{bmatrix}11.71&amp;-1.63e-40\end{bmatrix}X_t^2+X^{1T}_{t}\begin{bmatrix}-51.15&amp;4.666e-39\\-7.867e-39&amp;-2.048e-59\end{bmatrix}X^1_{t}\end{split}\]</div>
+\[\begin{split}\displaystyle \mathbb{E}[\log\frac{C_{t+1}^2}{K_{t+1}^2}|\mathfrak{F_t}]=-0.0008284+\begin{bmatrix}0.0006602&amp;1.446e-41\end{bmatrix}X_t^1+\begin{bmatrix}0.04108&amp;-3.647e-40\end{bmatrix}X_t^2+X^{1T}_{t}\begin{bmatrix}-0.0003962&amp;3.544e-41\\-6.531e-41&amp;-3.263e-59\end{bmatrix}X^1_{t}\end{split}\]</div>
 </div>
 </div>
 <p>Suppose the distribution of shock has a state-dependent mean and variance (implied by <span class="math notranslate nohighlight">\(\tilde{N}_{t+1}\)</span> shown in the notes), we can use <code class="docutils literal notranslate"><span class="pre">E_N_tp1</span></code> and <code class="docutils literal notranslate"><span class="pre">N_tilde_measure</span></code> to compute the expectation of time <span class="math notranslate nohighlight">\(t+1\)</span> <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code>.</p>
@@ -1385,7 +1268,7 @@ Iteration 2: error = 3.46944695e-17
 </div>
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
-\[\begin{split}\displaystyle \mathbb{\tilde{E}}[\log\frac{C_{t+1}^2}{K_{t+1}^2}|\mathfrak{F_t}]=-0.02167+\begin{bmatrix}1.141&amp;2.451e-41\end{bmatrix}X_t^1+\begin{bmatrix}11.71&amp;-1.63e-40\end{bmatrix}X_t^2+X^{1T}_{t}\begin{bmatrix}-51.16&amp;4.666e-39\\-7.867e-39&amp;-2.048e-59\end{bmatrix}X^1_{t}\end{split}\]</div>
+\[\begin{split}\displaystyle \mathbb{\tilde{E}}[\log\frac{C_{t+1}^2}{K_{t+1}^2}|\mathfrak{F_t}]=-0.0008284+\begin{bmatrix}0.0006602&amp;1.446e-41\end{bmatrix}X_t^1+\begin{bmatrix}0.04108&amp;-3.647e-40\end{bmatrix}X_t^2+X^{1T}_{t}\begin{bmatrix}-0.0003963&amp;3.544e-41\\-6.531e-41&amp;-3.263e-59\end{bmatrix}X^1_{t}\end{split}\]</div>
 </div>
 </div>
 </section>
@@ -1462,8 +1345,6 @@ Iteration 2: error = 3.46944695e-17
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ak-model-with-recursive-utility">1 AK Model with Recursive Utility</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup-a-class-anchor-id-s1-1-a">1.1 Model Setup <a class="anchor" id="s1-1"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-conditions-a-class-anchor-id-s1-2-a">1.2 First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.2 First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-the-model-a-class-anchor-id-s1-3-a">1.3 Adapting the Model <a class="anchor" id="s1-3"></a></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-a-class-anchor-id-s2-a">2 Inputs <a class="anchor" id="s2"></a></a><ul class="visible nav section-nav flex-column">
