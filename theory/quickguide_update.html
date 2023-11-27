@@ -560,7 +560,7 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <p>and two state variables (In the expansion suite, <span class="math notranslate nohighlight">\(X_t\)</span> is used to represent state variables):</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\log G_{t} - \log G_{t-1}\)</span> : Log capital growth process</p></li>
-<li><p><span class="math notranslate nohighlight">\(X_{t}\)</span> : Exogenous technology</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z_{t}\)</span> : Exogenous technology</p></li>
 </ul>
 <br>
 <br>
@@ -620,12 +620,12 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Var_t</span></code></p></td>
 <td><p>array-like</p></td>
 <td><p>Vector of jump and state variables in the current period</p></td>
-<td><p><span class="math notranslate nohighlight">\((X_t, J_t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((J_t, X_t)\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code></p></td>
 <td><p>array-like</p></td>
 <td><p>Vector of jump and state variables in the next period</p></td>
-<td><p><span class="math notranslate nohighlight">\((X_{t+1}, J_{t+1})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((J_{t+1}, X_{t+1})\)</span></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">W_tp1</span></code></p></td>
 <td><p>array-like</p></td>
@@ -769,13 +769,11 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho_option</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">σ_k</span> <span class="o">=</span> <span class="mf">0.477</span><span class="o">*</span><span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">σ_k</span> <span class="o">=</span> <span class="mf">0.477</span><span class="o">*</span><span class="mi">2</span>
 <span class="n">sigmaz1</span> <span class="o">=</span> <span class="mf">0.011</span><span class="o">*</span><span class="mi">2</span>
 <span class="n">sigmaz2</span> <span class="o">=</span> <span class="mf">0.025</span><span class="o">*</span><span class="mi">2</span>
 
 <span class="n">delta</span> <span class="o">=</span> <span class="mf">0.01</span>
-<span class="n">rho</span> <span class="o">=</span> <span class="n">rho_option</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.0922</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="n">alpha</span>
@@ -793,7 +791,7 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <span class="n">α_k</span> <span class="o">=</span> <span class="mf">0.04</span>
 <span class="n">β</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span>
 <span class="n">γ</span> <span class="o">=</span> <span class="mf">12.0</span>
-<span class="n">ρ</span> <span class="o">=</span> <span class="n">rho</span> 
+<span class="n">ρ</span> <span class="o">=</span> <span class="mf">1.5</span> 
 
 <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">beta_k</span><span class="p">,</span> <span class="n">beta_z1</span><span class="p">,</span> <span class="n">sigma_k</span><span class="p">,</span> <span class="n">sigma_z1</span><span class="p">,</span> <span class="n">sigma_z2</span><span class="p">)</span>
 </pre></div>
