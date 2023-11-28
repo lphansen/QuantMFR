@@ -547,8 +547,8 @@ Z_{t+1} = \exp( - \beta_z) Z_t + \sigma_z W_{t+1}
 \end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\phi=\begin{bmatrix} 
-&amp;\frac{G_{t+1}} {G_t}  -  \left( 1 + \psi D_t \right)^{\frac{1}{\psi}} + exp( \beta_k X_t - \eta_k + \sigma_k W_{t+1} ) \\
-&amp;X_{t+1} - \exp( - \beta_z) X_t - \sigma_z W_{t+1} 
+&amp;\frac{G_{t+1}} {G_t}  -  \left( 1 + \psi D_t \right)^{\frac{1}{\psi}} + exp( \beta_k Z_t - \eta_k + \sigma_k W_{t+1} ) \\
+&amp;Z_{t+1} - \exp( - \beta_z) Z_t - \sigma_z W_{t+1} 
 \end{bmatrix}\end{split}\]</div>
 <p>The model has thre
 e jump variables (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent the array of jump variables):</p>
@@ -602,7 +602,7 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fatal: destination path &#39;RiskUncertaintyValue&#39; already exists and is not an empty directory.
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
 </div>
 </section>
 <section id="equilibrium-condition-function-a-class-anchor-id-s2-2-a">
@@ -658,7 +658,7 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <li><p>All values are expressed as type <code class="docutils literal notranslate"><span class="pre">float</span></code>. Otherwise, this may cause type errors.</p></li>
 </ul>
 <p>Note that the log change of measure is skipped in the specification of equilibrium conditions.</p>
-<p>Notice that all variables need to be defined in the right order.</p>
+<p>Notice that the first 3 parameters and <span class="math notranslate nohighlight">\(q\)</span> in variables should be defined and called in the given order.</p>
 <p>For the example model, we write:</p>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
@@ -804,10 +804,6 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <section id="log-growth-consumption-a-class-anchor-id-s2-6-a">
 <h2>2.6 Log Growth Consumption <a class="anchor" id="s2-6"></a><a class="headerlink" href="#log-growth-consumption-a-class-anchor-id-s2-6-a" title="Permalink to this heading">#</a></h2>
 <p>Finally, we need to specify how to compute the log-growth of consumption <span class="math notranslate nohighlight">\(\log{C_{t+1}/C_t}\)</span> using the defined variables <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> in the equilibrium conditions.</p>
-<ul class="simple">
-<li><p>In habit formation models, <span class="math notranslate nohighlight">\(C_t\)</span> is replaced with <span class="math notranslate nohighlight">\(U_t\)</span>, in which case we would specify the log growth process for <span class="math notranslate nohighlight">\(U_t\)</span> correspondingly.</p></li>
-<li><p>For some models with preference shocks, <span class="math notranslate nohighlight">\(C_t = \lambda_t \tilde{C}_t\)</span>, we would need to specify the log growth process for <span class="math notranslate nohighlight">\(\lambda_t \tilde{C}_t\)</span>.</p></li>
-</ul>
 <p>In this example, we simply use the decomposition:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -934,7 +930,7 @@ Iteration 2: error = 3.46944695e-17
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;c&#39;: array([[-0.02117949]]), &#39;x&#39;: array([[ 0.04344641, -0.        ]])}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;x&#39;: array([[ 0.04344641, -0.        ]]), &#39;c&#39;: array([[-0.02117949]])}
 </pre></div>
 </div>
 </div>
@@ -1005,8 +1001,8 @@ Iteration 2: error = 3.46944695e-17
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;c&#39;: array([[0.00035532]]),
- &#39;x&#39;: array([[ 0.01018563, -0.        ]]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;x&#39;: array([[ 0.01018563, -0.        ]]),
+ &#39;c&#39;: array([[0.00035532]]),
  &#39;w&#39;: array([[ 0.00917057, -0.00083961]])}
 </pre></div>
 </div>
@@ -1102,7 +1098,7 @@ Iteration 2: error = 3.46944695e-17
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e191d0cf887726d19d9f5ddf6dfcf9989a3536df3467565d5ecd7568dceb7247.png" src="../_images/e191d0cf887726d19d9f5ddf6dfcf9989a3536df3467565d5ecd7568dceb7247.png" />
+<img alt="../_images/d8a90ee6aa6a3a85711ed1e0e909a8d720421b454d822e2436d689d170f64d26.png" src="../_images/d8a90ee6aa6a3a85711ed1e0e909a8d720421b454d822e2436d689d170f64d26.png" />
 </div>
 </details>
 </div>
