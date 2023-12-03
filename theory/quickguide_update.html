@@ -334,7 +334,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-function-a-class-anchor-id-s2-3-a">2.3 Steady State Function <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-number-of-variables-a-class-anchor-id-s2-4-a">2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-5-a">2.5 Model Parameters <a class="anchor" id="s2-5"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-growth-consumption-a-class-anchor-id-s2-6-a">2.6 Log Growth Consumption <a class="anchor" id="s2-6"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-consumption-growth-a-class-anchor-id-s2-6-a">2.6 Log Consumption Growth  <a class="anchor" id="s2-6"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-modelsol-a-class-anchor-id-s2-7-a">2.7 Computing ModelSol <a class="anchor" id="s2-7"></a></a></li>
 </ul>
 </li>
@@ -763,6 +763,11 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 <section id="model-parameters-a-class-anchor-id-s2-5-a">
 <h2>2.5 Model Parameters <a class="anchor" id="s2-5"></a><a class="headerlink" href="#model-parameters-a-class-anchor-id-s2-5-a" title="Permalink to this heading">#</a></h2>
 <p>Next, we need to specify all the model parameters using a Python tuple.</p>
+<ul class="simple">
+<li><p>The first three parameters should be γ, β, ρ, respectively. The package is designed for recursive utlity.</p></li>
+<li><p>Please use 1.00001 for γ and ρ as approximation for 1.0.</p></li>
+<li><p>We suggest not using matrix when specifying the equilibrium conditions and parameters.</p></li>
+</ul>
 <!-- Here, we use the specification described in <insert reference here> --><div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -801,14 +806,18 @@ e jump variables (In the expansion suite, <span class="math notranslate nohighli
 </details>
 </div>
 </section>
-<section id="log-growth-consumption-a-class-anchor-id-s2-6-a">
-<h2>2.6 Log Growth Consumption <a class="anchor" id="s2-6"></a><a class="headerlink" href="#log-growth-consumption-a-class-anchor-id-s2-6-a" title="Permalink to this heading">#</a></h2>
+<section id="log-consumption-growth-a-class-anchor-id-s2-6-a">
+<h2>2.6 Log Consumption Growth  <a class="anchor" id="s2-6"></a><a class="headerlink" href="#log-consumption-growth-a-class-anchor-id-s2-6-a" title="Permalink to this heading">#</a></h2>
 <p>Finally, we need to specify how to compute the log-growth of consumption <span class="math notranslate nohighlight">\(\log{C_{t+1}/C_t}\)</span> using the defined variables <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> in the equilibrium conditions.</p>
 <p>In this example, we simply use the decomposition:</p>
 <div class="math notranslate nohighlight">
 \[
 \log{C_{t+1}/C_t} = \log{C_{t+1}/K_{t+1}} + \log{K_{t+1}/K_t} - \log{C_t/K_t}
 \]</div>
+<ul class="simple">
+<li><p>The reason to specify log consumtion growth is that we need to approximate recursive utility as described in the notes section 3.2.2 and section 3.2.3</p></li>
+<li><p>In habit formation models, <span class="math notranslate nohighlight">\(C_t\)</span> is replaced with <span class="math notranslate nohighlight">\(U_t\)</span>, in which case we would specify the log growth process for <span class="math notranslate nohighlight">\(U_t\)</span> correspondingly.</p></li>
+</ul>
 <div class="cell tag_hide-cell docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1346,7 +1355,7 @@ Iteration 2: error = 3.46944695e-17
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-function-a-class-anchor-id-s2-3-a">2.3 Steady State Function <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-number-of-variables-a-class-anchor-id-s2-4-a">2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters-a-class-anchor-id-s2-5-a">2.5 Model Parameters <a class="anchor" id="s2-5"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-growth-consumption-a-class-anchor-id-s2-6-a">2.6 Log Growth Consumption <a class="anchor" id="s2-6"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-consumption-growth-a-class-anchor-id-s2-6-a">2.6 Log Consumption Growth  <a class="anchor" id="s2-6"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-modelsol-a-class-anchor-id-s2-7-a">2.7 Computing ModelSol <a class="anchor" id="s2-7"></a></a></li>
 </ul>
 </li>
