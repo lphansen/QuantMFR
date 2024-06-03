@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. Likelihoods &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/example_out_c6_v2';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. GMM Estimation" href="gmmcurrent_lars_v9.html" />
+    <link rel="prev" title="6. Hidden Markov Models" href="example_out_c5_v2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">2. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">3. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">4. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">5. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">6. Hidden Markov Models</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">8. GMM Estimation </a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Numerical Solution: Expansion Suite</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticity</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Shock Elasticity: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Shock Elasticities: Continuous Time</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/example_out_c6_v2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Likelihoods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependent-processes">7.1. Dependent Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio-processes">7.2. Likelihood Ratio Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-law-and-likelihood-ratio-processes">7.2.1. Bayes’ law and likelihood ratio processes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterizing-likelihoods">7.3. Parameterizing Likelihoods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood">7.3.1. Maximum Likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score-process">7.4. Score Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nuisance-parameters">7.5. Nuisance parameters</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="likelihoods">
+<span id="chap-like"></span><h1><span class="section-number">7. </span>Likelihoods<a class="headerlink" href="#likelihoods" title="Link to this heading">#</a></h1>
+<p>This chapter studies likelihood processes and likelihood ratio processes. Derivatives of log-likelihood processes are additive martingales and likelihood ratio processes are multiplicative martingales, assertions that we verify by applying results from chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>. We study properties of likelihood ratios as sample size <span class="math notranslate nohighlight">\(T \rightarrow +\infty\)</span> and relate them to methods for estimating parameters that pin down a statistical model from within either a discrete set or a manifold of models. These include maximum likelihood, Bayesian, and robust Bayesian methods. A workhorse in this chapter will be the Law of Large Numbers from chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a> that applies in settings in which there are multiple statistical models.</p>
+<p>In this chapter, we adopt settings in which state vectors can be inferred perfectly from observations. Chapter <a class="reference internal" href="example_out_c5_v2.html#chap-learn"><span class="std std-ref">Hidden Markov Models</span></a> studies situations in which some states are hidden and can be inferred only imperfectly.</p>
+<section id="dependent-processes">
+<h2><span class="section-number">7.1. </span>Dependent Processes<a class="headerlink" href="#dependent-processes" title="Link to this heading">#</a></h2>
+<p>Suppose that at date <span class="math notranslate nohighlight">\(t+1\)</span> we observe a <span class="math notranslate nohighlight">\(k\)</span> dimensional random vector <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>. We calculate various objects while conditioning on a given probability model. We use some of these calculations to explore alternative models. Each alternative model is presumed to imply a probability measure that is measure-preserving and ergodic. An event collection <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> (i.e., a sigma algebra)
+is generated by the infinite history of <span class="math notranslate nohighlight">\(Z_t\)</span>.</p>
+<p>We entertain a set of alternative probability models represented with their one-period transition probabilities. We represent an alternative model as a perturbation of a baseline model. To represent a particular
+alternative model, we use a nonnegative random variable <span class="math notranslate nohighlight">\(N_{t+1}\)</span> to perturb a baseline model’s one step transition probabilities. We can characterize an alternative model with a set of implied conditional expectations of all bounded random variable <span class="math notranslate nohighlight">\(B_{t+1}\)</span> that are measurable with respect to <span class="math notranslate nohighlight">\({\mathfrak A}_{t+1}\)</span>. Such conditional expectations of <span class="math notranslate nohighlight">\(B_{t+1}\)</span> under the alternative model can be represented as conditional expectations of <span class="math notranslate nohighlight">\(N_{t+1} B_{t+1}\)</span> under the baseline model:</p>
+<div class="math notranslate nohighlight" id="equation-model-transition">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-model-transition" title="Link to this equation">#</a></span>\[E \left(N_{{t+1}} B_{{t+1}} \mid {\mathfrak A}_t \right) . \]</div>
+<p>Thus, multiplication of <span class="math notranslate nohighlight">\(B_{t+1}\)</span> serves in effect to change the baseline probability from the baseline model to the alternative model. To serve this purpose the random variable <span class="math notranslate nohighlight">\(N_{t+1}\)</span> must satisfy:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(N_{t+1} \ge 0\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(E\left(N_{t+1} \mid {\mathfrak A}_t \right) = 1\)</span>;</p></li>
+<li><p><span class="math notranslate nohighlight">\(N_{t+1}\)</span> is <span class="math notranslate nohighlight">\({\mathfrak A}_{t+1}\)</span> measurable.</p></li>
+</ol>
+<p>Property 1 is satisfied because conditional expectations map positive random variables <span class="math notranslate nohighlight">\(B_{t+1}\)</span> into positive random variables that are <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> measurable.  Property 2 is satisfied because conditional expectations of random variables <span class="math notranslate nohighlight">\(B_{t+1}\)</span> that are <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> measurable should equal <span class="math notranslate nohighlight">\(B_{t+1}\)</span>. Property 3 can be imposed without loss of generality because if it
+were not satisfied, we could just replace it with <span class="math notranslate nohighlight">\(E \left(N_{t+1} \mid {\mathfrak A}_{t+1} \right)\)</span>.</p>
+<p>This way of representing an alternative probability model is restrictive. Thus, if a nonnegative random variable has conditional expectation zero under the baseline probability, it will also have zero conditional expectation under the alternative probability measure, a version of absolute continuity here applied to transition probabilities. Violating absolute continuity would make possible model decision rules that correctly select models with full confidence from only finite samples.</p>
+<div class="proof example admonition" id="example-0">
+<p class="admonition-title"><span class="caption-number">Example 7.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider a baseline Markov process having transition probability density <span class="math notranslate nohighlight">\(pi_o\)</span> with respect to a measure <span class="math notranslate nohighlight">\(\lambda\)</span> over the state space <span class="math notranslate nohighlight">\(\mathcal{X}\)</span></p>
+<div class="math notranslate nohighlight">
+\[P_o(dx^+|x) \lambda(dx^+) = \pi_o(x^+ \mid x) \lambda(dx^+)\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\pi\)</span> denote some other transition density that we represent as</p>
+<div class="math notranslate nohighlight">
+\[\pi(x^+ \mid x) \lambda(dx^+ ) = \left[ {\frac {\pi(x^+ \mid x)}{\pi_o(x^+ \mid x)}}\right] \pi_o(x^+ \mid x) \lambda(dx^+ )\]</div>
+<p>where we assume that <span class="math notranslate nohighlight">\(\pi_o(x^+ \mid x) = 0\)</span> implies that <span class="math notranslate nohighlight">\(\pi(x^+ \mid x) = 0\)</span> for all <span class="math notranslate nohighlight">\(x^+\)</span> and <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(\mathcal{X}\)</span>.<br />
+Construct the likelihood ratio</p>
+<div class="math notranslate nohighlight">
+\[N_{t+1} = {\frac {\pi(X_{t+1} \mid X_t)}{\pi_o(X_{t+1} \mid X_t)}} .\]</div>
+</section>
+</div><div class="proof example admonition" id="ex:VARL">
+<p class="admonition-title"><span class="caption-number">Example 7.2 </span></p>
+<section class="example-content" id="proof-content">
+<p>Suppose that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X_{t+1} = {\mathbb A} X_t + {\mathbb B} W_{t+1} \\
+Z_{t+1} = {\mathbb D} X_{t} + {\mathbb F} W_{t+1},\end{split}\]</div>
+<p>where  <span class="math notranslate nohighlight">\({\mathbb A}\)</span> is a stable matrix,  <span class="math notranslate nohighlight">\(\{W_{t+1}\}_{t=0}^\infty\)</span> is an i.i.d. sequence of <span class="math notranslate nohighlight">\({\cal N}(0,I)\)</span> random vectors conditioned on <span class="math notranslate nohighlight">\(X_0\)</span>, and <span class="math notranslate nohighlight">\({\mathbb F}\)</span> is a nonsingular square matrix. The
+conditional distribution of <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> is normal with mean <span class="math notranslate nohighlight">\({\mathbb D}X_t\)</span> and nonsingular covariance
+matrix <span class="math notranslate nohighlight">\({\mathbb F}{\mathbb F}'\)</span>. We suppose that <span class="math notranslate nohighlight">\({\mathbb A}\)</span> and <span class="math notranslate nohighlight">\({\mathbb B}\)</span>
+can be constructed as functions of <span class="math notranslate nohighlight">\({\mathbb D}\)</span> and <span class="math notranslate nohighlight">\({\mathbb F}\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\({\mathbb F}\)</span> is nonsingular, the following recursion connects state and observation vectors:</p>
+<div class="math notranslate nohighlight">
+\[X_{t+1} = \left({\mathbb A} - {\mathbb B}{\mathbb  F}^{-1}{\mathbb D} \right)X_t + {\mathbb B} {\mathbb F}^{-1} Z_{t+1}\]</div>
+<p>If  <span class="math notranslate nohighlight">\(\left({\mathbb A} - {\mathbb B}{\mathbb  F}^{-1}{\mathbb D} \right)\)</span> is a stable matrix, we can
+construct <span class="math notranslate nohighlight">\(X_{t+1}\)</span> as a linear functon of <span class="math notranslate nohighlight">\(Z_{t+1-\tau}\)</span> for <span class="math notranslate nohighlight">\(\tau = 0, 1, \ldots\)</span>.</p>
+<p>Assume a baseline model that has the same functional form with particular settings
+of the parameters that appear in the matrices <span class="math notranslate nohighlight">\(({\mathbb A}_o, {\mathbb B}_o, {\mathbb D}_o, {\mathbb F}_o).\)</span>
+Let <span class="math notranslate nohighlight">\(N_{t+1}\)</span> be the one-period conditional log-likehood ratio</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\log N_{t+1} = 
+- {\frac 1 2} (Z_{t+1} - {\mathbb D} X_t)'\left({\mathbb F}{\mathbb F}'\right)^{-1}(Z_{t+1}  - {\mathbb D} X_t) \\
++ {\frac 1 2} \left(Z_{t+1} - {\mathbb D}_o X_t \right)'\left({\mathbb F}_o{{\mathbb F}_o}'\right)^{-1} \left(Z_{t+1}  - {\mathbb D}_o X_t \right) \\
+- {\frac 1 2} \log \det \left({\mathbb F}{\mathbb F}'\right) 
++   {\frac 1 2} \log \det \left( {\mathbb F}_o{{\mathbb F}_o}'\right)\end{split}\]</div>
+<p>Notice how we have subtracted components coming from the baseline model.</p>
+</section>
+</div><!-- ````{prf:remark}
+In the model in {prf:ref}`ex:VARL` there are the same number of shocks, i.e., entries of $W_t$, as there are components of the observation vector, i.e., entries of $Z_t$. Because $\mathbb{F}$ is a nonsingular square matrix, this can be interpreted as an example of a time-invariant innovations representation of a hidden Markov model like that presented in [Section Kfilter](sec:Kfilter). Such a time-invariant innovations representation conditions on an infinite past of $Z_t$'s. Applications often use a time-varying system that comes from conditioning only on a finite past. That typically produces an $N_{t+1}$ process that shares asymptotic properties with an alternative process that comes from conditioning on an infinite past.
+````
+
+As in [Chapter add](chap:add), we let  $\{W_{t+1}\}_{t=0}^\infty$ be a process of shocks that satisfies
+
+```{math}
+E \left( W_{t+1} \vert {\mathfrak F}_t \right) = 0.
+```
+
+We let  $\{ X_t \}_{t=0}^\infty$ be a discrete time stationary Markov process generated by
+
+```{math}
+X_{t+1} = \phi (X_t, W_{t+1}),
+```
+
+where $\phi$ is a Borel measurable function. We observe a vector of random variables whose $i$th component evolves as an additive functional of the Markov process $\{X_t\}$, namely,
+
+```{math}
+Y_{t+1}^{[i]} - Y_t^{[i]} = \kappa_i(X_t, W_{t+1})
+```
+
+for $i=1,2,...,k$. Stack these $k$ signals into a vector $Y_{t+1}-Y_t$ and form
+
+```{math}
+Y_{t+1} - Y_t = \kappa(X_{t},W_{t+1}).
+```
+
+In this chapter, we maintain
+
+
+````{prf:assumption}
+:label: ass:ass1
+$X_0$ is observed and there exists a function $\chi$ such that
+
+```{math}
+W_{t+1} = \chi(X_t, Y_{t+1} - Y_t).
+```
+````
+
+Assumption {prf:ref}`ass:ass1` is an invertibility condition that lets us recover $\{X_t\}_{t=1}^\infty$ from $X_0$ and $\{Y_t\}_{t=0}^\infty$. To verify this claim, note that
+
+```{math}
+:label: eqn:BBstar
+X_{t+1} = \phi(X_t, W_{t+1}) = \phi[ X_t, \chi(X_t, Y_{t+1} - Y_t) ] \equiv \zeta( X_t, Y_{t+1} - Y_t),
+```
+
+which allows us to recover a sequence of states from the initial state $X_0$ and a sequence of signals. In [Chapter learn](chap:learn), we will abandon assumption {prf:ref}`ass:ass1` and treat states $\{X_t\}_{t=0}^\infty$ as hidden.
+
+Let $\tau$ denote a measure over the space $\mathcal{Y}$ of admissible signals.
+
+
+````{prf:assumption}
+:label: ass:ass2
+$Y_{t+1} - Y_t \in \mathcal{Y}$ has a probability density $\psi(\cdot|x)$ with respect to $\tau$ conditioned on $X_t = x$.
+````
+
+We want to construct the density $\psi$ from $\kappa$ and the distribution of $X_{t+1}$ conditioned on $X_t$. One possibility is to construct $\psi$ and $\tau$ as follows:
+
+````{prf:example}
+Suppose that $\kappa$ is
+$Y_{t+1} - Y_t = X_{t+1}$ and that the Markov process $\{X_t\}$ has a
+transition density  $p(x^*|x)$ relative
+to a measure $\lambda$.   Set $\psi = p $ and $\tau = \lambda$.
+````
+
+Another possibility is:
+
+````{prf:example}
+:label: ex:VARL
+Suppose that
+```{math}
+X_{t+1} = A X_t + B W_{t+1} \\
+Y_{t+1} - Y_t = D X_{t} + F W_{t+1},
+```
+where $A$ is a stable matrix, $\{W_{t+1}\}_{t=0}^\infty$ is an i.i.d. sequence of $\mathcal{N}(0,I)$ random vectors conditioned on $X_0$, and $F$ is nonsingular.
+Then
+```{math}
+X_{t+1} = \left(A - B F^{-1}D \right)X_t + B F^{-1} \left(Y_{t+1} - Y_t \right)
+```
+can serve as the function $\zeta(X_t, Y_{t+1}-Y_t) \doteq X_{t+1}$ that appears in equation {eq}`eqn:BBstar`,
+in this special case a linear function. The conditional distribution $\psi$ of $Y_{t+1} - Y_t$ is normal with mean $DX_t$ and nonsingular covariance matrix $FF'$. The conditional distribution $\psi$ has a density against Lebesgue measure on $\mathbb{R}^m$ that we can use as $\tau$. 
+````
+
+-->
+</section>
+<section id="likelihood-ratio-processes">
+<h2><span class="section-number">7.2. </span>Likelihood Ratio Processes<a class="headerlink" href="#likelihood-ratio-processes" title="Link to this heading">#</a></h2>
+<p>The random variable <span class="math notranslate nohighlight">\(N_{t+1}\)</span> contains the new information in observation <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> that is relevant for comparing an alternative statistical model to a baseline model. As data arrive, information accumulates in a way that we describe by compounding the process <span class="math notranslate nohighlight">\(\{N_{t+1} : t \ge 0\}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[L_{t+1} =  \prod_{j=0}^{t} N_{j+1}\]</div>
+<p>so that</p>
+<div class="math notranslate nohighlight">
+\[\log L_{t+1} = \sum_{j=0}^t \log N_{j+1}\]</div>
+<p>Being functions of a stochastic process of observations <span class="math notranslate nohighlight">\(\{Z_{t+1} : t\ge 0 \}\)</span>, the <em>likelihood ratio</em> and <em>log-likelihood ratios</em> sequences are both stochastic processes.</p>
+<p id="fact1"><strong>Fact 6.1</strong>
+Since <span class="math notranslate nohighlight">\(E \left( N_{t+1} \mid {\mathfrak A}_t \right) = 1\)</span>, a likelihood ratio process satisfies</p>
+<div class="math notranslate nohighlight">
+\[E \left( L_{t+1} \mid {\mathfrak A}_t \right) = L_t .\]</div>
+<p>Therefore, it is a <em>martingale</em> relative to the information sequence <span class="math notranslate nohighlight">\(\{  {\mathfrak A}_t : t\ge 0\}\)</span></p>
+<p id="fact-loglikeadd"><strong>Fact 6.2</strong>
+A log-likelihood ratio process  <span class="math notranslate nohighlight">\(\left\{ \log(L_{t+1}) : t=0,1,\ldots,t\right\}\)</span> is a stationary increment process with increment</p>
+<div class="math notranslate nohighlight">
+\[\log L_{t+1}- \log L_t  = \log N_{t+1}.\]</div>
+<p>The log-likelihood process is additive in how it accumulates stationary increments <span class="math notranslate nohighlight">\(\log N_{t+1}\)</span>. Consequently, the likelihood ratio process is what we call a multiplicative process.</p>
+<p>Our next fact uses Jensen’s inequality for the concave function <span class="math notranslate nohighlight">\(\log (N)\)</span> illustrated in <a class="reference internal" href="#fig-jensen"><span class="std std-numref">Fig. 7.1</span></a>.</p>
+<figure class="align-default" id="fig-jensen">
+<img alt="book/JensenInequality.png" src="book/JensenInequality.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Jensen’s Inequality. The logarithmic function is the concave function that equals zero when evaluated at unity. An interior average of the endpoints of the straight line lies below the logarithmic function. Jensen’s Inequality asserts that the line segment lies below the logarithmic function.</span><a class="headerlink" href="#fig-jensen" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p id="fact3"><strong>Fact 6.3</strong>
+By Jensen’s inequality,</p>
+<div class="math notranslate nohighlight">
+\[E \left(\log N_{t+1} \mid {\mathfrak A}_t \right) \le \log E \left(N_{t+1} \mid {\mathfrak A}_t \right) = 0,\]</div>
+<p>where the mathematical expectation is again under the baseline model parameterized by <span class="math notranslate nohighlight">\(\theta_o\)</span>. Thus</p>
+<div class="math notranslate nohighlight">
+\[E \left(\log L_{t+1} \mid {\mathfrak A}_t \right) \le \log L_t.\]</div>
+<p>This implies that under the baseline model the log-likelihood ratio process is a <em>super martingale</em> relative to the information sequence <span class="math notranslate nohighlight">\(\{  {\mathfrak A}_t : t\ge 0\}\)</span>.</p>
+<p>Notice that if <span class="math notranslate nohighlight">\(N_{t+1}\)</span> is not identically one, then</p>
+<div class="math notranslate nohighlight">
+\[E \left(\log N_{t+1} \right) &lt; 0.\]</div>
+<p>From the Law of Large Numbers, the population mean is well approximated by a sample average from a long time series. That opens the door to discriminating between two models. Under the baseline model, the log likelihood ratio process scaled by the inverse of the sample size <span class="math notranslate nohighlight">\(t+1\)</span> converges to a negative number. After changing roles of the baseline and alternative models, we can do an analogous calculation that entails using <span class="math notranslate nohighlight">\({\frac 1 {N_{t+1}} }\)</span> instead of <span class="math notranslate nohighlight">\(N_{t+1}\)</span> as an increment. Then the scaled-by-<span class="math notranslate nohighlight">\((t+1)^{-1}\)</span> log likelihood ratio would converge to the expectation of <span class="math notranslate nohighlight">\(- \log N_{t+1}\)</span> under the alternative model that is now in the denominator of the likelihood ratio. This limit would be positive under the assumption that the alternative model generated the data. These calculations justify selecting between the two models by calculating <span class="math notranslate nohighlight">\(\log L_{t+1}\)</span> and checking if it is positive or negative. This procedure amounts to a special case of the method of maximum likelihood.</p>
+<div class="proof remark admonition" id="rem:relentropy">
+<p class="admonition-title"><span class="caption-number">Remark 7.1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Suppose that data are not generated by the baseline model. Instead, suppose that the statistical model implied by the change of measure <span class="math notranslate nohighlight">\(N_{t+1}\)</span> governs the stochastic evolution of the observations. Define <strong>conditional entropy</strong> relative to baseline model <span class="math notranslate nohighlight">\(\theta_o\)</span> as the following conditional expectation:</p>
+<div class="math notranslate nohighlight">
+\[E \left( N_{t+1} \log N_{t+1} \mid {\mathfrak A}_t \right).\]</div>
+<p>Here multiplication of <span class="math notranslate nohighlight">\(\log N_{t+1}\)</span> by <span class="math notranslate nohighlight">\(N_{t+1}\)</span> changes the conditional probability distribution from the misspecified baseline model to the alternative statistical model that we assume generates the data. The function <span class="math notranslate nohighlight">\( n \log n\)</span> is convex and equal to zero for <span class="math notranslate nohighlight">\(n=1\)</span>. Therefore, Jensen’s inequality implies that conditional relative entropy is nonnegative and equal to zero when <span class="math notranslate nohighlight">\(N_{t+1} = 1\)</span>. An unconditional counterpart of relative entropy is the Law of Large Numbers limit</p>
+<div class="math notranslate nohighlight">
+\[\lim_{t \rightarrow +\infty} {\frac 1 {t+1} } \sum_{j=0}^t  \log N_{t+1} = \lim_{t \rightarrow + \infty} 
+{\frac 1 {t+1} } \sum_{j=0}^t E \left(N_{t+1} \log N_{t+1} \mid {\mathfrak A}_t \right) \ge 0\]</div>
+<p>under the data generating process. Relative entropy is often used to analyze model misspecifications. It is also a key component for studying the statistical theory of “large deviations” for Markov processes, as we shall discuss later.</p>
+</section>
+</div><section id="bayes-law-and-likelihood-ratio-processes">
+<h3><span class="section-number">7.2.1. </span>Bayes’ law and likelihood ratio processes<a class="headerlink" href="#bayes-law-and-likelihood-ratio-processes" title="Link to this heading">#</a></h3>
+<p>Suppose now that we attach a prior probability <span class="math notranslate nohighlight">\(\pi_o\)</span> to the baseline model with probability <span class="math notranslate nohighlight">\(1 - \pi_o\)</span> on the alternative. Then after observing <span class="math notranslate nohighlight">\(Z_{j+1}: 0 \le j \le t\)</span>, conditional probabilities for the baseline and alternative models are</p>
+<div class="math notranslate nohighlight">
+\[{\frac {\pi_o}{L_{t+1} (1-\pi_o) + \pi_o}} \quad  {\textrm{and}} \quad  \frac {L_{t+1}(1 - \pi_o)}{L_{t+1}
+(1-\pi_o) + \pi_o}  .\]</div>
+<p>When <span class="math notranslate nohighlight">\({\frac 1 {t+1}} \log L_{t+1}\)</span> converges to a negative number, the first probability converges to one, and when <span class="math notranslate nohighlight">\({\frac 1 {t+1}} \log L_{t+1}\)</span> converges to a positive number, it converges to zero.</p>
+</section>
+</section>
+<section id="parameterizing-likelihoods">
+<h2><span class="section-number">7.3. </span>Parameterizing Likelihoods<a class="headerlink" href="#parameterizing-likelihoods" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\( \Theta \)</span> be a set of parameter vectors. Each <span class="math notranslate nohighlight">\( \theta \in \Theta \)</span> indexes an alternative transition probability as represented by the <span class="math notranslate nohighlight">\( N_{t+1}(\theta) \)</span> that belongs in formula <a class="reference internal" href="#equation-model-transition">(7.1)</a>. We presume that a particular <span class="math notranslate nohighlight">\( \theta \)</span>, denoted <span class="math notranslate nohighlight">\( \theta_o \)</span>, indexes the transition probability that generates the data and is used as to calculate the conditional expectation in formula <a class="reference internal" href="#equation-model-transition">(7.1)</a>. Accordingly, <span class="math notranslate nohighlight">\( N_{t+1}(\theta_o) = 1 \)</span>. Since <span class="math notranslate nohighlight">\( N_{t+1}(\theta) \)</span> is a likelihood increment, a recursion that defines a likelihood ratio process for each <span class="math notranslate nohighlight">\( \theta \)</span> is</p>
+<div class="math notranslate nohighlight">
+\[L_{t+1} (\theta) = N_{t+1}(\theta) L_t(\theta) \]</div>
+<p>Setting <span class="math notranslate nohighlight">\( L_0(\theta) = 1 \)</span> for each <span class="math notranslate nohighlight">\( \theta \)</span> completes a parameterized family of likelihood ratios.</p>
+<p>But the applied researcher does not know <span class="math notranslate nohighlight">\( \theta_o \)</span>. For that reason, it is convenient now to use a model with some arbitrary known parameter vector <span class="math notranslate nohighlight">\( {\tilde \theta} \in \Theta \)</span> as a baseline model in place of the <span class="math notranslate nohighlight">\( \theta_o \)</span> model. We can accomplish this by defining an increment process <span class="math notranslate nohighlight">\( \widetilde N_{t+1}(\theta) \)</span> as</p>
+<div class="math notranslate nohighlight">
+\[{\widetilde N}_{t+1}(\theta) = {\frac {N_{t+1}(\theta) }{ N_{t+1}(\tilde \theta)}} .\]</div>
+<p>Notice that when we use <span class="math notranslate nohighlight">\( {\widetilde N}_{t+1}(\theta) \)</span> in formula <a class="reference internal" href="#equation-model-transition">(7.1)</a>, we must also change the transition probability used to take the expectation in <a class="reference internal" href="#equation-model-transition">(7.1)</a> to be the transition probability implied by <span class="math notranslate nohighlight">\( {\tilde \theta} \)</span>. This is evident because <span class="math notranslate nohighlight">\( {\widetilde N}_{t+1}(\tilde \theta) = 1 \)</span>. Our change of baseline model leads us now to construct likelihood ratios with the recursion:</p>
+<div class="math notranslate nohighlight">
+\[{\widetilde L}_{t+1} (\theta) = {\widetilde N}_{t+1}(\theta) {\widetilde L} _t( \theta),\]</div>
+<p>where we set <span class="math notranslate nohighlight">\( {\widetilde L}_0(\theta) = 1 \)</span>. In this way, we construct parameterized likelihoods without knowing the <span class="math notranslate nohighlight">\( \theta_o \)</span> model that generates the data.</p>
+<p>In order to apply the Law of Large Numbers to the logarithm of the likelihood ratio process divided by <span class="math notranslate nohighlight">\( t+1 \)</span>, namely to</p>
+<div class="math notranslate nohighlight">
+\[{\frac 1 {t+1}} \log {\widetilde L}_{t+1}(\theta) = {\frac 1 {t+1}} \sum_{j=0}^{t} \log {\widetilde N}_{j+1} (\theta)\]</div>
+<p>for <span class="math notranslate nohighlight">\( t \ge 0 \)</span>, we want to compute expectations under the <span class="math notranslate nohighlight">\( \theta_o \)</span> model that actually generates the data. Under the <span class="math notranslate nohighlight">\( \theta_o \)</span> model’s expectation operator</p>
+<div class="math notranslate nohighlight">
+\[{\tilde \nu}(\theta) = E \left[ \log {\widetilde N}_{t+1}(\theta) \right] = E \left[ \log { N}_{t+1}(\theta) \right]  - E \left[ \log { N}_{t+1}(\tilde \theta) \right]
+= \nu(\theta) - \nu( {\tilde \theta}) .\]</div>
+<section id="maximum-likelihood">
+<h3><span class="section-number">7.3.1. </span>Maximum Likelihood<a class="headerlink" href="#maximum-likelihood" title="Link to this heading">#</a></h3>
+<p>We want the law of large numbers from chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a> eventually to disclose the parameter vector <span class="math notranslate nohighlight">\( \theta_o \)</span>. The following argument shows that it will. The law of large numbers leads us to expect that</p>
+<div class="math notranslate nohighlight">
+\[\lim_{t \rightarrow + \infty} \frac{1 }{1 +t} \log {\widetilde L}_{t+1} = {\tilde \nu}(\theta)  .\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \theta_o \)</span> generates the data, the super martingale property of the log likelihood ratio process implies that</p>
+<div class="math notranslate nohighlight">
+\[\nu(\theta)  \le  \nu(\theta_o) = 0.   \]</div>
+<p>Therefore</p>
+<div class="math notranslate nohighlight">
+\[    {\tilde \nu}(\theta) = \nu(\theta) -\nu(\tilde \theta)  \le \nu(\theta_o) - \nu(\tilde \theta) = \tilde \nu(\theta_o) .\]</div>
+<p>This implies that <span class="math notranslate nohighlight">\( \theta_o \)</span> is a maximizer of <span class="math notranslate nohighlight">\( \tilde \nu(\theta) \)</span>, and gives a “population counterpart” to maximum likelihood estimation. By a population counterpart, we imagine a setting in which via the law of large numbers, sample averages have converged to their population counterparts. Formally, a population counterpart to maximum likelihood estimation solves:</p>
+<div class="math notranslate nohighlight">
+\[\max_{\theta \in \Theta} {\tilde \nu}(\theta) .\]</div>
+<p>We have shown that the set of <span class="math notranslate nohighlight">\( \theta \)</span>‘s that solve <span class="math notranslate nohighlight">\( \max_{\theta \in \Theta} \nu(\theta) \)</span> includes <span class="math notranslate nohighlight">\( \theta_o \)</span>. We say that the model is <strong>identified</strong> if <span class="math notranslate nohighlight">\( \theta_o \)</span> is the unique maximizer. The maximum likelihood estimator from a finite data sample uses a sample counterpart of the above equation, namely,</p>
+<div class="math notranslate nohighlight">
+\[{\textrm{ argmax}}_{\theta \in \Theta} {\frac 1 {t+1}} \log {\widetilde L}_{t+1} (\theta) .\]</div>
+<div class="proof remark admonition" id="remark-3">
+<p class="admonition-title"><span class="caption-number">Remark 7.2 </span></p>
+<section class="remark-content" id="proof-content">
+<p>(Reverse relative entropy)
+Continuing to index conditional distributions by parameter vectors <span class="math notranslate nohighlight">\(\theta \in \Theta\)</span>, form the ratio</p>
+<div class="math notranslate nohighlight">
+\[N_{t+1}^o(\theta) = {\frac {{\widetilde N}_{t+1}(\theta_o)}{{\widetilde N} _{t+1}(\theta)}} \]</div>
+<p>Using a version of formula <a class="reference internal" href="#equation-model-transition">(7.1)</a>, we can use this ratio of likelihood increments to represent the transition distribution for statistical model <span class="math notranslate nohighlight">\(\theta_o\)</span> relative to that for an arbitrary statistical model <span class="math notranslate nohighlight">\(\theta\)</span>. The ratio of likelihood increments effectively changes the baseline model from <span class="math notranslate nohighlight">\(\tilde \theta\)</span> to an arbitrary <span class="math notranslate nohighlight">\(\theta\)</span>.<br />
+Then the associated unconditional relative entropy defined in <a class="reference internal" href="#rem:relentropy">Remark 7.1</a> becomes</p>
+<div class="math notranslate nohighlight">
+\[D(\theta) = \lim_{t \rightarrow +\infty} {\frac 1 {t+1} } \sum_{j=0}^t \log N_{t+1}^o(\theta) \ge 0\]</div>
+<p>where the <span class="math notranslate nohighlight">\(\theta_o\)</span> model generates the data. We can then express the population counterpart to maximum likelihood as the solution to a minimum relative entropy problem.<br />
+Thus, since the model indexed by parameter vector <span class="math notranslate nohighlight">\(\theta_o\)</span> generates the data, the population maximum likelihood estimator solves</p>
+<div class="math notranslate nohighlight">
+\[\min_{\theta \in \Theta} D(\theta) = 0 .\]</div>
+</section>
+</div></section>
+</section>
+<section id="score-process">
+<h2><span class="section-number">7.4. </span>Score Process<a class="headerlink" href="#score-process" title="Link to this heading">#</a></h2>
+<p>We assume that the parameter vector <span class="math notranslate nohighlight">\(\theta_o\)</span> in the interior of a parameter space <span class="math notranslate nohighlight">\(\Theta\)</span>. Moreover, for each <span class="math notranslate nohighlight">\(\theta \in \Theta\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[E \left(N_{t+1}(\theta) \mid {\mathfrak A}_t \right) = 1\]</div>
+<p>where <span class="math notranslate nohighlight">\(N_{t+1}(\theta_o) = 1\)</span> by construction. Provided that we can differentiate inside the mathematical expectation:<a class="footnote-reference brackets" href="#diff-inside" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight">
+\[E \left( {\frac {\partial N_{t+1}}{\partial  \theta}} \Bigl|_{\theta = \theta_o} \mid {\mathfrak A}_t \right) = 0.\]</div>
+<p>Since expectations are taken under the <span class="math notranslate nohighlight">\(\theta_o\)</span> probability</p>
+<div class="math notranslate nohighlight">
+\[{\frac {\partial N_{t+1}}{\partial  \theta}} \Bigl|_{\theta = \theta_o} =  {\frac {\partial \log N_{t+1}}{\partial \theta}} \Bigl|_{\theta = \theta_o}\]</div>
+<p>Since the right side is a logarithmic derivative</p>
+<div class="math notranslate nohighlight">
+\[{\frac {\partial \log N_{t+1}}{\partial \theta}} \Bigl|_{\theta = \theta_o} = {\frac {\partial \log {\widetilde N}_{t+1}}{\partial \theta}} \Bigl|_{\theta = \theta_o}\]</div>
+<p>where we used <span class="math notranslate nohighlight">\({\widetilde N}_{t+1} (\theta)\)</span> to build an operational likelihood process for alternative <span class="math notranslate nohighlight">\(\theta \in \Theta\)</span>.</p>
+<div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definition 7.1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>score increment</strong> is</p>
+<div class="math notranslate nohighlight">
+\[S_{t+1} - S_t  = {\frac {\partial  \log N_{t+1}}{\partial \theta}} \Big|_{\theta = \theta_o}\]</div>
+<p>and the <strong>score process</strong> is</p>
+<div class="math notranslate nohighlight">
+\[S_{t+1} =  \frac \partial {\partial \theta} \log L_{t+1} \Big|_{\theta = \theta_o} \]</div>
+</section>
+</div><p id="score"><strong>Fact 6.4</strong>
+The score process <span class="math notranslate nohighlight">\(\{S_{t+1} : t \ge 0\}\)</span> is a (multivariate) martingale with stationary increments.
+Consequently</p>
+<div class="math notranslate nohighlight">
+\[\frac 1 {\sqrt{t}} S_{t+1} \Rightarrow {\mathcal N}(0, {\mathbb V})\]</div>
+<p>where <span class="math notranslate nohighlight">\({\mathbb V}  = E \left[ \left( S_{t+1} - S_t \right) \left( S_{t+1} - S_t \right)' \right]\)</span>.</p>
+<p><a class="reference internal" href="#score"><span class="std std-ref">Fact 6.4</span></a> motivates characterizing the large sample behavior of the score process by utilizing the martingale central limit theorem stated in <a class="reference internal" href="example_out_c3_v2.html#prop:gordin">Proposition 3.2</a>. In effect, the matrix <span class="math notranslate nohighlight">\({\mathbb V}\)</span> measures curvature of the log-likelihood process in the neighborhood of the “true” parameter value <span class="math notranslate nohighlight">\(\theta_o\)</span>. The more curvature there is – i.e., the “larger” is the variance matrix <span class="math notranslate nohighlight">\({\mathbb V}\)</span> of the score vector – the more information the data contain about <span class="math notranslate nohighlight">\(\theta\)</span>. The matrix <span class="math notranslate nohighlight">\({\mathbb V}\)</span> is called the Fisher information matrix in honor of R.A. Fisher.</p>
+<p>An associated central limit approximation yields a large sample characterization of the maximum likelihood estimator of <span class="math notranslate nohighlight">\(\theta\)</span> in a Markov setting. Let <span class="math notranslate nohighlight">\(\theta_t\)</span> maximize the log-likelihood function <span class="math notranslate nohighlight">\(\log L_t(\theta)\)</span>. Under some regularity conditions</p>
+<div class="math notranslate nohighlight">
+\[\sqrt{t} (\theta_t - \theta_o )   \rightarrow {\mathcal N}\left(0, {\mathbb V}^{-1}\right).\]</div>
+<p>This limit justifies interpreting the covariance matrix <span class="math notranslate nohighlight">\({\mathbb V}\)</span> of the martingale increment of the score process as quantifying information that data contain about the parameter vector <span class="math notranslate nohighlight">\(\theta_o\)</span>.</p>
+</section>
+<section id="nuisance-parameters">
+<h2><span class="section-number">7.5. </span>Nuisance parameters<a class="headerlink" href="#nuisance-parameters" title="Link to this heading">#</a></h2>
+<p>Consider a situation in which to learn about one parameter, we have to estimate other parameters too. Suppose that <span class="math notranslate nohighlight">\(\theta\)</span> is a vector and <span class="math notranslate nohighlight">\(\mathbb{V}\)</span> is a matrix. We seek a notion of “Fisher information” about a single component of <span class="math notranslate nohighlight">\(\theta\)</span> that interests us – a single parameter <span class="math notranslate nohighlight">\(\bar{\theta}\)</span>. A natural guess might be simply to take as our measure the appropriate diagonal entry of <span class="math notranslate nohighlight">\(\mathbb{V}\)</span>. It turns out that this measure of our uncertainty is misleading because it ignores the fact that in order to estimate the parameter of interest to us we have to “spend” some of the information in the sample to estimate “nuisance parameters” that we also had to estimate in order make inferences about <span class="math notranslate nohighlight">\(\bar{\theta}\)</span>. It turns out that a better way to summarize our uncertainty about the parameter of interest is to define its “Fisher information” as the reciprocal of an appropriate entry of <span class="math notranslate nohighlight">\(\mathbb{V}^{-1}\)</span>.</p>
+<p>Thus, partition</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\theta = \begin{bmatrix} {\bar{\theta}} \\ {\tilde{\theta}} \end{bmatrix}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{\theta}\)</span> is the scalar parameter of interest and <span class="math notranslate nohighlight">\(\tilde{\theta}\)</span> is an associated unknown nuisance parameter vector.</p>
+<p>Write the multivariate score process as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left\{ \begin{bmatrix} {\overline{S}_{t+1}} \\ {\widetilde{S}}_{t+1} \end{bmatrix} : t=0,1,... \right\}\end{split}\]</div>
+<p>Partition the covariance matrix <span class="math notranslate nohighlight">\(\mathbb{V}\)</span> of the score process increment conformably with <span class="math notranslate nohighlight">\((\bar{\theta}', {\tilde{\theta}}')'\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix} E\left({\overline{S}}_{t+1} - {\overline{S}}_t \right)^2 &amp; E \left({\overline{S}}_{t+1} - {\overline{S}} _t \right)\left(\widetilde{S}_{t+1} - \widetilde{S}_t \right)' \\ E \left(\widetilde{S}_{t+1} - \widetilde{S}_t \right)\left({\overline{S}}_{t+1} - {\overline{S}}_t \right) &amp; E \left(\widetilde{S}_{t+1} - \widetilde{S}_t\right) \left(\widetilde{S}_{t+1} - \widetilde{S}_t\right) ' \end{bmatrix} \equiv \begin{bmatrix} {\mathbb{V}}_{11} &amp; {\mathbb{V}}_{12} \\ {\mathbb{V}}_{21} &amp; {\mathbb{V}}_{22} \end{bmatrix}.\end{split}\]</div>
+<p>We claim that taking <span class="math notranslate nohighlight">\(E\left({\overline{S}}_{t+1} - {\overline{S}}_t \right)^2 \)</span> as a measure of “Fisher information” about <span class="math notranslate nohighlight">\(\bar{\theta}\)</span> would overstate our information. Instead, the appropriate Fisher information about <span class="math notranslate nohighlight">\(\bar{\theta}\)</span> is the inverse of the <span class="math notranslate nohighlight">\((1,1)\)</span> component of the asymptotic covariance matrix <span class="math notranslate nohighlight">\(\mathbb{V}^{-1}\)</span>. Applying a partitioned inverse formula for a symmetric matrix to compute that measure of Fisher information yields</p>
+<div class="math notranslate nohighlight" id="equation-eq-fisherinforeducted">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-eq-fisherinforeducted" title="Link to this equation">#</a></span>\[I_{\bar{\theta}} = {\mathbb{V}}_{11} - {\mathbb{V}}_{12} {\mathbb{V}}_{22}^{-1} {\mathbb{V}}_{12}'.\]</div>
+<p>An enlightening interpretation of the <span class="math notranslate nohighlight">\((1,1)\)</span> component <span class="math notranslate nohighlight">\(I_{\bar{\theta}}\)</span> of <span class="math notranslate nohighlight">\(\mathbb{V}^{-1}\)</span> comes from recognizing that it is the residual variance of a population least squares regression of the score vector increment of <span class="math notranslate nohighlight">\(\bar{\theta}\)</span> on the score vector increment for the nuisance parameter vector <span class="math notranslate nohighlight">\(\widetilde{\theta}\)</span>.</p>
+<p>Thus, a population least squares regression is</p>
+<div class="math notranslate nohighlight" id="equation-eqn-lsscore">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-eqn-lsscore" title="Link to this equation">#</a></span>\[{\overline{S}}_{t+1} - {\overline{S}}_t = \beta ({\widetilde{S}}_{t+1} - {\widetilde{S}}_t) + U_{t+1},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta\)</span> is a population regression coefficient vector and <span class="math notranslate nohighlight">\(U_{t+1}\)</span> is a population regression residual that by construction is orthogonal to the regressor <span class="math notranslate nohighlight">\(({\widetilde{S}}_{t+1} - {\widetilde{S}}_t)\)</span>. The least squares regression coefficient vector is</p>
+<div class="math notranslate nohighlight">
+\[\beta = {\mathbb{V}}_{12} {\mathbb{V}}_{22}^{-1}\]</div>
+<p>and the residual variance is</p>
+<div class="math notranslate nohighlight">
+\[E U_{t+1}^2 = {\mathbb{V}}_{11} - {\mathbb{V}}_{12} {\mathbb{V}}_{22}^{-1} {\mathbb{V}}_{12}'\]</div>
+<p>which equals the Fisher information measure <span class="math notranslate nohighlight">\(I_{\bar{\theta}}\)</span> defined above. From the orthogonality of least squares residuals to regressors, the variability of the left side variable <span class="math notranslate nohighlight">\({\overline{S}}_{t+1} - {\overline{S}}_t\)</span> in the projection equation <a class="reference internal" href="#equation-eqn-lsscore">(7.3)</a> cannot exceed that of the least squares residual so that</p>
+<div class="math notranslate nohighlight">
+\[E (U_{t+1})^2 \le E \left({\overline{S}}_{t+1} - {\overline{S}}_t\right)^2,\]</div>
+<p>an inequality that confirms that information about <span class="math notranslate nohighlight">\(\bar{\theta}\)</span> is lost by not knowing the nuisance parameters <span class="math notranslate nohighlight">\(\tilde{\theta}\)</span>.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="diff-inside" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Formally, we define the derivative of a family <span class="math notranslate nohighlight">\(\{ \log N_{t+1}(\theta) : \theta \in \Theta\}\)</span> in terms of mean square limits, and we let  <span class="math notranslate nohighlight">\({\frac {\partial N_{t+1}}{\partial  \theta}}= N_{t+1} {\frac {\partial N_{t+1}}{\partial  \theta}}\)</span>.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="example_out_c5_v2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Hidden Markov Models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="gmmcurrent_lars_v9.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>GMM Estimation </p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependent-processes">7.1. Dependent Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio-processes">7.2. Likelihood Ratio Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-law-and-likelihood-ratio-processes">7.2.1. Bayes’ law and likelihood ratio processes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterizing-likelihoods">7.3. Parameterizing Likelihoods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood">7.3.1. Maximum Likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#score-process">7.4. Score Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nuisance-parameters">7.5. Nuisance parameters</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

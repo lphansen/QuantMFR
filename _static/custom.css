@@ -1,0 +1,23 @@
+div.container {
+    width: 100% !important;
+}
+
+div.cell_output {
+    width: 100% !important;
+}
+
+div.cell {
+    width: 100% !important;
+}
+
+div.text_cell_render {
+    width: 100% !important;
+}
+
+div.input_area {
+    width: 100% !important;
+}
+
+div.prompt.output_prompt {
+    width: 100% !important;
+}

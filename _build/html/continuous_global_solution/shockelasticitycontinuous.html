@@ -1,0 +1,1256 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Shock Elasticities: Continuous Time &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'continuous_global_solution/shockelasticitycontinuous';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Shock Elasticity: Discrete Time" href="shockelasticity.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c2_v2.html">2. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c3_v2.html">3. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c4_v2.html">4. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/decision_book_draft.html">5. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c5_v2.html">6. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c6_v2.html">7. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/gmmcurrent_lars_v9.html">8. GMM Estimation </a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Numerical Solution: Expansion Suite</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticity</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="shockelasticity.html">Shock Elasticity: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shock Elasticities: Continuous Time</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/continuous_global_solution/shockelasticitycontinuous.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Shock Elasticities: Continuous Time</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities: Continuous Time</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">1. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">1.1 Basic setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">1.2 Stochastic discount factor process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticity-and-price-elasticity">1.3 Shock Exposure Elasticity and Price Elasticity</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">2. An Illustration using an intermediary asset pricing model [3], [4], [5]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-shock-elasticities-computeelas">2.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities-plots">2.2 Shock Elasticities Plots</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/continuous_elasticity.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="shock-elasticities-continuous-time">
+<h1>Shock Elasticities: Continuous Time<a class="headerlink" href="#shock-elasticities-continuous-time" title="Link to this heading">#</a></h1>
+<p>Shock elasticities quantify the (local) exposures of macroeconomic cash flows to shocks over alternative investment horizons and the corresponding prices or investors’ compensations. This Jupyter notebook provides the computations for the shock elasticities for models with equilibrium outcomes represented as a continuous-time diffusion. This notebook implements methods and formulas developed in <a class="reference external" href="https://link.springer.com/article/10.1007/s11579-014-0122-4">[1]</a> and <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA8070">[2]</a>.</p>
+<ul class="simple">
+<li><p>Section 1 gives the continuous-time formulation with a Brownian motion information structure.</p></li>
+<li><p>Section 2 provides an illustration using an intermediary asset pricing model, see <a class="reference external" href="https://www.aeaweb.org/articles?id=10.1257/aer.104.2.379">[3]</a>, <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S1574004816300155">[4]</a>, and <a class="reference external" href="https://www.zccfe.uzh.ch/dam/jcr:c4a09093-fc00-4953-9f31-701dc0cd3fab/macro-model-print.pdf">[5]</a>.</p></li>
+</ul>
+<p>Please refer to the following paper for further details</p>
+<p><a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/macroterm_main.pdf">“Term Structure of Uncertainty in the Macroeconomy” joint research with Jaroslav Borovička – Handbook of Macroeconomics</a></p>
+<p>And also refer to</p>
+<p><a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2016/10/Examining-Macroeconomic-Models-through-the-Lens-of-Asset-Pricing.pdf">“Examining Macroeconomic Models Through the Lens of Asset Pricing” joint research with Jaroslav Borovička – Journal of Econometrics</a></p>
+<p><a class="reference external" href="https://link.springer.com/article/10.1007/s11579-014-0122-4">“Shock elasticities and impulse responses” joint research with Jaroslav Borovička and José A. Scheinkman - Mathematics and Financial Economics</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">workdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;style&gt;.container { width:97% !important; }&lt;/style&gt;&quot;</span><span class="p">))</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">RegularGridInterpolator</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
+<span class="kn">from</span> <span class="nn">shockElasModules</span> <span class="kn">import</span> <span class="n">computeElas</span>
+<span class="kn">from</span> <span class="nn">stationaryDensityModules</span> <span class="kn">import</span> <span class="n">computeDent</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>.container { width:97% !important; }</style></div></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="continuous-time-framework">
+<h1>1. Continuous-time framework<a class="headerlink" href="#continuous-time-framework" title="Link to this heading">#</a></h1>
+<section id="basic-setup">
+<h2>1.1 Basic setup<a class="headerlink" href="#basic-setup" title="Link to this heading">#</a></h2>
+<p>Suppose a continuous-time diffusion model:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+dX_t &amp; = \mu_X(X_t)dt + \sigma_X(X_t) dW_t \tag{1}\cr
+dM_t &amp; = M_t \mu_M(X_t)dt + M_t \sigma_M(X_t) dW_t \notag\cr 
+dY_t &amp;= \mu_M(X_t)dt - \frac 1 2 \vert\sigma_M (X_t)\vert^2  + \sigma_M (X_t) dW_t\notag
+\end{align}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional process and <span class="math notranslate nohighlight">\(W\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-dimensional Brownian motion and
+<span class="math notranslate nohighlight">\(Y = \log M.\)</span></p>
+<p>The two types of shock elasticities of interest are:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\epsilon_M(x) &amp;= \nu(x)\cdot \left[ {\sigma_X(x)}' \left(\frac {\partial}{\partial x}\log {\mathbb E}\left[ \left(
+\frac {M_t}{M_0}\right)  \mid X_0 = x \right] \right) + \sigma_M(x) \right] \label{eq:shock1}\tag{2}\cr
+{\epsilon}_M^+(x) &amp; = \frac{{\mathbb E}\left[ \left(
+\frac {M_t}{M_0}\right) \nu(X_t) \cdot \sigma_M(X_t)  \mid X_0 = x \right] }
+{{\mathbb E}\left[ \left(
+\frac {M_t}{M_0}\right) \mid X_0 = x \right]} \tag{3}
+\end{align}
+\]</div>
+<p>The code computes</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp;{\mathbb E}\left[ \left(
+\frac {M_t}{M_0}\right)  \mid X_0 = x \right]  \tag{4} \\
+&amp;{\mathbb E}\left[ \left(
+\frac {M_t}{M_0}\right) \nu(X_t)  \cdot \sigma_M(X_t)  \mid X_0 = x \right] \tag{5}
+\end{align}
+\end{split}\]</div>
+<p>by using the Feynman_Kac formula. Define</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\phi_t(x) = {\mathbb E}\left[ \left(
+\frac {M_t}{M_0}\right) \phi_0(X_t)   \mid X_0 = x \right]\tag{6}.
+\end{align}
+\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\phi_t\)</span> satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align} 
+\frac {\partial \phi}{\partial t} = &amp; \mu_M \phi  
++  \left(\mu_X  + \sigma_X {\sigma_M}' \right) \cdot \frac {\partial \phi}{\partial x} \notag\cr
+&amp; + {\frac 1 2} {\rm trace}
+\left\{ {\sigma_X}' \left( \frac {\partial^2 \phi }{\partial  xx'} \right) {\sigma_X} \right\}\tag{7}
+\end{align}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\phi_0 = 1\)</span> for (4) and <span class="math notranslate nohighlight">\(\phi_0 = \nu \cdot \sigma_M\)</span> for (5).</p>
+</section>
+<section id="stochastic-discount-factor-process">
+<h2>1.2 Stochastic discount factor process<a class="headerlink" href="#stochastic-discount-factor-process" title="Link to this heading">#</a></h2>
+<p>Represent the stochastic discount factor evolution and the evolution of its logarithm as:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+d S_t &amp; = S_t \mu_S(X_t) dt + S_t \sigma_S(X_t) dW_t \notag\cr
+d \log S_t &amp; = {\hat \mu}_S(X_t) dt  + \sigma_S(X_t) dW_t.\tag{8}
+\end{align}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\({\hat \mu}_S(X_t) =  \mu_S(X_t) - \frac 1 2 \vert \sigma_S(X_t) \vert^2.\)</span>  The instantaneous risk-free rate is
+<span class="math notranslate nohighlight">\(- \mu_S(X_t)\)</span> and the local price vector for exposure to the Brownian increment is <span class="math notranslate nohighlight">\(-\sigma_S(X_t).\)</span></p>
+<p>Also represent the consumption and continuation value evolution and the evolution of their logarithm as:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+d C_t &amp; = C_t \mu_C(X_t) dt + C_t \sigma_C(X_t) dW_t \notag \cr 
+d \log C_t &amp; = \mu_C(X_t) dt - \frac 1 2 \vert \sigma_C(X_t) \vert^2 dt + \sigma_C(X_t) dW_t \tag{9}\cr 
+d V_t &amp; = V_t \mu_V(X_t) dt + V_t \sigma_V(X_t) dW_t \notag \cr
+d \log V_t &amp; = \mu_V(X_t) dt - \frac 1 2 \vert \sigma_V(X_t) \vert^2 dt + \sigma_V(X_t) dW_t \notag.  
+\end{align}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\({\hat \mu}_C(X_t) =  \mu_C(X_t) - \frac 1 2 \vert \sigma_C(X_t) \vert^2\)</span> and <span class="math notranslate nohighlight">\({\hat \mu}_V(X_t) =  \mu_V(X_t) - \frac 1 2 \vert \sigma_V(X_t) \vert^2.\)</span></p>
+<p>The code computes the evolutions in terms of logarithms for reasons of numerically convenient.<br />
+Given the consumption and continuation-value evolution,</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+{\hat \mu}_S(X_t)  &amp; = - \delta - \rho {\hat \mu}_C(X_t) + \frac {(\gamma - 1)(\rho - \gamma) } 2 \vert \sigma_V(X_t) \vert^2 \cr
+\sigma_S(X_t) &amp; = - \rho \sigma_C(X_t) + (\rho - \gamma) \sigma_V(X_t)
+\end{align} 
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\delta &amp; = \textrm{subjective rate of discount} \cr
+\rho &amp; = \textrm{reciprocal of the intertemporal elasticity of substitution} \cr
+\gamma &amp; = \textrm{risk aversion or aversion to model misspecification} 
+\end{align} 
+\]</div>
+<p>The martingale uncertainty contribution to the stochastic discount factor process and the evolution of its  logarithmic counterpart are of particular interest.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+dN_t &amp; = N_t \sigma_N(X_t) dW_t \cr
+d \log N_t &amp;= - \frac 1 2 \vert \sigma_N(X_t) \vert^2 dt + \sigma_N(X_t) dW_t
+\end{align}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\sigma_N(X_t)= (1 - \gamma) \sigma_V(X_t) .
+\end{align}
+\]</div>
+<p>Use <span class="math notranslate nohighlight">\(N\)</span> in place of <span class="math notranslate nohighlight">\(S\)</span> to obtain the uncertainty component to the shock price elasticities.</p>
+</section>
+<section id="shock-exposure-elasticity-and-price-elasticity">
+<h2>1.3 Shock Exposure Elasticity and Price Elasticity<a class="headerlink" href="#shock-exposure-elasticity-and-price-elasticity" title="Link to this heading">#</a></h2>
+<p>For this continuous-time setup, the code computes the shock exposure elasticity or impulse response function for a process, <span class="math notranslate nohighlight">\(G\)</span>, using formula \eqref{eq:shock1} and \eqref{eq:shock2}, the corresponding shock price elasticity using</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+&amp; \varepsilon_G(x, t)-\varepsilon_{SG}(x, t) \\
+&amp; \varepsilon_G^+(x, t)-\varepsilon_{SG}^+(x, t)
+\end{align}
+\end{split}\]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">
+<h1>2. An Illustration using an intermediary asset pricing model [3], [4], [5]<a class="headerlink" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5" title="Link to this heading">#</a></h1>
+<section id="computing-shock-elasticities-computeelas">
+<h2>2.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code><a class="headerlink" href="#computing-shock-elasticities-computeelas" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">computeElas</span></code> is the function that computes the shock exposure and price elasticities (both the first and second types). It takes in the following arguments:</p>
+<p><code class="docutils literal notranslate"><span class="pre">stateMat</span></code>: (Tuple)</p>
+<ul class="simple">
+<li><p>A tuple containing a numpy-array formatted domain for each of the states. For example, suppose the model has two state variables and each state variable has 100 grid points. The stateMat argument would be a tuple containing two numpy arrays of shape <span class="math notranslate nohighlight">\((100\)</span>,<span class="math notranslate nohighlight">\() .\)</span></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">model</span></code>:(Dictionary)</p>
+<ul>
+<li><p>A dictionary that contains the information described in (1), (8), and (9). Specifically, it has the following keys:</p>
+<p><code class="docutils literal notranslate"><span class="pre">muX</span></code>: (Function)</p>
+<ul class="simple">
+<li><p>A function that computes the drifts of the state variables (i.e. <span class="math notranslate nohighlight">\(\mu_X\)</span> as in (1)) for each of the grid points in stateMat. Suppose there are <span class="math notranslate nohighlight">\(n\)</span> state variables. Given a <span class="math notranslate nohighlight">\(k \times n\)</span> numpy matrix points, where each row represents a point, <code class="docutils literal notranslate"><span class="pre">model['muX'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times n\)</span> numpy matrix, with each row corresponding to the drift vector of the state variables.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">sigmaX</span></code>:</p>
+<ul class="simple">
+<li><p>(List of functions) A list of functions, where each function computes the diffusion of a state variable (i.e. <span class="math notranslate nohighlight">\(\sigma_X\)</span> as in (1)) in order of the list (i.e. the first element of the list computes the diffusion of the first state variable in stateMat). For example, suppose there are <span class="math notranslate nohighlight">\(n\)</span> state variables and <span class="math notranslate nohighlight">\(m\)</span> shocks. <code class="docutils literal notranslate"><span class="pre">model['sigmaX']</span></code> is a list of two elements. Further suppose that points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix, where each row represents a point. Then <code class="docutils literal notranslate"><span class="pre">model['sigmaX'][0](points)</span></code> returns a <span class="math notranslate nohighlight">\(k \times m\)</span> matrix that contains the diffusion of the first state variable at these points.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">muC</span></code>: (Function)</p>
+<ul class="simple">
+<li><p>Similar to muX, a function that computes <span class="math notranslate nohighlight">\(\mu_C\)</span>, the drift of the perturbed process, as in (9). Suppose there are <span class="math notranslate nohighlight">\(n\)</span> state variables. <code class="docutils literal notranslate"><span class="pre">model['muC'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times 1\)</span> numpy matrix, where points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix. Note: the number of columns of points is <span class="math notranslate nohighlight">\(n\)</span>, but the dimensions of the output are <span class="math notranslate nohighlight">\(k \times 1\)</span>. Note that <span class="math notranslate nohighlight">\(C\)</span> is not limited to consumption process. It could be a general process <span class="math notranslate nohighlight">\(G\)</span> as shown in section 2.3.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">sigmaC</span></code>: (Function)</p>
+<ul class="simple">
+<li><p>A function that computes <span class="math notranslate nohighlight">\(\sigma_C\)</span>, the diffusion of the perturbed process, as in (9). Suppose points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix. Then <code class="docutils literal notranslate"><span class="pre">model['sigmaC'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times m\)</span> matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number of state variables and <span class="math notranslate nohighlight">\(m\)</span> is the number of shocks (Note that <span class="math notranslate nohighlight">\(m\)</span> is not necessarily equal to <span class="math notranslate nohighlight">\(n\)</span> ). Note that <span class="math notranslate nohighlight">\(C\)</span> is not limited to consumption process. It could be a general process <span class="math notranslate nohighlight">\(G\)</span> as shown in section 2.3.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">muS</span></code>: (Function)</p>
+<ul class="simple">
+<li><p>Similar to muX and muC, a function that computes <span class="math notranslate nohighlight">\(\mu_S\)</span>, the drift of the stochastic discount factor, as in (6). Using the same example, <code class="docutils literal notranslate"><span class="pre">model['muS'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times 1\)</span> numpy matrix, where points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">sigmaS</span></code>: (Function)</p>
+<ul class="simple">
+<li><p>A function that computes <span class="math notranslate nohighlight">\(\sigma_S\)</span>, the diffusion of the perturbed process, as in (6). Suppose points is a <span class="math notranslate nohighlight">\(k \times n\)</span> matrix. Then <code class="docutils literal notranslate"><span class="pre">model['sigmaS'](points)</span></code> must return a <span class="math notranslate nohighlight">\(k \times m\)</span> matrix, where <span class="math notranslate nohighlight">\(n\)</span> is the number of state variables and <span class="math notranslate nohighlight">\(m\)</span> is the number of shocks.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">dt</span></code>: (Float)</p>
+<ul class="simple">
+<li><p>The length of time step;</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">T</span></code>: (Integer)</p>
+<ul class="simple">
+<li><p>Total number of time periods. Suppose <code class="docutils literal notranslate"><span class="pre">dt</span></code> =1/12 implies one month and <code class="docutils literal notranslate"><span class="pre">model['T']</span></code>=120. The total time that the elasticities are solved for is 10 years.</p></li>
+</ul>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">bc</span></code>: (Dictionary)</p>
+<ul class="simple">
+<li><p>A dictionary that specifies the boundary conditions in this form:
+$<span class="math notranslate nohighlight">\(
+0=a_0+a_1\phi+a_2 \cdot \frac{\partial}{\partial x'}\phi \label{eq:what}\tag{10}
+\)</span><span class="math notranslate nohighlight">\(
+for all \)</span>t<span class="math notranslate nohighlight">\(  
+where \)</span>a_0, a_1<span class="math notranslate nohighlight">\( are scalars,  and  \)</span>a_2<span class="math notranslate nohighlight">\( is a  \)</span>1 \times n$ vectors. The user should configure <code class="docutils literal notranslate"><span class="pre">bc</span></code> in this way:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a0</span></code>: a scalar that corresponds to <span class="math notranslate nohighlight">\(a_0\)</span> in \eqref{eq:what}</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level</span></code>: a scalar that corresponds to <span class="math notranslate nohighlight">\(a_1\)</span> in \eqref{eq:what}</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first</span></code>: a <span class="math notranslate nohighlight">\(1 \times n\)</span> numpy matrix that corresponds to <span class="math notranslate nohighlight">\(a_2\)</span> in \eqref{eq:what}</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">natural</span></code>: a boolean (True or False) that determines whether to use natural boundaries; if True, the fields above would be ignored.   ``Natural boundaries’’ are implemented by effectly assuming constant second derivatives at boundaries.</p></li>
+</ul>
+<p>For example, to implement the boundary conditions <span class="math notranslate nohighlight">\(0= \begin{bmatrix} 1 &amp; 1 &amp; 1 \end{bmatrix} \cdot  \frac{\partial}{\partial x} \phi\)</span>, one should set up bc by doing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bc</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">bc</span><span class="p">[</span><span class="s1">&#39;a0&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="n">bc</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span>
+<span class="n">bc</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">bc</span><span class="p">[</span><span class="s1">&#39;natural&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">x0</span></code> : (numpy matrix)</p>
+<ul class="simple">
+<li><p>A numpy matrix that contains all the starting points (i.e. <span class="math notranslate nohighlight">\(x\)</span> in (6)). For <span class="math notranslate nohighlight">\(l\)</span> starting points, <span class="math notranslate nohighlight">\(\mathrm{x} 0\)</span> should be an <span class="math notranslate nohighlight">\(l \times n\)</span> matrix ( <span class="math notranslate nohighlight">\(n\)</span> being the number of states).</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">usePardiso</span></code>: (Boolean)</p>
+<ul class="simple">
+<li><p>A boolean option to use the Intel package called Pardiso to solve the linear system. Defaults to False.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">iparms</span></code>: (Dictionary)</p>
+<ul class="simple">
+<li><p>If usePardiso is set to True, Pardiso’s default parameters will be used. The iparms parameter allows the user to input a dictionary with changes for those default parameters. Note that while the Pardiso site indexes the parameters at one, this function argument indexes them at zero. For example, a user wishing to set what is listed on the website as iparm(1) to <span class="math notranslate nohighlight">\(-1\)</span> would set iparms <span class="math notranslate nohighlight">\(=\{0:-1\}\)</span>.</p></li>
+</ul>
+<p>Finally, we have one optional argument:</p>
+<p><code class="docutils literal notranslate"><span class="pre">betterCP</span></code>: (Boolean)</p>
+<ul class="simple">
+<li><p>True by default. If False, the program will use the following finite difference approximation scheme for cross partials:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+f_{x y}(x, y)=\frac{f(x+h, y+k)-f(x+h, y-k)-f(x-h, y+k)+f(x-h, y-k)}{4 h k}
+\end{align}
+\]</div>
+<p>if True, the program will use the alternative finite difference approximation for cross partials. With the alternative approximation, one can have a better chance of preserving monotonicity:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+f_{x y}(x, y)= &amp; \frac{1}{2 h k}(f(x+h, y+k)-f(x+h, y)-f(x, y+k) \\
+&amp; +2 f(x, y)-f(x-h, y)-f(x, y-k)+f(x-h, y-k))
+\end{align}
+\end{split}\]</div>
+<p>The function returns exposure and price elasticities. Suppose the user inputs <span class="math notranslate nohighlight">\(l\)</span> starting points (i.e. <span class="math notranslate nohighlight">\(\mathrm{x} 0\)</span> has <span class="math notranslate nohighlight">\(l\)</span> rows) and <span class="math notranslate nohighlight">\(T\)</span> time periods. Then the function will return the following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">expoElas</span></code>:</p>
+<ul class="simple">
+<li><p>an object with two attributes: the firstType and secondType. Each attribute is an <span class="math notranslate nohighlight">\(l \times k \times T\)</span> matrix. The first index corresponds to the starting point, the second index corresponds to the shock number, and the third corresponds to time. As the name suggests, firstType is the first type shock exposure elasticities for the <span class="math notranslate nohighlight">\(i\)</span> th starting point (the <span class="math notranslate nohighlight">\(i\)</span> th row in input <span class="math notranslate nohighlight">\(\mathrm{x} 0\)</span> ) up to <span class="math notranslate nohighlight">\(T\)</span> time periods, whereas secondType is the second type shock exposure elasticities.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">priceElas</span></code>:</p>
+<ul class="simple">
+<li><p>similar to expoElas, but contains the price elasticities.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## modelsol includes the state variable grids, variable drift and diffusion term information from exogenous solutions</span>
+<span class="c1"># &#39;muCe&#39; stands for the drift term for Expert Consumption, &#39;muCh&#39; stands for the drift term for Households Consumption</span>
+<span class="c1"># &#39;sigmaCe&#39; stands for the diffusion term for Expert Consumption, &#39;muCh&#39; stands for the diffusion term for Households Consumption</span>
+<span class="c1"># &#39;muSe&#39; stands for the drift term for Expert SDF, &#39;muNe&#39; stands for the drift term for Expert Uncertainty Component of SDF, </span>
+<span class="c1"># &#39;muX&#39;, stands for the drift term for state variables, wealth share (W), growth rate (Z), and stochastic volatility (V)</span>
+<span class="c1"># The diffusion term and households have similar notation</span>
+<span class="c1"># Please feel free to check the dimension of each element in modelsol</span>
+<span class="n">modelsol</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;model_ela_sol.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">))</span>
+
+<span class="c1"># We compute the shock elasticities for 48 years with natural boundary</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">48</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">bc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;natural&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">}</span>
+
+<span class="c1"># The Toolbox takes python function as inputs, but usually the solution for drift and diffusion terms are the value evaluted at grid points, so we interpolate them as functions below.</span>
+<span class="n">muXs</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">stateVols</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">SDFeVols</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">SDFhVols</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">sigmaChVols</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">sigmaCeVols</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">sigmaNhVols</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">sigmaNeVols</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">stateVolsList</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">sigmaXs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">commonInput</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Iterate over state dimensions</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;nDims&#39;</span><span class="p">]):</span>
+    <span class="n">muXs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;muX&#39;</span><span class="p">][:,</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muCh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;muCh&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">))</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muCe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;muCe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">))</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muSe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;muSe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">))</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muSh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;muSh&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">))</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muNe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;muNe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">))</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muNh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;muNh&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">))</span>
+    <span class="c1"># Iterate over shocks dimensions </span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;nShocks&#39;</span><span class="p">]):</span>
+        <span class="n">stateVols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;sigmaX&#39;</span><span class="p">][</span><span class="n">n</span><span class="p">][:,</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">SDFeVols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;sigmaSe&#39;</span><span class="p">][:,</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)))</span>
+            <span class="n">SDFhVols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;sigmaSh&#39;</span><span class="p">][:,</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)))</span>
+            <span class="n">sigmaChVols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;sigmaCh&#39;</span><span class="p">][:,</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)))</span>
+            <span class="n">sigmaCeVols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;sigmaCe&#39;</span><span class="p">][:,</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)))</span>
+            <span class="n">sigmaNhVols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;sigmaNh&#39;</span><span class="p">][:,</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)))</span>
+            <span class="n">sigmaNeVols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RegularGridInterpolator</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;sigmaNe&#39;</span><span class="p">][:,</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)))</span>
+    <span class="n">stateVolsList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stateVols</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">sigmaXfn</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">vol</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">vol</span> <span class="ow">in</span> <span class="n">stateVolsList</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="p">])</span>
+    <span class="n">sigmaXs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sigmaXfn</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">stateVols</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaSe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">vol</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">vol</span> <span class="ow">in</span> <span class="n">SDFeVols</span><span class="p">])</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaSh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">vol</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">vol</span> <span class="ow">in</span> <span class="n">SDFhVols</span><span class="p">])</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaCe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">vol</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">vol</span> <span class="ow">in</span> <span class="n">sigmaCeVols</span><span class="p">])</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaCh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">vol</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">vol</span> <span class="ow">in</span> <span class="n">sigmaChVols</span><span class="p">])</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaNe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">vol</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">vol</span> <span class="ow">in</span> <span class="n">sigmaNeVols</span><span class="p">])</span>
+        <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaNh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">vol</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">vol</span> <span class="ow">in</span> <span class="n">sigmaNhVols</span><span class="p">])</span>
+
+<span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaX&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sigmaXs</span>
+<span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muX&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="n">mu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">mu</span> <span class="ow">in</span> <span class="n">muXs</span><span class="p">])</span>
+<span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">T</span><span class="p">;</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dt</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1">## Below provides an example to use stationary distribution toolbox calculate the quantile of shock elasticities for state variable Wealth Share, the results for all three variables have been provided in the modelsol[&#39;x0&#39;]</span>
+
+<span class="c1"># Form state grids using meshgrid</span>
+<span class="n">stateMat</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">])</span>
+<span class="n">stateGrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="n">stateMat</span><span class="p">,</span>  <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">);</span> <span class="n">stateGrid</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">T</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">stateGrid</span><span class="p">]</span>
+<span class="n">stateGrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">stateGrid</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">## The `computeDent` takes similar input as shock elasticities toolbox, instead of function, we can directly input the drift and diffusion term evaluted at grid points with the form of np.matrix</span>
+<span class="n">dent</span> <span class="o">=</span> <span class="n">computeDent</span><span class="p">(</span><span class="n">stateGrid</span><span class="p">,{</span><span class="s1">&#39;muX&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;muX&#39;</span><span class="p">]),</span> <span class="s1">&#39;sigmaX&#39;</span><span class="p">:[</span><span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;sigmaX&#39;</span><span class="p">]]},</span> <span class="n">bc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;natural&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">})</span>
+
+<span class="c1">## Calculate Inverse CDFs</span>
+<span class="n">marginals</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">inverseCDFs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">nRange</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;nDims&#39;</span><span class="p">]))</span>
+<span class="n">axes</span>     <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span><span class="n">nRange</span><span class="p">))</span>
+<span class="n">condDent</span> <span class="o">=</span> <span class="n">dent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;gridSizeList&#39;</span><span class="p">],</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">axes</span><span class="p">))</span>
+<span class="n">marginals</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">condDent</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">cumden</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">marginals</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">])</span>
+<span class="n">cdf</span>      <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">cumden</span><span class="p">,</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=</span> <span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span>  <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">]),</span> <span class="n">bounds_error</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">inverseCDFs</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cdf</span>
+
+<span class="c1">## Using Inverse CDFs to compute the median for the wealth share state variable</span>
+<span class="n">inverseCDFs</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">](</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 23min 51s, sys: 5min 59s, total: 29min 51s
+Wall time: 5min 28s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.25329026)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1">## Compute shock elasticities for experts consumption</span>
+<span class="n">modelInput</span> <span class="o">=</span> <span class="n">commonInput</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;sigmaC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaCe&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;muC&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muCe&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;sigmaS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaSe&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;muS&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muSe&#39;</span><span class="p">]</span>
+
+<span class="n">expoElasExperts</span><span class="p">,</span> <span class="n">priceElasExperts</span><span class="p">,</span> <span class="n">linSysExpo</span><span class="p">,</span> <span class="n">linSysE</span> <span class="o">=</span> <span class="n">computeElas</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelInput</span><span class="p">,</span> <span class="n">bc</span><span class="p">,</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 56min 47s, sys: 14min 52s, total: 1h 11min 40s
+Wall time: 14min 16s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1">## Compute shock elasticities for households consumption</span>
+<span class="n">modelInput</span> <span class="o">=</span> <span class="n">commonInput</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;sigmaC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaCh&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;muC&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muCh&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;sigmaS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaSh&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;muS&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muSh&#39;</span><span class="p">]</span>
+<span class="n">expoElasHouseholds</span><span class="p">,</span> <span class="n">priceElasHouseholds</span><span class="p">,</span> <span class="n">linSysExpo</span><span class="p">,</span> <span class="n">linSysH</span> <span class="o">=</span> <span class="n">computeElas</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelInput</span><span class="p">,</span> <span class="n">bc</span><span class="p">,</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 57min 48s, sys: 17min 19s, total: 1h 15min 8s
+Wall time: 16min 48s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1">## Compute uncertain component for experts consumption using N instead of S </span>
+<span class="n">modelInput</span> <span class="o">=</span> <span class="n">commonInput</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;sigmaC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaCe&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;muC&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muCe&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;sigmaS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaNe&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;muS&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muNe&#39;</span><span class="p">]</span>
+<span class="n">expoElasExpertsN</span><span class="p">,</span> <span class="n">priceElasExpertsN</span><span class="p">,</span> <span class="n">linSysExpo</span><span class="p">,</span> <span class="n">linSysE</span> <span class="o">=</span> <span class="n">computeElas</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelInput</span><span class="p">,</span> <span class="n">bc</span><span class="p">,</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 56min 44s, sys: 15min 52s, total: 1h 12min 36s
+Wall time: 14min 56s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1">## Compute uncertain component for households consumption using N instead of S </span>
+<span class="n">modelInput</span> <span class="o">=</span> <span class="n">commonInput</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;sigmaC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaCh&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;muC&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muCh&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;sigmaS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;sigmaNh&#39;</span><span class="p">]</span>
+<span class="n">modelInput</span><span class="p">[</span><span class="s1">&#39;muS&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">commonInput</span><span class="p">[</span><span class="s1">&#39;muNh&#39;</span><span class="p">]</span>
+<span class="n">expoElasHouseholdsN</span><span class="p">,</span> <span class="n">priceElasHouseholdsN</span><span class="p">,</span> <span class="n">linSysExpo</span><span class="p">,</span> <span class="n">linSysH</span> <span class="o">=</span> <span class="n">computeElas</span><span class="p">(</span><span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;stateMatInput&#39;</span><span class="p">],</span> <span class="n">modelInput</span><span class="p">,</span> <span class="n">bc</span><span class="p">,</span> <span class="n">modelsol</span><span class="p">[</span><span class="s1">&#39;x0&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 1h 4s, sys: 17min 3s, total: 1h 17min 8s
+Wall time: 16min 59s
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="shock-elasticities-plots">
+<h2>2.2 Shock Elasticities Plots<a class="headerlink" href="#shock-elasticities-plots" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.3g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">48</span>
+<span class="c1"># Calculate the shock elasticity at 0.25, 0.5 and 0.75 quantile for Stochastic Volatility</span>
+<span class="n">quantile</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">expoElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">expoElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">expoElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">expoElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">expoElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">expoElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">expoElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="n">expoElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="n">expoElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0</span><span class="p">,</span> <span class="n">expo_elas_shock_1</span><span class="p">,</span> <span class="n">expo_elas_shock_2</span><span class="p">]</span>
+<span class="n">shock_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TFP shock&#39;</span><span class="p">,</span> <span class="s1">&#39;growth rate shock&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregate stochastic volitility shock&#39;</span><span class="p">]</span>
+<span class="n">qt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exposure elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;With respect to the &#39;</span> <span class="o">+</span> <span class="n">shock_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Exposure elasticity for the Experts Consumption&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7cb452d7f40769eab109e4d4e927ac2990576302496594649faa8fc0aebf27c5.png" src="../_images/7cb452d7f40769eab109e4d4e927ac2990576302496594649faa8fc0aebf27c5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">expoElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">expoElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">expoElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">expoElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">expoElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">expoElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">expoElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="n">expoElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="n">expoElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0</span><span class="p">,</span> <span class="n">expo_elas_shock_1</span><span class="p">,</span> <span class="n">expo_elas_shock_2</span><span class="p">]</span>
+<span class="n">shock_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TFP shock&#39;</span><span class="p">,</span> <span class="s1">&#39;growth rate shock&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregate stochastic volitility shock&#39;</span><span class="p">]</span>
+<span class="n">qt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exposure elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;With respect to the &#39;</span> <span class="o">+</span> <span class="n">shock_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.01</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Exposure elasticity for the Households Consumption&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/50b10ab11164ae6676f17dc8c64111bc9866665dcc433ea68eb4dc2b535159e8.png" src="../_images/50b10ab11164ae6676f17dc8c64111bc9866665dcc433ea68eb4dc2b535159e8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="o">-</span><span class="n">priceElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasExperts</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0</span><span class="p">,</span> <span class="n">expo_elas_shock_1</span><span class="p">,</span> <span class="n">expo_elas_shock_2</span><span class="p">]</span>
+<span class="n">shock_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TFP shock&#39;</span><span class="p">,</span> <span class="s1">&#39;growth rate shock&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregate stochastic volitility shock&#39;</span><span class="p">]</span>
+<span class="n">qt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;With respect to the &#39;</span> <span class="o">+</span> <span class="n">shock_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Price elasticity for the Experts Consumption&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1d3bd4391a9aafbd27e06f641c7d47677847bb87a226c36f3ddf7764e925fea1.png" src="../_images/1d3bd4391a9aafbd27e06f641c7d47677847bb87a226c36f3ddf7764e925fea1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="o">-</span><span class="n">priceElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasHouseholds</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0</span><span class="p">,</span> <span class="n">expo_elas_shock_1</span><span class="p">,</span> <span class="n">expo_elas_shock_2</span><span class="p">]</span>
+<span class="n">shock_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TFP shock&#39;</span><span class="p">,</span> <span class="s1">&#39;growth rate shock&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregate stochastic volitility shock&#39;</span><span class="p">]</span>
+<span class="n">qt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;With respect to the &#39;</span> <span class="o">+</span> <span class="n">shock_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Price elasticity for the Households Consumption&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4b483a8a0224f2382131c7e9247ebd09bd85104595f413d34e01c875aeeba5a5.png" src="../_images/4b483a8a0224f2382131c7e9247ebd09bd85104595f413d34e01c875aeeba5a5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="o">-</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0</span><span class="p">,</span> <span class="n">expo_elas_shock_1</span><span class="p">,</span> <span class="n">expo_elas_shock_2</span><span class="p">]</span>
+<span class="n">shock_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TFP shock&#39;</span><span class="p">,</span> <span class="s1">&#39;growth rate shock&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregate stochastic volitility shock&#39;</span><span class="p">]</span>
+<span class="n">qt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;With respect to the &#39;</span> <span class="o">+</span> <span class="n">shock_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.3</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.3</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.05</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Type 1 Uncertainty Component of the Price elasticity for the Experts Consumption&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a67ea654a9f6628f6b79002f3e222dcdbdf19312d3d641ccad9d0499852b38b8.png" src="../_images/a67ea654a9f6628f6b79002f3e222dcdbdf19312d3d641ccad9d0499852b38b8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="o">-</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasExpertsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0</span><span class="p">,</span> <span class="n">expo_elas_shock_1</span><span class="p">,</span> <span class="n">expo_elas_shock_2</span><span class="p">]</span>
+<span class="n">shock_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TFP shock&#39;</span><span class="p">,</span> <span class="s1">&#39;growth rate shock&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregate stochastic volitility shock&#39;</span><span class="p">]</span>
+<span class="n">qt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;With respect to the &#39;</span> <span class="o">+</span> <span class="n">shock_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.3</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.3</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Type 2 Uncertainty Component of the Price elasticity for the Experts Consumption&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7c29a7e259cba5e46ebccab58e0b3efda75097d688c16291bbdd43cbc0a2cd5b.png" src="../_images/7c29a7e259cba5e46ebccab58e0b3efda75097d688c16291bbdd43cbc0a2cd5b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="o">-</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">firstType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0</span><span class="p">,</span> <span class="n">expo_elas_shock_1</span><span class="p">,</span> <span class="n">expo_elas_shock_2</span><span class="p">]</span>
+<span class="n">shock_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TFP shock&#39;</span><span class="p">,</span> <span class="s1">&#39;growth rate shock&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregate stochastic volitility shock&#39;</span><span class="p">]</span>
+<span class="n">qt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;With respect to the &#39;</span> <span class="o">+</span> <span class="n">shock_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Type 1 Uncertainty Component of the Price elasticity for the Households Consumption&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c9db8b2c9ca780fcd6eafb60638be8ac601a3f745d5d441bfb7a2e4fb1c9209a.png" src="../_images/c9db8b2c9ca780fcd6eafb60638be8ac601a3f745d5d441bfb7a2e4fb1c9209a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">expo_elas_shock_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,:],</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,:],</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">expo_elas_shock_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="o">-</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,:],</span><span class="o">-</span><span class="n">priceElasHouseholdsN</span><span class="o">.</span><span class="n">secondType</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,:]],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">n_qt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">quantile</span><span class="p">)</span>
+<span class="n">plot_elas</span> <span class="o">=</span> <span class="p">[</span><span class="n">expo_elas_shock_0</span><span class="p">,</span> <span class="n">expo_elas_shock_1</span><span class="p">,</span> <span class="n">expo_elas_shock_2</span><span class="p">]</span>
+<span class="n">shock_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TFP shock&#39;</span><span class="p">,</span> <span class="s1">&#39;growth rate shock&#39;</span><span class="p">,</span> <span class="s1">&#39;aggregate stochastic volitility shock&#39;</span><span class="p">]</span>
+<span class="n">qt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aggregate Volatility 0.25 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.5 quantile&#39;</span><span class="p">,</span><span class="s1">&#39;Aggregate Volatility 0.75 quantile&#39;</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plot_elas</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_qt</span><span class="p">):</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">plot_elas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>  <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="n">qt</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price elasticity&#39;</span><span class="p">)</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;With respect to the &#39;</span> <span class="o">+</span> <span class="n">shock_name</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.4</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Type 2 Uncertainty Component of the Price elasticity for the Households Consumption&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/168097ceaf9d549c2f0644bb8d0842a98425703fc10d0987199e1e711eec2d7e.png" src="../_images/168097ceaf9d549c2f0644bb8d0842a98425703fc10d0987199e1e711eec2d7e.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h1>
+<p>[1] Borovička, Jaroslav, Lars Peter Hansen, and José A. Scheinkman. “Shock elasticities and impulse responses.” Mathematics and Financial Economics 8 (2014): 333-354.</p>
+<p>[2] Hansen, Lars Peter. “Dynamic valuation decomposition within stochastic economies.” Econometrica 80, no. 3 (2012): 911-967.</p>
+<p>[3], Brunnermeier, Markus K., and Yuliy Sannikov. “A macroeconomic model with a financial sector.” American Economic Review 104, no. 2 (2014): 379-421.</p>
+<p>[4] Brunnermeier, Markus K., and Yuliy Sannikov. “Macro, money, and finance: A continuous-time approach.” In Handbook of Macroeconomics, vol. 2, pp. 1497-1545. Elsevier, 2016.</p>
+<p>[5] Hansen, Lars Peter, Paymon Khorrami, and Fabrice Tourre. Comparative valuation dynamics in models with financing restrictions. Working Paper, 2018.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./continuous_global_solution"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="shockelasticity.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Shock Elasticity: Discrete Time</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Shock Elasticities: Continuous Time</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-framework">1. Continuous-time framework</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">1.1 Basic setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">1.2 Stochastic discount factor process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-exposure-elasticity-and-price-elasticity">1.3 Shock Exposure Elasticity and Price Elasticity</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#an-illustration-using-an-intermediary-asset-pricing-model-3-4-5">2. An Illustration using an intermediary asset pricing model [3], [4], [5]</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-shock-elasticities-computeelas">2.1  Computing Shock Elasticities: <code class="docutils literal notranslate"><span class="pre">computeElas</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shock-elasticities-plots">2.2 Shock Elasticities Plots</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
