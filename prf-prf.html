@@ -1,0 +1,1167 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proof Index &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=82c7aad8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'prf-prf';</script>
+    <link rel="canonical" href="https://lphansen.github.io/QuantMFR/prf-prf.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <script>
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="book/example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/example_out_c2_v2.html">3. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/example_out_c3_v2.html">5. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/example_out_c4_v2.html">6. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/example_out_c5_v2.html">7. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/decision_book_draft.html">8. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/exploring_recursive_utility.html">9. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/example_out_c6_v2.html">10. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/chapter_stochastic_response.html">11. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/marginal_valuation.html">12. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/gmmcurrent_lars_v9.html">13. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="book/cite.html">14. Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="continuous_global_solution/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuous_global_solution/background.html">Background Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuous_global_solution/shockelasticity.html">Notebook: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="continuous_global_solution/shockelasticitycontinuous.html">Notebook: Continuous Time</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Comparative Valuation Dynamics in Production Economies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="comparing_dsge/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparing_dsge/appendix.html">Online Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparing_dsge/code.html">Computational Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Spillovers for Markets and Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="uncertainty_spillovers/manuscript.html">Manuscript</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+   <h1>Proof Index</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-Relative entropy divergence"><strong>Relative entropy divergence</strong></a> | 
+   <a href="#cap-cor:ergo"><strong>cor:ergo</strong></a> | 
+   <a href="#cap-decomp00"><strong>decomp00</strong></a> | 
+   <a href="#cap-def:reversible"><strong>def:reversible</strong></a> | 
+   <a href="#cap-def:stationdist"><strong>def:stationdist</strong></a> | 
+   <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
+   <a href="#cap-definition-1"><strong>definition-1</strong></a> | 
+   <a href="#cap-definition-10"><strong>definition-10</strong></a> | 
+   <a href="#cap-definition-13"><strong>definition-13</strong></a> | 
+   <a href="#cap-definition-15"><strong>definition-15</strong></a> | 
+   <a href="#cap-definition-3"><strong>definition-3</strong></a> | 
+   <a href="#cap-definition-4"><strong>definition-4</strong></a> | 
+   <a href="#cap-definition-8"><strong>definition-8</strong></a> | 
+   <a href="#cap-ex:2sls"><strong>ex:2sls</strong></a> | 
+   <a href="#cap-ex:Jovanovic1979"><strong>ex:Jovanovic1979</strong></a> | 
+   <a href="#cap-ex:MA"><strong>ex:MA</strong></a> | 
+   <a href="#cap-ex:MC1"><strong>ex:MC1</strong></a> | 
+   <a href="#cap-ex:MC2"><strong>ex:MC2</strong></a> | 
+   <a href="#cap-ex:MC3"><strong>ex:MC3</strong></a> | 
+   <a href="#cap-ex:Muth1960"><strong>ex:Muth1960</strong></a> | 
+   <a href="#cap-ex:VARL"><strong>ex:VARL</strong></a> | 
+   <a href="#cap-ex:chap2ma"><strong>ex:chap2ma</strong></a> | 
+   <a href="#cap-ex:conditional"><strong>ex:conditional</strong></a> | 
+   <a href="#cap-ex:continuous"><strong>ex:continuous</strong></a> | 
+   <a href="#cap-ex:ex01"><strong>ex:ex01</strong></a> | 
+   <a href="#cap-ex:ex02"><strong>ex:ex02</strong></a> | 
+   <a href="#cap-ex:exampleeffb103"><strong>ex:exampleeffb103</strong></a> | 
+   <a href="#cap-ex:helpBQ"><strong>ex:helpBQ</strong></a> | 
+   <a href="#cap-ex:invariant"><strong>ex:invariant</strong></a> | 
+   <a href="#cap-ex:period"><strong>ex:period</strong></a> | 
+   <a href="#cap-ex:quadratic"><strong>ex:quadratic</strong></a> | 
+   <a href="#cap-ex:twomovingaverages"><strong>ex:twomovingaverages</strong></a> | 
+   <a href="#cap-ex:unconditional"><strong>ex:unconditional</strong></a> | 
+   <a href="#cap-example-0"><strong>example-0</strong></a> | 
+   <a href="#cap-example-10"><strong>example-10</strong></a> | 
+   <a href="#cap-example-12"><strong>example-12</strong></a> | 
+   <a href="#cap-example-13"><strong>example-13</strong></a> | 
+   <a href="#cap-example-14"><strong>example-14</strong></a> | 
+   <a href="#cap-example-17"><strong>example-17</strong></a> | 
+   <a href="#cap-example-2"><strong>example-2</strong></a> | 
+   <a href="#cap-example-23"><strong>example-23</strong></a> | 
+   <a href="#cap-example-4"><strong>example-4</strong></a> | 
+   <a href="#cap-example-5"><strong>example-5</strong></a> | 
+   <a href="#cap-example-6"><strong>example-6</strong></a> | 
+   <a href="#cap-example-7"><strong>example-7</strong></a> | 
+   <a href="#cap-lem:uniteigen"><strong>lem:uniteigen</strong></a> | 
+   <a href="#cap-momentmatch1"><strong>momentmatch1</strong></a> | 
+   <a href="#cap-prop:decomp"><strong>prop:decomp</strong></a> | 
+   <a href="#cap-prop:ergo"><strong>prop:ergo</strong></a> | 
+   <a href="#cap-prop:ergod100"><strong>prop:ergod100</strong></a> | 
+   <a href="#cap-prop:finiteP1"><strong>prop:finiteP1</strong></a> | 
+   <a href="#cap-prop:finiteP2"><strong>prop:finiteP2</strong></a> | 
+   <a href="#cap-prop:gordin"><strong>prop:gordin</strong></a> | 
+   <a href="#cap-prop:identical"><strong>prop:identical</strong></a> | 
+   <a href="#cap-proposition-14"><strong>proposition-14</strong></a> | 
+   <a href="#cap-rem:old5.2"><strong>rem:old5.2</strong></a> | 
+   <a href="#cap-rem:relentropy"><strong>rem:relentropy</strong></a> | 
+   <a href="#cap-remark-0"><strong>remark-0</strong></a> | 
+   <a href="#cap-remark-1"><strong>remark-1</strong></a> | 
+   <a href="#cap-remark-12"><strong>remark-12</strong></a> | 
+   <a href="#cap-remark-13"><strong>remark-13</strong></a> | 
+   <a href="#cap-remark-15"><strong>remark-15</strong></a> | 
+   <a href="#cap-remark-16"><strong>remark-16</strong></a> | 
+   <a href="#cap-remark-18"><strong>remark-18</strong></a> | 
+   <a href="#cap-remark-19"><strong>remark-19</strong></a> | 
+   <a href="#cap-remark-2"><strong>remark-2</strong></a> | 
+   <a href="#cap-remark-22"><strong>remark-22</strong></a> | 
+   <a href="#cap-remark-3"><strong>remark-3</strong></a> | 
+   <a href="#cap-remark-4"><strong>remark-4</strong></a> | 
+   <a href="#cap-remark-5"><strong>remark-5</strong></a> | 
+   <a href="#cap-remark-6"><strong>remark-6</strong></a> | 
+   <a href="#cap-remark-7"><strong>remark-7</strong></a> | 
+   <a href="#cap-remark-8"><strong>remark-8</strong></a> | 
+   <a href="#cap-remark-9"><strong>remark-9</strong></a> | 
+   <a href="#cap-remark:first"><strong>remark:first</strong></a> | 
+   <a href="#cap-remark:second"><strong>remark:second</strong></a> | 
+   <a href="#cap-remark:zero"><strong>remark:zero</strong></a> | 
+   <a href="#cap-remark_label"><strong>remark_label</strong></a> | 
+   <a href="#cap-result:dynkin"><strong>result:dynkin</strong></a> | 
+   <a href="#cap-stochasticvolatility"><strong>stochasticvolatility</strong></a> | 
+   <a href="#cap-theorem-2"><strong>theorem-2</strong></a> | 
+   <a href="#cap-theorem-21"><strong>theorem-21</strong></a> | 
+   <a href="#cap-thm:birk"><strong>thm:birk</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-Relative entropy divergence"><td></td><td>
+       <strong>Relative entropy divergence</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/decision_book_draft.html#Relative entropy divergence"><code class="xref">Relative entropy divergence</code></a> <em>(book/decision_book_draft)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-cor:ergo"><td></td><td>
+       <strong>cor:ergo</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#cor:ergo"><code class="xref">cor:ergo</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-decomp00"><td></td><td>
+       <strong>decomp00</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c3_v2.html#decomp00"><code class="xref">decomp00</code></a> <em>(book/example_out_c3_v2)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def:reversible"><td></td><td>
+       <strong>def:reversible</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#def:reversible"><code class="xref">def:reversible</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-def:stationdist"><td></td><td>
+       <strong>def:stationdist</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#def:stationdist"><code class="xref">def:stationdist</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-0"><td></td><td>
+       <strong>definition-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c4_v2.html#definition-0"><code class="xref">definition-0</code></a> <em>(book/example_out_c4_v2)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-1"><td></td><td>
+       <strong>definition-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c4_v2.html#definition-1"><code class="xref">definition-1</code></a> <em>(book/example_out_c4_v2)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-10"><td></td><td>
+       <strong>definition-10</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#definition-10"><code class="xref">definition-10</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-13"><td></td><td>
+       <strong>definition-13</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#definition-13"><code class="xref">definition-13</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-15"><td></td><td>
+       <strong>definition-15</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#definition-15"><code class="xref">definition-15</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-3"><td></td><td>
+       <strong>definition-3</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#definition-3"><code class="xref">definition-3</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-4"><td></td><td>
+       <strong>definition-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c6_v2.html#definition-4"><code class="xref">definition-4</code></a> <em>(book/example_out_c6_v2)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-8"><td></td><td>
+       <strong>definition-8</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#definition-8"><code class="xref">definition-8</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:2sls"><td></td><td>
+       <strong>ex:2sls</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#ex:2sls"><code class="xref">ex:2sls</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:Jovanovic1979"><td></td><td>
+       <strong>ex:Jovanovic1979</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c5_v2.html#ex:Jovanovic1979"><code class="xref">ex:Jovanovic1979</code></a> <em>(book/example_out_c5_v2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:MA"><td></td><td>
+       <strong>ex:MA</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#ex:MA"><code class="xref">ex:MA</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:MC1"><td></td><td>
+       <strong>ex:MC1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#ex:MC1"><code class="xref">ex:MC1</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:MC2"><td></td><td>
+       <strong>ex:MC2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#ex:MC2"><code class="xref">ex:MC2</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:MC3"><td></td><td>
+       <strong>ex:MC3</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#ex:MC3"><code class="xref">ex:MC3</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:Muth1960"><td></td><td>
+       <strong>ex:Muth1960</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c5_v2.html#ex:Muth1960"><code class="xref">ex:Muth1960</code></a> <em>(book/example_out_c5_v2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:VARL"><td></td><td>
+       <strong>ex:VARL</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c6_v2.html#ex:VARL"><code class="xref">ex:VARL</code></a> <em>(book/example_out_c6_v2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:chap2ma"><td></td><td>
+       <strong>ex:chap2ma</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c3_v2.html#ex:chap2ma"><code class="xref">ex:chap2ma</code></a> <em>(book/example_out_c3_v2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:conditional"><td></td><td>
+       <strong>ex:conditional</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#ex:conditional"><code class="xref">ex:conditional</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:continuous"><td></td><td>
+       <strong>ex:continuous</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/chapter_stochastic_response.html#ex:continuous"><code class="xref">ex:continuous</code></a> <em>(book/chapter_stochastic_response)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:ex01"><td></td><td>
+       <strong>ex:ex01</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#ex:ex01"><code class="xref">ex:ex01</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:ex02"><td></td><td>
+       <strong>ex:ex02</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#ex:ex02"><code class="xref">ex:ex02</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:exampleeffb103"><td></td><td>
+       <strong>ex:exampleeffb103</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#ex:exampleeffb103"><code class="xref">ex:exampleeffb103</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:helpBQ"><td></td><td>
+       <strong>ex:helpBQ</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c3_v2.html#ex:helpBQ"><code class="xref">ex:helpBQ</code></a> <em>(book/example_out_c3_v2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:invariant"><td></td><td>
+       <strong>ex:invariant</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#ex:invariant"><code class="xref">ex:invariant</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:period"><td></td><td>
+       <strong>ex:period</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#ex:period"><code class="xref">ex:period</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:quadratic"><td></td><td>
+       <strong>ex:quadratic</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/chapter_stochastic_response.html#ex:quadratic"><code class="xref">ex:quadratic</code></a> <em>(book/chapter_stochastic_response)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:twomovingaverages"><td></td><td>
+       <strong>ex:twomovingaverages</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c5_v2.html#ex:twomovingaverages"><code class="xref">ex:twomovingaverages</code></a> <em>(book/example_out_c5_v2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ex:unconditional"><td></td><td>
+       <strong>ex:unconditional</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#ex:unconditional"><code class="xref">ex:unconditional</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-0"><td></td><td>
+       <strong>example-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c6_v2.html#example-0"><code class="xref">example-0</code></a> <em>(book/example_out_c6_v2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-10"><td></td><td>
+       <strong>example-10</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#example-10"><code class="xref">example-10</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-12"><td></td><td>
+       <strong>example-12</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#example-12"><code class="xref">example-12</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-13"><td></td><td>
+       <strong>example-13</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#example-13"><code class="xref">example-13</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-14"><td></td><td>
+       <strong>example-14</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#example-14"><code class="xref">example-14</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-17"><td></td><td>
+       <strong>example-17</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#example-17"><code class="xref">example-17</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-2"><td></td><td>
+       <strong>example-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#example-2"><code class="xref">example-2</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-23"><td></td><td>
+       <strong>example-23</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#example-23"><code class="xref">example-23</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-4"><td></td><td>
+       <strong>example-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#example-4"><code class="xref">example-4</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-5"><td></td><td>
+       <strong>example-5</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#example-5"><code class="xref">example-5</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-6"><td></td><td>
+       <strong>example-6</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#example-6"><code class="xref">example-6</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-7"><td></td><td>
+       <strong>example-7</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#example-7"><code class="xref">example-7</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lem:uniteigen"><td></td><td>
+       <strong>lem:uniteigen</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#lem:uniteigen"><code class="xref">lem:uniteigen</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-momentmatch1"><td></td><td>
+       <strong>momentmatch1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#momentmatch1"><code class="xref">momentmatch1</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:decomp"><td></td><td>
+       <strong>prop:decomp</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c4_v2.html#prop:decomp"><code class="xref">prop:decomp</code></a> <em>(book/example_out_c4_v2)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:ergo"><td></td><td>
+       <strong>prop:ergo</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#prop:ergo"><code class="xref">prop:ergo</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:ergod100"><td></td><td>
+       <strong>prop:ergod100</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#prop:ergod100"><code class="xref">prop:ergod100</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:finiteP1"><td></td><td>
+       <strong>prop:finiteP1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#prop:finiteP1"><code class="xref">prop:finiteP1</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:finiteP2"><td></td><td>
+       <strong>prop:finiteP2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#prop:finiteP2"><code class="xref">prop:finiteP2</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:gordin"><td></td><td>
+       <strong>prop:gordin</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c3_v2.html#prop:gordin"><code class="xref">prop:gordin</code></a> <em>(book/example_out_c3_v2)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-prop:identical"><td></td><td>
+       <strong>prop:identical</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#prop:identical"><code class="xref">prop:identical</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-proposition-14"><td></td><td>
+       <strong>proposition-14</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#proposition-14"><code class="xref">proposition-14</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rem:old5.2"><td></td><td>
+       <strong>rem:old5.2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#rem:old5.2"><code class="xref">rem:old5.2</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rem:relentropy"><td></td><td>
+       <strong>rem:relentropy</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c6_v2.html#rem:relentropy"><code class="xref">rem:relentropy</code></a> <em>(book/example_out_c6_v2)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-0"><td></td><td>
+       <strong>remark-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/marginal_valuation.html#remark-0"><code class="xref">remark-0</code></a> <em>(book/marginal_valuation)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-1"><td></td><td>
+       <strong>remark-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/marginal_valuation.html#remark-1"><code class="xref">remark-1</code></a> <em>(book/marginal_valuation)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-12"><td></td><td>
+       <strong>remark-12</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#remark-12"><code class="xref">remark-12</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-13"><td></td><td>
+       <strong>remark-13</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#remark-13"><code class="xref">remark-13</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-15"><td></td><td>
+       <strong>remark-15</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#remark-15"><code class="xref">remark-15</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-16"><td></td><td>
+       <strong>remark-16</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#remark-16"><code class="xref">remark-16</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-18"><td></td><td>
+       <strong>remark-18</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2.html#remark-18"><code class="xref">remark-18</code></a> <em>(book/example_out_c1_v2)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-19"><td></td><td>
+       <strong>remark-19</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#remark-19"><code class="xref">remark-19</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-2"><td></td><td>
+       <strong>remark-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/marginal_valuation.html#remark-2"><code class="xref">remark-2</code></a> <em>(book/marginal_valuation)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-22"><td></td><td>
+       <strong>remark-22</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#remark-22"><code class="xref">remark-22</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-3"><td></td><td>
+       <strong>remark-3</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/marginal_valuation.html#remark-3"><code class="xref">remark-3</code></a> <em>(book/marginal_valuation)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-4"><td></td><td>
+       <strong>remark-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/marginal_valuation.html#remark-4"><code class="xref">remark-4</code></a> <em>(book/marginal_valuation)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-5"><td></td><td>
+       <strong>remark-5</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/marginal_valuation.html#remark-5"><code class="xref">remark-5</code></a> <em>(book/marginal_valuation)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-6"><td></td><td>
+       <strong>remark-6</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/marginal_valuation.html#remark-6"><code class="xref">remark-6</code></a> <em>(book/marginal_valuation)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-7"><td></td><td>
+       <strong>remark-7</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#remark-7"><code class="xref">remark-7</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-8"><td></td><td>
+       <strong>remark-8</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#remark-8"><code class="xref">remark-8</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-9"><td></td><td>
+       <strong>remark-9</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/gmmcurrent_lars_v9.html#remark-9"><code class="xref">remark-9</code></a> <em>(book/gmmcurrent_lars_v9)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark:first"><td></td><td>
+       <strong>remark:first</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/exploring_recursive_utility.html#remark:first"><code class="xref">remark:first</code></a> <em>(book/exploring_recursive_utility)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark:second"><td></td><td>
+       <strong>remark:second</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/exploring_recursive_utility.html#remark:second"><code class="xref">remark:second</code></a> <em>(book/exploring_recursive_utility)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark:zero"><td></td><td>
+       <strong>remark:zero</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/exploring_recursive_utility.html#remark:zero"><code class="xref">remark:zero</code></a> <em>(book/exploring_recursive_utility)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark_label"><td></td><td>
+       <strong>remark_label</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/exploring_recursive_utility.html#remark_label"><code class="xref">remark_label</code></a> <em>(book/exploring_recursive_utility)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-result:dynkin"><td></td><td>
+       <strong>result:dynkin</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#result:dynkin"><code class="xref">result:dynkin</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>proposition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-stochasticvolatility"><td></td><td>
+       <strong>stochasticvolatility</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c4_v2.html#stochasticvolatility"><code class="xref">stochasticvolatility</code></a> <em>(book/example_out_c4_v2)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-2"><td></td><td>
+       <strong>theorem-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#theorem-2"><code class="xref">theorem-2</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-theorem-21"><td></td><td>
+       <strong>theorem-21</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c2_v2_enzo_and_ken.html#theorem-21"><code class="xref">theorem-21</code></a> <em>(book/example_out_c2_v2_enzo_and_ken)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-thm:birk"><td></td><td>
+       <strong>thm:birk</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="book/example_out_c1_v2_enzo_and_ken.html#thm:birk"><code class="xref">thm:birk</code></a> <em>(book/example_out_c1_v2_enzo_and_ken)</em></td><td>
+       <em>theorem</em></td></tr>
+   </table>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

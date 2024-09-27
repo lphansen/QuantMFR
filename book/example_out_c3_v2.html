@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5. Stationary Increments &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/example_out_c3_v2';</script>
+    <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/example_out_c3_v2.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Processes with Markovian increments" href="example_out_c4_v2.html" />
+    <link rel="prev" title="4. Markov Processes" href="example_out_c2_v2_enzo_and_ken.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">6. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">7. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">8. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">9. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">10. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">11. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">12. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">13. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">14. Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/background.html">Background Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Notebook: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Notebook: Continuous Time</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Comparative Valuation Dynamics in Production Economies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/appendix.html">Online Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/code.html">Computational Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Spillovers for Markets and Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../uncertainty_spillovers/manuscript.html">Manuscript</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/example_out_c3_v2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stationary Increments</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">5.1. Basic setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-martingale-decomposition">5.2. A martingale decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-approximation">5.3. Central limit approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cointegration">5.4. Cointegration</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stationary-increments">
+<span id="sec-chap2statincr"></span><h1><span class="section-number">5. </span>Stationary Increments<a class="headerlink" href="#stationary-increments" title="Link to this heading">#</a></h1>
+<p>Logarithms of many economic time series that appear to display stochastic growth can be modeled as having stationary increments. Multivariate versions of these models possess stochastic process versions of balanced growth paths. Applied econometricians seek permanent shocks that contribute to such growth. Furthermore, we shall see that it is convenient to pose central limit theory in terms of processes with stationary increments. The mathematical formulation in this chapter opens the door to studying these topics.</p>
+<section id="basic-setup">
+<h2><span class="section-number">5.1. </span>Basic setup<a class="headerlink" href="#basic-setup" title="Link to this heading">#</a></h2>
+<p>We adopt assumptions from <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#sec-inventing-past"><span class="std std-ref">Inventing an Infinite Past</span></a> that allow an infinite past and again let
+<span class="math notranslate nohighlight">\( {\mathfrak A}\)</span> be a subsigma algebra of <span class="math notranslate nohighlight">\({\mathfrak F}\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[{\mathfrak A}_t = \left\{ \Lambda_t \in {\mathfrak F} : \Lambda_t = \{ \omega \in \Omega : {\mathbb S}^t(\omega)
+\in \Lambda \} \textrm{ for some } \Lambda \in {\mathfrak F} \right\} .\]</div>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a scalar measurement function.
+Assume that <span class="math notranslate nohighlight">\(Y_0\)</span> is <span class="math notranslate nohighlight">\({\mathfrak A}_0\)</span> measurable and consider a scalar process <span class="math notranslate nohighlight">\(\{Y_t : t=0,1,... \}\)</span> with stationary increments <span class="math notranslate nohighlight">\(\{X_t\}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-add-1000">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-eqn-add-1000" title="Link to this equation">#</a></span>\[Y_{t+1} - Y_t = X_{t+1}\]</div>
+<p>for <span class="math notranslate nohighlight">\(t=0,1, \ldots\)</span>.
+Let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\nu = E\left(X_{t+1} \vert {\mathfrak I} \right),   \\\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[U_{t+1} = X_{t+1} - E\left(X_{t+1} \vert {\mathfrak A}_t \right).\]</div>
+<p>We can interpret the above equations  as providing two contributions to the   <span class="math notranslate nohighlight">\(\{Y_{t}: t \ge 0\}\)</span> process.
+Thus, component <span class="math notranslate nohighlight">\(U_{t+1}\)</span> is unpredictable and represents new information about <span class="math notranslate nohighlight">\(Y_{t+1}\)</span> that arrives at date <span class="math notranslate nohighlight">\(t+1\)</span>.
+Component <span class="math notranslate nohighlight">\(\nu\)</span> is the trend rate of growth or decay in <span class="math notranslate nohighlight">\(\{Y_{t} : t \ge 0\}\)</span> conditioned on the invariant events. In the following sections, we present full  decomposition of a stationary increment process that will be useful both in connecting to sources of permanent versus transitory shocks and to central limit theorems.</p>
+</section>
+<section id="a-martingale-decomposition">
+<h2><span class="section-number">5.2. </span>A martingale decomposition<a class="headerlink" href="#a-martingale-decomposition" title="Link to this heading">#</a></h2>
+<p>A special class of stationary increment processes called additive martingales interests us.</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 5.1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The process <span class="math notranslate nohighlight">\(\{Y_t^m : t=0,1,... \}\)</span> is said to be an <strong>additive martingale</strong> relative to <span class="math notranslate nohighlight">\(\{ {\mathfrak A}_{t} : t=1,2,... \}\)</span> if for <span class="math notranslate nohighlight">\(t=0,1,... \)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Y_t^m\)</span> is  <span class="math notranslate nohighlight">\({\mathfrak A}_{t}\)</span> measurable, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(E\left(Y_{t+1}^m \vert {\mathfrak A}_t \right) = Y_t^m\)</span> .</p></li>
+</ul>
+</section>
+</div><p>Notice that by the Law of Iterated Expectations, for a martingale  <span class="math notranslate nohighlight">\(\{Y_{t}^m :  t \ge 0\}\)</span>, best forecasts satisfy:</p>
+<div class="math notranslate nohighlight">
+\[E \left (Y_{t+j}^m \mid {\mathfrak A}_t \right) = Y_t^m\]</div>
+<p>for <span class="math notranslate nohighlight">\(j \ge 1\)</span>. Under suitable additional restrictions on the increment process <span class="math notranslate nohighlight">\(\{X_t : t \ge 0 \}\)</span>, we can deploy a construction of <span id="id1">Gordin [<a class="reference internal" href="cite.html#id176" title="M. I. Gordin. The central limit theorem for stationary processes. Soviet Mathematics Doklady, 10:1174-1176, 1969.">1969</a>]</span> to show that the <span class="math notranslate nohighlight">\(\{V_t\}\)</span> process contributes a martingale component to the <span class="math notranslate nohighlight">\(\{Y_t^m : t=0,1, ... \}\)</span> process.<a class="footnote-reference brackets" href="#gordinhallheyde" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Let <span class="math notranslate nohighlight">\({\mathcal H}\)</span> denote the set of all scalar random variables <span class="math notranslate nohighlight">\(X\)</span> such that <span class="math notranslate nohighlight">\(E(X^2) &lt; \infty\)</span> and such that<a class="footnote-reference brackets" href="#markovchapter" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight">
+\[H_t = 
+\sum_{j=0}^\infty E\bigl( X_{t+j} - \nu \vert {\mathfrak A}_t \bigr)\]</div>
+<p>is well defined as a mean-square convergent series. Convergence of the infinite sum on the right side limits temporal dependence of the process <span class="math notranslate nohighlight">\(\{ X_t \}\)</span>. For example, it can exclude so-called long memory processes.<a class="footnote-reference brackets" href="#longmemory" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
+<p>Construct the one-period ahead forecast of  <span class="math notranslate nohighlight">\(H_{t+1}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[H_t^+ = E\left( H_{t+1} \mid {\mathfrak A}_{t} \right)\]</div>
+<p>Notice that</p>
+<div class="math notranslate nohighlight">
+\[X_t - \nu =  H_t - H_t^+ =  G_t  + \left( H_{t-1}^+ - H_t^+ \right)\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-martdiff">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-martdiff" title="Link to this equation">#</a></span>\[G_{t} = H_{t} - H_{t-1}^+ = H_t - E\left( H_{t} \mid {\mathfrak A}_{t-1} \right). \]</div>
+<p>Since  <span class="math notranslate nohighlight">\(G_t\)</span> is a forecast error,</p>
+<div class="math notranslate nohighlight">
+\[E \left( G_{t+1} \vert {\mathfrak A}_{t} \right) = 0.\]</div>
+<p>Assembling these parts, we have</p>
+<div class="math notranslate nohighlight" id="equation-eqn-add1001">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-eqn-add1001" title="Link to this equation">#</a></span>\[Y_{t+1} - Y_t = X_{t+1} =   \nu + G_{t+1}  + H_t^+ - H_{t+1}^+ .\]</div>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[Y^m_t = \sum_{j=1}^t G_j  .\]</div>
+<p>Since <span class="math notranslate nohighlight">\(Y_t^m\)</span> is <span class="math notranslate nohighlight">\({\mathfrak A}_{t}\)</span> measurable, the equality</p>
+<div class="math notranslate nohighlight">
+\[E \left(  \sum_{j=1}^{t+1}   G_j    \mid {\mathfrak A}_t \right) = \sum_{j=1}^{t}  G_j \]</div>
+<p>implies that the process <span class="math notranslate nohighlight">\(\{Y_t^m : t \ge 0 \}\)</span>
+is an <em>additive martingale</em>.</p>
+<p>For a given stationary increment process, <span class="math notranslate nohighlight">\(\{Y_t : t \ge 0\}\)</span>, express the martingale increment as</p>
+<div class="math notranslate nohighlight" id="equation-limitnews">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-limitnews" title="Link to this equation">#</a></span>\[G_{t}  = \sum_{j=0}^\infty \left[ E\left( X_{t+j}   \mid  {\mathfrak A}_{t} \right) -  E\left( X_{t+j}   \mid  {\mathfrak A}_{t-1}   \right) \right] 
+= \lim_{j \rightarrow \infty} \left[ E\left(Y_{t+j} \vert {\mathfrak A}_{t} \right)  -  E\left(Y_{t+j} \vert {\mathfrak A}_{t-1} \right) \right] .\]</div>
+<p>So the increment to the martingale component of <span class="math notranslate nohighlight">\(\{Y_t : t \ge 0 \}\)</span> is new information about the limiting optimal forecast of <span class="math notranslate nohighlight">\(Y_{t+j}\)</span>
+as <span class="math notranslate nohighlight">\(j \rightarrow + \infty\)</span>.</p>
+<p>By accumulating equation <a class="reference internal" href="#equation-eqn-add1001">(5.3)</a> forward, we arrive at:</p>
+<div class="proof proposition admonition" id="decomp00">
+<p class="admonition-title"><span class="caption-number">Proposition 5.1 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>If <span class="math notranslate nohighlight">\(X\)</span> is in <span class="math notranslate nohighlight">\({\mathcal H}\)</span>, the stationary increments process <span class="math notranslate nohighlight">\(\{Y_t : t=0,1,...\}\)</span> satisfies the additive decomposition</p>
+<div class="math notranslate nohighlight">
+\[\begin{matrix}
+Y_{t} &amp; = &amp; \underbrace{t\nu} &amp; + &amp; Y_t^m &amp; - &amp;\underbrace{ H_t^+} &amp; + &amp; \underbrace{Y_0 + H_0^+}.\cr
+&amp;&amp;\textbf{trend} &amp;&amp;\textbf{martingale}&amp;&amp; \textbf{stationary} &amp;&amp; \textbf{invariant}
+\end{matrix}\]</div>
+<p>The stationary increment process, <span class="math notranslate nohighlight">\(\{Y_{t}^m : t\ge 0 \},\)</span> is the martingale component with  <span class="math notranslate nohighlight">\(Y_0^m = 0\)</span>,   The component <span class="math notranslate nohighlight">\(\{H_{t}^+\}\)</span> is stationary.  The other components are constant over time.</p>
+</section>
+</div><p><a class="reference internal" href="#decomp00">Proposition 5.1</a> decomposes  a stationary-increment process into a linear  time trend, a martingale, and a transitory component of a stationary-increments process. A permanent shock is the increment to the martingale.  The martingale and transitory contributions are typically correlated.</p>
+<div class="proof example admonition" id="ex:chap2ma">
+<p class="admonition-title"><span class="caption-number">Example 5.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>(Moving-average increment process) Consider again the <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#ex:MA">Example 2.8</a> moving-average process:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-firstoderex">
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-eqn-firstoderex" title="Link to this equation">#</a></span>\[X_{t} = \sum_{j=0}^\infty \alpha_j \cdot W_{t-j} .\]</div>
+<p>Use this <span class="math notranslate nohighlight">\(\{X_t\}\)</span> process as the increment for <span class="math notranslate nohighlight">\(\{ Y_t : t \ge 0  \}\)</span> in formula <a class="reference internal" href="#equation-eqn-add-1000">(5.1)</a>.  New information about the  unpredictable component of <span class="math notranslate nohighlight">\(X_{t+j}\)</span> for <span class="math notranslate nohighlight">\(j \ge 0\)</span>  that arrives at date <span class="math notranslate nohighlight">\(t\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[E \left( X_{t+j} \mid {\mathfrak A}_{t} \right)-  E \left( X_{t+j} \mid {\mathfrak A}_{t-1} \right)= \alpha_{j} \cdot W_{t}\]</div>
+<p>Summing these terms over <span class="math notranslate nohighlight">\(j\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[G_{t} = \alpha(1)  \cdot W_{t}  \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\alpha(1) = \sum_{j=0}^\infty \alpha_j\]</div>
+<p>provided that the coefficient sequence <span class="math notranslate nohighlight">\(\{ \alpha_j : j\ge 0\}\)</span>
+is  summable, a condition that restricts  temporal dependence of the increment process <span class="math notranslate nohighlight">\(\{X_t\}\)</span>.   Indeed, it is possible for <span class="math notranslate nohighlight">\(\alpha(1) = \infty\)</span> or for it not to be well defined while</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{j=0}^\infty |\alpha_j|^2 &lt; \infty\]</div>
+<p>ensuring that <span class="math notranslate nohighlight">\(X_t\)</span> is well defined.  This possibility opened the door to the literature on long-memory processes that allow for <span class="math notranslate nohighlight">\(\alpha(1)\)</span> to be infinite as discussed in <span id="id5">Granger and Joyeux [<a class="reference internal" href="cite.html#id181" title="C. W. J. Granger and Roselyne Joyeux. An Introduction To Long‐Memory Time Series Models And Fractional Differencing. Journal of Time Series Analysis, 1(1):15-29, January 1980. URL: https://ideas.repec.org/a/bla/jtsera/v1y1980i1p15-29.html, doi:10.1111/j.1467-9892.1980.">1980</a>]</span> and elsewhere.</p>
+<p>In what follows, we presume that <span class="math notranslate nohighlight">\(\alpha(1)\)</span> is finite.  This sum of the coefficients  <span class="math notranslate nohighlight">\(\{\alpha_j: j\ge 0 \}\)</span> in  moving-average representation <a class="reference internal" href="#equation-eqn-firstoderex">(5.5)</a> for
+the <strong>first difference</strong> <span class="math notranslate nohighlight">\(Y_{t+1}  - Y_t = X_{t+1}\)</span> of <span class="math notranslate nohighlight">\(\{ Y_t : t=0,1,.... \}\)</span> tells the <strong>permanent</strong> effect of <span class="math notranslate nohighlight">\(W_{t+1}\)</span> on current and future values of the
+<strong>level</strong> of <span class="math notranslate nohighlight">\(Y\)</span>, i.e., the effect on <span class="math notranslate nohighlight">\(\lim_{j\rightarrow + \infty} Y_{t+j}\)</span>.
+Models of <span id="id6">Blanchard and Quah [<a class="reference internal" href="cite.html#id45" title="O. J Blanchard and D. Quah. The dynamic effects of aggregate demand and supply disturbances. American Economic Review, 79:655-673, 1989.">1989</a>]</span> and <span id="id7">Shapiro and Watson [<a class="reference internal" href="cite.html#id387" title="M. Shapiro and M. Watson. Sources of business cycle fluctuations. NBER Macroeconomics Annual, 3:111-148, 1988.">1988</a>]</span> build on this
+property.
+The variance of the random variable <span class="math notranslate nohighlight">\(\alpha(1) \cdot W_{t+1}\)</span>  conditioned on the invariant events in <span class="math notranslate nohighlight">\({\mathfrak I}\)</span>  is <span class="math notranslate nohighlight">\(|\alpha(1)|^2\)</span>.  The overall variance of <span class="math notranslate nohighlight">\(X_{t}\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[\sum_{j=0}^\infty|\alpha_j|^2 \ne |\alpha(1)|^2.\]</div>
+<p>To form a transitory-transitory shock decomposition, construct the  permanent shock as:</p>
+<div class="math notranslate nohighlight">
+\[W_{t+1}^p = \left( \frac {1}{|\alpha(1)|} \right) \alpha(1) \cdot W_{t+1}\]</div>
+<p>where we introduce an additional scaling so the permanent shock has variance one.  Form</p>
+<div class="math notranslate nohighlight">
+\[W_{t+1}^{tr} = W_{t+1} -   \left( \frac {1}{|\alpha(1)|} \right) \alpha(1) W_{t+1}^p \]</div>
+<p>which by construction will be uncorrelated with <span class="math notranslate nohighlight">\(W_{t+1}^p\)</span>.  Since  the covariance matrix of <span class="math notranslate nohighlight">\(W_{t+1}^{tr}\)</span> will be singular, the components of <span class="math notranslate nohighlight">\(W_{t+1}^{tr}\)</span> can be expressed as linear combinations of a vector of transitory shocks with unit variances.</p>
+<div class="proof example admonition" id="ex:helpBQ">
+<p class="admonition-title"><span class="caption-number">Example 5.2 </span></p>
+<section class="example-content" id="proof-content">
+<p>This is a process in which <span class="math notranslate nohighlight">\(W_t\)</span> has transient but no permanent effects on future <span class="math notranslate nohighlight">\(Y\)</span>’s. Let <span class="math notranslate nohighlight">\(\alpha_0 = 1\)</span> and <span class="math notranslate nohighlight">\(\alpha_j = (\lambda -1) \lambda^{j-1}\)</span> for <span class="math notranslate nohighlight">\(j \geq 1\)</span> and <span class="math notranslate nohighlight">\(-1 &lt; \lambda &lt; 1\)</span>. Construct the power series</p>
+<div class="math notranslate nohighlight" id="equation-factor">
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-factor" title="Link to this equation">#</a></span>\[\alpha(\zeta) = 1 - \sum_{j=1}^\infty  ( 1- \lambda ) \lambda^{j-1} \zeta^j = 1 - {\frac { (1 - \lambda) \zeta}{ 1 - \lambda \zeta}} = {\frac {1 - \zeta}{1 - \lambda \zeta}} .\]</div>
+<p>Evidently, <span class="math notranslate nohighlight">\(\alpha(1) = 0\)</span>. Define</p>
+<div class="math notranslate nohighlight">
+\[H_t  = - \sum_{j=0}^\infty \lambda^j W_{t-j}\]</div>
+<p>and note that since <a class="reference internal" href="#equation-factor">(5.6)</a> is satisfied</p>
+<div class="math notranslate nohighlight">
+\[Y_{t+1} - Y_t = -H_{t+1} + H_t.\]</div>
+<p>The process <span class="math notranslate nohighlight">\(\{ Y_t : t = 0,1,... \}\)</span> is stationary provided that <span class="math notranslate nohighlight">\(Y_0 = - H_0\)</span>, ensuring that <span class="math notranslate nohighlight">\(Y_t = - H_t\)</span> for all <span class="math notranslate nohighlight">\(t \ge 0\)</span>.</p>
+</section>
+</div></section>
+</div></section>
+<section id="central-limit-approximation">
+<h2><span class="section-number">5.3. </span>Central limit approximation<a class="headerlink" href="#central-limit-approximation" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="#ex:chap2ma">Example 5.1</a> starts from a moving average of martingale differences that is used as an increment <span class="math notranslate nohighlight">\(\{X_t \}\)</span>
+to a <span class="math notranslate nohighlight">\(\{Y_t: t \ge 0\}\)</span> process, after which it constructs a process of innovations
+to the martingale component of the <span class="math notranslate nohighlight">\(\{Y_t: t \ge 0  \}\)</span> process. That analysis illustrates the workings of
+an
+operator <span class="math notranslate nohighlight">\(\mathbb{D}\)</span> that maps an admissible increment process in <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> into the innovation
+in a martingale component. To construct <span class="math notranslate nohighlight">\(\mathbb{D}\)</span>, let <span class="math notranslate nohighlight">\(\mathcal{G}\)</span> be the set of all random variables <span class="math notranslate nohighlight">\(G\)</span> with finite second moments that satisfy the conditions that
+<span class="math notranslate nohighlight">\(G\)</span> is <span class="math notranslate nohighlight">\(\mathfrak{A}\)</span> measurable and that <span class="math notranslate nohighlight">\(E(G_1 \vert \mathfrak{A}) = 0\)</span> where <span class="math notranslate nohighlight">\(G_1 = G \circ \mathbb{S}\)</span>. Define <span class="math notranslate nohighlight">\(\mathbb{D}: \mathcal{H} \rightarrow \mathcal{G}\)</span> via</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{D}(X) = G .\]</div>
+<p>Both <span class="math notranslate nohighlight">\(\mathcal{G}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> are linear spaces of random variables and <span class="math notranslate nohighlight">\(\mathbb{D}\)</span> is a linear transformation.
+The operator <span class="math notranslate nohighlight">\(\mathbb{D}\)</span> plays a prominent role in a central limit approximation.</p>
+<p>To form a central limit approximation, construct the following scaled partial sum that nets out trend growth</p>
+<div class="math notranslate nohighlight">
+\[{\frac 1 {\sqrt{t}}}(Y_t - \nu t) = {\frac 1 {\sqrt{t}}} Y_t^m - {\frac 1 {\sqrt t}} H_{t}^+
++ {\frac 1 {\sqrt{t}}} (H_0^+ + Y_0)  \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[Y_t^m= \sum_{j=1}^t G_j\]</div>
+<p>From <span id="id8">Billingsley [<a class="reference internal" href="cite.html#id42" title="P. Billingsley. The lindeberg-levy theorem for martingales. American Mathematical Monthly, 1961.">1961</a>]</span>’s central limit theorem for martingales</p>
+<div class="math notranslate nohighlight">
+\[{\frac 1 {\sqrt{t}}} Y_t^m \Rightarrow \mathcal{N} \left(0, E\left[ \mathbb{D}(X)^2 \vert \mathfrak{I} \right] \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Rightarrow\)</span> denotes weak convergence, meaning convergence in distribution. Clearly, <span class="math notranslate nohighlight">\(\{(1/ {\sqrt t}) H_{t}^+\}\)</span> and <span class="math notranslate nohighlight">\(\{(1/{\sqrt{t}}) (H_0^+ + Y_0) \}\)</span> both converge in mean square to zero.</p>
+<div class="proof proposition admonition" id="prop:gordin">
+<p class="admonition-title"><span class="caption-number">Proposition 5.2 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>For all stationary increment processes <span class="math notranslate nohighlight">\(Y_t : t=0,1,2, ...\)</span> represented by <span class="math notranslate nohighlight">\(X\)</span> in <span class="math notranslate nohighlight">\(\mathcal{H}\)</span></p>
+<div class="math notranslate nohighlight">
+\[{\frac 1 {\sqrt{t}}}(Y_t - \nu t) \Rightarrow  {\mathcal{N}} \left( 0,
+E\left[ \mathbb{D}(X)^2 \vert {\mathfrak{I}} \right] \right) .\]</div>
+<p>Furthermore,</p>
+<div class="math notranslate nohighlight">
+\[E\left[ \mathbb{D}(X)^2 \vert {\mathfrak{I}} \right]
+= \lim_{t \rightarrow \infty}  E \left[ \left({\frac 1 {\sqrt{t}}}  \left(Y_t - t \nu \right)  \right)^2 \Bigl| {\mathfrak{I}} \right].\]</div>
+</section>
+</div></section>
+<section id="cointegration">
+<h2><span class="section-number">5.4. </span>Cointegration<a class="headerlink" href="#cointegration" title="Link to this heading">#</a></h2>
+<p>Linear combinations of stationary increment processes <span class="math notranslate nohighlight">\(Y_t^1\)</span> and <span class="math notranslate nohighlight">\(Y_t^2\)</span> have stationary increments. For real-valued scalars <span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(r_2\)</span>, form</p>
+<div class="math notranslate nohighlight">
+\[Y_{t} = r_1 Y_{t}^1 + r_2 Y_{t}^2\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+Y_{t+1}^1 - Y_t^1 &amp; = X_{t+1}^1 \\
+Y_{t+1}^2 - Y_t^2 &amp; = X_{t+1}^2.
+\end{align*}\end{split}\]</div>
+<p>The increment in <span class="math notranslate nohighlight">\(\{Y_t : t=0, 1, \ldots \}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[X_{t+1} = r_1 X_{t+1}^1 + r_2 X_{t+1}^2\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[Y_0 =  r_1 Y_0^1 + r_2 Y_0^2.\]</div>
+<p>The <a class="reference internal" href="#decomp00">Proposition 5.1</a> martingale component of <span class="math notranslate nohighlight">\(\{ Y_t : t \ge 0 \}\)</span> is the corresponding linear combination of the martingale
+components of <span class="math notranslate nohighlight">\(\{ Y_t^1 : t =0,1,...\}\)</span> and <span class="math notranslate nohighlight">\(\{ Y_t^2 : t =0,1,...\}\)</span>. The <a class="reference internal" href="#decomp00">Proposition 5.1</a>  trend component of <span class="math notranslate nohighlight">\(\{ Y_t : t =0,1,  \ldots \}\)</span> is the corresponding linear combination of the
+trend  components of <span class="math notranslate nohighlight">\(\{ Y_t^1 : t =0,1, \ldots \}\)</span> and <span class="math notranslate nohighlight">\(\{ Y_t^2 : t =0,1,  \ldots \}\)</span>.</p>
+<p><a class="reference internal" href="#decomp00">Proposition 5.1</a> sheds light on the cointegration concept of <span id="id9">Engle and Granger [<a class="reference internal" href="cite.html#id138" title="R. Engle and C. W. J. Granger. Co-integration and error correction: representation, estimation and testing. Econometrica, 55:251-276, 1987.">1987</a>]</span> that is associated with linear combinations of stationary increment processes whose trend and martingale components are both zero.  call two processes <em>cointegrated</em> if there exists a linear combination of them that is stationary.<a class="footnote-reference brackets" href="#cointegration-def" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> That situation prevails when there exist real-valued scalars <span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(r_2\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+r_1 \nu_1 + r_2 \nu_2 &amp; = &amp; 0 \\
+r_1 \mathbb{D}(X^1) + r_2 \mathbb{D}(X^2) &amp; = &amp; 0,
+\end{eqnarray*}\end{split}\]</div>
+<p>where the <span class="math notranslate nohighlight">\(\nu\)</span>’s correspond to the trend components in <a class="reference internal" href="#decomp00">Proposition 5.1</a>. These two zero restrictions imply that the time trend and the martingale component for the linear combination <span class="math notranslate nohighlight">\(Y_t\)</span> are both zero.<a class="footnote-reference brackets" href="#cointegration-vector" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> When <span class="math notranslate nohighlight">\(r_1 = 1\)</span> and <span class="math notranslate nohighlight">\(r_2 = - 1\)</span>, the component stationary increment processes <span class="math notranslate nohighlight">\(Y_{t}^1\)</span> and <span class="math notranslate nohighlight">\(Y_{t}^2\)</span> share a common growth component.</p>
+<p>This notion of cointegration provides one way to formalize balanced growth paths in stochastic environments through determining a linear combination of growing time series for which stochastic growth is absent.</p>
+<!-- 
+## Permanent Income Models
+
+This section describes a class of consumption-savings models that we cast in terms of exogenous and endogenous variables all of which are additive processes with stationary increments like {eq}`eqn:add_1000`. These models generalize one with which we worked in {cite:t}`HSRoberds`, {cite:t}`robustpi`, and {cite:t}`HansenSargent_Recursive_Models[ch.~11]`. Those studies had formulated versions of the models to be presented here but with exogenous and endogenous processes that were constrained to be stationary Markov processes.
+
+In the models here,
+restrictions across exogenous and endogenous variables emerge from two theoretical sources: (1) present value budget balance, and (2) an optimizing consumer's first-order necessary condition that implies that marginal utilities form a martingale.
+
+### Present-value budget balance
+
+Let $Y_t$ be time $t$ nonfinancial income minus time $t$ expenditures and assume that it is a process with stationary increments:
+
+```{math}
+:label: eqn:permincome101
+Y_{t+1} - Y_t = X_{t+1} + \eta,
+```
+
+where
+
+```{math}
+:label: eqn:permincome102
+X_{t+1} = \sum_{j=0}^\infty \alpha_j \cdot W_{t+1-j}.
+```
+
+We call $Y_t$ the flow *surplus* and $- Y_t$ the flow *deficit*. Suppose that $\lambda \in (0,1)$ is a constant discount factor and assume that a risk-free asset has a gross return $\lambda^{-1}$.[^footnotelambda]
+
+Suppose that the riskless asset is a consumer's only vehicle for borrowing or lending, so that
+
+```{math}
+:label: eqn:pvdiff
+\lambda \left(Y_{t+1} + K_{t+1} \right) = K_t ,
+```
+
+where $K_t$ is a stock of the asset at the end of period $t$.
+
+It can be verified that equation {eq}`eqn:pvdiff` implies
+
+$$
+\lambda \left( Y_{t+1} - Y_t + K_{t+1} - \chi Y_{t} \right) = K_t - \chi Y_t ,
+$$
+
+or equivalently
+
+$$
+\chi \left( Y_{t+1} - Y_t \right) + \lambda \left(K_{t+1} - \chi Y_{t+1} \right) = K_t - \chi Y_t.
+$$
+
+where $ \chi = \lambda + \lambda \chi $.
+
+Since $\lambda \in (0,1)$, $ \chi > 0$. We can solve this first-order linear difference equation in $\{K_t - \chi Y_t\}$ forward to get
+
+```{math}
+:label: eqn:PVBB201
+K_t - \chi Y_t  = \chi \sum_{j=0}^\infty \lambda^j (Y_{t+j+1} - Y_{t+j} ) ,
+```
+
+an equation that we require to hold for every sample path of $\{Y_t\}$. We regard equation {eq}`eqn:pvdiff` as a time $t$ flow budget constraint and equation {eq}`eqn:PVBB201` as a time $t$ expression of a present value budget constraint. Because equation {eq}`eqn:PVBB201` holds for every sample path, it is legitimate to average over all such paths with an arbitrary probability distribution. By averaging with the probability distribution governing the $\{Y_t\}$ process conditional on ${\mathfrak A}_{t+1}$, we deduce
+
+```{math}
+:label: eqn:PVBB202
+K_t - \chi Y_t = \chi \left[ E \sum_{j=0}^\infty \lambda^j \left(Y_{t+j+1}  - Y_{t+j}\right) \Bigr| {\mathfrak A}_{t+1} \right].
+```
+
+Equation {eq}`eqn:PVBB202` imposes restrictions that we summarize as follows.[^footnoteHS1980]
+
+[^footnotelambda]: In section XXXXXX, we will relax constancy of $\lambda$.
+
+[^footnoteHS1980]: {cite:t}`HS1980` employ a closely related frequency-domain argument.
+````{prf:theorem
+:label: prop:alpha0
+Representation {eq}`eqn:PVBB201` implies the moving average representation
+```{math}
+K_t - \chi Y_t = \sum_{j=0}^\infty  \alpha^*_j W_{t+1-j} + \frac{\chi}{1-\lambda} \eta
+```
+where the $z$-transform of the $\{\alpha^*_j\}_{j=0}^\infty$ sequence satisfies
+```{math}
+\alpha^*(\zeta) =  \frac {\chi \zeta }{(1-\lambda) (\zeta - \lambda)}\alpha(\zeta) -  \frac  { \chi\lambda }{(1-\lambda)(\zeta - \lambda)}\alpha(\lambda),
+```
+where $\zeta$ is a complex number. The complex-valued function $\alpha^*(\zeta)$ of $\zeta$ has a removable singularity at $\zeta = \lambda$. Since $K_t - \chi Y_t$ depends on date $t$ information only and not on the shock at date $t+1$, $\alpha^*(0) = 0$. It follows that $\alpha(\lambda)= 0$ and that consequently
+```{math}
+\alpha^*(\zeta) = \frac {\chi \zeta }{(1-\lambda)(\zeta - \lambda)}\alpha(\zeta) .
+```
+````
+
+````{prf:theorem}
+:type: remark
+
+The Proposition {prf:ref}`prop:alpha0` restriction that $\alpha(\lambda) = 0$ is an implication of intertemporal budget constraint {eq}`eqn:PVBB202` that restricts the expected present value of the surplus process $\{Y_t\}$. The following argument cast in the time domain substantiates this interpretation. A shock $W_{t+1}$ at date $t+1$ contributes
+
+```{math}
+\frac{1}{1 - \lambda} \lambda^j \alpha_j \cdot W_{t+1}
+```
+
+to the deficit at date $t+j+1$. Discounting and summing across future dates should give an outcome that equals zero for almost all shock realizations:
+
+```{math}
+:label: eqn:PVBB101
+0 = \frac{1}{1 - \lambda} \sum_{j=0}^\infty \lambda^j \alpha_j = \frac{1}{1-\lambda} \alpha(\lambda).
+```
+
+*Note: Lars XXXXX: do we want to transform the "for almost all" statement into a statement about "almost everywhere" with respect to some probability measure?* This is another way of confirming that $\alpha(\lambda) = 0$.
+````
+````{prf:remark}
+The right side of equation {eq}`eqn:PVBB201` is stationary, implying that $(1 , - \chi)$ is a cointegrating vector for the $\{K_t, Y_t\}$ process.
+````
+
+### Additional model components
+
+A present value budget balance restriction like equation {eq}`eqn:PVBB101` is an important component of a class of permanent income model. Other model components determine the consumption expenditures that contribute negatively to the surplus. To construct such a model, we take as exogenous inputs
+
+```{math}
+:label: eqn:statinc1
+L_{t+1} - L_t  = X_{t+1}^{[L]} + \eta_1\\
+B_{t+1} - B_t  = X_{t+1}^{[B]} + \eta_2 ,
+```
+
+where $\eta_1, \eta_2$ are scalar constants, $L_t$ is income at $t$, $B_t$ is a preference shock, and
+
+```{math}
+:label: eqn:statinc2
+X_{t+1}^{[L]}  = \sum_{j=0}^\infty  \alpha^{[L]}_j   \cdot W_{t+1-j} \\
+X_{t+1}^{[B]}  = \sum_{j=0}^\infty \alpha^{[B]}_j  \cdot W_{t+1-j} .
+```
+
+To allow for habit persistence and durable goods, we assume that a "consumption services" process $\{S_t\}$ is governed by
+
+```{math}
+S_t  = (1 + \kappa) C_t - \kappa H_{t-1}
+```
+{:label: service}
+
+```{math}
+H_t  = \exp(-\delta_h) H_{t-1} + [ 1 - \exp(-\delta_h)]  C_t
+```
+{:label: householdstock}
+
+where $\delta_h  \geq 0$ is a depreciation rate, so that $H_t$ is a geometrically weighted average of current and past consumption $C_t$. Setting $\kappa > 0$ makes consumption services depend positively on current consumption and negatively on past consumption, a pattern of dependence symptomatic of "habit persistence." Setting $\kappa \in (-1,0)$ makes consumption services depend positively on both current and past consumption, indicating "durable" consumption goods.
+
+We also assume that there is a linear asset accumulation technology
+
+```{math}
+C_t + K_{t} - K_{t-1} = \rho K_{t-1} + L_t,
+```
+
+where $K_t$ is asset holdings at the end of period $t$. We can rewrite the preceding equation as
+
+```{math}
+K_t = (1 + \rho) K_{t-1} + L_t - C_t .
+```
+
+Solving forward gives
+
+```{math}
+K_{t-1} = \sum_{j=0}^\infty \lambda^{j+1} \left(  C_{t+1} -L_{t+j} \right) ,
+```
+
+where $\lambda = \frac{1}{1 + \rho}$. This equation implies the following version of the present-value budget balance restriction {eq}`eqn:PVBB101` for the net surplus process  $Y_t = L_t - C_t$, $t=0,1,...$:
+
+```{math}
+\alpha^{[L]}(\lambda) - \alpha^{[C]}(\lambda)  =0 .
+```
+
+(sec:MUSmart)=
+### Marginal utility of services is a martingale
+
+At this point, we jump ahead and complete our model by just arbitrarily restricting a process that describes the marginal utility of services experienced by an optimizing consumer. In subsection [sec:MUprocessopt](sec:MUprocessopt) we shall describe a consumer's optimum problem that rationalizes this process.
+
+Let the marginal utility of consumption services be:
+
+```{math}
+MS_t =   \left( B_t - S_t \right),
+```
+
+so that the process  $B_t$ shifts the marginal utility for consumption services. Temporarily suppose that the marginal utility process is a martingale[^footMartingale]:
+
+```{math}
+:label: eqn:MSmart100
+MS_{t+1} - MS_t = \alpha^{[M]} \cdot W_{t+1}.
+```
+
+From equation {eq}`service` and  $ MS_t = \left( B_t - S_t \right)$, we deduce
+
+```{math}
+:label: eqn:MSrep100
+MS_t   = B_t - (1 + \kappa) C_t + \kappa H_{t-1} .
+```
+
+We seek a consumption process that is an additive process driven by stationary increments and so has the form
+
+```{math}
+:label: eqn:Caddprocess1
+C_{t+1} - C_t = \sum_{j=0}^\infty \alpha_j^{[C]} W_{t+1 -j} .
+```
+
+The first difference of equation {eq}`eqn:MSrep100` implies that the following equation connects $\zeta$-transforms of the increments to $MS, B, C,$ and $H$:
+
+```{math}
+(1 + \kappa) \alpha^{[C]}(\zeta) - \zeta\kappa \alpha^{[H]}(\zeta)  =  \alpha^{[B]}(\zeta) - \alpha^{[M]} 
+```
+
+Equation {eq}`householdstock` implies the following restriction on $\zeta$-transforms of increments to $H$ and $C$:
+
+```{math}
+\left[1 -  \exp(-\delta_h) \zeta \right] \alpha^{[H]}(\zeta)  - \left[1 - \exp(-\delta_h) \right] \alpha^{[C]}(\zeta) = 0.
+```
+
+Combining the two preceding equations, we assemble the following system:
+
+```{math}
+\begin{bmatrix}
+ (1 + \kappa)  & - \zeta\kappa  \\
+- [1 - \exp(-\delta_h)] &  [1 -  \exp(-\delta_h) \zeta ] \end{bmatrix}
+\begin{bmatrix} \alpha^{[C]}(\zeta) \\ \alpha^{[H]}(\zeta) \end{bmatrix}
+ = \begin{bmatrix} \alpha^{[B]}(\zeta) - \alpha^{[M]} \\ 0 \end{bmatrix} . 
+```
+
+(sec:MUprocessopt)=
+### Martingale marginal utility process
+
+We now pose an optimum problem that implies that $\{ MS_t : t=0,1,...\}$ is a martingale as we assumed in subsection [Marginal utility of services is a martingale](sec:MUSmart). Let the optimal value function $V_t$ for a representative consumer satisfy the Bellman equation
+
+```{math}
+:label: eqn:Bellman_MUmart
+V_t = - {\frac {1 - \exp(-\delta)} 2} MS_t \cdot MS_t + \exp(-\delta) {\mathcal R}_t(V_{t+1})
+```
+
+where the risk sensitivity operator ${\mathcal R}_t$ is defined as
+
+```{math}
+{\mathcal R}_t(V_{t+1}) =  - {\frac 1 {1 -\gamma}} \log E\left[ \exp\left(  (1 - \gamma) V_{t+1}\right)  \vert {\mathfrak A}_t \right]
+```
+
+and
+
+```{math}
+MS_{t+1} = MS_t + \alpha^{[M]} \cdot W_{t+1},
+```
+
+and where $W_{t+1}$ is described by a multivariate normal distribution with mean zero and an identity as the covariance conditioned on ${\mathfrak A}_t$. The risk-sensitive continuation value function ${\mathcal R}_t(V_{t+1})$ is itself an indirect utility function from the following minimization problem:
+
+```{math}
+{\mathcal R}_t(V_{t+1}) =
+\min_{N_{t+1}}  E\left(N_{t+1} V_{t+1}  \vert {\mathfrak A}_t \right) + {\frac 1 {1 - \gamma}} E\left( N_{t+1} \log N_{t+1} \vert {\mathfrak A}_t \right) ,
+```
+
+where the minimization is subject to $N_{t+1} \ge 0$, $E\left( N_{t+1} \vert {\mathfrak A}_t \right) = 1$. We can interpret $N_{t+1}$ as a likelihood ratio that alters the conditional distribution of the shocks $W_{t+1}$. The minimizing  $N_{t+1}$ is
+
+```{math}
+N_{t+1} = {\frac  {\exp\left[(1 - \gamma) V_{t+1} \right]} { E \left( \exp\left[(1 - \gamma) V_{t+1} \right] \vert {\mathfrak A}_t \right)}} ,
+```
+
+#### Euler equations
+
+The marginal utility of consumption $C_t$ is proportional to the marginal utility of services, so it is also a martingale when the marginal utility of consumption services $S_t$ is a martingale. Note that
+
+```{math}
+E\left( N_{t+1} MS_{t+1} \vert {\mathfrak A}_t \right)  =
+\left[ 1 + {\sf s} (\gamma - 1) \left(\alpha^{[M]}\right)'\left[I + (1-\gamma){\sf s} \alpha^{[M]}{\alpha^{[M]}}'\right]^{-1} \alpha^{[M]}\right] MS_t .
+```
+
+Since the marginal utility for consumption is proportional to $MS_t$ and since the gross marginal product of capital is $1 + \rho$, the Euler equation for accumulating capital is
+
+```{math}
+\exp(-\delta)(1 + \rho)  E\left( N_{t+1} MS_{t+1} \vert {\mathfrak A}_t \right) = MS_t .
+```
+
+### Stochastic discounting
+
+{cite:t}`robustpi` impute a robust savings problem like the one constructed in subsection [Martingale marginal utility process](sec:MUprocessopt) to a planner in a representative agent economy. The planner's aversion to model misspecification affects equilibrium valuations of risky payoff streams in ways that we shall describe in chapter XXXXXX.
+
+[^footMartingale]: {cite:t}`HansenSargent_Recursive_Models` present models in which such a marginal utility process is a martingale as we assume here.
+## Long-term consumption risk
+
+{cite:t}`hhl` had the idea of using covariation with other time series to help infer long-run stochastic components of consumption.
+Figure plots logarithms of nondurable consumption $C_t$ and corporate earnings $N_t$. The absence of an obvious trend or martingale in the second panel, which plots the difference between the logarithms of nondurable consumption and corporate earnings, suggests the presence of common trend and martingale components in the two series themselves, an observation that led {cite:t}`hhl` to impose co-integration between the logarithms of consumption and corporate earnings and thereby restrict them to grow together. $\{W_{t+1}\}$ is an i.i.d. sequence of ${\cal N}(0,I)$ random vectors; then to choose $X_t$ to have the growth rate of consumption (expressed in logarithms) as its first entry and the logarithm of corporate earnings minus the logarithm of consumption in the second position, then to fill in the remaining components of $X_t$ with lags of these and any other variables that help forecast the logarithms of corporate earnings and consumption.
+This specification leaves us with two additive functionals with increments:
+
+```{math}
+\log Y^{[1]}_{t+1} - \log Y^{[1]}_t  = \nu_1 + X_{t+1}^{[1]} 
+```
+```{math}
+\log Y^{[2]}_{t+1} - \log Y^{[2]}_t  = \nu_2  + X_{t+1}^{[2]} - X_t^{[2]}  + X_{t+1}^{[1]}
+```
+
+where $Y^{[1]}_{t+1} = C_{t+1}$ and $ Y^{[2]}_{t+1} = N_{t+1}$.
+ The two additive functionals $\{\log Y^{[1]}_{t+1}\}$ and $\{\log Y^{[2]}_{t+1}\}$  share the same martingale and trend components but have different transitory components.
+
+Notice that
+
+```{math}
+\log Y^{[1]}_{t+1} - \log Y^{[1]}_t  = \nu_1 + D \cdot X_t + F \cdot W_{t+1}
+```
+where
+```{math}
+D = A'U_1,  \  \  F = B' U_1
+```
+and $U_1$ is a vector of zeros except for a one in the first position. The impulse response vector of $\log C_{t+1} - \log C_t$ to $W_{t+1}$ is
+
+```{math}
+F,  B'D,  B'A'D, \cdots ,
+```
+which has $z$-transform:
+```{math}
+F + \zeta B'(I - \zeta A')^{-1} D = B' (I - \zeta A')^{-1} U_1.
+```
+The martingale increment scaled to have unit standard deviation is $F^* \cdot W_{t+1}$, where
+```{math}
+F^* = {\frac 1 {|B'(I -  A')^{-1} U_1 |}}  B' (I -  A')^{-1} U_1
+```
+and the $z$-transform of the impulse response function of $\log C_{t+1}$ to the martingale increment is
+```{math}
+\left( {\frac 1 {1 - \zeta}}\right) F^* \cdot [B' (I - \zeta A')^{-1} U_1].
+```
+(sec:Camp_Shiller)=
+## Loglinear Approximations
+
+It is common to use log-linear approximations to describe how payouts and required return processes affect asset values.
+Let $V_{t}$ be the value at date $t$ of a claim to a stream $\{G_{t+j}\}_{j=0}^\infty$ of positive cash flows.
+A one-period gross return on the asset is
+
+```{math}
+R_{t+1} = {\frac {V_{t+1} + G_{t+1}} {V_t}} =  \left({\frac {V_{t+1}/G_{t+1}  + 1} {V_t/G_t}}\right) \left({\frac {G_{t+1}}{G_t}} \right).
+```
+
+Let
+
+```{math}
+\lambda = {\frac 1 {\exp(\mu_v) + 1}} .
+```
+
+Approximate $\log V_t - \log G_t$ around its mean  $\mu_v$ to obtain
+
+```{math}
+\log \left(V_{t+1}/G_{t+1} + 1 \right) \approx
+\log \left[ \exp\left( \mu_v \right) + 1 \right] +
+ \lambda \left( \log V_{t+1} - \log G_{t+1} - \mu_v \right)  .
+```
+
+Take the implied difference equation
+
+```{math}
+\log V_t  - \log G_t & = \log \left[ \exp\left( \mu_v \right) + 1 \right]  + \cr &
+ \lambda \left( \log V_{t+1} - \log G_{t+1} - \mu_v \right)   + \log G_{t+1} - \log G_t - \log R_{t+1}
+```
+
+and solve it forward to obtain the "present value model"
+
+```{math}
+:label: eqn:CSpresentval
+\log V_t - \log G_t - \mu_v  & = \log \left[ \exp\left( \mu_v \right) + 1 \right] - \mu_v \cr &   + \sum_{j=0}^\infty \lambda^j
+\left( \log G_{t+1+j} - \log G_{t+j} - \log R_{t+1+j} \right) .
+```
+
+Let $\mu_r$ be the mean of  $\log R_{t+1}$ and let  $\mu_g$ be the mean of
+$\log G_{t+1} - \log G_t$.  Then
+
+```{math}
+- \mu_v = \log \left[ \exp\left( \mu_v \right) + 1 \right] - \mu_v - {\frac {\mu_g - \mu_r} {1 - \lambda}}
+```
+
+or
+
+```{math}
+\log \left[ \exp\left( \mu_v \right) + 1 \right] = {\frac {\mu_g - \mu_r} {1 - \lambda}},
+```
+
+which expresses  $\mu_v$ implicitly as a nonlinear function of $\mu_g$ and $\mu_r$.
+
+To turn these calculations into a complete model of a $\{V_t, G_t, R_t\}$ process, we must specify stochastic processes for $\{\log R_t\}$ and $\{G_t\}$, the  "forcing" processes  appearing on the right side of equation {eq}`eqn:CSpresentval`. Here we assume the following two moving-average representations:
+
+```{math}
+:label: eqn:asset_price_inputs
+\log R_{t+1} & =  \mu_r + \alpha^r({\mathcal L}) W_{t+1} \cr
+\log G_{t+1} - \log G_t & =  \mu_g + \alpha^g({\mathcal L}) W_{t+1}
+```
+
+where ${\mathcal L}$ is again the lag operator.
+We seek a moving average representation for $\log V_t - \log G_t$ implied by the processes {eq}`eqn:asset_price_inputs`.
+We guess that it has the form
+
+```{math}
+:label: eqn:asset_price_outcome
+\log V_{t} - \log G_t  = \mu_v +  \alpha^v({\mathcal L}) W_t. 
+```
+
+To fill in objects in {eq}`eqn:asset_price_inputs`, we assume that $\log R_t$ is a stationary process and that $\log G_t$ is a process with stationary increments. In writing form {eq}`eqn:CSpresentval`, we are guessing that $\log V_t - \log G_t$ is a stationary process and that $\log V_t$ is a process with stationary increments that is cointegrated with $\log G_t`.{^footnotelabel}` See [Cointegration](sec:cointegrate) for a definition  of cointegration.
+The present-value model {eq}`eqn:CSpresentval` obtained from the log-linear approximation implies the cross-equation restriction that we again express in terms of $\zeta$-transforms
+
+```{math}
+\alpha_v(\zeta) = \left({\frac 1 {\zeta - \lambda}}\right) \left[ \alpha_g(\zeta) - \alpha_r(\zeta)\right] 
+```
+
+where $\zeta$ is a complex-valued scalar.
+The assumption that  $\log V_t - \log G_t$  depends only on current information implies that $\alpha_v$ has a power series representation valid for $| \zeta | < 1$, so that  $\zeta = \lambda$ is a removable singularity, which in turn implies that
+
+```{math}
+\alpha_g(\lambda) = \alpha_r(\lambda).
+```
+
+This equation asserts that, when discounted appropriately with $\lambda`, present values of sums of moving-average coefficients are the same for returns and cash-flow growth.{^footnotechallenges} This present-value restriction {eq}`eqn:CSpresentval` in turn implies that
+
+```{math}
+:label: eqn:CampShill_punch
+\alpha_v(\zeta)  = {\frac { \alpha_g(\zeta) -  \alpha_g(\lambda)}{\zeta - \lambda}}  -
+{\frac { \alpha_r(\zeta) -  \alpha_r(\lambda)}{\zeta - \lambda}} .
+```
+
+The first term on the right side of {eq}`eqn:CampShill_punch` is the contribution to $\alpha_v(\zeta)$ of the expected cash flow in the absence of expected return variability, while the second  term accounts for expected  return variability.
+In the time domain, equation {eq}`eqn:CampShill_punch` asserts  that
+
+```{math}
+\log V_t - \log G_t - \mu_v  = E \left[ \sum_{j=0}^\infty \lambda^j
+\left( \log G_{t+1+j} - \log G_{t+j} - \mu_g - \log R_{t+1+j} + \mu_r \right) \vert {\mathfrak F}_t \right]
+```
+
+{cite:t}`CampbellShiller1988` use formulas like {eq}`eqn:CampShill_punch` to conclude that since
+
+```{math}
+E \left[ \sum_{j=0}^\infty \lambda^j
+\left( \log G_{t+1+j} - \log G_{t+j} - \mu_g \right) \vert {\mathfrak F}_t \right]
+```
+
+has a small variance when $G_t$ is measured by aggregate dividends, observed large variations in the logarithm of the price-dividend ratio must be attributed to time-varying expected returns that act through the second term
+
+```{math}
+E \left[ \sum_{j=0}^\infty \lambda^j
+\left( \log R_{t+j} - \mu_r \right) \vert {\mathfrak F}_t \right] .
+```
+
+That finding poses the scientific challenge of inventing a theoretical structure that generates variations in discounted expected returns that are not induced by dividend variations. We take that up in chapters XXXX.
+
+[^footnotelabel]: See [Cointegration](sec:cointegrate) for a definition of cointegration.
+
+[^footnotechallenges]: {cite:t}`HSRoberds` discuss challenges to testing this restriction. -->
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="gordinhallheyde" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Also see <span id="id12">Hall and Heyde [<a class="reference internal" href="cite.html#id187" title="P. Hall and C. C. Heyde. Martingale Limit Theory and Its Application. Academic Press, Boston, 1980.">1980</a>]</span>.</p>
+</aside>
+<aside class="footnote brackets" id="markovchapter" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>The random variable <span class="math notranslate nohighlight">\(H_t\)</span> somewhat resembles an “undiscounted” version of the resolvent operator that plays an important role in the analysis of Markov processes in chapter <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#chap-markov"><span class="std std-ref">Markov Processes</span></a>.</p>
+</aside>
+<aside class="footnote brackets" id="longmemory" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>See, for instance, <span id="id13">Granger and Joyeux [<a class="reference internal" href="cite.html#id181" title="C. W. J. Granger and Roselyne Joyeux. An Introduction To Long‐Memory Time Series Models And Fractional Differencing. Journal of Time Series Analysis, 1(1):15-29, January 1980. URL: https://ideas.repec.org/a/bla/jtsera/v1y1980i1p15-29.html, doi:10.1111/j.1467-9892.1980.">1980</a>]</span>,  <span id="id14">Geweke and Porter-Hudak [<a class="reference internal" href="cite.html#id166" title="John Geweke and Susan Porter-Hudak. The Estimation and Application of Long Memory Time Series Models. Journal of Time Series Analysis, 4(4):221–238, 1983.">1983</a>]</span> and <span id="id15">Robinson [<a class="reference internal" href="cite.html#id367" title="P. M. Robinson. Semiparametric Analysis of Long-Memory Time Series. The Annals of Statistics, 22(1):515–539, 1994. doi:10.1214/aos/1176325382.">1994</a>]</span>.</p>
+</aside>
+<aside class="footnote brackets" id="cointegration-def" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">4</a><span class="fn-bracket">]</span></span>
+<p>The <span id="id16">Box and Tiao [<a class="reference internal" href="cite.html#id57" title="George E.P. Box and George C. Tiao. A Canonical Analysis of Multiple Time Series. Biometrika, 64(2):355–365, 1977. doi:10.1093/biomet/64.2.355.">1977</a>]</span> ‘‘canonical correlation’’ approach to linear time series analysis anticipated, at least partially, the co-integration restrictions of time series econometricians and macroeconomists.</p>
+</aside>
+<aside class="footnote brackets" id="cointegration-vector" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">5</a><span class="fn-bracket">]</span></span>
+<p>The  cointegration vector <span class="math notranslate nohighlight">\((r_1, r_2)\)</span> is  determined  only up to scale.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="example_out_c2_v2_enzo_and_ken.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Markov Processes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="example_out_c4_v2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Processes with Markovian increments</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-setup">5.1. Basic setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-martingale-decomposition">5.2. A martingale decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-approximation">5.3. Central limit approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cointegration">5.4. Cointegration</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

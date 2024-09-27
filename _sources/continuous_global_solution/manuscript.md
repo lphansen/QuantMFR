@@ -1,0 +1,4 @@
+# Manuscript 
+Dynamic economic models make predictions about impulse responses that characterize how macroeconomic processes respond to alternative shocks over different horizons. From the perspective of asset pricing, impulse responses quantify the exposure of macroeconomic processes and other cash flows to macroeconomic shocks. Financial markets provide compensations to investors who are exposed to these shocks. Adopting an asset pricing vantage point, we describe and apply methods for computing exposures to macroeconomic shocks and the implied compensations represented as elasticities over alternative payoff horizons. The outcome is a term structure of macroeconomic uncertainty.
+
+["Term Structure of Uncertainty in the Macroeconomy” with Jaroslav Borovička, Handbook of Macroeconomics](https://larspeterhansen.org/wp-content/uploads/2016/10/macroterm_main.pdf) 

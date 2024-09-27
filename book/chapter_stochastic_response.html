@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>11. Stochastic Responses &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/chapter_stochastic_response';</script>
+    <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/chapter_stochastic_response.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12. Representing Marginal Valuation" href="marginal_valuation.html" />
+    <link rel="prev" title="10. Likelihoods" href="example_out_c6_v2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">6. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">7. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">8. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">9. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">10. Likelihoods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">12. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">13. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">14. Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/background.html">Background Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Notebook: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Notebook: Continuous Time</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Comparative Valuation Dynamics in Production Economies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/appendix.html">Online Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/code.html">Computational Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Spillovers for Markets and Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../uncertainty_spillovers/manuscript.html">Manuscript</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/chapter_stochastic_response.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stochastic Responses</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">11.2. Discrete time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-markov-dynamics">11.2.1. Discrete-time Markov dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-variational-dynamics">11.2.2. Discrete-time  variational dynamics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-dynamics">11.3. Continuous-time dynamics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-diffusion-dynamics">11.3.1. Markov diffusion dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-process">11.3.2. Variational process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#responses-to-initial-shocks">11.3.3. Responses to initial shocks</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stochastic-responses">
+<h1><span class="section-number">11. </span>Stochastic Responses<a class="headerlink" href="#stochastic-responses" title="Link to this heading">#</a></h1>
+<p><strong>Authors:</strong> Jaroslav Borovicka, Lars Peter Hansen, and Thomas J. Sargent</p>
+<p><strong>Date:</strong> September 2024
+<span class="math notranslate nohighlight">\(\newcommand{\eqdef}{\stackrel{\text{def}}{=}}\)</span></p>
+<section id="introduction">
+<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Impulse-response methods have been used by economists since <span id="id1">[<a class="reference internal" href="cite.html#id158" title="Ragar Frisch. Propagation problems and impulse problems in dynamic economics. In Economic Essays in Honour of Gustav Cassel, pages 171-205. Allen and Unwin, 1933.">Frisch, 1933</a>]</span> and in other disciplines. For nonlinear stochastic models, impulse responses are themselves stochastic.  Alternative approaches have been suggested in economics including <span id="id2">[<a class="reference internal" href="cite.html#id160" title="A R Gallant, P E Rossi, and G Tauchen. Nonlinear dynamic structures. Econometrica, 61:871-907, 1993. URL: http://www.jstor.org/stable/2951766.">Gallant <em>et al.</em>, 1993</a>]</span>,  <span id="id3">[<a class="reference internal" href="cite.html#id161" title="Gary Koop, M. Hashem Pesaran, and Simon M. Potter. Impulse response analysis in nonlinear multivariate models. Journal of Econometrics, 74:119-147, 1996. doi:10.1016/0304-4076(95)01753-4.">Koop <em>et al.</em>, 1996</a>]</span>, and <span id="id4">[<a class="reference internal" href="cite.html#id162" title="Gourieroux and Jasiak. Nonlinear innovations and impulse responses with application to var sensitivity. Annales d'Économie et de Statistique, 78:1-31, 2005. doi:10.2307/20079126.">Gourieroux and Jasiak, 2005</a>]</span>.  This chapter provides  stochastic responses in both discrete and continuous time for marginal changes in state variables and shocks.  The vast literature on vector autoregressions views these responses as ends in and of themselves.  Identified shocks as exogenous inputs into a dynamical system in effect <code class="docutils literal notranslate"><span class="pre">cause</span></code> movements in the vector time series of interest. Such measurements, while interesting, can have rather indirect connections to hypothetical interventions related to perspective policy changes that are at the heart of structural models.    Builders of dynamic stochastic equilibrium models use the construct of ‘structural’ in the sense  of <span id="id5">[<a class="reference internal" href="cite.html#id163" title="J Marschak. Cowles Commission Monograph 14: Studies in Econometric Methods, chapter Economic Measurements for Policy and Prediction, pages 1-26. Wiley, 1953.">Marschak, 1953</a>]</span>, <span id="id6">[<a class="reference internal" href="cite.html#id164" title="Leonid Hurwicz. On the structural form of interdependent systems. Logic, Methodology and Philosophy of Science Proceeding of the 1960 International Congress, 44:232-239, 1966. URL: http://www.sciencedirect.com/science/article/pii/S0049237X09705907, doi:http://dx.doi.org/10.1016/S0049-237X(09)70590-7.">Hurwicz, 1966</a>]</span>, and <span id="id7">[<a class="reference internal" href="cite.html#id319" title="Robert E. Jr Lucas. Econometric policy evaluation: a critique. Carnegie-Rochester Conference Series on Public Policy, 1:19 - 46, 1976. URL: http://www.sciencedirect.com/science/article/pii/S0167223176800036, doi:10.1016/S0167-2231(76)80003-6.">Lucas, 1976</a>]</span>.   They allow for investigating how a dynamical system changes when one portion of it is altered.  For us, these stochastic responses  are central inputs into marginal valuations that we will use for a variety of purposes.   In subsequent chapters, we provide extensive discussions of two types of such applications.     The first type
+provides asset-pricing type representations for endogenous  variables including various forms of capital.  These include policy relevant variables such as the social cost of climate change and the social value of research and development.   The second type generates what we call shock elasticities that help us characterize the building  blocks for exposures to uncertainty and prices of those exposures.</p>
+</section>
+<hr class="docutils" />
+<section id="discrete-time">
+<h2><span class="section-number">11.2. </span>Discrete time<a class="headerlink" href="#discrete-time" title="Link to this heading">#</a></h2>
+<p>We first consider a discrete-time specification.</p>
+<section id="discrete-time-markov-dynamics">
+<h3><span class="section-number">11.2.1. </span>Discrete-time Markov dynamics<a class="headerlink" href="#discrete-time-markov-dynamics" title="Link to this heading">#</a></h3>
+<p>We start with Markov process</p>
+<div class="math notranslate nohighlight" id="equation-evolve">
+<span class="eqno">(11.1)<a class="headerlink" href="#equation-evolve" title="Link to this equation">#</a></span>\[\begin{split}X_{t+1}  = \psi(X_t, W_{t+1}), \\ 
+Y_{t+1} - Y_t  = \kappa(X_t, W_{t+1}),\end{split}\]</div>
+<p>where there are <span class="math notranslate nohighlight">\(n\)</span> components of <span class="math notranslate nohighlight">\(X,\)</span>  <span class="math notranslate nohighlight">\(Y\)</span> is scalar, and <span class="math notranslate nohighlight">\(W\)</span> is <span class="math notranslate nohighlight">\(k\)</span> dimensional</p>
+</section>
+<section id="discrete-time-variational-dynamics">
+<h3><span class="section-number">11.2.2. </span>Discrete-time  variational dynamics<a class="headerlink" href="#discrete-time-variational-dynamics" title="Link to this heading">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\Lambda\)</span> denote the first variational process for <span class="math notranslate nohighlight">\(X\)</span>, and let <span class="math notranslate nohighlight">\(\Delta\)</span> denote the first variational process for <span class="math notranslate nohighlight">\(Y\)</span>. These variational processes are the ingredients to stochastic impulse responses to small changes in the underlying state variables. We compute them by “differentiating” in a generalized sense that accommodates the underling stochastic structure.  To obtain a recursive representation for <span class="math notranslate nohighlight">\((\Lambda, \Delta),\)</span>  we by differentiate <a class="reference internal" href="marginal_valuation.html#equation-evolve">(12.1)</a> and apply the chain rule:</p>
+<div class="math notranslate nohighlight" id="equation-var-evolve">
+<span class="eqno">(11.2)<a class="headerlink" href="#equation-var-evolve" title="Link to this equation">#</a></span>\[\begin{split}\Lambda_{t+1}  = \frac {\partial \psi}{\partial x'} (X_t, W_{t+1}) \Lambda_t \\ 
+\Delta_{t+1} - \Delta_t  = \frac {\partial \kappa}{\partial x}(X_t, W_{t+1}) \cdot \Lambda_t .\end{split}\]</div>
+<p>In this calculation, <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> and <span class="math notranslate nohighlight">\(\Delta_{t+1}\)</span> are stochastic as they inherit the stochastic dependence of <span class="math notranslate nohighlight">\(X_{t+1}\)</span> and <span class="math notranslate nohighlight">\(Y_{t+1}.\)</span>  By differentiating the process at a given calendar date, we are allowing for date <span class="math notranslate nohighlight">\(t\)</span> variables to change as a function of date <span class="math notranslate nohighlight">\(t\)</span> information.</p>
+<p>To obtain alternative stochastic (local) impulse response functions, we initialize <span class="math notranslate nohighlight">\(({\Lambda_0}', \Delta_0)'\)</span> to be one of the coordinate vectors that depends on one of the initial states that we want to perturb. Then <span class="math notranslate nohighlight">\(({\Lambda_t}', \Delta_t)'\)</span> is the date <span class="math notranslate nohighlight">\(t\)</span> state vector stochastic response to the perturbation of the initial value of the component.</p>
+<p>To perturb <span class="math notranslate nohighlight">\(Y_0,\)</span> we can set <span class="math notranslate nohighlight">\(\Lambda_0 = 0\)</span> and <span class="math notranslate nohighlight">\(\Delta_0=1;\)</span> then <span class="math notranslate nohighlight">\(\Lambda_t = 0\)</span> and <span class="math notranslate nohighlight">\(\Delta_t = 1\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>. Alternatively, if we initialize <span class="math notranslate nohighlight">\(\Lambda_0\)</span> be a coordinate vector and <span class="math notranslate nohighlight">\(\Delta_0 =0,\)</span> then the response <span class="math notranslate nohighlight">\(\Delta_t\)</span> will be a stochastic process.  The outcome of the coordinate vector initialization is a stochastic local impulse response to a marginal change in a particular state variable.</p>
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 11.1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The evolution of the variational processes is nonstochastic if <span class="math notranslate nohighlight">\( \frac {\partial \psi}{\partial x'}\)</span> and <span class="math notranslate nohighlight">\( \frac {\partial \kappa}{\partial x}\)</span> are constant as  is true when <span class="math notranslate nohighlight">\(\psi\)</span> and <span class="math notranslate nohighlight">\(\kappa\)</span> are affine in <span class="math notranslate nohighlight">\(x\)</span>. Otherwise, variational processes are stochastic.</p>
+</section>
+</div><div class="proof example admonition" id="ex:quadratic">
+<p class="admonition-title"><span class="caption-number">Example 11.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the following quadratic specification:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+X_{t+1}^i &amp; =  {\sf a}_i \cdot X_t+ {\frac 1 2} {X_t}'{\mathbb A}_i X_t + {X_t}'{\mathbb B}_i W_{t+1} + {\sf b}_i \cdot W_{t+1}, \hspace{.3cm}  i=1,...,n\cr 
+Y_{t+1} - Y_t &amp; = {\sf d} \cdot X_t + {\frac 1 2}  {X_t}'{\mathbb D} X_t + {X_t}' {\mathbb F}W_{t+1} + {\sf f}  \cdot W_{t+1} .
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\({\mathbb A}_i\)</span> and <span class="math notranslate nohighlight">\({\mathbb D}\)</span> are symmetric.  A simple calculation shows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\Lambda_{t+1}^i &amp; =  {\sf a}_i \cdot \Lambda_t +  {\Lambda_t}'{\mathbb A}_i X_t + {\Lambda_t}'{\mathbb B}_i W_{t+1} , \hspace{.3cm} i=1,...,n\cr 
+\Delta_{t+1} - \Delta_t &amp; =  {\sf d} \cdot \Lambda_t  + {\Lambda_t}'{\mathbb D} X_t + {\Lambda_t}' {\mathbb F}W_{t+1}  .
+\end{align*}\]</div>
+</section>
+</div></section>
+</section>
+<section id="continuous-time-dynamics">
+<h2><span class="section-number">11.3. </span>Continuous-time dynamics<a class="headerlink" href="#continuous-time-dynamics" title="Link to this heading">#</a></h2>
+<p>We now consider the continuous-time counterpart for Brownian motion shocks.</p>
+<section id="markov-diffusion-dynamics">
+<h3><span class="section-number">11.3.1. </span>Markov diffusion dynamics<a class="headerlink" href="#markov-diffusion-dynamics" title="Link to this heading">#</a></h3>
+<p>As a part of a more general derivation, we begin with state dynamics modeled as a Markov diffusion:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+dX_t &amp; = \mu(X_t) dt + \sigma(X_t) dW_t \\
+dY_t &amp; = \nu(X_t) dt + \varsigma(X_t) \cdot dW_t. 
+\end{align*}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(W\)</span> is now a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard Brownian motion.  We denote the filtration (family of specifications of conditioning information events) <span class="math notranslate nohighlight">\({\mathfrak F} \eqdef \left\{ {\mathfrak F}_t  : t\ge 0\right\}\)</span> constructed from the Brownian motion and any pertinent date zero information.</p>
+</section>
+<section id="variational-process">
+<h3><span class="section-number">11.3.2. </span>Variational process<a class="headerlink" href="#variational-process" title="Link to this heading">#</a></h3>
+<p>Following <span id="id8">[<a class="reference internal" href="cite.html#id441" title="Jaroslav Borovička, Lars Peter Hansen, and Jose A. Scheinkman. Shock elasticities and impulse responses. Mathematics and Financial Economics, 2014. doi:10.1007/s11579-014-0122-4.">Borovička <em>et al.</em>, 2014</a>]</span>, we construct marginal impulse response functions using what are called variational processes.  We build the dynamics for what is called the  first valuation  process, <span class="math notranslate nohighlight">\(\Lambda\)</span> by  following the construction in  <span id="id9">[<a class="reference internal" href="cite.html#id442" title="E Fournie, J M Lasry, J Lebuchoux, P L Lions, and N Touzi. Applications of Malliavin calculus to Monte Carlo methods in finance. Finance and Stochastics, 3:391-413, 1999.">Fournie <em>et al.</em>, 1999</a>]</span>.
+The first valuation  process tells the marginal impact on future <span class="math notranslate nohighlight">\(X\)</span> of a marginal change in one of the initial states analogous to the <span class="math notranslate nohighlight">\(\Lambda\)</span> process that we constructed in discrete time. Thus this process has the same number of components as <span class="math notranslate nohighlight">\(X\)</span>. By initializing the process at one of the alternative coordinate vectors, we again isolate an initial state of interest.<a class="footnote-reference brackets" href="#fn-variational-difference" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>The drift for the <span class="math notranslate nohighlight">\(i^{th}\)</span> component of <span class="math notranslate nohighlight">\(\Lambda\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\lambda' {\frac {\partial \mu_i} {\partial x} }(x)  \]</div>
+<p>and the coefficient on the Brownian increment is</p>
+<div class="math notranslate nohighlight">
+\[\lambda' \frac {\partial \sigma_i }{\partial x}(x)\]</div>
+<p>for <span class="math notranslate nohighlight">\(\lambda\)</span> a hypothetical realization of <span class="math notranslate nohighlight">\(\Lambda_t\)</span> and <span class="math notranslate nohighlight">\(x\)</span> a hypothetical realization of <span class="math notranslate nohighlight">\(X_t,\)</span> where <span class="math notranslate nohighlight">\('\)</span> denotes vector or matrix transposition.
+The implied evolution of the process <span class="math notranslate nohighlight">\(\Lambda^i\)</span> is<a class="footnote-reference brackets" href="#fn-malliavin" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight">
+\[d\Lambda_{t}^i = \left(\Lambda_t\right)'\frac{\partial \mu_i}{\partial x}(X_t) dt + \left({\Lambda_t}\right)'\frac{\partial \sigma_i}{\partial x}(X_t) dW_t.\]</div>
+<p>With the appropriate stacking, the drift for the composite process <span class="math notranslate nohighlight">\((X,\Lambda)\)</span> is:</p>
+<div class="math notranslate nohighlight" id="equation-variational-mean">
+<span class="eqno">(11.3)<a class="headerlink" href="#equation-variational-mean" title="Link to this equation">#</a></span>\[\begin{split}\mu^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \mu(x) \\ \lambda'{\frac {\partial \mu_i} {\partial x} }(x) \\
+... \\ \lambda'{\frac {\partial \mu_n} {\partial x} }(x) \end{bmatrix},\end{split}\]</div>
+<p>and the composite matrix coefficient on <span class="math notranslate nohighlight">\(dW_t\)</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-variational-diffusion">
+<span class="eqno">(11.4)<a class="headerlink" href="#equation-variational-diffusion" title="Link to this equation">#</a></span>\[\begin{split}\sigma^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \sigma(x) \\  \lambda'\frac {\partial \sigma_1 }{\partial x}(x)\\ ... \\
+\lambda' \frac {\partial \sigma_n }{\partial x}(x) \end{bmatrix}.\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\Delta\)</span> be the scalar variational process associated with <span class="math notranslate nohighlight">\(Y.\)</span> Then</p>
+<div class="math notranslate nohighlight">
+\[d \Delta_t = \Lambda_t \cdot \frac {\partial \nu}{\partial x} (X_t)dt + {\Lambda_t}' \frac {\partial \varsigma}{\partial x'} dW_t \]</div>
+<p>Analogous to the discrete-time outcome, the variational dynamics depend explicit on the original diffusion dynamics.  As in discrete time, by initializing the vector <span class="math notranslate nohighlight">\(\Lambda_0\)</span> at a coordinate vector, the resulting processes give marginal responses to a corresponding state vector.</p>
+<div class="proof example admonition" id="ex:continuous">
+<p class="admonition-title"><span class="caption-number">Example 11.2 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the case of linear dynamics:</p>
+<div class="math notranslate nohighlight">
+\[\begin{matrix}
+\mu(x)  = {\mathbb A}x  &amp; \sigma(x) = {\mathbb B} \cr
+\nu(x)  = {\mathbb D} x &amp;
+\varsigma(x)  = {\mathbb F}
+\end{matrix} .\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\mu^a(x, \lambda) &amp; = \begin{bmatrix} {\mathbb A}x \cr {\mathbb A} \lambda \end{bmatrix} \cr
+&amp; \cr
+\sigma^a(X, \lambda) &amp; = \begin{bmatrix} {\mathbb B} \cr 0  \end{bmatrix}.
+\end{align*} \]</div>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[\Lambda_t = \exp \left( {\mathbb A} t \right) \Lambda_0,\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\Delta_t &amp; = \int_0^t  {\mathbb D} \Lambda_u du + \Delta_0 \cr &amp; = \left[\int_0^t  {\mathbb D} \exp\left( {\mathbb A}u \right) du \right]\Lambda_0 + \Delta_0 \cr &amp; = - {\mathbb A}^{-1} \left[ {\mathbb I} - \exp\left( {\mathbb A} t \right) \right]\Lambda_0 + \Delta_0 .
+\end{align*}\]</div>
+<p>Given the underlying linearity, the local responses coincide with global responses.</p>
+</section>
+</div><p>In the calculations that follow, let <span class="math notranslate nohighlight">\(\Lambda^j\)</span> be the variational process for which  <span class="math notranslate nohighlight">\(\Lambda_0^j\)</span> is a coordinate vector with a one in position <span class="math notranslate nohighlight">\(j.\)</span> From the composite processes</p>
+<div class="math notranslate nohighlight">
+\[\Lambda^a = \begin{bmatrix} \Lambda_1 &amp; ... &amp; \Lambda_n \end{bmatrix}.  \]</div>
+<p>Also we will have cause to do a forward shift <span class="math notranslate nohighlight">\({\mathbb S}^\tau \)</span> of these process by which we shift the time units on all of the variables used in the the construction and the initialization period forward <span class="math notranslate nohighlight">\(\tau\)</span> time periods.</p>
+</section>
+<section id="responses-to-initial-shocks">
+<h3><span class="section-number">11.3.3. </span>Responses to initial shocks<a class="headerlink" href="#responses-to-initial-shocks" title="Link to this heading">#</a></h3>
+<p>So far, we have characterized stochastic responses to initial changes in the state variables.  From these, we deduce vector of responses to the initial shocks:</p>
+<div class="math notranslate nohighlight">
+\[\Phi =   \Lambda^a \sigma(X_0)   \hspace{.3cm} \Psi  = \Lambda^a \sigma(X_0)  + \varsigma(X_0) \]</div>
+<p>Under nonlinearity, these responses will be stochastic just as with the state variable perturbations.<br />
+For the special case of linear dynamics given in Example ,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\Phi_t  &amp; =  \exp\left( {\mathbb A} t \right) {\mathbb B}  \cr
+\Delta_t  &amp; = - {\mathbb A}^{-1} \left[ {\mathbb I} - \exp\left( {\mathbb A} t \right) \right]{\mathbb B}  + {\mathbb F} ,
+\end{align*}\]</div>
+<p>which are  the continuous-time counterparts of the familiar impulse responses.</p>
+<p>With Markov diffusions, we also have a state-dependent counterpart to a moving-average representation that is well known from linear time series models.  The resulting formula is known as the Haussmann-Clark-Ocone representation and is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+X_t &amp; = \int_0^t   {\mathbb E} \left( {\mathbb S}^u\Phi_{t-u} \mid {\mathfrak F}_u \right) dW_u^j + {\mathbb E} \left( X_t \mid {\mathfrak F}_0 \right) \cr
+Y_t &amp; = \int_0^t  {\mathbb E}\left( {\mathbb S}^u \Psi_{t-u}  \mid {\mathfrak F}_u \right) \cdot dW_u^j + {\mathbb E} \left( Y_t \mid {\mathfrak F}_0 \right).
+\end{align*} \]</div>
+<p>Note that we form conditional expectations of time shifted  stochastic responses to form the random coefficients in the moving-average representations as given by <span class="math notranslate nohighlight">\({\mathbb E} \left( {\mathbb S}^u\Phi_{t-u} \mid {\mathfrak F}_u \right)\)</span> and <span class="math notranslate nohighlight">\({\mathbb E}\left( {\mathbb S}^u \Psi_{t-u}  \mid {\mathfrak F}_u \right)\)</span>.  When the responses turn out not to be stochastic, as in the case of the Remark 2 example, the conditional expectations and the shift are inconsequential.  In this case, we recover the familiar convolution formulas for moving-average representations.</p>
+<div class="proof remark admonition" id="remark-3">
+<p class="admonition-title"><span class="caption-number">Remark 11.2 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Many empirical researchers estimate directly what macroeconomists call Jorda projections.  These are implemented by regressing a forward sequence of  a scalar process  on current variable and a shock or particular interest.  One can interpret the ambition as wanting to infer impulse responses from direct regressions of future variables on  the initial ones. One can view the ambition as a way to measure impulse responses.  For instance, the aim could be to infer:</p>
+<div class="math notranslate nohighlight">
+\[{\mathbb E} \left( \Phi_t \mid {\mathcal F}_0 \right)  \hspace{.2cm} {\rm and} \hspace{.2cm}  {\mathbb E} \left( \Psi_t \mid {\mathcal F}_0 \right), \hspace{.2cm} t \ge 0\]</div>
+<p>by regressing <span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(Y_t\)</span> on a measured shock of interest and including additional variables to purge some of the variation in the measured shock.  Many applied papers will include cross terms that are pre-determined in advance of  the shock to accommodate a form of nonlinearity.  For this to be coherent, as our analysis makes clear, one has to think through how the nonlinearity compounds within the stochastic system.  The shock of interest can alter other variables that in turn influence the variable of interest in future time periods.  Our use of variational processes captures this perspective when the ambition is to measure local impacts.</p>
+</section>
+</div><hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="fn-variational-difference" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">1</a><span class="fn-bracket">]</span></span>
+<p>Our initial condition for <span class="math notranslate nohighlight">\(\Lambda_0\)</span> differs from <span id="id12">[<a class="reference internal" href="cite.html#id442" title="E Fournie, J M Lasry, J Lebuchoux, P L Lions, and N Touzi. Applications of Malliavin calculus to Monte Carlo methods in finance. Finance and Stochastics, 3:391-413, 1999.">Fournie <em>et al.</em>, 1999</a>]</span> in a superficial way. They treat <span class="math notranslate nohighlight">\(\Lambda\)</span> as a matrix with an identity as the initialization. In this way, they consider all of the states of interest simultaneously. We take <span class="math notranslate nohighlight">\(\Lambda\)</span> to be a vector and characterize the marginal initial responses one at a time by letting the initial condition be any one of the coordinate vectors.</p>
+</aside>
+<aside class="footnote brackets" id="fn-malliavin" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">2</a><span class="fn-bracket">]</span></span>
+<p>Since we are working with an instantaneous evolution with Brownian increments, we are implicitly appealing to a formalism known as Malliavin calculus.</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="example_out_c6_v2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Likelihoods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="marginal_valuation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Representing Marginal Valuation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">11.2. Discrete time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-markov-dynamics">11.2.1. Discrete-time Markov dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-variational-dynamics">11.2.2. Discrete-time  variational dynamics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-dynamics">11.3. Continuous-time dynamics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-diffusion-dynamics">11.3.1. Markov diffusion dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-process">11.3.2. Variational process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#responses-to-initial-shocks">11.3.3. Responses to initial shocks</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

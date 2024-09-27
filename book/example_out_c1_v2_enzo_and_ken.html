@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Stochastic Processes and Laws of Large Numbers &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/example_out_c1_v2_enzo_and_ken';</script>
+    <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/example_out_c1_v2_enzo_and_ken.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Markov Processes" href="example_out_c2_v2.html" />
+    <link rel="prev" title="1. Stochastic Processes and Laws of Large Numbers" href="example_out_c1_v2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">6. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">7. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">8. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">9. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">10. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">11. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">12. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">13. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">14. Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/background.html">Background Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Notebook: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Notebook: Continuous Time</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Comparative Valuation Dynamics in Production Economies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/appendix.html">Online Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/code.html">Computational Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Spillovers for Markets and Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../uncertainty_spillovers/manuscript.html">Manuscript</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/example_out_c1_v2_enzo_and_ken.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stochastic Processes and Laws of Large Numbers</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-processes">2.2. Stochastic Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-a-stochastic-process">2.3. Constructing a Stochastic Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-stochastic-processes">2.4. Stationary Stochastic Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-events-and-conditional-expectations">2.5. Invariant Events and Conditional Expectations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-events">2.5.1. Invariant events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expectation">2.5.2. Conditional expectation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-squares">2.5.3. Least Squares</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">2.6. Law of Large Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-empirical-measures">2.7. Limiting Empirical Measures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodic-decomposition">2.8. Ergodic Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-and-uncertainty">2.9. Risk and Uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inventing-an-infinite-past">2.10. Inventing an Infinite Past</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.11. Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stochastic-processes-and-laws-of-large-numbers">
+<span id="chap-process"></span><h1><span class="section-number">2. </span>Stochastic Processes and Laws of Large Numbers<a class="headerlink" href="#stochastic-processes-and-laws-of-large-numbers" title="Link to this heading">#</a></h1>
+<p>########### EDITED</p>
+<p>Enzo: <span style="color: red;"> red </span> and <span style="color: orange;"> orange </span></p>
+<p>Ken: <span style="color: green;"> green </span> and <span style="color: lightgreen;"> lightgreen </span></p>
+<p>You find our proposed edits in  <span style="color: red;"> red </span>/<span style="color: green;"> green </span> , while comments are in <span style="color: orange;"> orange </span>/<span style="color: lightgreen;"> lightgreen </span>.</p>
+<p>###########</p>
+<section id="introduction">
+<span id="sec-illustration"></span><h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>A probabilistic form of invariance gives rise to a Law of Large Numbers. The invariance notion is a stochastic counterpart to a steady state of a dynamic economic model. The Law of Large Numbers conditions on a set of special events called <em>invariant events</em> that we can interpret as indexing alternative possible statistical models. These ideas allow us to characterize what can be learned from time series evidence and what must originate elsewhere.</p>
+</section>
+<section id="stochastic-processes">
+<h2><span class="section-number">2.2. </span>Stochastic Processes<a class="headerlink" href="#stochastic-processes" title="Link to this heading">#</a></h2>
+<p><span style="text-decoration: line-through; text-decoration-color: red;"> A sequence of random vectors is called a stochastic process. We are interested in time series so we index the sequence by time.</span> <span style="color: orange;">remove this sentence? random vectors are introduced below. Maybe add it to the introduction above?</span></p>
+<p>We start with a probability space, namely, a triple <span class="math notranslate nohighlight">\((\Omega, \mathfrak{F}, \text{Pr})\)</span>, where <span style="color: red;"><span class="math notranslate nohighlight">\(\Omega\)</span> is a set of <em>states</em>,</span>  <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span> is a collection of events (a sigma algebra <span style="color: red;"> on <span class="math notranslate nohighlight">\(\Omega\)</span></span>) and <span class="math notranslate nohighlight">\(\text{Pr}\)</span> assigns probabilities to events <span style="color: red;">(a probability measure on <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span>)</span>. <span style="color: red;">In general, the state is not directly observed and we have only access to a vector of measurements depending on it.</span> <span style="text-decoration: line-through; text-decoration-color: red;">The following definition makes reference to Borel sets. Borel sets include open sets, closed sets, finite intersections, and countable unions of such sets.</span></p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 2.1 </span></p>
+<section class="definition-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(X\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional random vector if <span class="math notranslate nohighlight">\(X : \Omega \rightarrow {\mathbb R}^n\)</span> has the property that for any Borel set <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^n,\)</span> <span class="math notranslate nohighlight">\(\{X \in \mathfrak{b} \}\)</span> is in <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span>.</p>
+</section>
+</div><p><span style="color: lightgreen;">  define notation: <span class="math notranslate nohighlight">\( \{X \in \mathfrak{b} \}= \{ \omega \in \Omega : X(\omega) \in \mathfrak{b}\} \)</span></span></p>
+<p><span style="color: red;">The collection of Borel sets of <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span> coincides with the smallest sigma algebra generated by open sets. </span>A result from measure theory states that if <span class="math notranslate nohighlight">\(\{ X \in \mathfrak{o} \}\)</span> is an event in <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span> whenever <span class="math notranslate nohighlight">\(\mathfrak{o}\)</span> is an open set in <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>, then <span class="math notranslate nohighlight">\(X\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional random vector. <span style="color: green;">So it is enough to check this property for open sets.</span></p>
+<p>This formal structure facilitates using mathematical analysis to formulate problems in probability theory. A random vector induces a probability <span style="text-decoration: line-through; text-decoration-color: red;">distribution </span><span style="color: red;">measure </span>over the collection of Borel sets in which the probability assigned to set <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[Pr \{ X \in \mathfrak{b} \}\]</div>
+<p><span style="text-decoration: line-through; text-decoration-color: red;">By changing the set <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span>, we trace out a probability distribution implied by the random vector <span class="math notranslate nohighlight">\(X\)</span> that is called the <em>induced distribution</em></span> <span style="color: red;">This is called the <em>induced distribution</em> of the random vector <span class="math notranslate nohighlight">\(X\)</span></span>. An induced distribution is what typically interests an applied worker. In practice, an induced distribution is just specified directly without constructing the foundations under study here. However, proceeding at a deeper level as we have by defining a random vector to be a function that satisfies particular measurable properties and imposing the probability measure <span class="math notranslate nohighlight">\(Pr\)</span> over the domain of that function has mathematical payoffs that we will exploit in various ways, among them being in construction of stochastic processes.</p>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 2.2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>An <span class="math notranslate nohighlight">\(n\)</span>-dimensional stochastic process is an infinite sequence of <span class="math notranslate nohighlight">\(n\)</span>-dimensional random vectors <span class="math notranslate nohighlight">\(\{ X_t : t=0,1,... \}\)</span>.</p>
+</section>
+</div><p>The measure <span class="math notranslate nohighlight">\(Pr\)</span> assigns probabilities to a rich and interesting collection of events. For example, consider a stacked random vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X^{[\ell]}(\omega) \doteq
+\begin{bmatrix} X_0(\omega) \\ X_1(\omega) \\ \vdots \\ X_{\ell}(\omega) \end{bmatrix}\end{split}\]</div>
+<p>and Borel sets <span class="math notranslate nohighlight">\({\mathfrak b}\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}^{n(\ell+1)}\)</span>. The joint distribution of <span class="math notranslate nohighlight">\(X^{[\ell]}\)</span> induced by <span class="math notranslate nohighlight">\(Pr\)</span> over such Borel sets is</p>
+<div class="math notranslate nohighlight">
+\[Pr \{  X^{[\ell]} \in {\mathfrak b }\}.\]</div>
+<p><span style="text-decoration: line-through; text-decoration-color: red;">Since the choice of <span class="math notranslate nohighlight">\(\ell\)</span> is arbitrary, <span class="math notranslate nohighlight">\(Pr\)</span> implies a distribution over a sequence of random vectors <span class="math notranslate nohighlight">\(\{ X_t (\omega) : t = 0,1,...\}\)</span>: given a probability distribution, we can construct a probability space and a random vector that induces this distribution.  Thus, the following way to construct a probability space is particularly enlightening.</span> <span style="color: red;">These probability measures, for <span class="math notranslate nohighlight">\(\ell \in {\mathbb N}\)</span>, are called <em>finite dimensional distributions</em> induced by the stochastic process. The following construction is particularly enlightening: given a collection of probability measures <span class="math notranslate nohighlight">\(Pr_\ell\)</span> on <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +1)},\)</span> <span class="math notranslate nohighlight">\(\ell \ge 0,\)</span> which are <em>consistent</em> we can construct a probability space and a stochastic process which induces them as finite dimensional distributions.
+</span></p>
+<p><span style="color: orange;"> I rearranged construction 1.1: we start from finite dimentional distributions which are consistent and we construct state space, sigma algebra and invoke Kolmogorov’s thm.</span></p>
+<p id="ex-canonical"><strong>Construction 1.1:</strong>
+<span style="color: red;">
+For each integer <span class="math notranslate nohighlight">\(\ell \ge 0\)</span>, let <span class="math notranslate nohighlight">\(Pr_\ell\)</span> assign probabilities to the Borel sets of <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +1)}\)</span>. A Borel set in <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +1)}\)</span> can also be viewed as a Borel set in <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +2)}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{r}_{\ell +1}\)</span> left unrestricted. Specifically, let <span class="math notranslate nohighlight">\(\mathfrak{b}_\ell\)</span> be a Borel set in <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +1)}\)</span>. Then</span></p>
+<div class="math notranslate nohighlight">
+\[
+\mathfrak{b}_\ell^{\ell+1} = \left\{ (\mathbf{r}_0, \mathbf{r}_1, ..., \mathbf{r}_\ell, \mathbf{r}_{\ell+1}) : ( \mathbf{r}_0, \mathbf{r}_1, ..., \mathbf{r}_\ell) \in \mathfrak{b}_\ell \right\}.
+\]</div>
+<p><span style="color: red;">For the probability measures <span class="math notranslate nohighlight">\(\{Pr_{\ell} : \ell = 0,1,... \}\)</span> to be consistent, we require that <span class="math notranslate nohighlight">\(Pr_{\ell +1}\)</span> satisfies</span></p>
+<div class="math notranslate nohighlight">
+\[
+Pr_\ell \left(\mathfrak{b}_\ell \right) = Pr_{\ell+1} \left(\mathfrak{b}_\ell^{\ell +1}  \right)
+\]</div>
+<p><span style="color: red;">for any <span class="math notranslate nohighlight">\(\ell \ge 0\)</span> and any Borel set <span class="math notranslate nohighlight">\(\mathfrak{b}_\ell\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +1)}.\)</span> </span></p>
+<p><span style="color: red;">First, we construct a probability space.</span> Let <span class="math notranslate nohighlight">\(\Omega\)</span> be a collection of infinite sequences in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> with an element <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span> being a sequence of vectors <span class="math notranslate nohighlight">\(\omega = (\mathbf{r}_0, \mathbf{r}_1, ... )\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{r}_t \in \mathbb{R}^n\)</span>.
+To construct <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span>, proceed as follows. Let <span class="math notranslate nohighlight">\(\mathfrak{B}\)</span> be the collection of Borel sets of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>. Let <span class="math notranslate nohighlight">\(\widetilde{\mathfrak{F}}\)</span> denote the collection of all subsets <span class="math notranslate nohighlight">\(\Lambda\)</span> of <span class="math notranslate nohighlight">\(\Omega\)</span> that can be represented in the following way. For a nonnegative integer <span class="math notranslate nohighlight">\(\ell\)</span> and Borel sets <span class="math notranslate nohighlight">\(\mathfrak{b}_0, \mathfrak{b}_1, ..., \mathfrak{b}_\ell\)</span>, let</p>
+<div class="math notranslate nohighlight" id="equation-rectangle">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-rectangle" title="Link to this equation">#</a></span>\[\Lambda = \left\{
+\omega =  (\mathbf{r}_0, \mathbf{r}_1, ... ) :
+\mathbf{r}_j \in \mathfrak{b}_j, j=0,1,..,\ell \right\}.\]</div>
+<p>Then <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span> is the smallest sigma-algebra that contains <span class="math notranslate nohighlight">\(\widetilde{\mathfrak{F}}\)</span>. <span style="text-decoration: line-through; text-decoration-color: red;">By assigning probabilities to events in <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span> with <span class="math notranslate nohighlight">\(Pr\)</span>, we construct a probability distribution over sequences of vectors.</span></p>
+<p><span style="text-decoration: line-through; text-decoration-color: red;"> Next we construct a measure that assigns probabilities to events in <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span>.
+For each integer <span class="math notranslate nohighlight">\(\ell \ge 0\)</span>, let <span class="math notranslate nohighlight">\(Pr_\ell\)</span> assign probabilities to the Borel sets of <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +1)}\)</span>. A Borel set in <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +1)}\)</span> can also be viewed as a Borel set in <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +2)}\)</span> with <span class="math notranslate nohighlight">\(\mathbf{r}_{n(\ell +1)}\)</span> left unrestricted. Specifically, let <span class="math notranslate nohighlight">\(\mathfrak{b}_\ell\)</span> be a Borel set in <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +1)}\)</span>. Then</span></p>
+<div class="math notranslate nohighlight">
+\[
+\mathfrak{b}_\ell^{\ell+1} = \left\{ (\mathbf{r}_0, \mathbf{r}_1, ..., \mathbf{r}_\ell, \mathbf{r}_{\ell+1}) : ( \mathbf{r}_0, \mathbf{r}_1, ..., \mathbf{r}_\ell) \in \mathfrak{b}_\ell \right\}.
+\]</div>
+<p><span style="text-decoration: line-through; text-decoration-color: red;"> For the probability measures <span class="math notranslate nohighlight">\(\{Pr_{\ell} : \ell = 0,1,... \}\)</span> to be consistent, we require that the probability assigned by <span class="math notranslate nohighlight">\(Pr_{\ell +1}\)</span> satisfy</span></p>
+<div class="math notranslate nohighlight">
+\[
+Pr_\ell \left(\mathfrak{b}_\ell \right) = Pr_{\ell+1} \left(\mathfrak{b}_\ell^{\ell +1}  \right)
+\]</div>
+<p><span style="text-decoration: line-through; text-decoration-color: red;"> for any <span class="math notranslate nohighlight">\(\ell \ge 0\)</span> and any Borel set <span class="math notranslate nohighlight">\(\mathfrak{b}_\ell\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell +1)}.\)</span> </span>If consistency <span style="text-decoration: line-through; text-decoration-color: red;"> in this sense </span>prevails, we can extend this construction to form a probability <span class="math notranslate nohighlight">\(Pr\)</span> on the space <span class="math notranslate nohighlight">\((\Omega, \mathfrak{F})\)</span> that is consistent with the probability assigned by <span class="math notranslate nohighlight">\(Pr_{\ell}\)</span> for all nonnegative integers <span class="math notranslate nohighlight">\(\ell\)</span>. <span style="color: red;"> Moreover, <span class="math notranslate nohighlight">\(Pr\)</span> is the unique measure on <span class="math notranslate nohighlight">\((\Omega, \mathfrak{F})\)</span> with this property.</span><a class="footnote-reference brackets" href="#kolmorov-theorem" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>Finally, we construct the stochastic process <span class="math notranslate nohighlight">\(\{X_t: t=0,1, ... \}\)</span> by letting</p>
+<div class="math notranslate nohighlight">
+\[
+X_t(\omega) = \mathbf{r}_t
+\]</div>
+<p>for <span class="math notranslate nohighlight">\(t=0,1,2,....\)</span> A convenient feature of this construction is that <span class="math notranslate nohighlight">\(Pr_\ell\)</span> is the probability induced by the random vector <span class="math notranslate nohighlight">\(\left[{X_{0}}',{X_{1}}',...,{X_{\ell}}'\right]'\)</span>.</p>
+<p>We refer to this construction as <em>canonical</em>. While this is only one among other possible constructions of probability spaces, it illustrates the flexibility in building sequences of random vectors that induce alternative probabilities of interest.</p>
+<p>The remainder of this chapter is devoted to studying Laws of Large Numbers.
+What is perhaps the most familiar Law of Large Numbers presumes that the stochastic process <span class="math notranslate nohighlight">\(\{X_t : t=0,1, ... \}\)</span> is independent and identically distributed (iid). Then</p>
+<div class="math notranslate nohighlight">
+\[{\frac{1}{N}} \sum_{t=1}^N \phi(X_t) \rightarrow E \phi(X_0)\]</div>
+<p>for any (Borel measurable) function <span class="math notranslate nohighlight">\(\phi\)</span> for which the expectation is well defined. Convergence holds in several senses that we state later. Notice that as we vary the function <span class="math notranslate nohighlight">\(\phi\)</span> we can infer the (induced) probability distribution for <span class="math notranslate nohighlight">\(X_0\)</span>. In this sense, the outcome of the Law of Large Numbers under an iid sequence determines what we will call a <em>statistical model</em>.</p>
+<p>For our purposes, an iid version of the Law of Large Numbers is too restrictive. First, we are interested in economic dynamics in which model outcomes are temporally dependent. Second, we want to put ourselves in the situation of a statistician who does not know <em>a priori</em> what the underlying data generating process is and therefore entertains multiple models. We will present a Law of Large Numbers that covers both settings.</p>
+</section>
+<section id="constructing-a-stochastic-process">
+<span id="sec-stochprocessconstructioni"></span><h2><span class="section-number">2.3. </span>Constructing a Stochastic Process<a class="headerlink" href="#constructing-a-stochastic-process" title="Link to this heading">#</a></h2>
+<p>We now generalize the canonical construction <a class="reference internal" href="#ex-canonical"><span class="std std-ref">1.1</span></a> of a stochastic process in a way that facilitates stating the Law of Large Numbers that interests us.</p>
+<figure class="align-default" id="fig-evolve">
+<img alt="../_images/fig2_1.png" src="../_images/fig2_1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">The evolution of a sample point <span class="math notranslate nohighlight">\(\omega\)</span> induced by successive applications of the transformation <span class="math notranslate nohighlight">\(\mathbb{S}\)</span>. The oval shaped region is the collection <span class="math notranslate nohighlight">\(\Omega\)</span> of all sample points.</span><a class="headerlink" href="#fig-evolve" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig-inverse">
+<img alt="../_images/fig2_2.png" src="../_images/fig2_2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">An inverse image <span class="math notranslate nohighlight">\(\mathbb{S}^{-1}(\Lambda)\)</span> of an event <span class="math notranslate nohighlight">\(\Lambda\)</span> is itself an event; <span class="math notranslate nohighlight">\(\omega \in \mathbb{S}^{-1}(\Lambda)\)</span> implies that <span class="math notranslate nohighlight">\(\mathbb{S}(\omega)\in  \Lambda\)</span>.</span><a class="headerlink" href="#fig-inverse" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We use two objects.<a class="footnote-reference brackets" href="#footnotebreiman" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<p>The first is a (measurable) transformation <span class="math notranslate nohighlight">\({\mathbb S}: \Omega \rightarrow \Omega\)</span> that describes the evolution of a sample point <span class="math notranslate nohighlight">\(\omega\)</span>. See <a class="reference internal" href="#fig-evolve"><span class="std std-numref">Fig. 2.1</span></a>. Transformation <span class="math notranslate nohighlight">\({\mathbb S}\)</span> has the property that for any event <span class="math notranslate nohighlight">\(\Lambda \in {\mathfrak F}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[{\mathbb S}^{-1}(\Lambda) =  \{\omega \in \Omega : {\mathbb S}(\omega) \in \Lambda\}\]</div>
+<p>is an event in <span class="math notranslate nohighlight">\({\mathfrak F}\)</span>, as depicted in <a class="reference internal" href="#fig-inverse"><span class="std std-numref">Fig. 2.2</span></a>. The second object is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional vector <span class="math notranslate nohighlight">\(X(\omega)\)</span> that describes how observations depend on sample point <span class="math notranslate nohighlight">\(\omega\)</span>.</p>
+<p>We construct a stochastic process <span class="math notranslate nohighlight">\(\{ X_t : t = 0,1,... \}\)</span> via the formula:</p>
+<div class="math notranslate nohighlight">
+\[X_t(\omega) = X[{\mathbb S}^t(\omega)]\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[X_t = X \circ {\mathbb S}^t,\]</div>
+<p>where <span style="color: green;"> <span class="math notranslate nohighlight">\({\mathbb S}^t(\omega)\)</span> denotes <span class="math notranslate nohighlight">\(t\)</span> successive applications of <span class="math notranslate nohighlight">\(\mathbb S\)</span> and </span> we interpret <span class="math notranslate nohighlight">\({\mathbb S}^0\)</span> as the identity mapping asserting that <span class="math notranslate nohighlight">\(\omega_0 =\)</span> <span style="color: green;"> <span class="math notranslate nohighlight">\({\mathbb S}^0(\omega)=\)</span> </span>ß<span class="math notranslate nohighlight">\( \omega\)</span>.</p>
+<p>Because a known function <span class="math notranslate nohighlight">\({\mathbb S}\)</span> maps a sample point  <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span> today into a sample point <span class="math notranslate nohighlight">\({\mathbb S}(\omega) \in \Omega\)</span> tomorrow, the evolution of sample points is <em>deterministic</em>: <span class="math notranslate nohighlight">\(\omega_{t+j}\)</span> <span style="color: lightgreen;"> define this: <span class="math notranslate nohighlight">\(\omega_{t+j}= {\mathbb S}^j(\omega_t)\)</span> </span> for all <span class="math notranslate nohighlight">\(j \geq 1\)</span>  can be predicted perfectly if we know <span class="math notranslate nohighlight">\({\mathbb S}\)</span> and <span class="math notranslate nohighlight">\(\omega_t\)</span>. But we do not observe <span class="math notranslate nohighlight">\(\omega_t\)</span> at any <span class="math notranslate nohighlight">\(t\)</span>. Instead, we observe an <span class="math notranslate nohighlight">\((n \times 1)\)</span> vector <span class="math notranslate nohighlight">\(X(\omega)\)</span> that contains incomplete information about <span class="math notranslate nohighlight">\(\omega\)</span>. We assign probabilities <span class="math notranslate nohighlight">\(Pr\)</span> to collections of sample points <span class="math notranslate nohighlight">\(\omega\)</span> called events, then use the functions <span class="math notranslate nohighlight">\({\mathbb S}\)</span> and <span class="math notranslate nohighlight">\(X\)</span> to induce a joint probability distribution over  sequences of <span class="math notranslate nohighlight">\(X\)</span>’s. The resulting stochastic process <span class="math notranslate nohighlight">\(\{ X_t : t=0,1,2,...\}\)</span> is a sequence of <span class="math notranslate nohighlight">\(n\)</span>-dimensional random vectors.</p>
+<p>This way of constructing a stochastic process might seem restrictive; but actually, it is more general than the canonical construction presented above: <span style="color: red;">given a stochastic process with a certain distribution, we can find a probability space and a measurable transformation <span class="math notranslate nohighlight">\({\mathbb S} \)</span> such that the stochastic process <span class="math notranslate nohighlight">\(X_t = X \circ {\mathbb S}^t\)</span> defined above has the prescribed distribution.</span></p>
+<div class="proof example admonition" id="example-2">
+<p class="admonition-title"><span class="caption-number">Example 2.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider again our canonical construction <a class="reference internal" href="#ex-canonical"><span class="std std-ref">1.1</span></a>. Recall that the set of sample points <span class="math notranslate nohighlight">\(\Omega\)</span> is the collection of infinite sequences of elements of <span class="math notranslate nohighlight">\({\mathbf r}_t \in {\mathbb R}^n\)</span> so that <span class="math notranslate nohighlight">\(\omega = ({\mathbf r}_0, {\mathbf r}_1, ... )\)</span>. For this example, <span class="math notranslate nohighlight">\({\mathbb S}(\omega) = ({\mathbf r}_1,{\mathbf r}_2, ...)\)</span>. This choice of <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is called the <em>shift</em> transformation. Notice that the time <span class="math notranslate nohighlight">\(t\)</span> iterate is</p>
+<div class="math notranslate nohighlight">
+\[{\mathbb S}^t(\omega) = ({\mathbf r}_t, {\mathbf r}_{t+1}, ... )\]</div>
+<p>Let the measurement function be: <span class="math notranslate nohighlight">\(X(\omega) = {\mathbf r}_0\)</span> so that</p>
+<div class="math notranslate nohighlight">
+\[X_t(\omega) = X\left[ {\mathbb S}^t (\omega)\right] =  {\mathbf r}_t\]</div>
+<p><span style="text-decoration: line-through; text-decoration-color: red;">as posited in construction <a class="reference internal" href="#ex-canonical"><span class="std std-ref">1.1</span></a>.  </span> <span style="color: red;"> Let <span class="math notranslate nohighlight">\(Pr\)</span> be the distribution induced by a <span class="math notranslate nohighlight">\(n\)</span>-dimentional stochastic process <span class="math notranslate nohighlight">\(\{Y_t: t = 1,2,\dots \}\)</span> on the canonical space <span class="math notranslate nohighlight">\((\Omega, \mathfrak{F})\)</span> (as in Construction <a class="reference internal" href="#ex-canonical"><span class="std std-ref">1.1</span></a>). If we endow <span class="math notranslate nohighlight">\((\Omega, \mathfrak{F})\)</span> with <span class="math notranslate nohighlight">\(Pr,\)</span> then <span class="math notranslate nohighlight">\(\{X_t: t = 1,2,\dots \}\)</span> has the same finite dimentional distributions as <span class="math notranslate nohighlight">\(\{Y_t: t = 1,2,\dots \}\)</span>.</span></p>
+</section>
+</div></section>
+<section id="stationary-stochastic-processes">
+<span id="sec-stationary-st-pr"></span><h2><span class="section-number">2.4. </span>Stationary Stochastic Processes<a class="headerlink" href="#stationary-stochastic-processes" title="Link to this heading">#</a></h2>
+<p>We start with a probabilistic notion of invariance. We call a stochastic process <em>stationary</em> if for any finite integer <span class="math notranslate nohighlight">\(\ell\)</span>, the joint probability distribution induced by the composite random vector <span class="math notranslate nohighlight">\(\left[{X_{t}}',{X_{t+1}}',...,{X_{t+\ell}}'\right]'\)</span> is the same for all <span class="math notranslate nohighlight">\(t \ge 0\)</span>.<a class="footnote-reference brackets" href="#stationarity-footnote" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> This notion of stationarity can be thought of as a stochastic version of a steady state of a dynamical system.</p>
+<p>We now use the objects <span class="math notranslate nohighlight">\(({\mathbb S}, X)\)</span> to build a stationary stochastic process by restricting construction <a class="reference internal" href="#ex-canonical"><span class="std std-ref">1.1</span></a>.<br />
+Consider the set  <span class="math notranslate nohighlight">\( \{ \omega \in \Omega : X(\omega) \in \mathfrak{b} \}  \doteq \Lambda\)</span> and its successors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\{ \omega \in \Omega : X_1 (\omega)  \in \mathfrak{b} \} &amp; = \{ \omega \in \Omega : X\left[ {\mathbb S} 
+(\omega) \right] \in \mathfrak{b} \} = {\mathbb S}^{-1}(\Lambda) \\  
+\{ \omega \in \Omega : X_t (\omega)  \in \mathfrak{b} \} &amp; = \{ \omega \in \Omega : X\left[ {\mathbb S}^t 
+(\omega) \right] \in \mathfrak{b} \} = {\mathbb S}^{-t}(\Lambda)  .
+\end{align*}\end{split}\]</div>
+<p><span style="color: lightgreen;"> In the lines above you can use the notation <span class="math notranslate nohighlight">\(\{  X \in \mathfrak{b} \}\)</span> </span></p>
+<p>Evidently, if <span class="math notranslate nohighlight">\(Pr(\Lambda) = Pr[{\mathbb S}^{-1}(\Lambda)]\)</span> for all <span class="math notranslate nohighlight">\(\Lambda \in {\mathfrak F}\)</span>, then the probability distribution induced by <span class="math notranslate nohighlight">\(X_{t}\)</span> equals the probability distribution of <span class="math notranslate nohighlight">\(X\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>. This fact motivates the following definition and proposition.</p>
+<div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 2.3 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The pair <span class="math notranslate nohighlight">\(({\mathbb S}, Pr)\)</span> is said to be <strong>measure-preserving</strong> if</p>
+<div class="math notranslate nohighlight">
+\[Pr  ( \Lambda ) = Pr \{ {\mathbb S}^{-1}(\Lambda) \}\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\Lambda \in {\mathfrak F}\)</span>.</p>
+</section>
+</div><div class="proof theorem admonition" id="prop:identical">
+<p class="admonition-title"><span class="caption-number">Theorem 2.1 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>When <span class="math notranslate nohighlight">\((\mathbb{S}, Pr)\)</span> is measure-preserving, probability distributions induced by the random vectors <span class="math notranslate nohighlight">\(X_t\)</span> are identical for all <span class="math notranslate nohighlight">\(t \ge 0\)</span>.</p>
+</section>
+</div><p><span style="color: lightgreen;"> Add short proof? E.g. For any Borel set <span class="math notranslate nohighlight">\( \mathfrak{b}\)</span> we have <span class="math notranslate nohighlight">\(Pr \{  X_0 \in \mathfrak{b} \} =  Pr \{  X_t \in \mathfrak{b} \}\)</span> for each <span class="math notranslate nohighlight">\(t\)</span></span></p>
+<p>The measure-preserving property restricts the probability measure <span class="math notranslate nohighlight">\(Pr\)</span> for a given transformation <span class="math notranslate nohighlight">\(\mathbb{S}\)</span>. Some probability measures <span class="math notranslate nohighlight">\(Pr\)</span> used in conjunction with <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> will be measure-preserving and others not, a fact that will play an important role at several places below.</p>
+<p>Suppose that <span class="math notranslate nohighlight">\((\mathbb{S}, Pr)\)</span> is measure-preserving relative to probability measure <span class="math notranslate nohighlight">\(Pr\)</span>. Given <span class="math notranslate nohighlight">\(X\)</span> and an integer <span class="math notranslate nohighlight">\(\ell &gt; 1\)</span>, form a vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X^{[\ell]} (\omega) \doteq \begin{bmatrix} X_0(\omega) \\ X_1(\omega) \\ ... \\ X_\ell(\omega) \end{bmatrix}.\end{split}\]</div>
+<p>We can apply <a class="reference internal" href="#prop:identical">Theorem 2.1</a> to <span class="math notranslate nohighlight">\(X^{[\ell]}\)</span> to conclude that the joint distribution function of <span class="math notranslate nohighlight">\((X_{t}, X_{t+1}, ..., X_{t+\ell})\)</span> is independent of <span class="math notranslate nohighlight">\(t\)</span> for <span class="math notranslate nohighlight">\(t = 0,1,\ldots\)</span>. That this property holds for any choice of <span class="math notranslate nohighlight">\(\ell\)</span> implies that the stochastic process <span class="math notranslate nohighlight">\(\{ X_t : t=1,2, ...\}\)</span> is stationary. Moreover, <span class="math notranslate nohighlight">\(f\left( X^{[\ell]}\right)\)</span> where <span class="math notranslate nohighlight">\(f\)</span> is a Borel measurable function from <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell+1)}\)</span> into <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is also a valid measurement function. Such <span class="math notranslate nohighlight">\(f\)</span>’s include indicator functions of interesting events defined in terms of <span class="math notranslate nohighlight">\(X^{[\ell]}\)</span>.</p>
+<p>For a given <span class="math notranslate nohighlight">\(\mathbb{S}\)</span>, we now present examples that illustrate how to construct a probability measure <span class="math notranslate nohighlight">\(Pr\)</span> that makes <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> measure-preserving and thereby brings stationarity.</p>
+<div class="proof example admonition" id="ex:period">
+<p class="admonition-title"><span class="caption-number">Example 2.2 </span></p>
+<section class="example-content" id="proof-content">
+<p>Suppose that <span class="math notranslate nohighlight">\(\Omega\)</span> contains two points, <span class="math notranslate nohighlight">\(\Omega = \{\omega_1, \omega_2 \}\)</span>. Consider a transformation <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> that maps <span class="math notranslate nohighlight">\(\omega_1\)</span> into <span class="math notranslate nohighlight">\(\omega_2\)</span> and <span class="math notranslate nohighlight">\(\omega_2\)</span> into <span class="math notranslate nohighlight">\(\omega_1\)</span>: <span class="math notranslate nohighlight">\(\mathbb{S}(\omega_1 ) = \omega_2\)</span> and <span class="math notranslate nohighlight">\(\mathbb{S}( \omega_2 ) = \omega_1\)</span>. Since <span class="math notranslate nohighlight">\(\mathbb{S}^{-1}(\{\omega_2\}) = \{\omega_1\}\)</span> and <span class="math notranslate nohighlight">\(\mathbb{S}^{-1}(\{\omega_1\}) = \{\omega_2 \}\)</span>, for <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> to be measure-preserving, we must have <span class="math notranslate nohighlight">\(Pr(\{\omega_1\}) = Pr(\{\omega_2\}) = 1/2\)</span>.</p>
+</section>
+</div><div class="proof example admonition" id="ex:invariant">
+<p class="admonition-title"><span class="caption-number">Example 2.3 </span></p>
+<section class="example-content" id="proof-content">
+<p>Suppose that <span class="math notranslate nohighlight">\(\Omega\)</span> contains two points, <span class="math notranslate nohighlight">\(\Omega = \{\omega_1, \omega_2\}\)</span> and that <span class="math notranslate nohighlight">\({\mathbb S}(\omega_1) =  \omega_1  \)</span> and <span class="math notranslate nohighlight">\({\mathbb S}( \omega_2 ) = \omega_2\)</span>.
+Since <span class="math notranslate nohighlight">\({\mathbb S}^{-1}(\{\omega_2\}) = \{\omega_2\}\)</span>
+and <span class="math notranslate nohighlight">\({\mathbb S}^{-1}(\{\omega_1\}) = \{\omega_1\}\)</span>, <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is  measure-preserving for any <span class="math notranslate nohighlight">\(Pr\)</span> that satisfies
+<span class="math notranslate nohighlight">\(Pr(\{\omega_1\}) \geq 0\)</span> and <span class="math notranslate nohighlight">\( Pr(\{\omega_2\}) = 1 -Pr(\{\omega_1\}) \)</span>.</p>
+</section>
+</div><p>The next example illustrates how to represent an i.i.d. sequence of zeros and ones in terms of an <span class="math notranslate nohighlight">\(\Omega, Pr\)</span> and an <span class="math notranslate nohighlight">\({\mathbb S}\)</span>.</p>
+<div class="proof example admonition" id="example-7">
+<p class="admonition-title"><span class="caption-number">Example 2.4 </span></p>
+<section class="example-content" id="proof-content">
+<p>Suppose that <span class="math notranslate nohighlight">\(\Omega = [0,1)\)</span> and that <span class="math notranslate nohighlight">\(Pr\)</span> is the uniform measure on <span class="math notranslate nohighlight">\([0,1)\)</span>. Let</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+{\mathbb S}(\omega) &amp; = \left\{ \begin{matrix} 2 \omega &amp; if \ \omega \in [0,1/2) \cr 2 \omega - 1 &amp; if \ \omega \in [1/2,1), \end{matrix} \right\}. \cr
+X(\omega) &amp; = \left\{ \begin{matrix} 1 &amp; if \ \omega \in [0,1/2) \cr 0 &amp;  if \  \omega \in [1/2,1) .\end{matrix} \right\}. 
+\end{align*}\]</div>
+<p>Calculate <span class="math notranslate nohighlight">\(Pr \left\{ X_1 = 1 \vert X_0 = 1 \right\} = Pr \left\{ X_1 = 1\vert X_0 = 0 \right\} = Pr \left\{ X_1 = 1 \right\} = 1/2\)</span> and <span class="math notranslate nohighlight">\(Pr \left\{ X_1 = 0 \vert X_0 = 1 \right\} = Pr \left\{ X_1 = 0\vert X_0 = 0 \right\} = Pr \left\{ X_1 = 0 \right\} = 1/2\)</span>.
+So <span class="math notranslate nohighlight">\(X_1\)</span> is statistically independent of <span class="math notranslate nohighlight">\(X_0\)</span>.
+By extending these calculations, it can be verified that <span class="math notranslate nohighlight">\(\{ X_t : t=0,1,...\}\)</span> is a sequence of independent random variables.<a class="footnote-reference brackets" href="#breiman" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>
+We can alter <span class="math notranslate nohighlight">\(Pr\)</span> to obtain other stationary distributions.
+For instance, suppose that <span class="math notranslate nohighlight">\(Pr\{ \frac 1 3\} = Pr \{ \frac 2 3 \} = .5\)</span>.
+Then the process <span class="math notranslate nohighlight">\(\{ X_t : t=0,1,...\}\)</span> alternates in a deterministic fashion between zero and one.
+This provides a version of <a class="reference internal" href="#ex:period">Example 2.2</a> in which <span class="math notranslate nohighlight">\(\omega_1 = \frac{1}{3}\)</span> and <span class="math notranslate nohighlight">\(\omega_2 = \frac{2}{3}\)</span>.</p>
+</section>
+</div></section>
+<section id="invariant-events-and-conditional-expectations">
+<span id="sec-invariant"></span><h2><span class="section-number">2.5. </span>Invariant Events and Conditional Expectations<a class="headerlink" href="#invariant-events-and-conditional-expectations" title="Link to this heading">#</a></h2>
+<p>In this section, we present a Law of Large Numbers that asserts that time series averages converge when <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is measure-preserving relative to <span class="math notranslate nohighlight">\(Pr\)</span>.</p>
+<section id="invariant-events">
+<h3><span class="section-number">2.5.1. </span>Invariant events<a class="headerlink" href="#invariant-events" title="Link to this heading">#</a></h3>
+<p>We use the concept of an invariant event to understand how limit points of time series averages relate to a conditional mathematical expectation.</p>
+<figure class="align-default" id="fig-invariant">
+<img alt="../_images/fig2_3.png" src="../_images/fig2_3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Two invariant events <span class="math notranslate nohighlight">\(\Lambda_1\)</span> and <span class="math notranslate nohighlight">\(\Lambda_2\)</span> and an event <span class="math notranslate nohighlight">\(\Lambda_3\)</span> that is not invariant.</span><a class="headerlink" href="#fig-invariant" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="proof definition admonition" id="definition-8">
+<p class="admonition-title"><span class="caption-number">Definition 2.4 </span></p>
+<section class="definition-content" id="proof-content">
+<p>An event <span class="math notranslate nohighlight">\(\Lambda\)</span> is <strong>invariant</strong> if <span class="math notranslate nohighlight">\(\Lambda = {\mathbb S}^{-1}(\Lambda)\)</span>.</p>
+</section>
+</div><p><a class="reference internal" href="#fig-invariant"><span class="std std-numref">Fig. 2.3</span></a> illustrates two invariant events in a space <span class="math notranslate nohighlight">\(\Omega\)</span>.
+Notice that if <span class="math notranslate nohighlight">\(\Lambda\)</span> is an invariant event and <span class="math notranslate nohighlight">\(\omega \in \Lambda\)</span>, then <span class="math notranslate nohighlight">\({\mathbb S}^t(\omega) \in \Lambda\)</span> for <span class="math notranslate nohighlight">\(t = 0,1,...,\infty\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\({\mathfrak I}\)</span> denote the collection of invariant events. The entire space <span class="math notranslate nohighlight">\(\Omega\)</span> and the null set <span class="math notranslate nohighlight">\(\varnothing\)</span> are both invariant events. Like <span class="math notranslate nohighlight">\({\mathfrak F}\)</span>, the collection of invariant events <span class="math notranslate nohighlight">\({\mathfrak I}\)</span> is a sigma algebra.</p>
+</section>
+<section id="conditional-expectation">
+<h3><span class="section-number">2.5.2. </span>Conditional expectation<a class="headerlink" href="#conditional-expectation" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="fig-condexp">
+<img alt="../_images/fig2_4.png" src="../_images/fig2_4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">A conditional expectation <span class="math notranslate nohighlight">\(E(X | {\mathfrak I})\)</span> is constant for <span class="math notranslate nohighlight">\(\omega \in \Lambda_j = {\mathbb S}^{-1}(\Lambda_j)\)</span>.</span><a class="headerlink" href="#fig-condexp" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We want to construct a random vector <span class="math notranslate nohighlight">\(E(X|{\mathfrak I})\)</span> called the “mathematical expectation of <span class="math notranslate nohighlight">\(X\)</span> conditional on the collection <span class="math notranslate nohighlight">\({\mathfrak I}\)</span> of invariant events”. We begin with a situation in which a conditional expectation is a discrete random vector as occurs when invariant events are unions of sets <span class="math notranslate nohighlight">\(\Lambda_j\)</span> belonging to a countable partition of <span class="math notranslate nohighlight">\(\Omega\)</span> (together with the empty set). Later we’ll extend the definition beyond this special setting.</p>
+<p>A countable partition consists of a countable collection of nonempty events <span class="math notranslate nohighlight">\(\Lambda_j\)</span> such that <span class="math notranslate nohighlight">\(\Lambda_j \cap \Lambda_k = \varnothing\)</span> for <span class="math notranslate nohighlight">\(j \ne k\)</span> and such that the union of all <span class="math notranslate nohighlight">\(\Lambda_j\)</span> is <span class="math notranslate nohighlight">\(\Omega\)</span>. Assume that each set <span class="math notranslate nohighlight">\(\Lambda_j\)</span> in the partition is itself an invariant event <span style="color: green;">and has positive probability</span>. Define the mathematical expectation conditioned on event <span class="math notranslate nohighlight">\(\Lambda_j\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\frac {\int_{\Lambda_j} X dPr} {Pr(\Lambda_j)}\]</div>
+<p>when <span class="math notranslate nohighlight">\(\omega \in \Lambda_j\)</span>. To extend the definition of conditional expectation to all of <span class="math notranslate nohighlight">\({\mathfrak I}\)</span>, take</p>
+<div class="math notranslate nohighlight">
+\[E(X|{\mathfrak I} )(\omega) = \frac {\int_{\Lambda_j} X dPr} {Pr(\Lambda_j)} \ \ \textrm{if} \ \ \omega \in \Lambda_j.\]</div>
+<p>Thus, the conditional expectation <span class="math notranslate nohighlight">\(E(X | {\mathfrak I})\)</span> is constant for <span class="math notranslate nohighlight">\(\omega \in \Lambda_j\)</span> but varies across <span class="math notranslate nohighlight">\(\Lambda_j\)</span>’s. <a class="reference internal" href="#fig-condexp"><span class="std std-numref">Fig. 2.4</span></a> illustrates this characterization for a finite partition.</p>
+</section>
+<section id="least-squares">
+<h3><span class="section-number">2.5.3. </span>Least Squares<a class="headerlink" href="#least-squares" title="Link to this heading">#</a></h3>
+<p>Now let <span class="math notranslate nohighlight">\(X\)</span> be a random vector with finite second moments <span class="math notranslate nohighlight">\( E XX' = \int X(\omega) X(\omega)' d Pr(\omega)\)</span>. When a random vector <span class="math notranslate nohighlight">\(X\)</span> has finite second moments, a conditional expectation is a least squares projection. Let <span class="math notranslate nohighlight">\(Z\)</span> be an <span class="math notranslate nohighlight">\(n\)</span>-dimensional measurement function that is time-invariant and so satisfies</p>
+<div class="math notranslate nohighlight">
+\[Z_t(\omega) = Z[{\mathbb S}^t(\omega)] = Z(\omega) .\]</div>
+<p><span style="color: orange;">how about this instead:
+</span></p>
+<div class="math notranslate nohighlight">
+\[ \textcolor{red}{ Z(\omega)= Z[{\mathbb S}(\omega)]  \ \ \textrm{for each} \ \ \omega \in \Omega. }\]</div>
+<p>Let <span class="math notranslate nohighlight">\({\mathcal Z}\)</span> denote the collection of all such time-invariant random vectors. In the special case in which the invariant events can be constructed from a finite partition, <span class="math notranslate nohighlight">\(Z\)</span> can vary across sets <span class="math notranslate nohighlight">\(\Lambda_j\)</span> but must remain constant within <span class="math notranslate nohighlight">\(\Lambda_j\)</span>.<a class="footnote-reference brackets" href="#measurablez" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> Consider the least squares problem</p>
+<div class="math notranslate nohighlight" id="equation-prob-lsprob">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-prob-lsprob" title="Link to this equation">#</a></span>\[min_{Z \in {\mathcal Z}} E[|X - Z|^2] .\]</div>
+<p>Denote the minimizer in problem <a class="reference internal" href="#equation-prob-lsprob">(2.2)</a> by <span class="math notranslate nohighlight">\({\tilde X} = E(X \vert {\mathfrak I})\)</span>. Necessary conditions for the least squares minimizer <span class="math notranslate nohighlight">\(\widetilde X \in {\mathcal Z}\)</span> imply that</p>
+<div class="math notranslate nohighlight">
+\[E[(X - {\widetilde X})Z'] = 0\]</div>
+<p>for <span class="math notranslate nohighlight">\(Z\)</span> in <span class="math notranslate nohighlight">\({\mathcal Z}\)</span> so that each entry of the vector <span class="math notranslate nohighlight">\(X-{\widetilde X}\)</span> of regression errors is orthogonal to every vector <span class="math notranslate nohighlight">\(Z\)</span> in <span class="math notranslate nohighlight">\({\mathcal Z}\)</span>.</p>
+<p>A measure-theoretic approach constructs a conditional expectation by extending the orthogonality property of least squares. Provided that <span class="math notranslate nohighlight">\(E|X| &lt; \infty\)</span>, <span class="math notranslate nohighlight">\(E(X|{\mathfrak I})(\omega)\)</span> is the essentially unique random vector that, for any invariant event <span class="math notranslate nohighlight">\(\Lambda\)</span>, satisfies</p>
+<div class="math notranslate nohighlight">
+\[E([ X - E(X \vert {\mathfrak I})] \textbf{1}_\Lambda ) = 0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\textbf{1}_\Lambda\)</span> is the indicator function that is equal to one on the set <span class="math notranslate nohighlight">\(\Lambda\)</span> and zero otherwise. <span style="color: lightgreen;">Would it be worthy to remark that this definition of conditional expectations applies to any sigma algebra?   </span></p>
+</section>
+</section>
+<section id="law-of-large-numbers">
+<h2><span class="section-number">2.6. </span>Law of Large Numbers<a class="headerlink" href="#law-of-large-numbers" title="Link to this heading">#</a></h2>
+<p>An elementary Law of Large Numbers asserts that the limit of an average over time of a sequence of independent and identically distributed random vectors equals the unconditional expectation of the random vector. We want a more general Law of Large Numbers that applies to averages over time of sequences of observations that are intertemporally dependent. To do this, we use a notion of probabilistic invariance that is expressed in terms of the measure-preserving restriction and that implies a Law of Large Numbers applicable to stochastic processes.</p>
+<p>The following theorem asserts two senses in which averages of intertemporally dependent processes converge to mathematical expectations conditioned on invariant events.</p>
+<div class="proof theorem admonition" id="thm:birk">
+<p class="admonition-title"><span class="caption-number">Theorem 2.2 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>(Birkhoff) Suppose that <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is measure-preserving relative to the probability space
+<span class="math notranslate nohighlight">\((\Omega, \mathfrak{F}, Pr)\)</span>.<a class="footnote-reference brackets" href="#breiman-footnote" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a></p>
+<ol class="arabic simple">
+<li><p>For any <span class="math notranslate nohighlight">\(X\)</span> such that <span class="math notranslate nohighlight">\(E|X| &lt; \infty\)</span>,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\frac{1}{N} \sum_{t=1}^N X_t(\omega) \rightarrow E(X|\mathfrak{I})(\omega)\]</div>
+<p>with probability one;</p>
+<ol class="arabic simple" start="2">
+<li><p>For any <span class="math notranslate nohighlight">\(X\)</span> such that <span class="math notranslate nohighlight">\(E|X|^2 &lt; \infty\)</span>,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[E \left[ \left| \frac{1}{N} \sum_{t=1}^N X_t - E(X|\mathfrak{I}) \right|^2 \right] \rightarrow 0.\]</div>
+<p><span style="color: green;"> where <span class="math notranslate nohighlight">\(X_t\)</span> is constructed from <span class="math notranslate nohighlight">\((X, \mathbb{S}).\)</span> </span></p>
+</section>
+</div><p>Part 1) asserts <em>almost-sure</em> convergence; part 2) asserts <em>mean-square</em> convergence.</p>
+<p>We have ample flexibility to specify a measurement function <span class="math notranslate nohighlight">\(\phi \left( X^\ell\right),\)</span> where <span class="math notranslate nohighlight">\(\phi\)</span> is a Borel measurable function from <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell+1)}\)</span> into <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>. In particular, an indicator functions for event <span class="math notranslate nohighlight">\(\Lambda = \{X^\ell \in \mathfrak{b} \}\)</span> can be used as a measurement function where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}{\bf 1}_\Lambda(\omega) = \begin{cases} 
+1 &amp; \text{if}  \ \omega \in \Lambda \\
+0 &amp; \text{if}  \ \omega \notin \Lambda.
+\end{cases}\end{split}\]</div>
+<p><span style="color: lightgreen;"> The above looks wrong since it defines an indicator function from <span class="math notranslate nohighlight">\(\Omega\)</span> instead of from <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell+1)}\)</span>. <span class="math notranslate nohighlight">\(\phi\)</span> is a measurable function from <span class="math notranslate nohighlight">\(\mathbb{R}^{n(\ell+1)}\)</span> into <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>. See below for the proposed edition </span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\phi(x) = {\bf 1}_{\mathfrak{b}}(x) = \begin{cases} 
+1 &amp; \text{if}  \ x \in \mathfrak{b} \\
+0 &amp; \text{if}  \ x \notin \mathfrak{b}.
+\end{cases}\end{split}\]</div>
+<p>The Law of Large Numbers applies to limits of</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{N} \sum_{t=1}^N \phi\left[ X_t^\ell \right]\]</div>
+<p>for alternative <span class="math notranslate nohighlight">\(\phi\)</span>’s, so choosing <span class="math notranslate nohighlight">\(\phi\)</span>’s to be indicator functions shows how the Law of Large Numbers uncovers event probabilities of interest.</p>
+<div class="proof definition admonition" id="definition-10">
+<p class="admonition-title"><span class="caption-number">Definition 2.5 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A transformation <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> that is measure-preserving relative to <span class="math notranslate nohighlight">\(Pr\)</span>
+is said to be <strong>ergodic</strong> under probability measure <span class="math notranslate nohighlight">\(Pr\)</span> if all invariant events have probability zero
+or one.</p>
+</section>
+</div><p>Thus, when a transformation <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is <em>ergodic</em> under measure <span class="math notranslate nohighlight">\(Pr\)</span>, the invariant events have either the
+same probability measure as the entire sample space <span class="math notranslate nohighlight">\(\Omega\)</span> (whose probability measure is one), or the same probability
+measure as the empty set <span class="math notranslate nohighlight">\(\varnothing\)</span> (whose probability measure is zero).</p>
+<div class="proof proposition admonition" id="cor:ergo">
+<p class="admonition-title"><span class="caption-number">Proposition 2.1 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>Suppose that the measure-preserving transformation <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is ergodic under measure <span class="math notranslate nohighlight">\(Pr\)</span>. Then <span class="math notranslate nohighlight">\(E(X|\mathfrak{I}) = E(X)\)</span>.</p>
+</section>
+</div><p><a class="reference internal" href="#thm:birk">Theorem 2.2</a> describes conditions for convergence in the general case that <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is measure-preserving under <span class="math notranslate nohighlight">\(Pr\)</span>, but in which <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is not necessarily ergodic under <span class="math notranslate nohighlight">\(Pr\)</span>. <a class="reference internal" href="#cor:ergo">Proposition 2.1</a> describes a situation in which probabilities assigned to invariant events are degenerate in the sense that all invariant events have the same probability as either <span class="math notranslate nohighlight">\(\Omega\)</span> (probability one) or the null set (probability zero).
+When <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is <em>ergodic</em> under measure <span class="math notranslate nohighlight">\(Pr\)</span>, limit points of time series averages equal corresponding unconditional expectations, an outcome we can call a <em>standard</em> Law of Large Numbers.
+When <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is not ergodic under <span class="math notranslate nohighlight">\(Pr\)</span>, limit points of time series averages equal expectations conditioned on invariant events.</p>
+<p>The following examples remind us how ergodicity restricts <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> and <span class="math notranslate nohighlight">\(Pr\)</span>.</p>
+<div class="proof example admonition" id="example-12">
+<p class="admonition-title"><span class="caption-number">Example 2.5 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider <a class="reference internal" href="#ex:period">Example 2.2</a> again.<br />
+<span class="math notranslate nohighlight">\(\Omega\)</span> contains two points and <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> maps <span class="math notranslate nohighlight">\(\omega_1\)</span> into <span class="math notranslate nohighlight">\(\omega_2\)</span> and <span class="math notranslate nohighlight">\(\omega_2\)</span> into <span class="math notranslate nohighlight">\(\omega_1\)</span>: <span class="math notranslate nohighlight">\(\mathbb{S}(\omega_1) =
+\omega_2\)</span> and <span class="math notranslate nohighlight">\(\mathbb{S}(\omega_2) = \omega_1\)</span>.
+Suppose that the measurement vector is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X(\omega) = \left\{ \begin{matrix} 1 &amp; \
+{\textrm{if}} \ \omega = \omega_1 \\ 
+0 &amp; \ \textrm{if} \ \omega = \omega_2 . \end{matrix} \right.\end{split}\]</div>
+<p>Then it follows directly from the specification of <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> that</p>
+<div class="math notranslate nohighlight">
+\[{\frac 1 N} \sum_{t=1}^N X_t(\omega) \rightarrow {\frac 1 2}\]</div>
+<p>for both values of <span class="math notranslate nohighlight">\(\omega\)</span>. The limit point is the average across sample points.</p>
+</section>
+</div><div class="proof example admonition" id="example-13">
+<p class="admonition-title"><span class="caption-number">Example 2.6 </span></p>
+<section class="example-content" id="proof-content">
+<p>Return to <a class="reference internal" href="#ex:invariant">Example 2.3</a>. <span class="math notranslate nohighlight">\(\Omega\)</span> contains two points, <span class="math notranslate nohighlight">\(\Omega = \{\omega_1, \omega_2\}\)</span> and that <span class="math notranslate nohighlight">\({\mathbb S}(\omega_1) =  \omega_1  \)</span> and <span class="math notranslate nohighlight">\({\mathbb S}( \omega_2 ) = \omega_2\)</span>. <span class="math notranslate nohighlight">\(X_t(\omega)= X(\omega)\)</span> so that the sequence is time invariant and equal to its time-series average. A time-series average of <span class="math notranslate nohighlight">\(X_t(\omega)\)</span> equals the average across sample points only when <span class="math notranslate nohighlight">\(Pr\)</span> assigns probability <span class="math notranslate nohighlight">\(1\)</span> to either <span class="math notranslate nohighlight">\(\omega_1\)</span> or <span class="math notranslate nohighlight">\(\omega_2\)</span>.</p>
+</section>
+</div></section>
+<section id="limiting-empirical-measures">
+<span id="sec-empirical"></span><h2><span class="section-number">2.7. </span>Limiting Empirical Measures<a class="headerlink" href="#limiting-empirical-measures" title="Link to this heading">#</a></h2>
+<p>Given a triple <span class="math notranslate nohighlight">\((\Omega, {\mathfrak F}, Pr)\)</span> and a measure-preserving transformation <span class="math notranslate nohighlight">\({\mathbb S}\)</span>, we can use <a class="reference internal" href="#thm:birk">Theorem 2.2</a> to construct <em>limiting empirical measures</em> on <span class="math notranslate nohighlight">\({\mathfrak F}\)</span>. To start, we will analyze a setting with a countable partition of <span class="math notranslate nohighlight">\(\Omega\)</span> consisting of invariant events <span class="math notranslate nohighlight">\(\{ \Lambda_j : j=1,2,... \}\)</span>, each of which has strictly positive probability under <span class="math notranslate nohighlight">\(Pr.\)</span> <span style="color: lightgreen;"> wouldn’t it be better to specify as you did above: “each invariant event can be written as countable union of events from this partition.”? It is important that this partition doesn’t have an invariant event that is a union of two disjoint invariant events. </span> We consider a more general setting later. Given an event <span class="math notranslate nohighlight">\(\Lambda\)</span> in <span class="math notranslate nohighlight">\({\mathfrak F}\)</span> and for almost all <span class="math notranslate nohighlight">\(\omega \in \Lambda_j\)</span>, define the limiting empirical measure <span class="math notranslate nohighlight">\(Qr_j\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-building">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-building" title="Link to this equation">#</a></span>\[Qr_j(\Lambda)(\omega) = \lim_{N \rightarrow \infty} {\frac 1 N} \sum_{t=1}^N {\bf 1}_\Lambda\left[ {\mathbb S}^t(\omega) \right] =  {\frac {Pr(\Lambda \cap \Lambda_j)} { Pr(\Lambda_j)}.}\]</div>
+<p>Thus, when <span class="math notranslate nohighlight">\(\omega \in \Lambda_j\)</span>, <span class="math notranslate nohighlight">\(Qr_j(\Lambda)\)</span> is the fraction of time <span class="math notranslate nohighlight">\({\mathbb S}^t(\omega) \in \Lambda\)</span> in very long samples. If we hold <span class="math notranslate nohighlight">\(\Lambda_j\)</span> fixed and let <span class="math notranslate nohighlight">\(\Lambda\)</span> be an arbitrary event in <span class="math notranslate nohighlight">\({\mathfrak F}\)</span>, we can treat <span class="math notranslate nohighlight">\(Qr_j\)</span> as a probability measure on <span class="math notranslate nohighlight">\((\Omega, {\mathfrak F})\)</span>. By doing this for each <span class="math notranslate nohighlight">\(\Lambda_j, j = 1, 2, \ldots\)</span>, we can construct a countable set of probability measures <span class="math notranslate nohighlight">\(\{Qr_j\}_{j=1}^\infty\)</span>. These comprise the set of all measures that can be recovered by applying the Law of Large Numbers. If nature draws an <span class="math notranslate nohighlight">\(\omega \in \Lambda_j\)</span>, then measure <span class="math notranslate nohighlight">\(Qr_j\)</span> describes outcomes.</p>
+<p>So far, we started with a probability measure <span class="math notranslate nohighlight">\(Pr\)</span> and then constructed the set of possible limiting empirical measures <span class="math notranslate nohighlight">\(Qr_j\)</span>’s. We now reverse the direction of the logic by starting with probability measures <span class="math notranslate nohighlight">\(Qr_j\)</span> and then finding measures <span class="math notranslate nohighlight">\(Pr\)</span> that are consistent with them. We do this because <span class="math notranslate nohighlight">\(Qr_j\)</span>’s are the only measures that long time series can disclose through the Law of Large Numbers: each <span class="math notranslate nohighlight">\(Qr_j\)</span> defined by <a class="reference internal" href="#equation-building">(2.3)</a> uses the Law of Large Numbers to assign probabilities to events <span class="math notranslate nohighlight">\(\Lambda \in {\mathfrak F}\)</span>. However, because</p>
+<div class="math notranslate nohighlight">
+\[
+Qr_j(\Lambda) = Pr( \Lambda \mid \Lambda_j ) = {\frac {Pr(\Lambda \cap \Lambda_j)} { Pr(\Lambda_j)} }  \textrm{ for } j = 1, 2, \ldots ,
+\]</div>
+<p>are conditional probabilities, such <span class="math notranslate nohighlight">\(Qr_j\)</span>’s are silent about the probabilities <span class="math notranslate nohighlight">\(Pr(\Lambda_j)\)</span> of the underlying invariant events <span class="math notranslate nohighlight">\(\Lambda_j\)</span>. There are multiple ways to assign probabilities <span class="math notranslate nohighlight">\(Pr\)</span> that imply identical probabilities conditioned on invariant events.</p>
+<p>Because <span class="math notranslate nohighlight">\(Qr_j\)</span> is all that can ever be learned by “letting the data speak”, we regard each probability measure <span class="math notranslate nohighlight">\(Qr_j\)</span> as a statistical model.<a class="footnote-reference brackets" href="#statmodel" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
+<div class="proof proposition admonition" id="proposition-14">
+<p class="admonition-title"><span class="caption-number">Proposition 2.2 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>A  <em>statistical model</em> is a probability measure that a Law of Large Numbers can disclose.</p>
+</section>
+</div><p>Probability measure <span class="math notranslate nohighlight">\(Qr_j\)</span> describes a statistical model associated with invariant set <span class="math notranslate nohighlight">\(\Lambda_j\)</span>.</p>
+<div class="proof remark admonition" id="remark-15">
+<p class="admonition-title"><span class="caption-number">Remark 2.1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>For each <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is measure-preserving and ergodic on <span class="math notranslate nohighlight">\((\Omega, {\mathfrak F}, Qr_j)\)</span>.<br />
+The second equality of
+<span style="text-decoration: line-through; text-decoration-color: green;">definition</span> <span style="color: green;">equation </span> <a class="reference internal" href="#equation-building">(2.3)</a> assures  ergodicity by assigning probability one to the event <span class="math notranslate nohighlight">\(\Lambda_j\)</span>.</p>
+</section>
+</div><p>Relation <a class="reference internal" href="#equation-building">(2.3)</a> implies that probability <span class="math notranslate nohighlight">\(Pr\)</span> connects to probabilities <span class="math notranslate nohighlight">\(Qr_j\)</span> by</p>
+<div class="math notranslate nohighlight" id="equation-countdecompose">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-countdecompose" title="Link to this equation">#</a></span>\[Pr(\Lambda) = \sum_j Qr_j(\Lambda) Pr(\Lambda_j).\]</div>
+<p>While decomposition <a class="reference internal" href="#equation-countdecompose">(2.4)</a>
+follows from  definitions of the elementary objects
+that comprise  a stochastic process and  is “just mathematics”, it is interesting because it tells
+how to construct alternative probability measures <span class="math notranslate nohighlight">\(Pr\)</span> for which <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is measure-preserving.
+Because long data series disclose  probabilities conditioned on invariant events to be <span class="math notranslate nohighlight">\(Qr_j\)</span>, to respect  evidence from long time series we must hold the <span class="math notranslate nohighlight">\(Qr_j\)</span>’s  fixed,
+but we can  freely assign probabilities <span class="math notranslate nohighlight">\(Pr\)</span> to  invariant events <span class="math notranslate nohighlight">\(\Lambda_j\)</span>.  In
+this way, we can create  a family of probability measures
+for which <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is measure-preserving.</p>
+</section>
+<section id="ergodic-decomposition">
+<span id="sec-ergodic-decomp"></span><h2><span class="section-number">2.8. </span>Ergodic Decomposition<a class="headerlink" href="#ergodic-decomposition" title="Link to this heading">#</a></h2>
+<p>Up to now, we have represented invariant events with a countable partition. <span id="id8">Dynkin [<a class="reference internal" href="cite.html#id133" title="E. B. Dynkin. Sufficient statistics and extreme points. Annals of Probability, 6:705-730, 1978.">1978</a>]</span> deduced a more general version of decomposition <a class="reference internal" href="#equation-countdecompose">(2.4)</a> without assuming a countable partition. Thus, start with a pair <span class="math notranslate nohighlight">\((\Omega, \mathfrak{F})\)</span>. Also, assume that there is a metric on <span class="math notranslate nohighlight">\(\Omega\)</span> and that <span class="math notranslate nohighlight">\(\Omega\)</span> is separable. We also assume that <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span> is the collection of Borel sets (the smallest sigma algebra containing the open sets). Given <span class="math notranslate nohighlight">\((\Omega, \mathfrak{F})\)</span>, take a (measurable) transformation <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> and consider the set <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> of probability measures <span class="math notranslate nohighlight">\(Pr\)</span> for which <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is measure-preserving. For some of these probability measures, <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is ergodic, but for others, it is not. Let <span class="math notranslate nohighlight">\(\mathcal{Q}\)</span> denote the set of probability measures for which <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is ergodic. Under a nondegenerate convex combination of two probability measures in <span class="math notranslate nohighlight">\(\mathcal{Q}\)</span>, <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is measure-preserving but <em>not</em> ergodic. <span id="id9">Dynkin [<a class="reference internal" href="cite.html#id133" title="E. B. Dynkin. Sufficient statistics and extreme points. Annals of Probability, 6:705-730, 1978.">1978</a>]</span> constructed limiting empirical measures <span class="math notranslate nohighlight">\(Qr\)</span> on <span class="math notranslate nohighlight">\(\mathcal{Q}\)</span> and justified the following representation of the set <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> of probability measures <span class="math notranslate nohighlight">\(Pr\)</span>.</p>
+<div class="proof proposition admonition" id="result:dynkin">
+<p class="admonition-title"><span class="caption-number">Proposition 2.3 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>For each probability measure <span class="math notranslate nohighlight">\(\widetilde{Pr}\)</span> in <span class="math notranslate nohighlight">\({\mathcal P}\)</span>, there is a unique probability measure <span class="math notranslate nohighlight">\(\pi\)</span> over <span class="math notranslate nohighlight">\({\mathcal Q}\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-dynkin">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-dynkin" title="Link to this equation">#</a></span>\[\widetilde{Pr}(\Lambda) = \int_{{\mathcal Q}} Qr(\Lambda) \pi(dQr)\]</div>
+<p>for all <span class="math notranslate nohighlight">\(\Lambda \in {\mathfrak F}\)</span>.<a class="footnote-reference brackets" href="#dynkin-footnote" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a></p>
+</section>
+</div><p><a class="reference internal" href="#result:dynkin">Proposition 2.3</a> generalizes representation <a class="reference internal" href="#equation-countdecompose">(2.4)</a>. It asserts a sense in which the set <span class="math notranslate nohighlight">\({\mathcal P}\)</span> of probabilities for which <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is measure-preserving is convex. Extremal points of this set are in the smaller set <span class="math notranslate nohighlight">\({\mathcal Q}\)</span> of probability measures for which the transformation <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is ergodic. Representation <a class="reference internal" href="#equation-dynkin">(2.5)</a> shows that by forming “mixtures” (i.e., weighted averages or convex combinations) of probability measures under which <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is ergodic, we can represent all probability specifications for which <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is measure-preserving.</p>
+<p>To add another perspective, a collection of invariant events <span class="math notranslate nohighlight">\({\mathfrak I}\)</span> is associated with a transformation <span class="math notranslate nohighlight">\({\mathbb S}\)</span>. There exists a common conditional expectation operator <span class="math notranslate nohighlight">\( {\mathbb J} \equiv E(\cdot |{\mathfrak I})\)</span> that assigns mathematical expectations to bounded measurable functions (mapping <span class="math notranslate nohighlight">\(\Omega\)</span> into <span class="math notranslate nohighlight">\({\mathbb R}\)</span>) conditioned on the set of invariant events <span class="math notranslate nohighlight">\({\mathfrak I}\)</span>. The conditional expectation operator <span class="math notranslate nohighlight">\({\mathbb J} \)</span> characterizes limit points of time series averages of indicator functions of events of interest as well as other random vectors.  <span style="text-decoration: line-through; text-decoration-color: red;"> Alternative probability measures <span class="math notranslate nohighlight">\({Pr}\)</span> assign different probabilities to the invariant events.</span> <span style="color: red;"> This allows to extend the definition in <a class="reference internal" href="#equation-building">(2.3)</a> to the general case  </span></p>
+<div class="math notranslate nohighlight">
+\[
+\textcolor{red}{Qr(\Lambda| \mathfrak I)(\omega) = \lim_{N \rightarrow \infty} {\frac 1 N} \sum_{t=1}^N {\bf 1}_\Lambda\left[ {\mathbb S}^t(\omega) \right] =  E({\bf 1}_\Lambda|{\mathfrak I})(\omega) }
+\]</div>
+<p><span style="color: red;"> for each <span class="math notranslate nohighlight">\(\omega \in \Omega.\)</span> </span></p>
+</section>
+<section id="risk-and-uncertainty">
+<span id="sec-riskvsambiguity0"></span><h2><span class="section-number">2.9. </span>Risk and Uncertainty<a class="headerlink" href="#risk-and-uncertainty" title="Link to this heading">#</a></h2>
+<p>An applied researcher typically does not know which statistical model generated the data. This situation leads us to specifications of <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> that are consistent with a family <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> of probability models under which <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> is measure-preserving and a stochastic process is stationary. Representation <a class="reference internal" href="#equation-dynkin">(2.5)</a> describes uncertainty about statistical models with a probability distribution <span class="math notranslate nohighlight">\(\pi\)</span> over the set of statistical models <span class="math notranslate nohighlight">\(\mathcal{Q}\)</span>.</p>
+<p>For a Bayesian, <span class="math notranslate nohighlight">\(\pi\)</span> is a subjective prior probability distribution that pins down a convex combination of  “statistical models.”<a class="footnote-reference brackets" href="#footnotebayesian" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a> A Bayesian expresses trust in that convex combination of statistical models used to construct a complete probability measure over outcomes<a class="footnote-reference brackets" href="#footnotecomplete" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a> and uses it to compute expected utility. A Bayesian decision theory axiomatized by Savage makes no distinction between how decision makers respond to the probabilities described by the component statistical models and the <span class="math notranslate nohighlight">\(\pi\)</span> probabilities that he uses to mix them. All that matters to a Bayesian decision maker is the complete probability distribution over outcomes, not how it is attained as a <span class="math notranslate nohighlight">\(\pi\)</span>-mixture of component statistical models.</p>
+<p>Some decision and control theorists challenge the complete confidence in a single prior probability assumed in a Bayesian approach.<a class="footnote-reference brackets" href="#footnotehs" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a> They want to distinguish ‘ambiguity’, meaning not being able confidently to assign <span class="math notranslate nohighlight">\(\pi\)</span>, from ‘risk’, meaning prospective outcomes with probabilities reliably described by a statistical model. They imagine decision makers who want to evaluate decisions under alternative <span class="math notranslate nohighlight">\(\pi\)</span>’s.<a class="footnote-reference brackets" href="#footnoteknight" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></a> We explore these ideas in later chapters.</p>
+<p>An important implication of the Law of Large Numbers is that for a given initial <span class="math notranslate nohighlight">\(\pi\)</span>, using Bayes’ rule to update the <span class="math notranslate nohighlight">\(\pi\)</span> probabilities as data arrive will eventually concentrate posterior probability on the statistical model that generates the data. Even when a decision maker entertains a family of <span class="math notranslate nohighlight">\(\pi\)</span>’s, the updated probabilities conditioned on the data may still concentrate on the statistical model that generates the data.</p>
+</section>
+<section id="inventing-an-infinite-past">
+<span id="sec-inventing-past"></span><h2><span class="section-number">2.10. </span>Inventing an Infinite Past<a class="headerlink" href="#inventing-an-infinite-past" title="Link to this heading">#</a></h2>
+<p>When <span class="math notranslate nohighlight">\(Pr\)</span> is measure-preserving and the process <span class="math notranslate nohighlight">\(\{ X_t : t = 0,1,... \}\)</span> is stationary, it can be useful to invent an infinite past. To accomplish this, we reason in terms of the (measurable) transformation <span class="math notranslate nohighlight">\({\mathbb S} : \Omega \rightarrow \Omega\)</span> that describes the evolution of a sample point <span class="math notranslate nohighlight">\(\omega\)</span>. Until now we have assumed that <span class="math notranslate nohighlight">\({\mathbb S}\)</span> has the property that for any event <span class="math notranslate nohighlight">\(\Lambda \in {\mathfrak F}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[{\mathbb S}^{-1}(\Lambda) =  \{\omega \in \Omega : {\mathbb S}(\omega) \in \Lambda\}\]</div>
+<p>is an event in <span class="math notranslate nohighlight">\({\mathfrak F}\)</span>. In Section <a class="reference internal" href="example_out_c3_v2.html#sec-chap2statincr"><span class="std std-ref">Stationary Increments</span></a>, we want more. To prepare the way for that chapter, in this section we shall also assume that <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is one-to-one and has the property that for any event <span class="math notranslate nohighlight">\(\Lambda \in {\mathfrak F}\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-rest-restrictback">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-rest-restrictback" title="Link to this equation">#</a></span>\[{\mathbb S}(\Lambda) =  \{\omega \in \Omega : {\mathbb S}^{-1} (\omega) \in \Lambda\} \in {\mathfrak F} .\]</div>
+<p>Because</p>
+<div class="math notranslate nohighlight">
+\[X_t(\omega) = X[{\mathbb S}^t(\omega)] = X_t = X \circ {\mathbb S}^t\]</div>
+<p>is well defined for negative values of <span class="math notranslate nohighlight">\(t\)</span>, restrictions <a class="reference internal" href="#equation-rest-restrictback">(2.6)</a> allow us to construct a ``two-sided’’ process that has both an infinite past and an infinite future.</p>
+<p>Let <span class="math notranslate nohighlight">\({\mathfrak A}\)</span> be a subsigma algebra of <span class="math notranslate nohighlight">\({\mathfrak F}\)</span>, and let</p>
+<div class="math notranslate nohighlight" id="equation-eqn-bigafilt">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-eqn-bigafilt" title="Link to this equation">#</a></span>\[{\mathfrak A}_t = \left\{ \Lambda_t \in {\mathfrak F} : \Lambda_t = \{ \omega \in \Omega : {\mathbb S}^t(\omega) \in \Lambda \} \textrm{ for some } \Lambda \in {\mathfrak A}\right\}.\]</div>
+<p>We assume that <span class="math notranslate nohighlight">\(\{ {\mathfrak A}_t : - \infty &lt; t &lt; + \infty \}\)</span> is a nondecreasing <em>filtration</em> <span style="color: orange;">define filtration? </span>. If the original measurement function <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\({\mathfrak A}\)</span>-measurable, then <span class="math notranslate nohighlight">\(X_t\)</span> is <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span>-measurable. Furthermore, <span class="math notranslate nohighlight">\(X_{t-j}\)</span> is <span style="text-decoration: line-through; text-decoration-color: green;">in</span> <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span><span style="color: green;">-measurable</span> for all <span class="math notranslate nohighlight">\(j \ge 0\)</span>. The set <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> depicts information available at date <span class="math notranslate nohighlight">\(t\)</span>, including past information. Invariant events in <span class="math notranslate nohighlight">\({\mathfrak I}\)</span> are contained in <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p><span style="color: orange;"> How about the following example?
+</span></p>
+<p><span style="color: red;"> ***
+</span></p>
+<div class="proof example admonition" id="example-17">
+<p class="admonition-title"><span class="caption-number">Example 2.7 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider the set of “two-sided” infinite sequences of <span class="math notranslate nohighlight">\(n\)</span>-dimentional vectors <span class="math notranslate nohighlight">\(\omega = (\dots \mathbf{r}_{-1} ,\mathbf{r}_0, \mathbf{r}_1,\dots )\)</span> where <span class="math notranslate nohighlight">\(\mathbf{r}_t \in \mathbb{R}^n\)</span> for each integer <span class="math notranslate nohighlight">\(t.\)</span> Say <span class="math notranslate nohighlight">\(\mathfrak{F}\)</span> is the smallest sigma algebra containing events of the form</p>
+<div class="math notranslate nohighlight">
+\[
+\Lambda = \left\{
+\omega =  (\dots \mathbf{r}_{-1} , \mathbf{r}_0, \mathbf{r}_1, \dots ) :
+\mathbf{r}_j \in \mathfrak{b}_j, j=-\ell,\dots,\ell \right\},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathfrak{b}_{-\ell},\dots,\mathfrak{b}_{\ell}\)</span> are Borel sets of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> and <span class="math notranslate nohighlight">\(\ell\)</span> is a nonnegative integer. Define the transformation <span class="math notranslate nohighlight">\({\mathbb S}(\omega) = (\dots \mathbf{r}_{0} , \mathbf{r}_1, \mathbf{r}_2, \dots )\)</span>, the <em>left shift operator</em>, which satisfies the above invertibility and measurability assumptions with <span class="math notranslate nohighlight">\({\mathbb S}^{-1}(\omega) = (\dots \mathbf{r}_{-2} , \mathbf{r}_{-1} \mathbf{r}_0, \dots )\)</span>, the <em>right shift operator</em>, and the random vector <span class="math notranslate nohighlight">\(X(\omega) = \mathbf{r}_{0}.\)</span> We let <span class="math notranslate nohighlight">\(\mathfrak{A}\)</span> be the smallest sigma algebra containing events of the form</p>
+<div class="math notranslate nohighlight">
+\[
+\Lambda = \left\{
+\omega =  (\dots \mathbf{r}_{-1} , \mathbf{r}_0, \mathbf{r}_1, \dots ) :
+\mathbf{r}_j \in \mathfrak{b}_j, j=-\ell,\dots,0 \right\},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathfrak{b}_{-\ell},\dots,\mathfrak{b}_{0}\)</span> are Borel sets of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> and <span class="math notranslate nohighlight">\(\ell\)</span> is a nonnegative integer. Then, defining <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> as in <a class="reference internal" href="#equation-eqn-bigafilt">(2.7)</a> for each integer <span class="math notranslate nohighlight">\(t\)</span>, we have indeed that <span class="math notranslate nohighlight">\(\{ {\mathfrak A}_t : - \infty &lt; t &lt; + \infty \}\)</span> is a nondecreasing filtration. <span class="math notranslate nohighlight">\({\mathfrak A}\)</span> contains information on the sequence up to time <span class="math notranslate nohighlight">\(0,\)</span>  <span class="math notranslate nohighlight">\({\mathfrak A}_1\)</span> up to time <span class="math notranslate nohighlight">\(1\)</span>,  <span class="math notranslate nohighlight">\({\mathfrak A}_{-1}\)</span> up to time <span class="math notranslate nohighlight">\(-1,\)</span> and so on.</p>
+</section>
+</div><p><span style="color: red;"> ***
+</span></p>
+<p>We construct the following moving-average representation of a scalar process <span class="math notranslate nohighlight">\(\{X_t\}\)</span> in terms of an infinite history of shocks.</p>
+<div class="proof example admonition" id="ex:MA">
+<p class="admonition-title"><span class="caption-number">Example 2.8 </span></p>
+<section class="example-content" id="proof-content">
+<p>(Moving average)  Suppose that <span class="math notranslate nohighlight">\(\{W_t : -\infty &lt; t &lt; \infty \}\)</span> is a vector stationary process for
+which<a class="footnote-reference brackets" href="#ma-footnote" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>13<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight">
+\[E\left( W_{t+1} \vert {\mathfrak A}_t \right) = 0\]</div>
+<p>and that</p>
+<div class="math notranslate nohighlight">
+\[E\left( W_t{W_t}' \vert {\mathfrak I} \right)  = I\]</div>
+<p>for all <span class="math notranslate nohighlight">\(-\infty &lt; t &lt; +\infty\)</span>.<br />
+Use a sequence of vectors <span class="math notranslate nohighlight">\(\{\alpha_j\}_{j=0}^\infty \)</span> to construct</p>
+<div class="math notranslate nohighlight" id="equation-ma1">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-ma1" title="Link to this equation">#</a></span>\[X_t = \sum_{j=0}^\infty \alpha_j \cdot W_{t-j}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-rest-restrict102">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-rest-restrict102" title="Link to this equation">#</a></span>\[\sum_{j=0}^\infty \vert \alpha_j \vert^2 &lt; \infty .\]</div>
+<p>Restriction <a class="reference internal" href="#equation-rest-restrict102">(2.9)</a> implies that <span class="math notranslate nohighlight">\(X_t\)</span> is well defined as a mean square limit. <span class="math notranslate nohighlight">\(X_t\)</span> is constructed from
+the infinite past  <span class="math notranslate nohighlight">\(\{ W_{t-j} :  0 \leq j  &lt; \infty  \}\)</span>.
+The process <span class="math notranslate nohighlight">\(\{X_t : - \infty &lt; t &lt; \infty \}\)</span>
+is stationary and is often called an infinite-order moving average process.
+The sequence <span class="math notranslate nohighlight">\(\{ \alpha_j : j=0,1,... \}\)</span> can depend on the invariant events.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-19">
+<p class="admonition-title"><span class="caption-number">Remark 2.2 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Almost a century ago, both <span id="id16">Slutsky [<a class="reference internal" href="cite.html#id400" title="Eugen Slutsky. The summation of random causes as the source of cyclic processes. In Problems of Economic Conditions, volume 3. The Conjuncture Institute, Moscow, 1927.">1927</a>]</span> and <span id="id17">Yule [<a class="reference internal" href="cite.html#id437" title="G. Udny Yule. On a method of investigating periodicities in disturbed series, with special reference to wolfer's sunspot numbers. Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character, 226:267-298, 1927.">1927</a>]</span> used probability models to analyze economic time series. Their models implied moving-average representations like the one in <a class="reference internal" href="#ex:MA">Example 2.8</a>. Their idea was to see economic time series as responding linearly to current and past independent and identically distributed impulses or shocks. In distinct contributions, they showed how such models generate recurrent but aperiodic fluctuations that resemble business cycles and longer-term cycles as well. <span id="id18">Yule [<a class="reference internal" href="cite.html#id437" title="G. Udny Yule. On a method of investigating periodicities in disturbed series, with special reference to wolfer's sunspot numbers. Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character, 226:267-298, 1927.">1927</a>]</span> and <span id="id19">Slutsky [<a class="reference internal" href="cite.html#id400" title="Eugen Slutsky. The summation of random causes as the source of cyclic processes. In Problems of Economic Conditions, volume 3. The Conjuncture Institute, Moscow, 1927.">1927</a>]</span> came from different backgrounds and brought different perspectives. <span id="id20">Yule [<a class="reference internal" href="cite.html#id437" title="G. Udny Yule. On a method of investigating periodicities in disturbed series, with special reference to wolfer's sunspot numbers. Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character, 226:267-298, 1927.">1927</a>]</span> was an eminent statistician who, among other important contributions, managed “effectively to invent modern time series analysis” in the words of  <span id="id21">Stigler [<a class="reference internal" href="cite.html#id404" title="Stephen M. Stigler. The History of Statistics: The Measurement of Uncertainty Before 1900. Harvard University Press, 1986.">1986</a>]</span>. Yule constructed and estimated what we would now call a second-order autoregression and applied it to study sunspots. Yule’s estimates implied <span class="math notranslate nohighlight">\(\alpha_j\)</span> coefficients showed damped oscillations at the same periodicity as sunspots. In Russia in the 1920s, <span id="id22">Slutsky [<a class="reference internal" href="cite.html#id400" title="Eugen Slutsky. The summation of random causes as the source of cyclic processes. In Problems of Economic Conditions, volume 3. The Conjuncture Institute, Moscow, 1927.">1927</a>]</span> wrote a seminal paper in Russian motivated by his interest in business cycles. Only later was an English version of his paper published in <em>Econometrica</em>. Even before that, it was already on the radar screen of economists including Ragnar Frisch. Indeed, Frisch was keenly aware of both <span id="id23">Slutsky [<a class="reference internal" href="cite.html#id400" title="Eugen Slutsky. The summation of random causes as the source of cyclic processes. In Problems of Economic Conditions, volume 3. The Conjuncture Institute, Moscow, 1927.">1927</a>]</span> and <span id="id24">Yule [<a class="reference internal" href="cite.html#id437" title="G. Udny Yule. On a method of investigating periodicities in disturbed series, with special reference to wolfer's sunspot numbers. Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character, 226:267-298, 1927.">1927</a>]</span> and generously acknowledged both of them in his seminal paper <span id="id25">Frisch [<a class="reference internal" href="cite.html#id450" title="R Frisch. Propagation Problems and Impulse Problems in Dynamic Economics, pages 171-205. Allen and Unwin, 1933.">1933</a>]</span> on the impulse and propagation problem. Building on insights of <span id="id26">Slutsky [<a class="reference internal" href="cite.html#id400" title="Eugen Slutsky. The summation of random causes as the source of cyclic processes. In Problems of Economic Conditions, volume 3. The Conjuncture Institute, Moscow, 1927.">1927</a>]</span> and <span id="id27">Yule [<a class="reference internal" href="cite.html#id437" title="G. Udny Yule. On a method of investigating periodicities in disturbed series, with special reference to wolfer's sunspot numbers. Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character, 226:267-298, 1927.">1927</a>]</span>, <span id="id28">Frisch [<a class="reference internal" href="cite.html#id450" title="R Frisch. Propagation Problems and Impulse Problems in Dynamic Economics, pages 171-205. Allen and Unwin, 1933.">1933</a>]</span> pioneered impulse response functions. His ambition was to provide explicit economic interpretations for how shocks alter economic time series both now and later.<a class="footnote-reference brackets" href="#simsmethod" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>14<span class="fn-bracket">]</span></a></p>
+</section>
+</div></section>
+<section id="summary">
+<h2><span class="section-number">2.11. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>For a fixed <span class="math notranslate nohighlight">\(\mathbb{S}\)</span> there are often many possible probabilities <span class="math notranslate nohighlight">\(Pr\)</span> that are measure-preserving. A subset of these are ergodic. These ergodic probabilities can serve as building blocks for the other measure-preserving probabilities. Thus, each measure-preserving <span class="math notranslate nohighlight">\(Pr\)</span> can be expressed as a weighted average of the ergodic probabilities. We call the ergodic probabilities statistical models. The Law of Large Numbers applies to each of the ergodic building blocks with limit points that are unconditional expectations. As embodied in <a class="reference internal" href="#equation-countdecompose">(2.4)</a> and its generalization <a class="reference internal" href="#equation-dynkin">(2.5)</a>, this decomposition interests both frequentist and Bayesian statisticians.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="kolmorov-theorem" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>This essentially follows from the Kolomorov Extension Theorem or from Theorem 2.26 of <span id="id30">Breiman [<a class="reference internal" href="cite.html#id59" title="Leo Breiman. Probability Theory. Addison-Wesley Publishing Company, Reading, Massachusetts, 1968.">1968</a>]</span>.</p>
+</aside>
+<aside class="footnote brackets" id="footnotebreiman" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><span id="id31">Breiman [<a class="reference internal" href="cite.html#id59" title="Leo Breiman. Probability Theory. Addison-Wesley Publishing Company, Reading, Massachusetts, 1968.">1968</a>]</span> is a good reference for these.</p>
+</aside>
+<aside class="footnote brackets" id="stationarity-footnote" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Sometimes this property is called `strict stationarity’ to distinguish it from weaker notions that require only that some moments of joint distributions be independent of time. What is variously called wide-sense or second-order or covariance stationarity requires only that first and second moments of joint distributions are independent of calendar time.</p>
+</aside>
+<aside class="footnote brackets" id="breiman" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>This example is from <span id="id32">Breiman [<a class="reference internal" href="cite.html#id59" title="Leo Breiman. Probability Theory. Addison-Wesley Publishing Company, Reading, Massachusetts, 1968.">1968</a>]</span>[p. 108].</p>
+</aside>
+<aside class="footnote brackets" id="measurablez" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>More generally, <span class="math notranslate nohighlight">\(Z\)</span> must be measurable with respect to <span class="math notranslate nohighlight">\({\mathfrak I}\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="breiman-footnote" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>See <span id="id33">Breiman [<a class="reference internal" href="cite.html#id59" title="Leo Breiman. Probability Theory. Addison-Wesley Publishing Company, Reading, Massachusetts, 1968.">1968</a>]</span> chapter 6 for extended discussions and proofs.</p>
+</aside>
+<aside class="footnote brackets" id="statmodel" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p><span id="id34">Marschak [<a class="reference internal" href="cite.html#id334" title="Jacob Marschak. Economic measurements for policy and prediction. In Tjalling Charles Koopmans William C. Hood, editor, Studies in econometric method, chapter 1, pages 1-26. John Wiley and Sons, Inc, 1953.">1953</a>]</span>, <span id="id35">Hurwicz [<a class="reference internal" href="cite.html#id259" title="Leonid Hurwicz. On the structural form of interdependent systems. In Logic, Methodology and Philosophy of Science, pages 232-239. Stanford University Press, Stanford, CA, 1962.">1962</a>]</span>, <span id="id36">Lucas [<a class="reference internal" href="cite.html#id319" title="Robert E. Jr Lucas. Econometric policy evaluation: a critique. Carnegie-Rochester Conference Series on Public Policy, 1:19 - 46, 1976. URL: http://www.sciencedirect.com/science/article/pii/S0167223176800036, doi:10.1016/S0167-2231(76)80003-6.">1976</a>]</span>, and <span id="id37">Sargent [<a class="reference internal" href="cite.html#id379" title="Thomas J. Sargent. Interpreting Economic Time Series. Journal of Political Economy, 89(2):213-48, April 1981. URL: https://ideas.repec.org/a/ucp/jpolec/v89y1981i2p213-48.html.">1981</a>]</span> distinguished between structural econometric models and what we call statistical models. Structural econometric models are designed to forecast outcomes of hypothetical experiments that freeze some components of an economic environment and change others. A structural model accepts experiments that <em>alter</em> statistical models.</p>
+</aside>
+<aside class="footnote brackets" id="dynkin-footnote" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">8</a><span class="fn-bracket">]</span></span>
+<p><span id="id38">Krylov and Bogolioubov [<a class="reference internal" href="cite.html#id293" title="N. Krylov and N. Bogolioubov. La theorie generale de la mesure dans son application a letude des systemes de la mecanique non lineaires. Annals of Mathematics, 38:65-113, 1937.">1937</a>]</span> provide an early statement of this result.  <span id="id39">Dynkin [<a class="reference internal" href="cite.html#id133" title="E. B. Dynkin. Sufficient statistics and extreme points. Annals of Probability, 6:705-730, 1978.">1978</a>]</span> provides a more general formulation that nests this and other closely related results. His analysis includes a formalization of integration over the probability measures in <span class="math notranslate nohighlight">\({\mathcal Q}\)</span>. <span id="id40">Dynkin [<a class="reference internal" href="cite.html#id133" title="E. B. Dynkin. Sufficient statistics and extreme points. Annals of Probability, 6:705-730, 1978.">1978</a>]</span> uses the resulting representation to draw connections between collections of invariant events and sets of sufficient statistics.</p>
+</aside>
+<aside class="footnote brackets" id="footnotebayesian" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">9</a><span class="fn-bracket">]</span></span>
+<p>This subsection is motivated in part by the intriguing discussions of <span id="id41">von Plato [<a class="reference internal" href="cite.html#id359" title="Jan von Plato. The significance of the ergodic decomposition of stationary measures for the interpretation of probability. Synthese, 53:419-432, 1982.">1982</a>]</span> and <span id="id42">Cerreia-Vioglio <em>et al.</em> [<a class="reference internal" href="cite.html#id107" title="Simone Cerreia-Vioglio, Fabio Maccheroni, Massimo Marinacci, and Luigi Montrucchio. Ambiguity and robust statistics. Journal of Economic Theory, 148:974-1049, 2013.">2013</a>]</span>.</p>
+</aside>
+<aside class="footnote brackets" id="footnotecomplete" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">10</a><span class="fn-bracket">]</span></span>
+<p>Here ‘complete’ can be taken to be synonymous with ‘not conditioning on invariant events’.</p>
+</aside>
+<aside class="footnote brackets" id="footnotehs" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">11</a><span class="fn-bracket">]</span></span>
+<p>For example, see <span id="id43">Hansen and Sargent [<a class="reference internal" href="cite.html#id251" title="Lars Peter Hansen and Thomas J. Sargent. Robustness. Princeton University Press, Princeton, New Jersey, 2008.">2008</a>]</span>.</p>
+</aside>
+<aside class="footnote brackets" id="footnoteknight" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">12</a><span class="fn-bracket">]</span></span>
+<p>This gives one way to formalize ideas of <span id="id44">Knight [<a class="reference internal" href="cite.html#id282" title="Frank H. Knight. Risk, Uncertainty, and Profit. Houghton Mifflin, 1921.">1921</a>]</span>, who sought to distinguish risk from broader notions of uncertainty.</p>
+</aside>
+<aside class="footnote brackets" id="ma-footnote" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">13</a><span class="fn-bracket">]</span></span>
+<p>An i.i.d.~sequence is just one example of such a <span class="math notranslate nohighlight">\(\{W_t : -\infty &lt; t &lt; \infty \}\)</span> process.</p>
+</aside>
+<aside class="footnote brackets" id="simsmethod" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id29">14</a><span class="fn-bracket">]</span></span>
+<p><span id="id45">Sims [<a class="reference internal" href="cite.html#id395" title="Christopher A. Sims. Macroeconomics and reality. Econometrica, 48(1):1-48, 1980.">1980</a>]</span> and others advanced this idea by developing tractable multivariate time series methods and striving to isolate interpretable shocks in multivariate settings.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="example_out_c1_v2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Stochastic Processes and Laws of Large Numbers</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="example_out_c2_v2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Markov Processes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-processes">2.2. Stochastic Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-a-stochastic-process">2.3. Constructing a Stochastic Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationary-stochastic-processes">2.4. Stationary Stochastic Processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-events-and-conditional-expectations">2.5. Invariant Events and Conditional Expectations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-events">2.5.1. Invariant events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expectation">2.5.2. Conditional expectation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-squares">2.5.3. Least Squares</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">2.6. Law of Large Numbers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-empirical-measures">2.7. Limiting Empirical Measures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodic-decomposition">2.8. Ergodic Decomposition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-and-uncertainty">2.9. Risk and Uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inventing-an-infinite-past">2.10. Inventing an Infinite Past</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">2.11. Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
