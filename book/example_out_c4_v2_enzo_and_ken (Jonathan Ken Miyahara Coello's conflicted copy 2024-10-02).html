@@ -1,0 +1,1933 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>8. Processes with Markovian increments &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/example_out_c4_v2_enzo_and_ken';</script>
+    <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/example_out_c4_v2_enzo_and_ken.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Hidden Markov Models" href="example_out_c5_v2.html" />
+    <link rel="prev" title="7. Processes with Markovian increments" href="example_out_c4_v2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">9. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">13. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">14. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/background.html">Background Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Notebook: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Notebook: Continuous Time</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Comparative Valuation Dynamics in Production Economies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/appendix.html">Online Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/code.html">Computational Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Spillovers for Markets and Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../uncertainty_spillovers/manuscript.html">Manuscript</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/example_out_c4_v2_enzo_and_ken.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Processes with Markovian increments</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-additive-functional">8.1. Definition of additive functional</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-martingales">8.2. Extracting Martingales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">8.3. Applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregression">8.3.1. Vector autoregression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-economic-rationale">8.3.2. An economic rationale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-regimes">8.3.3. Growth-Rate Regimes</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="processes-with-markovian-increments">
+<span id="chap-add"></span><h1><span class="section-number">8. </span>Processes with Markovian increments<a class="headerlink" href="#processes-with-markovian-increments" title="Link to this heading">#</a></h1>
+<p>########### EDITED</p>
+<p>Enzo: <span style="color: red;"> red </span> and <span style="color: orange;"> orange </span></p>
+<p>Ken: <span style="color: green;"> green </span> and <span style="color: lightgreen;"> lightgreen </span></p>
+<p>You find our proposed edits in  <span style="color: red;"> red </span>/<span style="color: green;"> green </span> , while comments are in <span style="color: orange;"> orange </span>/<span style="color: lightgreen;"> lightgreen </span>.</p>
+<p>###########</p>
+<p>In this chapter, we use a stationary Markov process to construct a process that displays stochastic arithmetic growth, then show how to extract a linear time trend and a martingale. Eventually, we will explore the implications of exponentiating this process to transform an arithmetically growing process, like those described in this chapter, to construct a process that displays geometric growth.</p>
+<section id="definition-of-additive-functional">
+<h2><span class="section-number">8.1. </span>Definition of additive functional<a class="headerlink" href="#definition-of-additive-functional" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\{W_{t+1} : t \ge 0\}\)</span> be a <span class="math notranslate nohighlight">\(k\)</span>-dimensional stochastic process of unanticipated economic shocks.
+Let  <span class="math notranslate nohighlight">\(\{ X_t : t \ge 0 \}\)</span> be
+a discrete-time stationary Markov process that is
+generated by initial distribution <span class="math notranslate nohighlight">\(Q\)</span> for <span class="math notranslate nohighlight">\(X_0\)</span> and transition equation</p>
+<div class="math notranslate nohighlight" id="equation-dynamic-evolve">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-dynamic-evolve" title="Link to this equation">#</a></span>\[X_{t+1} = \phi  (X_t, W_{t+1}) ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\phi\)</span> is a Borel measurable function. Let <span class="math notranslate nohighlight">\(\left\{ \mathfrak{A}_t  : t=0,1,...  \right\}\)</span> be the filtration generated by histories of <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(X\)</span>; <span class="math notranslate nohighlight">\(\mathfrak{A}_t\)</span>
+serves as the information set (sigma algebra) generated by
+<span class="math notranslate nohighlight">\(X_0, W_1, \ldots , W_t\)</span>. We presume that the conditional probability distribution for <span class="math notranslate nohighlight">\(W_{t+1}\)</span> conditioned on <span class="math notranslate nohighlight">\(\mathfrak{A}_t\)</span> depends only on <span class="math notranslate nohighlight">\(X_t\)</span>. To assure that the process <span class="math notranslate nohighlight">\(\{W_{t+1} : t \ge 0 \}\)</span> represents unanticipated shocks, we restrict it to satisfy</p>
+<div class="math notranslate nohighlight">
+\[E \left( W_{t+1} \vert X_t \right) = 0.\]</div>
+<p>We condition on a statistical model in the sense of Section <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#sec-empirical"><span class="std std-ref">Limiting Empirical Measures</span></a> in Chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>.
+Given this, for notational simplicity, we simply assume that the stationary <span class="math notranslate nohighlight">\(\{X_t : t \ge 0\}\)</span> process is ergodic.<a class="footnote-reference brackets" href="#ergodic" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> The Markov structure of <span class="math notranslate nohighlight">\(\{ X_t  \}\)</span>  makes the distribution of <span class="math notranslate nohighlight">\((X_{t+1}, W_{t+1}) \)</span> conditioned on <span class="math notranslate nohighlight">\(\mathfrak{A}_t\)</span> depend only
+on <span class="math notranslate nohighlight">\(X_t\)</span>.<a class="footnote-reference brackets" href="#markov-process" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 8.1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A process <span class="math notranslate nohighlight">\(\{ Y_{t} \}\)</span> is said to be an <strong>additive functional</strong> if it can be represented as</p>
+<div class="math notranslate nohighlight" id="equation-eqn-mart1">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-eqn-mart1" title="Link to this equation">#</a></span>\[Y_{t+1} - Y_t = \kappa(X_{t},W_{t+1})\]</div>
+<p>for a (Borel measurable) function <span class="math notranslate nohighlight">\(\kappa: {\mathbb R}^n \times {\mathbb R}^k \rightarrow {\mathbb R}\)</span>, or equivalently</p>
+<div class="math notranslate nohighlight">
+\[Y_{t} = Y_0 + \sum_{j=1}^{t} \kappa(X_{j-1}, W_{j}) ,\]</div>
+<p>where we initialize <span class="math notranslate nohighlight">\(Y_0\)</span> at some arbitrary random variable depending on date zero information, although such a restriction is not needed for what follows.</p>
+</section>
+</div><p>When <span class="math notranslate nohighlight">\(Y_0\)</span> is a function of <span class="math notranslate nohighlight">\(X_0\)</span>, we can construct <span class="math notranslate nohighlight">\(Y_t\)</span> as a function of the underlying Markov process between dates zero and <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 8.2 </span></p>
+<section class="definition-content" id="proof-content">
+<p>An additive functional <span class="math notranslate nohighlight">\(\{ Y_t : t=0,1,...\}\)</span> is said to be  an <strong>additive martingale</strong> if
+<span class="math notranslate nohighlight">\(E\left[ \kappa(X_{t}, W_{t+1}) \vert X_t \right] = 0.\)</span></p>
+</section>
+</div><p>It is easy to see that a  linear combination of two additive functionals  <span class="math notranslate nohighlight">\(\{Y_{t}^{[1]}\}\)</span> and <span class="math notranslate nohighlight">\(\{Y_{t}^{[2]}\}\)</span>
+is itself an additive functional.  If <span class="math notranslate nohighlight">\(\kappa_1\)</span> is used to construct the first process and <span class="math notranslate nohighlight">\(\kappa_2\)</span> the second process, then <span class="math notranslate nohighlight">\(\kappa = \kappa_1 + \kappa_2\)</span> can be used to construct the sum of the two processes. –&gt;</p>
+<div class="proof example admonition" id="stochasticvolatility">
+<p class="admonition-title"><span class="caption-number">Example 8.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>(Stochastic Volatility) Suppose that</p>
+<div class="math notranslate nohighlight">
+\[Y_{t+1} - Y_t  =  \mu(X_t) + \sigma(X_t) W_{t+1}  \]</div>
+<div class="math notranslate nohighlight">
+\[X_{t+1}  =  {\mathbb A} X_t + {\mathbb B}W_{t+1}\]</div>
+<p>where   <span class="math notranslate nohighlight">\(\{ W_{t+1} : t\ge 0 \}\)</span> is an i.i.d.~sequence of standardized multivariate normally distributed
+random vectors, <span class="math notranslate nohighlight">\({\mathbb A}\)</span> is a stable matrix, and <span class="math notranslate nohighlight">\({\mathbb B}\)</span> has full column rank, and the random vector
+<span class="math notranslate nohighlight">\(X_0\)</span> is generated by initial distribution <span class="math notranslate nohighlight">\(Q\)</span> associated with the stationary distribution for the
+<span class="math notranslate nohighlight">\(\{ X_t \}\)</span> process. Here <span class="math notranslate nohighlight">\(\mu(X_t)\)</span> is the conditional mean of <span class="math notranslate nohighlight">\(Y_{t+1} - Y_t\)</span> and
+<span class="math notranslate nohighlight">\(|\sigma(X_t)|^2\)</span> is its conditional variance.  When <span class="math notranslate nohighlight">\(\sigma\)</span> depends on <span class="math notranslate nohighlight">\(X_t\)</span>,
+This is called
+a stochastic volatility model because <span class="math notranslate nohighlight">\(|\sigma(X_t)|^2\)</span>  is a stochastic process.</p>
+</section>
+</div><p>In <a class="reference internal" href="#stochasticvolatility">Example 8.1</a>, when the conditional mean <span class="math notranslate nohighlight">\(\mu(X_t) = 0\)</span>, the process
+<span class="math notranslate nohighlight">\(\{Y_t \}\)</span>  is
+a martingale. Note that <span class="math notranslate nohighlight">\(E\left[ \kappa( X_t, W_{t+1} ) \vert X_t \right] = 0\)</span>
+implies the usual martingale restriction</p>
+<div class="math notranslate nohighlight">
+\[E\left(Y_{t+1}  \vert {\mathfrak A}_t\right) = Y_t , \ \ \textrm{for} \ \ t \ge 0.  \]</div>
+</section>
+<section id="extracting-martingales">
+<span id="sec-decomposition"></span><h2><span class="section-number">8.2. </span>Extracting Martingales<a class="headerlink" href="#extracting-martingales" title="Link to this heading">#</a></h2>
+<p>We can decompose an additive functional into a sum of components, one of which is an additive martingale that encapsulates all long-run stochastic variation as in <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a>. In this section, we show how to extract the martingale component. We adopt a construction like that used to establish <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a> and proceed in four steps.</p>
+<p><a class="reference internal" href="#alg:martconstruct"><span class="xref myst">Martingale construction</span></a></p>
+<ol class="arabic simple">
+<li><p>Construct the trend coefficient as the unconditional expectation:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\nu = E \left[\kappa(X_t, W_{t+1}) \right].\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Form the random variable <span class="math notranslate nohighlight">\(H_t\)</span> by computing multiperiod forecasts for each horizon and summing these forecasts over all horizons. Start by constructing</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\overline \kappa(x) = E \left[ \kappa(X_t, W_{t+1}) - \nu \mid X_t = x \right],\]</div>
+<p>Thus</p>
+<div class="math notranslate nohighlight">
+\[E \left[ \kappa(X_{t+j-1}, W_{t+j}) - \nu \vert X_t = x \right] = \mathbb T^{j-1} \overline \kappa (x).\]</div>
+<p>Summing the terms, construct</p>
+<div class="math notranslate nohighlight">
+\[H_{t}  = \sum_{j=0}^\infty E\left(  \left[\kappa(X_{t-1+ j}, W_{t+j}) - \nu \right] \mid X_t\right)  =  \kappa(X_{t-1}, W_{t}) - \nu +
+\sum_{j=0}^\infty E \left[ \overline \kappa( X_{t+j} ) \mid X_t  \right]  = \kappa_h(X_{t-1}, W_t)\]</div>
+<p><span style="color: orange;">shouldn’t it condition on <span class="math notranslate nohighlight">\(A_t\)</span>? so that <span class="math notranslate nohighlight">\( E\left(  \left[\kappa(X_{t-1}, W_{t})\right] \mid {A}_t\right)= \kappa(X_{t-1}, W_{t}) \)</span>. Conditioning on <span class="math notranslate nohighlight">\(X_t\)</span> only does not fully pin down  (X_{t-1}, W_t) </span></p>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\kappa_h (X_{t-1}, W_t) =  \kappa(X_{t-1}, W_{t}) - \nu  + \sum_{j=0}^\infty {\mathbb T}^j \overline{\kappa} (X_t) = \kappa(X_{t-1}, W_{t}) - \nu +  \left( \mathbb I - \mathbb T \right)^{-1} \overline \kappa(X_{t})\]</div>
+<p>where <span class="math notranslate nohighlight">\({\mathbb T}\)</span> is the <span style="color: green;"> conditional expectation </span> operator defined in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eqn-toperatordef">(4.1)</a>. The right side becomes a function of only <span class="math notranslate nohighlight">\((X_{t-1},W_t)\)</span> once we substitute for <span class="math notranslate nohighlight">\(\phi(X_{t-1},W_t)\)</span> for <span class="math notranslate nohighlight">\(X_t\)</span> as implied by <a class="reference internal" href="#equation-dynamic-evolve">(8.1)</a>.</p>
+<p>This construction requires that the infinite sum</p>
+<div class="math notranslate nohighlight">
+\[\sum_{j=0}^\infty {\mathbb T}^j {\overline \kappa}(x) = \left( \mathbb I - \mathbb T \right)^{-1} \overline \kappa(x)\]</div>
+<p>converges in mean square relative to the stationary distribution for <span class="math notranslate nohighlight">\(\{X_t: t\ge 0\}\)</span>. A sufficient condition for this is that <span class="math notranslate nohighlight">\({\mathbb T}^m\)</span> is a strong contraction for some integer <span class="math notranslate nohighlight">\(m \geq 1\)</span> and <span class="math notranslate nohighlight">\(\overline{\kappa} \in {\mathcal N}\)</span> where <span class="math notranslate nohighlight">\({\mathcal N}\)</span> is defined in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-def-n">(4.9)</a>.</p>
+<ol class="arabic simple" start="3">
+<li><p>Compute</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[H_t^+ = E\left( H_{t+1} \mid X_t \right) =  \kappa_+(X_t)\]</div>
+<p>where<a class="footnote-reference brackets" href="#notice" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>
+<span style="color: lightgreen;"> I added one row below using the definition of <span class="math notranslate nohighlight">\(\overline{\kappa}(x)\)</span> that make the result more succint.</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\kappa_+(x) &amp; \doteq
+E\left[\kappa(X_{t}, W_{t+1}) \mid X_{t} = x \right] - \nu + E\left[ \left(\mathbb I - \mathbb T \right)^{-1}  \overline \kappa(X_{t+1}) \mid X_t = x \right] \\
+&amp; = E\left[\kappa(X_{t}, W_{t+1}) \mid X_{t}= x \right] -
+ \nu + \left( \mathbb I - \mathbb T \right)^{-1}  {\mathbb T} 
+ \overline \kappa(x)\\
+&amp; = \overline{\kappa}(x) + \left( \mathbb I - \mathbb T \right)^{-1}  {\mathbb T}. 
+ \end{align*}\end{split}\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Build the martingale increment:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[G_t = H_t - H_{t-1}^+ =  \kappa_m(X_{t-1}, W_{t})\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\kappa_m(X_{t-1}, W_t)  = \kappa_h (X_{t-1}, W_t ) - \kappa_+(X_{t-1}).\]</div>
+<p>By construction, the expectation of <span class="math notranslate nohighlight">\(\kappa_m(X_t, W_{t+1})\)</span> conditioned on <span class="math notranslate nohighlight">\(X_t\)</span> is zero.</p>
+<p>Armed with these calculations, we now report a Markov counterpart to <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a>.</p>
+<div class="proof proposition admonition" id="prop:decomp">
+<p class="admonition-title"><span class="caption-number">Proposition 8.1 </span></p>
+<section class="proposition-content" id="proof-content">
+<p>Suppose that <span class="math notranslate nohighlight">\(\{Y_{t} : t\ge 0\}\)</span> is an additive functional, that <span class="math notranslate nohighlight">\({\mathbb T}^m\)</span> is a strong contraction on <span class="math notranslate nohighlight">\({\mathcal N}\)</span> for some <span class="math notranslate nohighlight">\(m\)</span>, and that  <span class="math notranslate nohighlight">\(E[\kappa(X_{t},W_{t+1})^2] &lt; \infty\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+Y_{t} &amp; = t\nu + \sum_{j=1}^{t} {\kappa_m}(X_{j-1},W_{j}) - \kappa_+(X_t) + Y_0 + \kappa_+(X_0).\\
+&amp;\phantom{=}\textbf{trend} \quad \textbf{martingale} \quad \textbf{stationary} \quad \textbf{invariant}
+\end{aligned}\end{split}\]</div>
+</section>
+</div><p>Notice that the martingale component is itself an additive functional. The first is a linear time trend, the second an additive martingale, the third a stationary process with mean zero, and the fourth a time-invariant constant. If we happen to impose the initialization: <span class="math notranslate nohighlight">\(Y_0 = - \kappa_+(X_0)\)</span>, then the fourth term is zero. We use a <a class="reference internal" href="#prop:decomp">Proposition 8.1</a> decomposition as a way to associate a ‘’permanent shock’’  with an additive functional. The permanent shock is the increment to the martingale.</p>
+</section>
+<section id="applications">
+<h2><span class="section-number">8.3. </span>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h2>
+<p>We now compute martingale increments for two models of economic time series.</p>
+<section id="vector-autoregression">
+<span id="sec-varex"></span><h3><span class="section-number">8.3.1. </span>Vector autoregression<a class="headerlink" href="#vector-autoregression" title="Link to this heading">#</a></h3>
+<p>We apply the four-step construction in Algorithm <a class="reference internal" href="#alg:martconstruct"><span class="xref myst">Martingale construction</span></a> when the Markov state <span class="math notranslate nohighlight">\(\{ X_t \}\)</span> follows a first-order VAR</p>
+<p><span style="color: lightgreen;"> I added the reference to <span class="math notranslate nohighlight">\(\phi\)</span> to connect with the section above .</span></p>
+<div class="math notranslate nohighlight" id="equation-eqn-addex1a">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-eqn-addex1a" title="Link to this equation">#</a></span>\[X_{t+1} = \phi(X_t,W_{t+1}) = {\mathbb A} X_t + {\mathbb B} W_{t+1},\]</div>
+<p>where <span class="math notranslate nohighlight">\({\mathbb A}\)</span> is a stable matrix and <span class="math notranslate nohighlight">\(\{ W_{t+1} : t\ge 0  \}\)</span> is a sequence of independent and identically normally distributed random variables with mean vector zero and identity covariance matrix. The one-step ahead conditional covariance matrix of the time <span class="math notranslate nohighlight">\(t+1\)</span> shocks  <span class="math notranslate nohighlight">\(\mathbb{B} W_{t+1}\)</span> to <span class="math notranslate nohighlight">\(X_{t+1}\)</span> equals <span class="math notranslate nohighlight">\(\mathbb{B} \mathbb{B}'\)</span>. Let</p>
+<div class="math notranslate nohighlight" id="equation-eqn-addex1b">
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-eqn-addex1b" title="Link to this equation">#</a></span>\[Y_{t+1} - Y_t = \kappa(X_{t},W_{t+1}) = {\mathbb D}  X_t + \nu + {\mathbb F} W_{t+1},\]</div>
+<p>where <span class="math notranslate nohighlight">\({\mathbb D}\)</span> and <span class="math notranslate nohighlight">\({\mathbb F}\)</span> are row vectors with the same dimensions as <span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(W_{t+1}\)</span>, respectively. For this example, the four steps of Algorithm <a class="reference internal" href="#alg:martconstruct"><span class="xref myst">Martingale construction</span></a> become:</p>
+<ol class="arabic">
+<li><p>The trend growth rate is <span class="math notranslate nohighlight">\(\nu\)</span> as specified.</p></li>
+<li><div class="math notranslate nohighlight">
+\[\kappa_h(X_{t-1}, W_t, X_t ) = {\mathbb D} X_{t-1} + {\mathbb F} W_{t} + {\mathbb D}({\mathbb I} - {\mathbb A} )^{-1} X_t  \]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\kappa_+(X_t) = {\mathbb D}  X_t +  {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1}{\mathbb A} X_t\]</div>
+</li>
+<li><div class="math notranslate nohighlight" id="equation-markov-mart">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-markov-mart" title="Link to this equation">#</a></span>\[\kappa_m(X_{t-1}, W_t) =  {\mathbb F}  W_{t} + {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1} (X_t  - {\mathbb A} X_{t-1} ) =  \left[{\mathbb F} + {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1} {\mathbb B} \right] W_t. \]</div>
+</li>
+</ol>
+<p>From <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#ex:MA">Example 2.8</a>, we expect the coefficient of martingale increment to be the sum of impulse responses for the increment process <span class="math notranslate nohighlight">\(\{ {\mathbb D} X_t + {\mathbb F}  W_{t+1} : t\ge 0\}\)</span>. The impulse response function is the sequence of vectors:</p>
+<div class="math notranslate nohighlight" id="equation-llrimp">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-llrimp" title="Link to this equation">#</a></span>\[{\mathbb F}, \mathbb{ D} {\mathbb B},  {\mathbb D} {\mathbb A} {\mathbb B} ,  {\mathbb D}{\mathbb A}^2 {\mathbb B}, \cdots .\]</div>
+<p>Summing these vectors gives</p>
+<div class="math notranslate nohighlight">
+\[{\mathbb F} + {\mathbb D}\left({\mathbb I} + {\mathbb A} + {\mathbb A}^2 + \cdots \right) {\mathbb B} = {\mathbb F} + {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1} {\mathbb B}\]</div>
+<p>as anticipated.</p>
+</section>
+<section id="an-economic-rationale">
+<h3><span class="section-number">8.3.2. </span>An economic rationale<a class="headerlink" href="#an-economic-rationale" title="Link to this heading">#</a></h3>
+<p>A special case of what is called recursive utility, represents preferences using recursively constructed continuation values.  As an illustration, let <span class="math notranslate nohighlight">\(V_t\)</span> be the date <span class="math notranslate nohighlight">\(t\)</span> continuation value.  Suppose that for <span class="math notranslate nohighlight">\({\widehat C}_t = \log C_t\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+X_{t+1} = \hspace{.2cm} &amp;{\mathbb A}X_t + {\mathbb B}W_{t+1} \cr
+{\widehat C}_{t+1} - {\widehat C}_t = \hspace{.2cm} &amp; {\mathbb D}  X_t + \nu + {\mathbb F} W_{t+1} \cr
+{\widehat V}_t = \hspace{.2cm} &amp; (1 - \beta) {\widehat C}_t + \left(\frac {\beta} {1 - \gamma} \right) {\widehat R}_t \cr
+ {\widehat R}_t = \hspace{.2cm} &amp; \log {\mathbb E} \left( \exp\left[ (1 - \gamma)  {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t  \right) 
+\end{align*} \]</div>
+<p>where the first two equations are backward looking and third and fourth ones are  forward looking.  In particular, current <span class="math notranslate nohighlight">\({\widehat V}_t\)</span> depends on the future <span class="math notranslate nohighlight">\({\widehat V}_{t+1}\)</span> through the construction of <span class="math notranslate nohighlight">\({\widehat R}_t.\)</span>  We restrict <span class="math notranslate nohighlight">\(0 &lt; \beta &lt; 1,\)</span>  <span class="math notranslate nohighlight">\(\gamma \ge 1\)</span>, and <span class="math notranslate nohighlight">\({\mathbb A}\)</span> is a stable matrix.   Instead of using the conditional expectation of the future continuation value, these preferences use what is called a certainly equivalent in conjunction with an exponential risk adjustment as reflected in formula for <span class="math notranslate nohighlight">\({\widehat R}_t\)</span>.   The limiting case as <span class="math notranslate nohighlight">\(\gamma \downarrow 1\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[{\widehat V}_t = (1-\beta) {\widehat C}_t + \beta {\mathbb E} \left( {\widehat V}_{t+1} \mid {\mathfrak A}_t \right), \]</div>
+<p>which can be solved forward to obtain:
+<span style="color: lightgreen;"> Isn’t a <span class="math notranslate nohighlight">\(\beta^{\tau}\)</span> missing in the formula below? </span></p>
+<div class="math notranslate nohighlight">
+\[{\widehat V}_t = (1-\beta) \sum_{\tau = 0} ^\infty {\mathbb E} \left({\widehat C}_{t+\tau} \mid {\mathfrak A}_t  \right). \]</div>
+<p>Thus this limiting case gives discounted expected logarithmic utility as way to assess alternative consumption processes.</p>
+<p>When the process <span class="math notranslate nohighlight">\(\{ {\mathbb D} X_t\}\)</span> is highly persistent, there is said to be substantial “long-run risk” in consumption. <span id="id4">[<a class="reference internal" href="cite.html#id24" title="Ravi Bansal and Amir Yaron. Risks for the long run: a potential resolution of asset pricing puzzles. Journal of Finance, 59(4):1481-1509, 2004.">Bansal and Yaron, 2004</a>]</span> also consider a process governing stochastic volatility that we abstract from the in computations that follow. . While the illustrative calculations in what follows use the VAR-type application of <span id="id5">[<a class="reference internal" href="cite.html#id201" title="Lars Peter Hansen, John C. Heaton, and Nan Li. Consumption Strikes Back? Measuring Long‐Run Risk. Journal of Political Economy, 116(2):260–302, 2008. URL: http://www.journals.uchicago.edu/doi/10.1086/588200, doi:10.1086/588200.">Hansen <em>et al.</em>, 2008</a>]</span>, some of the basic insights extend much more generally.</p>
+<p>To provide a Markov characterization of the continuation value process, it is convenient to subtract <span class="math notranslate nohighlight">\({\widehat C}_t\)</span> from both sides of the second equation:</p>
+<div class="math notranslate nohighlight">
+\[{\widehat V}_t - {\widehat C}_t =   \frac {\beta} {1 - \gamma} \log {\mathbb E} \left( \exp\left[ (1 - \gamma) \left( {\widehat V}_{t+1} - {\widehat C}_{t+1}\right) + (1-\gamma) \left({\widehat C}_{t+1} - {\widehat C}_t\right) \right] \mid {\mathfrak A}_t  \right)\]</div>
+<p>Given the assumed dynamics for the growth rate in consumption, <span class="math notranslate nohighlight">\({\widehat C}\)</span> and <span class="math notranslate nohighlight">\({\widehat V}\)</span> are co-integrated.  We use ``guess and verify’’ to seek a solution of the form:
+<span style="color: lightgreen;"> Perhaps the lines below should read  </span></p>
+<div class="math notranslate nohighlight">
+\[{\widehat V}_t - {\widehat C}_t =  X_{t}^{\prime}\,\upsilon + {\sf v}.  \]</div>
+<p><span style="color: lightgreen;"> So that the <span class="math notranslate nohighlight">\(\upsilon\)</span> vector is a column vector as implied below. The previious notation had <span class="math notranslate nohighlight">\(\upsilon \cdot X_t\)</span> which is not clear to me.  </span></p>
+<p>The coefficient vector <span class="math notranslate nohighlight">\(\upsilon\)</span> satisfies:
+<span style="color: lightgreen;"> The equation below should have a prime, <span class="math notranslate nohighlight">\(D^{\prime}\)</span> </span></p>
+<div class="math notranslate nohighlight">
+\[\upsilon = \beta {\mathbb A}' \upsilon + \beta {\mathbb D},\]</div>
+<p>with a solution:</p>
+<div class="math notranslate nohighlight">
+\[\upsilon = \beta \left({\mathbb I} - \beta {\mathbb A}'\right)^{-1} {\mathbb D}'.\]</div>
+<p>The scalar <span class="math notranslate nohighlight">\({\sf v}\)</span> satisfies:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\sf v} = &amp; \beta {\sf v} + \beta \nu \cr &amp; + 
+ \frac {\beta (1-\gamma) } 2 \left\vert {\mathbb B}' \upsilon + {\mathbb F} \right\vert^2
+\end{align}\]</div>
+<p>Solving this forward gives:</p>
+<div class="math notranslate nohighlight" id="equation-cont-constant">
+<span class="eqno">(8.7)<a class="headerlink" href="#equation-cont-constant" title="Link to this equation">#</a></span>\[{\sf v} = \frac \beta {1 - \beta} \left[ \nu +  \frac { (1-\gamma) } 2 \left\vert \upsilon' {\mathbb B} + {\mathbb F} \right\vert^2\right].  \]</div>
+<p>Notice, in particular, the term in the square brackets of <a class="reference internal" href="#equation-cont-constant">(8.7)</a>.  The first contribution is average growth rate expressed in logarithms.  For the second contribution, it is revealing to inspect the <span class="math notranslate nohighlight">\(\beta = 1\)</span> limit <span style="color: green;"> (recall <span class="math notranslate nohighlight">\(\upsilon\)</span> is a function of <span class="math notranslate nohighlight">\(\beta\)</span>) </span>:</p>
+<div class="math notranslate nohighlight">
+\[ \frac { (1-\gamma) } 2 \left\vert {\mathbb D} \left({\mathbb I} - {\mathbb A}\right)^{-1}{\mathbb B}  + {\mathbb F} \right\vert^2.\]</div>
+<p>This gives a variance adjustment to the continuation value that the product of <span class="math notranslate nohighlight">\((1-\gamma)/2\)</span> and variance of the increment to the martingale component of the logarithm of consumption as reported in <a class="reference internal" href="#equation-markov-mart">(8.5)</a>. <span style="color: lightgreen;"> The sentence above is a bit hard to understand and perhaps incomplete in the part “continuation value that the product” </span>  When <span class="math notranslate nohighlight">\(\gamma &gt;1,\)</span> <span style="color: lightgreen;"> Should this be <span class="math notranslate nohighlight">\(\gamma=1\)</span>? </span> this variance coincides with the continuation value relative to the case of logarithmic utility.  Larger <span class="math notranslate nohighlight">\(\gamma\)</span> increases this adjustment.  The <span class="math notranslate nohighlight">\(\beta = 1\)</span> limit is pertinent because this parameter is often set close to unity in the macro-finance literature.</p>
+<p>In Chapter  <a class="reference internal" href="exploring_recursive_utility.html#chap-recursive"><span class="std std-ref">Exploring Recursive Utility</span></a>,  we investigate more generally the implications of a class of recursive utility preferences which nests this specification as a special case.  Among other results, we obtain analogous formulas as first-order approximations to more general consumption dynamics.</p>
+</section>
+<section id="growth-rate-regimes">
+<span id="sec-growthregime"></span><h3><span class="section-number">8.3.3. </span>Growth-Rate Regimes<a class="headerlink" href="#growth-rate-regimes" title="Link to this heading">#</a></h3>
+<p>We construct a <a class="reference internal" href="#prop:decomp">Proposition 8.1</a> decomposition for a model with persistent switches in the conditional mean and volatility of the growth rate <span class="math notranslate nohighlight">\(Y_{t+1}- Y_t\)</span>.</p>
+<p>Suppose that <span class="math notranslate nohighlight">\(\{X_t : t \ge 0\}\)</span> evolves according to an <span class="math notranslate nohighlight">\(n\)</span>-state Markov chain with transition matrix <span class="math notranslate nohighlight">\({\mathbb P}\)</span>. Realized values of <span class="math notranslate nohighlight">\(X_t\)</span> are coordinate vectors in <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>. Suppose that <span class="math notranslate nohighlight">\({\mathbb P}\)</span> has only one unit eigenvalue. Let <span class="math notranslate nohighlight">\({\bf q}\)</span> be the row eigenvector associated with that unit eigenvalue normalized so that <span class="math notranslate nohighlight">\({\bf q} \cdot {\bf 1}_n = 1\)</span> and</p>
+<div class="math notranslate nohighlight">
+\[{\bf q}'{\mathbb P} = {\bf q}'.\]</div>
+<p>Consider an additive functional satisfying</p>
+<div class="math notranslate nohighlight">
+\[Y_{t+1} - Y_t =  {\mathbb D}  X_t + {X_t}'{\mathbb F} W_{1,t+1},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{ W_{1,t} \}\)</span> is an i.i.d. sequence of multivariate standard normally distributed random vectors. Evidently, the stationary Markov <span class="math notranslate nohighlight">\(\{X_t : t \ge 0 \}\)</span> process induces discrete changes in both the conditional mean and the conditional volatility of the growth rate process <span class="math notranslate nohighlight">\(\{ Y_{t+1} - Y_t \}\)</span>.</p>
+<p>Observe that <span class="math notranslate nohighlight">\( E (X_{t+1} | X_t ) ={\mathbb  P} X_t \)</span> and let</p>
+<div class="math notranslate nohighlight" id="equation-discrete-shock">
+<span class="eqno">(8.8)<a class="headerlink" href="#equation-discrete-shock" title="Link to this equation">#</a></span>\[W_{2,t+1} = X_{t+1} - E\left( X_{t+1} \vert X_t \right) .\]</div>
+<p>Thus we can represent the evolution of the Markov chain as</p>
+<div class="math notranslate nohighlight">
+\[X_{t+1} = {\mathbb P} X_t + W_{2,t+1}\]</div>
+<p><span class="math notranslate nohighlight">\(\{W_{2,t+1} : t \ge 0 \}\)</span> is an <span class="math notranslate nohighlight">\(n \times 1\)</span> discrete-valued vector process that satisfies <span class="math notranslate nohighlight">\(E ( W_{2,t+1} | X_t) = 0 \)</span>, which is therefore a martingale increment sequence adapted to <span class="math notranslate nohighlight">\(X_t, X_{t-1}, ..., X_0\)</span>.</p>
+<p>We again apply the four-step construction in <a class="reference internal" href="#alg:martconstruct"><span class="xref myst">algorithm</span></a>.<a class="footnote-reference brackets" href="#algorithmnote" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> <span style="color: green;"> Below, in the third term of <span class="math notranslate nohighlight">\(H_t\)</span>, <span class="math notranslate nohighlight">\(X_t\)</span> should read <span class="math notranslate nohighlight">\((X_t-q)\)</span>. Similarly, in the second term of <span class="math notranslate nohighlight">\(H_t^+\)</span> and <span class="math notranslate nohighlight">\(\kappa_+\)</span>, <span class="math notranslate nohighlight">\(\mathbb{P}X_t\)</span> should read <span class="math notranslate nohighlight">\((\mathbb{P}X_t-q)\)</span> . The final result <span class="math notranslate nohighlight">\(G_t\)</span> is still correct since the <span class="math notranslate nohighlight">\(q\)</span>’s will cancel upon substracting. </span></p>
+<ol class="arabic">
+<li><div class="math notranslate nohighlight">
+\[\nu = {\mathbb D} {\bf q} \]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[H_t =  {\mathbb D}  (X_{t-1} - {\bf q})   + {X_{t-1}}'{\mathbb F} W_{1,t} + {\mathbb D}\left({\mathbb I} - {\mathbb P}\right)^{-1} X_t  \]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[H_t^+ = E\left( H_{t+1} \mid X_t \right) = {\mathbb D} \left( X_{t} - {\bf q} \right) + {\mathbb D}\left({\mathbb I} - {\mathbb P}\right)^{-1} {\mathbb P}X_t\]</div>
+<p>which implies that</p>
+<div class="math notranslate nohighlight">
+\[\kappa_+(x) =  {\mathbb D} \left( X_{t} - {\bf q} \right) + {\mathbb D}\left({\mathbb I} - {\mathbb P}\right)^{-1} {\mathbb P}x\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[G_t = H_t - H_{t-1}^+  = {X_{t-1}}'{\mathbb F} W_{1,t} + {\mathbb D}\left({\mathbb I} - {\mathbb P}\right)^{-1} W_{2,t}\]</div>
+<p>where we have substituted from equation <a class="reference internal" href="#equation-discrete-shock">(8.8)</a>.</p>
+</li>
+</ol>
+<p>The martingale increment has both continuous and discrete components:</p>
+<div class="math notranslate nohighlight">
+\[{\kappa_m}(X_t , W_{t+1}) = \underbrace{{X_t}'{\mathbb F} W_{1,t+1}}_{\rm{\bf{continuous}}} + \underbrace{ {\mathbb D}\left({\mathbb I} - {\mathbb P}\right)^{-1} W_{2,t+1}}_{\rm{\bf {discrete}}}.\]</div>
+<!-- (sec:longruncrisk)=
+## Evaluating Long-Run Risk
+
+We consider a model with long-run risk components to consumption as suggested by {cite}`bansalyaron2004`. For the moment, we abstract from production; but as we will see later there is a production counterpart in consumption displays long-run risk. For now think simply specify a consumption process with a long-run risk component.
+
+Let $C_t$ denote consumption and assume that ${\widehat C}_t = \log C_t$ evolves as
+
+```{math}
+\widehat C_{t+1} - \widehat  C_t = \nu  + {\mathbb D} X_t + {\mathbb F} W_{t+1}
+```
+
+where the predictable component $\{X_t\}$ of the growth-rate process evolves as an autoregression: 
+
+```{math}
+X_{t+1} = {\mathbb A} X_t + {\mathbb B} W_{t+1},
+```
+
+where $\mathbb A$ is a stable matrix, $W_{t+1}$ is as multivariate i.i.d.\ ${\mathcal N}(0,{\mathbb I})$ shock vector. The row vector  
+${\mathbb F}$ and matrix ${\mathbb B}$ are configured so that the components of the shock vector $W_{t+1}$
+directly disturbs growth in the logarithm of consumption and its predictable growth component $\{X_{t}\}$. Notice, in particular that the conditional mean of $\widehat  C_{t+j} - \widehat C_t$ is
+
+```{math}
+j \nu +{\mathbb D}\left( X_t + {\mathbb A} X_t + ... + {\mathbb A}^{j-1}\right) X_t.
+```
+
+The corresponding multi-period forecast errors contribute to the variance of $\widehat  C_{t+j} - \widehat C_t$ with a variance that increases with the horizon.  
+When the process $\{ {\mathbb D} X_t\}$ is highly persistent, there is said to be substantial "long-run risk" in consumption. {cite}`bansalyaron2004` also consider a process governing stochastic volatility that we abstract from the in computations that follow. Motivated by empirical evidence, {cite}`hhl:2008` study an extension of this model where $\{ X_t : t \ge 0\}$ is a vector autoregression. The illustrative calculations in what follows use the VAR-type application of {cite}`hhl:2008`, but some of the basic insights extend much more generally.
+
+### Additive functional for utility process
+
+A representative household ranks consumption processes $\{C_t: t \ge 0 \}$ with a utility functional $\{V_t : t \ge 0\}$ generated by the recursion:
+
+```{math}
+:label: eqn:utilrecur1
+\widehat V_t = ( 1 - \beta ) \widehat  C_t + \beta  \widehat R_t
+```
+
+where $0 < 1$, $\widehat V_t = \log V_t$, $R_t$ is a risk-adjusted version of $V_{t+1}$ called a certainty equivalent:
+
+```{math}
+:label: eqn:risksensoperator
+R_t  = \left( E \left[ \left(V_{t+1}\right)^{1 - \gamma} \vert {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} 
+```
+
+and $\widehat R_t = \log R_t$. Expressed in terms of logarithms, the risk adjustment is
+
+```{math}
+\widehat R_t = {\frac 1 {1-\gamma}}  \log E\left(  \exp\left[ (1-\gamma) \widehat V_{t+1} \right] \mid {\mathfrak A}_t \right) 
+```
+
+Here $V_t$ is the date $t$ value of a continuation consumption process $\{C_{t+\tau}\}_{\tau =0}^\infty$, $\delta > 0$ is a subjective discount rate, and $\gamma \geq 1$ is a risk aversion parameter that adjusts for uncertainty in the next period continuation value from the perspective of today.[^rissensitivity] 
+
+[^rissensitivity]: In control theory the parameter $\gamma$ is said to govern "risk sensitivity."
+````{prf:remark}
+The limit of $R_t$ as $\gamma$ approaches $1$ is ordinary expected logarithmic utility:
+```{math}
+\lim_{\gamma \downarrow 1} \widehat R_t = \lim_{\gamma \downarrow 1} \frac{ \log E \left( \exp\left[
+(1-\gamma) {\widehat V}_{t+1}\right]
+\vert {\mathfrak A}_t \right)}{1-\gamma} = E\left( \widehat V_{t+1} \vert {\mathfrak A}_t \right) .
+```
+In this limiting case the utility recursion can be expressed as:
+```{math}
+\widehat V_t = (1 - \beta) \widehat C_t + \beta E\left( \widehat V_{t+1} \vert {\mathfrak A}_t \right)
+```
+Solving this equation forward gives the time separable formulation
+```{math}
+\widehat V_t =(1-\beta) \sum_{j=0}^\infty \beta^j E\left( \widehat C_{t+j} \vert {\mathfrak A}_t \right). 
+```
+````
+````{prf:proposition
+:label: prop:tallvalue
+The value function process $\{V_t: t\ge 0\}$ satisfies 
+
+```{math}
+:label: eqn:Vguess0
+\widehat V_t  = \widehat  C_t  + {\mathbb U} X_t + {\sf u}
+```
+where
+
+```{math}
+:label: eqn:Uformula
+{\mathbb   U}  = \beta {\mathbb D} \left[ I - \beta {\mathbb A}  \right]^{-1},
+```
+and
+
+```{math}
+:label: eqn:uformula
+\begin{align}
+ & {\sf u} =  {\frac {\beta}{ 1 - \beta}} {\nu} \cr & + (1-\gamma) \left[\frac{ \beta}{2(1 - \beta)}\right] \left| \beta {\mathbb D} \left[ {\mathbb I} - \beta {\mathbb A} \right]^{-1} {\mathbb B} + {\mathbb F} \right|^2.
+\end{align}
+```
+} % end small
+````
+Notice that the constant term ${\sf u}$ includes a variance 
+
+```{math}
+\left| \beta {\mathbb D} \left[ {\mathbb I} - \beta {\mathbb A} \right]^{-1} {\mathbb B} + {\mathbb F} \right|^2.
+```
+that, when $\beta$ is sufficiently close to one, is approximately the same as the variance of the martingale increment for the logarithm of consumption.  
+
+```
+Transform utility recursion {eq}`eqn:utilrecur1` to
+
+```{math}
+\widehat  V_t - \widehat  C_t = \beta \left(\widehat R_t - \widehat C_t \right) 
+```
+where 
+
+```{math}
+\begin{align*}
+&\left(\widehat R_t - \widehat C_t \right) \cr &= \frac 1 {1-\gamma} \log E \left( \exp\left[(1-\gamma)\left(\widehat V_{t+1} - \widehat C_{t+1} \right) + (1-\gamma) \left(\widehat C_{t+1} - \widehat C_{t} \right)\right] \mid {\mathfrak A}_t \right) 
+\end{align*}
+```
+Guess that $V_t$ takes form {eq}`eqn:Vguess0`.
+Under this guess
+
+```{math}
+\exp\left[(1-\gamma)\left(\widehat V_{t+1} - \widehat C_{t+1} \right) + (1-\gamma) \left(\widehat C_{t+1} - \widehat C_{t} \right)\right]
+```
+is a log-normal random variable whose logarithm has a conditional mean
+
+```{math}
+(1-\gamma) \left( \mathbb U {\mathbb A} X_t + {\sf u}  + \mathbb D X_t + {\nu} \right)
+```
+and conditional variance
+
+```{math}
+(1-\gamma)^2 |{\mathbb U}{\mathbb B} + {\mathbb F}|^2 .
+```
+The logarithm of the mean of a log-normal random variable equals the mean of the associated normal random variable
+plus one half its variance.
+It follows that ${\mathbb U}$ in value function {eq}`eqn:Vguess0` satisfies
+${\mathbb U} =  \beta {\mathbb U} {\mathbb A}  + \beta \mathbb D$, which implies formula {eq}`eqn:Uformula`,
+which is independent of $\gamma$.  Similarly,
+
+```{math}
+{\sf u} = \beta \left[ {\sf u} +  \nu  + {\frac 1 2} (1-\gamma)|{\mathbb U}{\mathbb B} + {\mathbb F} |^2 \right],
+```
+which implies formula {eq}`eqn:uformula` for ${\sf u}`.
+```
+
+### Implied Stochastic Discount Factor Process
+
+A stochastic discount factor (SDF) process $\{ S_t : t \ge 0  \}$ tells how a consumer responds to small changes in uncertainty and thereby consequently how a consumer values risky payouts. SDF processes have a variety of uses. First, they provide shadow prices that tell how a consumer's uncertainty aversion shapes marginal valuations of risky assets. Second, they shape first-order conditions for optimally choosing financial and physical investments. Third, they underlie tractable formulas for equilibrium asset prices. Fourth, they can help construct Pigouvian taxes for correcting adverse externalities under uncertainty. Fifth, they provide useful tools for assessing effects of small (local) changes in government policies.
+
+To indicate how to deduce an SDF process, we begin by positing that the date zero value of a risky date $t$ consumption payout $\chi_t$ is
+
+```{math}
+:label: eqn:price101
+\pi_0^t(\chi_t) = E\left[ \left( {\frac {S_t}{S_0}} \right) \chi_t  \Bigr| {\mathfrak A}_0 \right].
+```
+We can compute the ratio $ \frac {S_t}{S_0}  $ that appears in formula {eq}`eqn:price101`
+by evaluating the slope of an indifference curve that runs through both a baseline consumption process $\{C_t\}_{t=0}^\infty$ and a perturbed consumption process
+
+$\left(C_0 - P_0({\sf q}) , C_1, C_2, \ldots , C_t + {\sf q} \chi_t, C_{t+1}, ... \right)$ .
+
+We can think of ${\sf q}$ as parameterizing an indifference curve, so $P_0({\sf q})$ expresses how much current period consumption must be reduced to keep a consumer on the same indifference curve after we replace $C_t$ by $C_t + {\sf q} \chi_t$. We set $\pi_0^t(\chi_t)$ defined in equation {eq}`eqn:price101` equal to the slope of that indifference curve:
+
+```{math}
+ \pi_0^t(\chi_t) =  \left. {\frac d {d {\sf q} } }  P_0({\sf q}) \right|_{{\sf q} = 0} .
+```
+Applying this approach to computing $ \pi_0^t(\chi_t)$ in {eq}`eqn:price101` to utility specification {eq}`eqn:utilrecur1` results in
+
+```{math}
+:label: eqn:sdf50
+{\frac {S_{t+1}}{S_t}} = \beta \left( {\frac {C_t}{C_{t+1}}} \right) \left( {\frac{ V_{t+1}}{R_t }} \right)^{1 - \gamma} .
+```
+````{prf:remark}
+To verify formula {eq}`eqn:sdf50`, we need to compute a one-period intertemporal marginal rate of substitution. From logarithmic utility recursion {eq}`eqn:utilrecur1`, we construct two marginal utilities familiar from logarithmic utility:
+
+```{math}
+mc = \frac {(1 - \beta)} c  
+mr = \beta 
+```
+
+From the certainty equivalent formula expressed in logarithms, we construct the marginal utility of the next-period logarithm of the continuation value:
+
+```{math}
+mv^+=  \frac {\exp\left[ (1-\gamma) v^+\right]} {  \exp\left[ (1-\gamma) r\right]}
+```
+
+Finally, the next-period marginal utility of consumption is
+
+```{math}
+mc^+ = \frac {(1 - \beta)} {c^+} 
+```
+
+Putting these four formulas together using the chain rule for differentiation gives a marginal rate of substitution:
+
+```{math}
+\frac {(mr) (mv^+) (mc^+)}{mc} = \beta \left( \frac {c}{c^+} \right) \left( \frac {\exp\left[ (1-\gamma) v^+ \right]}{  \exp\left[ (1-\gamma) r\right]} \right)
+```
+
+Now let $v^+ = \log V_{t+1}$, $c^+ = C_{t+1}$, $C_t = c$, and $r = \log R_t$ to obtain the formula for the one-period stochastic discount factor {eq}`eqn:sdf50`.
+
+While formula {eq}`eqn:sdf50` applies much more generally, we impose the VAR structure in the illustrative calculations that follow. Taking logs on both sides of {eq}`eqn:sdf50` enables us to express this equation as
+
+```{math}
+:label: eqn:SDFdiff
+\log S_{t+1} -   \log S_t   =   \log \beta  - {\widehat C}_t  + {\widehat C}_{t+1} 
+ +   (1 - \gamma) \left( {\widehat V}_{t+1}    -  {\widehat R}_t \right)
+```
+
+where ${\widehat S}_t = \log S_t$. Since ${\widehat V}_{t+1}$ is log-normally distributed, its certainly equivalent satisfies:
+
+```{math}
+{\widehat R}_t  =  \frac 1 {1-\gamma} \log { E} \left( \exp \left[ (1-\gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right) 
+=  {E}\left( {\widehat V}_{t+1} \mid {\mathfrak A}_t \right) - {\frac {1 - \gamma} 2} \left| {\mathbb D} 
+  \left[ {\mathbb I} - \beta {\mathbb A} \right]^{-1} {\mathbb B}  \beta + 
+  {\mathbb F} \right|^2
+```
+
+Substituting this calculation into formula {eq}`eqn:SDFdiff` gives:
+
+```{math}
+:label: eqn:sdflog
+{\widehat S}_{t+1} -   {\widehat S}_t =  - \log \beta + {\widehat C}_t  - {\widehat C}_{t+1} 
+ +   (1 - \gamma) \left[ {\widehat V}_{t+1}    -   {E} \left( {\widehat V}_{+1} \mid {\mathfrak A}_t  \right)\right] 
+ - \frac {(1-\gamma)^2}{2} \left| {\mathbb D} 
+  \left[ {\mathbb I} - \beta {\mathbb A} \right]^{-1} {\mathbb B}  \beta + 
+  {\mathbb F} \right|^2 
+```
+
+From formulas {eq}`eqn:Vguess0`, {eq}`eqn:Uformula`,
+and {eq}`eqn:uformula`, the forward-looking term in braces on the right side of equation {eq}`eqn:sdflog` can be written
+
+```{math}
+:label: eqn:vforward
+(1 - \gamma) \left[ {\widehat V}_{t+1}   - E \left({\widehat V}_{t+1}  \vert {\mathfrak A}_t \right) \right]   
+=  (1-\gamma) \left({\mathbb D} \left[ {\mathbb I} - \beta {\mathbb A} \right]^{-1} {\mathbb B} \beta + {\mathbb F} \right) W_{t+1}.
+```
+
+Taken together, equations {eq}`eqn:SDFdiff` and {eq}`eqn:vforward` imply that the logarithm of the stochastic discount factor process is an additive functional.
+
+Write the stochastic discount factor evolution as:
+
+```{math}
+{\widehat S}_{t+1}  - {\widehat S}_t = \nu_s + {\mathbb D}_s X_t + {\mathbb F}_s W_{t+1} 
+```
+
+Consider now a "cumulative return process" $Q,$ where ${\widehat Q}_t = \log Q_t$ and
+
+```{math}
+{\widehat Q}_{t+1} - {\widehat Q}_t = \nu_q + {\mathbb D}_q X_t + {\mathbb F}_q W_{t+1} 
+```
+
+For a cumulative return process, $\frac {{ Q}_{t+\tau}} {Q_t}$ is a $\tau$ period return for $\tau \ge 1$. As a consequence, this process must satisfy:
+
+```{math}
+:label: eqn:tauprice
+{ E} \left( \frac {Q_{t+\tau} S_{t+\tau} } {Q_{t} S_{t} } \mid X_t \right) = 1,
+```
+
+and in particular for $\tau = 1$. Moreover, given that {eq}`eqn:tauprice` is satisfied for $\tau = 1`, by the Law of Iterated Expectations, it must be satisfied for $\tau > 1`.
+
+The random variable $\frac {Q_{t+1} S_{t+1} } {Q_{t} S_{t} }$ is distributed as a lognormal conditioned on date $t$ information. Thus
+
+```{math}
+(\nu_s + \nu_q)  + \left( {\mathbb D}_q + {\mathbb D}_s \right)  X_t + {\frac 1 2} \left|F_s + F_q\right|^2 = 0.
+```
+
+where we have included the log-normal adjustment. Thus
+
+```{math}
+{\mathbb D}_q = -  {\mathbb D}_s 
+```
+
+and
+
+```{math}
+:label: eq:log_return
+\nu_q + {\frac 1 2} \left| F_q\right|^2 =  - \nu_s - {\frac 1 2} \left|F_s \right|^2  - F_s \cdot F_q
+```
+
+where the left side is the logarithm of the expected return and $-F_s$ is vector of prices assigned to exposures to the macro shock vector $W_{t+1}$.
+
+For a given stochastic discount factor process, view relation {eq}`eq:log_return` as a mapping from $F_q$ to the implied logarithm of the mean of the return. For instance, by setting $F_q$ to a vector of zeros, we see that the logarithm of the risk-free return is: $- \nu_s - {\frac 1 2} \left|F_s \right|^2$. In light of {eq}`eqn:sdflog`, $F_q$ contains a forward-looking contribution that reflects growth-rate uncertainty in the macroeconomy. In this sense, long-term uncertainty in the macroeconomy spills over to even one-period asset pricing.
+````
+````{prf:remark}
+:label: rem:lrrcare
+
+When $\delta =0$,  the matrix  multiplying $(1 - \gamma)$ is
+
+```{math}
+\left[D' \left[ I - \exp(-\delta) A \right]^{-1} B \exp(-\delta) + F' \right]
+```
+
+that appears in {eq}`eqn:vforward`
+equals  the matrix $[F + B'(I-A')^{-1} D]'$ that multiplies $W_{t+1}$ in formula {eq}`eq:BQ`  for the martingale increment  $\kappa_a(X_t, W_{t+1})$
+of the additive functional $\{\log C_t\}$. Thus, formula {eq}`eqn:vforward`  for the forward-looking term contributed by the continuation value
+is $1-\gamma$ times an approximation to the martingale increment of $\{ \log C_t \}$, an approximation that becomes arbitrarily accurate when the
+subjective  rate of discount $\delta$ is sufficiently small.
+(See formula {eq}`eq:BQ` for ${\kappa_a}(X_{t},W_{t+1})$ and compare it to
+the term multiplying $(1-\gamma)$ in the above equation.)
+Adding the contribution from    $\{ \log C_t - \log C_{t+1}\} $ on the right side of {eq}`eqn:SDFdiff`, the martingale component of
+the logarithm of the stochastic discount factor then  has an increment  that approximates
+
+```{math}
+-\gamma \left[D'  \left(I -  A \right)^{-1} B + F'\right] W_{t+1} 
+```
+
+well when $\exp(-\delta)$ is very close to $1$.
+This increment is   proportional to the martingale
+increment of  $\{ \log C_t : t=0,1,2,...\}$ with   the risk aversion parameter $\gamma$ being the factor of proportionality.
+This  martingale component of the logarithm of the stochastic discount factor process 
+can be shown to dominate the pricing of long-horizon risks.
+The minus sign in front of  $\gamma$ expresses that a  representative consumer having discount factor 
+{eq}`eqn:sdf50` dislikes risk.  The inner product of the 
+vector $\left[D'  \left(I -  A \right)^{-1} B + F'\right]$
+that appears in the martingale
+increment with itself   approximates  the variance of $\frac{1}{t} Y_t$ for large $t$ (see formula
+{eq}`eqn:varmartincrGordin`).
+````
+````{prf:example}
+:label: Muth 2
+
+Consider the following model that emerges from applying the Kalman filter to the state-space model in example {prf:ref}`ex:Muth1`.
+
+```{math}
+\begin{aligned}
+ \hat p_{t+1} & = \hat p_t + b \sigma_q W_t \\
+ q_t & = \hat p_t + \sigma_q W_t,
+\end{aligned}
+```
+where $W_t$ is a scalar, $\sigma_q W_t = q_t - E q_t | q^{t-1}$ where $q^{t-1} = [q_{t-1}, q_{t-2} ,\ldots]$, and $b$ is the so-called steady state Kalman gain.
+This model implies that $\{q_t\}$ is an additive process:
+```{math}
+q_{t+1} - q_t = (b-1) \sigma_q W_t + \sigma_q W_{t+1},
+```
+so here $X_t = W_t, A=0, B = \sigma_q, D = b-1, F= \sigma_q$. It follows that
+```{math}
+q_t = \sum_{j=1}^t b \sigma_q W_j + (1-b) \sigma_q W_t + (b-1) \sigma_q W_0 + q_0 .
+```
+Here $b \sigma_q W_t$ is a permanent shock and $(1-b) \sigma_q W_t$ is a transitory shock.
+````
+## Examples of Additive Functionals
+````{prf:example}
+(Beveridge-Nelson decomposition)
+
+{cite}`beveridgenelson` decomposed a univariate time series $Y_t$ into permanent and transitory components.[^beveridgeNelson] In terms of our notation, {cite}`beveridgenelson` let a univariate $\{W_{t+1}\}$ process drive a serially correlated univariate process that we can map into a first-order vector process $X_t$. The permanent shock is $[F+ B'(I-A')^{-1}D]\cdot W_{t+1}$ in a {prf:ref}`prop:decomp` decomposition. Because $\{ W_{t+1} \}$ is a univariate process, permanent and transitory shocks are perfectly correlated.
+
+[^beveridgeNelson]: We can regard them as extending a model studied by {cite}`Muth1960`.
+````
+````{prf:example} 
+:label: ex:long_risk_1 
+(Long-term risk, I)
+
+Let $C$ denote consumption and assume that its logarithm  evolves as
+
+```{math}
+\log C_{t+1} - \log C_t = \nu  + X_t + F \cdot W_{t+1}
+```
+where
+
+```{math}
+X_{t+1} = A X_t + B W_{t+1},
+```
+$|A| < 1$ is a scalar, the process $\{ X_t \}$ is univariate, and the i.i.d. $\mathcal{N}(0,I)$   shock vector $W_{t+1}$ is $2 \times 1$.  The $2 \times 1$ vectors
+$F$ and $B$ are configured so  that one component of $W_{t+1}$
+  directly disturbs growth in the logarithm of  consumption, while   the other component disturbs the Markov state $X_{t+1}$. Because the  $j$-step ahead conditional mean of $\log C_{t+1} - \log C_t$ is
+ $\mu + A^j X_t$, the Markov state $X_t$ contributes a  predictable component  to consumption growth. When  $A$ is close to $1$, there is said to be
+substantial "long-run risk" in consumption. 
+
+The impulse response function of $\log C_{t+j+1} - \log C_{t+j}$ to the shock vector $W_{t+1} $  is a  sequence
+
+```{math}
+:label: llrimp
+F, B',  B'A,  B'A^2, \cdots .
+```
+
+It is mathematically convenient to represent this sequence by constructing a function  called a $z$-transform
+  in which  elements of the sequence become coefficients of a power series, namely, 
+  
+```{math}
+F + \sum_{j=1}^\infty B'A^{j-1} \zeta^j = F + \zeta B'(I - A \zeta)^{-1},
+```
+where $\zeta $ is a complex valued scalar satisfying $|\zeta| \le 1$.  The  impulse response of $\log C_{t+1}$   cumulates  impulse responses of $\log C_{t+1} - \log C_t$,
+so its $z$-transform 
+
+```{math}
+\left( {\frac 1 {1 - \zeta}}\right) \left[F + \zeta B'(I- A \zeta)^{-1}\right] 
+```
+is  a well defined  power series for $|\zeta| < 1$. It is also well defined as a function of $\zeta$ for $|\zeta| \le 1$,
+except when  $\zeta = 1$.[^ztransformpole] Division by $1- \zeta$ in effect accumulates the impulse responses of  the first difference of log consumption.
+
+
+The increment to  the martingale component in a Proposition  {prf:ref}`prop:decomp` decomposition of $\log C_t$   scaled to have a unit standard deviation is evidently
+$F^*\cdot W_{t+1}$, where
+
+```{math}
+F^* = {\frac 1 {|F + B'(I - A)^{-1}|}} [F + B'(I - A)^{-1}].
+```
+We call $F^*\cdot W_{t+1}$ a {\em permanent shock}. The impulse  response of $\log C_t$ to the permanent shock is
+a linear combination of  components of a bivariate impulse response function, with a  $z$-transform that is the 
+same  linear combination of the
+$z$-transforms of the two components:
+
+```{math}
+\left( {\frac 1 {1 - \zeta}}\right) F^* \cdot [F + \zeta B'(I- \zeta A)^{-1}] .
+```
+````
+
+[^ztransformpole]: The $z$-transform has a pole at $z = 1$.
+
+````{prf:example}
+:label: ex:permincome
+
+(Permanent income model, I)
+
+In this example, two interrelated additive functionals emerge endogenously, one for debt, the other for consumption.
+In the additive functional for debt, $F$ is zero but $D$ is not, while in the additive functional for consumption, $D$ is zero but $F$ is not.
+Let $c_t$ be consumption at $t$ and let $b_t$ be risk-free one period debt due at $t$.
+Given an initial stock $b_0$ of  risk-free debt, a consumer chooses a stochastic process
+for $\{c_t, b_{t+1}\}_{t=0}^\infty$ to maximize
+```{math}
+E_0 \sum_{t=0}^\infty \beta^t u(c_t) ,
+```
+where $\beta \in (0,1)$,    $u(c) = -.5(c_t - \gamma)^2$, and  $\gamma >0$ is a  bliss consumption level.
+Maximization  over $\{c_t, b_{t+1}\}_{t=0}^\infty$ is subject to
+```{math}
+\begin{aligned}
+ c_t + b_t & = & R^{-1} b_{t+1} + y_t , & \quad t \geq 0 \\
+ X_{t+1} & = & A X_t + B W_{t+1} , & \quad t \geq 0 \\
+ y_t & = & \mu_y + S \cdot X_t , & \quad t \geq 0 \\
+  +\infty & > & E_0 \sum_{t=0}^\infty \beta^t b_t^2 ,
+\end{aligned}
+```
+where the constant  gross interest rate $R$ on risk-free loans satisfies $R \beta =1$, $y_t$ is labor income, and $c_t$ is consumption.
+The optimum consumption-debt plan is[^permanentincome]
+
+```{math}
+\begin{aligned}
+b_{t+1} & = & b_t + [(A'-I) (I-\beta A')^{-1} ] \cdot X_t \\
+c_{t+1} & = & c_t + (1-\beta) [ B' (I - \beta A)^{-1} S ] \cdot W_{t+1} ,
+\end{aligned}
+```
+with $c_0$ optimally being set to
+```{math}
+c_0 = \mu_y + (1-\beta) [ S' ( I -\beta A)^{-1} X_0 - b_0 ].
+```
+In terms of representation {eq}`eqn:adddecomp` for $c_t$, $F =(1-\beta) [ B' (I - \beta A)^{-1} S ], D=0$,
+so $\kappa_a (X_t, W_{t+1}) =  (1-\beta) [ B' (I - \beta A)^{-1} S ] $ and $g(x) =0$.
+Thus,   $\{c_{t+1}\}$ is a martingale
+```{math}
+c_t = (1-\beta) \sum_{j=1}^t S' (I -\beta A)^{-1} B W_j + c_0 .
+```
+For $b_t$, $F =0$ and $D = [(A'-I)(I  - \beta A')^{-1} S ]$, so
+$K_a(X_t, W_{t+1}) = - B'(I-\beta A')^{-1} S$ and $g(x) = - S'(I - \beta A)^{-1} x $.
+Representation {eq}`eqn:adddecomp` for $\{b_t\}$ is
+```{math}
+b_t = -\sum_{j=1}^t S'(I -\beta A)^{-1} B W_j + S'(I-\beta A)^{-1} X_t - S'(I-\beta A)^{-1} X_0 + b_0.
+```
+So $\{b_t\}$ is the sum of a martingale, a stationary process, and a constant.
+
+[^permanentincome]: For example, see {cite}`Ljungqvist_Sargent2012` (pp. 72-77). See {cite}`HansenSargent_Recursive_Models` (ch.~14) for a collection of  more general permanent income models.
+````
+````{prf:example}
+:label: ex:Muth1
+
+(Muth 1)
+Consider the following generalization of a model analyzed by {cite}`Muth1960`:
+
+```{math}
+Y^{[p]}_{t+1} = Y^{[p]}_t + \alpha_p \cdot  W_{1,t+1} \\
+Y_{t} = Y_{t}^{[p]} - G \cdot X_t ,
+```
+
+where the i.i.d. random vector $W_{t+1} \sim \mathcal{N}(0,I)$,
+
+```{math}
+X_{t+1} =A X_t + B W_{t+1}
+```
+
+and $A$ is a stable matrix.
+Evidently $\{Y_t\}$ is an additive process:
+
+```{math}
+Y_{t+1} - Y_t = \alpha_p W_{1,t+1}  -  ( G \cdot X_{t+1}   - G  \cdot X_t ) .
+```
+
+$\left\{ Y^{[p]}_t \right\}$ is the martingale component of $\left\{ Y_t \right\}$ and $f(x) = G'(I -A)x$.  Thus,
+
+```{math}
+g(x) = G'(I - A) (I -  A)^{-1} x = G \cdot x.
+```
+
+Suppose that $B \alpha_p = 0$.  Then
+$\left\{ X_t \right\}$ is independent of the martingale $\left\{ Y^{[p]}_t \right\}$,
+so we can think of the shock vector  $B W_{t+1}$  to $\{ X_{t+\tau}: \tau=1,2,... \}$ as transitory and independent of the permanent shock  $\alpha_p \cdot W_{1,t+1}$.  Specifically,
+
+```{math}
+- G' A^{\tau -1} B W_{t+1}
+```
+
+gives the impact of $B W_{t+1}$ on  $ Y_{t+\tau}$ for $\tau \ge 1$. Because $A$ is stable, $- G' A^{\tau -1} B $ approaches  zero as $\tau$ gets arbitrarily large.
+````
+## Loglinear Approximations  {#sec:Camp_Shiller}
+
+It is common to use log-linear approximations to characterize how payouts and required return processes affect asset values. Let $V_{t}$ be the value at date $t$ of a claim to a stream $\{G_{t+j}\}_{j=0}^\infty$ of positive cash flows or dividends. The one-period return on the asset is
+
+```{math}
+R_{t+1} = {\frac {V_{t+1} + G_{t+1}} {V_t}} =  \left({\frac {V_{t+1}/G_{t+1}  + 1} {V_t/G_t}}\right) \left({\frac {G_{t+1}}{G_t}} \right)
+```
+
+Let
+
+```{math}
+\lambda = {\frac 1 {\exp(\mu_v) + 1}} ,
+```
+
+then approximate $\log V_t - \log G_t$ around its mean  $\mu_v$ to obtain
+
+```{math}
+\log \left(V_{t+1}/G_{t+1} + 1 \right) \approx
+\log \left[ \exp\left( \mu_v \right) + 1 \right] +
+ \lambda \left( \log V_{t+1} - \log G_{t+1} - \mu_v \right)  .
+```
+
+Use this approximation to construct a difference equation
+
+```{math}
+\log V_t  - \log G_t & = \log \left[ \exp\left( \mu_v \right) + 1 \right]  + \cr &
+ \lambda \left( \log V_{t+1} - \log G_{t+1} - \mu_v \right)   + \log G_{t+1} - \log G_t - \log R_{t+1}
+```
+
+that we can solve forward to obtain the "present value model"
+
+```{math}
+:label: eqn:CSpresentval
+\log V_t - \log G_t - \mu_v  & = \log \left[ \exp\left( \mu_v \right) + 1 \right] - \mu_v \cr &   + \sum_{j=0}^\infty \lambda^j
+\left( \log G_{t+1+j} - \log G_{t+j} - \log R_{t+1+j} \right)
+```
+
+Let $\mu_r$ be the mean of $\log R_{t+1}$ and let $\mu_g$ be the mean of $\log G_{t+1} - \log G_t$. Then
+
+```{math}
+- \mu_v = \log \left[ \exp\left( \mu_v \right) + 1 \right] - \mu_v - {\frac {\mu_g - \mu_r} {1 - \lambda}}
+```
+
+or
+
+```{math}
+\log \left[ \exp\left( \mu_v \right) + 1 \right] = {\frac {\mu_g - \mu_r} {1 - \lambda}},
+```
+
+which implicitly expresses $\mu_v$ as a nonlinear function of $\mu_g$ and $\mu_r$.
+
+To complete the model, we must specify stochastic processes for $\{\log R_t\}$ and $\{G_t\}$, the fundamental forces appearing on the right side of equation {eq}`eqn:CSpresentval`. Here we assume the following two moving-average representations:
+
+```{math}
+:label: eqn:asset_price_inputs
+\log R_{t+1} & =  \mu_r + \alpha^r({\mathcal L}) W_{t+1} \cr
+\log G_{t+1} - \log G_t & =  \mu_g + \alpha^g({\mathcal L}) W_{t+1}
+```
+
+where ${\mathcal L}$ is again the lag operator. We want to deduce a moving average representation for $\log V_t - \log G_t$ implied by the processes {eq}`eqn:asset_price_inputs`, which we guess has the form
+
+```{math}
+:label: eqn:asset_price_outcome
+\log V_{t} - \log G_t  = \mu_v +  \alpha^v({\mathcal L}) W_t.
+```
+
+implied by {eq}`eqn:CSpresentval`. In specifying the exogenous input processes {eq}`eqn:asset_price_inputs`, we assume that $\log R_t$ is a stationary process and that $\log G_t$ is an additive functional. In specifying that the solution takes the form {eq}`eqn:CSpresentval`, we are guessing that $\log V_t - \log G_t$ is a stationary process and that $\log V_t$ is an additive functional that is cointegrated with $\log G_t`.[^cointegration]
+
+[^cointegration]: See section [Cointegration Introduction](#sec:cointegrate00) above and section [Full Cointegration Discussion](#sec:cointegrate) below for definitions of cointegration.
+
+The present-value model {eq}`eqn:CSpresentval` obtained from the log-linear approximation implies the cross-equation restriction
+
+```{math}
+\alpha_v(\zeta) = \left({\frac 1 {\zeta - \lambda}}\right) \left[ \alpha_g(\zeta) - \alpha_r(\zeta)\right],
+```
+
+where $\zeta$ is a complex-valued scalar. The assumption that $\log V_t - \log G_t$ depends only on current information implies that $\alpha_v$ has a power series representation valid for $| \zeta | < 1$, so $\zeta = \lambda$ is a removable singularity, which in turn implies that
+
+```{math}
+\alpha_g(\lambda) = \alpha_r(\lambda),
+```
+
+which asserts that, when discounted by appropriate powers of $\lambda`, the present values of sums of moving-average coefficients should be the same for returns and cash-flow growth.[^HSRoberds]
+
+[^HSRoberds]: {cite}`HSRoberds` discuss challenges to testing this restriction
+
+This present-value restriction in turn implies that
+
+```{math}
+:label: eqn:CampShill_punch
+\alpha_v(\zeta) = {\frac { \alpha_g(\zeta) -  \alpha_g(\lambda)}{\zeta - \lambda}}  -
+{\frac { \alpha_r(\zeta) -  \alpha_r(\lambda)}{\zeta - \lambda}} .
+```
+
+The first term on the right side of {eq}`eqn:CampShill_punch` is the contribution to $\alpha_v(\zeta)$ from the expected cash flow in the absence of expected return variability, while the second term accounts for expected return variability. In the time domain, equation {eq}`eqn:CampShill_punch` asserts that
+
+```{math}
+\log V_t - \log G_t - \mu_v = E \left[ \sum_{j=0}^\infty \lambda^j
+\left( \log G_{t+1+j} - \log G_{t+j} - \mu_g - \log R_{t+1+j} + \mu_r \right) \vert {\mathfrak F}_t \right]
+```
+
+{cite}`CampbellShiller1988` use formulas like {eq}`eqn:CampShill_punch` to argue that since
+
+```{math}
+E \left[ \sum_{j=0}^\infty \lambda^j 
+\left( \log G_{t+1+j} - \log G_{t+j} - \mu_g \right) \vert {\mathfrak F}_t \right]
+```
+
+has a small variance when $G_t$ is measured by aggregate dividends, variations in the logarithm of the price-dividend ratio must be attributed to time-varying expected returns via the second term
+
+```{math}
+E \left[ \sum_{j=0}^\infty \lambda^j
+\left( \log R_{t+j} - \mu_r \right) \vert {\mathfrak F}_t \right] .
+```
+
+That finding poses the scientific challenge to discover a theoretical structure that generates variations in the discounted expected returns that are not induced by dividend variations. This challenge prompts us to think about why "risk prices" might be large and why they might fluctuate.
+````{prf:example}
+:label: sec:cointegrate
+
+(Cointegration)
+
+A linear combination of two additive functionals is an additive functional.[^addFunc] Let $X_t$ be governed by the vector autoregression {eq}`eqn:addex1a` and let $\tilde \kappa_1(x, w^*)$ and $\tilde \kappa_2(x, w^*)$ be two functions, each of which can play the role of $\kappa(x, w^*)$ in constructing an additive functional. For real valued scalars ${\sf r}_1$ and ${\sf r}_2$, form
+```{math}
+Y_{t} = {\sf r}_1 Y_{t}^{[1]} + {\sf r}_2 Y_{t}^{[2]}
+```
+where $Y_{t}^{[1]}$ is constructed with $\tilde \kappa_1$ and $Y_{t}^{[2]}$ is constructed with $\tilde \kappa_2$. Thus, we can build
+
+```{math}
+Y_{t} = {\sf r}_1 Y_{t}^{[1]} + {\sf r}_2 Y_{t}^{[2]} = \sum_{j=1}^{t} \left[{\sf r}_1 \tilde \kappa_1(X_{j-1}, W_{j}) + {\sf r}_2 \tilde \kappa_2(X_{j-1}, W_{j})\right] + {\sf r}_1 Y_0^{[1]} + {\sf r}_2 Y_0^{[2]}.
+```
+
+The {prf:ref}`prop:decomp` martingale component of $\{ Y_t : t =0,1,...\}$ is the corresponding linear combination of the martingale components of $\{ Y_t^{[1]} : t =0,1,...\}$ and $\{ Y_t^{[2]} : t =0,1,...\}$. The {prf:ref}`prop:decomp` trend component of $\{ Y_t : t =0,1,...\}$ is the corresponding linear combination of the trend components of $\{ Y_t^{[1]} : t =0,1,...\}$ and $\{ Y_t^{[2]} : t =0,1,...\}``.
+
+{cite}`englegranger` focused on linear combinations of two additive functionals whose linear trend and martingale components are both zero. They called two processes **cointegrated** if some linear combination of them is stationary.[^stationary] This situation occurs when there exist real valued scalars ${\sf r}_1$ and ${\sf r}_2$ that imply
+
+```{math}
+{\sf r}_1 \nu_1 + {\sf r}_2 \nu_2 = 0
+{\sf r}_1 {\kappa_a}_1 + {\sf r}_2 {\kappa_a}_2 = 0,
+```
+
+where the $\nu$'s and ${\kappa_a}$'s correspond to the first two components of the representation in {prf:ref}`prop:decomp`. These two restrictions imply that the time trend and the martingale component of the linear combination $Y_t$ are both zero.[^cointVector] When ${\sf r}_1 = 1$ and ${\sf r}_2 = - 1$, the component additive functionals $Y_{t}^{[1]}$ and $Y_{t}^{[2]}$ share a common growth component.
+
+[^addFunc]: An analogous statement applies to **additive processes**. Tom XXXX: add reference to earlier footnote defining additive processes. Make sure distinction between additive functionals and additive processes is defined earlier.
+
+[^stationary]: Their definition can readily be extended to require only that the linear combination be asymptotically stationary. That would allow a transient component in the cointegrating residual ignited by an initial condition $X_0$ from a tail of the stationary distribution of $X$.
+
+[^cointVector]: The cointegration vector $({\sf r}_1, {\sf r}_2)$ is determined only up to scale.
+````
+````{prf:example}
+(Permanent income model, II)
+
+In the permanent income model of example {prf:ref}`ex:permincome`, consumption and debt are cointegrated.  Recall the optimal initial choice of for $c_0$ in example {prf:ref}`ex:permincome` and add $(1-\beta) b_t $ to $c_t$ to obtain
+```{math}
+(1-\beta) b_t + c_t = \mu_y + (1-\beta) S' (I - \beta A)^{-1} X_t .
+```
+The term on the right side equals $(1-\beta) E_t \sum_{j=0}^\infty \beta^j y_{t+j} $, so we have
+```{math}
+(1-\beta) b_t + c_t = (1-\beta) E_t \sum_{j=0}^\infty \beta^j y_{t+j} .
+```
+The term on the right is sometimes called a "cointegrating residual".
+{cite}`CampbellShiller1988` and {cite}`Lettau_Ludvigson2001,Lettau_Ludvigson2004` use the cointegrating residual for a permanent income model to approximate the public's expectation about future discounted nonfinancial income.[^cointegration]
+
+[^cointegration]: See {cite}`HansenSargent_Recursive_Models` for cointegration in a more general collection of permanent income models.
+
+````
+````{prf:example}
+:label: hyperinflation
+
+\citet{Sargent1977} reverse engineered a bivariate model of hyperinflation for which the adaptive expectations of \citet{cagan:1956} are consistent with rational expectations.[^SargentNote] Where $p_t$ is the log of the price level and $m_t$ is the log of money supply, let $q_t = p_t - p_{t-1}$ and $k_t = m_t - m_{t-1}$. Let $\bar q_t$ be the public's time $t$ forecast of time $t+1$ inflation.
+Cagan's adaptive expectations rule for forecasting inflation is
+
+```{math}
+{\bar q}_t = \lambda {\bar q}_{t-1} + (1 - \lambda) {q}_t
+```
+
+where $0 < \lambda < 1$. To make this adaptive expectations forecast a linear least squares forecast, we assume that
+
+```{math}
+q_{t+1} = {\bar q}_t + \sigma_f \cdot W_{t+1},
+```
+
+which implies that
+
+```{math}
+q_{t+1} = \lambda q_t + (1-\lambda) q_t + \sigma_f \cdot W_{t+1} - \lambda \sigma_f \cdot W_t
+```
+
+or
+
+```{math}
+q_{t+1} - q_t = \sigma_f \cdot W_{t+1} - \lambda \sigma_f \cdot W_t .
+```
+
+The demand function for real balances has representation
+
+```{math}
+q_t - k_t = \alpha {\bar q}_t + \sigma_d \cdot W_t = \alpha q_t - \lambda \sigma_f \cdot W_t + \sigma_d \cdot W_t,
+```
+
+where $- \alpha < 0$ is the semi elasticity of the demand for real balances with respect to expected inflation. So
+
+```{math}
+k_t = (1 - \alpha) q_t + \lambda \sigma_f \cdot W_t - \sigma_d \cdot W_t.
+```
+
+From this relation, it follows that the martingale components of $\{ k_t \}$ and $\{ q_t \}$ are proportional and that $\begin{bmatrix} -1  & (\alpha - 1) \end{bmatrix}$ is a cointegrating vector for $\{ (k_t, q_t) \}$.
+````
+
+[^SargentNote]: John F. \citet{Muth1960} reverse engineered a univariate process for labor income for which the adaptive expectations model for permanent income of Milton \citet{Friedman:1957} is consistent with rational expectations. See {prf:ref}`ex:Muth1960` in [Learn](chap:learn).
+## Long-term risk models
+
+```{warning}
+NOTE TO READERS: This section is undergoing repair. Please skip it now.
+```
+
+We consider two long-run risk models.
+
+{cite}`BY and others`
+
+Here we want to add some words explaining how the two models to be described differ in terms of the evidence that they bring to bear on the long-run risk component.
+
+![Consumption and corporate earnings](HHL_updated_fig1a.eps)
+![Consumption and corporate earnings](HHL_updated_fig1b.eps)
+_Caption: Top panel: logarithm of consumption (smooth series) and logarithm of corporate earnings (choppy series). Bottom panel: difference in logarithms of consumption and corporate earnings. The shaded areas are National Bureau of Economic Research recessions._ {fig:coint}
+````{prf:example}
+:label: ex:long_risk_2
+(Long-run consumption risk, II)
+
+{cite}`hhl:2008` used covariation with other time series to infer long-run stochastic components of consumption.[^longrisk] The top panel of Figure {prf:ref}`fig:coint` plots logarithms of nondurable consumption $C_t$ and corporate earnings $N_t$. The bottom panel plots the difference between logarithms of nondurable consumption and corporate earnings, which ends very near where it starts, suggesting the presence of common trend and martingale components in the two series, an observation that led {cite}`hhl:2008` to impose co-integration between the logarithms of consumption and corporate earnings and thereby restrict them to grow together. A way to impose co-integration is to let $X_t$ be governed by the VAR
+```{math}
+X_{t+1} = A X_t + BW_{t+1},
+```
+where $A$ is a stable matrix and $\{W_{t+1}\}$ is an i.i.d. sequence of ${\cal N}(0,I)$ random vectors; then to choose $X_t$ to have the first difference in the logarithm of consumption as its first entry and the logarithm of corporate earnings minus the logarithm of consumption in the second position, then to fill in the other components of $X_t$ with lags of these and any other variables that help forecast the logarithms of corporate earnings and consumption. This specification presents us with two additive functionals with increments:
+```{math}
+\log Y^{[1]}_{t+1} - \log Y^{[1]}_t & = \nu_1 + X_{t+1}^{[1]} \\
+\log Y^{[2]}_{t+1} - \log Y^{[2]}_t & = \nu_2  + X_{t+1}^{[2]} - X_t^{[2]}  + X_{t+1}^{[1]},
+```
+where $Y^{[1]}_{t+1} = C_{t+1}$ and $ Y^{[2]}_{t+1} = N_{t+1}$. The additive functionals $\{\log Y^{[1]}_{t+1}\}$ and $\{\log Y^{[2]}_{t+1}\}$ share the same martingale and trend components but have different transitory components.
+
+Notice that
+```{math}
+\log Y^{[1]}_{t+1} - \log Y^{[1]}_t = \nu_1 + D \cdot X_t + F \cdot W_{t+1}
+```
+where
+```{math}
+D = A'U_1,  \  F = B' U_1
+```
+and $U_1$ is a vector of zeros except for a one in the first position. The impulse response of $\log C_{t+1} - \log C_t$ to $W_{t+1}$ is $F,  B'D,  B'A'D, \cdots ,$ which has $z$-transform:
+```{math}
+F + \zeta B'(I - \zeta A')^{-1} D = B' (I - \zeta A')^{-1} U_1
+```
+where $\zeta$ is a complex scalar. The martingale increment scaled to have unit standard deviation is $F^* \cdot W_{t+1}$, where
+```{math}
+F^* = {\frac 1 {|B'(I -  A')^{-1} U_1 |}}  B' (I -  A')^{-1} U_1
+```
+and the $z$-transform of the impulse response function of $\log C_{t+1}$ to the martingale increment is
+```{math}
+\left( {\frac 1 {1 - \zeta}}\right) F^* \cdot [B' (I - \zeta A')^{-1} U_1].
+```
+
+````
+
+[^longrisk]: {cite}`LPH_TJS_tenuous` and {cite}`LPH_twisted` applied a method similar to {cite}`hhl:2008` to a slightly different set of time series in order to extract a permanent shock to log consumption.
+## Central Limit Theory
+
+Let $\{Y_t : t=0,1,...\}$ be an additive martingale process whose increments $Y_{t+1} - Y_t$ are stationary and ergodic martingale differences, so that they satisfy
+```{math}
+E \left( Y_{t+1} - Y_t \vert {\mathfrak F}_t \right) = 0.
+```
+{cite}`billingsley` proved that such a process obeys a central limit theorem that asserts that
+```{math}
+\frac{1}{\sqrt{t}} Y_t \Longrightarrow N(0, E[(Y_{t+1} - Y_t)^2])
+```
+where $\Longrightarrow$ means convergence in distribution.[^convergence] In {cite}`billingsley`'s central limit theorem, the increments to $Y$ are martingale differences rather than i.i.d. as they are in elementary central limit theorems.
+
+{cite}`gordin` extended {cite}`billingsley`'s result to allow temporally dependent increments. We can view Gordin's result as an application of Proposition {prf:ref}`prop:decomp`.
+
+````{prf:corollary :label: cor:gordin}
+({cite}`gordin`) Suppose that the assumptions of Proposition {prf:ref}`prop:decomp` apply and that $\nu =0$. Then
+```{math}
+\frac{1}{\sqrt{t}} Y_t \Longrightarrow N(0, \sigma^2)
+```
+where
+$\sigma^2=E\left(\left[{\kappa_a}(X_{j},W_{j+1})\right]^2\right)$.[^hallheyde]
+````
+
+[^convergence]: If we replace the variance by $E[(Y_{1} - Y_0)^2|{\mathfrak I}]$ in the variance appearing in the normal approximation, we do not need to assume ergodicity.
+
+[^hallheyde]: {cite}`hallheyde` show how to extend this approach to obtain functional counterparts of the Central Limit Theorem.
+
+\noindent The formula
+```{math}
+\sigma^2 = \lim_{t \rightarrow \infty} \frac{1}{t} \textrm{variance}(Y_t) =  E\left(\left[{\kappa_a}(X_{j},W_{j+1})\right]^2\right)
+```
+properly takes into account temporal dependence of the increments $(Y_{t+1} - Y_t)$ when computing "long-run variance" of the level $Y_t$: all that matters is the martingale component, not the stationary $g(X_t)$ component.
+
+To illustrate we return to the first-order VAR example {prf:ref}`sec:VARex` with $\nu=0$:
+```{math}
+\begin{eqnarray*}
+X_{t+1} & = & A X_t + B W_{t+1} \cr
+Y_{t+1} - Y_t & = &  D \cdot X_t + F \cdot W_{t+1} .
+\end{eqnarray*}
+```
+The variance of the martingale increment that appears in Corollary {prf:ref}`cor:gordin` is[^variance]
+```{math}
+:label: eqn:varmartincrGordin
+\sigma^2 =  [F + B'(I-A')^{-1}D]\cdot [F + B'(I-A')^{-1}D] .
+```
+This differs from both the conditional variance $|F|^2$ and the unconditional variance, $D'\Sigma D + |F|^2$ of $Y_{t+1} - Y_t$, where
+```{math}
+\Sigma = \sum_{j=0}^\infty (A)^j BB'(A^j)'
+```
+is the covariance matrix of the stationary distribution of $X_t$.
+
+Since linear combinations of additive functionals are additive functionals, Corollary {prf:ref}`cor:gordin` can be applied to any linear combination of a vector of additive functionals.
+
+[^variance]: This expression for $\sigma^2$ equals the spectral density of $\{Y_{t+1} - Y_t\}$ at zero frequency, an object that plays an important role in remark {prf:ref}`rem:lrrcare`.
+## Evaluating Long-Run Risk
+
+{cite}`hhl:2008` feature a representative household that dislikes long-run components of risk in consumption of the type present in examples {prf:ref}`ex:long_risk_1` and {prf:ref}`ex:long_risk_2`.
+
+### Additive functional for utility process
+A representative household ranks consumption processes $\{C_t\}_{t=0}^\infty$ with a utility functional $\{V_t\}_{t=0}^\infty$ generated by the recursion:
+
+```{math}
+:label: eqn:utilrecur1
+\log V_t = [ 1 - \exp(- \delta) ] \log C_t + \exp(-\delta)  \log {\mathbb R}_t \left( V_{t+1} \right)
+```
+where
+
+```{math}
+:label: eqn:risksensoperator
+{\mathbb R}_t(V_{t+1}) = \left( E \left[ \left(V_{t+1}\right)^{1 - \gamma} \vert {\mathcal F}_t \right] \right)^{\frac 1 {1-\gamma}} .
+```
+Here $V_t$ is the date $t$ value of a continuation consumption process $\{C_{t+\tau}\}_{\tau =0}^\infty$, $\delta > 0$ is a subjective discount rate, and $\gamma \geq 1$ is a risk aversion parameter that enters the risk-sensitivity operator ${\mathbb R}_t(V_{t+1})$ defined in equation {eq}`eqn:risksensoperator`.
+````{prf:remark}
+The limit of $\mathbb{R}$ as $\gamma$ approaches $1$ is ordinary expected logarithmic utility:
+```{math}
+\lim_{\gamma \downarrow 1} \log \mathbb{R}_t(V_{t+1}) = \lim_{\gamma \downarrow 1} {\frac {\log E \left[ \left(V_{t+1}\right)^{1 - \gamma}
+\vert \mathcal{F}_t \right]}{1-\gamma}} = E\left( \log V_{t+1} \vert \mathcal{F}_t \right) .
+```
+````
+
+Suppose that $\{\log C_t \}_{t=0}^\infty$ is an additive functional described by
+```{math}
+\log C_{t+1} - \log C_t = \nu + D \cdot X_t + F \cdot W_{t+1}
+```
+where
+```{math}
+X_{t+1} = A X_t + B W_{t+1} ,
+```
+$A$ is a stable matrix, and  $\{W_{t+1}\}_{t=0}^\infty$ is an i.i.d.\ sequence of $\mathcal{N}(0,I)$ random vectors.
+````{prf:theorem} 
+:label: prop:tallvalue 
+The value function process $\{V_t\}_{t=0}^\infty$ satisfies 
+```{math}
+:label: eqn:Vguess0
+\log V_t - \log C_t = U \cdot X_t + {\sf u}
+```
+where
+```{math}
+:label: eqn:Uformula
+U = \exp(-\delta) \left[ I - \exp(-\delta) A' \right]^{-1} D ,
+```
+and
+```{math}
+:label: eqn:uformula
+{\sf u} = {\frac {\exp( -\delta)}{ 1 - \exp(-\delta)}} {\nu} + \frac{(1 - \gamma)}{2} {\frac {\exp(-\delta)}{1 - \exp(-\delta)}}
+\biggl| D' \left[ I - \exp(-\delta) A \right]^{-1}B + F \biggl|^2.
+```
+````
+Transform utility recursion {eq}`eqn:utilrecur1` to
+```
+\log V_t - \log C_t = \exp(-\delta) \log {\mathbb R}_t \left[ \left({\frac {V_{t+1}}{C_{t+1}}}\right) \left({\frac {C_{t+1}}{C_{t}}}\right) \right] .
+```
+Guess that $V_t$ takes form {eq}`eqn:Vguess0`.
+Under this guess
+```
+\left[\left({\frac {V_{t+1}}{C_{t+1}}}\right) \left({\frac {C_{t+1}}{C_{t}}}\right)\right]^{1-\gamma}
+```
+is a log-normal random variable  with conditional mean
+```
+(1-\gamma) \left( A'U \cdot X_t + {\sf u}  + D \cdot X_t + {\sf \nu} \right)
+```
+and conditional variance
+```
+(1-\gamma)^2 |U'B + F|^2 .
+```
+The logarithm of the mean of a log-normal random variable equals the mean of the associated normal random variable plus one half its variance.
+It follows that $U$ in  value function {eq}`eqn:Vguess` satisfies
+$U =  \exp(-\delta) A'U + \exp(-\delta) D$, which implies formula {eq}`eqn:Uformula`, which is independent of $\gamma$.  Similarly,
+```{math}
+{\sf u} = \exp(- \delta) \left[ {\sf u} +  \nu  + {\frac 1 2} (1-\gamma)|U'B + F|^2 \right],
+```
+which implies formula {eq}`eqn:uformula` for ${\sf u}`.
+
+In example {prf:ref}`ex:tallarini` below, we will use a special case of this value functional to describe costs of random fluctuations in aggregate consumption.
+
+
+### Implied Stochastic Discount Factor Process
+By providing a local assessment of how a consumer responds to uncertainty, a stochastic discount factor (SDF) process $\{ S_t \}$ tells how a consumer values payouts that are exposed to risks.  SDF processes have a variety of uses. First, they provide ingredients for constructing asset pricing models. Second, they provide constituents for formulating Pigouvian taxes for correcting adverse externalities under uncertainty. Third, they can help assess effects of  small (local) changes in government  policies.
+
+To indicate how to use a SDF process, we begin by positing that the date zero value of a risky date $t$  payout $\xi_t$ is
+```{math}
+:label: eqn:price101
+\pi_0^t(\xi_t) = E\left[ \left( {\frac {S_t}{S_0}} \right) \xi_t  \Bigr| {\mathcal F}_0 \right].
+```
+We can compute the ratio $ \frac {S_t}{S_0}  $ that appears in formula {eq}`eqn:price101`
+by evaluating the slope of an indifference curve that runs through both  a baseline  consumption process $\{C_t\}_{t=0}^\infty$ and a perturbed consumption process
+$(C_0 - P_0({\sf r}) , C_1, C_2, \ldots , C_t + {\sf r} \xi_t, C_{t+1}, ... )$.
+We can think of ${\sf r}$ as parameterizing an indifference curve, so
+$P_0({\sf r})$ expresses how much  current period consumption must be reduced to keep a consumer   on the same indifference curve after we replace $C_t$ by $C_t + {\sf r} \xi_t$.     We set  $\pi_0^t(\xi_t)$ defined in equation {eq}`eqn:price101` equal to  the slope of that  indifference curve:
+```{math}
+\pi_0^t(\xi_t) = {\frac d {d {\sf r} } }  P_0({\sf r}) \bigl|_{{\sf r} = 0} .
+```
+Applying this  approach to computing  $ \pi_0^t(\xi_t)$ in {eq}`eqn:price101` to  utility specification {eq}`eqn:utilrecur1` results in
+```{math}
+:label: eqn:sdf50
+{\frac {S_{t+1}}{S_t}} = \exp(-\delta) \left( {\frac {C_t}{C_{t+1}}} \right)
+\left( {\frac{ \left(V_{t+1}\right)^{1 - \gamma} }{E \left[ \left(V_{t+1}\right)^{1 - \gamma} \vert {\mathcal F}_t \right]}} \right) .
+```
+
+````{prf:theorem}
+The term
+$\left( {\frac{ \left(V_{t+1}\right)^{1 - \gamma} }{E \left[ \left(V_{t+1}\right)^{1 - \gamma} \vert {\mathcal F}_t \right]}} \right)$ is a nonnegative random variable with conditional expectation equal to unity. Therefore, it is a ratio of one-step transition probabilities and can be interpreted as a multiplicative increment to a likelihood ratio process, an object that will play a central role in chapter {ref}`chap:like`.
+````
+
+Taking logs on both sides enables us to  express equation {eq}`eqn:sdf50` as
+```{math}
+\log S_{t+1} - \log S_t = - \delta - \log C_t + \log C_{t+1}
++ \{(1 - \gamma) \left[\ \log V_{t+1} - E \left(\log V_{t+1} \vert {\mathcal F}_t \right) \right] \}
+- \frac{(1-\gamma)^2}{2} \left| D' \left[ I - \exp(-\delta) A \right]^{-1} B \exp(-\delta) + F' \right|^2.
+```
+From formulas {eq}`eqn:Vguess0`, {eq}`eqn:Uformula`, and {eq}`eqn:uformula`, the forward-looking term in braces on the right side of equation {eq}`eqn:SDFdiff` can be written
+```{math}
+(1 - \gamma) \left[ \left(\log V_{t+1} - \log C_t\right) - E \left(\log V_{t+1} - \log C_t \vert {\mathcal F}_t \right) \right]
+= (1-\gamma) \left(D' \left[ I - \exp(-\delta) A \right]^{-1}B \exp(-\delta) + F'\right) W_{t+1}.
+```
+Taken together, equations {eq}`eqn:SDFdiff` and {eq}`eqn:vforward` imply that the logarithm of the stochastic discount factor process is an additive functional.
+````{prf:remark}
+:label: rem:lrrcare
+Adding the contribution from $\{ \log C_t - \log C_{t+1}\}$ on the right side of {eq}`eqn:SDFdiff`, the martingale component of the logarithm of the stochastic discount factor then has an increment that approximates
+```{math}
+-\gamma \left[D'  \left(I -  A \right)^{-1} B + F'\right] W_{t+1}
+```
+well when $\exp(-\delta)$ is very close to $1$. This increment is proportional to the martingale increment of $\{\log C_t : t=0,1,2,...\}$ with the risk aversion parameter $\gamma$ being the factor of proportionality. This martingale component of the logarithm of the stochastic discount factor process can be shown to dominate the pricing of long-horizon risks. The minus sign in front of $\gamma$ expresses that a representative consumer having discount factor dislikes risk. The inner product of the vector $\left[D'  \left(I -  A \right)^{-1} B + F'\right]$ that appears in the martingale increment with itself approximates the variance of $\frac{1}{t} Y_t$ for large $t$ (see formula {eq}`eqn:varmartincrGordin`).
+````
+(sec:digress_robust)=
+## Digression on Robustness
+
+Empirical asset pricing studies often infer what they interpret as large values of the risk aversion parameter $\gamma$ in {eq}`eqn:risksensoperator`. Skeptics like {cite}`LucasAEAPres` say that best-fitting values of $\gamma$ indicate implausibly high risk-aversion. A way to address this issue is to interpret the parameter $\gamma$ in the risk-sensitivity operator defined in equation {eq}`eqn:risksensoperator` as reflecting a representative consumer's concerns about model misspecification. A value of $\gamma$ sufficiently high to fit theoretical restrictions between risk prices and consumption volatility may become plausible when we adopt the perspective of {cite}`bhs2007` and regard it as measuring aversion to model uncertainty. In reinterpreting $\gamma$ in this way, we rely on insights from literatures in both control theory and economics, including contributions of {cite}`jacobson`, {cite}`whittle`, and {cite}`hansensargentieeetac` to control theory and to economics by {cite}`hstw:2006` to interpret $\gamma$ as measuring a representative consumer's concern about robustness of his valuations with respect to misspecifications of the stochastic process governing consumption. This view uses the fact that the risk-sensitivity operator is an indirect utility function that emerges from minimizing an expected utility functional over a restricted set of probability measures, a minimization problem that we shall discuss in [section](sec:robustnes101a).
+(sec:growthregime)=
+## Growth-Rate Regimes 
+
+In this section, and the next, we develop a Proposition {prf:ref}`prop:decomp` decomposition for a model featuring persistent shifts in both the conditional mean and volatility of the growth rate $Y_{t+1}- Y_t$. This decomposition is applied in Section [Quadratic Volatility Decomposition](#sec:quad) to a model where the growth rate's stochastic volatility is a quadratic function of the state $X_t$.
+
+Suppose that $\{X_t\}$ evolves according to an $n$-state Markov chain with the transition matrix $\mathbb{P}$. Realized values of $X_t$ are coordinate vectors in $\mathbb{R}^n$. Assume that $\mathbb{P}$ has only one unit eigenvalue. Let $\mathbf{q}$ be the row eigenvector associated with that unit eigenvalue, normalized so that $\mathbf{q} \cdot \mathbf{1}_n = 1$ and
+$$
+\mathbf{q}'\mathbb{P} = \mathbf{q}'.
+$$
+Consider an additive functional satisfying
+```{math}
+Y_{t+1} - Y_t =  D \cdot X_t + X_t'F W_{1,t+1},
+```
+where  $\{ W_{1,t} \}$ is an i.i.d. sequence of multivariate standard normally distributed random vectors. This setup introduces discrete changes in both the conditional mean and the conditional volatility of the growth rate process $\{ Y_{t+1} - Y_t \}$ driven by the stationary Markov process $\{X_t \}$. The Markov chain can be represented as
+```{math}
+X_{t+1} = \mathbb{P} X_t + W_{2,t+1}
+```
+where $ E (X_{t+1} | X_t ) = \mathbb{P} X_t $ and $\{W_{2,t+1}\}$ is an $n \times 1$ discrete-valued vector process that satisfies $E ( W_{2,t+1} | X_t) = 0 $, making it a martingale difference sequence adapted to $X_t, X_{t-1}, \ldots , X_0$. Thus, we have a second component of the shock vector as
+```{math}
+W_{2,t+1} = X_{t+1} - E( X_{t+1} | X_t ).
+```
+
+To decompose the additive functional $\{Y_t\}$, we apply algorithm {prf:ref}`alg:martconstruct`. First compute
+```{math}
+\kappa_2(X_{t},W_{t+1}) = X_t'F W_{1,t+1},
+```
+and
+```{math}
+\nu = D \cdot \mathbf{q}.
+```
+Let $f(x) = \mathbf{f} \cdot x$ where
+```{math}
+\mathbf{f} = D - \nu \mathbf{1}_n.
+```
+Then $g(x) = \mathbf{g} \cdot x$ where $\mathbf{g}$ solves
+```{math}
+\begin{align*}
+(\mathbb{I} - \mathbb{P}) \mathbf{g} & =  \mathbf{f} \\
+\mathbf{q}'\mathbf{g} & = 0.
+\end{align*}
+```
+The second equation is necessary because the matrix $(\mathbb{I} - \mathbb{P})$ is singular since
+```{math}
+\mathbf{q}' (\mathbb{I} - \mathbb{P}) = 0.
+```
+Set
+```{math}
+\kappa_1(x,w^*) = \mathbf{f}\cdot x  + \mathbf{g} \cdot x^* - \mathbf{g} \cdot x.
+```
+Since $\kappa_1(x,w^*)$ denotes the part of $g \cdot x^*$ that cannot be predicted given $x$, we have
+```{math}
+\kappa_1(x,w^*) = \mathbf{g} \cdot (x^* - \mathbb{P} x) = \mathbf{g} \cdot w_2^*.
+```
+Thus, we can write
+```{math}
+Y_{t} = t \nu + \left[ \sum_{j=1}^{t} \kappa_a(X_{j-1},W_{j}) \right] - \mathbf{g} \cdot X_{t} + \mathbf{g} \cdot X_0 + Y_0 ,
+```
+where $\kappa_a = \kappa_1 + \kappa_2$. The martingale increment contains both continuous and discrete components:
+```{math}
+\begin{matrix}
+\kappa_a(X_t , W_{t+1}) & = & \underbrace{X_t'F W_{1,t+1}} & + & \underbrace{\mathbf{g} \cdot W_{2,t+1}}. \\
+& & \text{\bf{continuous}} & & \text{\bf{discrete}}
+\end{matrix}
+```
+(sec:quad)=
+## Quadratic Model of Growth
+(app:AddFnA)=
+## State-Space Algorithm
+
+This appendix outlines a simple linear state-space algorithm for representing and simulating a {prf:ref}`prop:decomp` decomposition of an additive functional that is driven by a VAR process. Where $\{W_{t+1}\}_{t=0}^\infty$ is an i.i.d.~sequence of standardized Gaussian random vectors, recall the additive functional {eq}`eqn:addex1a`-{eq}`eqn:addex1b` that is driven by a VAR process for $X_t$. For convenience we repeat it here
+
+```{math}
+X_{t+1}  = A X_t + B W_{t+1} \\
+Y_{t+1} - Y_{t}  = \nu + D X_{t} + F W_{t+1} .
+```
+
+The associated {prf:ref}`prop:decomp` decomposition is
+
+```{math}
+    Y_t
+    = t \nu +
+       \sum_{j=1}^t H W_j -
+       g X_t +
+       g X_0 + Y_0
+```
+
+where
+
+```{math}
+    \begin{aligned}
+      H & := F + B'(I - A')^{-1} D \\
+      g & := D' (I - A)^{-1} .
+    \end{aligned}
+```
+
+A convenient way to represent this additive functional and its decomposition is to form a linear state space system
+
+```{math}
+    \begin{aligned}
+      \tilde{X}_{t+1} &= \tilde{A} \tilde{X}_t + \tilde{B} W_{t+1} \\
+      \tilde{Y}_{t} &= \tilde{D} \tilde{X}_t
+    \end{aligned}
+```
+
+with state vector and observation vector defined as
+
+```{math}
+    \tilde{X} := \begin{bmatrix} 1 \\ t \\ X_t \\ Y_t \\ M_t \end{bmatrix}
+    \quad \text{and} \quad
+    \tilde{Y} := \begin{bmatrix} X_t \\ Y_t \\ \tau_t \\ M_t \\ S_t \end{bmatrix}
+```
+
+State-space matrices $\tilde A, \tilde B, \tilde D$ are defined implicitly by
+
+```{math}
+    \begin{bmatrix}
+        1 \\
+        t+1 \\
+        X_{t+1} \\
+        Y_{t+1} \\
+        M_{t+1}
+    \end{bmatrix} =
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 & 0 \\
+        1 & 1 & 0 & 0 & 0 \\
+        0 & 0 & A & 0 & 0 \\
+        \nu & 0 & D' & 1 & 0 \\
+        0 & 0 & 0 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 \\
+        t \\
+        X_t \\
+        Y_t \\
+        M_t
+    \end{bmatrix} +
+    \begin{bmatrix}
+        0 \\
+        0 \\
+        B \\
+        F' \\
+        H'
+    \end{bmatrix}
+    W_{t+1}
+```
+
+```{math}
+    \begin{bmatrix}
+        X_t \\
+        Y_t \\
+        \tau_t \\
+        M_t \\
+        S_t
+    \end{bmatrix} =
+    \begin{bmatrix}
+        0 & 0 & I & 0 & 0 \\
+        0 & 0 & 0 & 1 & 0 \\
+        0 & \nu & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 \\
+        0 & 0 & -g & 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 \\
+        t \\
+        X_t \\
+        Y_t \\
+        M_t
+    \end{bmatrix}
+```
+Here $M_t$ is the martingale component and $S_t$ is the asymptotically stationary component. By using the Python program lss.py at [quantecon](https://quantecon.org/quantecon-py/), we can simulate the additive functional and all components of its decomposition. -->
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="ergodic" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>If we wanted to include model uncertainty
+in the spirit of Chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>,
+we could construct a set of statistical models like the one described here, each with its own parameter vector,<br />
+and then  form a weighted average over  that set of  models.</p>
+</aside>
+<aside class="footnote brackets" id="markov-process" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Like <span class="math notranslate nohighlight">\(\{X_t \}\)</span>, the pair <span class="math notranslate nohighlight">\(\{ (X_t, W_{t} ) \}\)</span> is a first-order Markov process restricted so that
+the joint transition distribution depends only on <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="notice" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Notice that <span class="math notranslate nohighlight">\({\mathbb T} \left( \mathbb I - \mathbb T \right)^{-1} \overline \kappa(x) = \left( \mathbb I - \mathbb T \right)^{-1}  {\mathbb T} \overline \kappa(x).\)</span></p>
+</aside>
+<aside class="footnote brackets" id="algorithmnote" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
+<p>The operator <span class="math notranslate nohighlight">\(\left({\mathbb I} - {\mathbb P}\right)^{-1}\)</span> applied to zero-means processes is well defined.</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="example_out_c4_v2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Processes with Markovian increments</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="example_out_c5_v2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Hidden Markov Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-additive-functional">8.1. Definition of additive functional</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-martingales">8.2. Extracting Martingales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">8.3. Applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregression">8.3.1. Vector autoregression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-economic-rationale">8.3.2. An economic rationale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-regimes">8.3.3. Growth-Rate Regimes</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

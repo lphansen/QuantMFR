@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Manuscript" href="../continuous_global_solution/manuscript.html" />
-    <link rel="prev" title="Notebook: Expansion Suite" href="quickguide_update.html" />
+    <link rel="prev" title="Appendix: Approximation formulas for the stochastic discount factor" href="notes/old_appendix.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,15 +183,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../book/example_out_c2_v2.html">3. Markov Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../book/example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../book/example_out_c3_v2.html">5. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c4_v2.html">6. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c5_v2.html">7. Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/decision_book_draft.html">8. Risk, Ambiguity, and Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/exploring_recursive_utility.html">9. Exploring Recursive Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c6_v2.html">10. Likelihoods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/chapter_stochastic_response.html">11. Stochastic Responses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/marginal_valuation.html">12. Representing Marginal Valuation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/gmmcurrent_lars_v9.html">13. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/cite.html">14. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c5_v2.html">9. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c6_v2.html">12. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/chapter_stochastic_response.html">13. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/marginal_valuation.html">14. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/cite.html">16. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
 <ul class="current nav bd-sidenav">
@@ -204,6 +206,9 @@
 <li class="toctree-l1"><a class="reference internal" href="quickguide_update.html">Notebook: Expansion Suite</a></li>
 
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Example: Hansen, Khorrami and Tourre (2024)</a></li>
@@ -541,35 +546,35 @@ document.write(`
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="ak-model-with-recursive-utility">
 <h1><a class="toc-backref" href="#id3" role="doc-backlink">1 AK Model with Recursive Utility</a><a class="headerlink" href="#ak-model-with-recursive-utility" title="Link to this heading">#</a></h1>
-<p>This example is a discrete-time approximation of the model in Section 4.4 of <span id="id1">[<a class="reference internal" href="../book/cite.html#id443" title="Lars Peter Hansen, Paymon Khorrami, and Fabrice Tourre. Comparative valuation dynamics in production economies: long-run uncertainty, heterogeneity, and market frictions. Annual Review of Financial Economics, 2024.">Hansen <em>et al.</em>, 2024</a>]</span>.</p>
+<p>This example is a discrete-time approximation of the model in Section 4.4 of <span id="id1">[<a class="reference internal" href="../book/cite.html#id444" title="Lars Peter Hansen, Paymon Khorrami, and Fabrice Tourre. Comparative valuation dynamics in production economies: long-run uncertainty, heterogeneity, and market frictions. Annual Review of Financial Economics, 2024.">Hansen <em>et al.</em>, 2024</a>]</span>.</p>
 <div class="math notranslate nohighlight">
 \[C_t + I_t = \alpha K_t\]</div>
 <p>Let  <span class="math notranslate nohighlight">\({\widehat K}_t = \log K_t,\)</span> <span class="math notranslate nohighlight">\({\widehat C}_t = \log C_t\)</span>, and <span class="math notranslate nohighlight">\(\widehat{Z}_t^2 = \log Z_t^2\)</span>.  Then</p>
 <div class="math notranslate nohighlight" id="equation-equation1">
-<span class="eqno">(1)<a class="headerlink" href="#equation-equation1" title="Link to this equation">#</a></span>\[\begin{align} 
+<span class="eqno">(6)<a class="headerlink" href="#equation-equation1" title="Link to this equation">#</a></span>\[\begin{align} 
 {{\widehat K}_{t+\epsilon}} - {\widehat K}_t = \hspace{.2cm} &amp; \left[ {\frac 1 \zeta}  \log \left( 1 + \zeta \frac{I_t}{K_t} \right) + \beta_k Z_t^1 - \eta_k \right]\epsilon  \cr \hspace{.2cm} &amp; +  \sqrt{Z_t^2}  {\sigma}_k \cdot \left[W_{t+\epsilon}  - W_t\right] - \frac{1}{2}|\sigma_k|^2 Z_t^2 \epsilon
 \end{align} \]</div>
 <div class="math notranslate nohighlight" id="equation-equation2">
-<span class="eqno">(2)<a class="headerlink" href="#equation-equation2" title="Link to this equation">#</a></span>\[Z_{t+\epsilon}^1 -
+<span class="eqno">(7)<a class="headerlink" href="#equation-equation2" title="Link to this equation">#</a></span>\[Z_{t+\epsilon}^1 -
 Z_{t}^1=  - \beta_{1} Z_t^1 \epsilon +  \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\epsilon} - W_t \right)\]</div>
 <div class="math notranslate nohighlight" id="equation-equationz2">
-<span class="eqno">(3)<a class="headerlink" href="#equation-equationz2" title="Link to this equation">#</a></span>\[\begin{align}
+<span class="eqno">(8)<a class="headerlink" href="#equation-equationz2" title="Link to this equation">#</a></span>\[\begin{align}
 {\widehat Z}_{t+\epsilon}^2 - {\widehat Z}_{t}^2 = \hspace{.2cm} &amp;   - \beta_2 \left[ 1 - {\mu_2} \exp\left( - {\widehat Z}_t^2 \right) \right] \epsilon \cr \hspace{.2cm}&amp;  - {\frac 1 2} |\sigma_2|^2  \exp\left( - {\widehat Z}_t^2 \right) \epsilon   
 + \exp\left( - {\frac 1 2}  {\widehat Z}_t^2 \right) \sigma_2 \cdot \left(W_{t+\epsilon} - W_t \right)
 \end{align} \]</div>
 <p>Observe that <span class="math notranslate nohighlight">\(W_{t+\epsilon} - W_t \)</span> is normally distributed mean zero and covariance <span class="math notranslate nohighlight">\(\epsilon {\mathbb I}\)</span>.<br />
 Let <span class="math notranslate nohighlight">\(X_t = [Z_t^1 \hspace{.2cm} {\widehat Z}_t^2]\)</span> and <span class="math notranslate nohighlight">\(D_t = \frac{I_t}{K_t}.\)</span> Note that</p>
 <div class="math notranslate nohighlight" id="equation-equation3">
-<span class="eqno">(4)<a class="headerlink" href="#equation-equation3" title="Link to this equation">#</a></span>\[{\widehat C}_t = \log \left( \alpha - D_t \right) + {\widehat K}_t \]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-equation3" title="Link to this equation">#</a></span>\[{\widehat C}_t = \log \left( \alpha - D_t \right) + {\widehat K}_t \]</div>
 <p>The first-order conditions for the investment-capital ratio imply that</p>
 <div class="math notranslate nohighlight" id="equation-equation4">
-<span class="eqno">(5)<a class="headerlink" href="#equation-equation4" title="Link to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(10)<a class="headerlink" href="#equation-equation4" title="Link to this equation">#</a></span>\[\begin{split}\begin{align*}
 0 &amp;= - (1-\beta) \exp\left[(1- \rho) \left({\widehat C}_t - {\widehat G}_t \right)\right] \left( \frac{1}{\alpha - D_t} \right) 
 \\&amp;+ \beta \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right)\right] \left(\frac{1}{1 + \zeta D_t} \right)    
 \end{align*}\end{split}\]</div>
 <p>The co-state equation is:</p>
 <div class="math notranslate nohighlight" id="equation-equation5">
-<span class="eqno">(6)<a class="headerlink" href="#equation-equation5" title="Link to this equation">#</a></span>\[\begin{align*}
+<span class="eqno">(11)<a class="headerlink" href="#equation-equation5" title="Link to this equation">#</a></span>\[\begin{align*}
 MX_t = \hspace{.2cm} &amp; \beta \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat V}_t \right)\right] 
 {\mathbb E} 
 \left(
@@ -577,9 +582,9 @@ MX_t = \hspace{.2cm} &amp; \beta \exp\left[(1 - \rho) \left({\widehat R}_t - {\w
 \cr &amp; \hspace{.2cm} + \beta \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat V}_t \right)\right] \psi_{x'}^g 
 \end{align*}\]</div>
 <div class="math notranslate nohighlight" id="equation-equation6">
-<span class="eqno">(7)<a class="headerlink" href="#equation-equation6" title="Link to this equation">#</a></span>\[\begin{split}\psi_{x'}^x = \begin{pmatrix} 1-\beta_1 \epsilon &amp; \frac{1}{2} \exp\left(\frac 1 2 \widehat{Z}_t^2 \right) \sigma_1 \left(W_{t+\epsilon} - W_t \right) \\ 0 &amp; 1 + \left(-\beta_2  \mu_2 + \frac 1 2 |\sigma_2|^2 \right) \exp(-\widehat{Z}_t^2) \epsilon - \frac{1}{2} \exp\left(- \frac 1 2 \widehat{Z}_t^2 \right) \sigma_2 \left(W_{t+\epsilon} - W_t \right) \end{pmatrix}\end{split}\]</div>
+<span class="eqno">(12)<a class="headerlink" href="#equation-equation6" title="Link to this equation">#</a></span>\[\begin{split}\psi_{x'}^x = \begin{pmatrix} 1-\beta_1 \epsilon &amp; \frac{1}{2} \exp\left(\frac 1 2 \widehat{Z}_t^2 \right) \sigma_1 \left(W_{t+\epsilon} - W_t \right) \\ 0 &amp; 1 + \left(-\beta_2  \mu_2 + \frac 1 2 |\sigma_2|^2 \right) \exp(-\widehat{Z}_t^2) \epsilon - \frac{1}{2} \exp\left(- \frac 1 2 \widehat{Z}_t^2 \right) \sigma_2 \left(W_{t+\epsilon} - W_t \right) \end{pmatrix}\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-equation7">
-<span class="eqno">(8)<a class="headerlink" href="#equation-equation7" title="Link to this equation">#</a></span>\[\psi_{x'}^g = \begin{pmatrix} \beta_k \epsilon &amp; - \frac{1}{2}|\sigma_k|^2 \exp \left(\widehat{Z}_t^2\right) + \frac{1}{2} \exp\left(\frac 1 2 \widehat{Z}_t^2\right) \sigma_k\left(W_{t+\epsilon} - W_t \right)  \epsilon \end{pmatrix}\]</div>
+<span class="eqno">(13)<a class="headerlink" href="#equation-equation7" title="Link to this equation">#</a></span>\[\psi_{x'}^g = \begin{pmatrix} \beta_k \epsilon &amp; - \frac{1}{2}|\sigma_k|^2 \exp \left(\widehat{Z}_t^2\right) + \frac{1}{2} \exp\left(\frac 1 2 \widehat{Z}_t^2\right) \sigma_k\left(W_{t+\epsilon} - W_t \right)  \epsilon \end{pmatrix}\]</div>
 <section id="rewriting-first-order-conditions">
 <h2>1.2 Rewriting First-Order Conditions <a class="anchor" id="s1-2"></a><a class="headerlink" href="#rewriting-first-order-conditions" title="Link to this heading">#</a></h2>
 <p>To prepare the inputs for our code, we rewrite the jump variable equations in the form <span class="math notranslate nohighlight">\(\mathbb{E}[{N_{t+\epsilon}^*Q_{t+\epsilon}^* \psi_1(X_t, J_t, X_{t+\epsilon}, J_{t+\epsilon})}|{\mathfrak{A}_t}]\)</span> <span class="math notranslate nohighlight">\(- \psi_2(X_t, J_t)\)</span> and the state variable equations in the form <span class="math notranslate nohighlight">\(\phi\left(X_t, X_{t+\epsilon}, J_t, {\sf q}W_{t+\epsilon}, {\sf q} \right)\)</span>.</p>
@@ -1644,12 +1649,12 @@ Iteration 2: error = 1.38777878e-17
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="quickguide_update.html"
+       href="notes/old_appendix.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Notebook: Expansion Suite</p>
+        <p class="prev-next-title">Appendix: Approximation formulas for the stochastic discount factor</p>
       </div>
     </a>
     <a class="right-next"

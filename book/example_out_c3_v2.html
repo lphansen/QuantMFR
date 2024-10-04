@@ -65,7 +65,7 @@
     <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/example_out_c3_v2.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Processes with Markovian increments" href="example_out_c4_v2.html" />
+    <link rel="next" title="6. Stationary Increments" href="example_out_c3_v2_enzo_and_ken.html" />
     <link rel="prev" title="4. Markov Processes" href="example_out_c2_v2_enzo_and_ken.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,15 +183,17 @@
 <li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">6. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">7. Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">8. Risk, Ambiguity, and Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">9. Exploring Recursive Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">10. Likelihoods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">11. Stochastic Responses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">12. Representing Marginal Valuation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">13. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="cite.html">14. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">9. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">13. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">14. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
 <ul class="nav bd-sidenav">
@@ -204,6 +206,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
 
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
@@ -421,7 +426,7 @@ Let</p>
 \[U_{t+1} = X_{t+1} - E\left(X_{t+1} \vert {\mathfrak A}_t \right).\]</div>
 <p>We can interpret the above equations  as providing two contributions to the   <span class="math notranslate nohighlight">\(\{Y_{t}: t \ge 0\}\)</span> process.
 Thus, component <span class="math notranslate nohighlight">\(U_{t+1}\)</span> is unpredictable and represents new information about <span class="math notranslate nohighlight">\(Y_{t+1}\)</span> that arrives at date <span class="math notranslate nohighlight">\(t+1\)</span>.
-Component <span class="math notranslate nohighlight">\(\nu\)</span> is the trend rate of growth or decay in <span class="math notranslate nohighlight">\(\{Y_{t} : t \ge 0\}\)</span> conditioned on the invariant events. In the following sections, we present full  decomposition of a stationary increment process that will be useful both in connecting to sources of permanent versus transitory shocks and to central limit theorems.</p>
+Component <span class="math notranslate nohighlight">\(\nu\)</span> is the trend rate of growth or decay in <span class="math notranslate nohighlight">\(\{Y_{t} : t \ge 0\}\)</span> conditioned on the invariant events. In the following sections, we present a full  decomposition of a stationary increment process that will be useful both in connecting to sources of permanent versus transitory shocks and to central limit theorems.</p>
 </section>
 <section id="a-martingale-decomposition">
 <h2><span class="section-number">5.2. </span>A martingale decomposition<a class="headerlink" href="#a-martingale-decomposition" title="Link to this heading">#</a></h2>
@@ -472,7 +477,7 @@ is an <em>additive martingale</em>.</p>
 = \lim_{j \rightarrow \infty} \left[ E\left(Y_{t+j} \vert {\mathfrak A}_{t} \right)  -  E\left(Y_{t+j} \vert {\mathfrak A}_{t-1} \right) \right] .\]</div>
 <p>So the increment to the martingale component of <span class="math notranslate nohighlight">\(\{Y_t : t \ge 0 \}\)</span> is new information about the limiting optimal forecast of <span class="math notranslate nohighlight">\(Y_{t+j}\)</span>
 as <span class="math notranslate nohighlight">\(j \rightarrow + \infty\)</span>.</p>
-<p>By accumulating equation <a class="reference internal" href="#equation-eqn-add1001">(5.3)</a> forward, we arrive at:</p>
+<p>By accumulating equation <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#equation-eqn-add1001">(6.3)</a> forward, we arrive at:</p>
 <div class="proof proposition admonition" id="decomp00">
 <p class="admonition-title"><span class="caption-number">Proposition 5.1 </span></p>
 <section class="proposition-content" id="proof-content">
@@ -484,14 +489,14 @@ Y_{t} &amp; = &amp; \underbrace{t\nu} &amp; + &amp; Y_t^m &amp; - &amp;\underbra
 \end{matrix}\]</div>
 <p>The stationary increment process, <span class="math notranslate nohighlight">\(\{Y_{t}^m : t\ge 0 \},\)</span> is the martingale component with  <span class="math notranslate nohighlight">\(Y_0^m = 0\)</span>,   The component <span class="math notranslate nohighlight">\(\{H_{t}^+\}\)</span> is stationary.  The other components are constant over time.</p>
 </section>
-</div><p><a class="reference internal" href="#decomp00">Proposition 5.1</a> decomposes  a stationary-increment process into a linear  time trend, a martingale, and a transitory component of a stationary-increments process. A permanent shock is the increment to the martingale.  The martingale and transitory contributions are typically correlated.</p>
+</div><p><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a> decomposes  a stationary-increment process into a linear  time trend, a martingale, and a transitory component. A permanent shock is the increment to the martingale.  The martingale and transitory contributions are typically correlated.</p>
 <div class="proof example admonition" id="ex:chap2ma">
 <p class="admonition-title"><span class="caption-number">Example 5.1 </span></p>
 <section class="example-content" id="proof-content">
 <p>(Moving-average increment process) Consider again the <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#ex:MA">Example 2.8</a> moving-average process:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-firstoderex">
 <span class="eqno">(5.5)<a class="headerlink" href="#equation-eqn-firstoderex" title="Link to this equation">#</a></span>\[X_{t} = \sum_{j=0}^\infty \alpha_j \cdot W_{t-j} .\]</div>
-<p>Use this <span class="math notranslate nohighlight">\(\{X_t\}\)</span> process as the increment for <span class="math notranslate nohighlight">\(\{ Y_t : t \ge 0  \}\)</span> in formula <a class="reference internal" href="#equation-eqn-add-1000">(5.1)</a>.  New information about the  unpredictable component of <span class="math notranslate nohighlight">\(X_{t+j}\)</span> for <span class="math notranslate nohighlight">\(j \ge 0\)</span>  that arrives at date <span class="math notranslate nohighlight">\(t\)</span> is</p>
+<p>Use this <span class="math notranslate nohighlight">\(\{X_t\}\)</span> process as the increment for <span class="math notranslate nohighlight">\(\{ Y_t : t \ge 0  \}\)</span> in formula <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#equation-eqn-add-1000">(6.1)</a>.  New information about the  unpredictable component of <span class="math notranslate nohighlight">\(X_{t+j}\)</span> for <span class="math notranslate nohighlight">\(j \ge 0\)</span>  that arrives at date <span class="math notranslate nohighlight">\(t\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[E \left( X_{t+j} \mid {\mathfrak A}_{t} \right)-  E \left( X_{t+j} \mid {\mathfrak A}_{t-1} \right)= \alpha_{j} \cdot W_{t}\]</div>
 <p>Summing these terms over <span class="math notranslate nohighlight">\(j\)</span> gives</p>
@@ -505,22 +510,23 @@ is  summable, a condition that restricts  temporal dependence of the increment p
 <div class="math notranslate nohighlight">
 \[ \sum_{j=0}^\infty |\alpha_j|^2 &lt; \infty\]</div>
 <p>ensuring that <span class="math notranslate nohighlight">\(X_t\)</span> is well defined.  This possibility opened the door to the literature on long-memory processes that allow for <span class="math notranslate nohighlight">\(\alpha(1)\)</span> to be infinite as discussed in <span id="id5">Granger and Joyeux [<a class="reference internal" href="cite.html#id181" title="C. W. J. Granger and Roselyne Joyeux. An Introduction To Long‐Memory Time Series Models And Fractional Differencing. Journal of Time Series Analysis, 1(1):15-29, January 1980. URL: https://ideas.repec.org/a/bla/jtsera/v1y1980i1p15-29.html, doi:10.1111/j.1467-9892.1980.">1980</a>]</span> and elsewhere.</p>
-<p>In what follows, we presume that <span class="math notranslate nohighlight">\(\alpha(1)\)</span> is finite.  This sum of the coefficients  <span class="math notranslate nohighlight">\(\{\alpha_j: j\ge 0 \}\)</span> in  moving-average representation <a class="reference internal" href="#equation-eqn-firstoderex">(5.5)</a> for
+<p>In what follows, we presume that <span class="math notranslate nohighlight">\(\alpha(1)\)</span> is finite.  This sum of the coefficients  <span class="math notranslate nohighlight">\(\{\alpha_j: j\ge 0 \}\)</span> in  moving-average representation <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#equation-eqn-firstoderex">(6.5)</a> for
 the <strong>first difference</strong> <span class="math notranslate nohighlight">\(Y_{t+1}  - Y_t = X_{t+1}\)</span> of <span class="math notranslate nohighlight">\(\{ Y_t : t=0,1,.... \}\)</span> tells the <strong>permanent</strong> effect of <span class="math notranslate nohighlight">\(W_{t+1}\)</span> on current and future values of the
 <strong>level</strong> of <span class="math notranslate nohighlight">\(Y\)</span>, i.e., the effect on <span class="math notranslate nohighlight">\(\lim_{j\rightarrow + \infty} Y_{t+j}\)</span>.
-Models of <span id="id6">Blanchard and Quah [<a class="reference internal" href="cite.html#id45" title="O. J Blanchard and D. Quah. The dynamic effects of aggregate demand and supply disturbances. American Economic Review, 79:655-673, 1989.">1989</a>]</span> and <span id="id7">Shapiro and Watson [<a class="reference internal" href="cite.html#id387" title="M. Shapiro and M. Watson. Sources of business cycle fluctuations. NBER Macroeconomics Annual, 3:111-148, 1988.">1988</a>]</span> build on this
-property.
-The variance of the random variable <span class="math notranslate nohighlight">\(\alpha(1) \cdot W_{t+1}\)</span>  conditioned on the invariant events in <span class="math notranslate nohighlight">\({\mathfrak I}\)</span>  is <span class="math notranslate nohighlight">\(|\alpha(1)|^2\)</span>.  The overall variance of <span class="math notranslate nohighlight">\(X_{t}\)</span> is given by</p>
+Models of <span id="id6">Blanchard and Quah [<a class="reference internal" href="cite.html#id45" title="O. J Blanchard and D. Quah. The dynamic effects of aggregate demand and supply disturbances. American Economic Review, 79:655-673, 1989.">1989</a>]</span> and <span id="id7">Shapiro and Watson [<a class="reference internal" href="cite.html#id388" title="M. Shapiro and M. Watson. Sources of business cycle fluctuations. NBER Macroeconomics Annual, 3:111-148, 1988.">1988</a>]</span> build on this
+property.</p>
+<p>The variance of the random variable <span class="math notranslate nohighlight">\(\alpha(1) \cdot W_{t+1}\)</span>  conditioned on the invariant events in <span class="math notranslate nohighlight">\({\mathfrak I}\)</span>  is <span class="math notranslate nohighlight">\(|\alpha(1)|^2\)</span>.  The overall variance of <span class="math notranslate nohighlight">\(X_{t}\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[\sum_{j=0}^\infty|\alpha_j|^2 \ne |\alpha(1)|^2.\]</div>
-<p>To form a transitory-transitory shock decomposition, construct the  permanent shock as:</p>
+<p>To form a permanent-transitory shock decomposition, construct the  permanent shock as:</p>
 <div class="math notranslate nohighlight">
 \[W_{t+1}^p = \left( \frac {1}{|\alpha(1)|} \right) \alpha(1) \cdot W_{t+1}\]</div>
 <p>where we introduce an additional scaling so the permanent shock has variance one.  Form</p>
 <div class="math notranslate nohighlight">
 \[W_{t+1}^{tr} = W_{t+1} -   \left( \frac {1}{|\alpha(1)|} \right) \alpha(1) W_{t+1}^p \]</div>
 <p>which by construction will be uncorrelated with <span class="math notranslate nohighlight">\(W_{t+1}^p\)</span>.  Since  the covariance matrix of <span class="math notranslate nohighlight">\(W_{t+1}^{tr}\)</span> will be singular, the components of <span class="math notranslate nohighlight">\(W_{t+1}^{tr}\)</span> can be expressed as linear combinations of a vector of transitory shocks with unit variances.</p>
-<div class="proof example admonition" id="ex:helpBQ">
+</section>
+</div><div class="proof example admonition" id="ex:helpBQ">
 <p class="admonition-title"><span class="caption-number">Example 5.2 </span></p>
 <section class="example-content" id="proof-content">
 <p>This is a process in which <span class="math notranslate nohighlight">\(W_t\)</span> has transient but no permanent effects on future <span class="math notranslate nohighlight">\(Y\)</span>’s. Let <span class="math notranslate nohighlight">\(\alpha_0 = 1\)</span> and <span class="math notranslate nohighlight">\(\alpha_j = (\lambda -1) \lambda^{j-1}\)</span> for <span class="math notranslate nohighlight">\(j \geq 1\)</span> and <span class="math notranslate nohighlight">\(-1 &lt; \lambda &lt; 1\)</span>. Construct the power series</p>
@@ -529,16 +535,15 @@ The variance of the random variable <span class="math notranslate nohighlight">\
 <p>Evidently, <span class="math notranslate nohighlight">\(\alpha(1) = 0\)</span>. Define</p>
 <div class="math notranslate nohighlight">
 \[H_t  = - \sum_{j=0}^\infty \lambda^j W_{t-j}\]</div>
-<p>and note that since <a class="reference internal" href="#equation-factor">(5.6)</a> is satisfied</p>
+<p>and note that since <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#equation-factor">(6.6)</a> is satisfied</p>
 <div class="math notranslate nohighlight">
 \[Y_{t+1} - Y_t = -H_{t+1} + H_t.\]</div>
 <p>The process <span class="math notranslate nohighlight">\(\{ Y_t : t = 0,1,... \}\)</span> is stationary provided that <span class="math notranslate nohighlight">\(Y_0 = - H_0\)</span>, ensuring that <span class="math notranslate nohighlight">\(Y_t = - H_t\)</span> for all <span class="math notranslate nohighlight">\(t \ge 0\)</span>.</p>
 </section>
 </div></section>
-</div></section>
 <section id="central-limit-approximation">
 <h2><span class="section-number">5.3. </span>Central limit approximation<a class="headerlink" href="#central-limit-approximation" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="#ex:chap2ma">Example 5.1</a> starts from a moving average of martingale differences that is used as an increment <span class="math notranslate nohighlight">\(\{X_t \}\)</span>
+<p><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#ex:chap2ma">Example 6.1</a> starts from a moving average of martingale differences that is used as an increment <span class="math notranslate nohighlight">\(\{X_t \}\)</span>
 to a <span class="math notranslate nohighlight">\(\{Y_t: t \ge 0\}\)</span> process, after which it constructs a process of innovations
 to the martingale component of the <span class="math notranslate nohighlight">\(\{Y_t: t \ge 0  \}\)</span> process. That analysis illustrates the workings of
 an
@@ -590,16 +595,16 @@ Y_{t+1}^2 - Y_t^2 &amp; = X_{t+1}^2.
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[Y_0 =  r_1 Y_0^1 + r_2 Y_0^2.\]</div>
-<p>The <a class="reference internal" href="#decomp00">Proposition 5.1</a> martingale component of <span class="math notranslate nohighlight">\(\{ Y_t : t \ge 0 \}\)</span> is the corresponding linear combination of the martingale
-components of <span class="math notranslate nohighlight">\(\{ Y_t^1 : t =0,1,...\}\)</span> and <span class="math notranslate nohighlight">\(\{ Y_t^2 : t =0,1,...\}\)</span>. The <a class="reference internal" href="#decomp00">Proposition 5.1</a>  trend component of <span class="math notranslate nohighlight">\(\{ Y_t : t =0,1,  \ldots \}\)</span> is the corresponding linear combination of the
+<p>The <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a> martingale component of <span class="math notranslate nohighlight">\(\{ Y_t : t \ge 0 \}\)</span> is the corresponding linear combination of the martingale
+components of <span class="math notranslate nohighlight">\(\{ Y_t^1 : t =0,1,...\}\)</span> and <span class="math notranslate nohighlight">\(\{ Y_t^2 : t =0,1,...\}\)</span>. The <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a>  trend component of <span class="math notranslate nohighlight">\(\{ Y_t : t =0,1,  \ldots \}\)</span> is the corresponding linear combination of the
 trend  components of <span class="math notranslate nohighlight">\(\{ Y_t^1 : t =0,1, \ldots \}\)</span> and <span class="math notranslate nohighlight">\(\{ Y_t^2 : t =0,1,  \ldots \}\)</span>.</p>
-<p><a class="reference internal" href="#decomp00">Proposition 5.1</a> sheds light on the cointegration concept of <span id="id9">Engle and Granger [<a class="reference internal" href="cite.html#id138" title="R. Engle and C. W. J. Granger. Co-integration and error correction: representation, estimation and testing. Econometrica, 55:251-276, 1987.">1987</a>]</span> that is associated with linear combinations of stationary increment processes whose trend and martingale components are both zero.  call two processes <em>cointegrated</em> if there exists a linear combination of them that is stationary.<a class="footnote-reference brackets" href="#cointegration-def" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> That situation prevails when there exist real-valued scalars <span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(r_2\)</span> such that</p>
+<p><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a> sheds light on the cointegration concept of <span id="id9">Engle and Granger [<a class="reference internal" href="cite.html#id138" title="R. Engle and C. W. J. Granger. Co-integration and error correction: representation, estimation and testing. Econometrica, 55:251-276, 1987.">1987</a>]</span> that is associated with linear combinations of stationary increment processes whose trend and martingale components are both zero.  Call two processes <em>cointegrated</em> if there exists a linear combination of them that is stationary.<a class="footnote-reference brackets" href="#cointegration-def" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> That situation prevails when there exist real-valued scalars <span class="math notranslate nohighlight">\(r_1\)</span> and <span class="math notranslate nohighlight">\(r_2\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{eqnarray*}
 r_1 \nu_1 + r_2 \nu_2 &amp; = &amp; 0 \\
 r_1 \mathbb{D}(X^1) + r_2 \mathbb{D}(X^2) &amp; = &amp; 0,
 \end{eqnarray*}\end{split}\]</div>
-<p>where the <span class="math notranslate nohighlight">\(\nu\)</span>’s correspond to the trend components in <a class="reference internal" href="#decomp00">Proposition 5.1</a>. These two zero restrictions imply that the time trend and the martingale component for the linear combination <span class="math notranslate nohighlight">\(Y_t\)</span> are both zero.<a class="footnote-reference brackets" href="#cointegration-vector" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> When <span class="math notranslate nohighlight">\(r_1 = 1\)</span> and <span class="math notranslate nohighlight">\(r_2 = - 1\)</span>, the component stationary increment processes <span class="math notranslate nohighlight">\(Y_{t}^1\)</span> and <span class="math notranslate nohighlight">\(Y_{t}^2\)</span> share a common growth component.</p>
+<p>where the <span class="math notranslate nohighlight">\(\nu\)</span>’s correspond to the trend components in <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a>. These two zero restrictions imply that the time trend and the martingale component for the linear combination <span class="math notranslate nohighlight">\(Y_t\)</span> are both zero.<a class="footnote-reference brackets" href="#cointegration-vector" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> When <span class="math notranslate nohighlight">\(r_1 = 1\)</span> and <span class="math notranslate nohighlight">\(r_2 = - 1\)</span>, the stationary increment processes <span class="math notranslate nohighlight">\(Y_{t}^1\)</span> and <span class="math notranslate nohighlight">\(Y_{t}^2\)</span> share a common growth component.</p>
 <p>This notion of cointegration provides one way to formalize balanced growth paths in stochastic environments through determining a linear combination of growing time series for which stochastic growth is absent.</p>
 <!-- 
 ## Permanent Income Models
@@ -1047,7 +1052,7 @@ That finding poses the scientific challenge of inventing a theoretical structure
 </aside>
 <aside class="footnote brackets" id="longmemory" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
-<p>See, for instance, <span id="id13">Granger and Joyeux [<a class="reference internal" href="cite.html#id181" title="C. W. J. Granger and Roselyne Joyeux. An Introduction To Long‐Memory Time Series Models And Fractional Differencing. Journal of Time Series Analysis, 1(1):15-29, January 1980. URL: https://ideas.repec.org/a/bla/jtsera/v1y1980i1p15-29.html, doi:10.1111/j.1467-9892.1980.">1980</a>]</span>,  <span id="id14">Geweke and Porter-Hudak [<a class="reference internal" href="cite.html#id166" title="John Geweke and Susan Porter-Hudak. The Estimation and Application of Long Memory Time Series Models. Journal of Time Series Analysis, 4(4):221–238, 1983.">1983</a>]</span> and <span id="id15">Robinson [<a class="reference internal" href="cite.html#id367" title="P. M. Robinson. Semiparametric Analysis of Long-Memory Time Series. The Annals of Statistics, 22(1):515–539, 1994. doi:10.1214/aos/1176325382.">1994</a>]</span>.</p>
+<p>See, for instance, <span id="id13">Granger and Joyeux [<a class="reference internal" href="cite.html#id181" title="C. W. J. Granger and Roselyne Joyeux. An Introduction To Long‐Memory Time Series Models And Fractional Differencing. Journal of Time Series Analysis, 1(1):15-29, January 1980. URL: https://ideas.repec.org/a/bla/jtsera/v1y1980i1p15-29.html, doi:10.1111/j.1467-9892.1980.">1980</a>]</span>,  <span id="id14">Geweke and Porter-Hudak [<a class="reference internal" href="cite.html#id166" title="John Geweke and Susan Porter-Hudak. The Estimation and Application of Long Memory Time Series Models. Journal of Time Series Analysis, 4(4):221–238, 1983.">1983</a>]</span> and <span id="id15">Robinson [<a class="reference internal" href="cite.html#id368" title="P. M. Robinson. Semiparametric Analysis of Long-Memory Time Series. The Annals of Statistics, 22(1):515–539, 1994. doi:10.1214/aos/1176325382.">1994</a>]</span>.</p>
 </aside>
 <aside class="footnote brackets" id="cointegration-def" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">4</a><span class="fn-bracket">]</span></span>
@@ -1101,11 +1106,11 @@ That finding poses the scientific challenge of inventing a theoretical structure
       </div>
     </a>
     <a class="right-next"
-       href="example_out_c4_v2.html"
+       href="example_out_c3_v2_enzo_and_ken.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Processes with Markovian increments</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Stationary Increments</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

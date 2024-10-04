@@ -497,7 +497,7 @@ In the limiting $\rho =1$ case,
 
 ### Order-one
 
-We temporarily take ${\widehat  R}_t^1 - {\widehat C}_t^1$ as given.  We construct a first-order approximation to the nnonlinear utility recursion {eq}`value_recur5`
+We temporarily take ${\widehat  R}_t^1 - {\widehat C}_t^1$ as given.  We construct a first-order approximation to the nonlinear utility recursion {eq}`value_recur5`
 ```{math}
 :label: eqn:lambda1
 {\widehat  V}_t^1 - {\widehat C}_t^1 = \lambda \left({\widehat  R}_t^1 - {\widehat C}_t^1\right)
@@ -539,15 +539,21 @@ Taking limits as ${\sf q}$ declines to zero:
 Subtracting ${\widehat C}_t^1$ from both sides gives:
 ```{math}
 :label: first_order_risk
-{\widehat R}_t^1 - {\widehat C}_t^1 =  \left( {\frac 1 {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o)  \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1} ^1 \right) + (1-\gamma_o)  \left( {\widehat C}_{t+1}^1 - {\widehat C}_{t} ^1 \right)  \right] \mid {\mathfrak A}_t \right)
+\begin{align}
+& {\widehat R}_t^1 - {\widehat C}_t^1  =  \cr  & \left( {\frac 1 {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o) \left[ \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1} ^1 \right) +   \left( {\widehat C}_{t+1}^1 - {\widehat C}_{t} ^1 \right)\right]  \right] \mid {\mathfrak A}_t \right).
+\end{align}
 ```
 Substituting formula {eq}`first_order_risk` into the right side of {eq}`eqn:lambda1` gives the recursion for the first-order continuation value:
 ```{math}
 :label: first_recursive_update
-{\widehat V}_t^1 - {\widehat C}_t^1 =   \left( {\frac \lambda {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o)  \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1} ^1 \right) + (1-\gamma_o)  \left( {\widehat C}_{t+1}^1 - {\widehat C}_{t}^1 \right)  \right] \mid {\mathfrak A}_t \right)
+\begin{align}
+& {\widehat V}_t^1 - {\widehat C}_t^1  =   \cr 
+& \left( {\frac \lambda {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o) \left[ \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1} ^1 \right) +   \left( {\widehat C}_{t+1}^1 - {\widehat C}_{t}^1 \right) \right] \right] \mid {\mathfrak A}_t \right).
+\end{align}
 ```
 
-````{prf:remark}  
+````{prf:remark}
+:label: remark_solve_first  
 We produce a solution by "guess and verify." Suppose that 
 ```{math} 
 :label: first-solution 
@@ -698,8 +704,7 @@ and thus
 :label: recur_update
 {\widehat R}_t^2 = 2 {\widetilde R}_t^1 = 2 E \left( N_{t+1}^0  {\widetilde V}^1_{t+1} \mid {\mathfrak A}_t \right) =  E \left( N_{t+1}^0  {\widehat V}^2_{t+1} \mid {\mathfrak A}_t \right),
 ```
-where 
-Subtracting ${\widehat C}_t^2$ from ${\widehat R}_t^2$ gives:
+where subtracting ${\widehat C}_t^2$ from ${\widehat R}_t^2$ gives:
 ```{math}
 :label: second_order_risk
 {\widehat R}_t^2 - {\widehat C}_t^2 = E \left[ N_{t+1}^0 \left( {\widehat V}^2_{t+1} - {\widehat C}_{t+1}^2\right) + \left( {\widehat C}^2_{t+1} - {\widehat C}_{t}^2 \right)  \mid {\mathfrak A}_t \right] .
@@ -735,7 +740,7 @@ where
 (\rho - 1) \left( {\widehat R}_t^2 - {\widehat C}_t^2  \right)
 ```
 
-We now consider three different approaches to approximating $N_{t+1}^*$.  
+We now consider two different approaches to approximating $N_{t+1}^*$.  
 
 ###  Approach 1
 
@@ -753,19 +758,8 @@ Form the ``first-order'' approximation:
 ```{math}
 = (1 - \gamma_o)\left[ \left( {\widehat V}_{t+1}^1 - {\widehat R}_t^1 \right) +  {\frac {\sf q}  2}  \left( {\widehat V}_{t+1}^2 - {\widehat R}_t^2 \right) \right]
 ```
-This approach suggests using the following first-order approximation for the stochastic discount factor:
-```{math}
-:label: firsttilde
-\log S_{t+1} -  \log S_t \approx (1 - \gamma_o)\left[ \left( {\widehat V}_{t+1}^1 - {\widehat R}_t^1 \right) +  {\frac 1 2}  \left( {\widehat V}_{t+1}^2 - {\widehat R}_t^2 \right) \right] 
-```
-```{math}
-+ \left[{\widehat S}_{t+1}^0 - {\widehat S}_{t}^0 \right] + \left[{\widehat S}_{t+1}^1 - {\widehat S}_{t}^1\right]  
-```
-While the implied $N_{t+1}^*$ approximation is positive, it will not have conditional expectation equal to one. In contrast, the exponential of the first-order contribution $(1 - \gamma_o) \left( {\widehat V}_{t+1}^1 -  {\widehat R}_t^1\right)$ will have conditional expectation equal to one as we have noted previously.   
 
-###  Approach 2
-
-If we were to use a second-order approximation of $N_{t+1}^*$, it would push us outside the class of exponentially quadratic stochastic discount factors. Instead we could combine a first-order approximation of $\log N_{t+1}^*$ with a second-order approximation of 
+We  combine a first-order approximation of $\log N_{t+1}^*$ with a second-order approximation of 
 ${\widehat S}_{t+1} - {\widehat S}_t$:
 ```{math}
 \log S_{t+1} -  \log S_t \approx (1 - \gamma_o)\left[ \left( {\widehat V}_{t+1}^1 - {\widehat R}_t^1 \right) +  {\frac 1 2}  \left( {\widehat V}_{t+1}^2 - {\widehat R}_t^2 \right) \right] 
@@ -773,26 +767,31 @@ ${\widehat S}_{t+1} - {\widehat S}_t$:
 ```{math}
 + \left({\widehat S}_{t+1}^0 - {\widehat S}_{t}^0 \right) + \left({\widehat S}_{t+1}^1 - {\widehat S}_{t}^1\right)  + \frac 1 2 \left({\widehat S}_{t+1}^2 - {\widehat S}_{t}^2\right) 
 ```
-which would preserve the quadratic approximation of $\log S_{t+1} -  \log S_t.$
+which preserves the quadratic approximation of $\log S_{t+1} -  \log S_t.$. Note that If we were to use a second-order approximation of $N_{t+1}^*$, it would push us outside the class of exponentially quadratic stochastic discount factors. 
 
-###  Approach 3
+
+###  Approach 2
+
+
 
 Next consider an alternative modification of Approach 1 whereby:
 ```{math}
-\log N_{t+1}^* \approx \frac { \exp\left[(1-\gamma_o) \left({\widetilde V}_{t+1}^0 + {\widetilde V}_{t+1}^1 \right)\right]} 
-{{\mathbb E}\left(\exp\left[(1-\gamma_o) \left({\widetilde V}_{t+1}^0 + {\widetilde V}_{t+1}^1 \right)\right] \mid {\mathfrak A}_t \right)} 
-```
-```{math}
-= \frac { \exp\left[(1-\gamma_o)\left[ \left({\widehat V}_{t+1}^1 - {\widehat R}_t^1\right) + {\frac 1 2} \left( {\widehat V}_{t+1}^2  - {\widehat R}_t^2 \right) \right]\right]} 
+:label: restricted_probability
+\begin{align}
+N_{t+1}^* \approx & \frac { \exp\left[(1-\gamma_o) \left({\widetilde V}_{t+1}^0 + {\widetilde V}_{t+1}^1 \right)\right]} 
+{{\mathbb E}\left(\exp\left[(1-\gamma_o) \left({\widetilde V}_{t+1}^0 + {\widetilde V}_{t+1}^1 \right)\right] \mid {\mathfrak A}_t \right)} \cr
+= & \frac { \exp\left[(1-\gamma_o)\left[ \left({\widehat V}_{t+1}^1 - {\widehat R}_t^1\right) + {\frac 1 2} \left( {\widehat V}_{t+1}^2  - {\widehat R}_t^2 \right) \right]\right]} 
 {{\mathbb E}\left(
 \exp\left[(1-\gamma_o)\left[ \left({\widehat V}_{t+1}^1 - {\widehat R}_t^1\right) + {\frac 1 2} \left( {\widehat V}_{t+1}^2  - {\widehat R}_t^2 \right) \right]\right]
-\mid {\mathfrak A}_t \right)} 
+\mid {\mathfrak A}_t \right)} \cr
+\eqdef & {\widetilde N}_{t+1}
+\end{align}
 ```
-is used in conjunction with 
+and $\log {\widetilde N}_t$ is used in conjunction with 
 ```{math}
 \left({\widehat S}_{t+1}^0 - {\widehat S}_{t}^0 \right) + \left({\widehat S}_{t+1}^1 - {\widehat S}_{t}^1\right)  + \frac 1 2 \left({\widehat S}_{t+1}^2 - {\widehat S}_{t}^2\right) . 
 ```
-By design, exponential counterpart of this approximation will have conditional expectation equal to one. With a little bit of algebraic manipulation, it may be shown that this approximation induces a distributional change for $W_{t+1}$ with a conditional mean that is affine in $X_{t+1}$ and an altered conditional variance that is constant over time.  
+By design, this approximation of $N_{t+1}^*$ will have conditional expectation equal to one in contrast to the approximation used with Approach 1.   With a little bit of algebraic manipulation, it may be shown that this approximation induces a distributional change for $W_{t+1}$ with a conditional mean that is affine in $X_{t+1}$ and an altered conditional variance matrix that is constant over time.  
 
 To understand better this choice of approximation, consider the family of random variables (indexed by ${\sf q}$) 
 ```{math}
@@ -806,12 +805,13 @@ The corresponding family of exponentials has conditional expectation one and the
  =
 {\widetilde V}_{t+1}^1 - {\widetilde R}_{t}^1.
 ```
-Thus this family of random variables has the same first-order approximation in ${\sf q}$ as $\log N_{t+1}^*$ given in {eq}`firsttilde` and it remains within the linear-quadratic in logarithms formulation.  
+Thus this family of random variables has the same first-order approximation in ${\sf q}$ as the one we derived previously for $\log N_{t+1}^*$.  
 
-As a first-order change of probability measure, this approximation will induce state dependence in the conditional mean and will alter the covariance matrix of the shock vector. We find this approach interesting because it links back directly to the outcome of the robustness formulation we described in [Section 3.1](sec:robust). Moreover, the state dependence in the mean will induce a corresponding state dependence in the one-period uncertainty prices.
-
+As a change of probability measure, this approximation will induce state dependence in the conditional mean and will alter the covariance matrix of the shock vector. We find this approach interesting because it links back directly to the outcome of the robustness formulation we described in [Section 3.1](sec:robust). 
 
 ## Solving a planner's problem with recursive utility
+
+The {cite}`bansalyaron2004` example along with many others building connections between the macro economy and asset value take aggregate consumption as pre-specified. As we open the door to a richer collection of macroeconomic models, it becomes important to entertain more endogeneity, including investment and other variables familiar to macroeconomics.
 
 Write a triangular system with stochastic growth as:
 ```{math}
@@ -978,7 +978,7 @@ Solving for $D$ gives:
 ```{math} 
 D^* = \frac {(\beta - 1)  + \beta \epsilon \alpha} {\beta \epsilon+ (1-\beta) \zeta } ,
 ```
-which is state dependent, as should be expected since $\rho = 1.$ From the capital evolution it follows from the order zero approximation is
+which is independent of the state, as should be expected since $\rho = 1.$ From the capital evolution it follows from the order zero approximation is
 ```{math}
 {\widehat K}_{t+1}^0 - {\widehat K}_t^0 = \epsilon \left[ \frac 1 \zeta \log  \left( 1 + \zeta D^*\right) - \iota_k \right]. 
 ```
@@ -1074,65 +1074,41 @@ The approximate dynamics for the exogenous states remains the same for $\rho \ne
 
 ## Solving models
 
-The {cite}`bansalyaron2004` example along with many others building connections between the macro economy and asset value take aggregate consumption as pre-specified. As we open the door to a richer collection of macroeconomic models, it becomes important to entertain more endogeneity, including investment and other variables familiar to macroeconomics. In this section, we briefly describe one way to extend the approach that builds directly on previous second-order approaches of {cite}`KimKimSchaumbergSims:2008`, {cite}`schmitt2004solving`, and {cite}`LombardoUhlig:2018`. While such methods should not be viewed as being generically applicable to nonlinear stochastic equilibrium models, we find them useful pedagogically and often as at least initial steps to understanding models that are arguably “smooth.” See {cite}`PohlSchmeddersWilms:2018` for a careful study of nonlinearity in asset pricing models with recursive utility.[^pohl]
+ In this section, we briefly describe one way to extend the approach that builds directly on previous second-order approaches of {cite}`KimKimSchaumbergSims:2008`, {cite}`schmitt2004solving`, and {cite}`LombardoUhlig:2018`. While such methods should not be viewed as being generically applicable to nonlinear stochastic equilibrium models, we find them useful pedagogically and often as at least initial steps to understanding models that are arguably “smooth.” See {cite}`PohlSchmeddersWilms:2018` for a careful study of nonlinearity in asset pricing models with recursive utility.[^pohl]
 
 We implement these methods for second-order approximation using the following steps.
 
 1. Solve for ${\sf q}=0$ deterministic model.
 
-2. Take as given a $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in 
-```{math}
-:label: input_text
-\begin{align}
-{\widehat V}_{t+1}^1 - {\widehat R}_{t}^1 = \hspace{.2cm} &{\frac 1 {1-\gamma_o}} \left[\mu^0 \cdot ( W_{t+1} - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] \cr
-{\widehat V}_{t+1}^2 - {\widehat R}_{t}^2 = \hspace{.2cm} & {\frac 1 2} \left(W_{t+1} - \mu^0 \right)'\Upsilon_2^2 \left(W_{t+1} - \mu^0 \right) \cr \hspace{.2cm} & - {\frac 1 2} \rm{tr}\left( \Upsilon_2^2\right)
-+  \left(W_{t+1} - \mu^0\right)' \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2\right).
-\end{align}
-```
+2.  Take as given first and second-order approximate solutions for ${\widehat C}_t - {\widehat G}_t$ and ${\widehat G}_{t+1} - {\widehat G}_t.$. Solve for the approximate solutions for ${\widehat V}_t - {\widehat G}_t,$ ${\widehat V}_{t+1} - {\widehat R}_t$ and $N_{t+1}.$ 
 
-3. Compute the first-order expansion and solve the resulting equations following the previous literature. When constructing these equations, use expectations computed using the probabilities induced by $N_{t+1}^0$. Under the change in probability, $W_{t+1}$ is normally distributed with $\mu^0,$ where $\mu^0$ is given in step 2. Make an additional recursive utility adjustment to the equations that also depends on $\mu^0$. It comes from a first-order approximation for $(\rho - 1)\left({\widehat V}_{t+1} - {\widehat R}_t \right)$ as a plug in for the construction of the logarithm of the stochastic discount factor.
 
-4. Compute the second-order expansion and solve the resulting equations following the previous literature. Again use the expectations induced by $N_{t+1}^0$. In addition, make another recursive utility adjustment expressed in terms of $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ taking the inputs from step 2. This comes from a second-order approximation  
-for $(\rho - 1)\left({\widehat V}_{t+1} - {\widehat R}_t \right)$ needed for the logarithm of the stochastic discount factor.
+3. Compute the first-order expansion and solve the resulting equations following the previous literature for $D_t,$ ${\widehat C}_t - {\widehat G}_t,$ and ${\widehat G}_{t+1} - {\widehat G}_t.$ When constructing these equations, use expectations computed using the probabilities induced by $N_{t+1}^0$.  Substitute the first-order approximation for ${\widehat R}_t - {\widehat G}_t.$
 
-5. Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in representations \eqref{input_text} and return to step 2. Repeat until convergence.
 
-See the [Appendix](appen:second_solve) for more details and substantive elaboration.
+4. Compute the second-order expansion and solve the resulting equations following the previous literature. Again use the expectations induced by $N_{t+1}^0$. In addition, make another recursive utility adjustment expressed in terms the approximations of  ${\widehat R}_t - {\widehat G}_t.$
 
-This first algorithm includes the use of first and second-order approximation of $N_{t+1}^*.$ While the second-order approximation of $N_{t+1}^*$ has conditional expectation one, it is not restricted to be positive. A second algorithm enforces positivity on the implied approximation of $N_{t+1}^*$.
+5.  Return to step 2, and repeat until convergence.  
 
-1. Solve for ${\sf q}=0$ deterministic model.
 
-2. Take as given an exponential linear-quadratic approximation ${\widetilde N}_{t+1}$ for $N^*_{t+1},$ along with $\mu^0, \Upsilon_0^2, \Upsilon_1^2,$ $\Upsilon_2^2$ used in formulas {eq}`input_text`.
+Initialize this algorithm by solving the $\gamma_o=1$ and $\rho = 1,$ which can be solved without iteration.  
 
-3. Compute the first-order expansion and solve the resulting equations following the previous literature. When constructing these equations, use expectations computed using the probabilities induced by $N_{t+1}^a.$ In addition, make an additional recursive utility adjustment to the equations that comes from a first-order approximation  
-for $(\rho - 1)\left({\widehat V}_{t+1} - {\widehat R}_t \right)$ as a plug in for the construction of the logarithm of the stochastic discount factor. Use the first-order adjustment from step 2.
 
-4. Compute the second-order expansion and solve the resulting equations following the previous literature. Again use the expectations induced by ${\widetilde N}_{t+1}$. In addition, make another recursive utility adjustment expressed in terms of $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ taking the inputs from step 2. This comes from a second-order approximation  
-for $(\rho - 1)\left({\widehat V}_{t+1}- {\widehat R}_t \right)$ needed for the construction of the logarithm of the stochastic discount factor.
+ 
 
-5. Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2, \Upsilon_2^2$ used in representations \eqref{input_text}, construct
-```{math}
-{\widetilde  N}_{t+1} =  
-\frac 
-{\exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right]} 
-{{\mathbb E}\left( \exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right] \mid {\mathfrak A}_t \right)},
-```
-and return to step 2. Repeat until convergence.
-
-Compute
-```{math}
-N_{t+1} =  
-\frac 
-{\exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right]} 
-{{\mathbb E}\left( \exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right] \mid {\mathfrak A}_t \right)},
-```
-and set $N_{t+1}^a  = N_{t+1}$.  
+See the Appendices that follow for more details and formulas to use in the solution method.
 
 [^pohl]: {cite}`PohlSchmeddersWilms:2018` provide examples of when log-linear or local methods of computation fail to provide good approximations.
 
 
 
+As a second approach we iterate over an $N_{t+1}^*$ given by formula {eq}`restricted_probability` approximation restricted to induce an alternative probability distribution Call the approximation ${\widetilde N}_{t+1}$ with an induced distribution for $W_{t+1}$ that is normal with conditional mean ${\tilde \mu}_t$ and covariance matrix ${\widetilde \Sigma}$. 
+
+
+
+
+
+While we discussed the approximation for resource allocation problems with recursive utility, there is a direct extension of this approach to solve a  general class stochastic equilibrium models by stacking a system of expectational-type equations expressed in part using the recursive utility stochastic discount factor that we derived.  For resource allocation problems, we expressed the first-order conditions for the planner in utility units, which simplified some formulas. Equilibrium models not derived from a planner's problems typically use  stochastic discount factors expressed in consumption units when representing investment choices.  The approximation methods described in this chapter have a direct extension to such models.
 
 
 
@@ -1147,48 +1123,6 @@ and set $N_{t+1}^a  = N_{t+1}$.
 
 
 
-%This has a direct connection to the VAR approach of 
-%To relate to the VAR approach of {cite}`HansenHeatonLi:2008`, suppose that $\rho = 1$ implying that $D_t$ and hence  $C_t/K_t$ is constant.   It follows that the approximate dynamics for the logarithm of consumption coincide with the approximate dynamics for ${\widehat G}$.  We express these dynamics as 
-%```{math}
-%\widehat C_{t+1}^1 - \widehat  C_t = \eta_c^0  + {\mathbb D} X_t^1 + {\mathbb F}' W_{t+1}
-%```
-%where  the first-order process  $X^1$ includes a predictable component of the macroeconomic growth-rate process and evolves as an  autoregression: 
-%```{math}
-%X_{t+1}^1 = {\mathbb A} X_t^1 + {\mathbb B} W_{t+1},
-%```
-%and ${\mathbb A}$ is a stable matrix. Thus the first-order approximation to the {cite}`bansalyaron2004` for the consumption dynamics is a special case of the formulation in {cite}`HansenHeatonLi:2008`.
-%
-%```{prf:footnote}
-% :label: footnote1
-%The {cite}`HansenHeatonLi:2008` predictability evidence turned out to be "fragile" and was modified and updated in {cite}`HansenSargent:2021` Appendix B. This same appendix suggests a way to deduce a statistical approximation to the first order dynamics of {cite}`bansalyaron2004` from a more general VAR representation of the consumption dynamics.
-%```
-%
-%The row vector ${\mathbb F}$ and matrix ${\mathbb B}$ are configured so that the components of the shock vector,  $W_{t+1},$ directly disturbs growth in the logarithm of consumption and its predictable (first-order) growth component $X^1$. Notice, in particular that the  conditional mean of $\widehat  C_{t+j} - \widehat C_t$ is
-%```{math}
-%j \eta_c^0 + {\mathbb D}\left( X_t + {\mathbb A} X_t + ... + {\mathbb A}^{j-1}\right) X_t.
-%```  
-%The corresponding multi-period forecast errors contribute to the variance of $\widehat  C_{t+j} - \widehat C_t$ with a variance that increases with the horizon. When the process $\{ {\mathbb D} X_t\}$ is highly persistent, there is said to be substantial "long-run risk" in consumption. 
-%
-
-
-
-
-
-
-
-
-%By applying this approximation to a model with volatility given by Feller square root model as delineated in the Appendix, we find the following three approximations:
-%
-%```{math}
-%X_{t+1}^0 = \begin{bmatrix} 0 \\ 1 \end{bmatrix} 
-%```
-%```{math}
-%X_{t+1}^1 =  \begin{bmatrix}  \theta_{11}^x & 0 \\ 0 & \theta_{22}^x \end{bmatrix} X_t^1 + \begin{bmatrix} \sigma_{11}^x &  0 & 0 \\ 0 & \sigma_{22}^x & 0 \end{bmatrix} W_{t+1} 
-%```
-%```{math}
-%X_{t+1}^2 = \begin{bmatrix}  \theta_{11}^x & 0 \\ 0 & \theta_{22}^x \end{bmatrix}  X_t^2 +  \begin{bmatrix}  2X_{2,t}^1\sigma_{11}^x & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix} W_{t+1},
-%```
-%where $0 < \theta^{x}_{11} < 1$ and $0 < \theta_{22}^x < 1$.
 
 
 
@@ -1201,53 +1135,15 @@ and set $N_{t+1}^a  = N_{t+1}$.
 
 
 
-%To facilitate a comparison to a global solution method, we write down a discrete-time approximation to a continuous time version of such an economy. (See Section 4.4 of {cite}`KhorramiTourreHansen:2024` for a continuous-time benchmark model that our discrete-time system approximates.) We impose the resource constraint:
-%```{math}
-%C_t + I_t = \alpha K_t
-%```
-%Let  ${\widehat K}_t = \log K_t,$ ${\widehat C}_t = \log C_t$, and $\widehat{Z}_t^2 = \log Z_t^2$.  Then the endogenous state dynamics are given by:
-%```{math}
-%:label: equation1
-%\begin{align} 
-%{{\widehat K}_{t+1}} - {\widehat K}_t = \hspace{.2cm} & \epsilon \left[ {\frac 1 \zeta}  \log \left( 1 + \zeta \frac{I_t}{K_t} \right) + \nu_k Z_t^1 - \eta_k \right] \cr \hspace{.2cm} &  - \frac{\epsilon}{2}|\sigma_k|^2 \exp\left( {\widehat Z}_t^2 \right)  \epsilon
-% +  \sqrt{\epsilon} \exp\left(\frac 1 2 {\widehat  Z}_t^2  \right) {\sigma}_k  W_{t+1}  \end{align}, 
-%```
-%and the exogenous state dynamics by;
-%```{math}
-%:label: equation2
-%\begin{align}
-%Z_{t+1}^1 -
-%Z_{t}^1=   \hspace{.2cm} & - \epsilon \nu_{1} Z_t^1  +  \sqrt{\epsilon}\exp\left(\frac 1 2  {\widehat Z}_t^2 \right) \sigma_1  W_{t+1} \cr 
-%{\widehat Z}_{t+1}^2 - {\widehat Z}_{t}^2 =  \hspace{.2cm} &   - \epsilon \nu_2 \left[ 1 - {\mu_2} \exp\left( - {\widehat Z}_t^2 \right) \right]  \cr \hspace{.2cm}&  - {\frac \epsilon 2} |\sigma_2|^2  \exp\left( - {\widehat Z}_t^2 \right)   
-%+ \sqrt{\epsilon} \exp\left( - {\frac 1 2}  {\widehat Z}_t^2 \right) \sigma_2 W_{t+\epsilon} \end{align} 
-%```
-%We include the $\epsilon$  to allow for a small time interval approximation of the continuous-time system.  A small value of $\epsilon$ is associated a time scaling in which a unit time interval is small, say months instead of years.      The state variable, $Z_t^2,$ and hence its logarithm, ${\widehat Z}_t^2,$ is included to capture stochastic volatility.  The discrete-time dynamics approximate a continuous time version of what is called a square root process  due to Feller.  
 
 
-
-
-%The co-state equation is:  
-%```{math}
-%:label: equation5
-% & MX_t = 
-% \exp(-\epsilon \delta) \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat V}_t \right)\right] \cr
-%& {\mathbb E} 
-%\left(
-%\exp\left[(1 - \gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \begin{bmatrix} 
-%\epsilon \nu_k \cr
-%- \frac \epsilon 2  \exp \left( {\widehat Z}_t^2 \right) |\sigma_k|^2 + \frac {\sqrt{\epsilon}} 2  \exp \left( {\frac 1 2}  {\widehat Z}_t^2 \right) \sigma_k W_{t+1} \end{bmatrix} \mid {\mathfrak A}_t \right)
-%
-%1 - \epsilon \nu_1 & 0\cr
-%0 & - \epsilon \nu_2\left[ 1 - \mu_2 \exp\left( - {\widehat Z}_t^2 \right) \right]  - {\frac \epsilon 2} |\sigma_2|^2 
-%\exp\left( - {\widehat Z}_t \right) 
-%   MX_{t+1} \mid {\mathfrak A}_t \right) + \nu_k .
 
 
 
 
 ---
 
-## Appendix: Solving the planner's problem
+## Appendix A: Solving the planner's problem
 
 
 Consider the equation:
@@ -1269,7 +1165,7 @@ Solve for $ {\widehat C}_t - {\widehat G}_t, D_t, MX_t$ as a function of $X_t$. 
 Our solution will entail an iteration.  We will impose a specification for $Q$ and $N$ and find an approximate solution for the dynamical system.  Then given this solution, we will compute a new implied solution for $Q$ and $N$.  We then iterate this until we achieve numerical convergence.   We use second-order approximations for both steps.  
 
 
-### Appendix: $Q$ derivatives
+###  $Q$ derivatives
 
 To construct a candidate $Q$, we use the following strategy.  Compute ${\widehat V}_t^0 - {\widehat G}^0_t$ and ${\widehat G}_{t+1}^0-{\widehat G}_t^0$ as part of the steady state, and form:
 ```{math}
@@ -1287,32 +1183,70 @@ Q_t^2 \eqdef  & \hspace{.2cm} \beta (1-\rho)^2 Q_t^0 \left( {\widehat R}_t^1 - {
 \beta (1-\rho) Q_t^0 \left( {\widehat R}_t^2 - {\widehat G}_t^2\right).  
 \end{align*} 
 
-We rewrite {eq}`first_recursive_update` as;
+We rewrite {eq}`first_recursive_update` as:
 \begin{align*}
 & {\widehat V}_t^1 - {\widehat G}_t^1 =  (1-\lambda) \left({\widehat C}_t^1 - {\widehat G}_t^1 \right)  \cr
 & + \left( {\frac \lambda {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o) \left[  \left( {\widehat V}_{t+1}^1  - {\widehat G}_{t+1}^1 \right) + \left( {\widehat G}_{t+1}^1 - {\widehat G}_t^1\right) \right] \right] \mid {\mathfrak A}_t \right)
 \end{align*}
+and solve this equation forward by first computing  the $\gamma_o=1$ answer and then adjusting this answer  for $\gamma_o > 1$ analogous to the approach described in {prf:ref}`remark_solve_first`.   
 
+Given this solution, form
+```{math}
+ {\widehat R}_t^1 - {\widehat G}_t^1 =  \left( \frac 1 \lambda \right) \left( {\widehat V}_t^1 - {\widehat G}_t^1\right)
+- \left( \frac  {1-\lambda} \lambda \right)  \left({\widehat C}_t^1 - {\widehat G}_t^1 \right).
+```
 
+For the second-order, it follows from {eq}`second_recursive_update` that 
+```{math}
+\begin{align}
+{\widehat V}_t^2 - {\widehat G}_t^2 =  \hspace{.2cm} & 
+\lambda {\mathbb E} \left( N_{t+1}^0  \left[\left({\widehat V}^2_{t+1} - {\widehat G}^2_{t+1} \right) + \left( {\widehat G}^2_{t+1} -  {\widehat G}^2_{t}\right) \right] \mid {\mathfrak A}_t \right) \cr
+\hspace{.2cm} & + (1- \lambda) \left({\widehat C}_t^2 - {\widehat G}_t^2 \right)  +  (1 - \rho) (1 - \lambda) \lambda  \left( {\widehat R}_t^1 - {\widehat G}_t^1 + {\widehat G}_t^1  - {\widehat C}_t \right)^2,
+\end{align}
+```
+which we solve this equation forward under the $N^0$ implied change in probability measure.  Form:
+```{math}
+\begin{align}
+{\widehat R}_t^2 - {\widehat G}_t^2 = & \left( \frac 1 \lambda \right)  \left({\widehat V}_t^2 - {\widehat G}_t^2\right) 
+- \left( \frac {1 - \lambda}{\lambda} \right) \left({\widehat C}_t^2 - {\widehat G}_t^2 \right) \cr 
+& -  (1 - \rho) (1 - \lambda)   \left( {\widehat R}_t^1 - {\widehat G}_t^1 + {\widehat G}_t^1  - {\widehat C}_t \right)^2.
+\end{align} 
+```
 
-
-
-
-#### Appendix: $N$ derivatives
+### $N$ derivatives
 
 ```{math}
-:N_{t+1}^0:
 N_{t+1}^0 \eqdef \exp\left[(1 - \gamma_o) \left({\widetilde V}_{t+1}^0 - {\widetilde R}_t^0 \right) \right]   = \exp\left[  (1-\gamma_o) \left({\widehat V}_{t+1}^1 - {\widehat  R}_t^1\right) \right]
 ```
 ```{math}
-\begin{align*}
+\begin{align}
 N_{t+1}^1 \eqdef  \hspace{.2cm} & \left.  \frac d {d{\sf q}}  \exp\left[(1 - \gamma_o) \left({\widetilde V}_{t+1} - {\widetilde R}_t \right) \right] \right\vert_{{\sf q} =0} \cr  =  \hspace{.2cm} & (1 - \gamma_o)  N_{t+1}^0\left( 
 {\widetilde V}_{t+1}^1  - {\widetilde R}_t^1 \right) \cr =  \hspace{.2cm} & \left(\frac {1-\gamma_o} 2 \right) N_{t+1}^0 \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right).
-\end{align*}
+\end{align}
 ```
-It may be directly verified that $N_{t+1}^1$ and $N_{t+1}^2$  (which we do not compute) have conditional expectations equal to zero.
+Form:
+\begin{align*} 
+ {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1 = & \left({\widehat V}_{t+1}^1 -  {\widehat G}_{t+1}^1\right) + 
+ \left({\widehat G}_{t+1}^1 -  {\widehat G}_{t}^1\right) - \left({\widehat R}_{t}^1 -  {\widehat G}_{t}^1\right) \cr
+ {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1 = & \left({\widehat V}_{t+1}^2 -  {\widehat G}_{t+1}^2\right) + 
+ \left({\widehat G}_{t+1}^2 -  {\widehat G}_{t}^2\right) - \left({\widehat R}_{t}^2 -  {\widehat G}_{t}^2\right).
+\end{align*} 
+It may be directly verified that $N_{t+1}^1$ and $ N_{t+1}^2$  have conditional expectations equal to zero.  Express
+```{math} 
+:label: V-R2
+\begin{align}
+ {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1 = &  \left({\frac 1 {1-\gamma_o}} \right) \left[\mu^0 \cdot ( W_{t+1} - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] \cr
+ {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2 = &  {\frac 1 2} \left(W_{t+1} - \mu^0 \right)'\Upsilon_2^2 \left(W_{t+1} - \mu^0 \right) -
+ {\frac 1 2} \rm{tr}\left( \Upsilon_2^2\right) \cr & -   \left(W_{t+1} - \mu^0\right)' \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2\right).
+ \end{align}
+```
+In producing these representations, we use that have conditional ${\widehat V}_{t+1}^2 - {\widehat R}_{t}^2$ and  $ {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2$ have mean zero under the conditional probability distribution induced by $N_{t+1}^0.$ 
 
-## Appendix: Approximation formulas for resource allocation problem (approach one)
+
+
+
+
+## Appendix B: Approximation formulas  (approach one)
 
 Consider the equation:
 ```{math}
@@ -1342,12 +1276,12 @@ Q_t^1 N_{t+1}^0   H_{t+1}^0  + Q_t^0 N_{t+1}^1 H_{t+1}^0 + Q_t^0 N_{t+1}^0  H_{t
 ```
 Thus the order one approximate equation is:
 ```{math}
-\begin{align*}
+\begin{align}
 & Q_t^0 {\mathbb E} \left( N_{t+1}^1   H_{t+1}^0    + N_{t+1}^0 H_{t+1}^1  \mid {\mathfrak A}_t \right)
 + Q_t^1 H_{t+1}^0    + L_t^1 \\
 & = Q_t^0 {\mathbb E} \left(  N_{t+1}^0 H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  L_t^1 \\
 & = 0
-\end{align*}
+\end{align}
 ```
 where we used the implication that $ {\mathbb E} \left( N_{t+1}^1  \mid {\mathfrak A}_t \right) = 0.$  
 
@@ -1356,456 +1290,468 @@ where we used the implication that $ {\mathbb E} \left( N_{t+1}^1  \mid {\mathfr
 
 The order two approximation of the product: $ N_{t+1} Q_{t+1} H_{t+1} + L_{t+1} $ is:
 ```{math}
-\begin{align*}
+\begin{align}
 & Q_t^0 N_{t+1}^0 H_{t+1}^2 + Q_t^0 N_{t+1}^2H_{t+1}^0  + 
 2 Q_t^0 N_{t+1}^1 H_{t+1}^1 + L_t^2 \\
 + 
 & 2 N_{t+1}^1  Q_{t}^1 H_{t+1}^0  +   2 N_{t+1}^0 Q_{t}^1 H_{t+1}^1 + N_{t+1}^0 Q_{t}^2 H_{t+1}^0 
-\end{align*}
-```
-The terms $ Q_t^0 N_{t+1}^2H_{t+1}^0$ and $2 N_{t+1}^1  Q_{t}^1 H_{t+1}^0$ have conditional expectation equal to zero.   
-Two of terms entail computing additional second derivatives:
-\begin{align*}
-Q_t^0 {\mathbb E} \left( N_{t+1}^0 H_{t+1}^2 \mid {\mathfrak A}_t \right) \cr
-L_t^2.
-\end{align*}
-Express $ H_{t+1}^1 $  as 
-```{math}
-:label: H1
-\begin{align} 
-H_{t+1}^1 & = \Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right). 
 \end{align}
 ```
-We now consider the additional terms
+The terms $ Q_t^0 N_{t+1}^2H_{t+1}^0$ and $2 N_{t+1}^1  Q_{t}^1 H_{t+1}^0$ have conditional expectation equal to zero.   Thus the approximating equation is:
+```{math}
+\begin{align}
+& Q_t^0 {\mathbb E} \left( N_{t+1}^0 H_{t+1}^2 \mid {\mathfrak A}_t \right) +
+L_t^2 \cr & + 2Q_t^0 {\mathbb E}\left( N_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) + 
+2 Q_t^1 {\mathbb E} \left(N_{t+1}^0  H_{t+1}^1 \mid {\mathfrak A}_t \right) + H_{t+1}^0 Q_t^2  {\mathbb E} \left(  N_{t+1}^0 \mid {\mathfrak A}_t \right) \cr
+& = 0.
+\end{align}   
+```
+
+To elaborate on  the contributions in the second line, 
+express $ H_{t+1}^1 $  as 
+```{math}
+:label: Hplus1
+H_{t+1}^1  = \Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right). 
+```
+Then
 ```{math}
 \begin{align} 
-2Q_t^0 {\mathbb E}\left( N_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) & = 
-(1 - \gamma_o)  {\mathbb E} \left[ N_{t+1}^0   \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right)H_{t+1}^1 \mid{\mathfrak A}_t \right], \\ 
-%& = (1 - \gamma_o)  \Theta_2^1 \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2 \right) \\
+2Q_t^0 {\mathbb E}\left( N_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) & = (1-\gamma)  
+  Q_t^0 {\mathbb E} \left[ N_{t+1}^0   \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right)H_{t+1}^1 \mid{\mathfrak A}_t \right], \\ 
+& = 2(\gamma_o - 1) Q_t^o \Theta_2^1 \left[  \Upsilon_1^2 X_t^1  + \Upsilon_0^2\right] \\
 2 Q_t^1 {\mathbb E} \left(N_{t+1}^0  H_{t+1}^1 \mid {\mathfrak A}_t \right) & = 
 2 Q_t^0 \beta (1- \rho) \left({\widehat R}_t^1 - {\widehat G}_t^1 \right)\left( \Theta_0^1 + \Theta_1^1 X_t^1 \right), \\
 H_{t+1}^0 Q_t^2 {\mathbb E} \left(  N_{t+1}^0   \mid {\mathfrak A}_t \right) & =  H_{t+1}^0 Q_t^0  \left[\beta (1-\rho)^2  \left( {\widehat R}_t^1 - {\widehat G}_t^1\right)^2 + 
 \beta (1-\rho)  \left( {\widehat R}_t^2 - {\widehat G}_t^2\right)\right].
 \end{align} 
 ```
+The formula for the first of these terms follows from {eq}`V-R2` and {eq}`Hplus1`, along with fact the third central moments of normals are zero.    
+
 %Denote the sum of the four terms in the second affine as ${\overline H}_t^2$. This random variable will be affine in 
 %$ X_t^1 $, with a dynamic evolution determined by solving the first-order approximation.  Thus we write the subsystem of equations to be solved as:
 %```{math}
 %{\mathbb E} \left( N_{t+1}^0 H_{t+1}^2 \mid {\mathfrak A}_t \right) + L_{t}^2 + {\overline H}_t^2  = 0.
 %```
-We add to this second-order subsystem, the second-order approximation of the state dynamics inclusive of the jump variables.  We substitute in the solution for the first-order approximation for the jump variables into both the first and second-order approximate state dynamics.  In solving the second-order jump variable adjustment we use expectations induced by $ N_{t+1}^0 $ zero throughout under which $ W_{t+1} $ is conditionally normally distributed with mean $ \mu^0 $ and covariance $ I $.
+We add to this second-order subsystem, the second-order approximation of the state dynamics inclusive of the jump variables.  We substitute in the solution for the first-order approximation for the jump variables into both the first and second-order approximate state dynamics.  In solving the second-order jump variable adjustment we use expectations induced by $ N_{t+1}^0 $ zero throughout under which $W_{t+1} $ is conditionally normally distributed with mean $ \mu^0 $ and covariance $ I $.
 
+## Appendix C: Approximation formulas  (approach two)
 
-### Steps for implementation 
-
-
-
-We implement these methods for second-order approximation using the following steps.
-
-
-
-1. Solve $Q_t^0$, $H_{t+1}^0,$ and $L_{t+1}^0$ for order zero state and jump variables. The outcome will be state invariant.
-
-2. Take as given a $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in representations {eq}`VminusR2`.
-
-3. Compute the first-order contribution to approximation by following the previous literature with expectations computed using the probabilities induced by $N_{t+1}^0$, which imply that $W_{t+1}$ has mean $\mu^0$. Express the solution as in {eq}`H1`.
-
-4. Compute the second-order contribution to the approximation by following the previous literature, again with the expectations induced by $N_{t+1}^0$.
-
-5. Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in representations {eq}`VminusR2` and return to {stepi}. Repeat until convergence.
-
-
-
-## Appendix: Approximation formulas for expectation equations (approach two)
-
-For this solution, we iterate over $N_{t+1}^*$ approximation. Call the approximation ${\widetilde N}_{t+1}$ with an induced distribution for $W_{t+1}$ that is normal with conditional mean ${\tilde \mu}_t$ and covariance matrix ${\widetilde \Sigma}$. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for ${\tilde \mu}_t$ is affine in $X_t^1$. The following delineates the changes that need to be made.
-
-### First-order adjustment
-Compute:
-```{math}
-\begin{align*}
-{\mathbb E} \left( {\widetilde N}_{t+1}  Q_{t+1}^1 H_{t+1}^0  \mid {\mathfrak A}_t \right) = \hspace{.2cm} &
-(\rho - 1) 
-{\mathbb E} \left[ {\widetilde N}_{t+1} \left({\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr
-= \hspace{.2cm}&\left({\frac {\rho -1} {1-\gamma_o}}\right)  \left[\mu^0 \cdot ( {\tilde \mu}_t - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] H_{t+1}^0 \cr
- \eqdef \hspace{2cm} & {\widetilde  H}_t^1.
-\end{align*}
-```
-Then the equation to be solved is:
-```{math}
-{\mathbb E} \left({\widetilde N}_{t+1}   H_{t+1}^1 \mid {\mathfrak A}_t \right) + L_{t}^1 + {\widetilde H}^1_t  = 0.
-```
-
-### Second-order adjustment
-```{math}
-:label: second_affine_again
-\begin{align*}
- 2 {\mathbb E} \left({\widetilde N}_{t+1} Q_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) =  \hspace{.2cm} & 2(\rho - 1) {\mathbb E}\left[ {\widetilde N}_{t+1}\left( 
-{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right) \right] \mid {\mathfrak A}_t \right] \cr
- = \hspace{.2cm}  & 2 \frac {(\rho - 1)}{(1-\gamma_o)}  \Theta_2^1 {\widetilde \Sigma} \mu^0 
-\cr  + &2 \frac {(\rho - 1)}{(1-\gamma_o)} \left[\mu^0 \cdot ( {\tilde \mu}_t - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1\left( {\tilde \mu}_t - \mu^0\right)  \right] \cr
-{\mathbb E} \left(  {\widetilde N}_{t+1} Q_{t+1}^2 H_{t+1}^0 \mid {\mathfrak A}_t \right) =  \hspace{.2cm}& (\rho - 1)^2{\mathbb E} \left[{\widetilde N}_{t+1} \left( 
-{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right)^2  \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr 
-&  +   (\rho - 1) {\mathbb E} \left[{\widetilde N}_{t+1}  \left( 
-{\widehat V}_{t+1}^2  - {\widehat R}^2 \right) \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr
-= \hspace{.2cm}& \left(\frac {1-\rho}{1-\gamma_o}\right)^2\left[{\mu^0}'{\widetilde \Sigma} \mu^0 + \left(\mu^0 \cdot {\tilde \mu}_t - {\frac 1 2} |\mu^0|^2 \right)^2\right]
-H_{t+1}^0 \cr 
- &  + \frac {(\rho - 1)} 2 \left[ \rm{tr}\left( \Upsilon_2^2{\widetilde \Sigma} - \Upsilon_2^2 \right)  
-  +  \left({\tilde \mu}_t - \mu^0\right)' \Upsilon_{2}^2  \left({\tilde \mu}_t - \mu^0\right)\right] H_{t+1}^0 \cr
-&  +  (\rho - 1) \left({\tilde \mu}_t  - \mu^0\right)' \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2\right) H_{t+1}^0.
-\end{align*}
-```
-
-Denote the sum of the two terms in {eq}`second_affine_again` as ${\widetilde H}_t^2.$ Then the equation to be solved is 
-```{math}
-{\mathbb E} \left( {\widetilde N}_{t+1} H_{t+1}^2 \mid {\mathfrak A}_t \right) + L_{t}^2 + {\widetilde H}_t^2  = 0.
-```
-
-### Updated recursive utility adjustments
-
-Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2,  \Upsilon_2^2$ used in representations {eq}`VminusR2`. Compute a new version of
-```{math}
-{\widetilde  N}_{t+1}  =  
-\frac 
-{\exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right]} 
-{{\mathbb E}\left( \exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right] \mid {\mathfrak A}_t \right)},
-```
-and deduce the implied ${\widetilde \mu}_t$ and ${\widetilde \Sigma}$. The conditional mean ${\tilde \mu}_t$ satisfies:
-```{math}
-{\widetilde \Sigma}^{-1} {\tilde \mu}_t =  \mu^0 +  {\frac {(1-\gamma_o)} 2} \left(\Upsilon_0^2 + \Upsilon_1^2 X_t^1 - \Upsilon_2^2 \mu^0 \right)
-```
-where the formula for ${\widetilde \Sigma}$ is
-```{math}
-\widetilde {\Sigma} =  \left[{\mathbb I} - {\frac {(1 - \gamma_o)}  2} \Upsilon_2^2\right]^{-1}.
-```
-
-With these adjustments, we iterate to convergence.
-
-
-
-## Appendix: Approximation formulas for the stochastic discount factor
-
-***This should be moved to a Jupyter notebook***
-
-<!-- Test reference {ref}`section:var` -->
-
-For the purposes of this appendix, write:
-```{math}
-:label: equation5
-\frac {S_{t+1}}{S_t} = N_{t+1}^* Q_{t+1} \beta \exp \left[- \rho \left( \log C_{t+1} - \log C_t \right) \right]
-```
-
-where
-```{math}
-:label: equation6
-N_{t+1}^* = \exp\left[  (1-\gamma_o) \left({\widetilde V}_{t+1} - {\widetilde  R}_t\right) \right]
-```
-```{math}
-Q_{t+1}^* = \exp\left[(\rho - 1) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right]
-```
-are terms that are contributed by recursive utility.  
-
-(sec:N_derivatives)=
-### $N_{t+1}^*$ derivatives
-
-```{math}
-:N_{t+1}^0:
-N_{t+1}^0 \eqdef \exp\left[(1 - \gamma_o) \left({\widetilde V}_{t+1}^0 - {\widetilde R}_t^0 \right) \right]   = \exp\left[  (1-\gamma_o) \left({\widehat V}_{t+1}^1 - {\widehat  R}_t^1\right) \right]
-```
-```{math}
-\begin{align*}
-N_{t+1}^1 \eqdef  \hspace{.2cm} & \left.  \frac d {d{\sf q}}  \exp\left[(1 - \gamma_o) \left({\widetilde V}_{t+1} - {\widetilde R}_t \right) \right] \right\vert_{{\sf q} =0} \cr  =  \hspace{.2cm} & (1 - \gamma_o)  N_{t+1}^0\left( 
-{\widetilde V}_{t+1}^1  - {\widetilde R}_t^1 \right) \cr =  \hspace{.2cm} & \left(\frac {1-\gamma_o} 2 \right) N_{t+1}^0 \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right).
-\end{align*}
-```
-It may be directly verified that $N_{t+1}^1$ has conditional expectation equal to zero.
-
-### $Q_{t+1}^*$ derivatives
-
-```{math}
-Q_{t+1}^0 \eqdef \exp\left[(\rho - 1) \left({\widehat V}_{t+1}^0 - {\widehat R}_t^0 \right) \right]   = 1 
-```
-```{math}
-Q_{t+1}^1 \eqdef \left.  \frac d {d{\sf q}}  \exp\left[(\rho - 1) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \right\vert_{{\sf q} =0}  = (\rho - 1) \left( 
-{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) 
-```
-```{math}
-Q_{t+1}^2  \eqdef \left.  \frac {d^2}  {d{\sf q}^2}   \exp\left[(\rho - 1) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \right\vert_{{\sf q} =0}   = 
-(\rho - 1)^2 \left( 
-{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right)^2 +  (\rho - 1) \left( 
-{\widehat V}_{t+1}^2  - {\widehat R}_t^2 \right)
-```
-
-Express
-```{math} 
-:widehat{V}_{t+1}^1 - \widehat{R}_{t}^1:
- {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1 =  {\frac 1 {1-\gamma_o}} \left[\mu^0 \cdot ( W_{t+1} - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] 
-```
-```{math} 
-:label: VminusR2
- {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2 = {\frac 1 2} \left(W_{t+1} - \mu^0 \right)'\Upsilon_2^2 \left(W_{t+1} - \mu^0 \right) - 
- {\frac 1 2} \rm{tr}\left( \Upsilon_2^2\right) +  \left(W_{t+1} - \mu^0\right)' \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2\right),
-```
-Recall from {eq}`recur_update` that $ {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2$ has mean zero under the probability distribution induced by $N_{t+1}^0,$ which is consistent with its representation in {eq}`VminusR2`.
-
-
-
-
-## Appendix: Approximation formulas for expectation equations (approach one)
-
-Consider the equation:
-```{math}
-{\mathbb E} \left( N_{t+1} Q_{t+1} H_{t+1} \mid {\mathfrak A}_t \right)  + L_{t}   = 0 .
-```
-where $ \beta \exp \left[- \rho \left( \log C_{t+1} - \log C_t \right) \right] $ is absorbed into the construction of $ H_{t+1} $. This is the subsystem of the equations not including the state evolution equations.  
-
-(sec2)= 
-### Order zero 
-
-The order zero approximation of the product: $ N_{t+1} Q_{t+1} H_{t+1} +  L_{t} $ is:
-```{math}
-N_{t+1}^0  H_{t+1}^0 + L_t^0 = 0 
-```
-where we have substituted $ Q_{t+1}^0 = 1 $.  
-Thus the order zero approximate equation is:
-```{math}
-{\mathbb E} \left[N_{t+1}^0 \left( H_{t+1}^0 + L_{t+1}^0 \right)  \mid {\mathfrak A}_t \right] =  H_{t+1}^0 + L_{t}^0 = 0
-```
-since $ N_{t+1}^0 $ has conditional expectation equal to one.  We add to this subsystem the  ${\sf q} = 0$ state dynamic equation inclusive of jump variables,  and we compute a stable steady state solution.   
-
-(sec3)= 
-### Order one 
-
-The order one approximation of the product: $ N_{t+1} Q_{t+1} H_{t+1}+  L_{t} $ is:
-```{math}
-N_{t+1}^1   H_{t+1}^0  + N_{t+1}^0  Q_{t+1}^1 H_{t+1}^0 + N_{t+1}^0  H_{t+1}^1 +  L_{t}^1 
-```
-where we have substituted $ Q_{t+1}^0 = 1 $.  Thus the order one approximate equation is:
-```{math}
-\begin{align*}
-& {\mathbb E} \left( N_{t+1}^1   H_{t+1}^0    + N_{t+1}^0 H_{t+1}^1  \mid {\mathfrak A}_t \right)
-+ {\mathbb E} \left( N_{t+1}^0  Q_{t+1}^1 H_{t+1}^0  \mid {\mathfrak A}_t \right)  + L_t^1 \\
-& = {\mathbb E} \left[  N_{t+1}^0 \left(H_{t+1}^1  +  Q_{t+1}^1 H_{t+1}^0 \right) \mid {\mathfrak A}_t \right] + L_t^1 \\
-& = 0
-\end{align*}
-```
-where we used the implication that $ H_{t+1}^0  + L_{t+1}^0 = 0 $. The contribution:
-```{math}
-{\mathbb E} \left(N_{t+1}^0  H_{t+1}^1   \mid {\mathfrak A}_t \right) + L_t^1
-```
-is of the form used  for the first-order approximation without the recursive utility modification, except that the expectation is evaluated under the probability measure implied by $ N_{t+1}^0 $.  The recursive utility adjustment has us include the additional term:
-```{math}
-{\mathbb E} \left( N_{t+1}^0  Q_{t+1}^1 H_{t+1}^0  \mid {\mathfrak A}_t \right) 
-= {\frac {(\rho-1)}{2(1-\gamma_o)}} |\mu^o|^2H_{t+1}^0 \eqdef {\overline H}^1
-```
-which is constant over time.  Thus we write the first-order subsystem of equations as:
-```{math}
-{\mathbb E} \left(N_{t+1}^0   H_{t+1}^1 \mid {\mathfrak A}_t \right) + L_{t}^1 + {\overline H}^1 
- = 0.
-```
-We add to this the first-order approximation of the state dynamics inclusive of jump variables and evaluate expectations under the $ N_{t+1}^0 $ change of probability measure.  Thus the one-period conditional expectation of $ W_{t+1} $ is $ \mu^0 $. 
-
-(sec4)= 
-### Order two 
-
-The order two approximation of the product: $ N_{t+1} Q_{t+1} H_{t+1} + N_{t+1} L_{t+1} $ is:
-```{math}
-\begin{align*}
-& N_{t+1}^0 H_{t+1}^2 + N_{t+1}^2H_{t+1}^0  + 
-2 N_{t+1}^1 H_{t+1}^1 + L_t^2 \\
-+ 
-& 2 N_{t+1}^1  Q_{t+1}^1 H_{t+1}^0  +   2 N_{t+1}^0 Q_{t+1}^1 H_{t+1}^1 + N_{t+1}^0 Q_{t+1}^2 H_{t+1}^0 
-\end{align*}
-```
-The term $ N_{t+1}^2H_{t+1}^0 $ is zero and the term 
-```{math}
-{\mathbb E} \left( N_{t+1}^0 H_{t+1}^2  \mid {\mathfrak A}_t \right) + L_t^2
-```
-coincides with the contribution for the  second-order approximation  abstracting from recursive utility but evaluated under the change of measure induced by $ N_{t+1}^0 $.   
-Express $ H_{t+1}^1 $  as 
-```{math}
-:label: H1
-\begin{align} 
-H_{t+1}^1 & = \Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right). 
+In this approach we use the same order zero approximation.  For the order one approximation, we use the formula {eq}`restricted_probability` for ${\widetilde N}_{t+1},$ which approximates  $N_{t+1}^*,$ in conjunction with:
+\begin{align}
+Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  L_t^1 = 0.
 \end{align}
-```
-We now consider the additional terms
+From formula {eq}`V-R2`, it follows that under the ${\widetilde N}_{t+1},$ induced change in probability, $W_{t+1}$
+is normally distributed with conditional mean 
 ```{math}
-\begin{align} 
-2{\mathbb E}\left( N_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) & = 
-(1 - \gamma_o)  {\mathbb E} \left[ N_{t+1}^0   \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right)H_{t+1}^1 \mid{\mathfrak A}_t \right], \\ 
-& = (1 - \gamma_o)  \Theta_2^1 \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2 \right) \\
-2 {\mathbb E} \left(N_{t+1}^1  Q_{t+1}^1 H_{t+1}^0 \mid {\mathfrak A}_t \right) & = (\rho  - 1)(1 - \gamma_o){\mathbb E}\left[ N_{t+1}^0 \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right) \left( {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1\right)  \mid {\mathfrak A}_t \right] H_{t+1}^0 \\
-& = (\rho  - 1) \mu^o \cdot \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2 \right) H_{t+1}^0 \\
-2 {\mathbb E} \left(N_{t+1}^0 Q_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) & = 2(\rho - 1) {\mathbb E}\left[ N_{t+1}^0\left( 
-{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right) \right] \mid {\mathfrak A}_t \right] \\
-&  = 2 \frac {(\rho - 1)}{(1-\gamma_o)}\left[   \Theta_2^1 \mu^0 + {\frac 1 2} \mu^o \cdot \mu^o \left(\Theta_0^1 + \Theta_1^1 X_t^1\right) \right] \\
-{\mathbb E} \left(  N_{t+1}^0 Q_{t+1}^2 H_{t+1}^0 \mid {\mathfrak A}_t \right) & =  (\rho - 1)^2{\mathbb E} \left[N_{t+1}^0 \left( 
-{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right)^2  \mid {\mathfrak A}_t \right] H_{t+1}^0 \\
-& = \left(\frac {1-\rho}{1-\gamma_o}\right)^2\left(|\mu^0|^2 + {\frac 1 4} |\mu^0|^4 \right) H_{t+1}^0
-\end{align} 
+\mu^0 +  (1-\gamma_o) \left(\Upsilon_2^2\right)^{-1} \left(\Upsilon_1^2X_t^1 + \Upsilon_0^2\right) ,
 ```
-Denote the sum of the four terms in the second affine as ${\overline H}_t^2$. This random variable will be affine in 
-$ X_t^1 $, with a dynamic evolution determined by solving the first-order approximation.  Thus we write the subsystem of equations to be solved as:
+and conditional precision:
 ```{math}
-{\mathbb E} \left( N_{t+1}^0 H_{t+1}^2 \mid {\mathfrak A}_t \right) + L_{t}^2 + {\overline H}_t^2  = 0.
+(\gamma_o - 1) \Upsilon_2^2 + {\mathbb I}.  
 ```
-We add to this second-order subsystem, the second-order approximation of the state dynamics inclusive of the jump variables.  We substitute in the solution for the first-order approximation for the jump variables into both the first and second-order approximate state dynamics.  In solving the second-order jump variable adjustment we use expectations induced by $ N_{t+1}^0 $ zero throughout under which $ W_{t+1} $ is conditionally normally distributed with mean $ \mu^0 $ and covariance $ I $.
+For the order two approximation, we use:
+```{math} 
+Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1}  H_{t+1}^2  \mid {\mathfrak A}_t \right) + L_t^2 
++ 2 Q_t^1  {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + H_{t+1}^0 Q_t^2 = 0 . 
+```
 
 
-### Steps for implementation 
+%### Steps for implementation 
+%
+%
+%
+%We implement these methods for second-order approximation using the following steps.
+%
+%
+%
+%1. Solve $Q_t^0$, $H_{t+1}^0,$ and $L_{t+1}^0$ for order zero state and jump variables. The outcome will be state invariant.
+%
+%2. Take as given a $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in representations {eq}`VminusR2`.
+%
+%3. Compute the first-order contribution to approximation by following the previous literature with expectations computed using the probabilities induced by $N_{t+1}^0$, which imply that $W_{t+1}$ has mean $\mu^0$. Express the solution as in {eq}`H1`.
+%
+%4. Compute the second-order contribution to the approximation by following the previous literature, again with the expectations induced by $N_{t+1}^0$.
+%
+%5. Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in representations {eq}`VminusR2` and return to {stepi}. Repeat until convergence.
+%
+%
+%
+%## Appendix: Approximation formulas for expectation equations (approach two)
+%
+%For this solution, we iterate over $N_{t+1}^*$ approximation. Call the approximation ${\widetilde N}_{t+1}$ with an induced distribution for $W_{t+1}$ that is normal with conditional mean ${\tilde \mu}_t$ and covariance matrix ${\widetilde \Sigma}$. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for ${\tilde \mu}_t$ is affine in $X_t^1$. The following delineates the changes that need to be made.
+%
+%### First-order adjustment
+%Compute:
+%```{math}
+%\begin{align*}
+%{\mathbb E} \left( {\widetilde N}_{t+1}  Q_{t+1}^1 H_{t+1}^0  \mid {\mathfrak A}_t \right) = \hspace{.2cm} &
+%(\rho - 1) 
+%{\mathbb E} \left[ {\widetilde N}_{t+1} \left({\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr
+%= \hspace{.2cm}&\left({\frac {\rho -1} {1-\gamma_o}}\right)  \left[\mu^0 \cdot ( {\tilde \mu}_t - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] H_{t+1}^0 \cr
+% \eqdef \hspace{2cm} & {\widetilde  H}_t^1.
+%\end{align*}
+%```
+%Then the equation to be solved is:
+%```{math}
+%{\mathbb E} \left({\widetilde N}_{t+1}   H_{t+1}^1 \mid {\mathfrak A}_t \right) + L_{t}^1 + {\widetilde H}^1_t  = 0.
+%```
+%
+%### Second-order adjustment
+%```{math}
+%:label: second_affine_again
+%\begin{align*}
+% 2 {\mathbb E} \left({\widetilde N}_{t+1} Q_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) =  \hspace{.2cm} & 2(\rho - 1) {\mathbb E}\left[ {\widetilde N}_{t+1}\left( 
+%{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right) \right] \mid {\mathfrak A}_t \right] \cr
+% = \hspace{.2cm}  & 2 \frac {(\rho - 1)}{(1-\gamma_o)}  \Theta_2^1 {\widetilde \Sigma} \mu^0 
+%\cr  + &2 \frac {(\rho - 1)}{(1-\gamma_o)} \left[\mu^0 \cdot ( {\tilde \mu}_t - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1\left( {\tilde \mu}_t - \mu^0\right)  \right] \cr
+%{\mathbb E} \left(  {\widetilde N}_{t+1} Q_{t+1}^2 H_{t+1}^0 \mid {\mathfrak A}_t \right) =  \hspace{.2cm}& (\rho - 1)^2{\mathbb E} \left[{\widetilde N}_{t+1} \left( 
+%{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right)^2  \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr 
+%&  +   (\rho - 1) {\mathbb E} \left[{\widetilde N}_{t+1}  \left( 
+%{\widehat V}_{t+1}^2  - {\widehat R}^2 \right) \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr
+%= \hspace{.2cm}& \left(\frac {1-\rho}{1-\gamma_o}\right)^2\left[{\mu^0}'{\widetilde \Sigma} \mu^0 + \left(\mu^0 \cdot {\tilde \mu}_t - {\frac 1 2} |\mu^0|^2 \right)^2\right]
+%H_{t+1}^0 \cr 
+% &  + \frac {(\rho - 1)} 2 \left[ \rm{tr}\left( \Upsilon_2^2{\widetilde \Sigma} - \Upsilon_2^2 \right)  
+%  +  \left({\tilde \mu}_t - \mu^0\right)' \Upsilon_{2}^2  \left({\tilde \mu}_t - \mu^0\right)\right] H_{t+1}^0 \cr
+%&  +  (\rho - 1) \left({\tilde \mu}_t  - \mu^0\right)' \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2\right) H_{t+1}^0.
+%\end{align*}
+%```
+%
+%Denote the sum of the two terms in {eq}`second_affine_again` as ${\widetilde H}_t^2.$ Then the equation to be solved is 
+%```{math}
+%{\mathbb E} \left( {\widetilde N}_{t+1} H_{t+1}^2 \mid {\mathfrak A}_t \right) + L_{t}^2 + {\widetilde H}_t^2  = 0.
+%```
+%
+%### Updated recursive utility adjustments
+%
+%Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2,  \Upsilon_2^2$ used in representations {eq}`VminusR2`. Compute a new version of
+%```{math}
+%{\widetilde  N}_{t+1}  =  
+%\frac 
+%{\exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right]} 
+%{{\mathbb E}\left( \exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right] \mid {\mathfrak A}_t \right)},
+%```
+%and deduce the implied ${\widetilde \mu}_t$ and ${\widetilde \Sigma}$. The conditional mean ${\tilde \mu}_t$ satisfies:
+%```{math}
+%{\widetilde \Sigma}^{-1} {\tilde \mu}_t =  \mu^0 +  {\frac {(1-\gamma_o)} 2} \left(\Upsilon_0^2 + \Upsilon_1^2 X_t^1 - \Upsilon_2^2 \mu^0 \right)
+%```
+%where the formula for ${\widetilde \Sigma}$ is
+%```{math}
+%\widetilde {\Sigma} =  \left[{\mathbb I} - {\frac {(1 - \gamma_o)}  2} \Upsilon_2^2\right]^{-1}.
+%```
+%
+%With these adjustments, we iterate to convergence.
+%
+%
+%
+%## Appendix: Approximation formulas for the stochastic discount factor
+%
+%***This should be moved to a Jupyter notebook***
+%
+%<!-- Test reference {ref}`section:var` -->
+%
+%For the purposes of this appendix, write:
+%```{math}
+%:label: equation5
+%\frac {S_{t+1}}{S_t} = N_{t+1}^* Q_{t+1} \beta \exp \left[- \rho \left( \log C_{t+1} - \log C_t \right) \right]
+%```
+%
+%where
+%```{math}
+%:label: equation6
+%N_{t+1}^* = \exp\left[  (1-\gamma_o) \left({\widetilde V}_{t+1} - {\widetilde  R}_t\right) \right]
+%```
+%```{math}
+%Q_{t+1}^* = \exp\left[(\rho - 1) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right]
+%```
+%are terms that are contributed by recursive utility.  
+%
+%(sec:N_derivatives)=
+%### $N_{t+1}^*$ derivatives
+%
+%```{math}
+%:N_{t+1}^0:
+%N_{t+1}^0 \eqdef \exp\left[(1 - \gamma_o) \left({\widetilde V}_{t+1}^0 - {\widetilde R}_t^0 \right) \right]   = \exp\left[  (1-\gamma_o) \left({\widehat V}_{t+1}^1 - {\widehat  R}_t^1\right) \right]
+%```
+%```{math}
+%\begin{align*}
+%N_{t+1}^1 \eqdef  \hspace{.2cm} & \left.  \frac d {d{\sf q}}  \exp\left[(1 - \gamma_o) \left({\widetilde V}_{t+1} - {\widetilde R}_t \right) \right] \right\vert_{{\sf q} =0} \cr  =  \hspace{.2cm} & (1 - \gamma_o)  N_{t+1}^0\left( 
+%{\widetilde V}_{t+1}^1  - {\widetilde R}_t^1 \right) \cr =  \hspace{.2cm} & \left(\frac {1-\gamma_o} 2 \right) N_{t+1}^0 \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right).
+%\end{align*}
+%```
+%It may be directly verified that $N_{t+1}^1$ has conditional expectation equal to zero.
+%
+%### $Q_{t+1}^*$ derivatives
+%
+%```{math}
+%Q_{t+1}^0 \eqdef \exp\left[(\rho - 1) \left({\widehat V}_{t+1}^0 - {\widehat R}_t^0 \right) \right]   = 1 
+%```
+%```{math}
+%Q_{t+1}^1 \eqdef \left.  \frac d {d{\sf q}}  \exp\left[(\rho - 1) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \right\vert_{{\sf q} =0}  = (\rho - 1) \left( 
+%{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) 
+%```
+%```{math}
+%Q_{t+1}^2  \eqdef \left.  \frac {d^2}  {d{\sf q}^2}   \exp\left[(\rho - 1) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \right\vert_{{\sf q} =0}   = 
+%(\rho - 1)^2 \left( 
+%{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right)^2 +  (\rho - 1) \left( 
+%{\widehat V}_{t+1}^2  - {\widehat R}_t^2 \right)
+%```
+%
+%Express
+%```{math} 
+%:widehat{V}_{t+1}^1 - \widehat{R}_{t}^1:
+% {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1 =  {\frac 1 {1-\gamma_o}} \left[\mu^0 \cdot ( W_{t+1} - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] 
+%```
+%```{math} 
+%:label: VminusR2
+% {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2 = {\frac 1 2} \left(W_{t+1} - \mu^0 \right)'\Upsilon_2^2 \left(W_{t+1} - \mu^0 \right) - 
+% {\frac 1 2} \rm{tr}\left( \Upsilon_2^2\right) +  \left(W_{t+1} - \mu^0\right)' \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2\right),
+%```
+%Recall from {eq}`recur_update` that $ {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2$ has mean zero under the probability distribution induced by $N_{t+1}^0,$ which is consistent with its representation in {eq}`VminusR2`.
+%
+%
+%
+%
+%## Appendix: Approximation formulas for expectation equations (approach one)
+%
+%Consider the equation:
+%```{math}
+%{\mathbb E} \left( N_{t+1} Q_{t+1} H_{t+1} \mid {\mathfrak A}_t \right)  + L_{t}   = 0 .
+%```
+%where $ \beta \exp \left[- \rho \left( \log C_{t+1} - \log C_t \right) \right] $ is absorbed into the construction of $ H_{t+1} $. This is the subsystem of the equations not including the state evolution equations.  
+%
+%(sec2)= 
+%### Order zero 
+%
+%The order zero approximation of the product: $ N_{t+1} Q_{t+1} H_{t+1} +  L_{t} $ is:
+%```{math}
+%N_{t+1}^0  H_{t+1}^0 + L_t^0 = 0 
+%```
+%where we have substituted $ Q_{t+1}^0 = 1 $.  
+%Thus the order zero approximate equation is:
+%```{math}
+%{\mathbb E} \left[N_{t+1}^0 \left( H_{t+1}^0 + L_{t+1}^0 \right)  \mid {\mathfrak A}_t \right] =  H_{t+1}^0 + L_{t}^0 = 0
+%```
+%since $ N_{t+1}^0 $ has conditional expectation equal to one.  We add to this subsystem the  ${\sf q} = 0$ state dynamic equation inclusive of jump variables,  and we compute a stable steady state solution.   
+%
+%(sec3)= 
+%### Order one 
+%
+%The order one approximation of the product: $ N_{t+1} Q_{t+1} H_{t+1}+  L_{t} $ is:
+%```{math}
+%N_{t+1}^1   H_{t+1}^0  + N_{t+1}^0  Q_{t+1}^1 H_{t+1}^0 + N_{t+1}^0  H_{t+1}^1 +  L_{t}^1 
+%```
+%where we have substituted $ Q_{t+1}^0 = 1 $.  Thus the order one approximate equation is:
+%```{math}
+%\begin{align*}
+%& {\mathbb E} \left( N_{t+1}^1   H_{t+1}^0    + N_{t+1}^0 H_{t+1}^1  \mid {\mathfrak A}_t \right)
+%+ {\mathbb E} \left( N_{t+1}^0  Q_{t+1}^1 H_{t+1}^0  \mid {\mathfrak A}_t \right)  + L_t^1 \\
+%& = {\mathbb E} \left[  N_{t+1}^0 \left(H_{t+1}^1  +  Q_{t+1}^1 H_{t+1}^0 \right) \mid {\mathfrak A}_t \right] + L_t^1 \\
+%& = 0
+%\end{align*}
+%```
+%where we used the implication that $ H_{t+1}^0  + L_{t+1}^0 = 0 $. The contribution:
+%```{math}
+%{\mathbb E} \left(N_{t+1}^0  H_{t+1}^1   \mid {\mathfrak A}_t \right) + L_t^1
+%```
+%is of the form used  for the first-order approximation without the recursive utility modification, except that the expectation is evaluated under the probability measure implied by $ N_{t+1}^0 $.  The recursive utility adjustment has us include the additional term:
+%```{math}
+%{\mathbb E} \left( N_{t+1}^0  Q_{t+1}^1 H_{t+1}^0  \mid {\mathfrak A}_t \right) 
+%= {\frac {(\rho-1)}{2(1-\gamma_o)}} |\mu^o|^2H_{t+1}^0 \eqdef {\overline H}^1
+%```
+%which is constant over time.  Thus we write the first-order subsystem of equations as:
+%```{math}
+%{\mathbb E} \left(N_{t+1}^0   H_{t+1}^1 \mid {\mathfrak A}_t \right) + L_{t}^1 + {\overline H}^1 
+% = 0.
+%```
+%We add to this the first-order approximation of the state dynamics inclusive of jump variables and evaluate expectations under the $ N_{t+1}^0 $ change of probability measure.  Thus the one-period conditional expectation of $ W_{t+1} $ is $ \mu^0 $. 
+%
+%(sec4)= 
+%### Order two 
+%
+%The order two approximation of the product: $ N_{t+1} Q_{t+1} H_{t+1} + N_{t+1} L_{t+1} $ is:
+%```{math}
+%\begin{align*}
+%& N_{t+1}^0 H_{t+1}^2 + N_{t+1}^2H_{t+1}^0  + 
+%2 N_{t+1}^1 H_{t+1}^1 + L_t^2 \\
+%+ 
+%& 2 N_{t+1}^1  Q_{t+1}^1 H_{t+1}^0  +   2 N_{t+1}^0 Q_{t+1}^1 H_{t+1}^1 + N_{t+1}^0 Q_{t+1}^2 H_{t+1}^0 
+%\end{align*}
+%```
+%The term $ N_{t+1}^2H_{t+1}^0 $ is zero and the term 
+%```{math}
+%{\mathbb E} \left( N_{t+1}^0 H_{t+1}^2  \mid {\mathfrak A}_t \right) + L_t^2
+%```
+%coincides with the contribution for the  second-order approximation  abstracting from recursive utility but evaluated under the change of measure induced by $ N_{t+1}^0 $.   
+%Express $ H_{t+1}^1 $  as 
+%```{math}
+%:label: H1
+%\begin{align} 
+%H_{t+1}^1 & = \Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right). 
+%\end{align}
+%```
+%We now consider the additional terms
+%```{math}
+%\begin{align} 
+%2{\mathbb E}\left( N_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) & = 
+%(1 - \gamma_o)  {\mathbb E} \left[ N_{t+1}^0   \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right)H_{t+1}^1 \mid{\mathfrak A}_t \right], \\ 
+%& = (1 - \gamma_o)  \Theta_2^1 \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2 \right) \\
+%2 {\mathbb E} \left(N_{t+1}^1  Q_{t+1}^1 H_{t+1}^0 \mid {\mathfrak A}_t \right) & = (\rho  - 1)(1 - \gamma_o){\mathbb E}\left[ N_{t+1}^0 \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right) \left( {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1\right)  \mid {\mathfrak A}_t \right] H_{t+1}^0 \\
+%& = (\rho  - 1) \mu^o \cdot \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2 \right) H_{t+1}^0 \\
+%2 {\mathbb E} \left(N_{t+1}^0 Q_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) & = 2(\rho - 1) {\mathbb E}\left[ N_{t+1}^0\left( 
+%{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right) \right] \mid {\mathfrak A}_t \right] \\
+%&  = 2 \frac {(\rho - 1)}{(1-\gamma_o)}\left[   \Theta_2^1 \mu^0 + {\frac 1 2} \mu^o \cdot \mu^o \left(\Theta_0^1 + \Theta_1^1 X_t^1\right) \right] \\
+%{\mathbb E} \left(  N_{t+1}^0 Q_{t+1}^2 H_{t+1}^0 \mid {\mathfrak A}_t \right) & =  (\rho - 1)^2{\mathbb E} \left[N_{t+1}^0 \left( 
+%{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right)^2  \mid {\mathfrak A}_t \right] H_{t+1}^0 \\
+%& = \left(\frac {1-\rho}{1-\gamma_o}\right)^2\left(|\mu^0|^2 + {\frac 1 4} |\mu^0|^4 \right) H_{t+1}^0
+%\end{align} 
+%```
+%Denote the sum of the four terms in the second affine as ${\overline H}_t^2$. This random variable will be affine in 
+%$ X_t^1 $, with a dynamic evolution determined by solving the first-order approximation.  Thus we write the subsystem of equations to be solved as:
+%```{math}
+%{\mathbb E} \left( N_{t+1}^0 H_{t+1}^2 \mid {\mathfrak A}_t \right) + L_{t}^2 + {\overline H}_t^2  = 0.
+%```
+%We add to this second-order subsystem, the second-order approximation of the state dynamics inclusive of the jump variables.  We substitute in the solution for the first-order approximation for the jump variables into both the first and second-order approximate state dynamics.  In solving the second-order jump variable adjustment we use expectations induced by $ N_{t+1}^0 $ zero throughout under which $ W_{t+1} $ is conditionally normally distributed with mean $ \mu^0 $ and covariance $ I $.
+%
+%
+%### Steps for implementation 
+%
+%
+%
+%We implement these methods for second-order approximation using the following steps.
+%
+%
+%
+%1. Solve $H_{t+1}^0$ and $L_{t+1}^0$ for order zero state and jump variables. The outcome will be state invariant.
+%
+%2. Take as given a $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in representations {eq}`VminusR2`.
+%
+%3. Compute the first-order contribution to approximation by following the previous literature with expectations computed using the probabilities induced by $N_{t+1}^0$, which imply that $W_{t+1}$ has mean $\mu^0$. Express the solution as in {eq}`H1`.
+%
+%4. Compute the second-order contribution to the approximation by following the previous literature, again with the expectations induced by $N_{t+1}^0$.
+%
+%5. Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in representations {eq}`VminusR2` and return to {stepi}. Repeat until convergence.
+%
+%
+%(sec2)= 
+%## Appendix: Approximation formulas for expectation equations (approach two)
+%
+%For this solution, we iterate over $N_{t+1}^*$ approximation. Call the approximation ${\widetilde N}_{t+1}$ with an induced distribution for $W_{t+1}$ that is normal with conditional mean ${\tilde \mu}_t$ and covariance matrix ${\widetilde \Sigma}$. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for ${\tilde \mu}_t$ is affine in $X_t^1$. The following delineates the changes that need to be made.
+%
+%### First-order adjustment
+%Compute:
+%```{math}
+%\begin{align*}
+%{\mathbb E} \left( {\widetilde N}_{t+1}  Q_{t+1}^1 H_{t+1}^0  \mid {\mathfrak A}_t \right) = \hspace{.2cm} &
+%(\rho - 1) 
+%{\mathbb E} \left[ {\widetilde N}_{t+1} \left({\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr
+%= \hspace{.2cm}&\left({\frac {\rho -1} {1-\gamma_o}}\right)  \left[\mu^0 \cdot ( {\tilde \mu}_t - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] H_{t+1}^0 \cr
+% \eqdef \hspace{2cm} & {\widetilde  H}_t^1.
+%\end{align*}
+%```
+%Then the equation to be solved is:
+%```{math}
+%{\mathbb E} \left({\widetilde N}_{t+1}   H_{t+1}^1 \mid {\mathfrak A}_t \right) + L_{t}^1 + {\widetilde H}^1_t  = 0.
+%```
+%
+%### Second-order adjustment
+%```{math}
+%:label: second_affine_again
+%\begin{align*}
+% 2 {\mathbb E} \left({\widetilde N}_{t+1} Q_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) =  \hspace{.2cm} & 2(\rho - 1) {\mathbb E}\left[ {\widetilde N}_{t+1}\left( 
+%{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right) \right] \mid {\mathfrak A}_t \right] \cr
+% = \hspace{.2cm}  & 2 \frac {(\rho - 1)}{(1-\gamma_o)}  \Theta_2^1 {\widetilde \Sigma} \mu^0 
+%\cr  + &2 \frac {(\rho - 1)}{(1-\gamma_o)} \left[\mu^0 \cdot ( {\tilde \mu}_t - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1\left( {\tilde \mu}_t - \mu^0\right)  \right] \cr
+%{\mathbb E} \left(  {\widetilde N}_{t+1} Q_{t+1}^2 H_{t+1}^0 \mid {\mathfrak A}_t \right) =  \hspace{.2cm}& (\rho - 1)^2{\mathbb E} \left[{\widetilde N}_{t+1} \left( 
+%{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right)^2  \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr 
+%&  +   (\rho - 1) {\mathbb E} \left[{\widetilde N}_{t+1}  \left( 
+%{\widehat V}_{t+1}^2  - {\widehat R}^2 \right) \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr
+%= \hspace{.2cm}& \left(\frac {1-\rho}{1-\gamma_o}\right)^2\left[{\mu^0}'{\widetilde \Sigma} \mu^0 + \left(\mu^0 \cdot {\tilde \mu}_t - {\frac 1 2} |\mu^0|^2 \right)^2\right]
+%H_{t+1}^0 \cr 
+% &  + \frac {(\rho - 1)} 2 \left[ \rm{tr}\left( \Upsilon_2^2{\widetilde \Sigma} - \Upsilon_2^2 \right)  
+%  +  \left({\tilde \mu}_t - \mu^0\right)' \Upsilon_{2}^2  \left({\tilde \mu}_t - \mu^0\right)\right] H_{t+1}^0 \cr
+%&  +  (\rho - 1) \left({\tilde \mu}_t  - \mu^0\right)' \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2\right) H_{t+1}^0.
+%\end{align*}
+%```
+%
+%Denote the sum of the two terms in {eq}`second_affine_again` as ${\widetilde H}_t^2.$ Then the equation to be solved is 
+%```{math}
+%{\mathbb E} \left( {\widetilde N}_{t+1} H_{t+1}^2 \mid {\mathfrak A}_t \right) + L_{t}^2 + {\widetilde H}_t^2  = 0.
+%```
+%
+%### Updated recursive utility adjustments
+%
+%Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2,  \Upsilon_2^2$ used in representations {eq}`VminusR2`. Compute a new version of
+%```{math}
+%{\widetilde  N}_{t+1}  =  
+%\frac 
+%{\exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right]} 
+%{{\mathbb E}\left( \exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right] \mid {\mathfrak A}_t \right)},
+%```
+%and deduce the implied ${\widetilde \mu}_t$ and ${\widetilde \Sigma}$. The conditional mean ${\tilde \mu}_t$ satisfies:
+%```{math}
+%{\widetilde \Sigma}^{-1} {\tilde \mu}_t =  \mu^0 +  {\frac {(1-\gamma_o)} 2} \left(\Upsilon_0^2 + \Upsilon_1^2 X_t^1 - \Upsilon_2^2 \mu^0 \right)
+%```
+%where the formula for ${\widetilde \Sigma}$ is
+%```{math}
+%\widetilde {\Sigma} =  \left[{\mathbb I} - {\frac {(1 - \gamma_o)}  2} \Upsilon_2^2\right]^{-1}.
+%```
+%
+%With these adjustments, we iterate to convergence.
+%
+
+## Appendix D: Parameter values
 
 
 
-We implement these methods for second-order approximation using the following steps.
 
+To facilitate a comparison to a global solution method, we write down a discrete-time approximation to a continuous time version of such an economy. (See Section 4.4 of {cite}`KhorramiTourreHansen:2024` for a continuous-time benchmark model that our discrete-time system approximates.)  The parameter settings are:
 
+|  $\eta_k$ | $\phi$  | $\beta_k$  | $\beta_1$ | $\beta_2 $ | $\mu_2$ |
+| :------: | :-----: | :-----: | :-----: | :-----: | :-----: |
+| .04 | 8  | .04 |  .056 |  .194 | $6.3\times10^{-6}$ |
 
-1. Solve $H_{t+1}^0$ and $L_{t+1}^0$ for order zero state and jump variables. The outcome will be state invariant.
-
-2. Take as given a $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in representations {eq}`VminusR2`.
-
-3. Compute the first-order contribution to approximation by following the previous literature with expectations computed using the probabilities induced by $N_{t+1}^0$, which imply that $W_{t+1}$ has mean $\mu^0$. Express the solution as in {eq}`H1`.
-
-4. Compute the second-order contribution to the approximation by following the previous literature, again with the expectations induced by $N_{t+1}^0$.
-
-5. Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2$ used in representations {eq}`VminusR2` and return to {stepi}. Repeat until convergence.
-
-
-(sec2)= 
-## Appendix: Approximation formulas for expectation equations (approach two)
-
-For this solution, we iterate over $N_{t+1}^*$ approximation. Call the approximation ${\widetilde N}_{t+1}$ with an induced distribution for $W_{t+1}$ that is normal with conditional mean ${\tilde \mu}_t$ and covariance matrix ${\widetilde \Sigma}$. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for ${\tilde \mu}_t$ is affine in $X_t^1$. The following delineates the changes that need to be made.
-
-### First-order adjustment
-Compute:
-```{math}
 \begin{align*}
-{\mathbb E} \left( {\widetilde N}_{t+1}  Q_{t+1}^1 H_{t+1}^0  \mid {\mathfrak A}_t \right) = \hspace{.2cm} &
-(\rho - 1) 
-{\mathbb E} \left[ {\widetilde N}_{t+1} \left({\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr
-= \hspace{.2cm}&\left({\frac {\rho -1} {1-\gamma_o}}\right)  \left[\mu^0 \cdot ( {\tilde \mu}_t - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] H_{t+1}^0 \cr
- \eqdef \hspace{2cm} & {\widetilde  H}_t^1.
+\begin{bmatrix} \sigma_k \cr
+\sigma_1 \cr
+\sigma_2 
+\end{bmatrix} = 
+\sqrt{12} \begin{bmatrix}    .92 &   .40  &  0 \cr
+ 0 &  5.7 &  0  \cr
+0 &  0 &  .00031 
+\end{bmatrix} 
 \end{align*}
-```
-Then the equation to be solved is:
-```{math}
-{\mathbb E} \left({\widetilde N}_{t+1}   H_{t+1}^1 \mid {\mathfrak A}_t \right) + L_{t}^1 + {\widetilde H}^1_t  = 0.
-```
 
-### Second-order adjustment
-```{math}
-:label: second_affine_again
-\begin{align*}
- 2 {\mathbb E} \left({\widetilde N}_{t+1} Q_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) =  \hspace{.2cm} & 2(\rho - 1) {\mathbb E}\left[ {\widetilde N}_{t+1}\left( 
-{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right) \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right) \right] \mid {\mathfrak A}_t \right] \cr
- = \hspace{.2cm}  & 2 \frac {(\rho - 1)}{(1-\gamma_o)}  \Theta_2^1 {\widetilde \Sigma} \mu^0 
-\cr  + &2 \frac {(\rho - 1)}{(1-\gamma_o)} \left[\mu^0 \cdot ( {\tilde \mu}_t - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] \left[\Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1\left( {\tilde \mu}_t - \mu^0\right)  \right] \cr
-{\mathbb E} \left(  {\widetilde N}_{t+1} Q_{t+1}^2 H_{t+1}^0 \mid {\mathfrak A}_t \right) =  \hspace{.2cm}& (\rho - 1)^2{\mathbb E} \left[{\widetilde N}_{t+1} \left( 
-{\widehat V}_{t+1}^1  - {\widehat R}_t^1 \right)^2  \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr 
-&  +   (\rho - 1) {\mathbb E} \left[{\widetilde N}_{t+1}  \left( 
-{\widehat V}_{t+1}^2  - {\widehat R}^2 \right) \mid {\mathfrak A}_t \right] H_{t+1}^0 \cr
-= \hspace{.2cm}& \left(\frac {1-\rho}{1-\gamma_o}\right)^2\left[{\mu^0}'{\widetilde \Sigma} \mu^0 + \left(\mu^0 \cdot {\tilde \mu}_t - {\frac 1 2} |\mu^0|^2 \right)^2\right]
-H_{t+1}^0 \cr 
- &  + \frac {(\rho - 1)} 2 \left[ \rm{tr}\left( \Upsilon_2^2{\widetilde \Sigma} - \Upsilon_2^2 \right)  
-  +  \left({\tilde \mu}_t - \mu^0\right)' \Upsilon_{2}^2  \left({\tilde \mu}_t - \mu^0\right)\right] H_{t+1}^0 \cr
-&  +  (\rho - 1) \left({\tilde \mu}_t  - \mu^0\right)' \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2\right) H_{t+1}^0.
-\end{align*}
-```
-
-Denote the sum of the two terms in {eq}`second_affine_again` as ${\widetilde H}_t^2.$ Then the equation to be solved is 
-```{math}
-{\mathbb E} \left( {\widetilde N}_{t+1} H_{t+1}^2 \mid {\mathfrak A}_t \right) + L_{t}^2 + {\widetilde H}_t^2  = 0.
-```
-
-### Updated recursive utility adjustments
-
-Form new values for $\mu^0, \Upsilon_0^2, \Upsilon_1^2,  \Upsilon_2^2$ used in representations {eq}`VminusR2`. Compute a new version of
-```{math}
-{\widetilde  N}_{t+1}  =  
-\frac 
-{\exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right]} 
-{{\mathbb E}\left( \exp\left[ (1 - \gamma_o) \left[ {\widehat V}^1_{t+1} -  {\widehat R}^1_{t}+ \frac 1  2 \left({\widehat V}^2_{t+1} -{\widehat R}^2_{t}  \right) \right] \right] \mid {\mathfrak A}_t \right)},
-```
-and deduce the implied ${\widetilde \mu}_t$ and ${\widetilde \Sigma}$. The conditional mean ${\tilde \mu}_t$ satisfies:
-```{math}
-{\widetilde \Sigma}^{-1} {\tilde \mu}_t =  \mu^0 +  {\frac {(1-\gamma_o)} 2} \left(\Upsilon_0^2 + \Upsilon_1^2 X_t^1 - \Upsilon_2^2 \mu^0 \right)
-```
-where the formula for ${\widetilde \Sigma}$ is
-```{math}
-\widetilde {\Sigma} =  \left[{\mathbb I} - {\frac {(1 - \gamma_o)}  2} \Upsilon_2^2\right]^{-1}.
-```
-
-With these adjustments, we iterate to convergence.
-
-(param_values)= 
-### Appendix: parameter values
-
-$$
-\newcommand{\dobs}{\mathbf{d}_\text{obs}}
-\newcommand{\dpred}[1]{\mathbf{d}_\text{pred}\left( #1 \right)}
-\newcommand{\mref}{\mathbf{m}_\text{ref}}
-$$ 
-
-
-To facilitate a comparison to a global solution method, we write down a discrete-time approximation to a continuous time version of such an economy. (See Section 4.4 of {cite}`KhorramiTourreHansen:2024` for a continuous-time benchmark model that our discrete-time system approximates.)  Write  the endogenous state dynamics as:
-```{math}
-:label: equation1
-\begin{align} 
-{{\widehat K}_{t+1}} - {\widehat K}_t = \hspace{.2cm} & \epsilon \left[ {\frac 1 \zeta}  \log \left( 1 + \zeta \frac{I_t}{K_t} \right) + \nu_k Z_t^1 - \eta_k \right] \cr \hspace{.2cm} &  - \frac{\epsilon}{2}|\sigma_k|^2 \exp\left( {\widehat Z}_t^2 \right)  \epsilon
- +  \sqrt{\epsilon} \exp\left(\frac 1 2 {\widehat  Z}_t^2  \right) {\sigma}_k  W_{t+1}  \end{align}, 
-```
-
-
-
-
-
-
-
-
-
-
-The residual is the predicted data for the model, $\dpred{m}$, minus the observed data, $\dobs$. You can also calculate the predicted data for the reference model $\dpred{\mref}$.
-
-| parameter | value | source |
-|-----------|-------|--------|
-| $\sigma_k$ | $.01 \times \begin{bmatrix} .477 & 0 & 0 \end{bmatrix} $ | HS tenuous beliefs |
-| $\sigma_z$ | $ .01 \times \begin{bmatrix} .011 & .025 & 0 \end{bmatrix}  $ | HS tenuous beliefs |
-| ${\sf a}_z$ | .986 | HS tenuous beliefs |
-| $\sigma_y$ | $ \begin{bmatrix} 0 & 0 & .0648 \end{bmatrix}$ | SSY Econometrica, table 3 |
-| ${\sf a}_y$ | .964 | SSY Econometrica, table 7 |
-| $\sigma_y$ | $  \begin{bmatrix} 0 & 0 & .108 \end{bmatrix}$ | SSY Econometrica, table 3 |
-| ${\sf a}_y$ | .976 | SSY Econometrica, table 7 |
-| $\delta$ | .002 | HBSH twisted |
-
+The numbers for  $\eta_k, \phi, \beta_1,$ $\sigma_k$ and $\sigma_1$ are such that, when multiplied by stochastic volatility, they match the parameters from {cite}`LPH_TJS_tenuous`. In particular, the constant $Z^2$ which scales our $\sigma_k$ to match  is $7.6\times10^{-6},$ which is the 67th percentile of our $Z^2$ distribution. . While {cite}`LPH_TJS_tenuous` use a lower triangular representation for the two-by-two right block of 
 
 ```{math}
-:label: direct_shock
-\text{The direct shock to capital is } {\sf q} \exp(Y_t) \sigma_k W_{t+1}.
+        \begin{bmatrix}
+       \sigma_k \cr \sigma_1 \end{bmatrix} ,
 ```
-```{math}
-Z_{t+1} = {\sf a}_z Z_t + {\sf q} \exp(Y_t) \sigma_z W_{t+1}
-```
-```{math}
-Y_{t+1} = {\sf a}_y Y_t + {\sf q} \sigma_y W_{t+1}
-```
-```{math}
-\log K_{t+1} - \log K_t = \left(\frac{I_t}{K_t} \right) - 14  \left(\frac{I_t}{K_t} \right)^2 
-- .0128 + Z_t - \frac{{\sf q}^2 \exp(2Y_t) |\sigma_k|^2}{2} + {\sf q} \exp(Y_t) \sigma_k W_{t+1}
-```
-Notice that the Jensen term only contributes a constant to the second order.
+we use an observationally equivalent upper triangular representation for most of the results. Finally, the numbers for $\beta_2$ and $\sigma_2$ come from {cite}`SchorfheideSongYaron:2018`, but they are adjusted for approximation purposes as described in Appendix A {cite}`KhorramiTourreHansen:2024`.    In both cases, we use the medians of their econometric evidence as input into our analysis.
 
-Reconfigure the shock process as follows. Form
-```{math}
-\begin{bmatrix} .477 & 0 \\ .011 & .025 \end{bmatrix} \begin{bmatrix} .477 & .011 \\ 0 & .025 \end{bmatrix} =
-\begin{bmatrix} ? & ? \\ 0 & ? \end{bmatrix} \begin{bmatrix} ? & 0 \\ ? & ? \end{bmatrix}
-```
-Take $\sigma_k$ to be the first row of the left side and $\sigma_z$ the second row of the left side.
 
-For the endowment economy use 
-```{math}
-\log C_{t+1} - \log C_t = .00484 + Z_t + \exp(Y_t) \sigma_k W_{t+1}
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,1184 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Uncertain Expansion Theory &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'theory/uncertainexpansion_update';</script>
+    <link rel="canonical" href="https://lphansen.github.io/QuantMFR/theory/uncertainexpansion_update.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Notebook: Expansion Suite" href="quickguide_update.html" />
+    <link rel="prev" title="16. Bibliography" href="../book/cite.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c2_v2.html">3. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c3_v2.html">5. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c5_v2.html">9. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/example_out_c6_v2.html">12. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/chapter_stochastic_response.html">13. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/marginal_valuation.html">14. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/cite.html">16. Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uncertain Expansion Theory</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="quickguide_update.html">Notebook: Expansion Suite</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/background.html">Background Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Notebook: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Notebook: Continuous Time</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Comparative Valuation Dynamics in Production Economies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/appendix.html">Online Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/code.html">Computational Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Spillovers for Markets and Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../uncertainty_spillovers/manuscript.html">Manuscript</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/theory/uncertainexpansion_update.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Uncertain Expansion Theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Theory</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#small-noise-expansion">1 Small Noise Expansion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-contribution">2.3 Second-order contribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-a-planner-s-problem-with-recursive-utility">3 Solving a Planner’s Problem with Recursive Utility</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">4 Algorithm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-1">4.1 Approach 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">4.1.1: Step 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">4.1.2: Step 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">4.1.3: Step 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">4.1.4: Step 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-2">4.2 Approach 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/uncertainexpansion.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-theory">
+<h1>Uncertain Expansion Theory<a class="headerlink" href="#uncertain-expansion-theory" title="Link to this heading">#</a></h1>
+<p>A nonlinear DSGE model typically cannot be solved quasi-analytically.  We consider  a small-noise expansion method to find an approximate solution modified to incorporate recursive utility formulation motivated by robustness or risk concerns.</p>
+<!-- Please refer to [*Exploring Recursive Utility*](https://larspeterhansen.org/wp-content/uploads/2023/01/2023-01-19-recursive_expansion_LPH.pdf)  note for detailed derivation and explanation.  -->
+<br><!-- # 1 Framework for Solving DSGE
+A DSGE model's equilibrium conditions can be described by a system of possibly nonlinear, expectational difference equations:
+
+$$
+\begin{align}
+\mathbb{E}[{N_{t+1}^*Q_{t+1}^* \psi_1(X_t, J_t, X_{t+1}, J_{t+1})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &= 0 \tag{1}\\
+  \phi\left(X_t, X_{t+1}, J_t, {\sf q}W_{t+1}, {\sf q} \right) &= 0 
+\tag{2} \end{align}
+$$
+where $X_t$ is an $n$-dimensional date $t$ state vector, $J_t$ is an $m$-dimensional date $t$ jump vector, and $W_{t+1}$ is distributed as a $k$-dimensional standard normal vector. 
+
+You can think of ${\sf q}$ as a parameter which scales the shock $W_{t+1}$. The stochastic processes $X$ and $J$ depend implicitly on ${\sf q}$. We solve for equilibrium by imposing stochastic stability, i.e. ${\sf q} = 0$ .
+
+The first set of $m$ equations is forward looking and hence involves expectations along with contributions $N_{t+1}^*$ and $Q_{t+1}^*$ from recursive utility.  For instance, the first-order necessary condition for optimal investment might contribute a forward-looking equation with the investment to capital ratio as a jump variable.
+
+The second set of $n$ equations gives the dynamic evolution of the state vector. For instance, the law of motion for capital contributes one such equation. Part of our desired solution is to express the jump vector as a function of the state vector.  -->
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="small-noise-expansion">
+<h1>1 Small Noise Expansion<a class="headerlink" href="#small-noise-expansion" title="Link to this heading">#</a></h1>
+<p>Consider the following class of stochastics processes indexed by a scalar perturbation parameter <span class="math notranslate nohighlight">\(q\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{t + 1}(q) = \psi[X_t(q), qW_{t + 1}, q] 
+\]</div>
+<p>We parameterize this familty so that <span class="math notranslate nohighlight">\(q = 1\)</span> gives the model of interest.</p>
+<p>Denote the zero-order expansion <span class="math notranslate nohighlight">\(q = 0\)</span> limit as:</p>
+<div class="math notranslate nohighlight">
+\[
+X_{t+1}^0 = \psi (X_t^0, 0, 0)
+\]</div>
+<p>and assume there exists a second-order expansion of <span class="math notranslate nohighlight">\(X_t\)</span> around <span class="math notranslate nohighlight">\(q = 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+X_t \approx X_t^0 + q X_t^1 + \frac{q^2}{2}X_t^2
+\]</div>
+<p>Processes <span class="math notranslate nohighlight">\(X_t^j,j=0,1,2\)</span> have a recursive structure: the stochastic process <span class="math notranslate nohighlight">\(X_t^0\)</span> can be computed first, then the process <span class="math notranslate nohighlight">\(X_t^1\)</span> next (it depends on <span class="math notranslate nohighlight">\(X_t^0\)</span>), and then the process <span class="math notranslate nohighlight">\(X_t^2\)</span> (it depends on both <span class="math notranslate nohighlight">\(X_t^0\)</span> and <span class="math notranslate nohighlight">\(X_t^1\)</span>).</p>
+<div class="math notranslate nohighlight">
+\[
+X_{t+1}^1 =  \begin{bmatrix} \psi_{x'}^1 \cr \psi_{x'}^2 \cr \vdots \cr \psi_{x'} ^n \end{bmatrix} X_t^1 + \begin{bmatrix} \psi_{w'}^1 \cr \psi^2_{w'}
+\cr \vdots \cr \psi^n_{w'} \end{bmatrix} W_{t+1} + \begin{bmatrix} \psi^1_{\sf q}  \cr \psi^2_{\sf q}  \cr \vdots \cr \psi^n_{\sf q}  \end{bmatrix}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align} 
+X_{t+1}^2 =  \hspace{.2cm} &amp; \psi_{x'} X_t^2 + \begin{bmatrix} X_t^{1'} \psi_{xx'}^1 X_t^1 \cr X_t^{1'} \psi_{xx'}^2  X_t^1\cr \vdots \cr X_t^{1'} \psi_{xx'}^n X_t^1 \end{bmatrix} +  2 \begin{bmatrix} X_t^{1'} \psi_{xw'}^1 W_{t+1}  \cr X_t^{1'} \psi_{xw'}^2  W_{t+1} \cr \vdots \cr X_t^{1'} \psi_{xw'}^n W_{t+1}  \end{bmatrix} + \begin{bmatrix} {W_{t+1}}' \psi_{ww'}^1 W_{t+1}  \cr {W_{t+1}}' \psi_{ww'}^2  W_{t+1} \cr \vdots \cr {W_{t+1}}' \psi_{ww'}^n W_{t+1}  \end{bmatrix} \\ 
+&amp; +  2 \begin{bmatrix} \psi^1_{{\sf q}  x'}X_{t}^1 \cr  \psi^2_{{\sf q}  x'}X_{t}^1 \cr \vdots \cr \psi^n_{{\sf q}  x'} X_t^1 \end{bmatrix}
++ 2 \begin{bmatrix} \psi_{{\sf q}  w' }^1W_{t+1} \cr \psi_{{\sf q}  w' }^2 W_{t+1} \cr \vdots \cr \psi^n_{{\sf q}  w'} W_{t+1} \end{bmatrix}
++ \begin{bmatrix} \psi^1_{{\sf q}  {\sf q} } \cr \psi^2_{{\sf q} {\sf q} } \cr \vdots \cr \psi^n_{{\sf q} {\sf q} } \end{bmatrix}
+\end{align}
+\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(C\)</span> denote consumption and <span class="math notranslate nohighlight">\({\widehat C}\)</span> the logarithm of consumption.    Suppose that the logarithm of consumption evolves as:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation*}
+{\widehat C}_{t+1}  - {\widehat C}_t = \kappa (X_t, {\sf q} W_{t+1}, {\sf q}).  
+\end{equation*}
+\]</div>
+<p>Approximate this process by:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{equation}
+{\widehat C}_{t+1} - {\widehat C}_t \approx 
+{\widehat C}_{t+1}^0 - {\widehat C}_t^0 + {\sf{q}} \left({\widehat C}_{t+1}^1 - {\widehat C}_t^1 \right)
++ \frac{{\sf q}^2} 2 \left({\widehat C}_{t+1}^2 - {\widehat C}_t^2\right) 
+\end{equation}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+{\widehat C}_{t+1}^0  - {\widehat C}_t^0  = \hspace{.2cm}  &amp; \kappa (X_t^0, 0, 0) := \eta_0^c \\ 
+{\widehat C}_{t+1}^1  - {\widehat C}_t^1  = \hspace{.2cm} &amp; \kappa_{x'} X_t^1 + \kappa_{w'} W_{t+1} + \kappa_q \\ 
+{\widehat C}_{t+1}^2  - {\widehat C}_t^2  =   \hspace{.2cm}  &amp; \kappa_{x'} X_t^2 + {X_{t}^1}' \kappa_{x,x'} X_t^1 + 2
+{X_{t}^1}' \kappa_{xw'} W_{t+1} + {W_{t+1}}'\kappa_{ww'}W_{t+1} \\ 
+&amp;+ 2 \kappa_{q,x'} X_t^1 +  2 \kappa_{qw'}W_{t+1}  + \kappa_{qq} .
+\end{align*}
+\end{split}\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="approximating-widehat-v-t">
+<h1>2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span><a class="headerlink" href="#approximating-widehat-v-t" title="Link to this heading">#</a></h1>
+<p>Consider the <strong>recursive utility</strong> preference specification as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+V_t = \left[ (1 - \beta) \left(C_t\right)^{1-\rho}  + \beta  \left( R_t \right)^{1-\rho} \right]^{\frac 1 {1-\rho}}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[ 
+R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} .
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(0&lt;\beta&lt;1\)</span> is a subjective discount factor, <span class="math notranslate nohighlight">\(\rho\)</span> is the inverse elasticity of intertemporal substitution and <span class="math notranslate nohighlight">\(\gamma\)</span> describes risk aversion. Since continuation values are determined only up to an increasing transformation, we work with logs of the above equations:</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat  V}_t = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right]
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat  R}_t = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left(  \exp \left[ (1 - \gamma) {\widehat V}_{t+1} \right] \mid {\mathfrak A}_t \right).
+\]</div>
+<p>While <span class="math notranslate nohighlight">\(\gamma\)</span> is usually interpreted as a measure of risk aversion, we now turn to an alternative interpretation which allows us to incorporate ambiguity aversion into our models. (Please refer to Section 3.1 in <a class="reference external" href="https://larspeterhansen.org/wp-content/uploads/2023/01/2023-01-19-recursive_expansion_LPH.pdf"><em>Exploring Recursive Utility</em></a>  note)</p>
+<p>Construct</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+N_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \gamma) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right]  \\
+Q_{t+1}^* &amp; \stackrel{\text { def }}{=} \exp \left[(1 - \rho) \left({\widehat V}_{t+1} - {\widehat R}_t\right) \right]. 
+\end{align}
+\end{split}\]</div>
+<section id="zeroth-order-contribution">
+<h2>2.1 Zeroth-order contribution<a class="headerlink" href="#zeroth-order-contribution" title="Link to this heading">#</a></h2>
+<p>We assume that the first difference in the logarithm of consumption is stationary. For models with production, this representation will become part of the derived expansion. For order zero, we presume a constant growth rate:</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat C}_{t+1}^0 - {\widehat  C}_t^0  = \eta_c
+\]</div>
+<p>The order-zero approximation, <span class="math notranslate nohighlight">\({\widehat  V}_t^0 - {\widehat  C}_t^0 =\eta_{v-c}\)</span>, is determined by</p>
+<div class="math notranslate nohighlight">
+\[
+\exp\left[(1-\rho) {\left( \eta_{v - c} \right) }\right] = {\frac {1 - \beta} { 1 - \beta \exp \left[ (1 - \rho) \eta_c \right]}} .
+\]</div>
+</section>
+<section id="first-order-contribution">
+<h2>2.2 First-order contribution<a class="headerlink" href="#first-order-contribution" title="Link to this heading">#</a></h2>
+<p>The first-order approximation of <span class="math notranslate nohighlight">\({\widehat V}_t\)</span> net of <span class="math notranslate nohighlight">\({\widehat C}_t^1\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat  V}_t^1 - {\widehat  C}_t^1 = \lambda \left( {\widehat  R}_t^1 - {\widehat  C}_t^1 \right)
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat  R}_t^1 - {\widehat  C}_t^1 =  \left({\frac 1 {1 - \gamma_o}} \right) \log {\mathbb  E}  \left( \exp \left[ (1 - \gamma_o) \left[ \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1}^1\right) + 
+\left({\widehat C}_{t+1}^1 - {\widehat C}_{t}^1
+\right)   \right] \right] \mid {\mathfrak A}_t \right)\
+\]</div>
+<p>and <span class="math notranslate nohighlight">\(0 &lt; \lambda &lt; 1\)</span>  satisfies</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\lambda  &amp; = \beta \exp \left[(1-\rho) \eta_c \right]
+\end{align*}
+\]</div>
+<p>Combining these equations gives the following equation to be solved:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*} 
+{\widehat  V}_t^1 - {\widehat  C}_t^1
+= &amp; \lambda \left({\frac 1 {1 - \gamma_o}} \right) \log {\mathbb  E}  \left( \exp \left[ (1 - \gamma_o) \left[ \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1}^1\right) + 
+\left({\widehat C}_{t+1}^1 - {\widehat C}_{t}^1
+\right)   \right] \right] \mid {\mathfrak A}_t \right)
+ \end{align*} 
+\]</div>
+<p>We guess and verify that</p>
+<div class="math notranslate nohighlight">
+\[
+\hat V_t^1 - \hat C _t ^1 = v_1'X_t^1 + v_0
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+v_1 = \lambda(I - \lambda\psi_{x'})^{-1} \kappa_{x'}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+v_0 = \frac{\lambda}{(1 - \lambda)}(v_1' \psi_q + \kappa_q) + \frac{\lambda(1 - \gamma_0)}{2(1 - \lambda)}|v_1'\psi_{w'} + \kappa_{w'}|^2
+\]</div>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat V}_{t+1}^1 - {\widehat C}_t^1  = {\upsilon_1}' X_{t+1}^1 + \upsilon_0 + \kappa_{x'} X_t^1 + \kappa_{w'} W_{t+1} .
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat V}_{t+1}^1- {\widehat R}_t^1 = \left( {\upsilon_1}'\psi{_w'} + \kappa_{w'} \right) W_{t+1} - \left( \frac { 1 - \gamma_o } 2 \right)
+\vert  {\upsilon_1}'\psi{_w'} + \kappa_{w'} \vert^2 
+\]</div>
+</section>
+<section id="second-order-contribution">
+<h2>2.3 Second-order contribution<a class="headerlink" href="#second-order-contribution" title="Link to this heading">#</a></h2>
+<p>The second-order approximation is:</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat  V}_t^2 - {\widehat  C}_t^2 = \lambda \left( {\widehat  R}_t^2 - {\widehat  C}_t^2 \right) +  (1- \rho) (1-\lambda) \lambda  \left( {\widehat  R}_t^1 - {\widehat  C}_t^1\right)^2
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat  R}_t^2  =  E \left( N_{t+1}^0  {\widehat V}^2_{t+1} \mid {\mathfrak A}_t \right),
+\]</div>
+<p>and <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+N_{t+1}^0 = \exp \left[\left(1-\gamma_o\right)\left(\widehat{V}_{t+1}^1-\widehat{R}_t^1\right)\right]
+\]</div>
+<p>Combining these formulas, gives the following equation to be solved:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{equation}
+\begin{split}
+{\widehat  V}_t^2 - {\widehat  C}_t^2 = &amp; \lambda 
+{\mathbb E}  \left[ N_{t+1}^0 \left({\widehat V}^2_{t+1} - {\widehat C}_{t+1}^2 \right) \mid {\mathfrak A}_t \right]  + \lambda  {\mathbb E}  \left[ N_{t+1}^0 \left( {\widehat C}^2_{t+1} - {\widehat C}_{t}^2 \right) \mid {\mathfrak A}_t \right] \\ 
+&amp; + \frac{(1- \rho) (1-\lambda)}{\lambda } \left[ \left( {\widehat  V}_t^1 - {\widehat  C}_t^1\right)^2 \right]  
+\end{split}
+\end{equation}
+\end{split}\]</div>
+<p>The formula for <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span> also happens to be the zeroth-order approximation to <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> given by definition.  Since <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span> is positive and has conditional mean equal to one, it induces a change in probability distribution whereby <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is distributed as a multivariate normal with mean <span class="math notranslate nohighlight">\(\mu^o\)</span> and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>.  The algorithm uses this change of probability distribution in the computations.  The first-order contribution to <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+N_{t+1}^1=\left(\frac{1-\gamma_o}{2}\right) N_{t+1}^0\left(\widehat{V}_{t+1}^2-\widehat{R}_t^2\right)
+\]</div>
+<p>The algorithm also uses the following approximation formulas for <span class="math notranslate nohighlight">\(Q_t^*\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+Q_{t+1}^0 &amp;= \exp \left[(\rho-1)\left(\widehat{V}_{t+1}^0-\widehat{R}_t^0\right)\right]=1 \\
+Q_{t+1}^1 &amp;= \left.\frac{d}{d {\sf q}} \exp \left[(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right]\right|_{\mathbf{q}=0}=(\rho-1)\left(\widehat{V}_{t+1}^1-\widehat{R}_t^1\right) \\
+Q_{t+1}^2 &amp;= \left.\frac{d^2}{d \mathsf{q}^2} \exp \left[(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right]\right|_{\mathbf{q}=0}=(\rho-1)^2\left(\widehat{V}_{t+1}^1-\widehat{R}_t^1\right)^2+(\rho-1)\left(\widehat{V}_{t+1}^2-\widehat{R}_t^2\right)
+\end{aligned}
+\end{split}\]</div>
+<p>The code will produce the coefficient inputs into the following formulas:</p>
+<div class="math notranslate nohighlight">
+\[
+\widehat{V}_{t+1}^1-\widehat{R}_t^1=\frac{1}{1-\gamma_o}\left[\mu^0 \cdot\left(W_{t+1}-\mu^0\right)+\frac{1}{2} \mu^0 \cdot \mu^0\right]
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+\widehat{V}_{t+1}^2-\widehat{R}_t^2= &amp; \frac{1}{2}\left(W_{t+1}-\mu^0\right)^{\prime} \Upsilon_2^2\left(W_{t+1}-\mu^0\right)-\frac{1}{2} \operatorname{tr}\left(\Upsilon_2^2\right)+\left(W_{t+1}-\mu^0\right)^{\prime}\left(\Upsilon_1^2 X_t^1+\Upsilon_0^2\right)
+\end{aligned}
+\]</div>
+<p><br><br></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="solving-a-planner-s-problem-with-recursive-utility">
+<h1>3 Solving a Planner’s Problem with Recursive Utility<a class="headerlink" href="#solving-a-planner-s-problem-with-recursive-utility" title="Link to this heading">#</a></h1>
+<p>Write a triangular system with stochastic growth as:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+X_{t+1}\left( \mathsf{q}\right) &amp; =\psi^x \left[D_t\left( \mathsf{q}\right),  X_{t}\left( \mathsf{q}\right), {\sf q} W_{t+1}\right] 
+ \cr
+\log G_{t+1} \left( \mathsf{q}\right) - \log G_t \left( \mathsf{q}\right) &amp; = \hat \psi^g\left[ D_t\left( \mathsf{q}\right), X_{t}\left( \mathsf{q}\right),  {\sf q} W_{t+1} \right] ,
+\end{align*}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(D_t\)</span> is a date <span class="math notranslate nohighlight">\(t\)</span> decision vector for the planner.  In addition, we impose</p>
+<div class="math notranslate nohighlight">
+\[
+{\widehat C}_t \left( \mathsf{q}\right)  = \hat \kappa \left[D_t \left( \mathsf{q}\right),  X_{t}\left( \mathsf{q}\right) \right] + {\widehat G}_t \left( \mathsf{q}\right) .
+\]</div>
+<p>In what follows for notational convenience, we will leave the <span class="math notranslate nohighlight">\({\sf q}\)</span> implicit.<br />
+We use homogeneity to rewrite the utility recursion:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation*}
+{\widehat V}_t - {\widehat G}_t= {\frac 1 {1-\rho}} \log \left[ (1 - \beta) \exp\left[(1-\rho)( {\widehat C}_t - {\widehat G}_t )\right]    + \beta  \exp\left[(1-\rho)  ({\widehat R}_t -  {\widehat G}_t)\right]\right]  
+\end{equation*}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation*}
+{\widehat R}_t - {\widehat G}_t = \frac 1 {1-\gamma} \log \left( {\mathbb E} \left[ \exp\left( (1 - \gamma) \left[\left( {\widehat V}_{t+1}  - {\widehat G}_{t+1} \right) +  \left({\widehat G}_{t+1} - {\widehat G}_t \right)\right]  \right)  \mid {\mathfrak A}_t \right] \right) .
+\end{equation*} 
+\]</div>
+<p>First-order conditions for <span class="math notranslate nohighlight">\(D\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+&amp; (1-\beta) \exp\left[(1- \rho ) \left({\widehat C}_t - {\widehat V}_t \right)\right] {\hat \kappa}_d( D_t, X_t) 
+\cr &amp;+ 
+\beta \exp\left[(1 - \rho) \left({\widehat R}_t -  {\widehat V}_t  \right)\right] 
+{\mathbb E} 
+\left(
+\exp\left[(1-\gamma) \left({\widehat V}_{t+1}  - {\widehat R}_t \right) \right]   \left[\psi_{d'}^x ( D_t, X_t, W_{t+1} )\right]' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
+&amp;+  \beta \exp\left[(1 - \rho ) \left({\widehat R}_t - {\widehat V}_t \right)\right] 
+{\mathbb E} 
+\left(
+\exp\left[(1-\gamma) \left({\widehat V}_{t+1}  - {\widehat R}_t \right) \right]   {\hat \psi}_{d'}^g ( D_t, X_t, W_{t+1} )  \mid {\mathfrak A}_t \right)  \cr
+&amp; = 0.
+\end{align*}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(MX_{t+1}\)</span> is the co-state, or the partial derivation of next periods value function evaluated at the next period state vector.</p>
+<p>The corresponding co-state equation is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+MX_t = &amp; (1 - \beta)  \exp\left[(1 - \rho ) \left({\widehat C}_t - {\widehat V}_t \right)\right] {\hat \kappa}_{x}(D_t,X_t)   \cr
+&amp; + \beta \exp\left[(1 - \rho ) \left({\widehat R}_t - {\widehat V}_t \right)\right] 
+{\mathbb E} 
+\left(
+\exp\left[(1-\gamma) \left({\widehat V}_{t+1}  - {\widehat R}_t \right) \right]   \left[\psi_{x'}^x ( D_t, X_t, W_{t+1} )\right]' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
+&amp; +  \beta \exp\left[(1 - \rho ) \left({\widehat R}_t - {\widehat V}_t \right)\right] 
+{\mathbb E} 
+\left(
+\exp\left[(1-\gamma) \left({\widehat V}_{t+1}  - {\widehat R}_t \right) \right]   {\hat \psi}_{x}^g ( D_t, X_t, W_{t+1} ) \mid {\mathfrak A}_t \right).  
+\end{align*} 
+\]</div>
+<p>Similarly,</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align*}
+M{\widehat G}_t = &amp; (1 - \beta)  \exp\left[(1 - \rho ) \left({\widehat C}_t - {\widehat V}_t \right)\right]    \cr
+&amp; + \beta \exp\left[(1 - \rho ) \left({\widehat R}_t - {\widehat V}_t \right)\right] 
+{\mathbb E} 
+\left(
+\exp\left[(1-\gamma) \left({\widehat V}_{t+1}  - {\widehat R}_t \right) \right] M{\widehat G}_{t+1} \mid {\mathfrak A}_t \right).  
+\end{align*} 
+\]</div>
+<p>Notice that <span class="math notranslate nohighlight">\(M{\widehat G}_t = 1\)</span> solves this equation.</p>
+<p>The solution is to find <span class="math notranslate nohighlight">\(MX_t\)</span> and <span class="math notranslate nohighlight">\(D_t\)</span> as time-invariant functions of <span class="math notranslate nohighlight">\(X_t,\)</span> making the dynamic system behave in a stochastically stable manner.</p>
+<p>To solve the system, we first transform the costate equations.
+Define the adjusted costates as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+ \widetilde{MX}_t &amp;= \frac {MX_t  \exp\left[(1 - \rho ){\widehat V}_t + \rho \widehat{C}_t - \widehat{G_t}  \right]}  { (1 - \beta)} \\
+\widetilde{MG}_t &amp;=  \frac {M {\widehat G}_t\exp\left[(1 - \rho ){\widehat V}_t + \rho \widehat{C}_t - {\widehat G}_t \right]}  { (1 - \beta)}. 
+\end{align*} 
+\end{split}\]</div>
+<p>Then we have the modified co-state equation:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align*}
+&amp; \widetilde{MX}_t =  \kappa_{x}(D_t,X_t)    \cr
+&amp; +
+\beta{\mathbb E} 
+\left(
+\exp\left[(\rho-\gamma) \left({\widehat {V}}_{t+1}  - {\widehat {R}}_t \right)  -\rho (\widehat{C}_{t+1}-\widehat{C}_t) \right]  \left(\frac {G_{t+1}}{G_t} \right)\psi_{x'}^x ( D_t, X_t, W_{t+1} )' \widetilde{MX}_{t+1} \mid {\mathfrak A}_t \right) \cr
+&amp; + \beta{\mathbb E} 
+\left(
+\exp\left[(\rho-\gamma) \left({\widehat {V}}_{t+1}  - {\widehat {R}}_t \right)  -\rho (\widehat{C}_{t+1}-\widehat{C}_t) \right]  \psi_{x}^g ( D_t, X_t, W_{t+1} )'  \widetilde{MG}_{t+1}\mid {\mathfrak A}_t \right).  
+\end{align*} 
+\]</div>
+<p>According to the definition of <span class="math notranslate nohighlight">\(\widetilde{MG}_t\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\widetilde{MG}_t = \kappa(D_t, X_t) + {\mathbb E} \left(
+\exp\left[(\rho-\gamma) \left({\widehat {V}}_{t+1}  - {\widehat {R}}_t \right)  -\rho \left({\widehat {C}}_{t+1} - {\widehat {C}}_t\right)  \right] \left(\frac { G_{t+1}}{ G_t}\right)  \widetilde{MG}_{t+1}\mid {\mathfrak A}_t \right)
+\end{align*}
+\]</div>
+<p>Write the first-order conditions as:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align*}
+&amp; 0 =   \kappa_d( D_t, X_t) 
+\cr &amp;+ 
+\beta 
+{\mathbb E} 
+\left(
+\exp\left[(\rho -\gamma) \left({\widehat V}_{t+1}  - {\widehat R}_t \right)  - \rho \left(\widehat{C}_{t+1}-\widehat{C}_t\right) \right]   \left(\frac {G_{t+1}}{G_t}\right) \psi_{d'}^x ( D_t, X_t, W_{t+1} )' {\widetilde {MX}} _{t+1} \mid {\mathfrak A}_t \right) \cr
+&amp;+  \beta 
+{\mathbb E} 
+\left(
+\exp\left[(\rho -\gamma) \left({\widehat V}_{t+1}  - {\widehat R}_t \right)  - \rho (\widehat{C}_{t+1}-\widehat{C}_t) \right]   \psi_{d'}^g ( D_t, X_t, W_{t+1} ) {\widetilde {MG}}_{t+1}  \mid {\mathfrak A}_t \right) .
+\end{align*}
+\]</div>
+<p>Write:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac {S_{t+1}}{S_t} = N_{t+1}^* Q_{t+1} \beta \exp \left[ - \rho  \left( {\widehat C}_{t+1} - {\widehat C}_t \right) \right]
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*} 
+N_{t+1}^* &amp; = \exp\left[  (1-\gamma_o) \left({\widetilde V}_{t+1} - {\widetilde  R}_t\right) \right] \cr
+Q_{t+1}^* &amp; = \exp\left[(\rho - 1) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right]
+\end{align*}
+\]</div>
+<p>are terms that are contributed by recursive utility.</p>
+<p>Note that the FOC and costate equations can be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+&amp; \widetilde{MX}_t =  \kappa_{x}(D_t,X_t)    \cr
+&amp; +
+\beta{\mathbb E} 
+\left(
+N^*_{t+1}Q^*_{t + 1}  \left(\frac {G_{t+1}}{G_t} \right)\psi_{x'}^x ( D_t, X_t, W_{t+1} )' \widetilde{MX}_{t+1} \mid {\mathfrak A}_t \right) \cr
+&amp; + \beta{\mathbb E} 
+\left(
+N^*_{t+1}Q^*_{t + 1} \psi_{x}^g ( D_t, X_t, W_{t+1} )'  \widetilde{MG}_{t+1}\mid {\mathfrak A}_t \right).  
+\end{align*} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\widetilde{MG}_t = \kappa(D_t, X_t) + {\mathbb E} \left(
+N^*_{t+1}Q^*_{t + 1}  \left(\frac { G_{t+1}}{ G_t}\right)  \widetilde{MG}_{t+1}\mid {\mathfrak A}_t \right)
+\end{align*}
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+\begin{align*}
+&amp; 0 =   \kappa_d( D_t, X_t) 
+\cr &amp;+ 
+\beta 
+{\mathbb E} 
+\left(
+N^*_{t+1}Q^*_{t + 1} \left(\frac {G_{t+1}}{G_t}\right) \psi_{d'}^x ( D_t, X_t, W_{t+1} )' {\widetilde {MX}} _{t+1} \mid {\mathfrak A}_t \right) \cr
+&amp;+  \beta 
+{\mathbb E} 
+\left(
+N^*_{t+1}Q^*_{t + 1}  \psi_{d'}^g ( D_t, X_t, W_{t+1} ) {\widetilde {MG}}_{t+1}  \mid {\mathfrak A}_t \right) .
+\end{align*}
+\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="algorithm">
+<h1>4 Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h1>
+<section id="approach-1">
+<h2>4.1 Approach 1<a class="headerlink" href="#approach-1" title="Link to this heading">#</a></h2>
+<p>The algorithm initializes <span class="math notranslate nohighlight">\(\mu^0, \Upsilon^2_0, \Upsilon^2_1,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon^2_2\)</span> at zero.  It uses the first and second order approximations of Schmidt-Grohe and Uribe (2004) and Lombardo and Uhlig (2018) with some modifications.</p>
+<section id="step-1">
+<h3>4.1.1: Step 1<a class="headerlink" href="#step-1" title="Link to this heading">#</a></h3>
+<p>Take as input <span class="math notranslate nohighlight">\(\mu^0, \Upsilon^2_0, \Upsilon^2_1,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon^2_2\)</span>.  Transform the first-order and second-order approximations for the state evolution by using the probability induced by <span class="math notranslate nohighlight">\(N_{t+1}^0.\)</span>  Under this distribution, <span class="math notranslate nohighlight">\(W_{t+1}\)</span> has a conditional distribution with a mean given by <span class="math notranslate nohighlight">\(\mu^0\)</span> and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>.</p>
+</section>
+<section id="step-2">
+<h3>4.1.2: Step 2<a class="headerlink" href="#step-2" title="Link to this heading">#</a></h3>
+<p>When solving for the first-order approximation, an additional term needs to added to the forward equation system to accomodate the recursive utility adjustment:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{H}^1 \stackrel{\text { def }}{=} \frac{(\rho-1)}{2\left(1-\gamma_o\right)}\left|\mu^o\right|^2 H_{t+1}^0 
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+H_{t+1}^0 =  \psi_1(X_t^0, J_t^0,  X_{t+1}^0, J_{t+1}^0, 0,0)
+\]</div>
+<p>and is time invariant.</p>
+</section>
+<section id="step-3">
+<h3>4.1.3: Step 3<a class="headerlink" href="#step-3" title="Link to this heading">#</a></h3>
+<p>When solving for the second-order approximation, an additional term needs to be added to the forward equation system to accomodate the recursive utility adjustment:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned} 
+{\bar H}^2_t  \stackrel{\text { def }}{=} &amp;\left(1-\gamma_o\right) \Theta_2^1\left(\Upsilon_1^2 X_t^1+\Upsilon_0^2\right) \\
+&amp; +(\rho-1) \mu^o \cdot\left(\Upsilon_1^2 X_t^1+\Upsilon_0^2\right) H_{t+1}^0 \\
+&amp; + 2 \frac{(\rho-1)}{\left(1-\gamma_o\right)}\left[\Theta_2^1 \mu^0+\frac{1}{2} \mu^0 \cdot \mu^0\left(\Theta_0^1+\Theta_1^1 X_t^1\right)\right] \\
+&amp; + \left(\frac{1-\rho}{1-\gamma_o}\right){ }^2\left(\left|\mu^0\right|^2+\frac{1}{4}\left|\mu^0\right|^4\right)
+\end{aligned} 
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Theta_0^1, \Theta_1^1,\)</span> and <span class="math notranslate nohighlight">\(\Theta_2^1\)</span> come from expressing the first-order approximation, <span class="math notranslate nohighlight">\(H_{t+1}^1,\)</span> of</p>
+<div class="math notranslate nohighlight">
+\[
+H_{t+1} \stackrel{\text { def }}{=}  \psi_1(X_t, J_t, X_{t+1}, J_{t+1})
+\]</div>
+<p>as</p>
+<div class="math notranslate nohighlight">
+\[
+H_{t+1}^1=\Theta_0^1+\Theta_1^1 X_t^1+\Theta_2^1\left(W_{t+1}-\mu^0\right)
+\]</div>
+</section>
+<section id="step-4">
+<h3>4.1.4: Step 4<a class="headerlink" href="#step-4" title="Link to this heading">#</a></h3>
+<p>Compute an upated <span class="math notranslate nohighlight">\(\mu^0, \Upsilon^2_0, \Upsilon^2_1,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon^2_2\)</span> and return to Step 1.</p>
+<p>The algorithm continues until it reaches a numerical convergence.</p>
+</section>
+</section>
+<section id="approach-2">
+<h2>4.2 Approach 2<a class="headerlink" href="#approach-2" title="Link to this heading">#</a></h2>
+<p>In this aproach, we use an alternative approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> given by</p>
+<div class="math notranslate nohighlight">
+\[
+\log {\widetilde N}_{t+1} =  \left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] - \log {\mathbb E} \left( \exp\left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] \mid {\mathfrak A}_t \right)
+\]</div>
+<p>The induced distribution of <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is normal, with mean <span class="math notranslate nohighlight">\(\tilde{\mu}_t\)</span> and variance <span class="math notranslate nohighlight">\(\widetilde{\Sigma}\)</span>. This distribution is used in both the first-order and second-order contributions to the approximation. The conditional mean for <span class="math notranslate nohighlight">\(\tilde{\mu}_t\)</span> is affine in <span class="math notranslate nohighlight">\(X_t^1\)</span>.
+<br><br></p>
+<!-- # 4 Adjustment cost example
+
+
+## 4.1 Production
+Consider a model recursive utility preferences and an AK technology with adjustment costs. 
+
+
+$$
+{C_t} + {I_t}  = {\mathbf a}K_t\tag{12}
+$$
+$$
+K_{t+1}  = K_t \left[1 + \theta_2 \left({\frac {I_t} {K_t}}\right) \right]^{\theta_1} \exp( - \alpha_k + Z_t - {\frac 1 2} \mid \sigma_k \mid^2  + \sigma_k\cdot W_{t+1})\tag{13}
+$$
+
+$$
+Z_{t+1} = {\mathbb A} Z_t + \mathbb{B} W_{t+1} \tag{14}
+$$
+where $Z_{t+1}$ is a scalar. $W_{t+1}$ is a shock vector containing 2 entries.  For the purposes of computation, we divide the first two equations by $K_t$.
+
+## 4.2 FOC on Investment
+The consumer's stochastic discount factor is
+
+$$
+\frac{S_{t+1}}{S_t} = \beta \left(\frac{V_{t+1}}{R_t}\right)^{1-\gamma} \left(\frac{V_{t+1}}{R_t}\right)^{\rho-1} \left(\frac{C_{t+1}}{C_t}\right)^{-\rho}
+$$
+
+The first-order condition for investment is:
+
+$$
+MC_t \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}  \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t) \right) \mid \mathfrak{A}_t\right] - MC_t  = 0.  
+$$
+
+where $MK_{t+1}$ is the co-state associated with the capital evolution and $MC_t$ is the multiplier associated with the production relation. Dividing this first-order condition by $MC_t$ gives:
+
+$$
+\mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \frac {MK_{t+1}}{MC_{t+1}}  \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right) \mid \mathfrak{A}_t\right] - 1  = 0,\tag{15}
+$$
+
+which is the equation we use in computation.  
+
+The co-state equation satisfies:
+
+$$
+\begin{align*}
+& MC_t \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1} \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right]\cr &  - MK_t + {\mathbf a} MC_t = 0
+\end{align*}
+$$
+
+Dividing this equation by $MC_t$ gives:
+
+$$
+ \mathbb{E}\left[\left(\frac{S_{t+1}}{S_t}\right) \left(\frac {MK_{t+1}}{MC_{t+1}} \right) \left[\left( \frac{K_{t+1}}{K_t} \right) - \left(\theta_1 \theta_2\left[1+\theta_2\left(\frac{I_t}{K_t}\right)\right]^{\theta_1-1}  \exp(B_{t+1} - B_t)\right)\left(\frac {I_t} {K_t} \right)  \right] \mid {\mathfrak A}_t \right] - \frac {MK_t}{MC_t} + {\mathbf a}  = 0,
+\tag{16}
+$$
+
+which is the equation we use in computation.  
+
+## 4.3 State and jump variables
+
+This formulation has two state variables: $\log K_{t} - \log K_{t-1},$ and $Z_{t}$; and has three jump variables:
+$\log C_t - \log K_t,\log I_t - \log K_t$ and $\log MK_t - \log MC_t$.   
+<br><br> --><!-- # 6 Shock elasticities
+
+This section illustrates how to use the results from Expansion Suite to compute shock elasticities of a stochastic process, for example, consumption growth. --><!-- ## 6.1 Compute elasticities
+
+To compute exposure elasticity, we may use the `exposure_elasticity` function. The function takes 6 inputs:
+
+`log_M_growth` : *LinQuadVar*
+
+- Consumption growth process, can be loaded from the `ModelSolution` attribute `gc_tp1`.
+
+`X1_tp1` : *LinQuadVar*
+
+- First order expansion of the state evolution processes, can be loaded from the `ModelSolution` attribute `X1_tp1`.
+
+`X2_tp1` : *LinQuadVar*
+
+- Second order expansion of the state evolution processes, can be loaded from the `ModelSolution` attribute `X2_tp1`.
+
+`T` : *int*
+ 
+- Time horizon (in month).
+
+`shock` : *int*
+
+- The shock component we are interested in, `0 <= shock <= n_W-1`.
+
+`percentile` : *float*
+
+- The percentile of the elasticity we want to compute, `0 <= percentile <= 1`. For example, set `percentile = 0.5` to compute the median.
+
+To compute price elasticity, we may use the `price_elasticity` function. The function takes 7 inputs. In addition to the 6 described above, we also need
+
+`log_S_growth` : *LinQuadVar*
+
+- Approximation of the log stochastic discount factor, which can be computed using attributes of `ModelSolution`. --><!-- 
+Recall that
+
+$$
+\begin{aligned}
+\frac{S_{t+1}}{S_t} & =  \beta N_{t+1}^*\left(\frac{C_{t+1}}{C_t}\right)^{-\rho}  \exp \left[(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_t\right)\right] \\
+& = N_{t+1}^* \exp \left(\widehat{S}_{t+1}-\widehat{S}_t\right)
+\end{aligned}
+$$
+
+where ${\log N^*_{t+1}}$ is from Section 4.3 in the notes and is approximated by `log_N_tilde` in the model solution:
+
+$$
+\log {\widetilde N}_{t+1} =  \left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] - \log {\mathbb E} \left( \exp\left[(1 - \gamma_o)\left({\widehat V}_{t+1}^1 + {\frac 1 2} {\widehat V}_{t+1}^2 \right) \right] \mid {\mathfrak A}_t \right)
+$$
+
+and
+
+$$
+\widehat{S}_{t+1}-\widehat{S}_t \stackrel{\text { def }}{=}\log\beta-\rho\left(\widehat{C}_{t+1}-\widehat{C}_t\right)+(\rho-1)\left(\widehat{V}_{t+1}-\widehat{R}_{t}\right).
+$$
+
+We follow approach 3 in the note (Section 4.3) and approximate $\widehat{S}_{t+1}-\widehat{S}_t$ as
+
+$$
+\widehat{S}_{t+1}-\widehat{S}_t \approx\left[\widehat{S}_{t+1}^0-\widehat{S}_t^0\right]+\left[\widehat{S}_{t+1}^1-\widehat{S}_t^1\right]+\frac{1}{2}\left[\widehat{S}_{t+1}^2-\widehat{S}_t^2\right]
+$$
+
+where
+
+$$
+\begin{aligned}
+\widehat{S}_{t+1}^0-\widehat{S}_t^0 
+    &= \log \beta-\rho \eta_c^0 \\
+\widehat{S}_{t+1}^1-\widehat{S}_t^1
+    &=-\rho\left(\widehat{C}_{t+1}^1- \widehat{C}_t^1\right)+(\rho-1)\left(\widehat{V}_{t+1}^1-\widehat{R}_t^1\right) \\
+\widehat{S}_{t+1}^2-\widehat{S}_t^2 
+    &=-\rho\left(\widehat{C}_{t+1}^2-\widehat{C}_t^2\right)+(\rho-1)\left(\widehat{V}_{t+1}^2-\widehat{R}_{t}^2\right)
+\end{aligned}
+$$
+
+These are implemented in the function `calc_SDF` below. --><!-- Compute the 25-th, 50-th, and 75-th percentile of the exposure and price elasticities for 30 years. --><!-- ## 6.2 Plot elasticities
+
+In this section, we plot the exposure and the price elasticities of the consumption growth process computed above. --><!-- ### 6.2.1 Exposure elasticity --><!-- ### 6.2.1 Price elasticity --></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h1>
+<p>[1] Lombardo, Giovanni and Harald Uhlig. 2018. A Theory of Pruning. <em>International Economic Review</em> 59 (4):1825–1836.</p>
+<p>[2] Schmitt-Grohe, Stephanie and Mart ́ın Uribe. 2004. Solving Dynamic General Equilibrium Models Using a Second-Order Approximation to the Policy Function. <em>Journal of Economic Dynamics and Control</em> 28 (4):755–775.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./theory"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../book/cite.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Bibliography</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="quickguide_update.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Notebook: Expansion Suite</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Theory</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#small-noise-expansion">1 Small Noise Expansion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approximating-widehat-v-t">2 Approximating <span class="math notranslate nohighlight">\({\widehat V}_t\)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-order-contribution">2.1 Zeroth-order contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-contribution">2.2 First-order contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-contribution">2.3 Second-order contribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-a-planner-s-problem-with-recursive-utility">3 Solving a Planner’s Problem with Recursive Utility</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">4 Algorithm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-1">4.1 Approach 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">4.1.1: Step 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2">4.1.2: Step 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3">4.1.3: Step 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4">4.1.4: Step 4</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-2">4.2 Approach 2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

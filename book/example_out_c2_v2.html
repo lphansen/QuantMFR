@@ -183,15 +183,17 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Markov Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">6. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">7. Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">8. Risk, Ambiguity, and Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">9. Exploring Recursive Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">10. Likelihoods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">11. Stochastic Responses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">12. Representing Marginal Valuation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">13. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="cite.html">14. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">9. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">13. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">14. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
 <ul class="nav bd-sidenav">
@@ -204,6 +206,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
 
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
@@ -767,7 +772,7 @@ This implies that the process is ergodic. It also rules out the presence of peri
 <div class="math notranslate nohighlight" id="equation-limitexp">
 <span class="eqno">(3.10)<a class="headerlink" href="#equation-limitexp" title="Link to this equation">#</a></span>\[\lim_{j \rightarrow \infty} {\mathbb T}^j f(x) =  {\sf r}\]</div>
 <p>for some <span class="math notranslate nohighlight">\({\sf r} \in {\mathbb R}\)</span>, where convergence is either pointwise in <span class="math notranslate nohighlight">\(x\)</span> or in the <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> norm.
-Limit <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-limitexp">(4.10)</a> asserts that long-run forecasts do not depend on the current Markov state. <span id="id12">Meyn and Tweedie [<a class="reference internal" href="cite.html#id339" title="S. Meyn and R. Tweedie. Markov Chains and Stochastic Stability. Springer-Verlag, London, 1993.">1993</a>]</span> provide a comprehensive treatment of such convergence.
+Limit <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-limitexp">(4.10)</a> asserts that long-run forecasts do not depend on the current Markov state. <span id="id12">Meyn and Tweedie [<a class="reference internal" href="cite.html#id340" title="S. Meyn and R. Tweedie. Markov Chains and Stochastic Stability. Springer-Verlag, London, 1993.">1993</a>]</span> provide a comprehensive treatment of such convergence.
 Let <span class="math notranslate nohighlight">\(Q\)</span> be a stationary distribution. Then it is necessarily true that</p>
 <div class="math notranslate nohighlight">
 \[\int {\mathbb T}^j f(x) Q(dx)  = \int f(x) Q(dx)\]</div>
@@ -782,7 +787,7 @@ Here we have assumed that the limit point is a number and not a random variable;
 <p>is necessarily constant with probability one. Also, if <span class="math notranslate nohighlight">\(\int f(x) Q(dx) = 0\)</span> and convergence is sufficiently fast, then</p>
 <div class="math notranslate nohighlight" id="equation-eq-sum-limit">
 <span class="eqno">(3.11)<a class="headerlink" href="#equation-eq-sum-limit" title="Link to this equation">#</a></span>\[\lim_{N \rightarrow \infty} \sum_{j=0}^N {\mathbb T}^j f(x)\]</div>
-<p>is a well-defined function of the Markov state. We shall construct the limit in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eq-sum-limit">(4.11)</a> when we extract martingales from additive functionals in chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>.</p>
+<p>is a well-defined function of the Markov state. We shall construct the limit in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eq-sum-limit">(4.11)</a> when we extract martingales from additive functionals in chapter <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>.</p>
 <p>A set of sufficient conditions for the convergence outcome</p>
 <div class="math notranslate nohighlight" id="equation-converge">
 <span class="eqno">(3.12)<a class="headerlink" href="#equation-converge" title="Link to this equation">#</a></span>\[\lim_{j \rightarrow \infty} {\mathbb T}^j f (x^*) \rightarrow \int f(x) Q(dx)\]</div>

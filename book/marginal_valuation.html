@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>12. Representing Marginal Valuation &#8212; Quant Macro Finance</title>
+    <title>14. Representing Marginal Valuation &#8212; Quant Macro Finance</title>
   
   
   
@@ -65,8 +65,8 @@
     <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/marginal_valuation.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. GMM Estimation" href="gmmcurrent_lars_v9.html" />
-    <link rel="prev" title="11. Stochastic Responses" href="chapter_stochastic_response.html" />
+    <link rel="next" title="15. GMM Estimation" href="gmmcurrent_lars_v9.html" />
+    <link rel="prev" title="13. Stochastic Responses" href="chapter_stochastic_response.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -183,15 +183,17 @@
 <li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">6. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">7. Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">8. Risk, Ambiguity, and Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">9. Exploring Recursive Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">10. Likelihoods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">11. Stochastic Responses</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Representing Marginal Valuation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">13. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="cite.html">14. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">9. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">13. Stochastic Responses</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
 <ul class="nav bd-sidenav">
@@ -204,6 +206,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
 
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
@@ -383,17 +388,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">12.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">12.2. Discrete time</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time">12.3. Continuous time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-dynamics">12.3.1. Diffusion dynamics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-initial-representation-of-a-partial-derivative">12.3.2. An initial representation of a partial derivative</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness">12.3.3. Robustness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-function-derivatives-under-robustness">12.3.4. Value function derivatives under robustness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-ies-to-differ-from-unity">12.3.5. Allowing IES to differ from unity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumps">12.3.6. Jumps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-growth-example">12.3.7. Stochastic growth example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-change-example">12.3.8. Climate change example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">14.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">14.2. Discrete time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time">14.3. Continuous time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-dynamics">14.3.1. Diffusion dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-initial-representation-of-a-partial-derivative">14.3.2. An initial representation of a partial derivative</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness">14.3.3. Robustness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-function-derivatives-under-robustness">14.3.4. Value function derivatives under robustness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-ies-to-differ-from-unity">14.3.5. Allowing IES to differ from unity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumps">14.3.6. Jumps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-growth-example">14.3.7. Stochastic growth example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-change-example">14.3.8. Climate change example</a></li>
 </ul>
 </li>
 </ul>
@@ -408,41 +413,41 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="representing-marginal-valuation">
-<h1><span class="section-number">12. </span>Representing Marginal Valuation<a class="headerlink" href="#representing-marginal-valuation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">14. </span>Representing Marginal Valuation<a class="headerlink" href="#representing-marginal-valuation" title="Link to this heading">#</a></h1>
 <p><strong>Authors:</strong>  Lars Peter Hansen and Thomas J. Sargent</p>
 <p><strong>Date:</strong> September 2024
 <span class="math notranslate nohighlight">\(\newcommand{\eqdef}{\stackrel{\text{def}}{=}}\)</span></p>
 <section id="introduction">
-<h2><span class="section-number">12.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Partial derivatives of value functions measure marginal valuations and appear in first-order conditions of Markov decision problems. They feature prominently in max-min formulations of robust control problems. They can be used to measure losses from suboptimal choices. For example, the social cost of global warming is the important contributor to calculations of the social cost of carbon emissions often inferred from marginal impacts of fossil fuel emissions on climate indicators measured as potentially uncertain damages to economic opportunities in the future.  By importing insights about stochastic nonlinear impulse response functions and from asset pricing methods for valuing uncertain cash flows, this chapter constructs representations of partial derivatives and decompositions of them by i) time horizon and ii) marginal contributions to future utilities.</p>
 </section>
 <section id="discrete-time">
-<h2><span class="section-number">12.2. </span>Discrete time<a class="headerlink" href="#discrete-time" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.2. </span>Discrete time<a class="headerlink" href="#discrete-time" title="Link to this heading">#</a></h2>
 <p>We first consider a discrete-time specification.  As in the previous chapter,
 we start with Markov process</p>
 <div class="math notranslate nohighlight" id="equation-evolve">
-<span class="eqno">(12.1)<a class="headerlink" href="#equation-evolve" title="Link to this equation">#</a></span>\[\begin{split}X_{t+1}  = \psi(X_t, W_{t+1}), \\ 
+<span class="eqno">(14.1)<a class="headerlink" href="#equation-evolve" title="Link to this equation">#</a></span>\[\begin{split}X_{t+1}  = \psi(X_t, W_{t+1}), \\ 
 Y_{t+1} - Y_t  = \kappa(X_t, W_{t+1}),\end{split}\]</div>
 <p>where there are <span class="math notranslate nohighlight">\(n\)</span> components of <span class="math notranslate nohighlight">\(X,\)</span>  <span class="math notranslate nohighlight">\(Y\)</span> is scalar, and <span class="math notranslate nohighlight">\(W\)</span> is <span class="math notranslate nohighlight">\(k\)</span> dimensional.  Recall the variational processes studied previously:</p>
 <div class="math notranslate nohighlight" id="equation-var-evolve">
-<span class="eqno">(12.2)<a class="headerlink" href="#equation-var-evolve" title="Link to this equation">#</a></span>\[\begin{split}\Lambda_{t+1}  = \frac {\partial \psi}{\partial x'} (X_t, W_{t+1}) \Lambda_t \\ 
+<span class="eqno">(14.2)<a class="headerlink" href="#equation-var-evolve" title="Link to this equation">#</a></span>\[\begin{split}\Lambda_{t+1}  = \frac {\partial \psi}{\partial x'} (X_t, W_{t+1}) \Lambda_t \\ 
 \Delta_{t+1} - \Delta_t  = \frac {\partial \kappa}{\partial x}(X_t, W_{t+1}) \cdot \Lambda_t .\end{split}\]</div>
 <p>We use stochastic impulse responses to provide an “asset pricing” representation of partial derivatives of a value function with respect to one of the components of <span class="math notranslate nohighlight">\(X_0\)</span>. Consider a value function that satisfies:</p>
 <div class="math notranslate nohighlight" id="equation-value-function">
-<span class="eqno">(12.3)<a class="headerlink" href="#equation-value-function" title="Link to this equation">#</a></span>\[\begin{split}\begin{align} 
+<span class="eqno">(14.3)<a class="headerlink" href="#equation-value-function" title="Link to this equation">#</a></span>\[\begin{split}\begin{align} 
 V(X_t) + Y_t =  &amp; \exp(-\delta) \mathbb{E} \left[ V(X_{t+1}) + Y_{t+1} \mid X_t \right] \\
  &amp;  + [1 - \exp(-\delta)] \left[ U(X_t) + Y_t \right].
  \end{align}\end{split}\]</div>
 <p>This value function need not coincide with a solution to an optimal control problem.  It could just be the evaluation of some non-optimal decision rule associated with a stochastic equilibrium.  Marginal valuation is still used as part of a local policy analysis.</p>
-<p>Differentiate both sides of this <a class="reference internal" href="#equation-value-function">(12.3)</a> with respect to <span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(Y_t\)</span> and form dot products with appropriate variational counterparts:</p>
+<p>Differentiate both sides of this <a class="reference internal" href="#equation-value-function">(14.3)</a> with respect to <span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(Y_t\)</span> and form dot products with appropriate variational counterparts:</p>
 <div class="math notranslate nohighlight" id="equation-value-differentiation">
-<span class="eqno">(12.4)<a class="headerlink" href="#equation-value-differentiation" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(14.4)<a class="headerlink" href="#equation-value-differentiation" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
 \frac{\partial V}{\partial x}(X_t) \cdot \Lambda_t + \Delta_t = &amp; \exp(-\delta) \mathbb{E}\left[ \frac{\partial V}{\partial x}(X_{t+1}) \cdot \Lambda_{t+1} + \Delta_{t+1} \mid X_t, \Lambda_t, \Delta_t \right] \\ 
 &amp; + [1 - \exp(-\delta)]\left[\frac{\partial U}{\partial x}(X_t) \cdot \Lambda_t + \Delta_t \right] 
 \end{align} \end{split}\]</div>
-<p>View equation <a class="reference internal" href="#equation-value-differentiation">(12.4)</a>  as a stochastic difference  equation and solve it forward for <span class="math notranslate nohighlight">\(\frac{\partial V}{\partial x}(X_t) \cdot \Lambda_t + \Delta_t:\)</span></p>
+<p>View equation <a class="reference internal" href="#equation-value-differentiation">(14.4)</a>  as a stochastic difference  equation and solve it forward for <span class="math notranslate nohighlight">\(\frac{\partial V}{\partial x}(X_t) \cdot \Lambda_t + \Delta_t:\)</span></p>
 <div class="math notranslate nohighlight" id="equation-value-derive">
-<span class="eqno">(12.5)<a class="headerlink" href="#equation-value-derive" title="Link to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(14.5)<a class="headerlink" href="#equation-value-derive" title="Link to this equation">#</a></span>\[\begin{split}\begin{align*}
 &amp; \frac{\partial V}{\partial x}(X_t) \cdot \Lambda_t + \Delta_t \\  &amp; = 
 [1 - \exp(-\delta)]\sum_{\tau = 0}^\infty \mathbb{E}\left( \exp(-\tau \delta) \left[\frac{\partial U}{\partial x}(X_{t+\tau}) \cdot \Lambda_{t+\tau} + \Delta_{t + \tau}\right] \mid X_t, \Lambda_t, \Delta_t \right)
 \end{align*}\end{split}\]</div>
@@ -458,7 +463,7 @@ V(X_t) + Y_t =  &amp; \exp(-\delta) \mathbb{E} \left[ V(X_{t+1}) + Y_{t+1} \mid 
 \frac{\partial U}{\partial x}(X_{t}) \\ \Delta_t \end{bmatrix} : t \ge 0\right\},\end{split}\]</div>
 <p>acts as a  <em>vector stochastic cash flow process</em>. The stochastic impulse response tells the marginal state vector response at date <span class="math notranslate nohighlight">\(t\)</span> to changing the <span class="math notranslate nohighlight">\(i^{th}\)</span> state vector component at date zero, while the vector of marginal cash flows at date <span class="math notranslate nohighlight">\(t\)</span> measures the impact on utility of a marginal change in the date <span class="math notranslate nohighlight">\(t\)</span> state vector.</p>
 <div class="proof remark admonition" id="remark-0">
-<p class="admonition-title"><span class="caption-number">Remark 12.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 14.1 </span></p>
 <section class="remark-content" id="proof-content">
 <p>Sometimes it is convenient to apply summation by parts:</p>
 <div class="math notranslate nohighlight">
@@ -467,7 +472,7 @@ V(X_t) + Y_t =  &amp; \exp(-\delta) \mathbb{E} \left[ V(X_{t+1}) + Y_{t+1} \mid 
 &amp; = \sum_{\tau = 1}^\infty \mathbb{E}\left[ \exp(-\tau \delta) \left(\Delta_{t + \tau} - \Delta_{t+\tau -1} \right) \mid X_t, \Lambda_t, \Delta_t \right] + \Delta_t \\ 
 &amp; = \sum_{\tau = 1}^\infty \mathbb{E}\left[ \exp(-\tau \delta) \frac{\partial \kappa}{\partial x}(X_{t+\tau-1}, W_{t+\tau})\cdot \Lambda_{t+ \tau} \mid X_t, \Lambda_t, \right] + \Delta_t .
 \end{align*}\end{split}\]</div>
-<p>Substituting into <a class="reference internal" href="#equation-value-derive">(12.5)</a> gives:</p>
+<p>Substituting into <a class="reference internal" href="#equation-value-derive">(14.5)</a> gives:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\frac{\partial V}{\partial x}(X_t) \cdot \Lambda_t + \Delta_t = [1 - \exp(-\delta)]\sum_{\tau = 0}^\infty \mathbb{E}\left[ \exp(-\tau \delta) \frac{\partial U}{\partial x}(X_{t+\tau}) \cdot \Lambda_{t+\tau} \mid X_t, \Lambda_t, \right]
  \\
@@ -475,11 +480,11 @@ V(X_t) + Y_t =  &amp; \exp(-\delta) \mathbb{E} \left[ V(X_{t+1}) + Y_{t+1} \mid 
 </section>
 </div></section>
 <section id="continuous-time">
-<h2><span class="section-number">12.3. </span>Continuous time<a class="headerlink" href="#continuous-time" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">14.3. </span>Continuous time<a class="headerlink" href="#continuous-time" title="Link to this heading">#</a></h2>
 <p>A continuous-time counterpart allows us to draw a distinction between small shocks (Brownian increments) and large shocks (Poisson jumps).  Formally,
 we consider a continuous-time specification with Brown motion shocks, in other words, diffusion dynamics.   We then allow for jumps by treating them  as terminal conditions where we impose continuation values conditioned on a jump taking place.   The possibility of a jump will contribute to the value function computation.  After developing the basic approach we extend the analysis to include robustness in the valuation.</p>
 <section id="diffusion-dynamics">
-<h3><span class="section-number">12.3.1. </span>Diffusion dynamics<a class="headerlink" href="#diffusion-dynamics" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.3.1. </span>Diffusion dynamics<a class="headerlink" href="#diffusion-dynamics" title="Link to this heading">#</a></h3>
 <p>As a part of a more general derivation, we begin with state dynamics modeled as a Markov diffusion:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
@@ -492,21 +497,21 @@ dY_t &amp; = \nu(X_t) dt + \varsigma(X_t) \cdot dW_t.
 \[d\Lambda_{t}^i = \left(\Lambda_t\right)'\frac{\partial \mu_i}{\partial x}(X_t) dt + \left({\Lambda_t}\right)'\frac{\partial \sigma_i}{\partial x}(X_t) dW_t.\]</div>
 <p>With the appropriate stacking, the drift for the composite process <span class="math notranslate nohighlight">\((X,\Lambda)\)</span> is:</p>
 <div class="math notranslate nohighlight" id="equation-variational-mean">
-<span class="eqno">(12.6)<a class="headerlink" href="#equation-variational-mean" title="Link to this equation">#</a></span>\[\begin{split}\mu^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \mu(x) \\ \lambda'{\frac {\partial \mu_i} {\partial x} }(x) \\
+<span class="eqno">(14.6)<a class="headerlink" href="#equation-variational-mean" title="Link to this equation">#</a></span>\[\begin{split}\mu^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \mu(x) \\ \lambda'{\frac {\partial \mu_i} {\partial x} }(x) \\
 ... \\ \lambda'{\frac {\partial \mu_n} {\partial x} }(x) \end{bmatrix},\end{split}\]</div>
 <p>and the composite matrix coefficient on <span class="math notranslate nohighlight">\(dW_t\)</span> is given by</p>
 <div class="math notranslate nohighlight" id="equation-variational-diffusion">
-<span class="eqno">(12.7)<a class="headerlink" href="#equation-variational-diffusion" title="Link to this equation">#</a></span>\[\begin{split}\sigma^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \sigma(x) \\  \lambda'\frac {\partial \sigma_1 }{\partial x}(x)\\ ... \\
+<span class="eqno">(14.7)<a class="headerlink" href="#equation-variational-diffusion" title="Link to this equation">#</a></span>\[\begin{split}\sigma^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \sigma(x) \\  \lambda'\frac {\partial \sigma_1 }{\partial x}(x)\\ ... \\
 \lambda' \frac {\partial \sigma_n }{\partial x}(x) \end{bmatrix}.\end{split}\]</div>
 <p>Similarly,  <span class="math notranslate nohighlight">\(\Delta\)</span> is  the scalar variational process associated with <span class="math notranslate nohighlight">\(Y\)</span> with evolution</p>
 <div class="math notranslate nohighlight">
 \[d \Delta_t = \Lambda_t \cdot \frac {\partial \nu}{\partial x} (X_t)dt + {\Lambda_t}' \frac {\partial \varsigma}{\partial x'} dW_t \]</div>
 </section>
 <section id="an-initial-representation-of-a-partial-derivative">
-<h3><span class="section-number">12.3.2. </span>An initial representation of a partial derivative<a class="headerlink" href="#an-initial-representation-of-a-partial-derivative" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.3.2. </span>An initial representation of a partial derivative<a class="headerlink" href="#an-initial-representation-of-a-partial-derivative" title="Link to this heading">#</a></h3>
 <p>Consider the evaluation of discounted utility where the instantaneous contribution is <span class="math notranslate nohighlight">\(U(x)\)</span> where <span class="math notranslate nohighlight">\(x\)</span> is the realization of a state vector <span class="math notranslate nohighlight">\(X_t\)</span>. The function <span class="math notranslate nohighlight">\(U\)</span> satisfies a Feynman-Kac (FK) equation:</p>
 <div class="math notranslate nohighlight" id="equation-fkequation">
-<span class="eqno">(12.8)<a class="headerlink" href="#equation-fkequation" title="Link to this equation">#</a></span>\[\begin{align}
+<span class="eqno">(14.8)<a class="headerlink" href="#equation-fkequation" title="Link to this equation">#</a></span>\[\begin{align}
 0 = &amp; \delta \left[U(x) + y\right]  - \delta \left[V(x) + y \right] 
 \mu(x) \cdot \frac {\partial V}{\partial x}(x) + \nu(x) 
 \cr &amp;+ {\frac 1 2 }{\rm trace}\left[\sigma(x)' \frac {\partial^2 V}{\partial x \partial x'}(x) \sigma(x) \right].
@@ -515,19 +520,19 @@ dY_t &amp; = \nu(X_t) dt + \varsigma(X_t) \cdot dW_t.
 <div class="math notranslate nohighlight">
 \[V_{x_i}(x) = {\frac {\partial V}{\partial x_i}}(x)  \]</div>
 <p>as an expected discounted value of a marginal impulse responses of future <span class="math notranslate nohighlight">\(X_t\)</span> to a marginal change of the <span class="math notranslate nohighlight">\(i^{th}\)</span> coordinate of <span class="math notranslate nohighlight">\(x.\)</span></p>
-<p>By differentiating Feynman-Kac equation <a class="reference internal" href="#equation-fkequation">(12.8)</a> with respect to each coordinate, we obtain a vector of equations one for each state variable. We then form the dot product of this vector system with respect to <span class="math notranslate nohighlight">\(m\)</span> to obtain a scalar equation system that is of particular interest. The resulting equation is a Feynman-Kac equation for the scalar function:</p>
+<p>By differentiating Feynman-Kac equation <a class="reference internal" href="#equation-fkequation">(14.8)</a> with respect to each coordinate, we obtain a vector of equations one for each state variable. We then form the dot product of this vector system with respect to <span class="math notranslate nohighlight">\(m\)</span> to obtain a scalar equation system that is of particular interest. The resulting equation is a Feynman-Kac equation for the scalar function:</p>
 <div class="math notranslate nohighlight">
 \[\lambda  \cdot \frac {\partial V}{\partial x}\]</div>
 <p>as established in the Appendix. Given that the equation to be solved involves both <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(x\)</span>, this equation uses the diffusion dynamics for the joint process <span class="math notranslate nohighlight">\((X,\Lambda)\)</span>.</p>
 <p>The solution to this Feynman-Kac equation takes the form of a discounted expected value:</p>
 <div class="math notranslate nohighlight" id="equation-value-function-partial">
-<span class="eqno">(12.9)<a class="headerlink" href="#equation-value-function-partial" title="Link to this equation">#</a></span>\[\frac {\partial V}{\partial x}(X_0) \cdot \Lambda_0 + \Delta_0 =  \delta  \int_0^\infty  \exp( - \delta t ) {\mathbb E} \left[
+<span class="eqno">(14.9)<a class="headerlink" href="#equation-value-function-partial" title="Link to this equation">#</a></span>\[\frac {\partial V}{\partial x}(X_0) \cdot \Lambda_0 + \Delta_0 =  \delta  \int_0^\infty  \exp( - \delta t ) {\mathbb E} \left[
 \frac {\partial U}{\partial x} (X_{t}) \cdot \Lambda_{t} + \Delta_t  \mid X_0, \Lambda_0, \Delta_0 \right] dt.   \]</div>
 <p>By initializing the state vector <span class="math notranslate nohighlight">\(\Lambda_0\)</span> to be a coordinate vector of zeros in all entries but entry <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(\Lambda_0 = 0\)</span>, we obtain the formula we want, which gives the partial derivative as a discounted present value using <span class="math notranslate nohighlight">\(\delta\)</span> as the discount rate. The contribution, <span class="math notranslate nohighlight">\(\Lambda_{t},\)</span> is the marginal response of the date <span class="math notranslate nohighlight">\(t\)</span> state vector to marginal change in the <span class="math notranslate nohighlight">\(i^{th}\)</span> component of the state vector at date zero. The marginal change in the date <span class="math notranslate nohighlight">\(t\)</span> state vector induces marginal reward at date <span class="math notranslate nohighlight">\(t\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\delta \frac {\partial U}{\partial x} (X_{t})\cdot \Lambda_{t}  + \Delta_t\]</div>
 <p>which provides us with a useful interpretation as an asset price. The process <span class="math notranslate nohighlight">\(\Lambda\)</span> gives a vector counterpart to a <em>stochastic discount factor</em> process and <span class="math notranslate nohighlight">\(\delta \frac {\partial U}{\partial x} (X_{t}) + \Delta_t\)</span> gives the counterpart to a <em>cash flow</em> to be valued.</p>
-<p>One application of representation <a class="reference internal" href="#equation-value-function-partial">(12.9)</a> computes the discounted impulse response:</p>
+<p>One application of representation <a class="reference internal" href="#equation-value-function-partial">(14.9)</a> computes the discounted impulse response:</p>
 <div class="math notranslate nohighlight">
 \[\delta   \exp( - \delta t ) {\mathbb E} \left[
 \frac {\partial U}{\partial x_j} (X_{t}) \cdot \Lambda_{t}  \mid X_0, \Lambda_0, \Delta_0 \right].  \]</div>
@@ -537,13 +542,13 @@ dY_t &amp; = \nu(X_t) dt + \varsigma(X_t) \cdot dW_t.
  \Delta_t  \mid X_0, \Lambda_0, \Delta_0 \right] \]</div>
 <p>for <span class="math notranslate nohighlight">\(t \ge 0\)</span> as an intertemporal,  additive decomposition of the marginal valuation of one of the state variables as determined by an initialization of <span class="math notranslate nohighlight">\(\Lambda_0.\)</span></p>
 <div class="proof remark admonition" id="remark-1">
-<p class="admonition-title"><span class="caption-number">Remark 12.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 14.2 </span></p>
 <section class="remark-content" id="proof-content">
-<p>Representations similar to <a class="reference internal" href="#equation-variational-diffusion">(12.7)</a> appear in the sensitivity analyses of options prices. See <span id="id1">[<a class="reference internal" href="cite.html#id442" title="E Fournie, J M Lasry, J Lebuchoux, P L Lions, and N Touzi. Applications of Malliavin calculus to Monte Carlo methods in finance. Finance and Stochastics, 3:391-413, 1999.">Fournie <em>et al.</em>, 1999</a>]</span>.</p>
+<p>Representations similar to <a class="reference internal" href="#equation-variational-diffusion">(14.7)</a> appear in the sensitivity analyses of options prices. See <span id="id1">[<a class="reference internal" href="cite.html#id443" title="E Fournie, J M Lasry, J Lebuchoux, P L Lions, and N Touzi. Applications of Malliavin calculus to Monte Carlo methods in finance. Finance and Stochastics, 3:391-413, 1999.">Fournie <em>et al.</em>, 1999</a>]</span>.</p>
 </section>
 </div></section>
 <section id="robustness">
-<h3><span class="section-number">12.3.3. </span>Robustness<a class="headerlink" href="#robustness" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.3.3. </span>Robustness<a class="headerlink" href="#robustness" title="Link to this heading">#</a></h3>
 <p>We next consider a general class of drift distortions that can help us study model misspecification concerns. We initially explore the consequences of exogenously-specified drift distortion. After that, we show how such a distortion can emerge endogenously as a decision-maker’s response to concerns about model misspecifications.</p>
 <p>For diffusions, we entertain distortions to the Brownian increment.  Instead <span class="math notranslate nohighlight">\(W\)</span> being a multivariate Brownian motion, we allow it to have a drift <span class="math notranslate nohighlight">\(H\)</span> under a change in the probability distribution.  We index the alternative probability specifications with their corresponding drift processes <span class="math notranslate nohighlight">\(H\)</span>.  Locally,</p>
 <div class="math notranslate nohighlight">
@@ -551,7 +556,7 @@ dY_t &amp; = \nu(X_t) dt + \varsigma(X_t) \cdot dW_t.
 <p>where <span class="math notranslate nohighlight">\(W^H\)</span> is a Brownian motion under the <span class="math notranslate nohighlight">\(H\)</span> probability.  Given that both the distribution parameterize by <span class="math notranslate nohighlight">\(H\)</span> and the baseline distribution for the increment are normals with an identity matrix as the local covariance matrix, the local measure of relative entropy is given by the quadratic term:</p>
 <div class="math notranslate nohighlight">
 \[{\frac 1 2} H_t \cdot H_t .\]</div>
-<p>See <span id="id2">[<a class="reference internal" href="cite.html#id264" title="Matthew R. James. Asymptotic Analysis of Nonlinear Stochastic Risk-Sensitive Control and Differential Games. Mathematics of Control, Signals and Systems, 5(4):401–417, 1992.">James, 1992</a>]</span>, <span id="id3">[<a class="reference internal" href="cite.html#id452" title="Evan W. Anderson, Lars Peter Hansen, and Thomas J. Sargent. A quartet of semigroups for model specification, robustness,prices of risk, and model detection. Journal of the European Economic Association, 1:68-123, 2003. doi:10.4324/9780203358061.">Anderson <em>et al.</em>, 2003</a>]</span>,  and <span id="id4">[<a class="reference internal" href="cite.html#id255" title="Lars Peter Hansen, Thomas J. Sargent, Gauhar A. Turmuhambetova, and Noah Williams. Robust control and model misspecification. Journal of Economic Theory, 128(1):45-90, May 2006.">Hansen <em>et al.</em>, 2006</a>]</span> for further discussions.</p>
+<p>See <span id="id2">[<a class="reference internal" href="cite.html#id264" title="Matthew R. James. Asymptotic Analysis of Nonlinear Stochastic Risk-Sensitive Control and Differential Games. Mathematics of Control, Signals and Systems, 5(4):401–417, 1992.">James, 1992</a>]</span>, <span id="id3">[<a class="reference internal" href="cite.html#id453" title="Evan W. Anderson, Lars Peter Hansen, and Thomas J. Sargent. A quartet of semigroups for model specification, robustness,prices of risk, and model detection. Journal of the European Economic Association, 1:68-123, 2003. doi:10.4324/9780203358061.">Anderson <em>et al.</em>, 2003</a>]</span>,  and <span id="id4">[<a class="reference internal" href="cite.html#id255" title="Lars Peter Hansen, Thomas J. Sargent, Gauhar A. Turmuhambetova, and Noah Williams. Robust control and model misspecification. Journal of Economic Theory, 128(1):45-90, May 2006.">Hansen <em>et al.</em>, 2006</a>]</span> for further discussions.</p>
 <p>Initially, we introduce an exogenously specified drift distortion process <span class="math notranslate nohighlight">\(H\)</span> into the diffusion dynamics:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
@@ -566,36 +571,36 @@ dY_t &amp; = \nu(X_t) dt + \varsigma(X_t) \cdot dW_t.
 \left(\Lambda_t\right)'\frac{\partial \sigma_i}{\partial x}(X_t) dW_t^H.\]</div>
 <p>Importantly, there is no contribution from differentiating <span class="math notranslate nohighlight">\(H\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span> since <span class="math notranslate nohighlight">\(H\)</span> only depends on the <span class="math notranslate nohighlight">\(\bar{X}_t\)</span> process.</p>
 <div class="proof remark admonition" id="remark-2">
-<p class="admonition-title"><span class="caption-number">Remark 12.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 14.3 </span></p>
 <section class="remark-content" id="proof-content">
 <p>While we focus on Markov forms of misspecification, this can be relaxed.  The misspecification that will  most concern a  decision maker will have a Markov representation. That helps explain why we  make a Markov assumption here.</p>
 </section>
 </div></section>
 <section id="value-function-derivatives-under-robustness">
-<h3><span class="section-number">12.3.4. </span>Value function derivatives under robustness<a class="headerlink" href="#value-function-derivatives-under-robustness" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.3.4. </span>Value function derivatives under robustness<a class="headerlink" href="#value-function-derivatives-under-robustness" title="Link to this heading">#</a></h3>
 <p>We now  let the flow term  be:</p>
 <div class="math notranslate nohighlight">
 \[\delta \left[ U(x) + y \right] +{\frac \xi 2} \vert H\left( \bar{x} \right) \vert^2.\]</div>
 <p>This implies a value function <span class="math notranslate nohighlight">\({\overline V}(x,{\bar x}) + y.\)</span></p>
 <p>Consider another value function that is sometimes  used to compute a robustness adjustment to valuation.  It coincides with ones sometimes used in robust control problems.   This value function solves the HJB equation:</p>
 <div class="math notranslate nohighlight" id="equation-min-hjb">
-<span class="eqno">(12.10)<a class="headerlink" href="#equation-min-hjb" title="Link to this equation">#</a></span>\[\begin{align}
+<span class="eqno">(14.10)<a class="headerlink" href="#equation-min-hjb" title="Link to this equation">#</a></span>\[\begin{align}
 0 = \min_h &amp; \hspace{.2cm} \delta \left[U(x) + y\right]  - \delta \left[ V(x) + y \right]+ {\frac \xi 2}|h|^2 + \left[\mu(x) +\sigma(x)h \right] V_x(x) \cr
 &amp; + \nu(x) + \varsigma(x) \cdot h +
 {\frac 1 2} {\rm trace} \left[ \sigma (x)' V_{xx}(x) \sigma(x) \right].
 \end{align}\]</div>
-<p>The first-order conditions for <span class="math notranslate nohighlight">\(h\)</span> in equation <a class="reference internal" href="#equation-min-hjb">(12.10)</a> imply that</p>
+<p>The first-order conditions for <span class="math notranslate nohighlight">\(h\)</span> in equation <a class="reference internal" href="#equation-min-hjb">(14.10)</a> imply that</p>
 <div class="math notranslate nohighlight">
 \[\sigma(x)'V_x(x)  + \varsigma(x) + \xi h = 0  \]</div>
 <p>The solution, <span class="math notranslate nohighlight">\(V,\)</span> of the  HJB equation satisfies the Feynman-Kac equation that emerges after  we substitute the minimizing <span class="math notranslate nohighlight">\(h\)</span> into the HJB equation:</p>
 <div class="math notranslate nohighlight" id="equation-hjb-robust">
-<span class="eqno">(12.11)<a class="headerlink" href="#equation-hjb-robust" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(14.11)<a class="headerlink" href="#equation-hjb-robust" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
 0 =&amp; \hspace{.2cm} \delta U(x) - \delta V(x) + {\frac \xi 2}|h^*(x) |^2 + \left[\mu(x) +\sigma(x)h^*(x)  \right] \cdot  V_x(x) \\ &amp; + \left[\nu(x) + \varsigma(x)\cdot h^*(x) \right]
  + {\frac 1 2} {\rm trace} \left[ \sigma (x)' V_{xx}(x) \sigma(x) \right] ,
 \end{align}\end{split}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight" id="equation-optimal-distortion">
-<span class="eqno">(12.12)<a class="headerlink" href="#equation-optimal-distortion" title="Link to this equation">#</a></span>\[h^*(x) = - \frac 1 \xi \left[ \sigma'(x) V_x(x) + \varsigma(x) \right].\]</div>
+<span class="eqno">(14.12)<a class="headerlink" href="#equation-optimal-distortion" title="Link to this equation">#</a></span>\[h^*(x) = - \frac 1 \xi \left[ \sigma'(x) V_x(x) + \varsigma(x) \right].\]</div>
 <p>Consider an exogenously specified drift distortion as in the previous subsection where <span class="math notranslate nohighlight">\(H = h^*\)</span> and  stochastic dynamics  <span class="math notranslate nohighlight">\(\bar X\)</span> satisfy a consistency requirement:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
@@ -606,11 +611,11 @@ dY_t &amp; = \nu(X_t) dt + \varsigma(X_t) \cdot dW_t.
 <p>We  now show that when
 <span class="math notranslate nohighlight">\( H(\bar x) = h^*( \bar x ),\)</span> it is also true that</p>
 <div class="math notranslate nohighlight" id="equation-result-value">
-<span class="eqno">(12.13)<a class="headerlink" href="#equation-result-value" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(14.13)<a class="headerlink" href="#equation-result-value" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
 V(x) &amp; = {\overline V}(x,x) \\
 V_x(x) &amp; = {\overline V}_x(x,x) 
 \end{align}\end{split}\]</div>
-<p>Differentiate equation <a class="reference internal" href="#equation-hjb-robust">(12.11)</a>  with respect to <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<p>Differentiate equation <a class="reference internal" href="#equation-hjb-robust">(14.11)</a>  with respect to <span class="math notranslate nohighlight">\(x\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 0 = &amp; - \delta V_x + \delta U_x + V_{xx}\left(\mu +\sigma  h^*  \right) 
@@ -618,35 +623,35 @@ V_x(x) &amp; = {\overline V}_x(x,x)
 \\ &amp; + {\frac \partial {\partial x}} \left[{\frac 1 2} {\rm trace} \left( \sigma' V_{xx} \sigma \right) \right]  
 \end{align}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\rm{mat}\)</span> denotes a matrix formed by stacking the column arguments.   (This expression uses  the first-order conditions for h and an “Envelope Theorem” to cancel some terms.)
-Take corresponding  derivatives  of <span class="math notranslate nohighlight">\({\overline V}\)</span> with respect to the first-argument and then substitute <span class="math notranslate nohighlight">\(x={\bar x}\)</span> to obtain <a class="reference internal" href="#equation-result-value">(12.13)</a> when we set <span class="math notranslate nohighlight">\(H(x) = h^*(x).\)</span></p>
-<p>Note that it follows from the second equation in <a class="reference internal" href="#equation-result-value">(12.13)</a> that</p>
+Take corresponding  derivatives  of <span class="math notranslate nohighlight">\({\overline V}\)</span> with respect to the first-argument and then substitute <span class="math notranslate nohighlight">\(x={\bar x}\)</span> to obtain <a class="reference internal" href="#equation-result-value">(14.13)</a> when we set <span class="math notranslate nohighlight">\(H(x) = h^*(x).\)</span></p>
+<p>Note that it follows from the second equation in <a class="reference internal" href="#equation-result-value">(14.13)</a> that</p>
 <div class="math notranslate nohighlight">
 \[V_{xx}(x) = {\overline V}_{xx}(x,x) + {\overline V}_{x\bar x}(x,x) \]</div>
 <div class="proof remark admonition" id="remark-3">
-<p class="admonition-title"><span class="caption-number">Remark 12.4 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 14.4 </span></p>
 <section class="remark-content" id="proof-content">
-<p>We can drop <span class="math notranslate nohighlight">\(\frac{\xi}{2} |H(\overline{X}_t)|^2\)</span> from the flow term that we used to construct <span class="math notranslate nohighlight">\(\overline{V}\)</span> and still obtain the second equality in <a class="reference internal" href="#equation-result-value">(12.13)</a> involving first-derivatives of value functions.</p>
+<p>We can drop <span class="math notranslate nohighlight">\(\frac{\xi}{2} |H(\overline{X}_t)|^2\)</span> from the flow term that we used to construct <span class="math notranslate nohighlight">\(\overline{V}\)</span> and still obtain the second equality in <a class="reference internal" href="#equation-result-value">(14.13)</a> involving first-derivatives of value functions.</p>
 </section>
 </div><p>We can now compute representations that we have been seeking by simulating under the endogenously determined worst-case probability specification; we can obtain decompositions of various contributions over time and state vector components based on:</p>
 <div class="math notranslate nohighlight" id="equation-value-function-partial-robust">
-<span class="eqno">(12.14)<a class="headerlink" href="#equation-value-function-partial-robust" title="Link to this equation">#</a></span>\[\begin{align*}
+<span class="eqno">(14.14)<a class="headerlink" href="#equation-value-function-partial-robust" title="Link to this equation">#</a></span>\[\begin{align*}
 &amp;\frac{\partial \overline{V}}{\partial x}(X_0, \overline{X}_0) \cdot \Lambda_0 + \Delta_0 \cr
 &amp;= \delta \int_0^\infty \exp(-\delta t) \widetilde{\mathbb{E}} \left[ \frac{\partial U}{\partial x}(X_{t}) \cdot \Lambda_{t} + \Delta_t \mid X_0, \bar{X}_0, \Lambda_0, \Delta_0 \right] dt
 \end{align*}\]</div>
 <p>where set <span class="math notranslate nohighlight">\(\overline{X}_0 = X_0\)</span> and <span class="math notranslate nohighlight">\(\Lambda_0\)</span> equal to one of the coordinate vectors and <span class="math notranslate nohighlight">\(\Delta_0 = 0.\)</span> The mathematical expectation, <span class="math notranslate nohighlight">\(\widetilde{\mathbb{E}}\)</span>, is computed under the worst-case stochastic evolution computed by imposing <span class="math notranslate nohighlight">\(H(\overline{X}_t) = h^*(X_t).\)</span></p>
 <div class="proof remark admonition" id="remark-4">
-<p class="admonition-title"><span class="caption-number">Remark 12.5 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 14.5 </span></p>
 <section class="remark-content" id="proof-content">
-<p>While we demonstrated that we can treat a drift distortion as exogenous to the original state dynamics, for some applications we will want to view it as a change in the endogenous dynamics that are reflected <a class="reference internal" href="#equation-optimal-distortion">(12.12)</a>.</p>
+<p>While we demonstrated that we can treat a drift distortion as exogenous to the original state dynamics, for some applications we will want to view it as a change in the endogenous dynamics that are reflected <a class="reference internal" href="#equation-optimal-distortion">(14.12)</a>.</p>
 </section>
 </div><div class="proof remark admonition" id="remark-5">
-<p class="admonition-title"><span class="caption-number">Remark 12.6 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 14.6 </span></p>
 <section class="remark-content" id="proof-content">
 <p>By construction, along a simulated path, <span class="math notranslate nohighlight">\(\overline{X}_t = X_t\)</span>, which we impose in our numerical calculations. As a consequence, it suffices to simulate <span class="math notranslate nohighlight">\((X,\Lambda)\)</span>.</p>
 </section>
 </div></section>
 <section id="allowing-ies-to-differ-from-unity">
-<h3><span class="section-number">12.3.5. </span>Allowing IES to differ from unity<a class="headerlink" href="#allowing-ies-to-differ-from-unity" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.3.5. </span>Allowing IES to differ from unity<a class="headerlink" href="#allowing-ies-to-differ-from-unity" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(\rho\)</span> be the inverse of the intertemporal elasticity of substitution for a recursive utility specification. The utility recursion is now:</p>
 <div class="math notranslate nohighlight">
 \[\left(\frac{\delta}{1-\rho}\right)\left(\exp\left[(1-\rho)\left[U(X_t)+Y_t\right]\right)\exp\left[(\rho-1)\left[\overline{V}(X_t,\bar{X}_t)+Y_t\right]\right]-1\right) + \overline{\mu}_{v,t} = 0\]</div>
@@ -671,17 +676,17 @@ The instantaneous flow term, <span class="math notranslate nohighlight">\(\delta
 \exp\left[(1-\rho)\left[U(X_t)-{\overline V}\left( X_t, {\overline X}_t \right) \right]\right]\frac{\partial U}{\partial x}(X_t) \mid X_0 \Lambda_0, \Delta_0 \right] dt.
 \end{align*} \]</div>
 <div class="proof remark admonition" id="remark-6">
-<p class="admonition-title"><span class="caption-number">Remark 12.7 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 14.7 </span></p>
 <section class="remark-content" id="proof-content">
-<p>When we conduct simulations, we can impose that <span class="math notranslate nohighlight">\(\overline{X}_t = X_t\)</span> along with <a class="reference internal" href="#equation-result-value">(12.13)</a>, implying that</p>
+<p>When we conduct simulations, we can impose that <span class="math notranslate nohighlight">\(\overline{X}_t = X_t\)</span> along with <a class="reference internal" href="#equation-result-value">(14.13)</a>, implying that</p>
 <div class="math notranslate nohighlight">
 \[\overline{V}\left(X_\tau,\overline{X}_\tau\right) = V(X_\tau).\]</div>
 </section>
 </div></section>
 <section id="jumps">
-<h3><span class="section-number">12.3.6. </span>Jumps<a class="headerlink" href="#jumps" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.3.6. </span>Jumps<a class="headerlink" href="#jumps" title="Link to this heading">#</a></h3>
 <p>We study a pre-jump functional equation in which jump serves as a continuation value. We allow multiple types of jumps, each with its own state-dependent intensity. We denote the intensity of a jump of type <span class="math notranslate nohighlight">\(\ell\)</span> by <span class="math notranslate nohighlight">\(\mathcal{J}^\ell(x)\)</span>; a corresponding continuation value after a jump of type <span class="math notranslate nohighlight">\(\ell\)</span> has occurred is <span class="math notranslate nohighlight">\(V^\ell(x)+y\)</span>. In applications, we’ll compute post-jump continuation value <span class="math notranslate nohighlight">\(V^\ell\)</span>, as components of a complete model solution.  To simplify the notation, we impose that <span class="math notranslate nohighlight">\(\rho - 1,\)</span> but it is straightforward to incorporate the <span class="math notranslate nohighlight">\(\rho \ne 1\)</span> extension we discussed in the previous subsection.</p>
-<p>As in <span id="id5">[<a class="reference internal" href="cite.html#id452" title="Evan W. Anderson, Lars Peter Hansen, and Thomas J. Sargent. A quartet of semigroups for model specification, robustness,prices of risk, and model detection. Journal of the European Economic Association, 1:68-123, 2003. doi:10.4324/9780203358061.">Anderson <em>et al.</em>, 2003</a>]</span>, an HJB equation that adds concerns about robustness to misspecifications of jump intensities as well as diffusion dynamics is:</p>
+<p>As in <span id="id5">[<a class="reference internal" href="cite.html#id453" title="Evan W. Anderson, Lars Peter Hansen, and Thomas J. Sargent. A quartet of semigroups for model specification, robustness,prices of risk, and model detection. Journal of the European Economic Association, 1:68-123, 2003. doi:10.4324/9780203358061.">Anderson <em>et al.</em>, 2003</a>]</span>, an HJB equation that adds concerns about robustness to misspecifications of jump intensities as well as diffusion dynamics is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 0 = \min_{h, \, g^\ell \text{ for } \ell=1,...,L} &amp; - \delta V + \delta U + {\frac{\xi}{2}}|h|^2 +\left[\mu +\sigma h\right]\cdot \frac {\partial V}{\partial x}  + \nu + \varsigma \cdot h\\
@@ -699,7 +704,7 @@ The instantaneous flow term, <span class="math notranslate nohighlight">\(\delta
 <p>First-order conditions for <span class="math notranslate nohighlight">\(h\)</span> remain the same as before.</p>
 <p>We again construct a Feynman-Kac equation by substituting in <span class="math notranslate nohighlight">\(h^*(x)\)</span> and <span class="math notranslate nohighlight">\(g^{\ell*}(x)\)</span>. Applying an Envelope Theorem to first-order conditions for minimization tells us that neither <span class="math notranslate nohighlight">\(h^*(x)\)</span> nor <span class="math notranslate nohighlight">\(g^{\ell*}(x)\)</span> contribute to the derivatives of the value function. This leads us to:</p>
 <div class="math notranslate nohighlight" id="equation-hjb-robustjump">
-<span class="eqno">(12.15)<a class="headerlink" href="#equation-hjb-robustjump" title="Link to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(14.15)<a class="headerlink" href="#equation-hjb-robustjump" title="Link to this equation">#</a></span>\[\begin{split}\begin{align*}
 0 = &amp; -\delta \frac {\partial V }{\partial x} + \delta  \frac {\partial U }{\partial x} +  \frac {\partial^2 V }{\partial x \partial x'}\left(\mu +\sigma h^*\right)\\
 &amp; + \left( \frac {\partial \mu'}{\partial x} \right) \frac {\partial V }{\partial x} + {\rm{mat}}\left\{\left(\frac{\partial \sigma_i}{\partial x}\right)h^*\right\}' \frac {\partial V }{\partial x}\\
 &amp; +\frac{\partial}{\partial x}\left[\frac{1}{2}{\rm trace}\left(\sigma'  \frac {\partial^2 V }{\partial x \partial x'} \sigma\right)\right] \\
@@ -708,7 +713,7 @@ The instantaneous flow term, <span class="math notranslate nohighlight">\(\delta
 &amp; +\xi\sum_{\ell=1}^L\frac {\partial \mathcal{J}^{\ell}}{\partial x} \left[1 - g^{\ell*} + g^{\ell*}\log g^{\ell*}\right].
 \end{align*}\end{split}\]</div>
 <p>Applying our <span class="math notranslate nohighlight">\((X,\overline{X})\)</span> analysis tells us that the date <span class="math notranslate nohighlight">\(t\)</span> intensity distortion constructed with the minimizing <span class="math notranslate nohighlight">\(g^{\ell*}\)</span> depends on the exogenous state vector <span class="math notranslate nohighlight">\(\overline{X}_t\)</span> rather than on <span class="math notranslate nohighlight">\(X_t\)</span>. An Envelope Theorem is again at play here.</p>
-<p>It is revealing  to rewrite equation <a class="reference internal" href="#equation-hjb-robustjump">(12.15)</a> as:</p>
+<p>It is revealing  to rewrite equation <a class="reference internal" href="#equation-hjb-robustjump">(14.15)</a> as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 0 = &amp; -\left(\delta + \sum_{\ell=1}^L\mathcal{J}^{\ell}g^{\ell*}\right)\frac {\partial V }{\partial x} + \delta \frac {\partial U }{\partial x} \\
@@ -724,26 +729,26 @@ The instantaneous flow term, <span class="math notranslate nohighlight">\(\delta
 \[D_t \eqdef \exp\left( - \int_0^t\left[\delta +  \sum_{\ell=1}^L\mathcal{J}^{\ell}(X_u)g^{\ell*}(X_u)\right]du\right),\]</div>
 <p>In addition, four flow terms are discounted:</p>
 <div class="math notranslate nohighlight" id="equation-robustjump-contributions">
-<span class="eqno">(12.16)<a class="headerlink" href="#equation-robustjump-contributions" title="Link to this equation">#</a></span>\[\begin{split}\begin{align} 
+<span class="eqno">(14.16)<a class="headerlink" href="#equation-robustjump-contributions" title="Link to this equation">#</a></span>\[\begin{split}\begin{align} 
 &amp; \delta \Lambda_t \cdot U_x(X_t) &amp; \text{i)}\\
 &amp; + \Lambda_t \cdot \sum_{\ell=1}^L\mathcal{J}^{\ell}_x(X_t)g^{\ell*}(X_t)\left[V^\ell(X_t) - V(X_t)\right] &amp;  \text{ii)}\\
 &amp; + \Lambda_t \cdot \sum_{\ell=1}^L\mathcal{J}^{\ell}(X_t)g^{\ell*}(X_t) {V^\ell_x}(X_t) &amp; \text{iii)} \\
 &amp; + \xi \Lambda_t \cdot\sum_{\ell=1}^L  \mathcal{J}^\ell_x (X_t)\left[1 - g^{\ell*}(X_t) + g^{\ell*}(X_t)\log g^{\ell*}(X_t)\right]. &amp; \text{iv)}
 \end{align}\end{split}\]</div>
 <p>Its revealing to think of right side as providing four different sources of the marginal values.  The contributions of <span class="math notranslate nohighlight">\(V^{\ell*}\)</span> and <span class="math notranslate nohighlight">\(V^\ell_x\)</span> are to be expected because they help to quantify the consequences of potential jumps.  The contribution of <span class="math notranslate nohighlight">\(V\)</span> is present because changes in a future state at a given date alters the jump possibility at subsequent dates.  Finally, the fourth term is present because changing a future state changes the penalty for exploring alternative probability distributions.  Increasing this penalty limits the extent of the uncertainty adjustment due to robustness concerns.</p>
-<p>Notice that terms ii) and iv) of formula <a class="reference internal" href="#equation-robustjump-contributions">(12.16)</a> include derivatives of the jump intensity with respect to the state of interest.  In some examples, the jump intensities are constant or depend only on an exogenous state.  I this cases both of the term drop out and only the first and third remain.</p>
+<p>Notice that terms ii) and iv) of formula <a class="reference internal" href="#equation-robustjump-contributions">(14.16)</a> include derivatives of the jump intensity with respect to the state of interest.  In some examples, the jump intensities are constant or depend only on an exogenous state.  I this cases both of the term drop out and only the first and third remain.</p>
 <p>Simulation-based methods can be used to compute these value contributions.  They  should be conducted under implied worst-case diffusion dynamics. With multiple jump components, we decompose contributions to the marginal utility by jump types <span class="math notranslate nohighlight">\(\ell\)</span>.</p>
 </section>
 <section id="stochastic-growth-example">
-<h3><span class="section-number">12.3.7. </span>Stochastic growth example<a class="headerlink" href="#stochastic-growth-example" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">14.3.7. </span>Stochastic growth example<a class="headerlink" href="#stochastic-growth-example" title="Link to this heading">#</a></h3>
 <p>We revisit a model of <span id="id6">[<a class="reference internal" href="cite.html#id72" title="Marco Cagetti, Lars Peter Hansen, Thomas Sargent, and Noah Williams. Robustness and pricing with uncertain growth. The Review of Financial Studies, 15(2):363–404, 2002.">Cagetti <em>et al.</em>, 2002</a>]</span> with a finite number of uncertain growth rates. <a class="footnote-reference brackets" href="#hamilton" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight" id="equation-capital-evolution">
-<span class="eqno">(12.17)<a class="headerlink" href="#equation-capital-evolution" title="Link to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(14.17)<a class="headerlink" href="#equation-capital-evolution" title="Link to this equation">#</a></span>\[\begin{equation}
 dK_t = \left[ \left(Y_t\right)^{1-\alpha}\left(K_t\right)^\alpha - C_t - \eta K_t \right]dt  + K_t \sigma_K \cdot dW_t
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(K_t\)</span> is the date <span class="math notranslate nohighlight">\(t\)</span> stock of capital, <span class="math notranslate nohighlight">\(C_t\)</span> is consumption, <span class="math notranslate nohighlight">\(Y_t\)</span> is an exogenous labor-augmenting technology, labor is in fixed supply, <span class="math notranslate nohighlight">\(\alpha\)</span> the relative share of capital in the production of output,  <span class="math notranslate nohighlight">\(\eta\)</span> is a depreciation parameter and <span class="math notranslate nohighlight">\(\sigma_k \cdot dW_t\)</span> governs the locally stochastic return to capita.  The technology process evolves as a jump process, where</p>
 <div class="math notranslate nohighlight" id="equation-productivity-evolution">
-<span class="eqno">(12.18)<a class="headerlink" href="#equation-productivity-evolution" title="Link to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(14.18)<a class="headerlink" href="#equation-productivity-evolution" title="Link to this equation">#</a></span>\[\begin{equation}
 dY_t = Y_t \left(Z_t \cdot \kappa\right)dt   + Y_t \sigma_Y \cdot dW_t, 
 \end{equation}\]</div>
 <p>and <span class="math notranslate nohighlight">\(Z\)</span> evolves as a finite-state Markov chain with a constant intensity matrix <span class="math notranslate nohighlight">\(\Lambda\)</span>, where a realization of <span class="math notranslate nohighlight">\(Z_t\)</span> is on the coordinate vectors in <span class="math notranslate nohighlight">\({\mathbb R}^L,\)</span>   We denote the intensity of going from state <span class="math notranslate nohighlight">\(j\)</span> to state <span class="math notranslate nohighlight">\(\ell\)</span> by  <span class="math notranslate nohighlight">\({\mathcal J}^{j,\ell},\)</span> which is also    the <span class="math notranslate nohighlight">\((j,\ell)\)</span> element of <span class="math notranslate nohighlight">\(\Lambda\)</span> is <span class="math notranslate nohighlight">\({\mathcal J}^{j,\ell}\)</span> for <span class="math notranslate nohighlight">\(\ell \ne j.\)</span> The diagonal entry, <span class="math notranslate nohighlight">\(j,\)</span>  of <span class="math notranslate nohighlight">\(\Lambda\)</span> is given by :</p>
@@ -766,12 +771,12 @@ d X_t  =  &amp; \left( \exp\left[(1-\alpha) X_t \right]   - U_t  -  \left(Z_t \c
 <p>This example is under construction with full and partial information.</p>
 </section>
 <section id="climate-change-example">
-<h3><span class="section-number">12.3.8. </span>Climate change example<a class="headerlink" href="#climate-change-example" title="Link to this heading">#</a></h3>
-<p><span id="id8">[<a class="reference internal" href="cite.html#id27" title="Michael Barnett, William A. Brock, Lars Peter Hansen, and Hong Zhang. Uncertainty, Social Valuation, and Climate Change Policy (Working Paper). 2024.">Barnett <em>et al.</em>, 2024</a>]</span> use representations <a class="reference internal" href="#equation-robustjump-contributions">(12.16)</a> to decompose their model-based measure of the social cost of climate change and the social value of research and development.  In their analysis, there are two types of Poisson jumps.  One is the discovery of a new technology and the other is recognization of how curved the damage function is for more extreme changes in temperature.  The magnitude of damage curvature is revealed by a jump triggered by a temperature anomaly between 1.5 and 2 degrees celsius. <span id="id9">[<a class="reference internal" href="cite.html#id27" title="Michael Barnett, William A. Brock, Lars Peter Hansen, and Hong Zhang. Uncertainty, Social Valuation, and Climate Change Policy (Working Paper). 2024.">Barnett <em>et al.</em>, 2024</a>]</span> allow for twenty different damage curves.
+<h3><span class="section-number">14.3.8. </span>Climate change example<a class="headerlink" href="#climate-change-example" title="Link to this heading">#</a></h3>
+<p><span id="id8">[<a class="reference internal" href="cite.html#id27" title="Michael Barnett, William A. Brock, Lars Peter Hansen, and Hong Zhang. Uncertainty, Social Valuation, and Climate Change Policy (Working Paper). 2024.">Barnett <em>et al.</em>, 2024</a>]</span> use representations <a class="reference internal" href="#equation-robustjump-contributions">(14.16)</a> to decompose their model-based measure of the social cost of climate change and the social value of research and development.  In their analysis, there are two types of Poisson jumps.  One is the discovery of a new technology and the other is recognization of how curved the damage function is for more extreme changes in temperature.  The magnitude of damage curvature is revealed by a jump triggered by a temperature anomaly between 1.5 and 2 degrees celsius. <span id="id9">[<a class="reference internal" href="cite.html#id27" title="Michael Barnett, William A. Brock, Lars Peter Hansen, and Hong Zhang. Uncertainty, Social Valuation, and Climate Change Policy (Working Paper). 2024.">Barnett <em>et al.</em>, 2024</a>]</span> allow for twenty different damage curves.
 While there are twenty one possible jump types, we group them into damage jumps (one through twenty) and a technology jump (twenty one). <span id="id10">[<a class="reference internal" href="cite.html#id27" title="Michael Barnett, William A. Brock, Lars Peter Hansen, and Hong Zhang. Uncertainty, Social Valuation, and Climate Change Policy (Working Paper). 2024.">Barnett <em>et al.</em>, 2024</a>]</span>
 display the quantitative importance of a technology jump and a damage jump in contributing to the social value of research and development.  We report analogous findings for the social cost of climate change measured as the negative of the marginal value of temperature.  We take the negative of the marginal value of climate change because warming induces a social cost (a negative benefit).</p>
 <p><a class="reference internal" href="#table1"><span class="xref myst">Table 1</span></a> reports the the contribution of each of the four contributions given on the right side of
-<a class="reference internal" href="#equation-robustjump-contributions">(12.16)</a> for the   partial derivative of the value function with respect to the temperature state variable. The column ii(dc) includes only the contributions for damage curve jumps and column ii(td) includes the remaining contribution from the technology jump, and similarly for iii(dc) and iii(td).  We see from this table that the second term dominates the calculation.  Moreover, the primary source of this contribution is the damage curve uncertainty.  The fourth term partially offsets the cost because of the uncertainty adjustment.  We report this decomposition for three different values of <span class="math notranslate nohighlight">\(\xi.\)</span>  Decreasing <span class="math notranslate nohighlight">\(\xi\)</span> increases the misspecification aversion.  Setting <span class="math notranslate nohighlight">\(\xi = \infty\)</span> eliminates robustness concerns altogether.</p>
+<a class="reference internal" href="#equation-robustjump-contributions">(14.16)</a> for the   partial derivative of the value function with respect to the temperature state variable. The column ii(dc) includes only the contributions for damage curve jumps and column ii(td) includes the remaining contribution from the technology jump, and similarly for iii(dc) and iii(td).  We see from this table that the second term dominates the calculation.  Moreover, the primary source of this contribution is the damage curve uncertainty.  The fourth term partially offsets the cost because of the uncertainty adjustment.  We report this decomposition for three different values of <span class="math notranslate nohighlight">\(\xi.\)</span>  Decreasing <span class="math notranslate nohighlight">\(\xi\)</span> increases the misspecification aversion.  Setting <span class="math notranslate nohighlight">\(\xi = \infty\)</span> eliminates robustness concerns altogether.</p>
 <div style="font-size: 16px;">
 <!-- <table>
     <thead>
@@ -861,17 +866,17 @@ display the quantitative importance of a technology jump and a damage jump in co
 </table>
 </div>
 <p><strong>Table 1:</strong> Components to the partial derivative of the value function with respect to the temperature state variable. The (dc) columns include only the contributions from the damage curve realization jumps, and the (td) columns include the contributions from the technology discovery jump.</p>
-<p><a class="reference internal" href="#discounted-value-of-term2"><span class="std std-numref">Fig. 12.1</span></a> reports the contributions to the social cost of climate change by horizon for the alternative values of the robustness parameter <span class="math notranslate nohighlight">\(\xi\)</span>.  Lowering <span class="math notranslate nohighlight">\(\xi\)</span> increases the cost contributions at all horizons.  For all specifications of <span class="math notranslate nohighlight">\(\xi,\)</span> there is a substantial peak at around 25 years.  To explore further the peak response report densities that capture the timing of the first Poisson jump in <a class="reference internal" href="#jump-densities"><span class="std std-numref">Fig. 12.2</span></a>. We see that these densities peak at around a thirty-year horizon.  Apparently the expected cost contributions peak earlier because for their forward-looking nature.</p>
+<p><a class="reference internal" href="#discounted-value-of-term2"><span class="std std-numref">Fig. 14.1</span></a> reports the contributions to the social cost of climate change by horizon for the alternative values of the robustness parameter <span class="math notranslate nohighlight">\(\xi\)</span>.  Lowering <span class="math notranslate nohighlight">\(\xi\)</span> increases the cost contributions at all horizons.  For all specifications of <span class="math notranslate nohighlight">\(\xi,\)</span> there is a substantial peak at around 25 years.  To explore further the peak response report densities that capture the timing of the first Poisson jump in <a class="reference internal" href="#jump-densities"><span class="std std-numref">Fig. 14.2</span></a>. We see that these densities peak at around a thirty-year horizon.  Apparently the expected cost contributions peak earlier because for their forward-looking nature.</p>
 <figure class="align-default" id="discounted-value-of-term2">
 <a class="reference internal image-reference" href="../_images/stochastic_figure3.png"><img alt="../_images/stochastic_figure3.png" src="../_images/stochastic_figure3.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12.1 </span><span class="caption-text">An intertemporal decomposition of the social cost of temperature for alternative values of <span class="math notranslate nohighlight">\(\xi\)</span>.  We report only the cost contributions from the second term in <a class="reference internal" href="#equation-robustjump-contributions">(12.16)</a>.</span><a class="headerlink" href="#discounted-value-of-term2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14.1 </span><span class="caption-text">An intertemporal decomposition of the social cost of temperature for alternative values of <span class="math notranslate nohighlight">\(\xi\)</span>.  We report only the cost contributions from the second term in <a class="reference internal" href="#equation-robustjump-contributions">(14.16)</a>.</span><a class="headerlink" href="#discounted-value-of-term2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="jump-densities">
 <a class="reference internal image-reference" href="../_images/stochastic_figure2.png"><img alt="../_images/stochastic_figure2.png" src="../_images/stochastic_figure2.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12.2 </span><span class="caption-text">Densities for the  first jump for alternative  values of <span class="math notranslate nohighlight">\(\xi\)</span>.</span><a class="headerlink" href="#jump-densities" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14.2 </span><span class="caption-text">Densities for the  first jump for alternative  values of <span class="math notranslate nohighlight">\(\xi\)</span>.</span><a class="headerlink" href="#jump-densities" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- ### References
@@ -1062,7 +1067,7 @@ V_x \left( x, {\bar z}  \right)  + {V_{\bar z}}\left( x, {\bar z}  \right)' \sig
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Stochastic Responses</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Stochastic Responses</p>
       </div>
     </a>
     <a class="right-next"
@@ -1070,7 +1075,7 @@ V_x \left( x, {\bar z}  \right)  + {V_{\bar z}}\left( x, {\bar z}  \right)' \sig
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>GMM Estimation </p>
+        <p class="prev-next-title"><span class="section-number">15. </span>GMM Estimation </p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1090,17 +1095,17 @@ V_x \left( x, {\bar z}  \right)  + {V_{\bar z}}\left( x, {\bar z}  \right)' \sig
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">12.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">12.2. Discrete time</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time">12.3. Continuous time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-dynamics">12.3.1. Diffusion dynamics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-initial-representation-of-a-partial-derivative">12.3.2. An initial representation of a partial derivative</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness">12.3.3. Robustness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-function-derivatives-under-robustness">12.3.4. Value function derivatives under robustness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-ies-to-differ-from-unity">12.3.5. Allowing IES to differ from unity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumps">12.3.6. Jumps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-growth-example">12.3.7. Stochastic growth example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-change-example">12.3.8. Climate change example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">14.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">14.2. Discrete time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time">14.3. Continuous time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-dynamics">14.3.1. Diffusion dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-initial-representation-of-a-partial-derivative">14.3.2. An initial representation of a partial derivative</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness">14.3.3. Robustness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-function-derivatives-under-robustness">14.3.4. Value function derivatives under robustness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#allowing-ies-to-differ-from-unity">14.3.5. Allowing IES to differ from unity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jumps">14.3.6. Jumps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-growth-example">14.3.7. Stochastic growth example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-change-example">14.3.8. Climate change example</a></li>
 </ul>
 </li>
 </ul>

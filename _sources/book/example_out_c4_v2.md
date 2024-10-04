@@ -109,7 +109,7 @@ E \left[ \kappa(X_{t+j-1}, W_{t+j}) - \nu \vert X_t = x \right] = \mathbb T^{j-1
 ```
 Summing the terms, construct
 ```{math}
-H_{t}  = \sum_{j=0}^\infty E\left(  \left[\kappa(X_{t-1+ j}, W_{t+j} - \nu \right] \mid X_t \right)  =  \kappa(X_{t-1}, W_{t}) - \nu +
+H_{t}  = \sum_{j=0}^\infty E\left(  \left[\kappa(X_{t-1+ j}, W_{t+j}) - \nu \right] \mid X_t \right)  =  \kappa(X_{t-1}, W_{t}) - \nu +
 \sum_{j=0}^\infty E \left[ \overline \kappa( X_{t+j} ) \mid X_t  \right]  = \kappa_h(X_{t-1}, W_t)
 ```
 where
@@ -181,7 +181,7 @@ We apply the four-step construction in Algorithm [Martingale construction](alg:m
 :label: eqn:addex1a
 X_{t+1} = {\mathbb A} X_t + {\mathbb B} W_{t+1},
 ```
-where ${\mathbb A}$ is a stable matrix and $\{ W_{t+1} : t\ge 0  \}$ is a sequence of independent and identically normally distributed random variables with mean vector zero and identity covariance matrix. The one-step ahead conditional covariance matrix of the time $t+1$ shocks $B W_{t+1}$ to $X_{t+1}$ equals $B B'$. Let
+where ${\mathbb A}$ is a stable matrix and $\{ W_{t+1} : t\ge 0  \}$ is a sequence of independent and identically normally distributed random variables with mean vector zero and identity covariance matrix. The one-step ahead conditional covariance matrix of the time $t+1$ shocks $\mathbb{B} W_{t+1}$ to $X_{t+1}$ equals $\mathbb{B} \mathbb{B}'$. Let
 
 ```{math}
 :label: eqn:addex1b
@@ -241,7 +241,7 @@ which can be solved forward to obtain:
 ```
 Thus this limiting case gives discounted expected logarithmic utility as way to assess alternative consumption processes. 
 
-When the process $\{ {\mathbb D} X_t\}$ is highly persistent, there is said to be substantial "long-run risk" in consumption. {cite}`bansalyaron2004` also consider a process governing stochastic volatility that we abstract from the in computations that follow. . While the illustrative calculations in what follows use the VAR-type application of {cite}`HansenHeatonLi:2008`, some of the basic insights extend much more generally.
+When the process $\{ {\mathbb D} X_t\}$ is highly persistent, there is said to be substantial "long-run risk" in consumption. {cite}`bansalyaron2004` also consider a process governing stochastic volatility that we abstract from in the computations that follow. While the illustrative calculations in what follows use the VAR-type application of {cite}`HansenHeatonLi:2008`, some of the basic insights extend much more generally.
 
 
 
@@ -276,11 +276,11 @@ Solving this forward gives:
 
 Notice, in particular, the term in the square brackets of {eq}`cont_constant`.  The first contribution is average growth rate expressed in logarithms.  For the second contribution, it is revealing to inspect the $\beta = 1$ limit:
 ```{math}
- \frac { (1-\gamma) } 2 \left\vert {\mathbb D} \left({\mathbb I} - \beta {\mathbb A}\right)^{-1}{\mathbb B}  + {\mathbb F} \right\vert^2.
+ \frac { (1-\gamma) } 2 \left\vert {\mathbb D} \left({\mathbb I} - {\mathbb A}\right)^{-1}{\mathbb B}  + {\mathbb F} \right\vert^2.
 ```
 This gives a variance adjustment to the continuation value that the product of $(1-\gamma)/2$ and variance of the increment to the martingale component of the logarithm of consumption as reported in {eq}`markov_mart`.  When $\gamma >1,$ this variance coincides with the continuation value relative to the case of logarithmic utility.  Larger $\gamma$ increases this adjustment.  The $\beta = 1$ limit is pertinent because this parameter is often set close to unity in the macro-finance literature.  
 
-In Chapter  [](chap:recursive),  we investigate more generally the implications of class of recursive utility preferences which nests this specification as a special case.  Among other results, we obtain analogous formulas as first-order approximations to more general consumption dynamics.  
+In Chapter  [](chap:recursive),  we investigate more generally the implications of a class of recursive utility preferences which nests this specification as a special case.  Among other results, we obtain analogous formulas as first-order approximations to more general consumption dynamics.  
 
 (sec:growthregime)=
 ### Growth-Rate Regimes
@@ -326,7 +326,7 @@ We again apply the four-step construction in [algorithm](alg:martconstruct).[^al
 
 2. 
     ```{math}
-    H_t =  {\mathbb D}  (X_{t-1} - {\bf q})   + {X_{t-1}}'{\mathbb F} W_{1,t} + {\mathbb D}\left(({\mathbb I} - {\mathbb P}\right)^{-1} X_t  
+    H_t =  {\mathbb D}  (X_{t-1} - {\bf q})   + {X_{t-1}}'{\mathbb F} W_{1,t} + {\mathbb D}\left({\mathbb I} - {\mathbb P}\right)^{-1} X_t  
     ```
 
 3. 

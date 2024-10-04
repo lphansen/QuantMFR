@@ -34,7 +34,7 @@ U_{t+1} = X_{t+1} - E\left(X_{t+1} \vert {\mathfrak A}_t \right).
 
 We can interpret the above equations  as providing two contributions to the   $\{Y_{t}: t \ge 0\}$ process.
 Thus, component $U_{t+1}$ is unpredictable and represents new information about $Y_{t+1}$ that arrives at date $t+1$.
-Component $\nu$ is the trend rate of growth or decay in $\{Y_{t} : t \ge 0\}$ conditioned on the invariant events. In the following sections, we present full  decomposition of a stationary increment process that will be useful both in connecting to sources of permanent versus transitory shocks and to central limit theorems.
+Component $\nu$ is the trend rate of growth or decay in $\{Y_{t} : t \ge 0\}$ conditioned on the invariant events. In the following sections, we present a full  decomposition of a stationary increment process that will be useful both in connecting to sources of permanent versus transitory shocks and to central limit theorems.
 ## A martingale decomposition
 
 A special class of stationary increment processes called additive martingales interests us.
@@ -118,7 +118,7 @@ Y_{t} & = & \underbrace{t\nu} & + & Y_t^m & - &\underbrace{ H_t^+} & + & \underb
 The stationary increment process, $\{Y_{t}^m : t\ge 0 \},$ is the martingale component with  $Y_0^m = 0$,   The component $\{H_{t}^+\}$ is stationary.  The other components are constant over time.
 ````
 
-{prf:ref}`decomp00` decomposes  a stationary-increment process into a linear  time trend, a martingale, and a transitory component of a stationary-increments process. A permanent shock is the increment to the martingale.  The martingale and transitory contributions are typically correlated.  
+{prf:ref}`decomp00` decomposes  a stationary-increment process into a linear  time trend, a martingale, and a transitory component. A permanent shock is the increment to the martingale.  The martingale and transitory contributions are typically correlated.  
 ````{prf:example}
 :label: ex:chap2ma
 
@@ -161,13 +161,14 @@ the **first difference** $Y_{t+1}  - Y_t = X_{t+1}$ of $\{ Y_t : t=0,1,.... \}$ 
 **level** of $Y$, i.e., the effect on $\lim_{j\rightarrow + \infty} Y_{t+j}$. 
 Models of {cite:t}`blanchardquah` and {cite:t}`shapirowatson` build on this
 property.
+
 The variance of the random variable $\alpha(1) \cdot W_{t+1}$  conditioned on the invariant events in ${\mathfrak I}$  is $|\alpha(1)|^2$.  The overall variance of $X_{t}$ is given by
 
 ```{math}
 \sum_{j=0}^\infty|\alpha_j|^2 \ne |\alpha(1)|^2.
 ```
 
-To form a transitory-transitory shock decomposition, construct the  permanent shock as:
+To form a permanent-transitory shock decomposition, construct the  permanent shock as:
 
 ```{math}
 W_{t+1}^p = \left( \frac {1}{|\alpha(1)|} \right) \alpha(1) \cdot W_{t+1}
@@ -178,6 +179,8 @@ where we introduce an additional scaling so the permanent shock has variance one
 W_{t+1}^{tr} = W_{t+1} -   \left( \frac {1}{|\alpha(1)|} \right) \alpha(1) W_{t+1}^p 
 ```
 which by construction will be uncorrelated with $W_{t+1}^p$.  Since  the covariance matrix of $W_{t+1}^{tr}$ will be singular, the components of $W_{t+1}^{tr}$ can be expressed as linear combinations of a vector of transitory shocks with unit variances.
+````
+
 
 ````{prf:example}
 :label: ex:helpBQ
@@ -274,14 +277,14 @@ The {prf:ref}`decomp00` martingale component of $\{ Y_t : t \ge 0 \}$ is the cor
 components of $\{ Y_t^1 : t =0,1,...\}$ and $\{ Y_t^2 : t =0,1,...\}$. The {prf:ref}`decomp00`  trend component of $\{ Y_t : t =0,1,  \ldots \}$ is the corresponding linear combination of the
 trend  components of $\{ Y_t^1 : t =0,1, \ldots \}$ and $\{ Y_t^2 : t =0,1,  \ldots \}$.
 
-{prf:ref}`decomp00` sheds light on the cointegration concept of {cite:t}`englegranger` that is associated with linear combinations of stationary increment processes whose trend and martingale components are both zero. {citeauthor}`englegranger` call two processes *cointegrated* if there exists a linear combination of them that is stationary.[^cointegration-def] That situation prevails when there exist real-valued scalars $r_1$ and $r_2$ such that
+{prf:ref}`decomp00` sheds light on the cointegration concept of {cite:t}`englegranger` that is associated with linear combinations of stationary increment processes whose trend and martingale components are both zero. {citeauthor}`englegranger` Call two processes *cointegrated* if there exists a linear combination of them that is stationary.[^cointegration-def] That situation prevails when there exist real-valued scalars $r_1$ and $r_2$ such that
 ```{math}
 \begin{eqnarray*}
 r_1 \nu_1 + r_2 \nu_2 & = & 0 \\
 r_1 \mathbb{D}(X^1) + r_2 \mathbb{D}(X^2) & = & 0,
 \end{eqnarray*}
 ```
-where the $\nu$'s correspond to the trend components in {prf:ref}`decomp00`. These two zero restrictions imply that the time trend and the martingale component for the linear combination $Y_t$ are both zero.[^cointegration-vector] When $r_1 = 1$ and $r_2 = - 1$, the component stationary increment processes $Y_{t}^1$ and $Y_{t}^2$ share a common growth component.
+where the $\nu$'s correspond to the trend components in {prf:ref}`decomp00`. These two zero restrictions imply that the time trend and the martingale component for the linear combination $Y_t$ are both zero.[^cointegration-vector] When $r_1 = 1$ and $r_2 = - 1$, the stationary increment processes $Y_{t}^1$ and $Y_{t}^2$ share a common growth component.
 
 This notion of cointegration provides one way to formalize balanced growth paths in stochastic environments through determining a linear combination of growing time series for which stochastic growth is absent.
 

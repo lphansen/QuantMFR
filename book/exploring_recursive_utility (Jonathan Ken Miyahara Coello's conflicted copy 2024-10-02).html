@@ -1,0 +1,1580 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>11. Exploring Recursive Utility &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/exploring_recursive_utility';</script>
+    <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/exploring_recursive_utility.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="12. Likelihoods" href="example_out_c6_v2.html" />
+    <link rel="prev" title="10. Risk, Ambiguity, and Misspecification" href="decision_book_draft.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">9. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">13. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">14. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/background.html">Background Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Notebook: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Notebook: Continuous Time</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Comparative Valuation Dynamics in Production Economies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/appendix.html">Online Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/code.html">Computational Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Spillovers for Markets and Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../uncertainty_spillovers/manuscript.html">Manuscript</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/exploring_recursive_utility.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploring Recursive Utility</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-utility-valuation-process">11.2. Recursive utility valuation process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-recursion">11.2.1. Basic recursion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preference-for-robustness">11.2.2. Preference for robustness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">11.2.3. Stochastic discount factor process</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-limit">11.3. Continuous-time limit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-approximation">11.3.1. Discrete-time approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness-to-misspecification">11.3.2. Robustness to misspecification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-pricing">11.3.3. Uncertainty pricing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-noise-expansion-of-dynamic-stochastic-equilibria">11.4. Small noise expansion of dynamic stochastic equilibria</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-state-dynamics">11.4.1. Approximate state dynamics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-preferences-with-enhanced-uncertainty-concerns">11.5. Incorporating preferences with enhanced uncertainty concerns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-zero">11.5.1. Order-zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-one">11.5.2. Order-one</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-two">11.5.3. Order two</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-approximation">11.6. Stochastic discount factor approximation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-1">11.6.1. Approach 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-2">11.6.2. Approach 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-a-planner-s-problem-with-recursive-utility">11.7. Solving a planner’s problem with recursive utility</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-economy-with-long-run-uncertainty">11.7.1. An example economy with long-run uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-approximation-when-rho-1">11.7.2. First-order approximation when <span class="math notranslate nohighlight">\(\rho=1\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-approximation-when-rho-1">11.7.3. Second-order approximation when <span class="math notranslate nohighlight">\(\rho = 1\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-models">11.8. Solving models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-solving-the-planner-s-problem">11.9. Appendix A: Solving the planner’s problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-derivatives">11.9.1. <span class="math notranslate nohighlight">\(Q\)</span> derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-derivatives">11.9.2. <span class="math notranslate nohighlight">\(N\)</span> derivatives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-approximation-formulas-approach-one">11.10. Appendix B: Approximation formulas  (approach one)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec2">11.10.1. Order zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec3">11.10.2. Order one</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">11.10.3. Order two</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-c-approximation-formulas-approach-two">11.11. Appendix C: Approximation formulas  (approach two)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-d-parameter-values">11.12. Appendix D: Parameter values</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exploring-recursive-utility">
+<span id="chap-recursive"></span><h1><span class="section-number">11. </span>Exploring Recursive Utility<a class="headerlink" href="#exploring-recursive-utility" title="Link to this heading">#</a></h1>
+<p><strong>Authors:</strong> Borovicka, Jaroslav (NYU), Lars Peter Hansen (University of Chicago) and Thomas J. Sargent (NYU)
+<span class="math notranslate nohighlight">\(\newcommand{\eqdef}{\stackrel{\text{def}}{=}}\)</span></p>
+<section id="introduction">
+<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>We explore implications of uncertain-averse economic decision-makers with the recursive utility preference specification of <span id="id1">[<a class="reference internal" href="cite.html#id292" title="David M. Kreps and Evan L. Porteus. Temporal Resolution of Uncertainty and Dynamic Choice. Econometrica, 46(1):185–200, 1978.">Kreps and Porteus, 1978</a>]</span> and <span id="id2">[<a class="reference internal" href="cite.html#id146" title="Larry G. Epstein and Stanley E. Zin. Substitution, Risk Aversion and the Temporal Behavior of Consumption and Asset Returns: A Theoretical Framework. Econometrica, 57(4):937–969, 1989.">Epstein and Zin, 1989</a>]</span> and counterparts to these preferences that capture concerns about model misspecification as in <span id="id3">[<a class="reference internal" href="cite.html#id206" title="Lars Peter Hansen and Thomas J. Sargent. Robust control and model uncertainty. The American Economic Review, 91(2):60-66, May 2001.">Hansen and Sargent, 2001</a>]</span> and <span id="id4">[<a class="reference internal" href="cite.html#id453" title="Evan W. Anderson, Lars Peter Hansen, and Thomas J. Sargent. A quartet of semigroups for model specification, robustness,prices of risk, and model detection. Journal of the European Economic Association, 1:68-123, 2003. doi:10.4324/9780203358061.">Anderson <em>et al.</em>, 2003</a>]</span>.  We investigate the recursrive-utility implications using two different approximation approaches.  First, we consider a continuous-time limiting approximation to a discrete-time preference specification when the underlying shocks are normally distributed.  These results build on a characterization by <span id="id5">[<a class="reference internal" href="cite.html#id129" title="D. Duffie and L. G. Epstein. Stochastic differential utility. Econometrica, 60(2):353-394, 1992.">Duffie and Epstein, 1992</a>]</span>, but our derivation differs for pedagogical reasons.   We express the representation of the limit in terms of a Brownian motion information structure.  Second, we describe an approximation method that allows macroeconomic uncertainty to have first-order implications. We show how to explore model implications for (nonstandard) first and second-order approximations to equilibria of dynamic stochastic models. We modify first and second order approximations routinely used in the macroeconomics literature in ways that focus on macroeconomic uncertainty.  Our approximations apply to production-based macro-finance models with opportunities to invest in diverse forms of capital. In both approaches, our uncertainty adjustments are captured by a change in probability measure, one that differs from the so-called risk neutral distribution familiar from derivative claims pricing.  We use these frameworks to advance our understanding of alternative preference specifications and their implications for production and asset pricing.</p>
+<p>We describe an approximation method that allows macroeconomic uncertainty to have first-order implications. We assume risk averse economic decision makers with recursive utility preferences or closely related preferences that also express concerns about model misspecification. We show how to explore model implications for (nonstandard) first and second-order approximations to equilibria of dynamic stochastic models. We modify first and second order approximations routinely used in the macroeconomics literature in ways that focus on macroeconomic uncertainty. Our uncertainty adjustments are captured by a change in probability measure.  Furthermore, our approximations apply to production-based macro-finance models with opportunities to invest in diverse forms of capital. We use this framework to advance our understanding of alternative preference specifications and their implications for production and asset pricing.</p>
+<p>We use an approximation method to explore implications of the recursive utility preference specification of <span id="id6">[<a class="reference internal" href="cite.html#id292" title="David M. Kreps and Evan L. Porteus. Temporal Resolution of Uncertainty and Dynamic Choice. Econometrica, 46(1):185–200, 1978.">Kreps and Porteus, 1978</a>]</span> and <span id="id7">[<a class="reference internal" href="cite.html#id146" title="Larry G. Epstein and Stanley E. Zin. Substitution, Risk Aversion and the Temporal Behavior of Consumption and Asset Returns: A Theoretical Framework. Econometrica, 57(4):937–969, 1989.">Epstein and Zin, 1989</a>]</span> and counterparts to these preferences that capture concerns about model misspecification. We present formulas for (nonstandard) first and second-order approximations to dynamic, stochastic equilibria for models in which economic agents have such recursive preferences. The approximations build formulations from <span id="id8">[<a class="reference internal" href="cite.html#id385" title="Stephanie Schmitt-Grohé and Martın Uribe. Solving dynamic general equilibrium models using a second-order approximation to the policy function. Journal of economic dynamics and control, 28(4):755–775, 2004.">Schmitt-Grohé and Uribe, 2004</a>]</span> and <span id="id9">[<a class="reference internal" href="cite.html#id313" title="G Lombardo and H Uhlig. A Theory of Pruning. International Economic Review, 59(4):1825–1836, jul 2018.">Lombardo and Uhlig, 2018</a>]</span>, and we extend them in a way that features the uncertainty contributions more prominently. By design, the implied approximations of stochastic discount factors used to represent market or shadow values reside within the exponential linear quadratic class. This class is known to give tractable formulas for asset valuation over alternative investment horizons. See, for instance, <span id="id10">[<a class="reference internal" href="cite.html#id445" title="Andrew Ang and Monika Piazzesi. A no-arbitrage vector autoregression of term structure dynamics with macroeconomic and latent variables. Journal of Monetary Economics, 50:745-787, 2003. URL: https://www.sciencedirect.com/science/article/pii/S0304393203000321, doi:https://doi.org/10.1016/S0304-3932(03)00032-1.">Ang and Piazzesi, 2003</a>]</span> and <span id="id11">[<a class="reference internal" href="cite.html#id50" title="Jaroslav Borovička and Lars Peter Hansen. Examining macroeconomic models through the lens of asset pricing. Journal of Econometricics, 183:67-90, 2014.">Borovička and Hansen, 2014</a>]</span>. Moreover, they are applicable to production-based macro-finance models with investment opportunities in alternative forms of capital.</p>
+<p>While these approximations are tractable for the reasons described, for many models researchers may be concerned about some more fundamental aspects of uncertainty that are disguised by these methods.  Indeed, for some models global nonlinearities are more accurately captured by global solution methods.  Nevertheless, the approximations still  provide further understanding of the preferences and their implications for asset pricing and allocation across heterogeneous forms of capital. As a central part of our analysis, we capture the important uncertainty preference contribution as a change in the probability distribution of the underlying economic dynamics. We link this change of measure to the robust preferences specifications of <span id="id12">[<a class="reference internal" href="cite.html#id206" title="Lars Peter Hansen and Thomas J. Sargent. Robust control and model uncertainty. The American Economic Review, 91(2):60-66, May 2001.">Hansen and Sargent, 2001</a>]</span> and <span id="id13">[<a class="reference internal" href="cite.html#id453" title="Evan W. Anderson, Lars Peter Hansen, and Thomas J. Sargent. A quartet of semigroups for model specification, robustness,prices of risk, and model detection. Journal of the European Economic Association, 1:68-123, 2003. doi:10.4324/9780203358061.">Anderson <em>et al.</em>, 2003</a>]</span>. The robust preferences formulations build on a robust control literature initiated by <span id="id14">[<a class="reference internal" href="cite.html#id262" title="David H. Jacobson. Optimal Stochastic Linear Systems with Exponential Performance Criteria and Their Relation to Deterministic Differential Games. IEEE Transactions for Automatic Control, AC-18:1124–1131, 1973.">Jacobson, 1973</a>]</span> and <span id="id15">[<a class="reference internal" href="cite.html#id432" title="P. Whittle. Risk sensitive linear quadratic gaussian control. Advances in Applied Probability, 13:764-777, 1981.">Whittle, 1981</a>]</span>.</p>
+</section>
+<section id="recursive-utility-valuation-process">
+<span id="sec-approxrecurutil"></span><h2><span class="section-number">11.2. </span>Recursive utility valuation process<a class="headerlink" href="#recursive-utility-valuation-process" title="Link to this heading">#</a></h2>
+<p>In this section, we construct  a continuation value  and stochastic discount processes.  These processes are   important constituents of dynamic stochastic models.</p>
+<section id="basic-recursion">
+<h3><span class="section-number">11.2.1. </span>Basic recursion<a class="headerlink" href="#basic-recursion" title="Link to this heading">#</a></h3>
+<p>The homogeneous of degree one representation of recursive utility is</p>
+<div class="math notranslate nohighlight" id="equation-homog1a">
+<span class="eqno">(11.1)<a class="headerlink" href="#equation-homog1a" title="Link to this equation">#</a></span>\[V_t = \left[ (1 - \beta) \left(C_t\right)^{1-\rho} + \beta  \left( R_t \right)^{1-\rho} \right]^{\frac 1 {1-\rho}} \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-homog1b">
+<span class="eqno">(11.2)<a class="headerlink" href="#equation-homog1b" title="Link to this equation">#</a></span>\[R_t = \left( {\mathbb E} \left[ \left( V_{t+1} \right)^{1-\gamma} \mid {\mathfrak A}_t \right] \right)^{\frac 1 {1-\gamma}} . \]</div>
+<p>Notice that in equation <a class="reference internal" href="#equation-homog1a">(11.1)</a>, <span class="math notranslate nohighlight">\(V_t\)</span> is a homogeneous of degree one function of <span class="math notranslate nohighlight">\(C_t\)</span> and <span class="math notranslate nohighlight">\(R_t\)</span>. In equation <a class="reference internal" href="#equation-homog1b">(11.2)</a>, <span class="math notranslate nohighlight">\(R_t\)</span> is a homogeneous of degree one function of another function, namely, <span class="math notranslate nohighlight">\(V_{t+1}\)</span> as it varies over date <span class="math notranslate nohighlight">\(t+1\)</span> information.</p>
+<p>In equation <a class="reference internal" href="#equation-homog1a">(11.1)</a>, <span class="math notranslate nohighlight">\(0 &lt; \beta &lt; 1\)</span> is a subjective discount factor and <span class="math notranslate nohighlight">\(\rho\)</span> describes attitudes toward intertemporal substitution. Formally, <span class="math notranslate nohighlight">\({\frac 1 \rho}\)</span> is the elasticity of intertemporal substitution. In equation <a class="reference internal" href="#equation-homog1b">(11.2)</a>, <span class="math notranslate nohighlight">\(\gamma\)</span> describes attitudes towards risk.</p>
+<p>Continuation values are determined only up to an increasing transformation. For computational and conceptual reasons, we find it advantageous to work with the logarithm <span class="math notranslate nohighlight">\({\widehat V}_t = \log V_t\)</span>. The corresponding recursions for <span class="math notranslate nohighlight">\({\widehat  V}_t\)</span> expressed in terms of the logarithm of consumption <span class="math notranslate nohighlight">\({\widehat  C}_t\)</span> are</p>
+<div class="math notranslate nohighlight" id="equation-value-recur5">
+<span class="eqno">(11.3)<a class="headerlink" href="#equation-value-recur5" title="Link to this equation">#</a></span>\[{\widehat  V}_t = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t] + \beta \exp \left[(1-\rho) {\widehat  R}_t \right] \right] \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-value-risk6">
+<span class="eqno">(11.4)<a class="headerlink" href="#equation-value-risk6" title="Link to this equation">#</a></span>\[{\widehat  R}_t = {\frac 1 {1 - \gamma}} \log {\mathbb E} \left[ \exp \left( (1 - \gamma) {\widehat V}_{t+1} \right) \mid {\mathfrak A}_t \right]. \]</div>
+<p>The right side of recursion <a class="reference internal" href="#equation-value-recur5">(11.3)</a> is the logarithm of a constant elasticity of substitution (CES) function of <span class="math notranslate nohighlight">\(\exp({\widehat  C}_t)\)</span> and <span class="math notranslate nohighlight">\(\exp({\widehat  R}_t)\)</span>.</p>
+<div class="proof remark admonition" id="remark-0">
+<p class="admonition-title"><span class="caption-number">Remark 11.1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The limit of <span class="math notranslate nohighlight">\({\widehat R}_t\)</span> as <span class="math notranslate nohighlight">\(\gamma\)</span> approaches <span class="math notranslate nohighlight">\(1\)</span> is ordinary expected logarithmic utility:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{\gamma \downarrow 1} \widehat R_t = \lim_{\gamma \downarrow 1} \frac { \log E \left( \exp\left[
+(1-\gamma) {\widehat V}_{t+1}\right]
+\vert {\mathfrak A}_t \right)}{1-\gamma} = {\mathbb E}\left( \widehat V_{t+1} \vert {\mathfrak A}_t \right) .\]</div>
+</section>
+</div><p>Our approach will be to construct small noise expansions for both <span class="math notranslate nohighlight">\({\widehat V}_t\)</span> and <span class="math notranslate nohighlight">\({\widehat R}_t\)</span> and then to assemble them appropriately. Before doing so, we consider a reinterpretation of <a class="reference internal" href="#equation-value-risk6">(11.4)</a>.</p>
+</section>
+<section id="preference-for-robustness">
+<h3><span class="section-number">11.2.2. </span>Preference for robustness<a class="headerlink" href="#preference-for-robustness" title="Link to this heading">#</a></h3>
+<p>A reinterpretation of the utility recursion and the small-noise expansion approach that we’ll deploy comes from recognizing that when <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span>, <a class="reference internal" href="#equation-value-risk6">(11.4)</a> emerges from an instance of robust control theory in which <span class="math notranslate nohighlight">\(\frac 1 {\gamma - 1}\)</span> is a penalty parameter on entropy relative to alternatives that constrains the alternative probability models that a decision maker considers when evaluating consumption processes. This interpretation originated in work by <span id="id16">[<a class="reference internal" href="cite.html#id262" title="David H. Jacobson. Optimal Stochastic Linear Systems with Exponential Performance Criteria and Their Relation to Deterministic Differential Games. IEEE Transactions for Automatic Control, AC-18:1124–1131, 1973.">Jacobson, 1973</a>]</span> and <span id="id17">[<a class="reference internal" href="cite.html#id432" title="P. Whittle. Risk sensitive linear quadratic gaussian control. Advances in Applied Probability, 13:764-777, 1981.">Whittle, 1981</a>]</span> that was extended and reformulated recursively by <span id="id18">[<a class="reference internal" href="cite.html#id215" title="Lars Peter Hansen and Thomas J. Sargent. Discounted linear exponential quadratic gaussian control. IEEE Transactions on Automatic Control, 40(5):968-971, May 1995.">Hansen and Sargent, 1995</a>]</span>.</p>
+<p>Let the random variable <span class="math notranslate nohighlight">\(N_{t+1} \ge 0\)</span> satisfy <span class="math notranslate nohighlight">\({\mathbb E} \left( N_{t+1} \mid {\mathfrak A}_t \right) = 1\)</span> so that it is a likelihood ratio. Think of replacing the expected continuation value <span class="math notranslate nohighlight">\({\mathbb E} \left( {\widehat V}_{t+1} \mid {\mathfrak A}_t \right)\)</span> by the minimized value of the following problem:</p>
+<div class="math notranslate nohighlight" id="equation-minproblem101">
+<span class="eqno">(11.5)<a class="headerlink" href="#equation-minproblem101" title="Link to this equation">#</a></span>\[\min_{N_{t+1} \ge 0, {\mathbb E}\left(N_{t+1} \vert {\mathfrak A}_t \right) = 1} {\mathbb E} \left( N_{t+1} {\widehat V}_{t+1} \mid {\mathfrak A}_t \right) + \xi  {\mathbb E} \left( N_{t+1} \log N_{t+1}  \mid {\mathfrak A}_t \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\xi\)</span> is a parameter that penalizes departures of <span class="math notranslate nohighlight">\(N_{t+1}\)</span> from unity as measured by relative entropy. Conditional relative entropy for an altered conditional probability induced by applying change of measure <span class="math notranslate nohighlight">\(N_{t+1}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[{\mathbb E} \left( N_{t+1} \log N_{t+1}  \mid {\mathfrak A}_t \right) \ge 0\]</div>
+<p>where, because the function <span class="math notranslate nohighlight">\(n \log n\)</span> is convex, the inequality follows from Jensen’s inequality. Relative entropy is zero when <span class="math notranslate nohighlight">\(N_{t+1} = 1\)</span>.</p>
+<p>Relative entropy has a revealing statistical interpretation.  Think of <span class="math notranslate nohighlight">\(N_{t+1}\)</span> as the relative conditional likelihood ratio of an alternative model vis-a-vis a baseline model.  Then <span class="math notranslate nohighlight">\({\mathbb E} \left( N_{t+1} \log N_{t+1}  \mid {\mathfrak A}_t \right)\)</span> the expected (conditional) log-likelihood ratio of the alternative model where the expectation is taken using the alternative probability model.<br />
+Small expected log likelihoods are a reflection of the statistical similarity between the two models.</p>
+<div class="proof remark admonition" id="remark-1">
+<p class="admonition-title"><span class="caption-number">Remark 11.2 </span></p>
+<section class="remark-content" id="proof-content">
+<p>To solve the minimization problem <a class="reference internal" href="#equation-minproblem101">(11.5)</a>, introduce a Lagrange multiplier, <span class="math notranslate nohighlight">\(\ell,\)</span> on the conditional expectation constraint. The Lagrangian problem separates across states, leading to the unconstrained problem:</p>
+<div class="math notranslate nohighlight">
+\[\min_n n v + \xi n \log n + \ell(n - 1)\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is a potential realization of <span class="math notranslate nohighlight">\(N_{t+1}\)</span> and <span class="math notranslate nohighlight">\(v\)</span> is a realization of <span class="math notranslate nohighlight">\(V_{t+1}.\)</span> The first-order conditions are:</p>
+<div class="math notranslate nohighlight">
+\[v + \xi + \xi \log n + \ell = 0.  \]</div>
+<p>The solution is</p>
+<div class="math notranslate nohighlight">
+\[n^* = \exp\left[ - \frac 1 \xi \left(v + \ell + \xi \right) \right],\]</div>
+<p>and the minimizing objective</p>
+<div class="math notranslate nohighlight">
+\[- \xi \exp\left[ - \frac 1 \xi \left(v + \ell + \xi\right) \right] - \ell .  \]</div>
+<p>To complete the solution, we solve for <span class="math notranslate nohighlight">\(\ell,\)</span></p>
+<div class="math notranslate nohighlight">
+\[\max_\ell - \xi {\mathbb E} \left( \exp\left[ - \frac 1 \xi \left(V_{t+1} + \ell  + \xi \right) \right] \mid {\mathfrak A}_t \right) - \ell \]</div>
+<p>The first-order conditions are:</p>
+<div class="math notranslate nohighlight">
+\[ {\mathbb E} \left( \exp\left[ - \left(\frac 1 \xi \right) V_{t+1}  \right] \mid {\mathfrak A}_t \right) \exp\left[ - \left(\frac{ \ell + \xi}   \xi\right) \right] -1 = 0.\]</div>
+<p>Thus the solution for <span class="math notranslate nohighlight">\(\ell\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\ell^* = \xi \log  {\mathbb E} \left( \exp\left[ - \left(\frac 1 \xi \right) V_{t+1}  \right] \mid {\mathfrak A}_t \right) - 1\]</div>
+<p>with a minimized objective given by</p>
+<div class="math notranslate nohighlight">
+\[-  \xi \log  {\mathbb E} \left( \exp\left[ - \left(\frac 1 \xi \right) V_{t+1}  \right] \mid {\mathfrak A}_t \right).\]</div>
+<p>The implied minimizer for <span class="math notranslate nohighlight">\(N_{t+1}\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-nstar">
+<span class="eqno">(11.6)<a class="headerlink" href="#equation-nstar" title="Link to this equation">#</a></span>\[N_{t+1}^*  = {\frac { \exp \left( - \frac 1 \xi {\widehat  V}_{t+1} \right) }{ {\mathbb E} \left[ \exp \left( - \frac 1 \xi {\widehat  V}_{t+1} \right) \mid {\mathfrak A}_t \right]}} .\]</div>
+</section>
+</div><p>The minimizer of the problem <a class="reference internal" href="#equation-minproblem101">(11.5)</a> given by <a class="reference internal" href="#equation-nstar">(11.6)</a>
+“tilts” probabilities towards low continuation values, what <span id="id19">[<a class="reference internal" href="cite.html#id70" title="James A. Bucklew. An Introduction to Rare Event Simulation. Springer Verlag, New York, 2004.">Bucklew, 2004</a>]</span> calls a stochastic version of Murphy’s law. Notice that the minimized objective satisfies</p>
+<div class="math notranslate nohighlight">
+\[- \xi \log {\mathbb E} \left[ \exp \left( - {\frac 1 \xi} {\widehat  V}_{t+1} \right) \mid
+{\mathfrak A}_t \right] = {\widehat R}_t \]</div>
+<p>where <span class="math notranslate nohighlight">\({\widehat  R}_t\)</span> was given previously by equation <a class="reference internal" href="#equation-value-risk6">(11.4)</a> if we set <span class="math notranslate nohighlight">\(\xi = {\frac 1 {\gamma - 1}} \)</span>.<br />
+It follow from <a class="reference internal" href="#equation-nstar">(11.6)</a> that</p>
+<div class="math notranslate nohighlight">
+\[N_{t+1}^* = \exp \left[ - \frac 1 \xi \left({\widehat  V}_{t+1} - {\widehat R}_t \right) \right].\]</div>
+<p>The random variable <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> will play a central role in the discussion that follows.</p>
+</section>
+<section id="stochastic-discount-factor-process">
+<h3><span class="section-number">11.2.3. </span>Stochastic discount factor process<a class="headerlink" href="#stochastic-discount-factor-process" title="Link to this heading">#</a></h3>
+<p>A stochastic discount factor (SDF) process <span class="math notranslate nohighlight">\(S = \{ S_t : t \ge 0 \}\)</span> tells how a consumer responds to small changes in uncertainty and thereby consequently how a consumer values risky payouts. SDF processes have a variety of uses. First, they provide shadow prices that tell how a consumer’s uncertainty aversion shapes marginal valuations of risky assets. Second, they shape first-order conditions for optimally choosing financial and physical investments. Third, they underlie tractable formulas for equilibrium asset prices. Fourth, they can help construct Pigouvian taxes for correcting adverse externalities under uncertainty. Fifth, they provide useful tools for assessing effects of small (local) changes in government policies.</p>
+<p>To indicate how to deduce an SDF process, we begin by positing that the date zero value of a risky date <span class="math notranslate nohighlight">\(t\)</span> consumption payout <span class="math notranslate nohighlight">\(\chi_t\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-eqn-price101">
+<span class="eqno">(11.7)<a class="headerlink" href="#equation-eqn-price101" title="Link to this equation">#</a></span>\[\pi_0^t(\chi_t) = E\left[ \left( {\frac {S_t}{S_0}} \right) \chi_t  \Bigr| {\mathfrak A}_0 \right].\]</div>
+<p>We compute the ratio <span class="math notranslate nohighlight">\( \frac {S_t}{S_0} \)</span> that appears in formula <a class="reference internal" href="#equation-eqn-price101">(11.7)</a> by evaluating the slope of an indifference curve that runs through both a baseline consumption process <span class="math notranslate nohighlight">\(\{C_t\}_{t=0}^\infty\)</span> and a perturbed consumption process</p>
+<div class="math notranslate nohighlight">
+\[\left(C_0 - P_0({\sf q} ), C_1, C_2, \ldots , C_t + {\sf q} \chi_t, C_{t+1}, ... \right).\]</div>
+<p>We think of <span class="math notranslate nohighlight">\({\sf q}\)</span> as parameterizing an indifference curve, so <span class="math notranslate nohighlight">\(P_0({\sf q})\)</span> expresses how much current period consumption must be reduced to keep a consumer on the same indifference curve after we replace <span class="math notranslate nohighlight">\(C_t\)</span> by <span class="math notranslate nohighlight">\(C_t + {\sf q} \chi_t\)</span>. We set <span class="math notranslate nohighlight">\(\pi_0^t(\chi_t)\)</span> defined in equation <a class="reference internal" href="#equation-eqn-price101">(11.7)</a> equal to the slope of that indifference curve:</p>
+<div class="math notranslate nohighlight">
+\[\pi_0^t(\chi_t) = \left. {\frac d {d {\sf q}} } P_0({\sf q}) \right|_{{\sf q} = 0}.\]</div>
+<p>The one-period increment in the stochastic discount factor process for recursive utility is:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-sdf50">
+<span class="eqno">(11.8)<a class="headerlink" href="#equation-eqn-sdf50" title="Link to this equation">#</a></span>\[\begin{align*}
+\frac {S_{t+1}}{S_t}  = &amp; \beta \left( \frac {C_{t+1}}{C_t} \right)^{-\rho}  \exp\left[ (1-\gamma) \left( {\widehat V}_{t+1} - {\widehat R}_t\right)\right] \exp\left[ (\rho- 1) \left( {\widehat V}_{t+1} - {\widehat R}_t\right)\right]\cr
+= &amp; \beta N_{t+1}^* \exp\left({\widehat S}_{t+1} - {\widehat S}_t \right)
+\end{align*}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-eqn-sdf-change">
+<span class="eqno">(11.9)<a class="headerlink" href="#equation-eqn-sdf-change" title="Link to this equation">#</a></span>\[{\widehat S}_{t+1} - {\widehat S}_t \eqdef  - \rho\left( {\widehat C}_{t+1} + {\widehat C}_t\right)  + (\rho- 1) \left( {\widehat V}_{t+1} - {\widehat R}_{t} \right),\]</div>
+<p>and <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> induces the change of probability measure that we described previously as the outcome of robustness problem. (See equation <a class="reference internal" href="#equation-nstar">(11.6)</a>.) We will use this second formula in <a class="reference internal" href="#equation-eqn-sdf50">(11.8)</a> in what follows.  We think of <span class="math notranslate nohighlight">\(\beta\)</span> as a subjective discount factor adjustment, <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> as  a change-of-measure adjustment for uncertainty, and <span class="math notranslate nohighlight">\(\exp\left({\widehat S}_{t+1} - {\widehat S}_t \right)\)</span> as an adjustment for the elasticity of intertemporal substitution.  We interpret the transition probality measure induced by <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> as an adjustment for uncertainty in valuation.<br />
+Given the recursive nature of preferences the <span class="math notranslate nohighlight">\(t\)</span> period stochastic discount factor increment <span class="math notranslate nohighlight">\(\frac {S_t}{S_0}\)</span>  as the product of the respective one-period stochastic discount factor increments.  Similarly, we compound the one-period transition uncertainty measure into multiple time-horizon counterparts.</p>
+<div class="proof remark admonition" id="remark_label">
+<p class="admonition-title"><span class="caption-number">Remark 11.3 </span></p>
+<section class="remark-content" id="proof-content">
+<p>To verify formula <a class="reference internal" href="#equation-eqn-sdf50">(11.8)</a>, we compute a one-period intertemporal marginal rate of substitution. Given the valuation recursions <a class="reference internal" href="#equation-value-recur5">(11.3)</a> and <a class="reference internal" href="#equation-value-risk6">(11.4)</a>, we construct two marginal utilities familiar from CES and exponential utility:</p>
+<div class="math notranslate nohighlight">
+\[mc = (1 - \beta)\left(   c   \right)^{-\rho} \exp\left[ (\rho - 1) {\hat v} \right]\]</div>
+<div class="math notranslate nohighlight">
+\[m{\hat r} = \beta  \exp[(1-\rho) \left({\hat r} - {\hat v}   \right) ]\]</div>
+<p>From the certainty equivalent formula, we construct the marginal utility of the next-period logarithm of the continuation value:</p>
+<div class="math notranslate nohighlight">
+\[m{\hat v}^+=  \exp \left[(1-\gamma ) \left({\hat v}^+ -  {\hat r} \right) \right]\]</div>
+<p>where the <span class="math notranslate nohighlight">\(+\)</span> superscript is used to denote the next-period counterpart. In addition, the next-period marginal utility of consumption is</p>
+<div class="math notranslate nohighlight">
+\[mc^+ = (1 - \beta)\left(   c ^+  \right)^{-\rho} \exp\left[ (\rho - 1) {\hat v}^+\right] \]</div>
+<p>Putting these four formulas together using the chain rule for differentiation gives a marginal rate of substitution:</p>
+<div class="math notranslate nohighlight">
+\[\frac {(mr) (mv^+) (mc^+)}{mc} = \beta \left( \frac {c^+}{c} \right)^{-\rho} \exp \left[(1-\gamma ) \left({\hat v}^+ -  {\hat r} \right) \right]
+\exp \left[(\rho - 1) \left({\hat v}^+ -  {\hat r} \right) \right]. \]</div>
+<p>Now let <span class="math notranslate nohighlight">\({\hat v}^+ =  {\widehat V}_{t+1}\)</span>, <span class="math notranslate nohighlight">\(c^+ = C_{t+1}\)</span>, <span class="math notranslate nohighlight">\(C_t = c\)</span> and <span class="math notranslate nohighlight">\({\hat r} = {\widehat R}_t\)</span> to obtain the formula for the one-period stochastic discount factor <a class="reference internal" href="#equation-eqn-sdf50">(11.8)</a>.</p>
+</section>
+</div></section>
+</section>
+<section id="continuous-time-limit">
+<h2><span class="section-number">11.3. </span>Continuous-time limit<a class="headerlink" href="#continuous-time-limit" title="Link to this heading">#</a></h2>
+<p>We now  explore a continuous-time limit that approximates a discrete-time specification. Since we continue to work with normal shocks, in the continuous-time counterpart to these shocks are Brownian increments.
+The continuation value in continuous time will evolve as:</p>
+<div class="math notranslate nohighlight">
+\[d {V}_t = V_t {\mu}_t^V dt  + V_t\sigma_t^V \cdot dW_t\]</div>
+<p>for some drift (local mean), <span class="math notranslate nohighlight">\(V_t \mu_t^V\)</span> and some local shock exposure vector <span class="math notranslate nohighlight">\(V_t \sigma_t^V\)</span>, where <span class="math notranslate nohighlight">\(\{W_t  : t \ge 0\}\)</span> is a multivariate Brownian motion.  The scaling for the local evolution coefficients by <span class="math notranslate nohighlight">\(V_t\)</span> is done for convenience, where the continuation value process is presumed to be positive.  As in discrete time, it is convenient to work with the logarithm of the continuation value process (a strictly increasing transformation.  The implied evolution is</p>
+<div class="math notranslate nohighlight">
+\[d {\widehat V}_t = {\hat \mu}_t^V dt  + \sigma_t^V \cdot dW_t\]</div>
+<p>where <span class="math notranslate nohighlight">\({\hat \mu}_t = {\mu}_t^V - {\frac 1 2} \mid \sigma_t^V \mid^2.\)</span> This adjustment follows from the well known Ito formula.</p>
+<section id="discrete-time-approximation">
+<h3><span class="section-number">11.3.1. </span>Discrete-time approximation<a class="headerlink" href="#discrete-time-approximation" title="Link to this heading">#</a></h3>
+<p>To study the utility recursion, start with a discrete-time specification:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+ &amp; \frac 1 {1-\rho} \log 
+ \left[(1 - \beta_\epsilon) \exp\left[(1-\rho)\left({\widehat C}_t - {\widehat V}_t \right)\right] + \beta_\epsilon \exp \left[(1-\rho)\left({\widehat R}_t -{\widehat V}_t \right) \right] \right] = 0 \cr
+&amp; {\widehat  R}_t - {\widehat V}_t =  \frac 1 {1 - \gamma}  \log {\mathbb E}  \left( \exp\left[ (1-\gamma)\left( {\widehat V}_{t+\epsilon} - {\widehat V}_t  \right)\right] \mid {\mathfrak A}_{t}\right) 
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta_\epsilon = \exp(- \delta \epsilon)\)</span> and <span class="math notranslate nohighlight">\(\delta&gt;0\)</span> is instantaneous subjective rate of discount. Consider the time derivative of the second recursion:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*} 
+\frac d {d\epsilon} \left. \left({\widehat  R}_t - {\widehat V}_t\right) \right|_{\epsilon = 0} &amp; =  \frac d {d\epsilon} \left. \frac 1 {1 - \gamma}  \log {\mathbb E}  \left( \exp\left[ (1-\gamma)\left( {\widehat V}_{t+\epsilon} - {\widehat V}_t  \right)\right] \mid {\mathfrak A}_{t}\right)\right|_{\epsilon = 0} \cr
+&amp; = {\hat \mu_t^V} 
+  + \frac {(1 - \gamma)} 2  |\sigma_t^V|^2 \cr
+ &amp; =  \mu_t^V 
+  - \frac \gamma 2 |\sigma_t^V|^2 .
+\end{align*}\]</div>
+<p>by local log normality.  We turn now to the first recursion and compute time derivatives in three steps.  First, we
+evaluate the term inside the logarithm as <span class="math notranslate nohighlight">\(\epsilon\)</span> tends to zero :</p>
+<div class="math notranslate nohighlight">
+\[\lim_{\epsilon \downarrow 0} \exp\left[ (1-\rho)\left({\widehat  R}_t - {\widehat V}_t\right) \right] = 1. \]</div>
+<p>This term is in the denominator  as implied by the derivative   with respect to a logarithm.  Second, we
+differentiate the term inside the logarithm with respect to <span class="math notranslate nohighlight">\(\epsilon\)</span> as contributed by <span class="math notranslate nohighlight">\(\beta_\epsilon\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\delta \exp\left[(1-\rho)\left({\widehat C}_t - {\widehat V}_t \right)\right] - \delta .\]</div>
+<p>Third, we differentiate the term inside the logarithm with respect to <span class="math notranslate nohighlight">\(\epsilon\)</span> as contributed by</p>
+<div class="math notranslate nohighlight">
+\[\frac d {d\epsilon} \exp \left[(1-\rho)\left({\widehat R}_t -{\widehat V}_t \right) \right] = {\hat \mu}_t^V + \frac {(1-\gamma)} 2 |\sigma_t^V|^2.\]</div>
+<p>Putting together the derivative components together gives:</p>
+<div class="math notranslate nohighlight" id="equation-cont-recursion">
+<span class="eqno">(11.10)<a class="headerlink" href="#equation-cont-recursion" title="Link to this equation">#</a></span>\[\begin{align*}
+ 0 = \hspace{.2cm} &amp;\frac {\delta 
+\left[\left(\frac {C_t}{V_t} \right)^{1-\rho} - 1\right]}{1 - \rho} + {\hat \mu}_t^V + \frac {(1-\gamma)} 2 |\sigma_t^V|^2\cr
+= \hspace{.2cm} &amp;\frac {\delta 
+\left[\left(\frac {C_t}{V_t} \right)^{1-\rho} - 1\right]}{1 - \rho} + {\mu}_t^V - \frac {\gamma} 2 |\sigma_t^V|^2.
+\end{align*}\]</div>
+<p>Notice that this relation imposes a restriction across the local mean, <span class="math notranslate nohighlight">\({\mu}_t^V\)</span> and local variance, <span class="math notranslate nohighlight">\( |\sigma_t^V|^2\)</span> of the  continuation value. <span id="id20">[<a class="reference internal" href="cite.html#id129" title="D. Duffie and L. G. Epstein. Stochastic differential utility. Econometrica, 60(2):353-394, 1992.">Duffie and Epstein, 1992</a>]</span> refer to <span class="math notranslate nohighlight">\(\gamma\)</span> as a  <em>variance multiplier</em> where larger values of <span class="math notranslate nohighlight">\(\gamma\)</span> imply a more substantial adjustment for local volatility.  As in discrete-time, the <span class="math notranslate nohighlight">\(\rho = 1\)</span> is interesting special case represented as;</p>
+<div class="math notranslate nohighlight">
+\[ 0 = \delta \left( {\widehat V}_t - {\widehat C}_t \right)  + {\hat \mu}_t^V + \frac {(1-\gamma)} 2 |\sigma_t^V|^2.\]</div>
+</section>
+<section id="robustness-to-misspecification">
+<h3><span class="section-number">11.3.2. </span>Robustness to misspecification<a class="headerlink" href="#robustness-to-misspecification" title="Link to this heading">#</a></h3>
+<p>To investigate an aversion to model misspecification in continuous time,
+we now treat the distribution of <span class="math notranslate nohighlight">\(\{W_t : t\ge0\}\)</span> as uncertain.  We allow for  probability measures that entertain possible Brownian motions with local means or drifts that are history dependent.</p>
+<p>We start by considering positive martingales <span class="math notranslate nohighlight">\(\{ M^H_t : t \ge 0\}\)</span> parameterized by
+alternative <span class="math notranslate nohighlight">\(\{ H_t : t \ge 0\}\)</span> processes with the same dimension as the underlying Brownian motion.<br />
+The martingales have local evolutions:</p>
+<div class="math notranslate nohighlight">
+\[d M_t^H = M_t  H_t \cdot dW_t,\]</div>
+<p>and we initialize them at <span class="math notranslate nohighlight">\(M_0^H = 1.\)</span>.  Observe  that by applying Ito’s formula,   <span class="math notranslate nohighlight">\(\log M\)</span> evolves as:</p>
+<div class="math notranslate nohighlight">
+\[d \log M_t^H = -{\frac 1 2} \left| H_t \right|^2 dt + H_t \cdot dW_t.\]</div>
+<p>We use these martingales as relative densities or likelihood ratios.</p>
+<p>Write the discrete-time counterpart as</p>
+<div class="math notranslate nohighlight">
+\[\log M_{t+\epsilon}^H - \log M_t^H  =  -{\frac \epsilon 2} \left| H_t \right|^2  + H_t \cdot \left(W_{t+\epsilon} -W_t\right) \]</div>
+<p>Let <span class="math notranslate nohighlight">\(w\)</span> be a realized <span class="math notranslate nohighlight">\(W_{t+\epsilon} - W_t\)</span> and <span class="math notranslate nohighlight">\(h\)</span> be a realization <span class="math notranslate nohighlight">\(H_t\)</span>.  Then <span class="math notranslate nohighlight">\(\log M_{t+\epsilon} - \log M_t\)</span> contributes
+<span class="math notranslate nohighlight">\(  -{\frac \epsilon 2}h'h + h\cdot w \)</span> to the log-likelihood.  The standard normal density for <span class="math notranslate nohighlight">\(\sqrt{\epsilon } \left(W_{t+\epsilon} -W_t\right)\)</span> contributes <span class="math notranslate nohighlight">\(-{\frac 1 \epsilon} w'w - \log (2 \pi \epsilon)\)</span>.  Put there two components together, we have a log-likelihood:</p>
+<div class="math notranslate nohighlight">
+\[-{\frac \epsilon 2}h'h + h\cdot w - \frac 1 {2 \epsilon} w'w - \log (2 \pi \epsilon) = - \frac 1 {2 \epsilon} (w - \epsilon h)' (w - \epsilon h) -  \log (2 \pi \epsilon).\]</div>
+<p>The altered conditional density has mean <span class="math notranslate nohighlight">\(\epsilon h\)</span>, which is the realized value of <span class="math notranslate nohighlight">\(\epsilon H_t\)</span> with the same conditional covariance matrix as before. Moreover, the conditional expectation of</p>
+<div class="math notranslate nohighlight">
+\[{\mathbb E} \left[\left(\frac {M_{t+\epsilon}^H}{M_t^H}\right)\left(\log M_{t+\epsilon}^H - \log M_t^H \right) \mid {\mathfrak A}_t \right] = {\frac \epsilon 2} \left| H_t \right|^2, \]</div>
+<p>which measures the statistical divergence or relative entropy between original and altered conditional probabilities.</p>
+<p>For the continuous-time limit,<br />
+under the <span class="math notranslate nohighlight">\(H\)</span> change of probability measure:</p>
+<div class="math notranslate nohighlight">
+\[dW_t = H_t dt + d{\widetilde W}_t^H\]</div>
+<p>where <span class="math notranslate nohighlight">\({\widetilde W}^H\)</span> is a standard Brownian motion.  Thus the potential changes of probability measures induce a \alert{local means} or drift <span class="math notranslate nohighlight">\(H\)</span> processes to  the Brownian motion.  The continuous-time counterpart to conditional relative entropy at time <span class="math notranslate nohighlight">\(t\)</span> is <span class="math notranslate nohighlight">\({\frac 1 2} \left| H_t \right|^2.\)</span></p>
+<p>We may justify focusing on drift distortions for Brownian increments because or our imposition of absolute continuity of the alternative probabilities with with respect to the baseline specification of a multivariate standard Brownian motion.  This is an implication of the  Girsanov Theorem.</p>
+<p>We are now in a position to deduce a robustness adjustment in continuous time.
+Consider formula <a class="reference internal" href="#equation-cont-recursion">(11.10)</a> when <span class="math notranslate nohighlight">\(\gamma = 1\)</span> modified for a potential change in the probability measure</p>
+<div class="math notranslate nohighlight">
+\[0 = \frac {\delta 
+\left[\left(\frac {C_t}{V_t} \right)^{1-\rho} - 1\right]}{1 - \rho} + {\hat \mu}_t^V + \sigma_T^V \cdot H_t \]</div>
+<p>Modify this equation to include minimization over <span class="math notranslate nohighlight">\(H_t\)</span> subject to a relative entropy penalty <span class="math notranslate nohighlight">\(\frac \xi 2 |H_t|^2:\)</span></p>
+<div class="math notranslate nohighlight">
+\[0  = \min_{H_t} \frac {\delta 
+\left[\left(\frac {C_t}{V_t} \right)^{1-\rho} - 1\right]}{1 - \rho} + {\hat \mu}_t^V + \sigma_t^V\cdot  H_t + \frac {{\xi}} 2 H_t \cdot H_t.  \]</div>
+<p>The minimizing solution is</p>
+<div class="math notranslate nohighlight">
+\[H_t^* =  - \frac 1 {\xi} \sigma_t^V \]</div>
+<p>with a minimized objective</p>
+<div class="math notranslate nohighlight">
+\[0 = \frac {\delta 
+\left[\left(\frac {C_t}{V_t} \right)^{1-\rho} - 1\right]}{1 - \rho} + {\hat \mu}_t^V   - \frac 1 {2 \xi} \left| \sigma_t^V \right|^2\]</div>
+<p>Notice that this  agrees with formula <a class="reference internal" href="#equation-cont-recursion">(11.10)</a> for <span class="math notranslate nohighlight">\(\gamma - 1= 1/\xi\)</span>.  The explicit link is entirely consistent with our discrete-time equivalence result.  By taking the continuous-time limit, we are able to focus our misspecification analysis on changing local means of the underlying Brownian increments.</p>
+</section>
+<section id="uncertainty-pricing">
+<h3><span class="section-number">11.3.3. </span>Uncertainty pricing<a class="headerlink" href="#uncertainty-pricing" title="Link to this heading">#</a></h3>
+<p>For the purposes of valuation, we compound the equilibrium version of <span class="math notranslate nohighlight">\(\{ H_t^* : t \ge 0\}\)</span> to give a  exponential  martingale:</p>
+<div class="math notranslate nohighlight">
+\[M_t^* = \exp \left( \int_0^t H_\tau^* dW_{d\tau}  - {\frac 1 2} \int_0^t \left| H_\tau^* \right|^2 d\tau \right)\]</div>
+<p>provided that the constructed process is a martingale.<a class="footnote-reference brackets" href="#local" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>  With this construction we interpret <span class="math notranslate nohighlight">\(-H_t^*\)</span> as the vector of local uncertainty prices that give compensations for exposure to Brownian increment uncertainty.  These compensations are expressed as changes in conditional means under the baseline distribution as is typical in continuous-time asset pricing.</p>
+</section>
+</section>
+<section id="small-noise-expansion-of-dynamic-stochastic-equilibria">
+<h2><span class="section-number">11.4. </span>Small noise expansion of dynamic stochastic equilibria<a class="headerlink" href="#small-noise-expansion-of-dynamic-stochastic-equilibria" title="Link to this heading">#</a></h2>
+<p>We next consider a different type of characterization  that sometimes gives good approximations for dynamic stochastic equilibrium models.  While the approximations build  from derivations in <span id="id22">[<a class="reference internal" href="cite.html#id385" title="Stephanie Schmitt-Grohé and Martın Uribe. Solving dynamic general equilibrium models using a second-order approximation to the policy function. Journal of economic dynamics and control, 28(4):755–775, 2004.">Schmitt-Grohé and Uribe, 2004</a>]</span> and <span id="id23">[<a class="reference internal" href="cite.html#id313" title="G Lombardo and H Uhlig. A Theory of Pruning. International Economic Review, 59(4):1825–1836, jul 2018.">Lombardo and Uhlig, 2018</a>]</span>, and we extend them in a way that features the uncertainty contributions more prominently and are reflected even in first-order contributions.  By design, the implied approximations of stochastic discount factors used to represent market or shadow values reside within the exponential linear quadratic class. This class is known to give tractable formulas for asset valuation over alternative investment horizons. See, for instance, <span id="id24">[<a class="reference internal" href="cite.html#id445" title="Andrew Ang and Monika Piazzesi. A no-arbitrage vector autoregression of term structure dynamics with macroeconomic and latent variables. Journal of Monetary Economics, 50:745-787, 2003. URL: https://www.sciencedirect.com/science/article/pii/S0304393203000321, doi:https://doi.org/10.1016/S0304-3932(03)00032-1.">Ang and Piazzesi, 2003</a>]</span> and <span id="id25">[<a class="reference internal" href="cite.html#id50" title="Jaroslav Borovička and Lars Peter Hansen. Examining macroeconomic models through the lens of asset pricing. Journal of Econometricics, 183:67-90, 2014.">Borovička and Hansen, 2014</a>]</span>. Moreover, they are applicable to production-based macro-finance models with investment opportunities in alternative forms of capital.</p>
+<p>While these approximations are tractable for the reasons described,  researchers may be concerned about some more fundamental aspects of uncertainty that are disguised by these methods.  Indeed, for some models  nonlinearities are more accurately captured by global solution methods.  Nevertheless, the approximations still  provide further understanding of the preferences and their implications for asset pricing in endowment and production economies.</p>
+<section id="approximate-state-dynamics">
+<h3><span class="section-number">11.4.1. </span>Approximate state dynamics<a class="headerlink" href="#approximate-state-dynamics" title="Link to this heading">#</a></h3>
+<p>We follow <span id="id26">[<a class="reference internal" href="cite.html#id313" title="G Lombardo and H Uhlig. A Theory of Pruning. International Economic Review, 59(4):1825–1836, jul 2018.">Lombardo and Uhlig, 2018</a>]</span> by considering the following class of stochastic processes indexed by a scalar perturbation parameter <span class="math notranslate nohighlight">\(\mathsf{q}\)</span>:<a class="footnote-reference brackets" href="#footnote-lombardouhlig" id="id27" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight" id="equation-eq-xlom">
+<span class="eqno">(11.11)<a class="headerlink" href="#equation-eq-xlom" title="Link to this equation">#</a></span>\[X_{t+1}\left( \mathsf{q}\right) =\psi \left[ X_{t}\left( \mathsf{q}\right) ,\mathsf{q}W_{t+1},\mathsf{q}\right] .\]</div>
+<p>Here <span class="math notranslate nohighlight">\(X\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional stochastic process and <span class="math notranslate nohighlight">\(\{W_{t+1}\}\)</span> is an i.i.d.~normally distributed random vector with conditional mean vector <span class="math notranslate nohighlight">\(0\)</span> and conditional covariance matrix <span class="math notranslate nohighlight">\(I\)</span>. We parameterize this family so that <span class="math notranslate nohighlight">\({\sf q} = 1\)</span> gives the model of interest.</p>
+<p>We denote a zero-order expansion <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> limit as:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-exporder0">
+<span class="eqno">(11.12)<a class="headerlink" href="#equation-eqn-exporder0" title="Link to this equation">#</a></span>\[X^{0}_{t+1}  = \psi \left( X_{t}^0 ,0,0\right),\]</div>
+<p>and assume that there exists a second-order expansion of <span class="math notranslate nohighlight">\(X_{t}\)</span> around <span class="math notranslate nohighlight">\(\mathsf{q} = 0\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-exporder2">
+<span class="eqno">(11.13)<a class="headerlink" href="#equation-eqn-exporder2" title="Link to this equation">#</a></span>\[X_{t} \approx X_{t}^0+\mathsf{q}X_{t}^1+\frac{{\sf q} ^2}{2}X_{t}^2 \]</div>
+<p>where <span class="math notranslate nohighlight">\(X_t^1\)</span> is a first-order contribution and <span class="math notranslate nohighlight">\(X_t^2\)</span> is a second-order contribution. In other words, the stochastic processes <span class="math notranslate nohighlight">\(X^j\)</span>, <span class="math notranslate nohighlight">\(j=0,1,2\)</span> are appropriate derivatives of <span class="math notranslate nohighlight">\(X\)</span> with respect to the perturbation parameter <span class="math notranslate nohighlight">\({\sf q}\)</span> evaluated at <span class="math notranslate nohighlight">\({\sf q} = 0.\)</span></p>
+<p>In the remainder of this chapter, we shall construct instances of the second-order expansion <a class="reference internal" href="#equation-eqn-exporder2">(11.13)</a> in which the generic random variable <span class="math notranslate nohighlight">\(X_t\)</span> is replaced, for example, by the logarithm of consumption, a value function, and so on. I</p>
+<p>Processes <span class="math notranslate nohighlight">\(X_t^j, j=0, 1, 2\)</span> have a recursive structure: first compute the stochastic process <span class="math notranslate nohighlight">\(X_{t}^0,\)</span>  then the process <span class="math notranslate nohighlight">\(X_{t}^1\)</span> next (it depends on <span class="math notranslate nohighlight">\(X_t^0\)</span>), and finally the process <span class="math notranslate nohighlight">\(X_{t}^2\)</span> (it depends on both <span class="math notranslate nohighlight">\(X_{t}^0\)</span> and <span class="math notranslate nohighlight">\(X_{t}^1\)</span>).</p>
+<p>In this chapter, we use a prime <span class="math notranslate nohighlight">\('\)</span> to denote a transpose of a matrix or vector. When we include <span class="math notranslate nohighlight">\(x'\)</span> in a partial derivative of a scalar function it means that the partial derivative is a row vector. Consistent with this convention, let <span class="math notranslate nohighlight">\(\psi^i_{x'}\)</span>, the <span class="math notranslate nohighlight">\(i^{th}\)</span> entry of <span class="math notranslate nohighlight">\(\psi_{x'}\)</span>, denote the row vector of first derivatives with respect to the vector <span class="math notranslate nohighlight">\(x\)</span>, and similarly for <span class="math notranslate nohighlight">\(\psi^i_{w'}\)</span>. Since <span class="math notranslate nohighlight">\({\sf q}\)</span> is scalar, <span class="math notranslate nohighlight">\(\psi_{\sf q}^i\)</span> is the scalar derivative with respect to <span class="math notranslate nohighlight">\({\sf q}\)</span>. Derivatives are evaluated at <span class="math notranslate nohighlight">\(X_t^0\)</span>, which in many examples is invariant over time, unless otherwise stated. This invariance follows when we impose a steady state on the deterministic system.</p>
+<p>The first-derivative process obeys a recursion</p>
+<div class="math notranslate nohighlight" id="equation-exprecur1">
+<span class="eqno">(11.14)<a class="headerlink" href="#equation-exprecur1" title="Link to this equation">#</a></span>\[\begin{split}X_{t+1}^1 =  \begin{bmatrix} \psi_{x'}^1 \\ \psi_{x'}^2 \\ \vdots \\ \psi_{x'} ^n \end{bmatrix} X_t^1 + \begin{bmatrix} \psi_{w'}^1 \\ \psi^2_{w'} \\ \vdots \\ \psi^n_{w'} \end{bmatrix} W_{t+1} + \begin{bmatrix} \psi^1_{\sf q}  \\ \psi^2_{\sf q}  \\ \vdots \\ \psi^n_{\sf q}  \end{bmatrix}\end{split}\]</div>
+<p>that we can write compactly as the following <em>a first-order vector autoregression</em>:</p>
+<div class="math notranslate nohighlight">
+\[X_{t+1}^1 = \psi _{x'}X_{t}^1+\psi _{w'}W_{t+1}+\psi_{\sf q}\]</div>
+<p>We assume that the matrix <span class="math notranslate nohighlight">\(\psi_x'\)</span> is stable in the sense that all of its eigenvalues are strictly less than one in modulus.</p>
+<p>It is natural for us to denote second derivative processes with double subscripts. For instance, for the double script used in conjunction with the second derivative matrix of <span class="math notranslate nohighlight">\(\psi^i\)</span>, the first subscript without a prime (<span class="math notranslate nohighlight">\('\)</span>) reports the row location; second subscript with a prime (<span class="math notranslate nohighlight">\('\)</span>) reports the column location. Differentiating recursion <a class="reference internal" href="#equation-exprecur1">(11.14)</a> gives:</p>
+<div class="math notranslate nohighlight" id="equation-exprecur2">
+<span class="eqno">(11.15)<a class="headerlink" href="#equation-exprecur2" title="Link to this equation">#</a></span>\[\begin{split}\begin{split}
+X_{t+1}^2 =  \hspace{.2cm} \psi_{x'} X_t^2 &amp;+ \begin{bmatrix} X_t^{1'} \psi_{xx'}^1 X_t^1 \\ X_t^{1'} \psi_{xx'}^2  X_t^1\\ \vdots \\ X_t^{1'} \psi_{xx'}^n X_t^1 \end{bmatrix} +  2 \begin{bmatrix} X_t^{1'} \psi_{xw'}^1 W_{t+1}  \\ X_t^{1'} \psi_{xw'}^2  W_{t+1} \\ \vdots \\ X_t^{1'} \psi_{xw'}^n W_{t+1}  \end{bmatrix} + \begin{bmatrix} {W_{t+1}}' \psi_{ww'}^1 W_{t+1}  \\ {W_{t+1}}' \psi_{ww'}^2  W_{t+1} \\ \vdots \\ {W_{t+1}}' \psi_{ww'}^n W_{t+1}  \end{bmatrix} 
+ \\ &amp;+  2 \begin{bmatrix} \psi^1_{{\sf q}  x'}X_{t}^1 \\  \psi^2_{{\sf q}  x'}X_{t}^1 \\ \vdots \\ \psi^n_{{\sf q}  x'} X_t^1 \end{bmatrix}
++ 2 \begin{bmatrix} \psi_{{\sf q}  w' }^1W_{t+1} \\ \psi_{{\sf q}  w' }^2 W_{t+1} \\ \vdots \\ \psi^n_{{\sf q}  w'} W_{t+1} \end{bmatrix}
++ \begin{bmatrix} \psi^1_{{\sf q}  {\sf q} } \\ \psi^2_{{\sf q} {\sf q} } \\ \vdots \\ \psi^n_{{\sf q} {\sf q} } \end{bmatrix}.
+\end{split}\end{split}\]</div>
+<p>Recursions <a class="reference internal" href="#equation-exprecur1">(11.14)</a> and <a class="reference internal" href="#equation-exprecur2">(11.15)</a> have a linear structure with some notable properties. The law of motion for <span class="math notranslate nohighlight">\(X^0\)</span> is deterministic and is time invariant if <a class="reference internal" href="#equation-eq-xlom">(11.11)</a> comes from a stationary <span class="math notranslate nohighlight">\(\{X_t\}\)</span> process. The dynamics for <span class="math notranslate nohighlight">\(X^2\)</span> are nonlinear only in <span class="math notranslate nohighlight">\(X^1\)</span> and <span class="math notranslate nohighlight">\(W_{t+1}\)</span>. Thus, the stable dynamics for <span class="math notranslate nohighlight">\(X^1\)</span> that prevail when <span class="math notranslate nohighlight">\(\psi_x\)</span> is a stable matrix imply stable dynamics for <span class="math notranslate nohighlight">\(X^2\)</span>.</p>
+<div class="proof remark admonition" id="remark-3">
+<p class="admonition-title"><span class="caption-number">Remark 11.4 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Perturbation methods have been applied to many rational expectations models in which partial derivatives of <span class="math notranslate nohighlight">\( \psi \)</span> with respect to <span class="math notranslate nohighlight">\(\mathsf{q}\)</span> are often zero.<a class="footnote-reference brackets" href="#footnote1" id="id28" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> However, derivatives of <span class="math notranslate nohighlight">\( \psi \)</span> with respect to <span class="math notranslate nohighlight">\(\mathsf{q}\)</span> aren’t zero in production-based equlibrium models with the robust or recursive utility specifications that we shall study here.</p>
+</section>
+</div><p>Let <span class="math notranslate nohighlight">\(C\)</span> denote consumption and <span class="math notranslate nohighlight">\({\widehat C}\)</span> the logarithm of consumption. Suppose that the logarithm of consumption evolves as:</p>
+<div class="math notranslate nohighlight">
+\[{\widehat C}_{t+1} - {\widehat C}_t = \kappa (X_t, {\sf q} W_{t+1}, {\sf q}).\]</div>
+<p>Approximate this process by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-exporder2c">
+<span class="eqno">(11.16)<a class="headerlink" href="#equation-eqn-exporder2c" title="Link to this equation">#</a></span>\[{\widehat C}_{t+1} - {\widehat C}_t \approx 
+{\widehat C}_{t+1}^0 - {\widehat C}_t^0 + {\sf{q}} \left({\widehat C}_{t+1}^1 - {\widehat C}_t^1 \right)
++ \frac{{\sf q}^2} 2 \left({\widehat C}_{t+1}^2 - {\widehat C}_t^2\right) \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[{\widehat C}_{t+1}^0  - {\widehat C}_t^0  = \hspace{.2cm}  \kappa (X_t^0, 0, 0) := \eta_0^c \]</div>
+<div class="math notranslate nohighlight">
+\[{\widehat C}_{t+1}^1  - {\widehat C}_t^1  = \hspace{.2cm} \kappa_{x'} X_t^1 + \kappa_{w'} W_{t+1} + \kappa_q \]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+{\widehat C}_{t+1}^2  - {\widehat C}_t^2  =  &amp;  \hspace{.2cm}  \kappa_{x'} X_t^2 + {X_{t}^1}' \kappa_{x,x'} X_t^1 
++ 2 \kappa_{q,x'} X_t^1 + \kappa_{qq} \cr 
+&amp; + 2
+{X_{t}^1}' \kappa_{xw'} W_{t+1} + {W_{t+1}}' \kappa_{ww'} W_{t+1} 
++  +  2 \kappa_{qw'} W_{t+1}  .
+\end{align*}\]</div>
+<p>In models with endogenous investment and savings, the consumption dynamics and some of the state dynamics will emerge as the solution to a dynamic stochastic equilibrium model. We use the approximating processes <a class="reference internal" href="#equation-eqn-exporder2">(11.13)</a> and <a class="reference internal" href="#equation-eqn-exporder2c">(11.16)</a> as inputs into the construction of an approximating continuation value process and its risk-adjusted counterpart for recursive utility preferences.</p>
+</section>
+</section>
+<section id="incorporating-preferences-with-enhanced-uncertainty-concerns">
+<h2><span class="section-number">11.5. </span>Incorporating preferences with enhanced uncertainty concerns<a class="headerlink" href="#incorporating-preferences-with-enhanced-uncertainty-concerns" title="Link to this heading">#</a></h2>
+<p>To approximate the recursive utility process, we deviate from common practice in macroeconomics by letting the risk aversion or robust parameter in preferences depend on <span class="math notranslate nohighlight">\({\sf q}:\)</span></p>
+<div class="math notranslate nohighlight">
+\[\xi = {\sf q} \xi_o    \hspace{1 cm}  \gamma - 1 =  \frac {\gamma_o - 1} {\sf q} \]</div>
+<p>The aversion to model misspecification or the aversion to risk moves inversely with the parameter <span class="math notranslate nohighlight">\({\sf q}\)</span> when we embed the model of interest within a parameterized family of models. In effect, the variable <span class="math notranslate nohighlight">\({\sf q}\)</span> is doing double duty. Reducing <span class="math notranslate nohighlight">\({\sf q} &gt; 0\)</span> limits the overall exposure of the economy to the underlying shocks. This is offset by letting the preferences include a greater aversion to uncertainty. This choice of any expansion protocol has significant and enlightening consequences for continuation value processes and for the minimizing <span class="math notranslate nohighlight">\(N\)</span> process used to alter expectations. It has antecedents in the control theory literature, and it has the virtue that implied uncertainty adjustments occur more prominently at lower-order terms in the approximation.</p>
+<section id="order-zero">
+<h3><span class="section-number">11.5.1. </span>Order-zero<a class="headerlink" href="#order-zero" title="Link to this heading">#</a></h3>
+<p>Write the order-zero expansion of <a class="reference internal" href="#equation-value-recur5">(11.3)</a> as</p>
+<div class="math notranslate nohighlight">
+\[{\widehat  V}_t^0 = {\frac 1 {1 - \rho}} \log \left[ (1 - \beta) \exp[(1-\rho) {\widehat  C}_t^0] + \beta \exp \left[(1-\rho) {\widehat  R}_t^0 \right] \right]\]</div>
+<div class="math notranslate nohighlight">
+\[{\widehat  R}_t^0  =  {\widehat  V}_{t+1}^0,\]</div>
+<p>where the second equation follows from noting that randomness vanishes in the limit as <span class="math notranslate nohighlight">\(\mathsf{q}\)</span> approaches <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>For order zero, write the consumption growth-rate process as</p>
+<div class="math notranslate nohighlight">
+\[{\widehat C}_{t+1}^0 - {\widehat  C}_t^0  = \eta_c^0 .\]</div>
+<p>The order-zero approximation of <a class="reference internal" href="#equation-value-recur5">(11.3)</a> is:</p>
+<div class="math notranslate nohighlight">
+\[{\widehat  V}_t^0 - {\widehat  C}_t^0 = {\frac 1 {1 - \rho}}  \log \left[ (1 - \beta)  + \beta \exp \left[(1-\rho) \left( {\widehat  V}_{t+1}^0 - {\widehat C}_{t+1}^0 + \eta_c^0 \right)  \right] \right]\]</div>
+<p>We guess that <span class="math notranslate nohighlight">\({\widehat  V}_t^0 - {\widehat  C}_t^0 = \eta_{v-c}^0\)</span> and will have verified the guess once we solve:</p>
+<div class="math notranslate nohighlight">
+\[\exp\left[(1-\rho) {\left( \eta_{v - c}^0 \right) }\right] = (1 - \beta) + \beta \exp\left[(1-\rho) {\left( \eta_{v - c}^0 \right) }\right]\exp \left[ (1 - \rho) \eta_c^0 \right].\]</div>
+<p>This equation implies</p>
+<div class="math notranslate nohighlight" id="equation-zero-formula">
+<span class="eqno">(11.17)<a class="headerlink" href="#equation-zero-formula" title="Link to this equation">#</a></span>\[\exp\left[(1-\rho) {\left( \eta_{v - c}^0 \right) }\right] = {\frac {1 - \beta} { 1 - \beta \exp \left[ (1 - \rho) \eta_c^0 \right]}} .\]</div>
+<p>Equation <a class="reference internal" href="#equation-zero-formula">(11.17)</a>
+determines <span class="math notranslate nohighlight">\( \eta_{v - c}^0\)</span> as a function of <span class="math notranslate nohighlight">\(\eta_c^0\)</span> and the preference parameters <span class="math notranslate nohighlight">\(\rho, \beta\)</span>, but not the risk aversion parameter  <span class="math notranslate nohighlight">\(\gamma\)</span> or its robust counterpart <span class="math notranslate nohighlight">\(\xi\)</span>. Specifically,</p>
+<div class="math notranslate nohighlight" id="equation-zero-formula2">
+<span class="eqno">(11.18)<a class="headerlink" href="#equation-zero-formula2" title="Link to this equation">#</a></span>\[ \eta_{v-c}^0 = \frac {\log (1 - \beta)  - \log \left(1 - \beta \exp \left[ (1 - \rho) \eta_c^0 \right]\right)}{1 - \rho} \]</div>
+<p>In the limiting <span class="math notranslate nohighlight">\(\rho =1\)</span> case,</p>
+<div class="math notranslate nohighlight">
+\[\eta_{v-c}^0 = \left(\frac \beta {1 - \beta} \right) \eta_c^0.\]</div>
+</section>
+<section id="order-one">
+<h3><span class="section-number">11.5.2. </span>Order-one<a class="headerlink" href="#order-one" title="Link to this heading">#</a></h3>
+<p>We temporarily take <span class="math notranslate nohighlight">\({\widehat  R}_t^1 - {\widehat C}_t^1\)</span> as given.  We construct a first-order approximation to the nonlinear utility recursion <a class="reference internal" href="#equation-value-recur5">(11.3)</a></p>
+<div class="math notranslate nohighlight" id="equation-eqn-lambda1">
+<span class="eqno">(11.19)<a class="headerlink" href="#equation-eqn-lambda1" title="Link to this equation">#</a></span>\[{\widehat  V}_t^1 - {\widehat C}_t^1 = \lambda \left({\widehat  R}_t^1 - {\widehat C}_t^1\right)\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\lambda  = &amp; \left[ {\frac {\beta \exp \left[(1-\rho) \left(\eta_{ v - c}^0 +\eta_c^0 \right ) \right]} { (1 - \beta)  + \beta \exp \left[(1-\rho) \left(\eta_{ v - c}^0 + \eta_c^0  \right ) \right]}} \right] \cr \cr
+= &amp; \left[ {\frac {\beta \exp \left[(1-\rho) \eta_c^0\right]} { (1 - \beta) \exp\left[- (1-\rho) \eta_{ v - c}^0\right]   + \beta \exp \left[(1-\rho) \eta_c^0 \right]}} \right] \cr \cr
+= &amp; \left[ {\frac {\beta \exp \left[(1-\rho) \eta_c^0 \right]} {  1 - \beta \exp \left[ (1 - \rho)\eta_c^0 \right]  + \beta \exp \left[(1-\rho) \eta_c^0 \right]}} \right] \cr \cr
+= &amp; \beta \exp \left[(1-\rho) \eta_c^0 \right].
+\end{align*}\]</div>
+<p>Notice how the parameter <span class="math notranslate nohighlight">\(\rho\)</span> influences the weight <span class="math notranslate nohighlight">\(\lambda\)</span> when <span class="math notranslate nohighlight">\(\eta_c \neq 0\)</span>, in which case the log consumption process displays growth or decay. The condition <span class="math notranslate nohighlight">\(\lambda  &lt;1\)</span> restricts the subjective discount rate, <span class="math notranslate nohighlight">\(-\log \beta,\)</span> relative to the consumption growth rate <span class="math notranslate nohighlight">\(\eta_c\)</span> since</p>
+<div class="math notranslate nohighlight">
+\[(1- \rho) \eta_c^0 &lt;  - \log \beta .\]</div>
+<p>When <span class="math notranslate nohighlight">\(\rho &lt; 1\)</span>, the subjective discount rate has a positive lower bound in contrast to the case in which <span class="math notranslate nohighlight">\(\rho \ge 1\)</span>.</p>
+<p>To facilitate computing some useful limits we construct:</p>
+<div class="math notranslate nohighlight" id="equation-tilde-transform">
+<span class="eqno">(11.20)<a class="headerlink" href="#equation-tilde-transform" title="Link to this equation">#</a></span>\[{\widetilde V}_t \eqdef {\frac {{\widehat  V}_t - {{\widehat  V}_t^0}}{{\sf q} }} \]</div>
+<div class="math notranslate nohighlight" id="equation-tilde-r">
+<span class="eqno">(11.21)<a class="headerlink" href="#equation-tilde-r" title="Link to this equation">#</a></span>\[{\widetilde R}_t \eqdef  {\frac {{\widehat  R}_t - {{\widehat  V}_{t+1}^0}}{{\sf q} }},\]</div>
+<p>which we assume remain well defined as <span class="math notranslate nohighlight">\({\sf q} \)</span> declines to zero, with limits denoted by <span class="math notranslate nohighlight">\({\widetilde V}_t^0\)</span> and <span class="math notranslate nohighlight">\({\widetilde  R}_t^0\)</span>.
+Importantly,</p>
+<div class="math notranslate nohighlight">
+\[{\widetilde R}_t =  \left( {\frac 1 {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o)  {\widetilde V}_{t+1} \right] \mid {\mathfrak A}_t \right),\]</div>
+<p>Taking limits as <span class="math notranslate nohighlight">\({\sf q}\)</span> declines to zero:</p>
+<div class="math notranslate nohighlight">
+\[{\widehat R}_t^1 =  \left( {\frac 1 {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o)  {\widehat V}_{t+1}^1 \right] \mid {\mathfrak A}_t \right)\]</div>
+<p>Subtracting <span class="math notranslate nohighlight">\({\widehat C}_t^1\)</span> from both sides gives:</p>
+<div class="math notranslate nohighlight" id="equation-first-order-risk">
+<span class="eqno">(11.22)<a class="headerlink" href="#equation-first-order-risk" title="Link to this equation">#</a></span>\[\begin{align}
+&amp; {\widehat R}_t^1 - {\widehat C}_t^1  =  \cr  &amp; \left( {\frac 1 {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o) \left[ \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1} ^1 \right) +   \left( {\widehat C}_{t+1}^1 - {\widehat C}_{t} ^1 \right)\right]  \right] \mid {\mathfrak A}_t \right).
+\end{align}\]</div>
+<p>Substituting formula <a class="reference internal" href="#equation-first-order-risk">(11.22)</a> into the right side of <a class="reference internal" href="#equation-eqn-lambda1">(11.19)</a> gives the recursion for the first-order continuation value:</p>
+<div class="math notranslate nohighlight" id="equation-first-recursive-update">
+<span class="eqno">(11.23)<a class="headerlink" href="#equation-first-recursive-update" title="Link to this equation">#</a></span>\[\begin{align}
+&amp; {\widehat V}_t^1 - {\widehat C}_t^1  =   \cr 
+&amp; \left( {\frac \lambda {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o) \left[ \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1} ^1 \right) +   \left( {\widehat C}_{t+1}^1 - {\widehat C}_{t}^1 \right) \right] \right] \mid {\mathfrak A}_t \right).
+\end{align}\]</div>
+<div class="proof remark admonition" id="remark_solve_first">
+<p class="admonition-title"><span class="caption-number">Remark 11.5 </span></p>
+<section class="remark-content" id="proof-content">
+<p>We produce a solution by “guess and verify.” Suppose that</p>
+<div class="math notranslate nohighlight" id="equation-first-solution">
+<span class="eqno">(11.24)<a class="headerlink" href="#equation-first-solution" title="Link to this equation">#</a></span>\[{\widehat V}_t^1 - {\widehat C}_t^1 = {\upsilon_1}' X_t^1 + \upsilon_0. \]</div>
+<p>It follows from <a class="reference internal" href="#equation-first-recursive-update">(11.23)</a> that</p>
+<div class="math notranslate nohighlight" id="equation-first-formula">
+<span class="eqno">(11.25)<a class="headerlink" href="#equation-first-formula" title="Link to this equation">#</a></span>\[{\upsilon_1} = \lambda \left(\left(\psi_{x'}\right)'{\upsilon_1} + \kappa_{x} \right), 
+\upsilon_0 = \lambda \left( \upsilon_0 + {\upsilon_1}' \psi_{q} + \kappa_q + {\frac {(1 - \gamma_0)} 2} 
+\left| {\upsilon_1}' \psi_{w'} + \kappa_{w'} \right|^2 \right). \]</div>
+<p>Deduce the second equation by observing that</p>
+<div class="math notranslate nohighlight">
+\[ \exp \left[ (1 - \gamma_0)  \left( {\widehat V}_{t+1}^1 - {\widehat C}_{t+1}^1 \right) + (1-\gamma_0)  \left( {\widehat C}_{t+1}^1 - {\widehat C}_{t}^1 \right) \right]\]</div>
+<p>is distributed as a log normal. The solutions to equations <a class="reference internal" href="#equation-first-formula">(11.25)</a> are:</p>
+<div class="math notranslate nohighlight">
+\[\upsilon_1 = \lambda  \left( I - \lambda \psi_{x'} \right)^{-1} \kappa_{x'}, 
+\upsilon_0 = {\frac \lambda {(1 - \lambda)}} \left({\upsilon_1}'  \psi_{q} +  \kappa_{q} \right) +  
+\frac {\lambda(1 - \gamma_0)} {2(1 - \lambda)} 
+\left| {\upsilon_1}' \psi_{w'} + \kappa_{w'}  \right|^2. \]</div>
+<p>The continuation value has two components. The first is:</p>
+<div class="math notranslate nohighlight">
+\[{\upsilon_1}'X_t^1  + {\frac \lambda {(1 - \lambda)}} \left({\upsilon_1}'  \psi_{q} +  \kappa_{q} \right)
+= {\mathbb E} \left[ \sum_{j=1}^\infty \lambda^j \left({\widehat C}_{t+j}^1 - {\widehat C}_{t+j-1} ^1\right) \mid {\mathfrak A}_t  \right] \]</div>
+<p>and the second component is a constant long-run risk adjustment given by:</p>
+<div class="math notranslate nohighlight">
+\[\frac {\lambda(1 - \gamma_0)} {2(1 - \lambda)} 
+\left| {\upsilon_1}' \psi_{w'} + \kappa_{w'} \right|^2.\]</div>
+<p>This second term is the variance of</p>
+<div class="math notranslate nohighlight" id="equation-discount-future">
+<span class="eqno">(11.26)<a class="headerlink" href="#equation-discount-future" title="Link to this equation">#</a></span>\[ {\mathbb E} \left[\sum_{j=1}^\infty \lambda^j \left({\widehat C}_{t+j }^1 - {\widehat C}_{t+j-1} ^1\right) \mid {\mathfrak A}_{t+1}  \right] = (1-\lambda) {\mathbb E} \left[\sum_{j=1}^\infty \lambda^j \left({\widehat C}_{t+j }^1 - {\widehat C}_{t} ^1\right) \mid {\mathfrak A}_{t+1}  \right] \]</div>
+<p>conditioned on <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> scaled by <span class="math notranslate nohighlight">\(\frac {\lambda(1 - \gamma_0)} {2(1 - \lambda)}\)</span>.</p>
+</section>
+</div><div class="proof remark admonition" id="remark:zero">
+<p class="admonition-title"><span class="caption-number">Remark 11.6 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The formula for <span class="math notranslate nohighlight">\( \upsilon_1 \)</span> depends on the parameter <span class="math notranslate nohighlight">\( \rho \)</span>. Moreover, <span class="math notranslate nohighlight">\( \upsilon_1 \)</span> has a well-defined limit as <span class="math notranslate nohighlight">\( \lambda \)</span> tends to unity as does the variance of <a class="reference internal" href="#equation-discount-future">(11.26)</a>. This limiting variance:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{\lambda \rightarrow 1} \left| {\upsilon_1}' \psi_{w'} + \kappa_{w'} \right|^2.\]</div>
+<p>converges to the variance of the martingale increment of <span class="math notranslate nohighlight">\({\widehat C}^1\)</span>.</p>
+</section>
+</div><div class="proof remark admonition" id="remark:first">
+<p class="admonition-title"><span class="caption-number">Remark 11.7 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Consider the logarithm of the uncertainty-adjusted continuation value approximated to the first order.  Note that from <a class="reference internal" href="#equation-first-solution">(11.24)</a>,</p>
+<div class="math notranslate nohighlight">
+\[{\widehat V}_{t+1}^1 - {\widehat C}_t^1  = {\upsilon_1}' X_{t+1}^1 + \upsilon_0 + \kappa_{x'} X_t^1 + \kappa_{w'} W_{t+1}.\]</div>
+<p>Substitute this expression into formula <a class="reference internal" href="#equation-first-order-risk">(11.22)</a> and use the formula for the mean of random variable distributed as a log normal to show that</p>
+<div class="math notranslate nohighlight">
+\[{\widehat V}_{t+1}^1 - {\widehat R}_t^1 = \left( {\upsilon_1}'\psi{_w'} + \kappa_{w'} \right) W_{t+1} - \left( \frac{1 - \gamma_o}{2} \right)
+\vert  {\upsilon_1}'\psi{_w'} + \kappa_{w'} \vert^2.\]</div>
+</section>
+</div><p>Associated with the first-order approximation, we construct:</p>
+<div class="math notranslate nohighlight">
+\[N_{t+1}^0  \eqdef {\frac{ \exp \left[ (1 - \gamma_o)   {\widetilde V}_{t+1}^0 \right]}{{\mathbb E}\left( \exp \left[ (1 - \gamma_o)   {\widetilde V}_{t+1}^0 \right] \mid {\mathfrak A}_t \right)}} = \frac{ \exp \left[ (1 - \gamma_o)   {\widehat V}_{t+1}^1 \right]}{{\mathbb E} \left( \exp \left[ (1 - \gamma_o)   {\widehat V}_{t+1}^1 \right] \mid {\mathfrak A}_t \right)}.\]</div>
+<p>Equation <a class="reference internal" href="#equation-first-order-risk">(11.22)</a> is a standard risk-sensitive recursion applied to log-linear dynamics. For instance, see <span id="id29">[<a class="reference internal" href="cite.html#id410" title="Thomas D. Tallarini. Risk-sensitive real business cycles. Journal of Monetary Economics, 45(3):507-532, 2000.">Tallarini, 2000</a>]</span>’s paper on risk-sensitive business cycles and <span id="id30">[<a class="reference internal" href="cite.html#id201" title="Lars Peter Hansen, John C. Heaton, and Nan Li. Consumption Strikes Back? Measuring Long‐Run Risk. Journal of Political Economy, 116(2):260–302, 2008. URL: http://www.journals.uchicago.edu/doi/10.1086/588200, doi:10.1086/588200.">Hansen <em>et al.</em>, 2008</a>]</span>’s paper on measurement and inference challenges created by the presence of long-term risk.<a class="footnote-reference brackets" href="#footnotehhl" id="id31" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> Both of those papers assumed a logarithmic one-period utility function, so that for them <span class="math notranslate nohighlight">\(\rho=1.\)</span> Here we have instead obtained the recursion as a first-order approximation without necessarily assuming log utility. Allowing for <span class="math notranslate nohighlight">\(\rho\)</span> to be different than one shows up in both the order zero and order one approximations, as reflected in <a class="reference internal" href="#equation-zero-formula2">(11.18)</a> and <a class="reference internal" href="#equation-first-recursive-update">(11.23)</a>, respectively. In accordance to  <a class="reference internal" href="#equation-first-recursive-update">(11.23)</a>, for the first-order approximation the parameter <span class="math notranslate nohighlight">\(\lambda = \beta\)</span> when <span class="math notranslate nohighlight">\(\rho = 1\)</span>. But otherwise, it is different. Equation <a class="reference internal" href="#equation-first-order-risk">(11.22)</a> also is very similar to a first-order approximation proposed in <span id="id32">[<a class="reference internal" href="cite.html#id452" title="Fernando Restoy and Philippe Weil. Approximate equilibrium asset prices. Review of Finance, 15:1-28, 2011. doi:10.1093/rof/rfq015.">Restoy and Weil, 2011</a>]</span>. Like formula <a class="reference internal" href="#equation-first-order-risk">(11.22)</a>, <span id="id33">[<a class="reference internal" href="cite.html#id452" title="Fernando Restoy and Philippe Weil. Approximate equilibrium asset prices. Review of Finance, 15:1-28, 2011. doi:10.1093/rof/rfq015.">Restoy and Weil, 2011</a>]</span> allow for <span class="math notranslate nohighlight">\(\rho \ne 1.\)</span> In contrast, our equation has an explicit constant term coming from the uncertainty adjustment, and we have explicit formula for <span class="math notranslate nohighlight">\(\lambda\)</span> that depends on preference parameters and the consumption growth rate.</p>
+<div class="proof remark admonition" id="remark:second">
+<p class="admonition-title"><span class="caption-number">Remark 11.8 </span></p>
+<section class="remark-content" id="proof-content">
+<p>The calculation reported in <a class="reference internal" href="#remark:first">Remark 11.7</a> implies that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\log N_{t+1}^0 = (1-\gamma_o)\left({\widehat V}_{t+1}^1- {\widehat R}_t^1\right) =  \hspace{.2cm} &amp; (1- \gamma_o) \left( {\upsilon_1}'\psi_{w'} + \kappa_{w'} \right) W_{t+1} \cr \hspace{.2cm} &amp; - \frac{(1 - \gamma_o)^2}{2} \vert {\upsilon_1}'\psi_{w'} + \kappa_{w'} \vert^2
+\end{align}\]</div>
+<p>As a consequence, under the change in probability measure induced by <span class="math notranslate nohighlight">\(N_{t+1}^0,\)</span> <span class="math notranslate nohighlight">\(W_{t+1}\)</span> has a mean given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+\mu^0 \eqdef \hspace{.2cm} (1 - \gamma_o)  \left( {\upsilon_1}'\psi_{w'} + \kappa_{w'} \right)' \cr = \hspace{.2cm}\left( \frac 1 {\xi_o} \right) \left( {\upsilon_1}'\psi_{w'} + \kappa_{w'} \right)'
+\end{align}\]</div>
+<p>and with the same covariance matrix given by the identity. This is an approximation to robustness adjustment expressed as an altered distribution of the underlying shocks. It depends on <span class="math notranslate nohighlight">\(\gamma_o - 1 = {\frac{1}{\xi_o}}\)</span> as well as the state dynamics as reflected by <span class="math notranslate nohighlight">\(\upsilon_1\)</span> and by the shock exposure vectors <span class="math notranslate nohighlight">\(\psi_{w'}\)</span> and <span class="math notranslate nohighlight">\(\kappa_{w'}\)</span>.   As we will see, this change of measure plays a role in the higher-order approximation, but it also gives a low-order representation of the implied shadow or market one-period compensation for exposure to uncertainty.  It captures the following insight from “long-run risk”  models:  investor concerns of <em>long-term uncertainty</em> impacts <em>short-term asset valuation.</em>  In contrast to the “long-run risk” literature, our analysis opens the door to a different interpretation.  Instead of aversion to risk it reflects an aversion to the misspecification of to models or simplified perspectives on macroeconomic dynamics.</p>
+<p>As we noted in Remark <a class="reference internal" href="#remark:zero">Remark 11.6</a>,  <span class="math notranslate nohighlight">\(\left( {\upsilon_1}'\psi_{w'} + \kappa_{w'} \right) W_{t+1}\)</span> is  approximately the martingale component of the logarithm of consumption when  <span class="math notranslate nohighlight">\(\lambda\)</span> is close to one.  In  <a class="reference internal" href="example_out_c5_v2.html#section-var"><span class="std std-ref">VAR example</span></a> we showed that the variance of this component is challenging to estimate, a point originally made by <span id="id34">[<a class="reference internal" href="cite.html#id201" title="Lars Peter Hansen, John C. Heaton, and Nan Li. Consumption Strikes Back? Measuring Long‐Run Risk. Journal of Political Economy, 116(2):260–302, 2008. URL: http://www.journals.uchicago.edu/doi/10.1086/588200, doi:10.1086/588200.">Hansen <em>et al.</em>, 2008</a>]</span>.  This finding is part of the reason that we find it important to step back from rational expectations and limit investors confidence in the models they use for decision making.</p>
+</section>
+</div></section>
+<section id="order-two">
+<span id="sec-second-order"></span><h3><span class="section-number">11.5.3. </span>Order two<a class="headerlink" href="#order-two" title="Link to this heading">#</a></h3>
+<p>Differentiating equation <a class="reference internal" href="#equation-value-recur5">(11.3)</a> a second time gives:</p>
+<div class="math notranslate nohighlight">
+\[{\widehat V}_t^2  = 
+(1 - \lambda)  {\widehat C}_t^2 +  \lambda  {\widehat R}_t^2  + (1 - \rho) (1 - \lambda) \lambda  \left( {\widehat R}_t^1 - {\widehat C}_t^1 \right)^2.\]</div>
+<p>Equivalently,</p>
+<div class="math notranslate nohighlight">
+\[{\widehat V}_t^2 - {\widehat C}_t^2 = \lambda \left( {\widehat R}_t^2 - {\widehat C}_t^2 \right) +  (1 - \rho) (1 - \lambda) \lambda  \left( {\widehat R}_t^1 - {\widehat C}_t^1 \right)^2.\]</div>
+<p>Rewrite transformations <a class="reference internal" href="#equation-tilde-transform">(11.20)</a> and <a class="reference internal" href="#equation-tilde-r">(11.21)</a> as</p>
+<div class="math notranslate nohighlight">
+\[{\sf q} {\widetilde V}_t = {\widehat V}_t - {{\widehat V}_t^0} \]</div>
+<div class="math notranslate nohighlight">
+\[{\sf q} {\widetilde R}_t =  {\widehat R}_t - {{\widehat V}_{t+1}^0}. \]</div>
+<p>Differentiating twice with respect to <span class="math notranslate nohighlight">\({\sf q}\)</span> and evaluated at <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[\left. 2 \frac{d} {d{\sf q}}{\widetilde V}_t  + {\sf q}  \frac{d^2} {d{\sf q}^2} {\widetilde V}_t \right\vert_{{\sf q} = 0} =  2{\widetilde V}_t^1   = {\widehat V}_t^2.\]</div>
+<div class="math notranslate nohighlight">
+\[\left. 2 \frac{d} {d{\sf q}}{\widetilde R}_t  + {\sf q}  \frac{d^2} {d{\sf q}^2} {\widetilde R}_t \right\vert_{{\sf q} = 0} =  2{\widetilde R}_t^1 =  {\widehat R}_t^2.\]</div>
+<p>Differentiating <a class="reference internal" href="#equation-tilde-r">(11.21)</a> with respect to <span class="math notranslate nohighlight">\({\sf q}\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[{\frac{d{\widetilde R}_t} {d {\sf q}}} =   \frac{{\mathbb E} \left( \exp \left[ (1 - \gamma_o)  {\widetilde V}_{t+1} \right] {\frac{d{\widetilde V}_{t+1}} {d {\sf q}}} \mid {\mathfrak A}_t \right)}{{\mathbb E} \left( \exp \left[ (1 - \gamma_o)  {\widetilde V}_{t+1} \right]  \mid {\mathfrak A}_t \right)}.\]</div>
+<p>and thus</p>
+<div class="math notranslate nohighlight" id="equation-recur-update">
+<span class="eqno">(11.27)<a class="headerlink" href="#equation-recur-update" title="Link to this equation">#</a></span>\[{\widehat R}_t^2 = 2 {\widetilde R}_t^1 = 2 E \left( N_{t+1}^0  {\widetilde V}^1_{t+1} \mid {\mathfrak A}_t \right) =  E \left( N_{t+1}^0  {\widehat V}^2_{t+1} \mid {\mathfrak A}_t \right),\]</div>
+<p>where subtracting <span class="math notranslate nohighlight">\({\widehat C}_t^2\)</span> from <span class="math notranslate nohighlight">\({\widehat R}_t^2\)</span> gives:</p>
+<div class="math notranslate nohighlight" id="equation-second-order-risk">
+<span class="eqno">(11.28)<a class="headerlink" href="#equation-second-order-risk" title="Link to this equation">#</a></span>\[{\widehat R}_t^2 - {\widehat C}_t^2 = E \left[ N_{t+1}^0 \left( {\widehat V}^2_{t+1} - {\widehat C}_{t+1}^2\right) + \left( {\widehat C}^2_{t+1} - {\widehat C}_{t}^2 \right)  \mid {\mathfrak A}_t \right] .\]</div>
+<p>Substituting this formula into <a class="reference internal" href="#equation-recur-update">(11.27)</a> gives:</p>
+<div class="math notranslate nohighlight" id="equation-second-recursive-update">
+<span class="eqno">(11.29)<a class="headerlink" href="#equation-second-recursive-update" title="Link to this equation">#</a></span>\[\begin{align}
+{\widehat V}_t^2 - {\widehat C}_t^2 =  \hspace{.2cm} &amp; \lambda {\mathbb E} \left( N_{t+1}^0  \left[\left({\widehat V}^2_{t+1} - {\widehat C}^2_{t+1} \right) + \left( {\widehat C}^2_{t+1} -  {\widehat C}^2_{t}\right) \right] \mid {\mathfrak A}_t \right) \cr
+\hspace{.2cm} &amp; +  (1 - \rho) (1 - \lambda) \lambda  \left( {\widehat R}_t^1 - {\widehat C}_t^1 \right)^2.
+\end{align}\]</div>
+<p>Even if the second-order contribution to the consumption process is zero, there will be nontrivial adjustment to the approximation of <span class="math notranslate nohighlight">\({\widehat V} - {\widehat C}\)</span> because <span class="math notranslate nohighlight">\(\left( {\widehat R}^1 - {\widehat C}^1 \right)^2\)</span> is different from zero. This term vanishes when <span class="math notranslate nohighlight">\(\rho = 1,\)</span> and its sign will be different depending on whether <span class="math notranslate nohighlight">\(\rho\)</span> is bigger or smaller than one.</p>
+</section>
+</section>
+<section id="stochastic-discount-factor-approximation">
+<h2><span class="section-number">11.6. </span>Stochastic discount factor approximation<a class="headerlink" href="#stochastic-discount-factor-approximation" title="Link to this heading">#</a></h2>
+<p>We approximate <span class="math notranslate nohighlight">\(\left[{\widehat S}_{t+1} - {\widehat S}_{t} \right]\)</span> in formula <a class="reference internal" href="#equation-eqn-sdf50">(11.8)</a> as</p>
+<div class="math notranslate nohighlight">
+\[{\widehat S}_{t+1} - {\widehat S}_{t}  \approx \left[{\widehat S}_{t+1}^0 - {\widehat S}_{t}^0 \right] + \left[{\widehat S}_{t+1}^1 - {\widehat S}_{t}^1\right] + {\frac 1 2} 
+\left[{\widehat S}_{t+1}^2 - {\widehat S}_{t}^2\right]\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[{\widehat S}_{t+1}^0 - {\widehat S}_{t}^0 \eqdef  \log \beta - \rho \eta_c^0 \]</div>
+<div class="math notranslate nohighlight">
+\[{\widehat S}_{t+1}^1 - {\widehat S}_{t}^1 \eqdef - {\widehat C}_{t+1}^1 + {\widehat C}_{t}^1 + (\rho - 1) \left( {\widehat V}_{t+1}^1 - {\widehat C}^1_{t+1} \right)  - 
+(\rho - 1) \left( {\widehat R}_t^1 - {\widehat C}_t^1  \right)\]</div>
+<div class="math notranslate nohighlight">
+\[{\widehat S}_{t+1}^2 - {\widehat S}_{t}^2 \eqdef - {\widehat C}_{t+1}^2 + {\widehat C}_{t}^2 + (\rho - 1) \left( {\widehat V}_{t+1}^2 - {\widehat C}^2_{t+1} \right)  - 
+(\rho - 1) \left( {\widehat R}_t^2 - {\widehat C}_t^2  \right)\]</div>
+<p>We now consider two different approaches to approximating <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span>.</p>
+<section id="approach-1">
+<h3><span class="section-number">11.6.1. </span>Approach 1<a class="headerlink" href="#approach-1" title="Link to this heading">#</a></h3>
+<p>Write</p>
+<div class="math notranslate nohighlight">
+\[N_{t+1}^* = \frac { \exp\left[(1-\gamma_o) {\widetilde V}_{t+1} \right]}{{\mathbb E} \left( \exp\left[(1-\gamma_o) {\widetilde V}_{t+1} \right] \mid {\mathfrak A}_t \right]} \]</div>
+<div class="math notranslate nohighlight">
+\[= \frac { \exp\left[(1-\gamma_o) {\widetilde V}_{t+1} \right]}{ \exp\left[(1-\gamma_o) {\widetilde R}_t\right] } \]</div>
+<p>Form the ``first-order’’ approximation:</p>
+<div class="math notranslate nohighlight">
+\[\log N_{t+1}^*  \approx (1 - \gamma_o) \left[\left( {\widetilde V}_{t+1}^0 - {\widetilde R}_t^0  \right) +   {\sf q} \left( {\widetilde V}_{t+1}^1 - {\widetilde R}_t^1 \right)\right] \]</div>
+<div class="math notranslate nohighlight">
+\[= (1 - \gamma_o)\left[ \left( {\widehat V}_{t+1}^1 - {\widehat R}_t^1 \right) +  {\frac {\sf q}  2}  \left( {\widehat V}_{t+1}^2 - {\widehat R}_t^2 \right) \right]\]</div>
+<p>We  combine a first-order approximation of <span class="math notranslate nohighlight">\(\log N_{t+1}^*\)</span> with a second-order approximation of
+<span class="math notranslate nohighlight">\({\widehat S}_{t+1} - {\widehat S}_t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\log S_{t+1} -  \log S_t \approx (1 - \gamma_o)\left[ \left( {\widehat V}_{t+1}^1 - {\widehat R}_t^1 \right) +  {\frac 1 2}  \left( {\widehat V}_{t+1}^2 - {\widehat R}_t^2 \right) \right] \]</div>
+<div class="math notranslate nohighlight">
+\[+ \left({\widehat S}_{t+1}^0 - {\widehat S}_{t}^0 \right) + \left({\widehat S}_{t+1}^1 - {\widehat S}_{t}^1\right)  + \frac 1 2 \left({\widehat S}_{t+1}^2 - {\widehat S}_{t}^2\right) \]</div>
+<p>which preserves the quadratic approximation of <span class="math notranslate nohighlight">\(\log S_{t+1} -  \log S_t.\)</span>. Note that If we were to use a second-order approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span>, it would push us outside the class of exponentially quadratic stochastic discount factors.</p>
+</section>
+<section id="approach-2">
+<h3><span class="section-number">11.6.2. </span>Approach 2<a class="headerlink" href="#approach-2" title="Link to this heading">#</a></h3>
+<p>Next consider an alternative modification of Approach 1 whereby:</p>
+<div class="math notranslate nohighlight" id="equation-restricted-probability">
+<span class="eqno">(11.30)<a class="headerlink" href="#equation-restricted-probability" title="Link to this equation">#</a></span>\[\begin{align}
+N_{t+1}^* \approx &amp; \frac { \exp\left[(1-\gamma_o) \left({\widetilde V}_{t+1}^0 + {\widetilde V}_{t+1}^1 \right)\right]} 
+{{\mathbb E}\left(\exp\left[(1-\gamma_o) \left({\widetilde V}_{t+1}^0 + {\widetilde V}_{t+1}^1 \right)\right] \mid {\mathfrak A}_t \right)} \cr
+= &amp; \frac { \exp\left[(1-\gamma_o)\left[ \left({\widehat V}_{t+1}^1 - {\widehat R}_t^1\right) + {\frac 1 2} \left( {\widehat V}_{t+1}^2  - {\widehat R}_t^2 \right) \right]\right]} 
+{{\mathbb E}\left(
+\exp\left[(1-\gamma_o)\left[ \left({\widehat V}_{t+1}^1 - {\widehat R}_t^1\right) + {\frac 1 2} \left( {\widehat V}_{t+1}^2  - {\widehat R}_t^2 \right) \right]\right]
+\mid {\mathfrak A}_t \right)} \cr
+\eqdef &amp; {\widetilde N}_{t+1}
+\end{align}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\log {\widetilde N}_t\)</span> is used in conjunction with</p>
+<div class="math notranslate nohighlight">
+\[\left({\widehat S}_{t+1}^0 - {\widehat S}_{t}^0 \right) + \left({\widehat S}_{t+1}^1 - {\widehat S}_{t}^1\right)  + \frac 1 2 \left({\widehat S}_{t+1}^2 - {\widehat S}_{t}^2\right) . \]</div>
+<p>By design, this approximation of <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> will have conditional expectation equal to one in contrast to the approximation used with Approach 1.   With a little bit of algebraic manipulation, it may be shown that this approximation induces a distributional change for <span class="math notranslate nohighlight">\(W_{t+1}\)</span> with a conditional mean that is affine in <span class="math notranslate nohighlight">\(X_{t+1}\)</span> and an altered conditional variance matrix that is constant over time.</p>
+<p>To understand better this choice of approximation, consider the family of random variables (indexed by <span class="math notranslate nohighlight">\({\sf q}\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[(1-\gamma_o) \left({\widetilde V}_{t+1}^0 + {\sf q} {\widetilde V}_{t+1}^1\right) 
+- \log {\mathbb E} \left( \exp\left[(1-\gamma_o) \left({\widetilde V}_{t+1}^0 +  {\sf q} {\widetilde V}_{t+1}^1\right) \right] \mid {\mathfrak A}_t \right) .\]</div>
+<p>The corresponding family of exponentials has conditional expectation one and the <span class="math notranslate nohighlight">\({\sf q} = 1\)</span> member is the proposed approximation for <span class="math notranslate nohighlight">\(N_{t+1}^*.\)</span> Differentiate the family with respect to <span class="math notranslate nohighlight">\({\sf q}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[{\widetilde V}_{t+1}^1 - \frac {{\mathbb E} \left( \exp\left[(1-\gamma_o) {\widetilde V}_{t+1}^0  \right] {\widetilde V}_{t+1}^1 \mid {\mathfrak A}_t \right)}
+{{\mathbb E} \left( \exp\left[(1-\gamma_o) {\widetilde V}_{t+1}^0  \right]  \mid {\mathfrak A}_t \right)} 
+ =
+{\widetilde V}_{t+1}^1 - {\widetilde R}_{t}^1.\]</div>
+<p>Thus this family of random variables has the same first-order approximation in <span class="math notranslate nohighlight">\({\sf q}\)</span> as the one we derived previously for <span class="math notranslate nohighlight">\(\log N_{t+1}^*\)</span>.</p>
+<p>As a change of probability measure, this approximation will induce state dependence in the conditional mean and will alter the covariance matrix of the shock vector. We find this approach interesting because it links back directly to the outcome of the robustness formulation we described in <a class="reference internal" href="#sec:robust"><span class="xref myst">Section 3.1</span></a>.</p>
+</section>
+</section>
+<section id="solving-a-planner-s-problem-with-recursive-utility">
+<h2><span class="section-number">11.7. </span>Solving a planner’s problem with recursive utility<a class="headerlink" href="#solving-a-planner-s-problem-with-recursive-utility" title="Link to this heading">#</a></h2>
+<p>The <span id="id35">[<a class="reference internal" href="cite.html#id24" title="Ravi Bansal and Amir Yaron. Risks for the long run: a potential resolution of asset pricing puzzles. Journal of Finance, 59(4):1481-1509, 2004.">Bansal and Yaron, 2004</a>]</span> example along with many others building connections between the macro economy and asset value take aggregate consumption as pre-specified. As we open the door to a richer collection of macroeconomic models, it becomes important to entertain more endogeneity, including investment and other variables familiar to macroeconomics.</p>
+<p>Write a triangular system with stochastic growth as:</p>
+<div class="math notranslate nohighlight" id="equation-triangle">
+<span class="eqno">(11.31)<a class="headerlink" href="#equation-triangle" title="Link to this equation">#</a></span>\[\begin{align}
+X_{t+1} \left( \mathsf{q} \right) =  &amp; \hspace{.2cm} \psi^x \left[D_t \left( \mathsf{q} \right), X_{t} \left( \mathsf{q} \right), {\sf q} W_{t+1}, {\sf q} \right] \cr
+\log G_{t+1} \left( \mathsf{q} \right) - \log G_t \left( \mathsf{q} \right) = &amp; \hspace{.2cm} \psi^g \left[ D_t \left( \mathsf{q} \right), X_{t} \left( \mathsf{q},
+ \right), {\sf q} W_{t+1}, {\sf q}  \right],
+ \end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(D_t\)</span> is a date <span class="math notranslate nohighlight">\(t\)</span> decision vector for the planner. Define <span class="math notranslate nohighlight">\({\widehat G}_t = \log G_t.\)</span> In addition, we impose</p>
+<div class="math notranslate nohighlight" id="equation-output">
+<span class="eqno">(11.32)<a class="headerlink" href="#equation-output" title="Link to this equation">#</a></span>\[{\widehat C}_t \left( \mathsf{q} \right) = \kappa \left[D_t \left( \mathsf{q} \right), X_{t} \left( \mathsf{q}  \right) \right] + {\widehat G}_t \left( \mathsf{q} \right).\]</div>
+<p>In what follows for notational convenience, we will leave the <span class="math notranslate nohighlight">\({\sf q}\)</span> implicit.<br />
+We use homogeneity to rewrite the utility recursion:</p>
+<div class="math notranslate nohighlight">
+\[{\widehat V}_t - {\widehat G}_t = \frac{1}{1-\rho} \log \left[ (1 - \beta) \exp\left[ (1-\rho) ({\widehat C}_t - {\widehat G}_t) \right] + \beta \exp\left[ (1-\rho) ({\widehat R}_t - {\widehat G}_t) \right] \right]  \]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[{\widehat R}_t - {\widehat G}_t = \frac{1}{1-\gamma} \log \left( {\mathbb E} \left[ \exp\left( (1 - \gamma) \left[ \left( {\widehat V}_{t+1} - {\widehat G}_{t+1} \right) + \left( {\widehat G}_{t+1} - {\widehat G}_t \right) \right] \right) \mid {\mathfrak A}_t \right] \right).\]</div>
+<p>The approximation formulas, <a class="reference internal" href="#equation-first-order-risk">(11.22)</a>, <a class="reference internal" href="#equation-first-recursive-update">(11.23)</a>, <a class="reference internal" href="#equation-second-order-risk">(11.28)</a>, <a class="reference internal" href="#equation-second-recursive-update">(11.29)</a>,  that we deduced previously for <span class="math notranslate nohighlight">\({\widehat V}_t - {\widehat C}_t\)</span> and <span class="math notranslate nohighlight">\({\widehat R}_t - {\widehat C}_t\)</span> have and immediate counterparts for
+<span class="math notranslate nohighlight">\({\widehat V}_t - {\widehat G}_t\)</span> and  <span class="math notranslate nohighlight">\({\widehat R}_t - {\widehat G}_t\)</span>, from which can build an approximation of
+<span class="math notranslate nohighlight">\( {\widehat R}_t - {\widehat V}_t.\)</span></p>
+<p>The first-order conditions for <span class="math notranslate nohighlight">\(D\)</span> are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+&amp;(1-\beta) \exp\left[ (1- \rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_d( D_t, X_t) 
+\cr &amp;+ 
+\beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+{\mathbb E} 
+\left(
+\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{d'}^x ( D_t, X_t, W_{t+1} )' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
+&amp;+  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+{\mathbb E} 
+\left(
+\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat G}_t \right) \right] \psi_{d'}^g ( D_t, X_t, W_{t+1} ) \mid {\mathfrak A}_t \right)  \cr
+&amp; = 0.
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(MX_{t+1}\)</span> is the co-state, or the partial derivation of next period’s value function evaluated at the next period’s state vector.</p>
+<p>In addition, we solve a forward-looking co-state equation given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+&amp; MX_t =  (1 - \beta) \exp\left[ (1 - \rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_{x}(D_t, X_t)   \cr
+&amp; + \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+{\mathbb E} 
+\left(
+\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{x'}^x ( D_t, X_t, W_{t+1} )' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
+&amp; +  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+{\mathbb E} 
+\left(
+\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{x}^g ( D_t, X_t, W_{t+1} ) \mid {\mathfrak A}_t \right).  
+\end{align*} \]</div>
+<p>Recall that <span class="math notranslate nohighlight">\(N_{t+1}^* =  \exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right].\)</span>  This allows us to compute the conditional expectations using the uncertainty adjusted transition probability.</p>
+<p>The solution method we use  finds  <span class="math notranslate nohighlight">\(MX_t\)</span> and <span class="math notranslate nohighlight">\(D_t\)</span> as time-invariant functions of <span class="math notranslate nohighlight">\(X_t\)</span> that make the dynamic system behave in a stochastically stable manner.</p>
+<section id="an-example-economy-with-long-run-uncertainty">
+<h3><span class="section-number">11.7.1. </span>An example economy with long-run uncertainty<a class="headerlink" href="#an-example-economy-with-long-run-uncertainty" title="Link to this heading">#</a></h3>
+<p>Consider an AK model with recursive utility and adjustment costs.</p>
+<p>The exogenous state dynamic capture both long-run uncertainty in the mean growth rate and the overall volatility in the economy.</p>
+<div class="math notranslate nohighlight" id="equation-equation2">
+<span class="eqno">(11.33)<a class="headerlink" href="#equation-equation2" title="Link to this equation">#</a></span>\[\begin{align}
+Z_{1,t+1} -
+Z_{1,t}=   \hspace{.2cm} &amp; - \epsilon \nu_{1} Z_{1,t}  +  \sqrt{\epsilon}\exp\left(\frac 1 2  {Z}_{2,t}\right) \sigma_1  W_{t+1} \cr 
+{Z}_{2,t+1} - {Z}_{2, t} =  \hspace{.2cm} &amp;   - \epsilon \nu_2 \left[ 1 - {\mu_2} \exp\left( - {Z}_{2,t} \right) \right]  \cr \hspace{.2cm}&amp;  - {\frac \epsilon 2} |\sigma_2|^2  \exp\left( - {Z}_{2,t} \right)   
++ \sqrt{\epsilon} \exp\left( - {\frac 1 2}  {Z}_{2,t} \right) \sigma_2 W_{t+1}. \end{align} \]</div>
+<p>We include the <span class="math notranslate nohighlight">\(\epsilon\)</span>  to allow for a small time interval approximation of the continuous-time system.  A small value of <span class="math notranslate nohighlight">\(\epsilon\)</span> is associated a time scaling in which a unit time interval is small, say months instead of years.      The state variable, <span class="math notranslate nohighlight">\(Z_{2,t}\)</span> is included to capture stochastic volatility.  The discrete-time dynamics for <span class="math notranslate nohighlight">\(\{\exp(Z_{2,t}) \}\)</span> approximate a continuous-time version of what is called a square root process  due to Feller.  Let</p>
+<div class="math notranslate nohighlight">
+\[X_t = \begin{bmatrix} Z_{1,t} \cr Z_{2,t} \end{bmatrix}.\]</div>
+<p>With these exogenous dynamics, we obtain the following zero and first-order approximations:</p>
+<div class="math notranslate nohighlight">
+\[Z_{1,t}^0 = 0 \hspace{.4cm} \exp\left(Z_{2,t}^0\right)  =  \mu_2,\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Z_{1,t+1}^1 - Z_{1,t}^1 = &amp; \hspace{.2cm}  - \epsilon \nu_1 Z_{1,t} + \sqrt{\epsilon \mu_2} \sigma_1 W_{t+1} \cr 
+Z_{2,t+1}^1 - Z_{2,t}^1 = &amp; \hspace{.2cm} - \epsilon \nu_2 Z_{2,t} + \sqrt{\frac \epsilon {\mu_2}} \sigma_2 W_{t+1} . 
+\end{align}\]</div>
+<p>We impose the resource constraint:</p>
+<div class="math notranslate nohighlight">
+\[C_t + I_t = \alpha K_t .\]</div>
+<p>The endogenous state dynamics are given by:</p>
+<div class="math notranslate nohighlight">
+\[%:label: equation1
+\begin{align} 
+{{\widehat K}_{t+1}} - {\widehat K}_t = \hspace{.2cm} &amp; \epsilon \left[ {\frac 1 \zeta}  \log \left( 1 + \zeta \frac{I_t}{K_t} \right) + \nu_k Z_{1,t} - \iota_k \right] \cr \hspace{.2cm} &amp;  - \frac{\epsilon}{2}|\sigma_k|^2 \exp\left( {Z}_{2,t} \right)  
+ +  \sqrt{\epsilon} \exp\left(\frac 1 2 { Z}_{2,t}  \right) {\sigma}_k  W_{t+1} 
+  \end{align} \]</div>
+<p>where <span class="math notranslate nohighlight">\({\widehat K}_t = \log K_t = {\widehat G}_t\)</span>.  The planner choice variable  <span class="math notranslate nohighlight">\(D_t =   \frac{I_t}{K_t}\)</span>.<br />
+Rewrite the current-period  resource constraint as:</p>
+<div class="math notranslate nohighlight" id="equation-equation3">
+<span class="eqno">(11.34)<a class="headerlink" href="#equation-equation3" title="Link to this equation">#</a></span>\[{\widehat C}_t - {\widehat G}_t = \log \left( \alpha - D_t \right) .\]</div>
+<p>The first-order conditions for the investment-capital ratio imply that</p>
+<div class="math notranslate nohighlight" id="equation-equation4">
+<span class="eqno">(11.35)<a class="headerlink" href="#equation-equation4" title="Link to this equation">#</a></span>\[\begin{align} 
+0 = &amp;\hspace{.2cm} - \exp\left[(1 - \rho) \left({\widehat C}_t - {\widehat G}_t \right)\right] \left(\frac {1-\beta}{\alpha - D_t}\right) 
+\cr &amp;\hspace{.2cm}  +  \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right)\right] \left(\frac{\beta \epsilon }{1 + \zeta D_t} \right)
+\end{align}    \]</div>
+<p>To support a continuous-time approximation,  suppose <span class="math notranslate nohighlight">\(\beta = \exp(-\epsilon \delta)\)</span> where <span class="math notranslate nohighlight">\(\delta\)</span> is a the subjective rate of discount.   Notice that these first-order conditions do not depend on the co-state process <span class="math notranslate nohighlight">\(\{MX_t : t \ge 0 \}\)</span>.  We may solve this planner’s problem using <a class="reference internal" href="../theory/hkt.html#equation-equation4">(5)</a> and up-dating the continuation value processes and its uncertainty-adjusted counterpart until convergence.  When <span class="math notranslate nohighlight">\(\rho = 1\)</span>, <span class="math notranslate nohighlight">\({\widehat R}_t - {\widehat G}_t\)</span> and <span class="math notranslate nohighlight">\({\widehat C}_t - {\widehat G}_t\)</span> drop out of the first-order conditions and the solution for <span class="math notranslate nohighlight">\(D_t\)</span> is constant.  When  <span class="math notranslate nohighlight">\(\rho \ne 1\)</span>, <span class="math notranslate nohighlight">\(D_t\)</span> depends on the exogenous state <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
+</section>
+<section id="first-order-approximation-when-rho-1">
+<h3><span class="section-number">11.7.2. </span>First-order approximation when <span class="math notranslate nohighlight">\(\rho=1\)</span><a class="headerlink" href="#first-order-approximation-when-rho-1" title="Link to this heading">#</a></h3>
+<p>We obtain the following zero and first-order approximations for the  exogenous dynamics:</p>
+<div class="math notranslate nohighlight">
+\[Z_{1,t}^0 = 0 \hspace{.4cm} \exp\left(Z_{2,t}^0\right)  =  \mu_2,\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+Z_{1,t+1}^1 - Z_{1,t}^1 = &amp; \hspace{.2cm}  - \epsilon \nu_1 Z_{1,t}^1 + \sqrt{\epsilon \mu_2} \sigma_1 W_{t+1} \cr 
+Z_{2,t+1}^1 - Z_{2,t}^1 = &amp; \hspace{.2cm} - \epsilon \nu_2 Z_{2,t}^1 + \sqrt{\frac \epsilon {\mu_2}} \sigma_2 W_{t+1} . 
+\end{align}\]</div>
+<p>The first-order conditions for <span class="math notranslate nohighlight">\(D\)</span> are:</p>
+<div class="math notranslate nohighlight">
+\[\frac {1-\beta}{\alpha -D} + \frac {\beta \epsilon}{1 + \zeta D} = 0.\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(D\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[D^* = \frac {(\beta - 1)  + \beta \epsilon \alpha} {\beta \epsilon+ (1-\beta) \zeta } ,\]</div>
+<p>which is state dependent, as should be expected since <span class="math notranslate nohighlight">\(\rho = 1.\)</span> From the capital evolution it follows from the order zero approximation is</p>
+<div class="math notranslate nohighlight">
+\[{\widehat K}_{t+1}^0 - {\widehat K}_t^0 = \epsilon \left[ \frac 1 \zeta \log  \left( 1 + \zeta D^*\right) - \iota_k \right]. \]</div>
+<p>The order one approximation is then:</p>
+<div class="math notranslate nohighlight">
+\[{\widehat K}_{t+1}^1 - {\widehat K}_t^1  =  \epsilon \nu_k Z_t^1 + \sqrt{\epsilon \mu_2} \sigma_k W_{t+1} . \]</div>
+<p>Stochastic volatility, as in the  <span id="id36">[<a class="reference internal" href="cite.html#id24" title="Ravi Bansal and Amir Yaron. Risks for the long run: a potential resolution of asset pricing puzzles. Journal of Finance, 59(4):1481-1509, 2004.">Bansal and Yaron, 2004</a>]</span> model of consumption dynamics,  will be present in the second-order approximation.</p>
+</section>
+<section id="second-order-approximation-when-rho-1">
+<h3><span class="section-number">11.7.3. </span>Second-order approximation when <span class="math notranslate nohighlight">\(\rho = 1\)</span><a class="headerlink" href="#second-order-approximation-when-rho-1" title="Link to this heading">#</a></h3>
+<p>We next consider the second-order approximations. The second-oder approximation for <span class="math notranslate nohighlight">\(\{ Z_{2,t}\}\)</span> does not contribute to the planner’s solution or to the implied shadow prices and thus we drop it from the analysis.  For the remaining two state variables, we find that</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Z_{1,t+1}^2 - Z_{1,t}^2 = \hspace{.2cm} &amp;   - \epsilon \nu_1 Z_{1,t}^2 - \epsilon \mu_2 |\sigma_1|^2   + \sqrt{\epsilon \mu_2} Z_{2,t}^1 \sigma_1 W_{t+1}  \cr
+{\widehat K}_{t+1}^2 - {\widehat K}_t^2 = \hspace{.2cm} &amp; -  \epsilon \mu_2 |\sigma_k|^2  + \sqrt{\epsilon \mu_2} Z_{2,t}^1 \sigma_k W_{t+1}
+\end{align*} \]</div>
+<p>where we previously noted that <span class="math notranslate nohighlight">\(\{ Z_{2,t}^1\}\)</span> evolves as first-order autoregression.</p>
+<p>The combined approximation for <span class="math notranslate nohighlight">\({\sf q}=1\)</span> uses:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Z_{1,t+1} - Z_{1,t} \approx &amp; \hspace{.2cm}  - \epsilon \nu_1 Z_{1,t}  
+\cr &amp; \hspace{.2cm}  - \frac {\epsilon \mu_2 |\sigma_1|^2}  2 + \sqrt{\epsilon \mu_2} W_{t+1} + \frac {\sqrt{\epsilon \mu_2}    Z_{2,t} } 2 \sigma_1 W_{t+1} \cr
+Z_{2,t+1} - Z_{2,t} \approx  &amp; \hspace{.2cm} - \epsilon \nu_2 Z_{2,t} + \sqrt{\frac \epsilon {\mu_2}} \sigma_2 W_{t+1} \cr
+{\widehat K}_{t+1} - {\widehat K}_t \approx  &amp; \hspace{.2cm}  \epsilon \left[ \frac 1 \zeta \log  \left( 1 + \zeta D^*\right) - \iota_k \right]
++ \epsilon \nu_k Z_{1,t}  \cr &amp; \hspace{.2cm}  - \frac {\epsilon \mu_2 |\sigma_k|^2}  2  + \sqrt{\epsilon \mu_2} \sigma_kW_{t+1}     + \frac {\sqrt{\epsilon \mu_2} Z_{2,t}}2 \sigma_k W_{t+1}.
+\end{align*}\]</div>
+<p>The approximate dynamics for the exogenous states remains the same for <span class="math notranslate nohighlight">\(\rho \ne 1,\)</span> but the solution for <span class="math notranslate nohighlight">\(D^*\)</span> becomes state dependent and the approximate dynamic evolution for capital is altered.</p>
+</section>
+</section>
+<section id="solving-models">
+<h2><span class="section-number">11.8. </span>Solving models<a class="headerlink" href="#solving-models" title="Link to this heading">#</a></h2>
+<p>In this section, we briefly describe one way to extend the approach that builds directly on previous second-order approaches of <span id="id37">[<a class="reference internal" href="cite.html#id449" title="Jinill Kim, Sunghyun Kim, Ernst Schaumburg, and Christopher A. Sims. Calculating and using second-order accurate solutions of discrete time dynamic equilibrium models. Journal of Economic Dynamics and Control, 32:3397-3414, 11 2008. doi:10.1016/J.JEDC.2008.02.003.">Kim <em>et al.</em>, 2008</a>]</span>, <span id="id38">[<a class="reference internal" href="cite.html#id385" title="Stephanie Schmitt-Grohé and Martın Uribe. Solving dynamic general equilibrium models using a second-order approximation to the policy function. Journal of economic dynamics and control, 28(4):755–775, 2004.">Schmitt-Grohé and Uribe, 2004</a>]</span>, and <span id="id39">[<a class="reference internal" href="cite.html#id313" title="G Lombardo and H Uhlig. A Theory of Pruning. International Economic Review, 59(4):1825–1836, jul 2018.">Lombardo and Uhlig, 2018</a>]</span>. While such methods should not be viewed as being generically applicable to nonlinear stochastic equilibrium models, we find them useful pedagogically and often as at least initial steps to understanding models that are arguably “smooth.” See <span id="id40">[<a class="reference internal" href="cite.html#id448" title="Walter Pohl, Karl Schmedders, and Ole Wilms. Higher order effects in asset pricing models with long-run risks. Journal of Finance, 73:1061-1111, 2018. doi:10.1111/jofi.12615.">Pohl <em>et al.</em>, 2018</a>]</span> for a careful study of nonlinearity in asset pricing models with recursive utility.<a class="footnote-reference brackets" href="#pohl" id="id41" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
+<p>We implement these methods for second-order approximation using the following steps.</p>
+<ol class="arabic simple">
+<li><p>Solve for <span class="math notranslate nohighlight">\({\sf q}=0\)</span> deterministic model.</p></li>
+<li><p>Take as given first and second-order approximate solutions for <span class="math notranslate nohighlight">\({\widehat C}_t - {\widehat G}_t\)</span> and <span class="math notranslate nohighlight">\({\widehat G}_{t+1} - {\widehat G}_t.\)</span>. Solve for the approximate solutions for <span class="math notranslate nohighlight">\({\widehat V}_t - {\widehat G}_t,\)</span> <span class="math notranslate nohighlight">\({\widehat V}_{t+1} - {\widehat R}_t\)</span> and <span class="math notranslate nohighlight">\(N_{t+1}.\)</span></p></li>
+<li><p>Compute the first-order expansion and solve the resulting equations following the previous literature for <span class="math notranslate nohighlight">\(D_t,\)</span> <span class="math notranslate nohighlight">\({\widehat C}_t - {\widehat G}_t,\)</span> and <span class="math notranslate nohighlight">\({\widehat G}_{t+1} - {\widehat G}_t.\)</span> When constructing these equations, use expectations computed using the probabilities induced by <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span>.  Substitute the first-order approximation for <span class="math notranslate nohighlight">\({\widehat R}_t - {\widehat G}_t.\)</span></p></li>
+<li><p>Compute the second-order expansion and solve the resulting equations following the previous literature. Again use the expectations induced by <span class="math notranslate nohighlight">\(N_{t+1}^0\)</span>. In addition, make another recursive utility adjustment expressed in terms the approximations of  <span class="math notranslate nohighlight">\({\widehat R}_t - {\widehat G}_t.\)</span></p></li>
+<li><p>Return to step 2, and repeat until convergence.</p></li>
+</ol>
+<p>Initialize this algorithm by solving the <span class="math notranslate nohighlight">\(\gamma_o=1\)</span> and <span class="math notranslate nohighlight">\(\rho = 1,\)</span> which can be solved without iteration.</p>
+<p>See the Appendices that follow for more details and formulas to use in the solution method.</p>
+<p>As a second approach we iterate over an <span class="math notranslate nohighlight">\(N_{t+1}^*\)</span> given by formula <a class="reference internal" href="#equation-restricted-probability">(11.30)</a> approximation restricted to induce an alternative probability distribution Call the approximation <span class="math notranslate nohighlight">\({\widetilde N}_{t+1}\)</span> with an induced distribution for <span class="math notranslate nohighlight">\(W_{t+1}\)</span> that is normal with conditional mean <span class="math notranslate nohighlight">\({\tilde \mu}_t\)</span> and covariance matrix <span class="math notranslate nohighlight">\({\widetilde \Sigma}\)</span>.</p>
+<p>While we discussed the approximation for resource allocation problems with recursive utility, there is a direct extension of this approach to solve a  general class stochastic equilibrium models by stacking a system of expectational-type equations expressed in part using the recursive utility stochastic discount factor that we derived.  For resource allocation problems, we expressed the first-order conditions for the planner in utility units, which simplified some formulas. Equilibrium models not derived from a planner’s problems typically use  stochastic discount factors expressed in consumption units when representing investment choices.  The approximation methods described in this chapter have a direct extension to such models.</p>
+</section>
+<hr class="docutils" />
+<section id="appendix-a-solving-the-planner-s-problem">
+<h2><span class="section-number">11.9. </span>Appendix A: Solving the planner’s problem<a class="headerlink" href="#appendix-a-solving-the-planner-s-problem" title="Link to this heading">#</a></h2>
+<p>Consider the equation:</p>
+<div class="math notranslate nohighlight">
+\[Q_t {\mathbb E} \left( N_{t+1} H_{t+1} \mid {\mathfrak A}_t \right)  + L_{t}   = 0 \]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Q_t \eqdef &amp; \hspace{.2cm}  \beta \exp\left[(1-\rho) \left( {\widehat R}_t - {\widehat G}_t \right) \right] \cr \cr 
+H_{t+1}  \eqdef &amp; \hspace{.2cm} \begin{bmatrix} \psi_{d'}^x (D_t, X_t, W_{t+1})'MX_{t+1} +  \psi_{d'}^g (D_t, X_t, W_{t+1}) \cr \psi_{x'}^x (D_t, X_t, W_{t+1})'MX_{t+1} +  \psi_{x}^g (D_t, X_t, W_{t+1}) \cr
+\end{bmatrix} \cr \cr
+L_t \eqdef &amp; \hspace{.2cm} \begin{bmatrix} (1-\beta) \exp \left[ (1-\rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_d(D_t,X_t)   \cr 
+(1-\beta) \exp \left[ (1-\rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_x(D_t, X_t) - MX_t \end{bmatrix} 
+.
+\end{align*}\]</div>
+<p>Solve for <span class="math notranslate nohighlight">\( {\widehat C}_t - {\widehat G}_t, D_t, MX_t\)</span> as a function of <span class="math notranslate nohighlight">\(X_t\)</span>.    We include the state dynamics <a class="reference internal" href="#equation-triangle">(11.31)</a> and the output constraint <a class="reference internal" href="#equation-output">(11.32)</a> when computing a solution.  The objects: <span class="math notranslate nohighlight">\({\widehat C} - {\widehat G}, D, MX\)</span> are sometimes referred to as jump variables since  we not impose initial conditions as part of a solution, in contrast to <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Our solution will entail an iteration.  We will impose a specification for <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(N\)</span> and find an approximate solution for the dynamical system.  Then given this solution, we will compute a new implied solution for <span class="math notranslate nohighlight">\(Q\)</span> and <span class="math notranslate nohighlight">\(N\)</span>.  We then iterate this until we achieve numerical convergence.   We use second-order approximations for both steps.</p>
+<section id="q-derivatives">
+<h3><span class="section-number">11.9.1. </span><span class="math notranslate nohighlight">\(Q\)</span> derivatives<a class="headerlink" href="#q-derivatives" title="Link to this heading">#</a></h3>
+<p>To construct a candidate <span class="math notranslate nohighlight">\(Q\)</span>, we use the following strategy.  Compute <span class="math notranslate nohighlight">\({\widehat V}_t^0 - {\widehat G}^0_t\)</span> and <span class="math notranslate nohighlight">\({\widehat G}_{t+1}^0-{\widehat G}_t^0\)</span> as part of the steady state, and form:</p>
+<div class="math notranslate nohighlight">
+\[Q^0_t \eqdef \beta \exp[(1-\rho) \left[\left( {\widehat V}_{t+1}^0 - {\widehat G}_{t+1}^0\right)  + \left( {\widehat G}_{t+1}^0 - {\widehat G}_t^0 \right) \right] \]</div>
+<p>Construct</p>
+<div class="math notranslate nohighlight">
+\[{\widehat R}_t^1 - {\widehat G}_t^1 = \frac 1 {1-\gamma_o} {\mathbb E} \left( \exp \left[ (1 - \gamma_o) \left( {\widehat V}_{t+1}^1 - {\widehat G}_{t+1}^1\right) +
+\left( {\widehat G}_{t+1}^1 - {\widehat G}_{t}^1\right) \right] \mid {\mathfrak A}_t \right),\]</div>
+<p>and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+Q_t^1 \eqdef &amp; \hspace{.2cm} \beta (1-\rho) Q_t^0 \left( {\widehat R}_t^1 - {\widehat G}_t^1\right) \cr
+Q_t^2 \eqdef  &amp; \hspace{.2cm} \beta (1-\rho)^2 Q_t^0 \left( {\widehat R}_t^1 - {\widehat G}_t^1\right)^2 + 
+\beta (1-\rho) Q_t^0 \left( {\widehat R}_t^2 - {\widehat G}_t^2\right).  
+\end{align*} \]</div>
+<p>We rewrite <a class="reference internal" href="#equation-first-recursive-update">(11.23)</a> as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+&amp; {\widehat V}_t^1 - {\widehat G}_t^1 =  (1-\lambda) \left({\widehat C}_t^1 - {\widehat G}_t^1 \right)  \cr
+&amp; + \left( {\frac \lambda {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o) \left[  \left( {\widehat V}_{t+1}^1  - {\widehat G}_{t+1}^1 \right) + \left( {\widehat G}_{t+1}^1 - {\widehat G}_t^1\right) \right] \right] \mid {\mathfrak A}_t \right)
+\end{align*}\]</div>
+<p>and solve this equation forward by first computing  the <span class="math notranslate nohighlight">\(\gamma_o=1\)</span> answer and then adjusting this answer  for <span class="math notranslate nohighlight">\(\gamma_o &gt; 1\)</span> analogous to the approach described in <a class="reference internal" href="#remark_solve_first">Remark 11.5</a>.</p>
+<p>Given this solution, form</p>
+<div class="math notranslate nohighlight">
+\[ {\widehat R}_t^1 - {\widehat G}_t^1 =  \left( \frac 1 \lambda \right) \left( {\widehat V}_t^1 - {\widehat G}_t^1\right)
+- \left( \frac  {1-\lambda} \lambda \right)  \left({\widehat C}_t^1 - {\widehat G}_t^1 \right).\]</div>
+<p>For the second-order, it follows from <a class="reference internal" href="#equation-second-recursive-update">(11.29)</a> that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\widehat V}_t^2 - {\widehat G}_t^2 =  \hspace{.2cm} &amp; 
+\lambda {\mathbb E} \left( N_{t+1}^0  \left[\left({\widehat V}^2_{t+1} - {\widehat G}^2_{t+1} \right) + \left( {\widehat G}^2_{t+1} -  {\widehat G}^2_{t}\right) \right] \mid {\mathfrak A}_t \right) \cr
+\hspace{.2cm} &amp; + (1- \lambda) \left({\widehat C}_t^2 - {\widehat G}_t^2 \right)  +  (1 - \rho) (1 - \lambda) \lambda  \left( {\widehat R}_t^1 - {\widehat G}_t^1 + {\widehat G}_t^1  - {\widehat C}_t \right)^2,
+\end{align}\]</div>
+<p>which we solve this equation forward under the <span class="math notranslate nohighlight">\(N^0\)</span> implied change in probability measure.  Form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+{\widehat R}_t^2 - {\widehat G}_t^2 = &amp; \left( \frac 1 \lambda \right)  \left({\widehat V}_t^2 - {\widehat G}_t^2\right) 
+- \left( \frac {1 - \lambda}{\lambda} \right) \left({\widehat C}_t^2 - {\widehat G}_t^2 \right) \cr 
+&amp; -  (1 - \rho) (1 - \lambda)   \left( {\widehat R}_t^1 - {\widehat G}_t^1 + {\widehat G}_t^1  - {\widehat C}_t \right)^2.
+\end{align} \]</div>
+</section>
+<section id="n-derivatives">
+<h3><span class="section-number">11.9.2. </span><span class="math notranslate nohighlight">\(N\)</span> derivatives<a class="headerlink" href="#n-derivatives" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[N_{t+1}^0 \eqdef \exp\left[(1 - \gamma_o) \left({\widetilde V}_{t+1}^0 - {\widetilde R}_t^0 \right) \right]   = \exp\left[  (1-\gamma_o) \left({\widehat V}_{t+1}^1 - {\widehat  R}_t^1\right) \right]\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+N_{t+1}^1 \eqdef  \hspace{.2cm} &amp; \left.  \frac d {d{\sf q}}  \exp\left[(1 - \gamma_o) \left({\widetilde V}_{t+1} - {\widetilde R}_t \right) \right] \right\vert_{{\sf q} =0} \cr  =  \hspace{.2cm} &amp; (1 - \gamma_o)  N_{t+1}^0\left( 
+{\widetilde V}_{t+1}^1  - {\widetilde R}_t^1 \right) \cr =  \hspace{.2cm} &amp; \left(\frac {1-\gamma_o} 2 \right) N_{t+1}^0 \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right).
+\end{align}\]</div>
+<p>Form:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*} 
+ {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1 = &amp; \left({\widehat V}_{t+1}^1 -  {\widehat G}_{t+1}^1\right) + 
+ \left({\widehat G}_{t+1}^1 -  {\widehat G}_{t}^1\right) - \left({\widehat R}_{t}^1 -  {\widehat G}_{t}^1\right) \cr
+ {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1 = &amp; \left({\widehat V}_{t+1}^2 -  {\widehat G}_{t+1}^2\right) + 
+ \left({\widehat G}_{t+1}^2 -  {\widehat G}_{t}^2\right) - \left({\widehat R}_{t}^2 -  {\widehat G}_{t}^2\right).
+\end{align*} \]</div>
+<p>It may be directly verified that <span class="math notranslate nohighlight">\(N_{t+1}^1\)</span> and <span class="math notranslate nohighlight">\( N_{t+1}^2\)</span>  have conditional expectations equal to zero.  Express</p>
+<div class="math notranslate nohighlight" id="equation-v-r2">
+<span class="eqno">(11.36)<a class="headerlink" href="#equation-v-r2" title="Link to this equation">#</a></span>\[\begin{align}
+ {\widehat V}_{t+1}^1 - {\widehat R}_{t}^1 = &amp;  \left({\frac 1 {1-\gamma_o}} \right) \left[\mu^0 \cdot ( W_{t+1} - \mu^0) +  {\frac 1 2} \mu^0 \cdot \mu^0\right] \cr
+ {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2 = &amp;  {\frac 1 2} \left(W_{t+1} - \mu^0 \right)'\Upsilon_2^2 \left(W_{t+1} - \mu^0 \right) -
+ {\frac 1 2} \rm{tr}\left( \Upsilon_2^2\right) \cr &amp; -   \left(W_{t+1} - \mu^0\right)' \left( \Upsilon_1^2 X_t^1 + \Upsilon_0^2\right).
+ \end{align}\]</div>
+<p>In producing these representations, we use that have conditional <span class="math notranslate nohighlight">\({\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\)</span> and  <span class="math notranslate nohighlight">\( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\)</span> have mean zero under the conditional probability distribution induced by <span class="math notranslate nohighlight">\(N_{t+1}^0.\)</span></p>
+</section>
+</section>
+<section id="appendix-b-approximation-formulas-approach-one">
+<h2><span class="section-number">11.10. </span>Appendix B: Approximation formulas  (approach one)<a class="headerlink" href="#appendix-b-approximation-formulas-approach-one" title="Link to this heading">#</a></h2>
+<p>Consider the equation:</p>
+<div class="math notranslate nohighlight">
+\[Q_t {\mathbb E} \left( N_{t+1}  H_{t+1} \mid {\mathfrak A}_t \right)  + L_{t}   = 0 .\]</div>
+<p>where <span class="math notranslate nohighlight">\( \beta \exp \left[- \rho \left( \log C_{t+1} - \log C_t \right) \right] \)</span> is absorbed into the construction of <span class="math notranslate nohighlight">\( H_{t+1} \)</span>. This is the subsystem of the equations not including the state evolution equations.</p>
+<section id="sec2">
+<span id="id42"></span><h3><span class="section-number">11.10.1. </span>Order zero<a class="headerlink" href="#sec2" title="Link to this heading">#</a></h3>
+<p>The order zero approximation of the product: <span class="math notranslate nohighlight">\( N_{t+1} Q_{t+1} H_{t+1} +  L_{t} \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[Q_t^0 N_{t+1}^0  H_{t+1}^0 + L_t^0 = 0 \]</div>
+<p>Thus the order zero approximate equation is:</p>
+<div class="math notranslate nohighlight">
+\[Q_t^0 {\mathbb E} \left[N_{t+1}^0 \left( H_{t+1}^0  \right)  \mid {\mathfrak A}_t \right] + L_{t+1}^0=  Q_t^0 H_{t+1}^0 + L_{t}^0 = 0\]</div>
+<p>since <span class="math notranslate nohighlight">\( N_{t+1}^0 \)</span> has conditional expectation equal to one.  We add to this subsystem the  <span class="math notranslate nohighlight">\({\sf q} = 0\)</span> state dynamic equation inclusive of jump variables,  and we compute a stable steady state solution.</p>
+</section>
+<section id="sec3">
+<span id="id43"></span><h3><span class="section-number">11.10.2. </span>Order one<a class="headerlink" href="#sec3" title="Link to this heading">#</a></h3>
+<p>The order one approximation of the product: <span class="math notranslate nohighlight">\( Q_t N_{t+1}  H_{t+1}+  L_{t} \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[Q_t^1 N_{t+1}^0   H_{t+1}^0  + Q_t^0 N_{t+1}^1 H_{t+1}^0 + Q_t^0 N_{t+1}^0  H_{t+1}^1 +  L_{t}^1 .\]</div>
+<p>Thus the order one approximate equation is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+&amp; Q_t^0 {\mathbb E} \left( N_{t+1}^1   H_{t+1}^0    + N_{t+1}^0 H_{t+1}^1  \mid {\mathfrak A}_t \right)
++ Q_t^1 H_{t+1}^0    + L_t^1 \\
+&amp; = Q_t^0 {\mathbb E} \left(  N_{t+1}^0 H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  L_t^1 \\
+&amp; = 0
+\end{align}\end{split}\]</div>
+<p>where we used the implication that <span class="math notranslate nohighlight">\( {\mathbb E} \left( N_{t+1}^1  \mid {\mathfrak A}_t \right) = 0.\)</span></p>
+</section>
+<section id="id44">
+<h3><span class="section-number">11.10.3. </span>Order two<a class="headerlink" href="#id44" title="Link to this heading">#</a></h3>
+<p>The order two approximation of the product: <span class="math notranslate nohighlight">\( N_{t+1} Q_{t+1} H_{t+1} + L_{t+1} \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+&amp; Q_t^0 N_{t+1}^0 H_{t+1}^2 + Q_t^0 N_{t+1}^2H_{t+1}^0  + 
+2 Q_t^0 N_{t+1}^1 H_{t+1}^1 + L_t^2 \\
++ 
+&amp; 2 N_{t+1}^1  Q_{t}^1 H_{t+1}^0  +   2 N_{t+1}^0 Q_{t}^1 H_{t+1}^1 + N_{t+1}^0 Q_{t}^2 H_{t+1}^0 
+\end{align}\end{split}\]</div>
+<p>The terms <span class="math notranslate nohighlight">\( Q_t^0 N_{t+1}^2H_{t+1}^0\)</span> and <span class="math notranslate nohighlight">\(2 N_{t+1}^1  Q_{t}^1 H_{t+1}^0\)</span> have conditional expectation equal to zero.   Thus the approximating equation is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+&amp; Q_t^0 {\mathbb E} \left( N_{t+1}^0 H_{t+1}^2 \mid {\mathfrak A}_t \right) +
+L_t^2 \cr &amp; + 2Q_t^0 {\mathbb E}\left( N_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) + 
+2 Q_t^1 {\mathbb E} \left(N_{t+1}^0  H_{t+1}^1 \mid {\mathfrak A}_t \right) + H_{t+1}^0 Q_t^2  {\mathbb E} \left(  N_{t+1}^0 \mid {\mathfrak A}_t \right) \cr
+&amp; = 0.
+\end{align}   \]</div>
+<p>To elaborate on  the contributions in the second line,
+express <span class="math notranslate nohighlight">\( H_{t+1}^1 \)</span>  as</p>
+<div class="math notranslate nohighlight" id="equation-hplus1">
+<span class="eqno">(11.37)<a class="headerlink" href="#equation-hplus1" title="Link to this equation">#</a></span>\[H_{t+1}^1  = \Theta_0^1 + \Theta_1^1 X_t^1 + \Theta_2^1 \left( W_{t+1} - \mu^0 \right). \]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} 
+2Q_t^0 {\mathbb E}\left( N_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) &amp; = (1-\gamma)  
+  Q_t^0 {\mathbb E} \left[ N_{t+1}^0   \left( {\widehat V}_{t+1}^2 - {\widehat R}_{t}^2\right)H_{t+1}^1 \mid{\mathfrak A}_t \right], \\ 
+&amp; = 2(\gamma_o - 1) Q_t^o \Theta_2^1 \left[  \Upsilon_1^2 X_t^1  + \Upsilon_0^2\right] \\
+2 Q_t^1 {\mathbb E} \left(N_{t+1}^0  H_{t+1}^1 \mid {\mathfrak A}_t \right) &amp; = 
+2 Q_t^0 \beta (1- \rho) \left({\widehat R}_t^1 - {\widehat G}_t^1 \right)\left( \Theta_0^1 + \Theta_1^1 X_t^1 \right), \\
+H_{t+1}^0 Q_t^2 {\mathbb E} \left(  N_{t+1}^0   \mid {\mathfrak A}_t \right) &amp; =  H_{t+1}^0 Q_t^0  \left[\beta (1-\rho)^2  \left( {\widehat R}_t^1 - {\widehat G}_t^1\right)^2 + 
+\beta (1-\rho)  \left( {\widehat R}_t^2 - {\widehat G}_t^2\right)\right].
+\end{align} \end{split}\]</div>
+<p>The formula for the first of these terms follows from <a class="reference internal" href="#equation-v-r2">(11.36)</a> and <a class="reference internal" href="#equation-hplus1">(11.37)</a>, along with fact the third central moments of normals are zero.</p>
+<p>We add to this second-order subsystem, the second-order approximation of the state dynamics inclusive of the jump variables.  We substitute in the solution for the first-order approximation for the jump variables into both the first and second-order approximate state dynamics.  In solving the second-order jump variable adjustment we use expectations induced by <span class="math notranslate nohighlight">\( N_{t+1}^0 \)</span> zero throughout under which <span class="math notranslate nohighlight">\(W_{t+1} \)</span> is conditionally normally distributed with mean <span class="math notranslate nohighlight">\( \mu^0 \)</span> and covariance <span class="math notranslate nohighlight">\( I \)</span>.</p>
+</section>
+</section>
+<section id="appendix-c-approximation-formulas-approach-two">
+<h2><span class="section-number">11.11. </span>Appendix C: Approximation formulas  (approach two)<a class="headerlink" href="#appendix-c-approximation-formulas-approach-two" title="Link to this heading">#</a></h2>
+<p>In this approach we use the same order zero approximation.  For the order one approximation, we use the formula <a class="reference internal" href="#equation-restricted-probability">(11.30)</a> for <span class="math notranslate nohighlight">\({\widetilde N}_{t+1},\)</span> which approximates  <span class="math notranslate nohighlight">\(N_{t+1}^*,\)</span> in conjunction with:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8c35db3b-aa6f-4ae9-98eb-4d2b45655932">
+<span class="eqno">(11.38)<a class="headerlink" href="#equation-8c35db3b-aa6f-4ae9-98eb-4d2b45655932" title="Permalink to this equation">#</a></span>\[\begin{align}
+Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  L_t^1 = 0.
+\end{align}\]</div>
+<p>From formula <a class="reference internal" href="#equation-v-r2">(11.36)</a>, it follows that under the <span class="math notranslate nohighlight">\({\widetilde N}_{t+1},\)</span> induced change in probability, <span class="math notranslate nohighlight">\(W_{t+1}\)</span>
+is normally distributed with conditional mean</p>
+<div class="math notranslate nohighlight">
+\[\mu^0 +  (1-\gamma_o) \left(\Upsilon_2^2\right)^{-1} \left(\Upsilon_1^2X_t^1 + \Upsilon_0^2\right) ,\]</div>
+<p>and conditional precision:</p>
+<div class="math notranslate nohighlight">
+\[(\gamma_o - 1) \Upsilon_2^2 + {\mathbb I}.  \]</div>
+<p>For the order two approximation, we use:</p>
+<div class="math notranslate nohighlight">
+\[Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1}  H_{t+1}^2  \mid {\mathfrak A}_t \right) + L_t^2 
++ 2 Q_t^1  {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + H_{t+1}^0 Q_t^2 = 0 . \]</div>
+</section>
+<section id="appendix-d-parameter-values">
+<h2><span class="section-number">11.12. </span>Appendix D: Parameter values<a class="headerlink" href="#appendix-d-parameter-values" title="Link to this heading">#</a></h2>
+<p>To facilitate a comparison to a global solution method, we write down a discrete-time approximation to a continuous time version of such an economy. (See Section 4.4 of <span id="id45">[<a class="reference internal" href="cite.html#id444" title="Lars Peter Hansen, Paymon Khorrami, and Fabrice Tourre. Comparative valuation dynamics in production economies: long-run uncertainty, heterogeneity, and market frictions. Annual Review of Financial Economics, 2024.">Hansen <em>et al.</em>, 2024</a>]</span> for a continuous-time benchmark model that our discrete-time system approximates.)  The parameter settings are:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(\eta_k\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\phi\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\beta_k\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\beta_1\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\beta_2 \)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\mu_2\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>.04</p></td>
+<td class="text-center"><p>8</p></td>
+<td class="text-center"><p>.04</p></td>
+<td class="text-center"><p>.056</p></td>
+<td class="text-center"><p>.194</p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(6.3\times10^{-6}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\begin{bmatrix} \sigma_k \cr
+\sigma_1 \cr
+\sigma_2 
+\end{bmatrix} = 
+\sqrt{12} \begin{bmatrix}    .92 &amp;   .40  &amp;  0 \cr
+ 0 &amp;  5.7 &amp;  0  \cr
+0 &amp;  0 &amp;  .00031 
+\end{bmatrix} 
+\end{align*}\]</div>
+<p>The numbers for  <span class="math notranslate nohighlight">\(\eta_k, \phi, \beta_1,\)</span> <span class="math notranslate nohighlight">\(\sigma_k\)</span> and <span class="math notranslate nohighlight">\(\sigma_1\)</span> are such that, when multiplied by stochastic volatility, they match the parameters from <span id="id46">[<a class="reference internal" href="cite.html#id314" title="Lars Peter Hansen and Thomas J. Sargent. Macroeconomic uncertainty prices when beliefs are tenuous. Journal of Econometrics, 223(1):222-250, 2021.">Hansen and Sargent, 2021</a>]</span>. In particular, the constant <span class="math notranslate nohighlight">\(Z^2\)</span> which scales our <span class="math notranslate nohighlight">\(\sigma_k\)</span> to match  is <span class="math notranslate nohighlight">\(7.6\times10^{-6},\)</span> which is the 67th percentile of our <span class="math notranslate nohighlight">\(Z^2\)</span> distribution. . While <span id="id47">[<a class="reference internal" href="cite.html#id314" title="Lars Peter Hansen and Thomas J. Sargent. Macroeconomic uncertainty prices when beliefs are tenuous. Journal of Econometrics, 223(1):222-250, 2021.">Hansen and Sargent, 2021</a>]</span> use a lower triangular representation for the two-by-two right block of</p>
+<div class="math notranslate nohighlight">
+\[        \begin{bmatrix}
+       \sigma_k \cr \sigma_1 \end{bmatrix} ,\]</div>
+<p>we use an observationally equivalent upper triangular representation for most of the results. Finally, the numbers for <span class="math notranslate nohighlight">\(\beta_2\)</span> and <span class="math notranslate nohighlight">\(\sigma_2\)</span> come from <span id="id48">[<a class="reference internal" href="cite.html#id316" title="Frank Schorfheide, Dongho Song, and Amir Yaron. Identifying long-run risks: a bayesian mixed-frequency approach. Econometrica, 86:617-654, 2018. doi:10.3982/ecta14308.">Schorfheide <em>et al.</em>, 2018</a>]</span>, but they are adjusted for approximation purposes as described in Appendix A <span id="id49">[<a class="reference internal" href="cite.html#id444" title="Lars Peter Hansen, Paymon Khorrami, and Fabrice Tourre. Comparative valuation dynamics in production economies: long-run uncertainty, heterogeneity, and market frictions. Annual Review of Financial Economics, 2024.">Hansen <em>et al.</em>, 2024</a>]</span>.    In both cases, we use the medians of their econometric evidence as input into our analysis.</p>
+<!-- ```{bibliography}
+:filter: docname in docnames
+``` -->
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="local" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id21">1</a><span class="fn-bracket">]</span></span>
+<p>In general, this exponential martingale formula produces a local martingale with conditional expectations that might decline over time.  There are a variety of sufficient conditions that may be checked to verify that the constructed process is actually a martingale with unit expectation.</p>
+</aside>
+<aside class="footnote brackets" id="footnote-lombardouhlig" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id27">2</a><span class="fn-bracket">]</span></span>
+<p><span id="id50">[<a class="reference internal" href="cite.html#id313" title="G Lombardo and H Uhlig. A Theory of Pruning. International Economic Review, 59(4):1825–1836, jul 2018.">Lombardo and Uhlig, 2018</a>]</span> provides a discussion of how their approach builds on more general perturbation methods as discussed by <span id="id51">[<a class="reference internal" href="cite.html#id447" title="M.H. Holmes. Introduction to Perturbation Methods. Texts in Applied Mathematics. Springer New York, 2012. ISBN 9781461454779. URL: https://books.google.com/books?id=EX5iNglbqB4C.">Holmes, 2012</a>]</span> and <span id="id52">[<a class="reference internal" href="cite.html#id446" title="Kenneth L Judd. Numerical Methods in Economics. MIT Press, 1998.">Judd, 1998</a>]</span>.</p>
+</aside>
+<aside class="footnote brackets" id="footnote1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id28">3</a><span class="fn-bracket">]</span></span>
+<p>See, for instance, <span id="id53">[<a class="reference internal" href="cite.html#id385" title="Stephanie Schmitt-Grohé and Martın Uribe. Solving dynamic general equilibrium models using a second-order approximation to the policy function. Journal of economic dynamics and control, 28(4):755–775, 2004.">Schmitt-Grohé and Uribe, 2004</a>]</span>.</p>
+</aside>
+<aside class="footnote brackets" id="footnotehhl" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id31">4</a><span class="fn-bracket">]</span></span>
+<p>Consistent with overall message of the paper, the <span id="id54">[<a class="reference internal" href="cite.html#id201" title="Lars Peter Hansen, John C. Heaton, and Nan Li. Consumption Strikes Back? Measuring Long‐Run Risk. Journal of Political Economy, 116(2):260–302, 2008. URL: http://www.journals.uchicago.edu/doi/10.1086/588200, doi:10.1086/588200.">Hansen <em>et al.</em>, 2008</a>]</span> predictability evidence turned out to be “fragile” and was modified and updated in <span id="id55">[<a class="reference internal" href="cite.html#id450" title="Lars Peter Hansen and Thomas J. Sargent. Macroeconomic uncertainty prices when beliefs are tenuous. Journal of Econometrics, 223:222-250, 2021. doi:10.1016/j.jeconom.2019.11.010.">Hansen and Sargent, 2021</a>]</span> Appendix B. This same appendix suggests a way to deduce a statistical approximation to the first order dynamics of <span id="id56">[<a class="reference internal" href="cite.html#id24" title="Ravi Bansal and Amir Yaron. Risks for the long run: a potential resolution of asset pricing puzzles. Journal of Finance, 59(4):1481-1509, 2004.">Bansal and Yaron, 2004</a>]</span> from a more general VAR representation of the consumption dynamics.</p>
+</aside>
+<aside class="footnote brackets" id="pohl" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id41">5</a><span class="fn-bracket">]</span></span>
+<p><span id="id57">[<a class="reference internal" href="cite.html#id448" title="Walter Pohl, Karl Schmedders, and Ole Wilms. Higher order effects in asset pricing models with long-run risks. Journal of Finance, 73:1061-1111, 2018. doi:10.1111/jofi.12615.">Pohl <em>et al.</em>, 2018</a>]</span> provide examples of when log-linear or local methods of computation fail to provide good approximations.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="decision_book_draft.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Risk, Ambiguity, and Misspecification</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="example_out_c6_v2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Likelihoods</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-utility-valuation-process">11.2. Recursive utility valuation process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-recursion">11.2.1. Basic recursion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preference-for-robustness">11.2.2. Preference for robustness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-process">11.2.3. Stochastic discount factor process</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-limit">11.3. Continuous-time limit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-approximation">11.3.1. Discrete-time approximation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robustness-to-misspecification">11.3.2. Robustness to misspecification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-pricing">11.3.3. Uncertainty pricing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-noise-expansion-of-dynamic-stochastic-equilibria">11.4. Small noise expansion of dynamic stochastic equilibria</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-state-dynamics">11.4.1. Approximate state dynamics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incorporating-preferences-with-enhanced-uncertainty-concerns">11.5. Incorporating preferences with enhanced uncertainty concerns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-zero">11.5.1. Order-zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-one">11.5.2. Order-one</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-two">11.5.3. Order two</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-discount-factor-approximation">11.6. Stochastic discount factor approximation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-1">11.6.1. Approach 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-2">11.6.2. Approach 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-a-planner-s-problem-with-recursive-utility">11.7. Solving a planner’s problem with recursive utility</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-economy-with-long-run-uncertainty">11.7.1. An example economy with long-run uncertainty</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-approximation-when-rho-1">11.7.2. First-order approximation when <span class="math notranslate nohighlight">\(\rho=1\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-approximation-when-rho-1">11.7.3. Second-order approximation when <span class="math notranslate nohighlight">\(\rho = 1\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-models">11.8. Solving models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-solving-the-planner-s-problem">11.9. Appendix A: Solving the planner’s problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-derivatives">11.9.1. <span class="math notranslate nohighlight">\(Q\)</span> derivatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#n-derivatives">11.9.2. <span class="math notranslate nohighlight">\(N\)</span> derivatives</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-approximation-formulas-approach-one">11.10. Appendix B: Approximation formulas  (approach one)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec2">11.10.1. Order zero</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sec3">11.10.2. Order one</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">11.10.3. Order two</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-c-approximation-formulas-approach-two">11.11. Appendix C: Approximation formulas  (approach two)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-d-parameter-values">11.12. Appendix D: Parameter values</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
