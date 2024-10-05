@@ -557,10 +557,21 @@ Let ${\mathfrak A}$ be a subsigma algebra of ${\mathfrak F}$, and let
 
 ```{math}
 :label: eqn:bigAfilt
-{\mathfrak A}_t = \left\{ \Lambda_t \in {\mathfrak F} : \Lambda_t = \{ \omega \in \Omega : {\mathbb S}^t(\omega) \in \Lambda \} \textrm{ for some } \Lambda \in {\mathfrak A}\right\}.
+{\mathfrak A}_t = \left\{ \Lambda_t \in {\mathfrak F} : \Lambda_t = \{ \omega \in \Omega : {\mathbb S}^t(\omega) \in \Lambda \} \textrm{ for some } \Lambda \in {\mathfrak F}\right\}.
 ```
 
+
+<span style="color: orange;">in the expression above, shouldn't the last sigma algebra be </span> $\textcolor{orange}{\mathfrak{A}?}$
+
+
+
 We assume that $\{ {\mathfrak A}_t : - \infty < t < + \infty \}$ is a nondecreasing *filtration* <span style="color: orange;">define filtration? </span>. If the original measurement function $X$ is ${\mathfrak A}$-measurable, then $X_t$ is ${\mathfrak A}_t$-measurable. Furthermore, $X_{t-j}$ is <span style="text-decoration: line-through; text-decoration-color: green;">in</span> ${\mathfrak A}_t$<span style="color: green;">-measurable</span> for all $j \ge 0$. The set ${\mathfrak A}_t$ depicts information available at date $t$, including past information. Invariant events in ${\mathfrak I}$ are contained in ${\mathfrak A}_t$ for all $t$.   
+
+
+<span style="color: orange;"> I think a relevant consequence of this construction is that the probability of $[ X_t,X_{t+1},\dots, X_{t+\ell}]$ conditional on $\mathfrak{A}_t$ does not depend on $t.$ It could be worth highlighting this, as it clarifies why you sometimes drop the time index in the following chapters.
+</span>
+
+
 
 <span style="color: orange;"> How about the following example? 
 </span>

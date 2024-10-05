@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -1037,34 +1037,67 @@ We use homogeneity to rewrite the utility recursion:</p>
 <p>The first-order conditions for <span class="math notranslate nohighlight">\(D\)</span> are:</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}
-&amp;(1-\beta) \exp\left[ (1- \rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_d( D_t, X_t) 
+&amp;(1-\beta) \exp\left[ (1- \rho) {\widehat C}_t \right] \kappa_d( D_t, X_t) 
 \cr &amp;+ 
-\beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+\beta \exp\left[ (1 - \rho){\widehat R}_t \right] 
 {\mathbb E} 
-\left(
-\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{d'}^x ( D_t, X_t, W_{t+1} )' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
-&amp;+  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+\left(N_{t+1}^* \psi_{d'}^x ( D_t, X_t, W_{t+1} )' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
+&amp;+  \beta \exp\left[ (1 - \rho) {\widehat R}_t  \right] 
 {\mathbb E} 
-\left(
-\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat G}_t \right) \right] \psi_{d'}^g ( D_t, X_t, W_{t+1} ) \mid {\mathfrak A}_t \right)  \cr
+\left(N_{t+1}^*
+\psi_{d'}^g ( D_t, X_t, W_{t+1} )'MG_{t+1} \mid {\mathfrak A}_t \right)  \cr
 &amp; = 0.
 \end{align*}\]</div>
-<p>where <span class="math notranslate nohighlight">\(MX_{t+1}\)</span> is the co-state, or the partial derivation of next period’s value function evaluated at the next period’s state vector.</p>
+<p>where <span class="math notranslate nohighlight">\(MX_{t+1}\)</span> and <span class="math notranslate nohighlight">\(MG_t\)</span> are the co-states, or the implicit multipliers one the state evolutions.  Recall that <span class="math notranslate nohighlight">\(N_{t+1}^* =  \exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right]\)</span> used for making an uncertainty adjustment in valuation.</p>
 <p>In addition, we solve a forward-looking co-state equation given by</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}
-&amp; MX_t =  (1 - \beta) \exp\left[ (1 - \rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_{x}(D_t, X_t)   \cr
-&amp; + \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+&amp; \begin{bmatrix} MX_t \cr MG_t \end{bmatrix}  =  (1 - \beta) \exp\left[ (1 - \rho) {\widehat C}_t  \right] \begin{bmatrix} \kappa_{x}(D_t, X_t) \cr 1 \end{bmatrix}   \cr
+&amp; + \beta \exp\left[ (1 - \rho) {\widehat R}_t \right] \times \cr
+&amp;
 {\mathbb E} 
 \left(
-\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{x'}^x ( D_t, X_t, W_{t+1} )' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
-&amp; +  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
-{\mathbb E} 
-\left(
-\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{x}^g ( D_t, X_t, W_{t+1} ) \mid {\mathfrak A}_t \right).  
+N_{t+1}^*
+\begin{bmatrix} 
+\psi_{x'}^x ( D_t, X_t, W_{t+1} )' &amp; \psi_{x}^g ( D_t, X_t, W_{t+1} ) \cr 
+\psi_{x'}^g (D_t, X_t, W_{t+1})' &amp; 1 \end{bmatrix} \begin{bmatrix} MX_{t+1} \cr MG_{t+1} \end{bmatrix} \mid {\mathfrak A}_t \right).  
 \end{align*} \]</div>
-<p>Recall that <span class="math notranslate nohighlight">\(N_{t+1}^* =  \exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right].\)</span>  This allows us to compute the conditional expectations using the uncertainty adjusted transition probability.</p>
-<p>The solution method we use  finds  <span class="math notranslate nohighlight">\(MX_t\)</span> and <span class="math notranslate nohighlight">\(D_t\)</span> as time-invariant functions of <span class="math notranslate nohighlight">\(X_t\)</span> that make the dynamic system behave in a stochastically stable manner.</p>
+<p>For computational purposes, we transform the co-states as follows:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\widetilde{MX}_t  = &amp; \exp\left[ (\rho-1) {\widehat G}_t  \right] MX_t \cr
+\widetilde{MG}_t  = &amp; \exp\left[ (\rho-1) {\widehat G}_t  \right] MG_t 
+\end{align*} \]</div>
+<p>We write the transformed first-order conditions as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+&amp;(1-\beta) \exp\left[ (1- \rho) \left( {\widehat C}_t  - {\widehat G}_t \right) \right] \kappa_d( D_t, X_t) 
+\cr &amp;+ 
+\beta \exp\left[ (1 - \rho)\left( {\widehat R}_t - {\widehat G}_t \right)  \right] \times \cr
+&amp; {\mathbb E} 
+\left[N_{t+1}^*
+\exp\left[(1 - \rho) \left({\widehat G}_{t+1}  - {\widehat G}_t \right) \right]
+\psi_{d'}^x ( D_t, X_t, W_{t+1} )' \widetilde{MX}_{t+1} \mid {\mathfrak A}_t \right] 
+\cr
+&amp;+  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t -{\widehat G}_t \right)   \right] \times \cr
+&amp; {\mathbb E} 
+\left( N_{t+1}^* \exp\left[(1 - \rho) \left({\widehat G}_{t+1}  - {\widehat G}_t \right) \right] \psi_{d'}^g ( D_t, X_t, W_{t+1} )'\widetilde{MG}_{t+1} \mid {\mathfrak A}_t \right)  
+\cr
+&amp; = 0.
+\end{align*}\]</div>
+<p>Similarly the transformed co-state equation is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+ \begin{bmatrix} \widetilde{MX}_t \cr \widetilde{MG}_t \end{bmatrix}  =  &amp; (1 - \beta) \exp\left[ (1 - \rho) \left( {\widehat C}_t  
+-{\widehat G}_t \right) \right] \begin{bmatrix} \kappa_{x}(D_t, X_t) \cr 1 \end{bmatrix}   \cr
+&amp; + \beta \exp\left[ (1 - \rho) \left({\widehat R}_t  - {\widehat G}_t \right) \right] 
+{\mathbb E} 
+\left(
+N_{t+1}^* \exp\left[(1 - \rho) \left({\widehat G}_{t+1}  - {\widehat G}_t \right) \right]  \right. \cr
+&amp; \times \left. \begin{bmatrix} 
+\psi_{x'}^x ( D_t, X_t, W_{t+1} )' &amp; \psi_{x}^g ( D_t, X_t, W_{t+1} ) \cr 
+\psi_{x'}^g (D_t, X_t, W_{t+1})' &amp; 1 \end{bmatrix} \begin{bmatrix} \widetilde{MX}_{t+1} \cr \widetilde{MG}_{t+1} \end{bmatrix} \mid {\mathfrak A}_t \right) .  
+\end{align*} \]</div>
 <section id="an-example-economy-with-long-run-uncertainty">
 <h3><span class="section-number">11.7.1. </span>An example economy with long-run uncertainty<a class="headerlink" href="#an-example-economy-with-long-run-uncertainty" title="Link to this heading">#</a></h3>
 <p>Consider an AK model with recursive utility and adjustment costs.</p>
@@ -1329,8 +1362,8 @@ H_{t+1}^0 Q_t^2 {\mathbb E} \left(  N_{t+1}^0   \mid {\mathfrak A}_t \right) &am
 <section id="appendix-c-approximation-formulas-approach-two">
 <h2><span class="section-number">11.11. </span>Appendix C: Approximation formulas  (approach two)<a class="headerlink" href="#appendix-c-approximation-formulas-approach-two" title="Link to this heading">#</a></h2>
 <p>In this approach we use the same order zero approximation.  For the order one approximation, we use the formula <a class="reference internal" href="#equation-restricted-probability">(11.30)</a> for <span class="math notranslate nohighlight">\({\widetilde N}_{t+1},\)</span> which approximates  <span class="math notranslate nohighlight">\(N_{t+1}^*,\)</span> in conjunction with:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-866a2810-64b1-4030-b2af-fc50b0a94eda">
-<span class="eqno">(11.38)<a class="headerlink" href="#equation-866a2810-64b1-4030-b2af-fc50b0a94eda" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-71e27deb-bc17-4c62-9851-4611678e403d">
+<span class="eqno">(11.38)<a class="headerlink" href="#equation-71e27deb-bc17-4c62-9851-4611678e403d" title="Permalink to this equation">#</a></span>\[\begin{align}
 Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  L_t^1 = 0.
 \end{align}\]</div>
 <p>From formula <a class="reference internal" href="#equation-v-r2">(11.36)</a>, it follows that under the <span class="math notranslate nohighlight">\({\widetilde N}_{t+1},\)</span> induced change in probability, <span class="math notranslate nohighlight">\(W_{t+1}\)</span>

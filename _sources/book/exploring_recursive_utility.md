@@ -845,20 +845,20 @@ $ {\widehat R}_t - {\widehat V}_t.$
 The first-order conditions for $D$ are:
 ```{math}
 \begin{align*}
-&(1-\beta) \exp\left[ (1- \rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_d( D_t, X_t) 
+&(1-\beta) \exp\left[ (1- \rho) {\widehat C}_t \right] \kappa_d( D_t, X_t) 
 \cr &+ 
-\beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+\beta \exp\left[ (1 - \rho){\widehat R}_t \right] 
 {\mathbb E} 
-\left(
-\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{d'}^x ( D_t, X_t, W_{t+1} )' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
-&+  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+\left(N_{t+1}^* \psi_{d'}^x ( D_t, X_t, W_{t+1} )' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
+&+  \beta \exp\left[ (1 - \rho) {\widehat R}_t  \right] 
 {\mathbb E} 
-\left(
-\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat G}_t \right) \right] \psi_{d'}^g ( D_t, X_t, W_{t+1} ) \mid {\mathfrak A}_t \right)  \cr
+\left(N_{t+1}^*
+\psi_{d'}^g ( D_t, X_t, W_{t+1} )'MG_{t+1} \mid {\mathfrak A}_t \right)  \cr
 & = 0.
 \end{align*}
 ```
-where $MX_{t+1}$ is the co-state, or the partial derivation of next period's value function evaluated at the next period's state vector. 
+where $MX_{t+1}$ and $MG_t$ are the co-states, or the implicit multipliers one the state evolutions.  Recall that $N_{t+1}^* =  \exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right]$ used for making an uncertainty adjustment in valuation.    
+
 %Multiply both sides by $ \exp\left[ (1 - \rho) \left({\widehat V}_t - {\widehat G}_t \right) \right] $ to get
 %```{math}
 %\begin{align*}
@@ -879,20 +879,67 @@ where $MX_{t+1}$ is the co-state, or the partial derivation of next period's val
 In addition, we solve a forward-looking co-state equation given by 
 ```{math}
 \begin{align*}
-& MX_t =  (1 - \beta) \exp\left[ (1 - \rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_{x}(D_t, X_t)   \cr
-& + \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+& \begin{bmatrix} MX_t \cr MG_t \end{bmatrix}  =  (1 - \beta) \exp\left[ (1 - \rho) {\widehat C}_t  \right] \begin{bmatrix} \kappa_{x}(D_t, X_t) \cr 1 \end{bmatrix}   \cr
+& + \beta \exp\left[ (1 - \rho) {\widehat R}_t \right] \times \cr
+&
 {\mathbb E} 
 \left(
-\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{x'}^x ( D_t, X_t, W_{t+1} )' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
-& +  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
-{\mathbb E} 
-\left(
-\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{x}^g ( D_t, X_t, W_{t+1} ) \mid {\mathfrak A}_t \right).  
+N_{t+1}^*
+\begin{bmatrix} 
+\psi_{x'}^x ( D_t, X_t, W_{t+1} )' & \psi_{x}^g ( D_t, X_t, W_{t+1} ) \cr 
+\psi_{x'}^g (D_t, X_t, W_{t+1})' & 1 \end{bmatrix} \begin{bmatrix} MX_{t+1} \cr MG_{t+1} \end{bmatrix} \mid {\mathfrak A}_t \right).  
 \end{align*} 
 ```
-Recall that $N_{t+1}^* =  \exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right].$  This allows us to compute the conditional expectations using the uncertainty adjusted transition probability.  
 
-The solution method we use  finds  $MX_t$ and $D_t$ as time-invariant functions of $X_t$ that make the dynamic system behave in a stochastically stable manner.  
+
+For computational purposes, we transform the co-states as follows:
+\begin{align*}
+\widetilde{MX}_t  = & \exp\left[ (\rho-1) {\widehat G}_t  \right] MX_t \cr
+\widetilde{MG}_t  = & \exp\left[ (\rho-1) {\widehat G}_t  \right] MG_t 
+\end{align*} 
+We write the transformed first-order conditions as: 
+\begin{align*}
+&(1-\beta) \exp\left[ (1- \rho) \left( {\widehat C}_t  - {\widehat G}_t \right) \right] \kappa_d( D_t, X_t) 
+\cr &+ 
+\beta \exp\left[ (1 - \rho)\left( {\widehat R}_t - {\widehat G}_t \right)  \right] \times \cr
+& {\mathbb E} 
+\left[N_{t+1}^*
+\exp\left[(1 - \rho) \left({\widehat G}_{t+1}  - {\widehat G}_t \right) \right]
+\psi_{d'}^x ( D_t, X_t, W_{t+1} )' \widetilde{MX}_{t+1} \mid {\mathfrak A}_t \right] 
+\cr
+&+  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t -{\widehat G}_t \right)   \right] \times \cr
+& {\mathbb E} 
+\left( N_{t+1}^* \exp\left[(1 - \rho) \left({\widehat G}_{t+1}  - {\widehat G}_t \right) \right] \psi_{d'}^g ( D_t, X_t, W_{t+1} )'\widetilde{MG}_{t+1} \mid {\mathfrak A}_t \right)  
+\cr
+& = 0.
+\end{align*}
+Similarly the transformed co-state equation is:
+```{math}
+\begin{align*}
+ \begin{bmatrix} \widetilde{MX}_t \cr \widetilde{MG}_t \end{bmatrix}  =  & (1 - \beta) \exp\left[ (1 - \rho) \left( {\widehat C}_t  
+-{\widehat G}_t \right) \right] \begin{bmatrix} \kappa_{x}(D_t, X_t) \cr 1 \end{bmatrix}   \cr
+& + \beta \exp\left[ (1 - \rho) \left({\widehat R}_t  - {\widehat G}_t \right) \right] 
+{\mathbb E} 
+\left(
+N_{t+1}^* \exp\left[(1 - \rho) \left({\widehat G}_{t+1}  - {\widehat G}_t \right) \right]  \right. \cr
+& \times \left. \begin{bmatrix} 
+\psi_{x'}^x ( D_t, X_t, W_{t+1} )' & \psi_{x}^g ( D_t, X_t, W_{t+1} ) \cr 
+\psi_{x'}^g (D_t, X_t, W_{t+1})' & 1 \end{bmatrix} \begin{bmatrix} \widetilde{MX}_{t+1} \cr \widetilde{MG}_{t+1} \end{bmatrix} \mid {\mathfrak A}_t \right) .  
+\end{align*} 
+```
+
+
+
+
+
+
+
+
+
+%\exp\left[(1 - \rho) \left(\widehat G}_{t+1}  - {\widehat G}_t \right) \right]
+
+
+%The solution method we use  finds  $MX_t$ and $D_t$ as time-invariant functions of $X_t$ that make the dynamic system behave in a stochastically stable manner.  
 
 ### An example economy with long-run uncertainty
 

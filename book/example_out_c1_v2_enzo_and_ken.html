@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -827,8 +827,11 @@ for which <span class="math notranslate nohighlight">\({\mathbb S}\)</span> is m
 <p>is well defined for negative values of <span class="math notranslate nohighlight">\(t\)</span>, restrictions <a class="reference internal" href="#equation-rest-restrictback">(2.6)</a> allow us to construct a ``two-sided’’ process that has both an infinite past and an infinite future.</p>
 <p>Let <span class="math notranslate nohighlight">\({\mathfrak A}\)</span> be a subsigma algebra of <span class="math notranslate nohighlight">\({\mathfrak F}\)</span>, and let</p>
 <div class="math notranslate nohighlight" id="equation-eqn-bigafilt">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-eqn-bigafilt" title="Link to this equation">#</a></span>\[{\mathfrak A}_t = \left\{ \Lambda_t \in {\mathfrak F} : \Lambda_t = \{ \omega \in \Omega : {\mathbb S}^t(\omega) \in \Lambda \} \textrm{ for some } \Lambda \in {\mathfrak A}\right\}.\]</div>
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-eqn-bigafilt" title="Link to this equation">#</a></span>\[{\mathfrak A}_t = \left\{ \Lambda_t \in {\mathfrak F} : \Lambda_t = \{ \omega \in \Omega : {\mathbb S}^t(\omega) \in \Lambda \} \textrm{ for some } \Lambda \in {\mathfrak F}\right\}.\]</div>
+<p><span style="color: orange;">in the expression above, shouldn’t the last sigma algebra be </span> <span class="math notranslate nohighlight">\(\textcolor{orange}{\mathfrak{A}?}\)</span></p>
 <p>We assume that <span class="math notranslate nohighlight">\(\{ {\mathfrak A}_t : - \infty &lt; t &lt; + \infty \}\)</span> is a nondecreasing <em>filtration</em> <span style="color: orange;">define filtration? </span>. If the original measurement function <span class="math notranslate nohighlight">\(X\)</span> is <span class="math notranslate nohighlight">\({\mathfrak A}\)</span>-measurable, then <span class="math notranslate nohighlight">\(X_t\)</span> is <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span>-measurable. Furthermore, <span class="math notranslate nohighlight">\(X_{t-j}\)</span> is <span style="text-decoration: line-through; text-decoration-color: green;">in</span> <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span><span style="color: green;">-measurable</span> for all <span class="math notranslate nohighlight">\(j \ge 0\)</span>. The set <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> depicts information available at date <span class="math notranslate nohighlight">\(t\)</span>, including past information. Invariant events in <span class="math notranslate nohighlight">\({\mathfrak I}\)</span> are contained in <span class="math notranslate nohighlight">\({\mathfrak A}_t\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p><span style="color: orange;"> I think a relevant consequence of this construction is that the probability of <span class="math notranslate nohighlight">\([ X_t,X_{t+1},\dots, X_{t+\ell}]\)</span> conditional on <span class="math notranslate nohighlight">\(\mathfrak{A}_t\)</span> does not depend on <span class="math notranslate nohighlight">\(t.\)</span> It could be worth highlighting this, as it clarifies why you sometimes drop the time index in the following chapters.
+</span></p>
 <p><span style="color: orange;"> How about the following example?
 </span></p>
 <p><span style="color: red;"> ***

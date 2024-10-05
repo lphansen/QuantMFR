@@ -19,10 +19,12 @@ $ {\mathfrak A}$ be a subsigma algebra of ${\mathfrak F}$ and
 
 ```{math}
 {\mathfrak A}_t = \left\{ \Lambda_t \in {\mathfrak F} : \Lambda_t = \{ \omega \in \Omega : {\mathbb S}^t(\omega)
-\in \Lambda \} \textrm{ for some } \Lambda \in {\mathfrak F}\textcolor{red}{ {\mathfrak A}} \right\} .
+\in \Lambda \} \textrm{ for some } \Lambda \in {\mathfrak F} \right\} .
 ```
 
-Let $X$ be a scalar  <span style="text-decoration: line-through; text-decoration-color: red;">measurement  </span>  <span style="color: red;"> $ {\mathfrak A}$ measurable </span> function.
+<span style="color: orange;">in the expression above, shouldn't the last sigma algebra be </span> $\textcolor{orange}{\mathfrak{A}?}$
+
+Let $X$ be a scalar  <span style="text-decoration: line-through; text-decoration-color: red;">measurement  </span>  <span style="color: red;"> $ {\mathfrak A}$ (or $ {\mathfrak A}_0$) measurable </span> function.
 Assume that $Y_0$ is ${\mathfrak A}_0$ measurable and consider a scalar process $\{Y_t : t=0,1,... \}$ with stationary increments $\{X_t\}$:
 
 ```{math}
