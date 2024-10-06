@@ -1049,9 +1049,43 @@ We use homogeneity to rewrite the utility recursion:</p>
 &amp; = 0.
 \end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(MX_{t+1}\)</span> and <span class="math notranslate nohighlight">\(MG_t\)</span> are the co-states, or the implicit multipliers one the state evolutions.  Recall that <span class="math notranslate nohighlight">\(N_{t+1}^* =  \exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right]\)</span> used for making an uncertainty adjustment in valuation.</p>
-<p>In addition, we solve a forward-looking co-state equation given by</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <div class="math notranslate nohighlight">
-\[\begin{align*}
+\[\begin{split}\begin{align*}
+0 = \frac {\partial \hat{V_t}} {\partial D_t} &amp;= \frac 1 {1-\rho} \frac 1 {\exp{((1-\rho)\widehat{V}_t)}} \Biggl\{
+    (1-\beta)(1-\rho) (\exp{((1-\rho)\widehat{C}_t)} \widehat{\kappa}_d (D_t, X_t) \\
+    &amp;+ \beta(1-\rho) (\exp{((1-\rho)\widehat{R}_t) } \mathbb {E}\left[\exp{\left((1-\gamma)(\hat{V}_{t+1}-\hat{R}_t)\right)}
+    (\psi^g_{d'}(D_t,X_t, W_{t+1})' MG_{t+1}  + \psi^d_{d'}(D_t,X_t, W_{t+1})'MX_{t+1} ) \mid {\mathfrak A}_t 
+    \right] \Biggl\}  \\
+    \\
+    &amp;= 
+    (1-\beta) \exp{((1-\rho)(\widehat{C}_t - \widehat{V}_t))} \widehat{\kappa}_d (D_t, X_t) \\
+    &amp;+\beta \exp{((1-\rho)(\widehat{R}_t-\widehat{V}_t)) } \mathbb {E}\left[N_{t+1}^*  \psi^g_{d'}(D_t,X_t, W_{t+1})' MG_{t+1}  \mid {\mathfrak A}_t  \right] \\
+    &amp;+\beta \exp{((1-\rho)(\widehat{R}_t-\widehat{V}_t)) } \mathbb {E} \left[N_{t+1}^* \psi^d_{d'}(D_t,X_t, W_{t+1})' MX_{t+1}  \mid {\mathfrak A}_t \right] 
+\end{align*}\end{split}\]</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+%Multiply both sides by $ \exp\left[ (1 - \rho) \left({\widehat V}_t - {\widehat G}_t \right) \right] $ to get
+%```{math}
+%\begin{align*}
+%&amp;(1-\beta) \exp\left[ (1- \rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_d( D_t, X_t)
+%\cr
+%&amp; + 
+%\beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+%{\mathbb E} 
+%\left(
+%\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{d&#39;}^x ( D_t, X_t, W_{t+1} )&#39; MX_{t+1} \mid {\mathfrak A}_t \right) \cr
+%&amp;+  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right) \right] 
+%{\mathbb E} 
+%\left(
+%\exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{d}^g ( D_t, X_t, W_{t+1} ) \mid {\mathfrak A}_t \right)  \cr
+%&amp; = 0.
+%\end{align*}
+%```
+In addition, we solve a forward-looking co-state equation given by 
+```{math}
+\begin{align*}
 &amp; \begin{bmatrix} MX_t \cr MG_t \end{bmatrix}  =  (1 - \beta) \exp\left[ (1 - \rho) {\widehat C}_t  \right] \begin{bmatrix} \kappa_{x}(D_t, X_t) \cr 1 \end{bmatrix}   \cr
 &amp; + \beta \exp\left[ (1 - \rho) {\widehat R}_t \right] \times \cr
 &amp;
@@ -1059,9 +1093,11 @@ We use homogeneity to rewrite the utility recursion:</p>
 \left(
 N_{t+1}^*
 \begin{bmatrix} 
-\psi_{x'}^x ( D_t, X_t, W_{t+1} )' &amp; \psi_{x}^g ( D_t, X_t, W_{t+1} ) \cr 
-\psi_{x'}^g (D_t, X_t, W_{t+1})' &amp; 1 \end{bmatrix} \begin{bmatrix} MX_{t+1} \cr MG_{t+1} \end{bmatrix} \mid {\mathfrak A}_t \right).  
-\end{align*} \]</div>
+\psi_{x&#39;}^x ( D_t, X_t, W_{t+1} )&#39; &amp; \psi_{x}^g ( D_t, X_t, W_{t+1} ) \cr 
+\psi_{x&#39;}^g (D_t, X_t, W_{t+1})&#39; &amp; 1 \end{bmatrix} \begin{bmatrix} MX_{t+1} \cr MG_{t+1} \end{bmatrix} \mid {\mathfrak A}_t \right).  
+\end{align*} 
+</pre></div>
+</div>
 <p>For computational purposes, we transform the co-states as follows:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1140,7 +1176,7 @@ Rewrite the current-period  resource constraint as:</p>
 0 = &amp;\hspace{.2cm} - \exp\left[(1 - \rho) \left({\widehat C}_t - {\widehat G}_t \right)\right] \left(\frac {1-\beta}{\alpha - D_t}\right) 
 \cr &amp;\hspace{.2cm}  +  \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right)\right] \left(\frac{\beta \epsilon }{1 + \zeta D_t} \right)
 \end{align}    \]</div>
-<p>To support a continuous-time approximation,  suppose <span class="math notranslate nohighlight">\(\beta = \exp(-\epsilon \delta)\)</span> where <span class="math notranslate nohighlight">\(\delta\)</span> is a the subjective rate of discount.   Notice that these first-order conditions do not depend on the co-state process <span class="math notranslate nohighlight">\(\{MX_t : t \ge 0 \}\)</span>.  We may solve this planner’s problem using <a class="reference internal" href="../theory/hkt.html#equation-equation4">(10)</a> and up-dating the continuation value processes and its uncertainty-adjusted counterpart until convergence.  When <span class="math notranslate nohighlight">\(\rho = 1\)</span>, <span class="math notranslate nohighlight">\({\widehat R}_t - {\widehat G}_t\)</span> and <span class="math notranslate nohighlight">\({\widehat C}_t - {\widehat G}_t\)</span> drop out of the first-order conditions and the solution for <span class="math notranslate nohighlight">\(D_t\)</span> is constant.  When  <span class="math notranslate nohighlight">\(\rho \ne 1\)</span>, <span class="math notranslate nohighlight">\(D_t\)</span> depends on the exogenous state <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
+<p>To support a continuous-time approximation,  suppose <span class="math notranslate nohighlight">\(\beta = \exp(-\epsilon \delta)\)</span> where <span class="math notranslate nohighlight">\(\delta\)</span> is a the subjective rate of discount.   Notice that these first-order conditions do not depend on the co-state process <span class="math notranslate nohighlight">\(\{MX_t : t \ge 0 \}\)</span>.  We may solve this planner’s problem using <a class="reference internal" href="#equation-equation4">(11.35)</a> and up-dating the continuation value processes and its uncertainty-adjusted counterpart until convergence.  When <span class="math notranslate nohighlight">\(\rho = 1\)</span>, <span class="math notranslate nohighlight">\({\widehat R}_t - {\widehat G}_t\)</span> and <span class="math notranslate nohighlight">\({\widehat C}_t - {\widehat G}_t\)</span> drop out of the first-order conditions and the solution for <span class="math notranslate nohighlight">\(D_t\)</span> is constant.  When  <span class="math notranslate nohighlight">\(\rho \ne 1\)</span>, <span class="math notranslate nohighlight">\(D_t\)</span> depends on the exogenous state <span class="math notranslate nohighlight">\(X_t\)</span>.</p>
 </section>
 <section id="first-order-approximation-when-rho-1">
 <h3><span class="section-number">11.7.2. </span>First-order approximation when <span class="math notranslate nohighlight">\(\rho=1\)</span><a class="headerlink" href="#first-order-approximation-when-rho-1" title="Link to this heading">#</a></h3>
@@ -1362,8 +1398,8 @@ H_{t+1}^0 Q_t^2 {\mathbb E} \left(  N_{t+1}^0   \mid {\mathfrak A}_t \right) &am
 <section id="appendix-c-approximation-formulas-approach-two">
 <h2><span class="section-number">11.11. </span>Appendix C: Approximation formulas  (approach two)<a class="headerlink" href="#appendix-c-approximation-formulas-approach-two" title="Link to this heading">#</a></h2>
 <p>In this approach we use the same order zero approximation.  For the order one approximation, we use the formula <a class="reference internal" href="#equation-restricted-probability">(11.30)</a> for <span class="math notranslate nohighlight">\({\widetilde N}_{t+1},\)</span> which approximates  <span class="math notranslate nohighlight">\(N_{t+1}^*,\)</span> in conjunction with:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-71e27deb-bc17-4c62-9851-4611678e403d">
-<span class="eqno">(11.38)<a class="headerlink" href="#equation-71e27deb-bc17-4c62-9851-4611678e403d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-47868347-a0a0-47a9-9491-7485c03fb09e">
+<span class="eqno">(11.38)<a class="headerlink" href="#equation-47868347-a0a0-47a9-9491-7485c03fb09e" title="Permalink to this equation">#</a></span>\[\begin{align}
 Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  L_t^1 = 0.
 \end{align}\]</div>
 <p>From formula <a class="reference internal" href="#equation-v-r2">(11.36)</a>, it follows that under the <span class="math notranslate nohighlight">\({\widetilde N}_{t+1},\)</span> induced change in probability, <span class="math notranslate nohighlight">\(W_{t+1}\)</span>

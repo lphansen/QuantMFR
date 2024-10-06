@@ -859,6 +859,23 @@ The first-order conditions for $D$ are:
 ```
 where $MX_{t+1}$ and $MG_t$ are the co-states, or the implicit multipliers one the state evolutions.  Recall that $N_{t+1}^* =  \exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right]$ used for making an uncertainty adjustment in valuation.    
 
+```{note}
+```{math}
+\begin{align*}
+0 = \frac {\partial \hat{V_t}} {\partial D_t} &= \frac 1 {1-\rho} \frac 1 {\exp{((1-\rho)\widehat{V}_t)}} \Biggl\{
+    (1-\beta)(1-\rho) (\exp{((1-\rho)\widehat{C}_t)} \widehat{\kappa}_d (D_t, X_t) \\
+    &+ \beta(1-\rho) (\exp{((1-\rho)\widehat{R}_t) } \mathbb {E}\left[\exp{\left((1-\gamma)(\hat{V}_{t+1}-\hat{R}_t)\right)}
+    (\psi^g_{d'}(D_t,X_t, W_{t+1})' MG_{t+1}  + \psi^d_{d'}(D_t,X_t, W_{t+1})'MX_{t+1} ) \mid {\mathfrak A}_t 
+    \right] \Biggl\}  \\
+    \\
+    &= 
+    (1-\beta) \exp{((1-\rho)(\widehat{C}_t - \widehat{V}_t))} \widehat{\kappa}_d (D_t, X_t) \\
+    &+\beta \exp{((1-\rho)(\widehat{R}_t-\widehat{V}_t)) } \mathbb {E}\left[N_{t+1}^*  \psi^g_{d'}(D_t,X_t, W_{t+1})' MG_{t+1}  \mid {\mathfrak A}_t  \right] \\
+    &+\beta \exp{((1-\rho)(\widehat{R}_t-\widehat{V}_t)) } \mathbb {E} \left[N_{t+1}^* \psi^d_{d'}(D_t,X_t, W_{t+1})' MX_{t+1}  \mid {\mathfrak A}_t \right] 
+\end{align*}
+```
+```
+
 %Multiply both sides by $ \exp\left[ (1 - \rho) \left({\widehat V}_t - {\widehat G}_t \right) \right] $ to get
 %```{math}
 %\begin{align*}
