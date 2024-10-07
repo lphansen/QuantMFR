@@ -827,30 +827,18 @@ where $D_t$ is a date $t$ decision vector for the planner. Define ${\widehat G}_
 :label: output
 {\widehat C}_t \left( \mathsf{q} \right) = \kappa \left[D_t \left( \mathsf{q} \right), X_{t} \left( \mathsf{q}  \right) \right] + {\widehat G}_t \left( \mathsf{q} \right).
 ```
-In what follows for notational convenience, we will leave the ${\sf q}$ implicit.  
-We use homogeneity to rewrite the utility recursion:
-```{math}
-{\widehat V}_t - {\widehat G}_t = \frac{1}{1-\rho} \log \left[ (1 - \beta) \exp\left[ (1-\rho) ({\widehat C}_t - {\widehat G}_t) \right] + \beta \exp\left[ (1-\rho) ({\widehat R}_t - {\widehat G}_t) \right] \right]  
-```
-where
-```{math}
-{\widehat R}_t - {\widehat G}_t = \frac{1}{1-\gamma} \log \left( {\mathbb E} \left[ \exp\left( (1 - \gamma) \left[ \left( {\widehat V}_{t+1} - {\widehat G}_{t+1} \right) + \left( {\widehat G}_{t+1} - {\widehat G}_t \right) \right] \right) \mid {\mathfrak A}_t \right] \right).
-```
-The approximation formulas, {eq}`first_order_risk`, {eq}`first_recursive_update`, {eq}`second_order_risk`, {eq}`second_recursive_update`,  that we deduced previously for ${\widehat V}_t - {\widehat C}_t$ and ${\widehat R}_t - {\widehat C}_t$ have and immediate counterparts for 
-${\widehat V}_t - {\widehat G}_t$ and  ${\widehat R}_t - {\widehat G}_t$, from which can build an approximation of 
-$ {\widehat R}_t - {\widehat V}_t.$ 
 
 
 
 The first-order conditions for $D$ are:
 ```{math}
 \begin{align*}
-&(1-\beta) \exp\left[ (1- \rho) {\widehat C}_t \right] \kappa_d( D_t, X_t) 
+&(1-\beta) \exp\left[ (\rho - 1) \left({\widehat V}_t - {\widehat G}_t\right) \right] \exp\left[ (1 - \rho) \left({\widehat C}_t - {\widehat G}_t\right) \right] \kappa_d( D_t, X_t) 
 \cr &+ 
-\beta \exp\left[ (1 - \rho){\widehat R}_t \right] 
+\beta \exp\left[ (1 - \rho)\left( {\widehat R}_t - {\widehat V}_t\right)  \right] 
 {\mathbb E} 
 \left(N_{t+1}^* \psi_{d'}^x ( D_t, X_t, W_{t+1} )' MX_{t+1} \mid {\mathfrak A}_t \right) \cr
-&+  \beta \exp\left[ (1 - \rho) {\widehat R}_t  \right] 
+&+  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t - {\widehat V}_t \right)  \right] 
 {\mathbb E} 
 \left(N_{t+1}^*
 \psi_{d'}^g ( D_t, X_t, W_{t+1} )'MG_{t+1} \mid {\mathfrak A}_t \right)  \cr
@@ -859,22 +847,7 @@ The first-order conditions for $D$ are:
 ```
 where $MX_{t+1}$ and $MG_t$ are the co-states, or the implicit multipliers one the state evolutions.  Recall that $N_{t+1}^* =  \exp\left[ (1-\gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right]$ used for making an uncertainty adjustment in valuation.    
 
-```{note}
-```{math}
-\begin{align*}
-0 = \frac {\partial \hat{V_t}} {\partial D_t} &= \frac 1 {1-\rho} \frac 1 {\exp{((1-\rho)\widehat{V}_t)}} \Biggl\{
-    (1-\beta)(1-\rho) (\exp{((1-\rho)\widehat{C}_t)} \widehat{\kappa}_d (D_t, X_t) \\
-    &+ \beta(1-\rho) (\exp{((1-\rho)\widehat{R}_t) } \mathbb {E}\left[\exp{\left((1-\gamma)(\hat{V}_{t+1}-\hat{R}_t)\right)}
-    (\psi^g_{d'}(D_t,X_t, W_{t+1})' MG_{t+1}  + \psi^d_{d'}(D_t,X_t, W_{t+1})'MX_{t+1} ) \mid {\mathfrak A}_t 
-    \right] \Biggl\}  \\
-    \\
-    &= 
-    (1-\beta) \exp{((1-\rho)(\widehat{C}_t - \widehat{V}_t))} \widehat{\kappa}_d (D_t, X_t) \\
-    &+\beta \exp{((1-\rho)(\widehat{R}_t-\widehat{V}_t)) } \mathbb {E}\left[N_{t+1}^*  \psi^g_{d'}(D_t,X_t, W_{t+1})' MG_{t+1}  \mid {\mathfrak A}_t  \right] \\
-    &+\beta \exp{((1-\rho)(\widehat{R}_t-\widehat{V}_t)) } \mathbb {E} \left[N_{t+1}^* \psi^d_{d'}(D_t,X_t, W_{t+1})' MX_{t+1}  \mid {\mathfrak A}_t \right] 
-\end{align*}
-```
-```
+
 
 %Multiply both sides by $ \exp\left[ (1 - \rho) \left({\widehat V}_t - {\widehat G}_t \right) \right] $ to get
 %```{math}
@@ -896,8 +869,8 @@ where $MX_{t+1}$ and $MG_t$ are the co-states, or the implicit multipliers one t
 In addition, we solve a forward-looking co-state equation given by 
 ```{math}
 \begin{align*}
-& \begin{bmatrix} MX_t \cr MG_t \end{bmatrix}  =  (1 - \beta) \exp\left[ (1 - \rho) {\widehat C}_t  \right] \begin{bmatrix} \kappa_{x}(D_t, X_t) \cr 1 \end{bmatrix}   \cr
-& + \beta \exp\left[ (1 - \rho) {\widehat R}_t \right] \times \cr
+& \begin{bmatrix} MX_t \cr MG_t \end{bmatrix}  =  (1 - \beta) \exp\left[ (\rho - 1) \left({\widehat V}_t - {\widehat G}_t\right) \right] \exp\left[ (1 - \rho) \left({\widehat C}_t - {\widehat G}_t\right) \right] \begin{bmatrix} \kappa_{x}(D_t, X_t) \cr 1 \end{bmatrix}   \cr
+& + \beta \exp\left[ (1 - \rho) \left({\widehat R}_t  - {\widehat V}_t \right) \right] \times \cr
 &
 {\mathbb E} 
 \left(
@@ -907,43 +880,11 @@ N_{t+1}^*
 \psi_{x'}^g (D_t, X_t, W_{t+1})' & 1 \end{bmatrix} \begin{bmatrix} MX_{t+1} \cr MG_{t+1} \end{bmatrix} \mid {\mathfrak A}_t \right).  
 \end{align*} 
 ```
+The approximation formulas, {eq}`first_order_risk`, {eq}`first_recursive_update`, {eq}`second_order_risk`, {eq}`second_recursive_update`,  that we deduced previously for ${\widehat V}_t - {\widehat C}_t$ and ${\widehat R}_t - {\widehat C}_t$ have and immediate counterparts for 
+${\widehat V}_t - {\widehat G}_t$ and  ${\widehat R}_t - {\widehat G}_t$, from which can build an approximation of 
+$ {\widehat R}_t - {\widehat V}_t.$ 
 
 
-For computational purposes, we transform the co-states as follows:
-\begin{align*}
-\widetilde{MX}_t  = & \exp\left[ (\rho-1) {\widehat G}_t  \right] MX_t \cr
-\widetilde{MG}_t  = & \exp\left[ (\rho-1) {\widehat G}_t  \right] MG_t 
-\end{align*} 
-We write the transformed first-order conditions as: 
-\begin{align*}
-&(1-\beta) \exp\left[ (1- \rho) \left( {\widehat C}_t  - {\widehat G}_t \right) \right] \kappa_d( D_t, X_t) 
-\cr &+ 
-\beta \exp\left[ (1 - \rho)\left( {\widehat R}_t - {\widehat G}_t \right)  \right] \times \cr
-& {\mathbb E} 
-\left[N_{t+1}^*
-\exp\left[(1 - \rho) \left({\widehat G}_{t+1}  - {\widehat G}_t \right) \right]
-\psi_{d'}^x ( D_t, X_t, W_{t+1} )' \widetilde{MX}_{t+1} \mid {\mathfrak A}_t \right] 
-\cr
-&+  \beta \exp\left[ (1 - \rho) \left({\widehat R}_t -{\widehat G}_t \right)   \right] \times \cr
-& {\mathbb E} 
-\left( N_{t+1}^* \exp\left[(1 - \rho) \left({\widehat G}_{t+1}  - {\widehat G}_t \right) \right] \psi_{d'}^g ( D_t, X_t, W_{t+1} )'\widetilde{MG}_{t+1} \mid {\mathfrak A}_t \right)  
-\cr
-& = 0.
-\end{align*}
-Similarly the transformed co-state equation is:
-```{math}
-\begin{align*}
- \begin{bmatrix} \widetilde{MX}_t \cr \widetilde{MG}_t \end{bmatrix}  =  & (1 - \beta) \exp\left[ (1 - \rho) \left( {\widehat C}_t  
--{\widehat G}_t \right) \right] \begin{bmatrix} \kappa_{x}(D_t, X_t) \cr 1 \end{bmatrix}   \cr
-& + \beta \exp\left[ (1 - \rho) \left({\widehat R}_t  - {\widehat G}_t \right) \right] 
-{\mathbb E} 
-\left(
-N_{t+1}^* \exp\left[(1 - \rho) \left({\widehat G}_{t+1}  - {\widehat G}_t \right) \right]  \right. \cr
-& \times \left. \begin{bmatrix} 
-\psi_{x'}^x ( D_t, X_t, W_{t+1} )' & \psi_{x}^g ( D_t, X_t, W_{t+1} ) \cr 
-\psi_{x'}^g (D_t, X_t, W_{t+1})' & 1 \end{bmatrix} \begin{bmatrix} \widetilde{MX}_{t+1} \cr \widetilde{MG}_{t+1} \end{bmatrix} \mid {\mathfrak A}_t \right) .  
-\end{align*} 
-```
 
 
 
@@ -1212,55 +1153,62 @@ While we discussed the approximation for resource allocation problems with recur
 
 Consider the equation:
 ```{math}
-Q_t {\mathbb E} \left( N_{t+1} H_{t+1} \mid {\mathfrak A}_t \right)  + L_{t}   = 0 
+Q_t {\mathbb E} \left( N_{t+1} H_{t+1} \mid {\mathfrak A}_t \right)  + P_tL_{t}   = 0 
 ```
 where
 \begin{align*}
-Q_t \eqdef & \hspace{.2cm}  \beta \exp\left[(1-\rho) \left( {\widehat R}_t - {\widehat G}_t \right) \right] \cr \cr 
-H_{t+1}  \eqdef & \hspace{.2cm} \begin{bmatrix} \psi_{d'}^x (D_t, X_t, W_{t+1})'MX_{t+1} +  \psi_{d'}^g (D_t, X_t, W_{t+1}) \cr \psi_{x'}^x (D_t, X_t, W_{t+1})'MX_{t+1} +  \psi_{x}^g (D_t, X_t, W_{t+1}) \cr
-\end{bmatrix} \cr \cr
-L_t \eqdef & \hspace{.2cm} \begin{bmatrix} (1-\beta) \exp \left[ (1-\rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_d(D_t,X_t)   \cr 
-(1-\beta) \exp \left[ (1-\rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] \kappa_x(D_t, X_t) - MX_t \end{bmatrix} 
+Q_t \eqdef & \hspace{.2cm}  \beta \exp\left[(1-\rho) \left( {\widehat R}_t - {\widehat V}_t \right) \right] \cr \cr
+P_t \eqdef & \hspace{.2cm} (1-\beta) \exp\left[(\rho-1) \left( {\widehat V}_t - {\widehat G}_t \right) \right] \cr \cr
+H_{t+1}  \eqdef & \hspace{.2cm} \begin{bmatrix} \psi_{d'}^x (D_t, X_t, W_{t+1})'MX_{t+1} &  \psi_{d'}^g (D_t, X_t, W_{t+1}) \cr \psi_{x'}^x (D_t, X_t, W_{t+1})'MX_{t+1} &  \psi_{x}^g (D_t, X_t, W_{t+1}) \end{bmatrix} \begin{bmatrix} MX_{t+1} \cr MG_{t+1} \end{bmatrix} 
+\ \cr \cr
+L_t \eqdef & \hspace{.2cm} \begin{bmatrix} (1-\beta) \exp \left[ (1-\rho) \left({\widehat C}_t - {\widehat G}_t \right) \right]   \kappa_d(D_t,X_t)  \cr  (1-\beta) \exp \left[ (1-\rho) \left({\widehat C}_t - {\widehat G}_t \right) \right] 
+ \begin{bmatrix} \kappa_x(D_t, X_t) \cr 1 \end{bmatrix}  - \begin{bmatrix} MX_t \cr MG_t \end{bmatrix} \end{bmatrix} 
 .
 \end{align*}
 
-Solve for $ {\widehat C}_t - {\widehat G}_t, D_t, MX_t$ as a function of $X_t$.    We include the state dynamics {eq}`triangle` and the output constraint {eq}`output` when computing a solution.  The objects: ${\widehat C} - {\widehat G}, D, MX$ are sometimes referred to as jump variables since  we not impose initial conditions as part of a solution, in contrast to $X$.  
+Solve for $ {\widehat C}_t - {\widehat G}_t, D_t, MX_t, MG_t $ as a function of $X_t$.    We include the state dynamics {eq}`triangle` and the output constraint {eq}`output` when computing a solution.  The objects: ${\widehat C} - {\widehat G}, D, MX,$ and $MG_t$ are sometimes referred to as jump variables since  we not impose initial conditions for these variables as part of a solution$.  
 
-Our solution will entail an iteration.  We will impose a specification for $Q$ and $N$ and find an approximate solution for the dynamical system.  Then given this solution, we will compute a new implied solution for $Q$ and $N$.  We then iterate this until we achieve numerical convergence.   We use second-order approximations for both steps.  
+Our solution will entail an iteration.  We will impose a specification for $Q^1, Q^2, $ and $N$ and find an approximate solution for the dynamical system.  Then given this solution, we will compute a new implied solution for $Q^1, Q^2,$ and $N$.  We then iterate this until we achieve numerical convergence.   We use second-order approximations for both steps.  
 
 
-###  $Q$ derivatives
+###  $Q$  and $P$ derivatives
 
 To construct a candidate $Q$, we use the following strategy.  Compute ${\widehat V}_t^0 - {\widehat G}^0_t$ and ${\widehat G}_{t+1}^0-{\widehat G}_t^0$ as part of the steady state, and form:
 ```{math}
-Q^0_t \eqdef \beta \exp[(1-\rho) \left[\left( {\widehat V}_{t+1}^0 - {\widehat G}_{t+1}^0\right)  + \left( {\widehat G}_{t+1}^0 - {\widehat G}_t^0 \right) \right] 
-```
-Construct
-```{math} 
-{\widehat R}_t^1 - {\widehat G}_t^1 = \frac 1 {1-\gamma_o} {\mathbb E} \left( \exp \left[ (1 - \gamma_o) \left( {\widehat V}_{t+1}^1 - {\widehat G}_{t+1}^1\right) +
-\left( {\widehat G}_{t+1}^1 - {\widehat G}_{t}^1\right) \right] \mid {\mathfrak A}_t \right),
-```
-and 
 \begin{align*}
-Q_t^1 \eqdef & \hspace{.2cm} \beta (1-\rho) Q_t^0 \left( {\widehat R}_t^1 - {\widehat G}_t^1\right) \cr
-Q_t^2 \eqdef  & \hspace{.2cm} \beta (1-\rho)^2 Q_t^0 \left( {\widehat R}_t^1 - {\widehat G}_t^1\right)^2 + 
-\beta (1-\rho) Q_t^0 \left( {\widehat R}_t^2 - {\widehat G}_t^2\right).  
-\end{align*} 
+Q^0_t  \eqdef & \beta \exp\left[(1-\rho)\left( {\widehat R}_t^0 - {\widehat V}_t^0  \right) \right] \cr 
+ = & \beta \exp\left[(1-\rho) \left[\left( {\widehat V}_{t+1}^0 - {\widehat G}_{t+1}^0\right)  + \left( {\widehat G}_{t+1}^0 - {\widehat G}_t^0 \right) -  \left({\widehat V}_t^0 - {\widehat G}_t^0  \right)\right] \right] \cr 
+= & \beta \exp\left[(1-\rho) \left({\widehat G}_{t+1}^0 - {\widehat G}_t^0 \right) \right]
+\end{align*}
+```
 
-We rewrite {eq}`first_recursive_update` as:
+For the order one, write
+```{math}
+Q_t^1 \eqdef  \beta (1-\rho) Q_t^0 \left( {\widehat R}_t^1 - {\widehat V}_t^1\right)
+```
+To compute this contribution, we difference equations  {eq}`first_order_risk` and {eq}`first_recursive_update` as:
+\begin{align*}
+ {\widehat R}_t^1 - {\widehat V}_t^1 =  &(\lambda - 1) \left({\widehat V}_t - {\widehat C}_t \right) \cr
+ & (\lambda - 1) \left({\widehat V}_t - {\widehat G}_t \right) - (\lambda - 1) \left({\widehat C}_t - {\widehat G}_t \right).  
+\end{align*} 
+To compute ${\widehat V}_t - {\widehat G}_t $, 
+we rewrite {eq}`first_recursive_update` as:
 \begin{align*}
 & {\widehat V}_t^1 - {\widehat G}_t^1 =  (1-\lambda) \left({\widehat C}_t^1 - {\widehat G}_t^1 \right)  \cr
 & + \left( {\frac \lambda {1 - \gamma_o}} \right) \log {\mathbb E} \left( \exp \left[ (1 - \gamma_o) \left[  \left( {\widehat V}_{t+1}^1  - {\widehat G}_{t+1}^1 \right) + \left( {\widehat G}_{t+1}^1 - {\widehat G}_t^1\right) \right] \right] \mid {\mathfrak A}_t \right)
 \end{align*}
 and solve this equation forward by first computing  the $\gamma_o=1$ answer and then adjusting this answer  for $\gamma_o > 1$ analogous to the approach described in {prf:ref}`remark_solve_first`.   
 
-Given this solution, form
+For the order two approximation,
 ```{math}
- {\widehat R}_t^1 - {\widehat G}_t^1 =  \left( \frac 1 \lambda \right) \left( {\widehat V}_t^1 - {\widehat G}_t^1\right)
-- \left( \frac  {1-\lambda} \lambda \right)  \left({\widehat C}_t^1 - {\widehat G}_t^1 \right).
+Q_t^2 \eqdef   \hspace{.2cm} \beta (1-\rho)^2 Q_t^0 \left( {\widehat R}_t^1 - {\widehat V}_t^1\right)^2 + 
+\beta (1-\rho) Q_t^0 \left( {\widehat R}_t^2 - {\widehat V}_t^2\right).  
+``` 
+Express:
+```{math}
+{\widehat R}_t^2 - {\widehat V}_t^2 = \left({\widehat R}_t^2 - {\widehat G}_t^2\right) - \left( {\widehat V}_t^2 - {\widehat G}_t^2\right) .
 ```
-
-For the second-order, it follows from {eq}`second_recursive_update` that 
+It follows from {eq}`second_recursive_update` that 
 ```{math}
 \begin{align}
 {\widehat V}_t^2 - {\widehat G}_t^2 =  \hspace{.2cm} & 
@@ -1276,6 +1224,14 @@ which we solve this equation forward under the $N^0$ implied change in probabili
 & -  (1 - \rho) (1 - \lambda)   \left( {\widehat R}_t^1 - {\widehat G}_t^1 + {\widehat G}_t^1  - {\widehat C}_t \right)^2.
 \end{align} 
 ```
+
+The $P$ approximations use some of these same computations where 
+\begin{align*}
+P_t^0 \eqdef &(1-\beta) \exp\left( {\widehat V}_t^0 - {\widehat G}_t^0 \right) \cr
+P_t^1 \eqdef & (1-\beta)(1-\rho) P_t^0 \left( {\widehat V}_t^1 - {\widehat G}_t^1 \right) \cr
+P_t^2 \eqdef & \beta (1-\rho)^2 P_t^0 \left( {\widehat V}_t^1 - {\widehat G}_t^1 \right)^2 + \beta(1-\rho) P_t^0\left( {\widehat V}_t^1 - {\widehat G}_t^1 \right).
+\end{align*}
+
 
 ### $N$ derivatives
 
@@ -1314,20 +1270,19 @@ In producing these representations, we use that have conditional ${\widehat V}_{
 
 Consider the equation:
 ```{math}
-Q_t {\mathbb E} \left( N_{t+1}  H_{t+1} \mid {\mathfrak A}_t \right)  + L_{t}   = 0 .
-```
-where $ \beta \exp \left[- \rho \left( \log C_{t+1} - \log C_t \right) \right] $ is absorbed into the construction of $ H_{t+1} $. This is the subsystem of the equations not including the state evolution equations.  
+Q_t {\mathbb E} \left( N_{t+1}  H_{t+1} \mid {\mathfrak A}_t \right)  + P_t L_{t}   = 0 .
+```not including the state evolution equations.  
 
 (sec2)= 
 ### Order zero 
 
 The order zero approximation of the product: $ N_{t+1} Q_{t+1} H_{t+1} +  L_{t} $ is:
 ```{math}
-Q_t^0 N_{t+1}^0  H_{t+1}^0 + L_t^0 = 0 
+Q_t^0 N_{t+1}^0  H_{t+1}^0 + P_t^0L_t^0 = 0 
 ```
 Thus the order zero approximate equation is:
 ```{math}
-Q_t^0 {\mathbb E} \left[N_{t+1}^0 \left( H_{t+1}^0  \right)  \mid {\mathfrak A}_t \right] + L_{t+1}^0=  Q_t^0 H_{t+1}^0 + L_{t}^0 = 0
+Q_t^0 {\mathbb E} \left[N_{t+1}^0 \left( H_{t+1}^0  \right)  \mid {\mathfrak A}_t \right] + L_{t+1}^0=  Q_t^0 H_{t+1}^0 + P_t^0 L_{t}^0 = 0
 ```
 since $ N_{t+1}^0 $ has conditional expectation equal to one.  We add to this subsystem the  ${\sf q} = 0$ state dynamic equation inclusive of jump variables,  and we compute a stable steady state solution.   
 
@@ -1336,14 +1291,14 @@ since $ N_{t+1}^0 $ has conditional expectation equal to one.  We add to this su
 
 The order one approximation of the product: $ Q_t N_{t+1}  H_{t+1}+  L_{t} $ is:
 ```{math}
-Q_t^1 N_{t+1}^0   H_{t+1}^0  + Q_t^0 N_{t+1}^1 H_{t+1}^0 + Q_t^0 N_{t+1}^0  H_{t+1}^1 +  L_{t}^1 .
+Q_t^1 N_{t+1}^0   H_{t+1}^0  + Q_t^0 N_{t+1}^1 H_{t+1}^0 + Q_t^0 N_{t+1}^0  H_{t+1}^1 +  P_t^0L_{t}^1 + P_t^1L_t^0.
 ```
 Thus the order one approximate equation is:
 ```{math}
 \begin{align}
 & Q_t^0 {\mathbb E} \left( N_{t+1}^1   H_{t+1}^0    + N_{t+1}^0 H_{t+1}^1  \mid {\mathfrak A}_t \right)
-+ Q_t^1 H_{t+1}^0    + L_t^1 \\
-& = Q_t^0 {\mathbb E} \left(  N_{t+1}^0 H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  L_t^1 \\
++ Q_t^1 H_{t+1}^0    + P_t^0 L_t^1 + P_t^1 L_t^0\\
+& = Q_t^0 {\mathbb E} \left(  N_{t+1}^0 H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  P_t^0 L_t^1 + P_t^1 L_t^0\\
 & = 0
 \end{align}
 ```
@@ -1356,16 +1311,16 @@ The order two approximation of the product: $ N_{t+1} Q_{t+1} H_{t+1} + L_{t+1} 
 ```{math}
 \begin{align}
 & Q_t^0 N_{t+1}^0 H_{t+1}^2 + Q_t^0 N_{t+1}^2H_{t+1}^0  + 
-2 Q_t^0 N_{t+1}^1 H_{t+1}^1 + L_t^2 \\
-+ 
-& 2 N_{t+1}^1  Q_{t}^1 H_{t+1}^0  +   2 N_{t+1}^0 Q_{t}^1 H_{t+1}^1 + N_{t+1}^0 Q_{t}^2 H_{t+1}^0 
+2 Q_t^0 N_{t+1}^1 H_{t+1}^1  \\
+&+ P_t^0 L_t^2 + 2 P_t^1 L_t^1  + P_t^2 L_t^0  \\
+& + 2 N_{t+1}^1  Q_{t}^1 H_{t+1}^0  +   2 N_{t+1}^0 Q_{t}^1 H_{t+1}^1 + N_{t+1}^0 Q_{t}^2 H_{t+1}^0 
 \end{align}
 ```
 The terms $ Q_t^0 N_{t+1}^2H_{t+1}^0$ and $2 N_{t+1}^1  Q_{t}^1 H_{t+1}^0$ have conditional expectation equal to zero.   Thus the approximating equation is:
 ```{math}
 \begin{align}
 & Q_t^0 {\mathbb E} \left( N_{t+1}^0 H_{t+1}^2 \mid {\mathfrak A}_t \right) +
-L_t^2 \cr & + 2Q_t^0 {\mathbb E}\left( N_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) + 
+ P_t^0 L_t^2 + 2 P_t^1 L_t^1 + P_t^2 L_t^0  \cr & + 2Q_t^0 {\mathbb E}\left( N_{t+1}^1 H_{t+1}^1 \mid {\mathfrak A}_t \right) + 
 2 Q_t^1 {\mathbb E} \left(N_{t+1}^0  H_{t+1}^1 \mid {\mathfrak A}_t \right) + H_{t+1}^0 Q_t^2  {\mathbb E} \left(  N_{t+1}^0 \mid {\mathfrak A}_t \right) \cr
 & = 0.
 \end{align}   
@@ -1402,7 +1357,8 @@ We add to this second-order subsystem, the second-order approximation of the sta
 
 In this approach we use the same order zero approximation.  For the order one approximation, we use the formula {eq}`restricted_probability` for ${\widetilde N}_{t+1},$ which approximates  $N_{t+1}^*,$ in conjunction with:
 \begin{align}
-Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  L_t^1 = 0.
+Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + Q_{t}^1 H_{t+1}^0 +  P_t^0 L_t^1 
++ P_t^1 L_t^0 = 0.
 \end{align}
 From formula {eq}`V-R2`, it follows that under the ${\widetilde N}_{t+1},$ induced change in probability, $W_{t+1}$
 is normally distributed with conditional mean 
@@ -1415,8 +1371,8 @@ and conditional precision:
 ```
 For the order two approximation, we use:
 ```{math} 
-Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1}  H_{t+1}^2  \mid {\mathfrak A}_t \right) + L_t^2 
-+ 2 Q_t^1  {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + H_{t+1}^0 Q_t^2 = 0 . 
+Q_t^0 {\mathbb E} \left(  {\widetilde N}_{t+1}  H_{t+1}^2  \mid {\mathfrak A}_t \right) + P_t^0 L_t^2 + 2 P_t^1 L_t^1 
++ P_t^2 L_t^0 + 2 Q_t^1  {\mathbb E} \left(  {\widetilde N}_{t+1} H_{t+1}^1  \mid {\mathfrak A}_t \right) + H_{t+1}^0 Q_t^2 = 0 . 
 ```
 
 
