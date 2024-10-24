@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Processes with Markovian increments &#8212; Quant Macro Finance</title>
+    <title>4. Processes with Markovian increments &#8212; Quant Macro Finance</title>
   
   
   
@@ -35,8 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8c1df6e1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -65,8 +65,8 @@
     <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/example_out_c4_v2.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Processes with Markovian increments" href="example_out_c4_v2_enzo_and_ken.html" />
-    <link rel="prev" title="6. Stationary Increments" href="example_out_c3_v2_enzo_and_ken.html" />
+    <link rel="next" title="5. Hidden Markov Models" href="example_out_c5_v2.html" />
+    <link rel="prev" title="3. Stationary Increments" href="example_out_c3_v2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,43 +179,18 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">9. Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">13. Stochastic Responses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">14. Representing Marginal Valuation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">2. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">3. Stationary Increments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">5. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">6. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">7. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">8. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">9. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">10. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">11. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch_multfunctional_mdconvert.html">12. Multiplicative Functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">13. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
 <ul class="nav bd-sidenav">
@@ -388,12 +363,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-additive-functional">7.1. Definition of additive functional</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-martingales">7.2. Extracting Martingales</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">7.3. Applications</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregression">7.3.1. Vector autoregression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-economic-rationale">7.3.2. An economic rationale</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-regimes">7.3.3. Growth-Rate Regimes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-additive-functional">4.1. Definition of additive functional</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-martingales">4.2. Extracting Martingales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">4.3. Applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregression">4.3.1. Vector autoregression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-economic-rationale">4.3.2. An economic rationale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-regimes">4.3.3. Growth-Rate Regimes</a></li>
 </ul>
 </li>
 </ul>
@@ -408,30 +383,30 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="processes-with-markovian-increments">
-<span id="chap-add"></span><h1><span class="section-number">7. </span>Processes with Markovian increments<a class="headerlink" href="#processes-with-markovian-increments" title="Link to this heading">#</a></h1>
+<span id="chap-add"></span><h1><span class="section-number">4. </span>Processes with Markovian increments<a class="headerlink" href="#processes-with-markovian-increments" title="Link to this heading">#</a></h1>
 <p>In this chapter, we use a stationary Markov process to construct a process that displays stochastic arithmetic growth, then show how to extract a linear time trend and a martingale. Eventually, we will explore the implications of exponentiating this process to transform an arithmetically growing process, like those described in this chapter, to construct a process that displays geometric growth.</p>
 <section id="definition-of-additive-functional">
-<h2><span class="section-number">7.1. </span>Definition of additive functional<a class="headerlink" href="#definition-of-additive-functional" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Definition of additive functional<a class="headerlink" href="#definition-of-additive-functional" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(\{W_{t+1} : t \ge 0\}\)</span> be a <span class="math notranslate nohighlight">\(k\)</span>-dimensional stochastic process of unanticipated economic shocks.
 Let  <span class="math notranslate nohighlight">\(\{ X_t : t \ge 0 \}\)</span> be
 a discrete-time stationary Markov process that is
 generated by initial distribution <span class="math notranslate nohighlight">\(Q\)</span> for <span class="math notranslate nohighlight">\(X_0\)</span> and transition equation</p>
 <div class="math notranslate nohighlight" id="equation-dynamic-evolve">
-<span class="eqno">(7.1)<a class="headerlink" href="#equation-dynamic-evolve" title="Link to this equation">#</a></span>\[X_{t+1} = \phi  (X_t, W_{t+1}) ,\]</div>
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-dynamic-evolve" title="Link to this equation">#</a></span>\[X_{t+1} = \phi  (X_t, W_{t+1}) ,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\phi\)</span> is a Borel measurable function. Let <span class="math notranslate nohighlight">\(\left\{ \mathfrak{A}_t  : t=0,1,...  \right\}\)</span> be the filtration generated by histories of <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(X\)</span>; <span class="math notranslate nohighlight">\(\mathfrak{A}_t\)</span>
 serves as the information set (sigma algebra) generated by
 <span class="math notranslate nohighlight">\(X_0, W_1, \ldots , W_t\)</span>. We presume that the conditional probability distribution for <span class="math notranslate nohighlight">\(W_{t+1}\)</span> conditioned on <span class="math notranslate nohighlight">\(\mathfrak{A}_t\)</span> depends only on <span class="math notranslate nohighlight">\(X_t\)</span>. To assure that the process <span class="math notranslate nohighlight">\(\{W_{t+1} : t \ge 0 \}\)</span> represents unanticipated shocks, we restrict it to satisfy</p>
 <div class="math notranslate nohighlight">
 \[E \left( W_{t+1} \vert X_t \right) = 0.\]</div>
-<p>We condition on a statistical model in the sense of Section <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#sec-empirical"><span class="std std-ref">Limiting Empirical Measures</span></a> in Chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>.
+<p>We condition on a statistical model in the sense of Section <a class="reference internal" href="example_out_c1_v2.html#sec-empirical"><span class="std std-ref">Limiting Empirical Measures</span></a> in Chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>.
 Given this, for notational simplicity, we simply assume that the stationary <span class="math notranslate nohighlight">\(\{X_t : t \ge 0\}\)</span> process is ergodic.<a class="footnote-reference brackets" href="#ergodic" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> The Markov structure of <span class="math notranslate nohighlight">\(\{ X_t  \}\)</span>  makes the distribution of <span class="math notranslate nohighlight">\((X_{t+1}, W_{t+1}) \)</span> conditioned on <span class="math notranslate nohighlight">\(\mathfrak{A}_t\)</span> depend only
 on <span class="math notranslate nohighlight">\(X_t\)</span>.<a class="footnote-reference brackets" href="#markov-process" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <div class="proof definition admonition" id="definition-0">
-<p class="admonition-title"><span class="caption-number">Definition 7.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 4.1 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A process <span class="math notranslate nohighlight">\(\{ Y_{t} \}\)</span> is said to be an <strong>additive functional</strong> if it can be represented as</p>
 <div class="math notranslate nohighlight" id="equation-eqn-mart1">
-<span class="eqno">(7.2)<a class="headerlink" href="#equation-eqn-mart1" title="Link to this equation">#</a></span>\[Y_{t+1} - Y_t = \kappa(X_{t},W_{t+1})\]</div>
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-eqn-mart1" title="Link to this equation">#</a></span>\[Y_{t+1} - Y_t = \kappa(X_{t},W_{t+1})\]</div>
 <p>for a (Borel measurable) function <span class="math notranslate nohighlight">\(\kappa: {\mathbb R}^n \times {\mathbb R}^k \rightarrow {\mathbb R}\)</span>, or equivalently</p>
 <div class="math notranslate nohighlight">
 \[Y_{t} = Y_0 + \sum_{j=1}^{t} \kappa(X_{j-1}, W_{j}) ,\]</div>
@@ -439,7 +414,7 @@ on <span class="math notranslate nohighlight">\(X_t\)</span>.<a class="footnote-
 </section>
 </div><p>When <span class="math notranslate nohighlight">\(Y_0\)</span> is a function of <span class="math notranslate nohighlight">\(X_0\)</span>, we can construct <span class="math notranslate nohighlight">\(Y_t\)</span> as a function of the underlying Markov process between dates zero and <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <div class="proof definition admonition" id="definition-1">
-<p class="admonition-title"><span class="caption-number">Definition 7.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 4.2 </span></p>
 <section class="definition-content" id="proof-content">
 <p>An additive functional <span class="math notranslate nohighlight">\(\{ Y_t : t=0,1,...\}\)</span> is said to be  an <strong>additive martingale</strong> if
 <span class="math notranslate nohighlight">\(E\left[ \kappa(X_{t}, W_{t+1}) \vert X_t \right] = 0.\)</span></p>
@@ -447,7 +422,7 @@ on <span class="math notranslate nohighlight">\(X_t\)</span>.<a class="footnote-
 </div><p>It is easy to see that a  linear combination of two additive functionals  <span class="math notranslate nohighlight">\(\{Y_{t}^{[1]}\}\)</span> and <span class="math notranslate nohighlight">\(\{Y_{t}^{[2]}\}\)</span>
 is itself an additive functional.  If <span class="math notranslate nohighlight">\(\kappa_1\)</span> is used to construct the first process and <span class="math notranslate nohighlight">\(\kappa_2\)</span> the second process, then <span class="math notranslate nohighlight">\(\kappa = \kappa_1 + \kappa_2\)</span> can be used to construct the sum of the two processes. –&gt;</p>
 <div class="proof example admonition" id="stochasticvolatility">
-<p class="admonition-title"><span class="caption-number">Example 7.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 4.1 </span></p>
 <section class="example-content" id="proof-content">
 <p>(Stochastic Volatility) Suppose that</p>
 <div class="math notranslate nohighlight">
@@ -462,7 +437,7 @@ random vectors, <span class="math notranslate nohighlight">\({\mathbb A}\)</span
 This is called
 a stochastic volatility model because <span class="math notranslate nohighlight">\(|\sigma(X_t)|^2\)</span>  is a stochastic process.</p>
 </section>
-</div><p>In <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#stochasticvolatility">Example 8.1</a>, when the conditional mean <span class="math notranslate nohighlight">\(\mu(X_t) = 0\)</span>, the process
+</div><p>In <a class="reference internal" href="#stochasticvolatility">Example 4.1</a>, when the conditional mean <span class="math notranslate nohighlight">\(\mu(X_t) = 0\)</span>, the process
 <span class="math notranslate nohighlight">\(\{Y_t \}\)</span>  is
 a martingale. Note that <span class="math notranslate nohighlight">\(E\left[ \kappa( X_t, W_{t+1} ) \vert X_t \right] = 0\)</span>
 implies the usual martingale restriction</p>
@@ -470,8 +445,8 @@ implies the usual martingale restriction</p>
 \[E\left(Y_{t+1}  \vert {\mathfrak A}_t\right) = Y_t , \ \ \textrm{for} \ \ t \ge 0.  \]</div>
 </section>
 <section id="extracting-martingales">
-<span id="sec-decomposition"></span><h2><span class="section-number">7.2. </span>Extracting Martingales<a class="headerlink" href="#extracting-martingales" title="Link to this heading">#</a></h2>
-<p>We can decompose an additive functional into a sum of components, one of which is an additive martingale that encapsulates all long-run stochastic variation as in <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a>. In this section, we show how to extract the martingale component. We adopt a construction like that used to establish <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a> and proceed in four steps.</p>
+<span id="sec-decomposition"></span><h2><span class="section-number">4.2. </span>Extracting Martingales<a class="headerlink" href="#extracting-martingales" title="Link to this heading">#</a></h2>
+<p>We can decompose an additive functional into a sum of components, one of which is an additive martingale that encapsulates all long-run stochastic variation as in <a class="reference internal" href="example_out_c3_v2.html#decomp00">Proposition 3.1</a>. In this section, we show how to extract the martingale component. We adopt a construction like that used to establish <a class="reference internal" href="example_out_c3_v2.html#decomp00">Proposition 3.1</a> and proceed in four steps.</p>
 <p><a class="reference internal" href="#alg:martconstruct"><span class="xref myst">Martingale construction</span></a></p>
 <ol class="arabic simple">
 <li><p>Construct the trend coefficient as the unconditional expectation:</p></li>
@@ -493,11 +468,11 @@ implies the usual martingale restriction</p>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\kappa_h (X_{t-1}, W_t) =  \kappa(X_{t-1}, W_{t}) - \nu  + \sum_{j=0}^\infty {\mathbb T}^j \overline{\kappa} (X_t) = \kappa(X_{t-1}, W_{t}) - \nu +  \left( \mathbb I - \mathbb T \right)^{-1} \overline \kappa(X_{t})\]</div>
-<p>where <span class="math notranslate nohighlight">\({\mathbb T}\)</span> is the operator defined in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eqn-toperatordef">(4.1)</a>. The right side becomes a function of only <span class="math notranslate nohighlight">\((X_{t-1},W_t)\)</span> once we substitute for <span class="math notranslate nohighlight">\(\phi(X_{t-1},W_t)\)</span> for <span class="math notranslate nohighlight">\(X_t\)</span> as implied by <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#equation-dynamic-evolve">(8.1)</a>.</p>
+<p>where <span class="math notranslate nohighlight">\({\mathbb T}\)</span> is the operator defined in <a class="reference internal" href="example_out_c2_v2.html#equation-eqn-toperatordef">(2.1)</a>. The right side becomes a function of only <span class="math notranslate nohighlight">\((X_{t-1},W_t)\)</span> once we substitute for <span class="math notranslate nohighlight">\(\phi(X_{t-1},W_t)\)</span> for <span class="math notranslate nohighlight">\(X_t\)</span> as implied by <a class="reference internal" href="#equation-dynamic-evolve">(4.1)</a>.</p>
 <p>This construction requires that the infinite sum</p>
 <div class="math notranslate nohighlight">
 \[\sum_{j=0}^\infty {\mathbb T}^j {\overline \kappa}(x) = \left( \mathbb I - \mathbb T \right)^{-1} \overline \kappa(x)\]</div>
-<p>converges in mean square relative to the stationary distribution for <span class="math notranslate nohighlight">\(\{X_t: t\ge 0\}\)</span>. A sufficient condition for this is that <span class="math notranslate nohighlight">\({\mathbb T}^m\)</span> is a strong contraction for some integer <span class="math notranslate nohighlight">\(m \geq 1\)</span> and <span class="math notranslate nohighlight">\(\overline{\kappa} \in {\mathcal N}\)</span> where <span class="math notranslate nohighlight">\({\mathcal N}\)</span> is defined in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-def-n">(4.9)</a>.</p>
+<p>converges in mean square relative to the stationary distribution for <span class="math notranslate nohighlight">\(\{X_t: t\ge 0\}\)</span>. A sufficient condition for this is that <span class="math notranslate nohighlight">\({\mathbb T}^m\)</span> is a strong contraction for some integer <span class="math notranslate nohighlight">\(m \geq 1\)</span> and <span class="math notranslate nohighlight">\(\overline{\kappa} \in {\mathcal N}\)</span> where <span class="math notranslate nohighlight">\({\mathcal N}\)</span> is defined in <a class="reference internal" href="example_out_c2_v2.html#equation-def-n">(2.9)</a>.</p>
 <ol class="arabic simple" start="3">
 <li><p>Compute</p></li>
 </ol>
@@ -521,9 +496,9 @@ E\left[\kappa(X_{t}, W_{t+1}) \mid X_{t} = x \right] - \nu + E\left[ \left(\math
 <div class="math notranslate nohighlight">
 \[\kappa_m(X_{t-1}, W_t)  = \kappa_h (X_{t-1}, W_t ) - \kappa_+(X_{t-1}).\]</div>
 <p>By construction, the expectation of <span class="math notranslate nohighlight">\(\kappa_m(X_t, W_{t+1})\)</span> conditioned on <span class="math notranslate nohighlight">\(X_t\)</span> is zero.</p>
-<p>Armed with these calculations, we now report a Markov counterpart to <a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html#decomp00">Proposition 6.1</a>.</p>
+<p>Armed with these calculations, we now report a Markov counterpart to <a class="reference internal" href="example_out_c3_v2.html#decomp00">Proposition 3.1</a>.</p>
 <div class="proof proposition admonition" id="prop:decomp">
-<p class="admonition-title"><span class="caption-number">Proposition 7.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Proposition 4.1 </span></p>
 <section class="proposition-content" id="proof-content">
 <p>Suppose that <span class="math notranslate nohighlight">\(\{Y_{t} : t\ge 0\}\)</span> is an additive functional, that <span class="math notranslate nohighlight">\({\mathbb T}^m\)</span> is a strong contraction on <span class="math notranslate nohighlight">\({\mathcal N}\)</span> for some <span class="math notranslate nohighlight">\(m\)</span>, and that  <span class="math notranslate nohighlight">\(E[\kappa(X_{t},W_{t+1})^2] &lt; \infty\)</span>. Then</p>
 <div class="math notranslate nohighlight">
@@ -532,19 +507,19 @@ Y_{t} &amp; = t\nu + \sum_{j=1}^{t} {\kappa_m}(X_{j-1},W_{j}) - \kappa_+(X_t) + 
 &amp;\phantom{=}\textbf{trend} \quad \textbf{martingale} \quad \textbf{stationary} \quad \textbf{invariant}
 \end{aligned}\end{split}\]</div>
 </section>
-</div><p>Notice that the martingale component is itself an additive functional. The first is a linear time trend, the second an additive martingale, the third a stationary process with mean zero, and the fourth a time-invariant constant. If we happen to impose the initialization: <span class="math notranslate nohighlight">\(Y_0 = - \kappa_+(X_0)\)</span>, then the fourth term is zero. We use a <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#prop:decomp">Proposition 8.1</a> decomposition as a way to associate a ‘’permanent shock’’  with an additive functional. The permanent shock is the increment to the martingale.</p>
+</div><p>Notice that the martingale component is itself an additive functional. The first is a linear time trend, the second an additive martingale, the third a stationary process with mean zero, and the fourth a time-invariant constant. If we happen to impose the initialization: <span class="math notranslate nohighlight">\(Y_0 = - \kappa_+(X_0)\)</span>, then the fourth term is zero. We use a <a class="reference internal" href="#prop:decomp">Proposition 4.1</a> decomposition as a way to associate a ‘’permanent shock’’  with an additive functional. The permanent shock is the increment to the martingale.</p>
 </section>
 <section id="applications">
-<h2><span class="section-number">7.3. </span>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h2>
 <p>We now compute martingale increments for two models of economic time series.</p>
 <section id="vector-autoregression">
-<span id="sec-varex"></span><h3><span class="section-number">7.3.1. </span>Vector autoregression<a class="headerlink" href="#vector-autoregression" title="Link to this heading">#</a></h3>
+<span id="sec-varex"></span><h3><span class="section-number">4.3.1. </span>Vector autoregression<a class="headerlink" href="#vector-autoregression" title="Link to this heading">#</a></h3>
 <p>We apply the four-step construction in Algorithm <a class="reference internal" href="#alg:martconstruct"><span class="xref myst">Martingale construction</span></a> when the Markov state <span class="math notranslate nohighlight">\(\{ X_t \}\)</span> follows a first-order VAR</p>
 <div class="math notranslate nohighlight" id="equation-eqn-addex1a">
-<span class="eqno">(7.3)<a class="headerlink" href="#equation-eqn-addex1a" title="Link to this equation">#</a></span>\[X_{t+1} = {\mathbb A} X_t + {\mathbb B} W_{t+1},\]</div>
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-eqn-addex1a" title="Link to this equation">#</a></span>\[X_{t+1} = {\mathbb A} X_t + {\mathbb B} W_{t+1},\]</div>
 <p>where <span class="math notranslate nohighlight">\({\mathbb A}\)</span> is a stable matrix and <span class="math notranslate nohighlight">\(\{ W_{t+1} : t\ge 0  \}\)</span> is a sequence of independent and identically normally distributed random variables with mean vector zero and identity covariance matrix. The one-step ahead conditional covariance matrix of the time <span class="math notranslate nohighlight">\(t+1\)</span> shocks <span class="math notranslate nohighlight">\(\mathbb{B} W_{t+1}\)</span> to <span class="math notranslate nohighlight">\(X_{t+1}\)</span> equals <span class="math notranslate nohighlight">\(\mathbb{B} \mathbb{B}'\)</span>. Let</p>
 <div class="math notranslate nohighlight" id="equation-eqn-addex1b">
-<span class="eqno">(7.4)<a class="headerlink" href="#equation-eqn-addex1b" title="Link to this equation">#</a></span>\[Y_{t+1} - Y_t = \kappa(X_{t},W_{t+1}) = {\mathbb D}  X_t + \nu + {\mathbb F} W_{t+1},\]</div>
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-eqn-addex1b" title="Link to this equation">#</a></span>\[Y_{t+1} - Y_t = \kappa(X_{t},W_{t+1}) = {\mathbb D}  X_t + \nu + {\mathbb F} W_{t+1},\]</div>
 <p>where <span class="math notranslate nohighlight">\({\mathbb D}\)</span> and <span class="math notranslate nohighlight">\({\mathbb F}\)</span> are row vectors with the same dimensions as <span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(W_{t+1}\)</span>, respectively. For this example, the four steps of Algorithm <a class="reference internal" href="#alg:martconstruct"><span class="xref myst">Martingale construction</span></a> become:</p>
 <ol class="arabic">
 <li><p>The trend growth rate is <span class="math notranslate nohighlight">\(\nu\)</span> as specified.</p></li>
@@ -555,19 +530,19 @@ Y_{t} &amp; = t\nu + \sum_{j=1}^{t} {\kappa_m}(X_{j-1},W_{j}) - \kappa_+(X_t) + 
 \[\kappa_+(X_t) = {\mathbb D}  X_t +  {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1}{\mathbb A} X_t\]</div>
 </li>
 <li><div class="math notranslate nohighlight" id="equation-markov-mart">
-<span class="eqno">(7.5)<a class="headerlink" href="#equation-markov-mart" title="Link to this equation">#</a></span>\[\kappa_m(X_{t-1}, W_t) =  {\mathbb F}  W_{t} + {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1} (X_t  - {\mathbb A} X_{t-1} ) =  \left[{\mathbb F} + {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1} {\mathbb B} \right] W_t. \]</div>
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-markov-mart" title="Link to this equation">#</a></span>\[\kappa_m(X_{t-1}, W_t) =  {\mathbb F}  W_{t} + {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1} (X_t  - {\mathbb A} X_{t-1} ) =  \left[{\mathbb F} + {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1} {\mathbb B} \right] W_t. \]</div>
 </li>
 </ol>
-<p>From <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#ex:MA">Example 2.8</a>, we expect the coefficient of martingale increment to be the sum of impulse responses for the increment process <span class="math notranslate nohighlight">\(\{ {\mathbb D} X_t + {\mathbb F}  W_{t+1} : t\ge 0\}\)</span>. The impulse response function is the sequence of vectors:</p>
+<p>From <a class="reference internal" href="example_out_c1_v2.html#ex:MA">Example 1.7</a>, we expect the coefficient of martingale increment to be the sum of impulse responses for the increment process <span class="math notranslate nohighlight">\(\{ {\mathbb D} X_t + {\mathbb F}  W_{t+1} : t\ge 0\}\)</span>. The impulse response function is the sequence of vectors:</p>
 <div class="math notranslate nohighlight" id="equation-llrimp">
-<span class="eqno">(7.6)<a class="headerlink" href="#equation-llrimp" title="Link to this equation">#</a></span>\[{\mathbb F}, \mathbb{ D} {\mathbb B},  {\mathbb D} {\mathbb A} {\mathbb B} ,  {\mathbb D}{\mathbb A}^2 {\mathbb B}, \cdots .\]</div>
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-llrimp" title="Link to this equation">#</a></span>\[{\mathbb F}, \mathbb{ D} {\mathbb B},  {\mathbb D} {\mathbb A} {\mathbb B} ,  {\mathbb D}{\mathbb A}^2 {\mathbb B}, \cdots .\]</div>
 <p>Summing these vectors gives</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb F} + {\mathbb D}\left({\mathbb I} + {\mathbb A} + {\mathbb A}^2 + \cdots \right) {\mathbb B} = {\mathbb F} + {\mathbb D} ({\mathbb I} - {\mathbb A} )^{-1} {\mathbb B}\]</div>
 <p>as anticipated.</p>
 </section>
 <section id="an-economic-rationale">
-<h3><span class="section-number">7.3.2. </span>An economic rationale<a class="headerlink" href="#an-economic-rationale" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.3.2. </span>An economic rationale<a class="headerlink" href="#an-economic-rationale" title="Link to this heading">#</a></h3>
 <p>A special case of what is called recursive utility, represents preferences using recursively constructed continuation values.  As an illustration, let <span class="math notranslate nohighlight">\(V_t\)</span> be the date <span class="math notranslate nohighlight">\(t\)</span> continuation value.  Suppose that for <span class="math notranslate nohighlight">\({\widehat C}_t = \log C_t\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{align*}
@@ -604,16 +579,16 @@ X_{t+1} = \hspace{.2cm} &amp;{\mathbb A}X_t + {\mathbb B}W_{t+1} \cr
 \end{align}\]</div>
 <p>Solving this forward gives:</p>
 <div class="math notranslate nohighlight" id="equation-cont-constant">
-<span class="eqno">(7.7)<a class="headerlink" href="#equation-cont-constant" title="Link to this equation">#</a></span>\[{\sf v} = \frac \beta {1 - \beta} \left[ \nu +  \frac { (1-\gamma) } 2 \left\vert \upsilon' {\mathbb B} + {\mathbb F} \right\vert^2\right].  \]</div>
-<p>Notice, in particular, the term in the square brackets of <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#equation-cont-constant">(8.7)</a>.  The first contribution is average growth rate expressed in logarithms.  For the second contribution, it is revealing to inspect the <span class="math notranslate nohighlight">\(\beta = 1\)</span> limit:</p>
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-cont-constant" title="Link to this equation">#</a></span>\[{\sf v} = \frac \beta {1 - \beta} \left[ \nu +  \frac { (1-\gamma) } 2 \left\vert \upsilon' {\mathbb B} + {\mathbb F} \right\vert^2\right].  \]</div>
+<p>Notice, in particular, the term in the square brackets of <a class="reference internal" href="#equation-cont-constant">(4.7)</a>.  The first contribution is average growth rate expressed in logarithms.  For the second contribution, it is revealing to inspect the <span class="math notranslate nohighlight">\(\beta = 1\)</span> limit:</p>
 <div class="math notranslate nohighlight">
 \[ \frac { (1-\gamma) } 2 \left\vert {\mathbb D} \left({\mathbb I} - {\mathbb A}\right)^{-1}{\mathbb B}  + {\mathbb F} \right\vert^2.\]</div>
-<p>This gives a variance adjustment to the continuation value that the product of <span class="math notranslate nohighlight">\((1-\gamma)/2\)</span> and variance of the increment to the martingale component of the logarithm of consumption as reported in <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#equation-markov-mart">(8.5)</a>.  When <span class="math notranslate nohighlight">\(\gamma &gt;1,\)</span> this variance coincides with the continuation value relative to the case of logarithmic utility.  Larger <span class="math notranslate nohighlight">\(\gamma\)</span> increases this adjustment.  The <span class="math notranslate nohighlight">\(\beta = 1\)</span> limit is pertinent because this parameter is often set close to unity in the macro-finance literature.</p>
+<p>This gives a variance adjustment to the continuation value that the product of <span class="math notranslate nohighlight">\((1-\gamma)/2\)</span> and variance of the increment to the martingale component of the logarithm of consumption as reported in <a class="reference internal" href="#equation-markov-mart">(4.5)</a>.  When <span class="math notranslate nohighlight">\(\gamma &gt;1,\)</span> this variance coincides with the continuation value relative to the case of logarithmic utility.  Larger <span class="math notranslate nohighlight">\(\gamma\)</span> increases this adjustment.  The <span class="math notranslate nohighlight">\(\beta = 1\)</span> limit is pertinent because this parameter is often set close to unity in the macro-finance literature.</p>
 <p>In Chapter  <a class="reference internal" href="exploring_recursive_utility.html#chap-recursive"><span class="std std-ref">Exploring Recursive Utility</span></a>,  we investigate more generally the implications of a class of recursive utility preferences which nests this specification as a special case.  Among other results, we obtain analogous formulas as first-order approximations to more general consumption dynamics.</p>
 </section>
 <section id="growth-rate-regimes">
-<span id="sec-growthregime"></span><h3><span class="section-number">7.3.3. </span>Growth-Rate Regimes<a class="headerlink" href="#growth-rate-regimes" title="Link to this heading">#</a></h3>
-<p>We construct a <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#prop:decomp">Proposition 8.1</a> decomposition for a model with persistent switches in the conditional mean and volatility of the growth rate <span class="math notranslate nohighlight">\(Y_{t+1}- Y_t\)</span>.</p>
+<span id="sec-growthregime"></span><h3><span class="section-number">4.3.3. </span>Growth-Rate Regimes<a class="headerlink" href="#growth-rate-regimes" title="Link to this heading">#</a></h3>
+<p>We construct a <a class="reference internal" href="#prop:decomp">Proposition 4.1</a> decomposition for a model with persistent switches in the conditional mean and volatility of the growth rate <span class="math notranslate nohighlight">\(Y_{t+1}- Y_t\)</span>.</p>
 <p>Suppose that <span class="math notranslate nohighlight">\(\{X_t : t \ge 0\}\)</span> evolves according to an <span class="math notranslate nohighlight">\(n\)</span>-state Markov chain with transition matrix <span class="math notranslate nohighlight">\({\mathbb P}\)</span>. Realized values of <span class="math notranslate nohighlight">\(X_t\)</span> are coordinate vectors in <span class="math notranslate nohighlight">\({\mathbb R}^n\)</span>. Suppose that <span class="math notranslate nohighlight">\({\mathbb P}\)</span> has only one unit eigenvalue. Let <span class="math notranslate nohighlight">\({\bf q}\)</span> be the row eigenvector associated with that unit eigenvalue normalized so that <span class="math notranslate nohighlight">\({\bf q} \cdot {\bf 1}_n = 1\)</span> and</p>
 <div class="math notranslate nohighlight">
 \[{\bf q}'{\mathbb P} = {\bf q}'.\]</div>
@@ -623,7 +598,7 @@ X_{t+1} = \hspace{.2cm} &amp;{\mathbb A}X_t + {\mathbb B}W_{t+1} \cr
 <p>where <span class="math notranslate nohighlight">\(\{ W_{1,t} \}\)</span> is an i.i.d. sequence of multivariate standard normally distributed random vectors. Evidently, the stationary Markov <span class="math notranslate nohighlight">\(\{X_t : t \ge 0 \}\)</span> process induces discrete changes in both the conditional mean and the conditional volatility of the growth rate process <span class="math notranslate nohighlight">\(\{ Y_{t+1} - Y_t \}\)</span>.</p>
 <p>Observe that <span class="math notranslate nohighlight">\( E (X_{t+1} | X_t ) ={\mathbb  P} X_t \)</span> and let</p>
 <div class="math notranslate nohighlight" id="equation-discrete-shock">
-<span class="eqno">(7.8)<a class="headerlink" href="#equation-discrete-shock" title="Link to this equation">#</a></span>\[W_{2,t+1} = X_{t+1} - E\left( X_{t+1} \vert X_t \right) .\]</div>
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-discrete-shock" title="Link to this equation">#</a></span>\[W_{2,t+1} = X_{t+1} - E\left( X_{t+1} \vert X_t \right) .\]</div>
 <p>Thus we can represent the evolution of the Markov chain as</p>
 <div class="math notranslate nohighlight">
 \[X_{t+1} = {\mathbb P} X_t + W_{2,t+1}\]</div>
@@ -644,7 +619,7 @@ X_{t+1} = \hspace{.2cm} &amp;{\mathbb A}X_t + {\mathbb B}W_{t+1} \cr
 </li>
 <li><div class="math notranslate nohighlight">
 \[G_t = H_t - H_{t-1}^+  = {X_{t-1}}'{\mathbb F} W_{1,t} + {\mathbb D}\left({\mathbb I} - {\mathbb P}\right)^{-1} W_{2,t}\]</div>
-<p>where we have substituted from equation <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#equation-discrete-shock">(8.8)</a>.</p>
+<p>where we have substituted from equation <a class="reference internal" href="#equation-discrete-shock">(4.8)</a>.</p>
 </li>
 </ol>
 <p>The martingale increment has both continuous and discrete components:</p>
@@ -1772,7 +1747,7 @@ Here $M_t$ is the martingale component and $S_t$ is the asymptotically stationar
 <aside class="footnote brackets" id="ergodic" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>If we wanted to include model uncertainty
-in the spirit of Chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>,
+in the spirit of Chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>,
 we could construct a set of statistical models like the one described here, each with its own parameter vector,<br />
 and then  form a weighted average over  that set of  models.</p>
 </aside>
@@ -1825,20 +1800,20 @@ the joint transition distribution depends only on <span class="math notranslate 
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="example_out_c3_v2_enzo_and_ken.html"
+       href="example_out_c3_v2.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Stationary Increments</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Stationary Increments</p>
       </div>
     </a>
     <a class="right-next"
-       href="example_out_c4_v2_enzo_and_ken.html"
+       href="example_out_c5_v2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Processes with Markovian increments</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Hidden Markov Models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1858,12 +1833,12 @@ the joint transition distribution depends only on <span class="math notranslate 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-additive-functional">7.1. Definition of additive functional</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-martingales">7.2. Extracting Martingales</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">7.3. Applications</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregression">7.3.1. Vector autoregression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-economic-rationale">7.3.2. An economic rationale</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-regimes">7.3.3. Growth-Rate Regimes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-additive-functional">4.1. Definition of additive functional</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-martingales">4.2. Extracting Martingales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">4.3. Applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregression">4.3.1. Vector autoregression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-economic-rationale">4.3.2. An economic rationale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#growth-rate-regimes">4.3.3. Growth-Rate Regimes</a></li>
 </ul>
 </li>
 </ul>

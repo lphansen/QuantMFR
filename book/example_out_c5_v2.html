@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. Hidden Markov Models &#8212; Quant Macro Finance</title>
+    <title>5. Hidden Markov Models &#8212; Quant Macro Finance</title>
   
   
   
@@ -35,8 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8c1df6e1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -65,8 +65,8 @@
     <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/example_out_c5_v2.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="10. Risk, Ambiguity, and Misspecification" href="decision_book_draft.html" />
-    <link rel="prev" title="8. Processes with Markovian increments" href="example_out_c4_v2_enzo_and_ken.html" />
+    <link rel="next" title="6. Risk, Ambiguity, and Misspecification" href="decision_book_draft.html" />
+    <link rel="prev" title="4. Processes with Markovian increments" href="example_out_c4_v2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,43 +179,18 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">13. Stochastic Responses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">14. Representing Marginal Valuation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">2. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">3. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">4. Processes with Markovian increments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">6. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">7. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">8. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">9. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">10. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">11. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch_multfunctional_mdconvert.html">12. Multiplicative Functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">13. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
 <ul class="nav bd-sidenav">
@@ -388,20 +363,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sufficient-statistics-as-states">9.1. Sufficient Statistics as States</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-filter-and-smoother">9.2. Kalman Filter and Smoother</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#innovations-representation">9.2.1. Innovations Representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-process">9.2.2. Likelihood process</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-smoother">9.2.3. Kalman smoother</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sufficient-statistics-as-states">5.1. Sufficient Statistics as States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-filter-and-smoother">5.2. Kalman Filter and Smoother</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#innovations-representation">5.2.1. Innovations Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-process">5.2.2. Likelihood process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-smoother">5.2.3. Kalman smoother</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixtures">9.3. Mixtures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-regression">9.4. Recursive Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugate-prior-updating">9.4.1. Conjugate prior updating</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#var-example">9.4.2. VAR example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixtures">5.3. Mixtures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-regression">5.4. Recursive Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugate-prior-updating">5.4.1. Conjugate prior updating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#var-example">5.4.2. VAR example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#var-regimes">9.5. VAR Regimes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#var-regimes">5.5. VAR Regimes</a></li>
 </ul>
             </nav>
         </div>
@@ -414,9 +389,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hidden-markov-models">
-<span id="chap-learn"></span><h1><span class="section-number">9. </span>Hidden Markov Models<a class="headerlink" href="#hidden-markov-models" title="Link to this heading">#</a></h1>
+<span id="chap-learn"></span><h1><span class="section-number">5. </span>Hidden Markov Models<a class="headerlink" href="#hidden-markov-models" title="Link to this heading">#</a></h1>
 <section id="sufficient-statistics-as-states">
-<h2><span class="section-number">9.1. </span>Sufficient Statistics as States<a class="headerlink" href="#sufficient-statistics-as-states" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>Sufficient Statistics as States<a class="headerlink" href="#sufficient-statistics-as-states" title="Link to this heading">#</a></h2>
 <p>This chapter presents Hidden Markov Models that start from a joint probability distribution consisting of a Markov process and a vector of noise-ridden signals about functions of the Markov state. Histories of signals are observed but the Markov state vector is not. Statistical learning about the Markov state proceeds by constructing a sequence of probability distributions of the Markov state conditional on histories of signals. Recursive representations of these conditional distributions form auxiliary Markov processes that summarize all information about the hidden state vector contained in histories of signals. A state vector in this auxiliary Markov process is a set of sufficient statistics for the probability distribution of the hidden Markov state conditional on the history of signals. We can construct this auxiliary Markov process of sufficient statistics sequentially.</p>
 <p>We present four examples of Hidden Markov Models that are used to learn about</p>
 <ol class="arabic simple">
@@ -427,10 +402,10 @@ document.write(`
 </ol>
 </section>
 <section id="kalman-filter-and-smoother">
-<span id="sec-kfilter"></span><h2><span class="section-number">9.2. </span>Kalman Filter and Smoother<a class="headerlink" href="#kalman-filter-and-smoother" title="Link to this heading">#</a></h2>
+<span id="sec-kfilter"></span><h2><span class="section-number">5.2. </span>Kalman Filter and Smoother<a class="headerlink" href="#kalman-filter-and-smoother" title="Link to this heading">#</a></h2>
 <p>We assume that a Markov state vector <span class="math notranslate nohighlight">\(X_t\)</span> and a vector <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> of observations are governed by a linear state space system</p>
 <div class="math notranslate nohighlight" id="equation-eqn-kalman0">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-eqn-kalman0" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-eqn-kalman0" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
 X_{t+1} &amp; =  {\mathbb A} X_t + {\mathbb B} W_{t+1} \\
 Z_{t+1}   &amp; = {\mathbb H} +  {\mathbb D} X_t + {\mathbb F} W_{t+1}, 
 \end{align}\end{split}\]</div>
@@ -457,7 +432,7 @@ X_{t+1} \\ Z_{t+1}
 \end{bmatrix} = \begin{bmatrix} 0 \\ {\mathbb H} \end{bmatrix} + \begin{bmatrix} {\mathbb A} \\ {\mathbb D} \end{bmatrix}
  {\overline X}_t + \begin{bmatrix} {\mathbb A} \\ {\mathbb D} \end{bmatrix} (X_t - {\overline X}_t) +\begin{bmatrix} {\mathbb B} \\ {\mathbb F} \end{bmatrix}
  W_{t+1},\end{split}\]</div>
-<p>which is just another way of describing our original state-space system <a class="reference internal" href="#equation-eqn-kalman0">(9.1)</a>. It follows that the joint distribution of <span class="math notranslate nohighlight">\(X_{t+1}, Z_{t+1}\)</span> conditioned on <span class="math notranslate nohighlight">\(Z^t\)</span> and <span class="math notranslate nohighlight">\(Q_0\)</span>, or equivalently on <span class="math notranslate nohighlight">\((\overline X_t, \Sigma_t)\)</span>, is</p>
+<p>which is just another way of describing our original state-space system <a class="reference internal" href="#equation-eqn-kalman0">(5.1)</a>. It follows that the joint distribution of <span class="math notranslate nohighlight">\(X_{t+1}, Z_{t+1}\)</span> conditioned on <span class="math notranslate nohighlight">\(Z^t\)</span> and <span class="math notranslate nohighlight">\(Q_0\)</span>, or equivalently on <span class="math notranslate nohighlight">\((\overline X_t, \Sigma_t)\)</span>, is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
 X_{t+1} \\ Z_{t+1}
@@ -482,19 +457,19 @@ E \left[(X_{t+1} - {\mathbb A} \overline X_{t})\left(Z_{t+1}  - {\mathbb H} - {\
 \[E [(X_{t+1} - {\mathbb A} {\overline X}_t ) \mid Z_{t+1}  - {\mathbb H} - {\mathbb D} {\overline X}_t,Q_t ] = {\mathcal K}(\Sigma_t) (Z_{t+1}  - {\mathbb H} - {\mathbb D} {\overline X}_t) ,\]</div>
 <p>where the matrix of regression coefficients <span class="math notranslate nohighlight">\({\mathcal K}(\Sigma_t)\)</span> called the <em>Kalman gain</em> is</p>
 <div class="math notranslate nohighlight" id="equation-eq-kalman1">
-<span class="eqno">(9.2)<a class="headerlink" href="#equation-eq-kalman1" title="Link to this equation">#</a></span>\[{\mathcal K}(\Sigma_t) = ({\mathbb A} \Sigma_t {\mathbb D}' + {\mathbb B}{\mathbb F}' ) ({\mathbb D} \Sigma_t {\mathbb D}' + {\mathbb F} {\mathbb F}')^{-1} .\]</div>
-<p>We recognize formula <a class="reference internal" href="#equation-eq-kalman1">(9.2)</a> as an application of the population least squares regression formula associated with the multivariate normal distribution.<a class="footnote-reference brackets" href="#kalmanfilter4" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> We compute <span class="math notranslate nohighlight">\(\Sigma_{t+1}\)</span> via the recursion</p>
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-eq-kalman1" title="Link to this equation">#</a></span>\[{\mathcal K}(\Sigma_t) = ({\mathbb A} \Sigma_t {\mathbb D}' + {\mathbb B}{\mathbb F}' ) ({\mathbb D} \Sigma_t {\mathbb D}' + {\mathbb F} {\mathbb F}')^{-1} .\]</div>
+<p>We recognize formula <a class="reference internal" href="#equation-eq-kalman1">(5.2)</a> as an application of the population least squares regression formula associated with the multivariate normal distribution.<a class="footnote-reference brackets" href="#kalmanfilter4" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> We compute <span class="math notranslate nohighlight">\(\Sigma_{t+1}\)</span> via the recursion</p>
 <div class="math notranslate nohighlight" id="equation-eq-kalman2">
-<span class="eqno">(9.3)<a class="headerlink" href="#equation-eq-kalman2" title="Link to this equation">#</a></span>\[\Sigma_{t+1} = {\mathbb A} \Sigma_t {\mathbb A}' + {\mathbb B}{\mathbb B}' - ({\mathbb A} \Sigma_t {\mathbb D}' + {\mathbb B}{\mathbb F}' ) ({\mathbb D} \Sigma_t {\mathbb D}' + {\mathbb F}{\mathbb F'})^{-1} ({\mathbb A} \Sigma_t {\mathbb D}' +  {\mathbb B}{\mathbb F}') .\]</div>
-<p>The right side of recursion <a class="reference internal" href="#equation-eq-kalman2">(9.3)</a> follows directly from substituting the appropriate formulas into the right side of <span class="math notranslate nohighlight">\( \Sigma_{t+1} \equiv E ( X_{t+1} - \overline X_{t+1}) ( X_{t+1} - \overline X_{t+1})' \)</span> and computing conditional mathematical expectations. The matrix <span class="math notranslate nohighlight">\(\Sigma_{t+1}\)</span> obeys the formula from standard regression theory for the population covariance matrix of the least squares residual <span class="math notranslate nohighlight">\(X_{t+1} - {\mathbb A} \overline X_t \)</span>. The matrix <span class="math notranslate nohighlight">\({\mathbb A} \Sigma_t {\mathbb A}' + {\mathbb B} {\mathbb B}'\)</span> is the covariance matrix of the <span class="math notranslate nohighlight">\(X_{t+1} - {\mathbb A} \overline  X_t\)</span> and the remaining term describes the reduction in covariance associated with conditioning on <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>.<a class="footnote-reference brackets" href="#kalmanfilter5" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> Thus, the probability distribution <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> is</p>
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-eq-kalman2" title="Link to this equation">#</a></span>\[\Sigma_{t+1} = {\mathbb A} \Sigma_t {\mathbb A}' + {\mathbb B}{\mathbb B}' - ({\mathbb A} \Sigma_t {\mathbb D}' + {\mathbb B}{\mathbb F}' ) ({\mathbb D} \Sigma_t {\mathbb D}' + {\mathbb F}{\mathbb F'})^{-1} ({\mathbb A} \Sigma_t {\mathbb D}' +  {\mathbb B}{\mathbb F}') .\]</div>
+<p>The right side of recursion <a class="reference internal" href="#equation-eq-kalman2">(5.3)</a> follows directly from substituting the appropriate formulas into the right side of <span class="math notranslate nohighlight">\( \Sigma_{t+1} \equiv E ( X_{t+1} - \overline X_{t+1}) ( X_{t+1} - \overline X_{t+1})' \)</span> and computing conditional mathematical expectations. The matrix <span class="math notranslate nohighlight">\(\Sigma_{t+1}\)</span> obeys the formula from standard regression theory for the population covariance matrix of the least squares residual <span class="math notranslate nohighlight">\(X_{t+1} - {\mathbb A} \overline X_t \)</span>. The matrix <span class="math notranslate nohighlight">\({\mathbb A} \Sigma_t {\mathbb A}' + {\mathbb B} {\mathbb B}'\)</span> is the covariance matrix of the <span class="math notranslate nohighlight">\(X_{t+1} - {\mathbb A} \overline  X_t\)</span> and the remaining term describes the reduction in covariance associated with conditioning on <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>.<a class="footnote-reference brackets" href="#kalmanfilter5" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> Thus, the probability distribution <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[X_{t+1} \mid Z_{t+1}, \overline X_t , \Sigma_t \sim \mathcal{N} ({\overline X}_{t+1}, \Sigma_{t+1}).\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight" id="equation-eq-kalman2a">
-<span class="eqno">(9.4)<a class="headerlink" href="#equation-eq-kalman2a" title="Link to this equation">#</a></span>\[\overline X_{t+1} = {\mathbb A} \overline X_t + {\mathcal K}(\Sigma_t) (Z_{t+1} - {\mathbb H} - {\mathbb D} \overline X_t )\]</div>
-<p>Equations <a class="reference internal" href="#equation-eq-kalman1">(9.2)</a>, <a class="reference internal" href="#equation-eq-kalman2">(9.3)</a>, and <a class="reference internal" href="#equation-eq-kalman2a">(9.4)</a> constitute the Kalman filter. They provide a recursion that describes <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> as an exact function of <span class="math notranslate nohighlight">\(Z_{t+1} \)</span> and <span class="math notranslate nohighlight">\(Q_t\)</span>.</p>
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-eq-kalman2a" title="Link to this equation">#</a></span>\[\overline X_{t+1} = {\mathbb A} \overline X_t + {\mathcal K}(\Sigma_t) (Z_{t+1} - {\mathbb H} - {\mathbb D} \overline X_t )\]</div>
+<p>Equations <a class="reference internal" href="#equation-eq-kalman1">(5.2)</a>, <a class="reference internal" href="#equation-eq-kalman2">(5.3)</a>, and <a class="reference internal" href="#equation-eq-kalman2a">(5.4)</a> constitute the Kalman filter. They provide a recursion that describes <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> as an exact function of <span class="math notranslate nohighlight">\(Z_{t+1} \)</span> and <span class="math notranslate nohighlight">\(Q_t\)</span>.</p>
 <div class="proof remark admonition" id="remark-0">
-<p class="admonition-title"><span class="caption-number">Remark 9.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 5.1 </span></p>
 <section class="remark-content" id="proof-content">
 <p>(Gram-Schmidt)
 The key idea underlying the Kalman filter is recursively to transform the space spanned by a sequence of signals into a sequence of orthogonal signals. To elaborate, let</p>
@@ -503,22 +478,22 @@ The key idea underlying the Kalman filter is recursively to transform the space 
 <p>After we condition on <span class="math notranslate nohighlight">\((\overline X_0, \Sigma_0)\)</span>, <span class="math notranslate nohighlight">\(U_t,U_{t-1}, ...U_1\)</span> and <span class="math notranslate nohighlight">\(Z_t, Z_{t-1}, ..., Z_1\)</span> generate the same information. The Kalman filter synthesizes <span class="math notranslate nohighlight">\(U_{t+1}\)</span> from <span class="math notranslate nohighlight">\(Z^{t+1}\)</span> via a Gram-Schmidt process. Conditional on <span class="math notranslate nohighlight">\(Z^t\)</span>, <span class="math notranslate nohighlight">\(U_{t+1} \sim {\mathcal N}(0, \Omega_{t})\)</span>, where <span class="math notranslate nohighlight">\(\Omega_{t} = {\mathbb D} \Sigma_t {\mathbb D}' + {\mathbb F}{\mathbb F}'\)</span>, so <span class="math notranslate nohighlight">\(U^t =U_t,U_{t-1}, ...U_1\)</span> is an orthogonal basis for information contained in <span class="math notranslate nohighlight">\(Z^t\)</span>. <a class="reference internal" href="#steptwok"><span class="std std-ref">Step2</span></a> computes the innovation <span class="math notranslate nohighlight">\(U_{t+1}\)</span> by constructing the predictive density, while <a class="reference internal" href="#stepthreek"><span class="std std-ref">step3</span></a> computes the Kalman gain <span class="math notranslate nohighlight">\({\mathcal K}(\Sigma_t)\)</span> by regressing <span class="math notranslate nohighlight">\(X_{t+1} - {\mathbb A} \overline X_t\)</span> on <span class="math notranslate nohighlight">\(U_{t+1}\)</span>.</p>
 </section>
 </div><section id="innovations-representation">
-<h3><span class="section-number">9.2.1. </span>Innovations Representation<a class="headerlink" href="#innovations-representation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.2.1. </span>Innovations Representation<a class="headerlink" href="#innovations-representation" title="Link to this heading">#</a></h3>
 <p>Taken together, <a class="reference internal" href="#steptwok"><span class="std std-ref">step2</span></a> and <a class="reference internal" href="#stepthreek"><span class="std std-ref">step3</span></a> present the evolution of <span class="math notranslate nohighlight">\(\{Q_{t+1}\}\)</span> as a first-order Markov process. This process is the foundation of an <em>innovations representation</em> and its partner the <em>whitener</em>. The innovations representation is</p>
 <div class="math notranslate nohighlight" id="equation-eqn-kinnovation">
-<span class="eqno">(9.5)<a class="headerlink" href="#equation-eqn-kinnovation" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-eqn-kinnovation" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
   \overline X_{t+1} &amp; = {\mathbb A} \overline X_t + {\mathcal K}(\Sigma_t)U_{t+1} \\
   Z_{t+1}   &amp; =  {\mathbb H} + {\mathbb D} \overline X_t  +U_{t+1} .
 \end{align}\end{split}\]</div>
 <p>The <em>whitener</em> system is</p>
 <div class="math notranslate nohighlight" id="equation-eq-kwhitener">
-<span class="eqno">(9.6)<a class="headerlink" href="#equation-eq-kwhitener" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-eq-kwhitener" title="Link to this equation">#</a></span>\[\begin{split}\begin{align}
    U_{t+1} &amp; = Z_{t+1}  -  {\mathbb H} - {\mathbb D} \overline X_t  \\
   \overline X_{t+1} &amp; =  \left[{\mathbb A} - {\mathbb D} {\mathcal K}(\Sigma_t)\right]  \overline X_t + {\mathcal K}(\Sigma_t)(Z_{t+1} - {\mathbb H})
 \end{align}\end{split}\]</div>
-<p>The innovations representation <a class="reference internal" href="#equation-eqn-kinnovation">(9.5)</a> and the whitener system <a class="reference internal" href="#equation-eq-kwhitener">(9.6)</a> both take sequences <span class="math notranslate nohighlight">\(\{\Sigma_t, {\mathcal K}(\Sigma_t)\}_{t=0}\)</span> as inputs. These can be precomputed from equations <a class="reference internal" href="#equation-eq-kalman1">(9.2)</a> and <a class="reference internal" href="#equation-eq-kalman2">(9.3)</a> before observing any <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>’s.</p>
+<p>The innovations representation <a class="reference internal" href="#equation-eqn-kinnovation">(5.5)</a> and the whitener system <a class="reference internal" href="#equation-eq-kwhitener">(5.6)</a> both take sequences <span class="math notranslate nohighlight">\(\{\Sigma_t, {\mathcal K}(\Sigma_t)\}_{t=0}\)</span> as inputs. These can be precomputed from equations <a class="reference internal" href="#equation-eq-kalman1">(5.2)</a> and <a class="reference internal" href="#equation-eq-kalman2">(5.3)</a> before observing any <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>’s.</p>
 <div class="proof remark admonition" id="remark-1">
-<p class="admonition-title"><span class="caption-number">Remark 9.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 5.2 </span></p>
 <section class="remark-content" id="proof-content">
 <p>The covariance matrix <span class="math notranslate nohighlight">\(\Omega_{t}\)</span> is presumed to be nonsingular, but it is not necessarily diagonal so that components of the innovation vector <span class="math notranslate nohighlight">\(U_{t+1}\)</span> are possibly correlated. We can transform the innovation vector <span class="math notranslate nohighlight">\(U_{t+1}\)</span> to produce a new shock process <span class="math notranslate nohighlight">\({\overline W}_{t+1}\)</span> that has the identity as its covariance matrix. To do so construct a matrix <span class="math notranslate nohighlight">\(\Lambda_{t}\)</span> that satisfies</p>
 <div class="math notranslate nohighlight">
@@ -528,44 +503,44 @@ The key idea underlying the Kalman filter is recursively to transform the space 
 \[\overline W_{t+1} = \left( \overline {\mathbb F}_{t} \right)^{-1} U_{t+1} \]</div>
 <p>Then</p>
 <div class="math notranslate nohighlight" id="equation-eqn-kwhatever">
-<span class="eqno">(9.7)<a class="headerlink" href="#equation-eqn-kwhatever" title="Link to this equation">#</a></span>\[\begin{split}\overline X_{t+1} &amp; = {\mathbb A} \overline X_t + {\overline {\mathbb B}}_{t} \overline W_{t+1}  \\
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-eqn-kwhatever" title="Link to this equation">#</a></span>\[\begin{split}\overline X_{t+1} &amp; = {\mathbb A} \overline X_t + {\overline {\mathbb B}}_{t} \overline W_{t+1}  \\
 Z_{t+1}   &amp; =  {\mathbb H} + {\mathbb D} \overline X_t  + { \overline {\mathbb F}}_{t} \overline W_{t+1} \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\({\overline {\mathbb B}}_{t} =  {\mathcal K}(\Sigma_t) {\overline {\mathbb F}}_{t}\)</span> and  A  Gram-Schmidt process can be used to construct <span class="math notranslate nohighlight">\(\overline W_{t+1}\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(\overline \Sigma\)</span> is a positive definite fixed point of recursion <a class="reference internal" href="#equation-eq-kalman2">(9.3)</a> and <span class="math notranslate nohighlight">\(\Sigma_0 = \overline \Sigma\)</span>, then <span class="math notranslate nohighlight">\(\Sigma_t =  \overline \Sigma\)</span> for all <span class="math notranslate nohighlight">\(t \ge 0\)</span> and</p>
+<p>If <span class="math notranslate nohighlight">\(\overline \Sigma\)</span> is a positive definite fixed point of recursion <a class="reference internal" href="#equation-eq-kalman2">(5.3)</a> and <span class="math notranslate nohighlight">\(\Sigma_0 = \overline \Sigma\)</span>, then <span class="math notranslate nohighlight">\(\Sigma_t =  \overline \Sigma\)</span> for all <span class="math notranslate nohighlight">\(t \ge 0\)</span> and</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}&amp;{\mathcal K}(\Sigma_t) = {\mathcal K}(\overline \Sigma) \doteq  \overline {\mathcal K} \\
 &amp;\Omega_t =  {\mathbb D} \overline \Sigma_t {\mathbb D}' + {\mathbb F} {\mathbb F}' \doteq \overline \Omega\end{split}\]</div>
-<p>for all <span class="math notranslate nohighlight">\(t\ge 1\)</span> simplifies  recursive representation <a class="reference internal" href="#equation-eqn-kwhatever">(9.7)</a> by making <span class="math notranslate nohighlight">\({\overline {\mathbb B}}_t,\)</span> <span class="math notranslate nohighlight">\({\overline {\mathbb F}}_t\)</span> and <span class="math notranslate nohighlight">\(\Omega_t\)</span> all  time-invariant. Setting <span class="math notranslate nohighlight">\(\Sigma_0= {\overline \Sigma}\)</span> to the positive semidefinite fixed point of iterations on equation <a class="reference internal" href="#equation-eq-kalman2">(9.3)</a>, sometimes called a matrix Riccati equation, amounts to pretending that at date zero we are conditioning on an infinite history of <span class="math notranslate nohighlight">\(Z_t\)</span>’s.</p>
+<p>for all <span class="math notranslate nohighlight">\(t\ge 1\)</span> simplifies  recursive representation <a class="reference internal" href="#equation-eqn-kwhatever">(5.7)</a> by making <span class="math notranslate nohighlight">\({\overline {\mathbb B}}_t,\)</span> <span class="math notranslate nohighlight">\({\overline {\mathbb F}}_t\)</span> and <span class="math notranslate nohighlight">\(\Omega_t\)</span> all  time-invariant. Setting <span class="math notranslate nohighlight">\(\Sigma_0= {\overline \Sigma}\)</span> to the positive semidefinite fixed point of iterations on equation <a class="reference internal" href="#equation-eq-kalman2">(5.3)</a>, sometimes called a matrix Riccati equation, amounts to pretending that at date zero we are conditioning on an infinite history of <span class="math notranslate nohighlight">\(Z_t\)</span>’s.</p>
 </section>
-</div><p>Please compare the original state space system <a class="reference internal" href="#equation-eqn-kalman0">(9.1)</a> with the innovation representations <a class="reference internal" href="#equation-eqn-kinnovation">(9.5)</a> and <a class="reference internal" href="#equation-eqn-kwhatever">(9.7)</a>. Key differences are</p>
+</div><p>Please compare the original state space system <a class="reference internal" href="#equation-eqn-kalman0">(5.1)</a> with the innovation representations <a class="reference internal" href="#equation-eqn-kinnovation">(5.5)</a> and <a class="reference internal" href="#equation-eqn-kwhatever">(5.7)</a>. Key differences are</p>
 <ol class="arabic simple">
-<li><p>In the original system <a class="reference internal" href="#equation-eqn-kalman0">(9.1)</a>, the shock vector <span class="math notranslate nohighlight">\(W_{t+1}\)</span> can be of much larger dimension than the time <span class="math notranslate nohighlight">\(t+1\)</span> observation vector <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>, while in the innovation representations <a class="reference internal" href="#equation-eqn-kinnovation">(9.5)</a> and <a class="reference internal" href="#equation-eqn-kwhatever">(9.7)</a>, the dimension of the shock <span class="math notranslate nohighlight">\(U_{t+1}\)</span> or <span class="math notranslate nohighlight">\(\overline W_{t+1}\)</span> equals that of the observation vector.</p></li>
-<li><p>The state vector <span class="math notranslate nohighlight">\(X_t\)</span> in the original system <a class="reference internal" href="#equation-eqn-kalman0">(9.1)</a> is not observed while in the innovation representation <a class="reference internal" href="#equation-eqn-kinnovation">(9.5)</a> the state vector <span class="math notranslate nohighlight">\(\overline X_t\)</span> is observed.</p></li>
+<li><p>In the original system <a class="reference internal" href="#equation-eqn-kalman0">(5.1)</a>, the shock vector <span class="math notranslate nohighlight">\(W_{t+1}\)</span> can be of much larger dimension than the time <span class="math notranslate nohighlight">\(t+1\)</span> observation vector <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>, while in the innovation representations <a class="reference internal" href="#equation-eqn-kinnovation">(5.5)</a> and <a class="reference internal" href="#equation-eqn-kwhatever">(5.7)</a>, the dimension of the shock <span class="math notranslate nohighlight">\(U_{t+1}\)</span> or <span class="math notranslate nohighlight">\(\overline W_{t+1}\)</span> equals that of the observation vector.</p></li>
+<li><p>The state vector <span class="math notranslate nohighlight">\(X_t\)</span> in the original system <a class="reference internal" href="#equation-eqn-kalman0">(5.1)</a> is not observed while in the innovation representation <a class="reference internal" href="#equation-eqn-kinnovation">(5.5)</a> the state vector <span class="math notranslate nohighlight">\(\overline X_t\)</span> is observed.</p></li>
 </ol>
 </section>
 <section id="likelihood-process">
-<h3><span class="section-number">9.2.2. </span>Likelihood process<a class="headerlink" href="#likelihood-process" title="Link to this heading">#</a></h3>
-<p>Equations <a class="reference internal" href="#equation-eq-kalman1">(9.2)</a> and <a class="reference internal" href="#equation-eq-kalman2">(9.3)</a> together with an initial distribution <span class="math notranslate nohighlight">\(Q_0\)</span> for <span class="math notranslate nohighlight">\(X_0 \sim {\cal N}({\overline X}_0,  \Sigma_0 )\)</span> provide components that allow us to construct a recursive representation for a likelihood process for <span class="math notranslate nohighlight">\(\{Z_t : t=1, 2, \ldots \}\)</span>. Let <span class="math notranslate nohighlight">\(\psi(z^* \mid \mu, \Sigma )\)</span> denote the density for an <span class="math notranslate nohighlight">\(m\)</span> dimensional, normally distributed random vector with mean <span class="math notranslate nohighlight">\(\mu\)</span> and covariance matrix <span class="math notranslate nohighlight">\(\Lambda\)</span>. With this notation, the density of <span class="math notranslate nohighlight">\(Z_{t+1} \)</span> conditional on the hidden state <span class="math notranslate nohighlight">\(X_t\)</span> is <span class="math notranslate nohighlight">\(\psi(z^* \mid {\mathbb H} + {\mathbb D}X_t, {\mathbb B}{\mathbb B}'),\)</span> where <span class="math notranslate nohighlight">\(z^*\)</span> is an <span class="math notranslate nohighlight">\(m\)</span> dimensional vector of real numbers used to represent potential realizations of <span class="math notranslate nohighlight">\(Z_{t+1}.\)</span> The distribution of the hidden state <span class="math notranslate nohighlight">\(X_t\)</span> conditioned on history <span class="math notranslate nohighlight">\(Z^{t-1}\)</span> and <span class="math notranslate nohighlight">\(( \overline X_{0}\)</span> and <span class="math notranslate nohighlight">\(\Sigma_{0})\)</span> is <span class="math notranslate nohighlight">\(Q_t \sim {\mathcal N}(\overline X_t, \Sigma_t)\)</span>. From these two components, we construct the predictive density <span class="math notranslate nohighlight">\(\phi(z^* \mid Z^t)\)</span> for <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>:</p>
+<h3><span class="section-number">5.2.2. </span>Likelihood process<a class="headerlink" href="#likelihood-process" title="Link to this heading">#</a></h3>
+<p>Equations <a class="reference internal" href="#equation-eq-kalman1">(5.2)</a> and <a class="reference internal" href="#equation-eq-kalman2">(5.3)</a> together with an initial distribution <span class="math notranslate nohighlight">\(Q_0\)</span> for <span class="math notranslate nohighlight">\(X_0 \sim {\cal N}({\overline X}_0,  \Sigma_0 )\)</span> provide components that allow us to construct a recursive representation for a likelihood process for <span class="math notranslate nohighlight">\(\{Z_t : t=1, 2, \ldots \}\)</span>. Let <span class="math notranslate nohighlight">\(\psi(z^* \mid \mu, \Sigma )\)</span> denote the density for an <span class="math notranslate nohighlight">\(m\)</span> dimensional, normally distributed random vector with mean <span class="math notranslate nohighlight">\(\mu\)</span> and covariance matrix <span class="math notranslate nohighlight">\(\Lambda\)</span>. With this notation, the density of <span class="math notranslate nohighlight">\(Z_{t+1} \)</span> conditional on the hidden state <span class="math notranslate nohighlight">\(X_t\)</span> is <span class="math notranslate nohighlight">\(\psi(z^* \mid {\mathbb H} + {\mathbb D}X_t, {\mathbb B}{\mathbb B}'),\)</span> where <span class="math notranslate nohighlight">\(z^*\)</span> is an <span class="math notranslate nohighlight">\(m\)</span> dimensional vector of real numbers used to represent potential realizations of <span class="math notranslate nohighlight">\(Z_{t+1}.\)</span> The distribution of the hidden state <span class="math notranslate nohighlight">\(X_t\)</span> conditioned on history <span class="math notranslate nohighlight">\(Z^{t-1}\)</span> and <span class="math notranslate nohighlight">\(( \overline X_{0}\)</span> and <span class="math notranslate nohighlight">\(\Sigma_{0})\)</span> is <span class="math notranslate nohighlight">\(Q_t \sim {\mathcal N}(\overline X_t, \Sigma_t)\)</span>. From these two components, we construct the predictive density <span class="math notranslate nohighlight">\(\phi(z^* \mid Z^t)\)</span> for <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-preddensityz">
-<span class="eqno">(9.8)<a class="headerlink" href="#equation-eqn-preddensityz" title="Link to this equation">#</a></span>\[\phi(z^* \mid  Z^t, {\overline X}_0, \Sigma_0 ) = \int \psi( z^* \mid x) Q_t(d x ) .\]</div>
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-eqn-preddensityz" title="Link to this equation">#</a></span>\[\phi(z^* \mid  Z^t, {\overline X}_0, \Sigma_0 ) = \int \psi( z^* \mid x) Q_t(d x ) .\]</div>
 <p>From the Kalman filter, we know that</p>
 <div class="math notranslate nohighlight">
 \[\int \psi( z^* \mid x) Q_t(d x )  = \psi(z^* \mid {\mathbb H} + {\mathbb D} \overline X_t, \Omega_t)\]</div>
 <p>To compute a likelihood process <span class="math notranslate nohighlight">\(\{ L_t : t=1,2,... \}\)</span>, factor the joint density for <span class="math notranslate nohighlight">\(Z^{t}\)</span> into a product of conditional density functions in which a time <span class="math notranslate nohighlight">\(j\)</span> density function conditions on past information and the initial <span class="math notranslate nohighlight">\(({\overline X}_0, \Omega_0)\)</span>. When we evaluate densities at the appropriate random vectors <span class="math notranslate nohighlight">\(Z_j\)</span> and the associated histories <span class="math notranslate nohighlight">\(Z^{j-1}\)</span> of which <span class="math notranslate nohighlight">\(\overline X_{j-1}, \Omega_{j-1}\)</span> are functions determined by the Kalman filter, we obtain the likelihood process:<a class="footnote-reference brackets" href="#deriv" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight" id="equation-ex-likelihoodprocessnew">
-<span class="eqno">(9.9)<a class="headerlink" href="#equation-ex-likelihoodprocessnew" title="Link to this equation">#</a></span>\[L_{t} =  \prod_{j=1}^{t} \psi(Z_j \mid {\mathbb H} + {\mathbb D} \overline X_{j-1}, \Omega_{j-1}).\]</div>
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-ex-likelihoodprocessnew" title="Link to this equation">#</a></span>\[L_{t} =  \prod_{j=1}^{t} \psi(Z_j \mid {\mathbb H} + {\mathbb D} \overline X_{j-1}, \Omega_{j-1}).\]</div>
 <p>Via the Kalman filtering formulas for <span class="math notranslate nohighlight">\(\{\overline X_j, \Omega_j\}_{j=1}^\infty\)</span>, this construction indicates how  the likelihood process depends on the matrices <span class="math notranslate nohighlight">\({\mathbb A}, {\mathbb B}, {\mathbb H}, {\mathbb D}, {\mathbb F}\)</span>. Sometimes we regard some  entries of these matrices  as  “free parameters.” Because a  likelihood process summarizes  information about these parameters, it is the starting point for both frequentist and Bayesian estimation procedures.</p>
 <ol class="arabic simple">
 <li><p>For fixed values of the parameters that pin down <span class="math notranslate nohighlight">\({\mathbb A}, {\mathbb B}, {\mathbb H}, {\mathbb D}, {\mathbb F}\)</span>, <span class="math notranslate nohighlight">\(\{L_{t}\}_{t=1}^\infty\)</span> is a stochastic process with some “interesting properties.”</p></li>
 <li><p>For a fixed <span class="math notranslate nohighlight">\(t\)</span> and a sample of observations <span class="math notranslate nohighlight">\(Z^{t}\)</span>, <span class="math notranslate nohighlight">\(L_{t}\)</span> becomes a “likelihood function” when viewed as a function of the free parameters.</p></li>
 </ol>
 <div class="proof example admonition" id="ex:Muth1960">
-<p class="admonition-title"><span class="caption-number">Example 9.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 5.1 </span></p>
 <section class="example-content" id="proof-content">
 <p>John F. <span id="id7">Muth [<a class="reference internal" href="cite.html#id348" title="John F. Muth. Optimal properties of exponentially weighted forecasts. Journal of the American Statistical Association, 55:299-306, 1960.">1960</a>]</span> posed and solved the following inverse optimal prediction problem: for what
 stochastic process <span class="math notranslate nohighlight">\(\{ Z_t : t \ge 0\}\)</span> is  the  adaptive expectations scheme of Milton <span id="id8">Friedman [<a class="reference internal" href="cite.html#id157" title="Milton Friedman. A Theory of the Consumption Function. Princeton University Press, Princeton, New Jersey, 1957.">1957</a>]</span></p>
 <div class="math notranslate nohighlight" id="equation-recur-adapt">
-<span class="eqno">(9.10)<a class="headerlink" href="#equation-recur-adapt" title="Link to this equation">#</a></span>\[Z_t^* = \lambda Z_t + (1 - \lambda) Z_{t-1}^* \quad 0 &lt; \lambda &lt; 1\]</div>
+<span class="eqno">(5.10)<a class="headerlink" href="#equation-recur-adapt" title="Link to this equation">#</a></span>\[Z_t^* = \lambda Z_t + (1 - \lambda) Z_{t-1}^* \quad 0 &lt; \lambda &lt; 1\]</div>
 <p>optimal for predicting future <span class="math notranslate nohighlight">\(Z_{t+k}\)</span>? And over what horizon <span class="math notranslate nohighlight">\(k\)</span>, if any,  is <span class="math notranslate nohighlight">\(Z_t^*\)</span> a good forecast?</p>
 <p>Although Muth did not use it  to solve his problem, we can convey his answers concisely using the Kalman filter.  As described above,   initialize the initial covariance matrix for the Kalman filter  at <span class="math notranslate nohighlight">\(\Sigma_0 = \overline \Sigma\)</span> where the latter is the time-invariant solution to the covariance matrix updating equation.<br />
 Set <span class="math notranslate nohighlight">\(\mathbb A = \mathbb D = 1\)</span>, <span class="math notranslate nohighlight">\(\mathbb B = \begin{bmatrix} \mathbb B_1 &amp; 0 \end{bmatrix}\)</span>, and <span class="math notranslate nohighlight">\(\mathbb F = \begin{bmatrix} 0 &amp; \mathbb F_2 \end{bmatrix}\)</span>
@@ -580,8 +555,8 @@ by computing <span class="math notranslate nohighlight">\(\overline X_t\)</span>
 \[\overline X_{t+1}  = \overline X_t + \overline {\mathcal K}  (Z_{t+1} - \overline X_t ),\]</div>
 <p>where it can be verified that <span class="math notranslate nohighlight">\(0 &lt; \overline {\mathcal K} &lt; 1\)</span>. Notice that</p>
 <div class="math notranslate nohighlight" id="equation-recurmuth">
-<span class="eqno">(9.11)<a class="headerlink" href="#equation-recurmuth" title="Link to this equation">#</a></span>\[ \overline X_{t+1} = (1 - \overline {\mathcal K}) \overline X_t + \overline {\mathcal K} Z_{t+1}\]</div>
-<p>Comparing <a class="reference internal" href="#equation-recur-adapt">(9.10)</a> to <a class="reference internal" href="#equation-recurmuth">(9.11)</a> shows that “adaptive” expectations become “rational”
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-recurmuth" title="Link to this equation">#</a></span>\[ \overline X_{t+1} = (1 - \overline {\mathcal K}) \overline X_t + \overline {\mathcal K} Z_{t+1}\]</div>
+<p>Comparing <a class="reference internal" href="#equation-recur-adapt">(5.10)</a> to <a class="reference internal" href="#equation-recurmuth">(5.11)</a> shows that “adaptive” expectations become “rational”
 by setting</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\overline X_t  = Z_t^* \\
@@ -636,18 +611,18 @@ E [Z_{t+k} | Z_t, Z_{t-1}, \ldots, ] = \overline X_t .
 ```` 
 -->
 <div class="proof example admonition" id="ex:Jovanovic1979">
-<p class="admonition-title"><span class="caption-number">Example 9.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 5.2 </span></p>
 <section class="example-content" id="proof-content">
 <p>As state variables for the key Bellman equation in his matching model, <span id="id9">Jovanovic [<a class="reference internal" href="cite.html#id268" title="Boyan Jovanovic. Job matching and the theory of turnover. Journal of Political Economy, 87(5):972-990, 1979.">1979</a>]</span> deployed sufficient statistics of conditional distribution <span class="math notranslate nohighlight">\(Q_t\)</span> for a univariate hidden Markov state equal to an unknown constant match quality <span class="math notranslate nohighlight">\(\theta\)</span> drawn from a known initial distribution <span class="math notranslate nohighlight">\(\mathcal{N}\left(\overline{X}_0, \Sigma_0\right)\)</span>. The state-space representation for <span id="id10">Jovanovic [<a class="reference internal" href="cite.html#id268" title="Boyan Jovanovic. Job matching and the theory of turnover. Journal of Political Economy, 87(5):972-990, 1979.">1979</a>]</span>’s model is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}X_{t+1} = X_t \\
 Z_{t+1} = X_t + \mathbb{F} W_{t+1}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> and <span class="math notranslate nohighlight">\(X_t = \theta\)</span> are scalars and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is a standardized univariate normal random variable. We fit this model into <a class="reference internal" href="#equation-eqn-kalman0">(9.1)</a> by setting <span class="math notranslate nohighlight">\(\mathbb{A} = \mathbb{D} = 1, \mathbb{B} = 0, \mathbb{F} &gt; 0, X_t =\theta\)</span>. Evidently, <span class="math notranslate nohighlight">\(\overline{X}_{t+1} = (1 - \mathcal{K}(\Sigma_t))\overline{X}_t + \mathcal{K}(\Sigma_t) Z_t\)</span> where
+<p>where <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> and <span class="math notranslate nohighlight">\(X_t = \theta\)</span> are scalars and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is a standardized univariate normal random variable. We fit this model into <a class="reference internal" href="#equation-eqn-kalman0">(5.1)</a> by setting <span class="math notranslate nohighlight">\(\mathbb{A} = \mathbb{D} = 1, \mathbb{B} = 0, \mathbb{F} &gt; 0, X_t =\theta\)</span>. Evidently, <span class="math notranslate nohighlight">\(\overline{X}_{t+1} = (1 - \mathcal{K}(\Sigma_t))\overline{X}_t + \mathcal{K}(\Sigma_t) Z_t\)</span> where
 <span class="math notranslate nohighlight">\(\Sigma_{t+1} = \frac{\Sigma_t \mathbb{F}^2}{\Sigma_t + \mathbb{F}^2}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{K}(\Sigma_t) = \frac{\Sigma_t}{\Sigma_t + \mathbb{F}^2}\)</span>. Thus, <span class="math notranslate nohighlight">\(\frac{1}{\Sigma_{t+1}} = \frac{1}{\Sigma_t} + \frac{1}{\mathbb{F}^2} \downarrow 0\)</span>
 and <span class="math notranslate nohighlight">\(\mathcal{K}(\Sigma_t) \rightarrow 0\)</span>. Thus, partners to an ongoing match who observe
 <span class="math notranslate nohighlight">\(Z^t\)</span> eventually learn its true quality <span class="math notranslate nohighlight">\(\theta\)</span>. In <span id="id11">Jovanovic [<a class="reference internal" href="cite.html#id268" title="Boyan Jovanovic. Job matching and the theory of turnover. Journal of Political Economy, 87(5):972-990, 1979.">1979</a>]</span>’s model, especially when <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> is large, early on in a match, <span class="math notranslate nohighlight">\(\Sigma_t\)</span> can be large enough to create a situation in which the “he’s just been having a few bad days” excuse prevails to sustain the match in hopes of later learning that it is a good one. <span id="id12">Jovanovic [<a class="reference internal" href="cite.html#id268" title="Boyan Jovanovic. Job matching and the theory of turnover. Journal of Political Economy, 87(5):972-990, 1979.">1979</a>]</span> put this force to work to help explain why (a) quits and layoffs are negatively correlated with job tenure and (b) wages rise with job tenure.</p>
 <div class="proof example admonition" id="ex:twomovingaverages">
-<p class="admonition-title"><span class="caption-number">Example 9.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 5.3 </span></p>
 <section class="example-content" id="proof-content">
 <p>Two moving-average representations. A first-order moving average process <span class="math notranslate nohighlight">\(\{Z_{t+1}\}\)</span> obeys <span class="math notranslate nohighlight">\(Z_{t+1} = W_{t+1} - \lambda W_t \)</span>, where <span class="math notranslate nohighlight">\(\{W_{t}\}\)</span> is a univariate i.i.d. process of standardized normal random variables and <span class="math notranslate nohighlight">\(\lambda &gt; 1\)</span>. Use backward recursions on <span class="math notranslate nohighlight">\(Z_{t+1} = W_{t+1} - \lambda W_t \)</span> to solve for <span class="math notranslate nohighlight">\(W_{t+1} \)</span> as a function of <span class="math notranslate nohighlight">\(\{Z_{t+1}\}\)</span> to get</p>
 <div class="math notranslate nohighlight">
@@ -680,7 +655,7 @@ and <span class="math notranslate nohighlight">\(\mathcal{K}(\Sigma_t) \rightarr
 </div></section>
 </div></section>
 <section id="kalman-smoother">
-<h3><span class="section-number">9.2.3. </span>Kalman smoother<a class="headerlink" href="#kalman-smoother" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.2.3. </span>Kalman smoother<a class="headerlink" href="#kalman-smoother" title="Link to this heading">#</a></h3>
 <p>The Kalman filter provides recursive formulas for computing the distribution of a hidden state vector <span class="math notranslate nohighlight">\(X_t\)</span>
 conditional on a signal history <span class="math notranslate nohighlight">\(\{Z_\tau : \tau = 1,2, ..., t\}\)</span> and an initial distribution <span class="math notranslate nohighlight">\(Q_0\)</span> for <span class="math notranslate nohighlight">\(X_0\)</span>.
 This conditional distribution has the form <span class="math notranslate nohighlight">\(X_t \sim \mathcal{N}(\overline{X}_t, \Sigma_t)\)</span>; the Kalman
@@ -704,7 +679,7 @@ as inputs and then works <strong>backwards</strong> on the following steps start
 <p>From this joint distribution, construct the conditional distribution for <span class="math notranslate nohighlight">\(X_t\)</span>, given <span class="math notranslate nohighlight">\(X_{t+1}, Z_{t+1}\)</span> and <span class="math notranslate nohighlight">\(\left( \overline{X}_t , \Sigma_t \right)\)</span>.
 Compute the conditional mean of <span class="math notranslate nohighlight">\(X_t - \overline{X}_t\)</span> by using the population least squares formula</p>
 <div class="math notranslate nohighlight" id="equation-smooth-regression">
-<span class="eqno">(9.12)<a class="headerlink" href="#equation-smooth-regression" title="Link to this equation">#</a></span>\[\widehat{\mathbb{K}}_1   \left( X_{t+1} - \mathbb{A}\overline{X}_t\right) + \widehat{\mathbb{K}}_2 \left(Z_{t+1} - \mathbb{H}- \mathbb{D} \overline{X}_t \right) \]</div>
+<span class="eqno">(5.12)<a class="headerlink" href="#equation-smooth-regression" title="Link to this equation">#</a></span>\[\widehat{\mathbb{K}}_1   \left( X_{t+1} - \mathbb{A}\overline{X}_t\right) + \widehat{\mathbb{K}}_2 \left(Z_{t+1} - \mathbb{H}- \mathbb{D} \overline{X}_t \right) \]</div>
 <p>where the regression coefficient matrix is</p>
 <div class="math notranslate nohighlight">
 \[\begin{bmatrix} \widehat{\mathbb{K}}_1  &amp; \widehat{\mathbb{K}}_2 \end{bmatrix}
@@ -712,7 +687,7 @@ Compute the conditional mean of <span class="math notranslate nohighlight">\(X_t
 \mathbb{A} \Sigma_t \mathbb{A}' + \mathbb{B} \mathbb{B}' &amp;   \mathbb{A} \Sigma_t\mathbb{D}' +  \mathbb{B} \mathbb{F}'    \cr  \mathbb{D} \Sigma_t \mathbb{A}' + \mathbb{F}\mathbb{B}'  &amp; \mathbb{D} \Sigma_t \mathbb{D}' + \mathbb{F}\mathbb{F}'  \end{bmatrix} ^{-1}\]</div>
 <p>and the residual covariance matrix equals</p>
 <div class="math notranslate nohighlight" id="equation-smooth-covariance">
-<span class="eqno">(9.13)<a class="headerlink" href="#equation-smooth-covariance" title="Link to this equation">#</a></span>\[\Sigma_t - \begin{bmatrix}  \Sigma_t \mathbb{A}' &amp;  \Sigma_t \mathbb{D}' \end{bmatrix} \begin{bmatrix}  
+<span class="eqno">(5.13)<a class="headerlink" href="#equation-smooth-covariance" title="Link to this equation">#</a></span>\[\Sigma_t - \begin{bmatrix}  \Sigma_t \mathbb{A}' &amp;  \Sigma_t \mathbb{D}' \end{bmatrix} \begin{bmatrix}  
 \mathbb{A} \Sigma_t \mathbb{A}' + \mathbb{B} \mathbb{B}' &amp;   \mathbb{A} \Sigma_t\mathbb{D}' +  \mathbb{B} \mathbb{D}'    \cr  \mathbb{D} \Sigma_t \mathbb{A}' + \mathbb{F}\mathbb{B}'  &amp; \mathbb{D} \Sigma_t \mathbb{D}' + \mathbb{F}\mathbb{F}'  \end{bmatrix}^{-1}
 \begin{bmatrix}  \mathbb{A} \Sigma_t \cr   \mathbb{D} \Sigma_t  \end{bmatrix}\]</div>
 <ul class="simple">
@@ -731,7 +706,7 @@ Compute the conditional mean of <span class="math notranslate nohighlight">\(X_t
 </section>
 </section>
 <section id="mixtures">
-<h2><span class="section-number">9.3. </span>Mixtures<a class="headerlink" href="#mixtures" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>Mixtures<a class="headerlink" href="#mixtures" title="Link to this heading">#</a></h2>
 <p>Suppose now that <span class="math notranslate nohighlight">\(\{ X_t : t \ge 0\}\)</span> evolves as an <span class="math notranslate nohighlight">\(n\)</span>-state Markov process with transition probability matrix <span class="math notranslate nohighlight">\(\mathbb{P}\)</span>.<br />
 A date <span class="math notranslate nohighlight">\(t+1\)</span> vector of signals <span class="math notranslate nohighlight">\(Z_{t+1} = Y_{t+1}-Y_t\)</span> with  density <span class="math notranslate nohighlight">\(\psi_i(y^*)\)</span> if hidden state <span class="math notranslate nohighlight">\(i\)</span> is realized, meaning that <span class="math notranslate nohighlight">\(X_t\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>th coordinate vector.
 We want to compute the probability that <span class="math notranslate nohighlight">\(X_t\)</span> is in state <span class="math notranslate nohighlight">\(i\)</span> conditional on the signal history.
@@ -741,7 +716,7 @@ The vector of conditional probabilities equals <span class="math notranslate noh
 </ol>
 <p>Find the joint distribution of <span class="math notranslate nohighlight">\((X_{t+1},Z_{t+1} )\)</span> conditional on <span class="math notranslate nohighlight">\(X_t\)</span>.  Conditional distributions of <span class="math notranslate nohighlight">\(Z_{t+1} \)</span> and <span class="math notranslate nohighlight">\(X_{t+1}\)</span> are statistically independent by assumption.  Write the joint density conditioned on <span class="math notranslate nohighlight">\(X_t\)</span> as:</p>
 <div class="math notranslate nohighlight" id="equation-joint1">
-<span class="eqno">(9.14)<a class="headerlink" href="#equation-joint1" title="Link to this equation">#</a></span>\[\begin{split}\begin{matrix}
+<span class="eqno">(5.14)<a class="headerlink" href="#equation-joint1" title="Link to this equation">#</a></span>\[\begin{split}\begin{matrix}
 \left(\mathbb{P}'X_t \right) &amp; \times &amp; (X_t)' \text{vec} \left\{ \psi_i(y^*) \right\} \\
 \uparrow &amp; &amp; \uparrow \\
  X_{t+1}  \ \ \text{density} &amp; &amp; Z_{t+1} \ \ \text{density}
@@ -749,9 +724,9 @@ The vector of conditional probabilities equals <span class="math notranslate noh
 <p>where <span class="math notranslate nohighlight">\(\text{vec}(r_i)\)</span> is a column vector with <span class="math notranslate nohighlight">\(r_i\)</span> in the <span class="math notranslate nohighlight">\(i\)</span>th component.
 We have expressed conditional independence by forming a joint conditional distribution as a product of two conditional densities, one for <span class="math notranslate nohighlight">\(X_{t+1}\)</span> and one for <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>.</p>
 <ol class="arabic" id="steptwo" start="2">
-<li><p>Find the joint distribution of <span class="math notranslate nohighlight">\(X_{t+1},Z_{t+1}\)</span> conditioned on <span class="math notranslate nohighlight">\(Q_t\)</span>.  Since <span class="math notranslate nohighlight">\(X_t\)</span> is not observed, we form the appropriate average of <a class="reference internal" href="#equation-joint1">(9.14)</a> conditioned on <span class="math notranslate nohighlight">\(Y^t, Q_0\)</span>:</p>
+<li><p>Find the joint distribution of <span class="math notranslate nohighlight">\(X_{t+1},Z_{t+1}\)</span> conditioned on <span class="math notranslate nohighlight">\(Q_t\)</span>.  Since <span class="math notranslate nohighlight">\(X_t\)</span> is not observed, we form the appropriate average of <a class="reference internal" href="#equation-joint1">(5.14)</a> conditioned on <span class="math notranslate nohighlight">\(Y^t, Q_0\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-jointav2">
-<span class="eqno">(9.15)<a class="headerlink" href="#equation-jointav2" title="Link to this equation">#</a></span>\[\mathbb{P}' \text{diag}\{Q_t\}  \text{vec} \left\{ \psi_i(y^*) \right\},\]</div>
+<span class="eqno">(5.15)<a class="headerlink" href="#equation-jointav2" title="Link to this equation">#</a></span>\[\mathbb{P}' \text{diag}\{Q_t\}  \text{vec} \left\{ \psi_i(y^*) \right\},\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{diag}(Q_t)\)</span> is a diagonal matrix with the entries of <span class="math notranslate nohighlight">\(Q_t\)</span> on the diagonal.
 Thus, <span class="math notranslate nohighlight">\(Q_t\)</span> encodes all pertinent information about <span class="math notranslate nohighlight">\(X_t\)</span> that is contained in the history of signals.
 Conditional on <span class="math notranslate nohighlight">\(Q_t\)</span>,  <span class="math notranslate nohighlight">\(X_{t+1}\)</span> and <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> are <em>not</em> statistically independent.</p>
@@ -759,7 +734,7 @@ Conditional on <span class="math notranslate nohighlight">\(Q_t\)</span>,  <span
 </ol>
 <ol class="arabic" id="stepthree" start="3">
 <li><p>Find the distribution of <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> conditional on <span class="math notranslate nohighlight">\(Q_t\)</span>.
-Summing <a class="reference internal" href="#equation-jointav2">(9.15)</a> over the hidden states gives</p>
+Summing <a class="reference internal" href="#equation-jointav2">(5.15)</a> over the hidden states gives</p>
 <div class="math notranslate nohighlight">
 \[(\mathbf{1}_n)'\mathbb{P}' \text{diag}\{Q_t\}  \text{vec} \left\{ \psi_i(y^*) \right\} = Q_t\cdot \text{vec} \left\{ \psi_i(y^*) \right\}.\]</div>
 <p>Thus, <span class="math notranslate nohighlight">\(Q_t\)</span> is a vector of weights used to form a mixture distribution.
@@ -770,13 +745,13 @@ Then the distribution of <span class="math notranslate nohighlight">\(Y_{t+1}- Y
 <ol class="arabic" id="stepfour" start="4">
 <li><p>Obtain <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> by dividing the <em>joint</em> density of <span class="math notranslate nohighlight">\((Z_{t+1} ,X_{t+1})\)</span> conditional on <span class="math notranslate nohighlight">\(Q_t\)</span> by the <em>marginal</em> density for <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> conditioned on <span class="math notranslate nohighlight">\(Q_t\)</span> and then evaluating this ratio at <span class="math notranslate nohighlight">\(Z_{t+1} \)</span>.  In this way, we construct the density for <span class="math notranslate nohighlight">\(X_{t+1}\)</span> conditioned <span class="math notranslate nohighlight">\((Q_t,Z_{t+1})\)</span>. It takes the form of a vector <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> of conditional probabilities.  Thus, we are led to</p>
 <div class="math notranslate nohighlight" id="equation-newevolve1">
-<span class="eqno">(9.16)<a class="headerlink" href="#equation-newevolve1" title="Link to this equation">#</a></span>\[Q_{t+1} = \left( \frac{1}{Q_t\cdot \text{vec} \left\{ \psi_i(Z_{t+1} ) \right\}}\right)\mathbb{P}' \text{diag}(Q_t)  \text{vec} \left\{ \psi_i(Z_{t+1}) \right\}\]</div>
+<span class="eqno">(5.16)<a class="headerlink" href="#equation-newevolve1" title="Link to this equation">#</a></span>\[Q_{t+1} = \left( \frac{1}{Q_t\cdot \text{vec} \left\{ \psi_i(Z_{t+1} ) \right\}}\right)\mathbb{P}' \text{diag}(Q_t)  \text{vec} \left\{ \psi_i(Z_{t+1}) \right\}\]</div>
 </li>
 </ol>
-<p>Together, <a class="reference internal" href="#stepthree"><span class="std std-ref">step 3</span></a> and <a class="reference internal" href="#stepfour"><span class="std std-ref">step4</span></a> define a Markov process for <span class="math notranslate nohighlight">\(Q_{t+1}\)</span>. As indicated in <a class="reference internal" href="#stepthree"><span class="std std-ref">step3</span></a>, <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> is drawn from a (history-dependent) mixture of densities <span class="math notranslate nohighlight">\(\psi_i\)</span>. As indicated in <a class="reference internal" href="#stepfour"><span class="std std-ref">step4</span></a>, the vector <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> equals the exact function of <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>, <span class="math notranslate nohighlight">\(Q_t\)</span> described in <a class="reference internal" href="#equation-newevolve1">(9.16)</a>.</p>
+<p>Together, <a class="reference internal" href="#stepthree"><span class="std std-ref">step 3</span></a> and <a class="reference internal" href="#stepfour"><span class="std std-ref">step4</span></a> define a Markov process for <span class="math notranslate nohighlight">\(Q_{t+1}\)</span>. As indicated in <a class="reference internal" href="#stepthree"><span class="std std-ref">step3</span></a>, <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> is drawn from a (history-dependent) mixture of densities <span class="math notranslate nohighlight">\(\psi_i\)</span>. As indicated in <a class="reference internal" href="#stepfour"><span class="std std-ref">step4</span></a>, the vector <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> equals the exact function of <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>, <span class="math notranslate nohighlight">\(Q_t\)</span> described in <a class="reference internal" href="#equation-newevolve1">(5.16)</a>.</p>
 </section>
 <section id="recursive-regression">
-<span id="sec-learn-parameters"></span><h2><span class="section-number">9.4. </span>Recursive Regression<a class="headerlink" href="#recursive-regression" title="Link to this heading">#</a></h2>
+<span id="sec-learn-parameters"></span><h2><span class="section-number">5.4. </span>Recursive Regression<a class="headerlink" href="#recursive-regression" title="Link to this heading">#</a></h2>
 <p>A statistician wants to infer unknown parameters of a linear regression model. By treating regression coefficients as
 hidden states that are constant over time, we can cast this problem in terms of a hidden Markov model.
 By assigning a prior probability distribution to statistical models that are indexed by parameter values,
@@ -789,7 +764,7 @@ adopts a conjugate prior à la <span id="id14">Luce and Raiffa [<a class="refere
 formulas.</p>
 <p>Consider the first-order vector autoregressive model</p>
 <div class="math notranslate nohighlight" id="equation-eqn-fixedparams">
-<span class="eqno">(9.17)<a class="headerlink" href="#equation-eqn-fixedparams" title="Link to this equation">#</a></span>\[\begin{split}X_{t+1} = {\mathbb A} X_t + {\mathbb B} W_{t+1} \\
+<span class="eqno">(5.17)<a class="headerlink" href="#equation-eqn-fixedparams" title="Link to this equation">#</a></span>\[\begin{split}X_{t+1} = {\mathbb A} X_t + {\mathbb B} W_{t+1} \\
 Z_{t+1} = {\mathbb H} + {\mathbb D} X_{t} + {\mathbb F} W_{t+1}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is an i.i.d. normal random vector with mean vector <span class="math notranslate nohighlight">\(0\)</span> and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>, <span class="math notranslate nohighlight">\(X_t\)</span>
 is an observable state vector, and <span class="math notranslate nohighlight">\({\mathbb A}, {\mathbb B}, {\mathbb D}, {\mathbb F}, {\mathbb H}\)</span> are matrices containing unknown coefficients.  When <span class="math notranslate nohighlight">\({\mathbb A}\)</span> is a stable matrix, the vector <span class="math notranslate nohighlight">\({\mathbb H}\)</span> is interpretable as the vector of means of the observation vector <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> (conditioned on invariant events).</p>
@@ -797,7 +772,7 @@ is an observable state vector, and <span class="math notranslate nohighlight">\(
 that
 <span class="math notranslate nohighlight">\(X_t\)</span> consists of <span class="math notranslate nohighlight">\(Z_t - H\)</span> and a finite number of lags <span class="math notranslate nohighlight">\(Z_{t-j}  - {\mathbb H}, j=0, \ldots, \ell-1\)</span>.  After substitution for the state vector, we obtain a finite-order vector autoregression:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-fixedparams2">
-<span class="eqno">(9.18)<a class="headerlink" href="#equation-eqn-fixedparams2" title="Link to this equation">#</a></span>\[Z_{t+1} = {\widetilde {\mathbb H}} +
+<span class="eqno">(5.18)<a class="headerlink" href="#equation-eqn-fixedparams2" title="Link to this equation">#</a></span>\[Z_{t+1} = {\widetilde {\mathbb H}} +
 {\mathbb D}  \begin{bmatrix} Z_t \cr 
 Z_{t-1} \cr ... \cr Y_{t-\ell +1}  \end{bmatrix} + {\mathbb F} W_{t+1} \]</div>
 <p>where</p>
@@ -808,35 +783,35 @@ Z_{t-1} \cr ... \cr Y_{t-\ell +1}  \end{bmatrix} + {\mathbb F} W_{t+1} \]</div>
 and <span class="math notranslate nohighlight">\({\mathbb F}\)</span>.  Notice that <span class="math notranslate nohighlight">\({\mathbb H}\)</span> potentially can be recovered from <span class="math notranslate nohighlight">\({\widetilde {\mathbb H}}\)</span> and <span class="math notranslate nohighlight">\({\mathbb D}\)</span>.
 The matrix <span class="math notranslate nohighlight">\({\mathbb F}\)</span> is not fully identified without further  a priori restrictions.  What is identified is <span class="math notranslate nohighlight">\({\mathbb F}{\mathbb F}'\)</span>.   This identification challenge is the topic of so-called ``structural vector autoregressions.’’  In what follows, we impose a convenient normalization on <span class="math notranslate nohighlight">\({\mathbb F}\)</span>.    Other observationally equivalent  <span class="math notranslate nohighlight">\({\mathbb F}\)</span>’s can be constructed from our estimation.</p>
 <section id="conjugate-prior-updating">
-<h3><span class="section-number">9.4.1. </span>Conjugate prior updating<a class="headerlink" href="#conjugate-prior-updating" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.4.1. </span>Conjugate prior updating<a class="headerlink" href="#conjugate-prior-updating" title="Link to this heading">#</a></h3>
 <p>By following suggestions offered by <span id="id15">Zellner [<a class="reference internal" href="cite.html#id439" title="Arnold Zellner. An efficient method of estimating seemingly unrelated regressions and tests for aggregation bias. Journal of the American Statistical Association, 1962.">1962</a>]</span>, <span id="id16">Box and Tiao [<a class="reference internal" href="cite.html#id58" title="G. E. P. Box and G. C. Tiao. Bayesian Inference in Statisical Analysis. John Wiley and Sons, Inc., New York, 1992.">1992</a>]</span>, <span id="id17">Sims and Zha [<a class="reference internal" href="cite.html#id399" title="Christopher A. Sims and Tao Zha. Error bands for impulse responses. Econometrica, 67(5):1113–1155, 1999. URL: http://dx.doi.org/10.1111/1468-0262.00071, doi:10.1111/1468-0262.00071.">1999</a>]</span>,
 and especially <span id="id18">Zha [<a class="reference internal" href="cite.html#id440" title="Tao Zha. Block recursion and structural vector autoregressions. Journal of Econometrics, 90(2):291-316, June 1999. URL: http://ideas.repec.org/a/eee/econom/v90y1999i2p291-316.html.">1999</a>]</span>, we can
-transform system <a class="reference internal" href="#equation-eqn-fixedparams2">(9.18)</a> in a way that justifies estimating the unknown coefficients
+transform system <a class="reference internal" href="#equation-eqn-fixedparams2">(5.18)</a> in a way that justifies estimating the unknown coefficients
 by
 applying least squares equation by equation.
 Factor the matrix <span class="math notranslate nohighlight">\({\mathbb F}{\mathbb F}' = {\mathbb J} \Delta {\mathbb J}'\)</span>, where <span class="math notranslate nohighlight">\({\mathbb J}\)</span> is lower triangular with ones on the diagonal and <span class="math notranslate nohighlight">\(\Delta\)</span>
 is diagonal.<a class="footnote-reference brackets" href="#cholesky" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>
 Construct</p>
 <div class="math notranslate nohighlight" id="equation-tzha1">
-<span class="eqno">(9.19)<a class="headerlink" href="#equation-tzha1" title="Link to this equation">#</a></span>\[{\mathbb J}^{-1} Z_{t+1}  = {\mathbb J}^{-1}{\widetilde {\mathbb H}} + {\mathbb J}^{-1} {\mathbb D} \begin{bmatrix} Y_t \cr 
+<span class="eqno">(5.19)<a class="headerlink" href="#equation-tzha1" title="Link to this equation">#</a></span>\[{\mathbb J}^{-1} Z_{t+1}  = {\mathbb J}^{-1}{\widetilde {\mathbb H}} + {\mathbb J}^{-1} {\mathbb D} \begin{bmatrix} Y_t \cr 
 Y_t \cr ... \cr Y_{t-\ell +1}  \end{bmatrix} + U_{t+1}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[U_{t+1} = {\mathbb J}^{-1} {\mathbb F} W_{t+1}\]</div>
 <p>so that <span class="math notranslate nohighlight">\(E U_{t+1} U_{t+1}' = \Delta\)</span>. The <span class="math notranslate nohighlight">\(i^{th}\)</span> entry of <span class="math notranslate nohighlight">\(U_{t+1}\)</span> is uncorrelated
 with, and consequently statistically independent of, the <span class="math notranslate nohighlight">\(j\)</span>th components of <span class="math notranslate nohighlight">\(Z_{t+1}\)</span><br />
-for <span class="math notranslate nohighlight">\(j = 1, 2, \ldots ,i-1\)</span>. As a consequence, each equation in system <a class="reference internal" href="#equation-tzha1">(9.19)</a> can be interpreted as a regression equation
+for <span class="math notranslate nohighlight">\(j = 1, 2, \ldots ,i-1\)</span>. As a consequence, each equation in system <a class="reference internal" href="#equation-tzha1">(5.19)</a> can be interpreted as a regression equation
 in which the left-hand side variable in equation <span class="math notranslate nohighlight">\(i\)</span> is the <span class="math notranslate nohighlight">\(i^{th}\)</span> component of <span class="math notranslate nohighlight">\(Z_{t+1}\)</span>.
 The regressors are a constant, <span class="math notranslate nohighlight">\(Z_t, Z_{t-1} ..., Z_{t-\ell +1} \)</span>, and the <span class="math notranslate nohighlight">\(j^{th}\)</span> components of <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> for <span class="math notranslate nohighlight">\(j = 1, \ldots, i-1\)</span>.
 The <span class="math notranslate nohighlight">\(i\)</span>th equation is an unrestricted regression with a disturbance term <span class="math notranslate nohighlight">\(U_{t+1,i}\)</span> that is uncorrelated with
 disturbances <span class="math notranslate nohighlight">\(U_{t+1,j}\)</span> to all other equations <span class="math notranslate nohighlight">\(j \neq i\)</span>.</p>
-<p>The system of equations <a class="reference internal" href="#equation-tzha1">(9.19)</a> is thus recursive. The first equation determines the first entry of <span class="math notranslate nohighlight">\(Z_{t+1]\)</span>, the second equation determines the second entry
+<p>The system of equations <a class="reference internal" href="#equation-tzha1">(5.19)</a> is thus recursive. The first equation determines the first entry of <span class="math notranslate nohighlight">\(Z_{t+1]\)</span>, the second equation determines the second entry
 of <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> given the first entry, and so forth.</p>
 <p>We can construct estimates of the coefficient matrices <span class="math notranslate nohighlight">\({\mathbb A},{\mathbb B},{\mathbb D},{\mathbb F}, {\mathbb H}\)</span> and the covariance matrix <span class="math notranslate nohighlight">\(\Delta = E U_{t+1} U_{t+1}'\)</span> from these regression equations, with the qualification that knowledge of <span class="math notranslate nohighlight">\({\mathbb J}\)</span> and <span class="math notranslate nohighlight">\(\Delta\)</span> determines <span class="math notranslate nohighlight">\({\mathbb F}{\mathbb F}'\)</span> only up to a factorization.  One such factorization is <span class="math notranslate nohighlight">\({\mathbb F} = {\mathbb J} \Delta^{1/2}\)</span>, where a diagonal matrix raised to a one-half power can be built by taking the square root of each diagonal entry. Because matrices <span class="math notranslate nohighlight">\({\mathbb F}\)</span> not satisfying this formula also satisfy <span class="math notranslate nohighlight">\({\mathbb F}{\mathbb  F}' = {\mathbb J} \Delta {\mathbb J} '\)</span>, without additional restrictions <span class="math notranslate nohighlight">\({\mathbb F}\)</span> is not identified.</p>
 <p>Consider, in particular, the <span class="math notranslate nohighlight">\(i\)</span>th regression formed in this way and express it as the scalar regression model:</p>
 <div class="math notranslate nohighlight">
 \[Z_{t+1}^{[i]}  = {R_{t+1}^{[i]}}\beta^{[i]} + U_{t+1}^{[i]}\]</div>
-<p>where <span class="math notranslate nohighlight">\({R_{t+1}^{[i]}}\)</span> is the appropriate vector of regressors in the <span class="math notranslate nohighlight">\(i\)</span>th equation of system <a class="reference internal" href="#equation-tzha1">(9.19)</a>.
+<p>where <span class="math notranslate nohighlight">\({R_{t+1}^{[i]}}\)</span> is the appropriate vector of regressors in the <span class="math notranslate nohighlight">\(i\)</span>th equation of system <a class="reference internal" href="#equation-tzha1">(5.19)</a>.
 To simplify notation, we will omit superscripts and understand that we are estimating one equation at a time.
 The disturbance <span class="math notranslate nohighlight">\(U_{t+1}\)</span> is a normally distributed random variable with mean zero and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.
 Furthermore, <span class="math notranslate nohighlight">\(U_{t+1}\)</span> is statistically independent of <span class="math notranslate nohighlight">\(R_{t+1}\)</span>.
@@ -845,11 +820,11 @@ Suppose that in addition <span class="math notranslate nohighlight">\(Z_{t+1}\)<
 but that <span class="math notranslate nohighlight">\(\beta\)</span> and <span class="math notranslate nohighlight">\(\sigma^2\)</span> are unknown.</p>
 <p>Let the distribution of <span class="math notranslate nohighlight">\(\beta\)</span> conditioned on <span class="math notranslate nohighlight">\(Z^t\)</span>, <span class="math notranslate nohighlight">\(X_0\)</span>, and <span class="math notranslate nohighlight">\(\sigma^2\)</span> be normal with mean <span class="math notranslate nohighlight">\(b_t\)</span> and precision matrix <span class="math notranslate nohighlight">\(\zeta \Lambda_t\)</span> where <span class="math notranslate nohighlight">\(\zeta = \frac{1}{\sigma^2}\)</span>. Here the precision matrix equals the inverse of a conditional covariance matrix of the unknown parameters. At date <span class="math notranslate nohighlight">\(t+1\)</span>, information we add <span class="math notranslate nohighlight">\(Y_{t+1} - Y_t\)</span> to the conditioning set. So we want the distribution of <span class="math notranslate nohighlight">\(\beta\)</span> conditioned on <span class="math notranslate nohighlight">\(Z^{t+1}\)</span>, <span class="math notranslate nohighlight">\(X_0\)</span>, and <span class="math notranslate nohighlight">\(\sigma^2\)</span>. It is also normal but now has precision <span class="math notranslate nohighlight">\(\zeta \Lambda_{t+1}\)</span>, where <span class="math notranslate nohighlight">\(\zeta = {\frac{1}{\sigma^2}}\)</span> and</p>
 <div class="math notranslate nohighlight" id="equation-preupdate">
-<span class="eqno">(9.20)<a class="headerlink" href="#equation-preupdate" title="Link to this equation">#</a></span>\[\Lambda_{t+1} = R_{t+1} {R_{t+1}}' + \Lambda_t .\]</div>
-<p>Recursion <a class="reference internal" href="#equation-preupdate">(9.20)</a> implies that <span class="math notranslate nohighlight">\(\Lambda_{t+1} - \Lambda_t\)</span> is a positive semidefinite matrix, which confirms that additional information improves estimation accuracy. Evidently from recursion <a class="reference internal" href="#equation-preupdate">(9.20)</a>, <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> cumulates cross-products of the regressors and adds them to an initial <span class="math notranslate nohighlight">\(\Lambda_0\)</span>. The updated conditional mean <span class="math notranslate nohighlight">\(b_{t+1}\)</span> for the normal distribution of unknown coefficients can be deduced from <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> via the updating equation:</p>
+<span class="eqno">(5.20)<a class="headerlink" href="#equation-preupdate" title="Link to this equation">#</a></span>\[\Lambda_{t+1} = R_{t+1} {R_{t+1}}' + \Lambda_t .\]</div>
+<p>Recursion <a class="reference internal" href="#equation-preupdate">(5.20)</a> implies that <span class="math notranslate nohighlight">\(\Lambda_{t+1} - \Lambda_t\)</span> is a positive semidefinite matrix, which confirms that additional information improves estimation accuracy. Evidently from recursion <a class="reference internal" href="#equation-preupdate">(5.20)</a>, <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> cumulates cross-products of the regressors and adds them to an initial <span class="math notranslate nohighlight">\(\Lambda_0\)</span>. The updated conditional mean <span class="math notranslate nohighlight">\(b_{t+1}\)</span> for the normal distribution of unknown coefficients can be deduced from <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> via the updating equation:</p>
 <div class="math notranslate nohighlight" id="equation-bupdate">
-<span class="eqno">(9.21)<a class="headerlink" href="#equation-bupdate" title="Link to this equation">#</a></span>\[\Lambda_{t+1} b_{t+1} = \left[\Lambda_t b_t + R_{t+1}(Z_t) \right] .\]</div>
-<p>Solving difference equation <a class="reference internal" href="#equation-bupdate">(9.21)</a> backwards shows how <span class="math notranslate nohighlight">\(\Lambda_{t+1} b_{t+1}\)</span> cumulates cross-products of <span class="math notranslate nohighlight">\(R_{t+1}\)</span> and <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> and adds the outcome to an initial condition <span class="math notranslate nohighlight">\(\Lambda_0 b_0\)</span>.</p>
+<span class="eqno">(5.21)<a class="headerlink" href="#equation-bupdate" title="Link to this equation">#</a></span>\[\Lambda_{t+1} b_{t+1} = \left[\Lambda_t b_t + R_{t+1}(Z_t) \right] .\]</div>
+<p>Solving difference equation <a class="reference internal" href="#equation-bupdate">(5.21)</a> backwards shows how <span class="math notranslate nohighlight">\(\Lambda_{t+1} b_{t+1}\)</span> cumulates cross-products of <span class="math notranslate nohighlight">\(R_{t+1}\)</span> and <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> and adds the outcome to an initial condition <span class="math notranslate nohighlight">\(\Lambda_0 b_0\)</span>.</p>
 <p>So far we pretended that we know <span class="math notranslate nohighlight">\(\sigma^2\)</span> by conditioning on <span class="math notranslate nohighlight">\(\sigma^2\)</span>, which is equivalent to conditioning on its inverse <span class="math notranslate nohighlight">\(\zeta\)</span>. Assume now that we don’t know <span class="math notranslate nohighlight">\(\sigma\)</span> but instead summarize our uncertainty about it with a date <span class="math notranslate nohighlight">\(t\)</span> gamma density for <span class="math notranslate nohighlight">\(\zeta\)</span> conditioned on <span class="math notranslate nohighlight">\(Z^t\)</span>, <span class="math notranslate nohighlight">\(X_0\)</span> so that it is proportional to</p>
 <div class="math notranslate nohighlight">
 \[(\zeta)^{\frac{c_{t}}{2}} \exp(- d_t \zeta /2),\]</div>
@@ -862,21 +837,21 @@ d_{t+1} &amp; = (Y_{t+1})^2 - (b_{t+1})'\Lambda_{t+1}b_{t+1} + (b_{t})'\Lambda_t
 <p>The distribution of <span class="math notranslate nohighlight">\(\beta\)</span> conditioned on <span class="math notranslate nohighlight">\(Y^{t+1}\)</span>, <span class="math notranslate nohighlight">\(X_0\)</span>, and <span class="math notranslate nohighlight">\(\zeta\)</span> is normal with mean <span class="math notranslate nohighlight">\(b_{t+1}\)</span> and precision matrix <span class="math notranslate nohighlight">\(\zeta \Lambda_{t+1}\)</span>. The distribution of <span class="math notranslate nohighlight">\(\zeta\)</span> conditioned on <span class="math notranslate nohighlight">\(Y^{t+1}\)</span>, <span class="math notranslate nohighlight">\(X_0\)</span> has a gamma density, so that it is proportional to<a class="footnote-reference brackets" href="#proportional" id="id20" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight">
 \[(\zeta)^{\frac{c_{t + 1}}{2}} \exp(- d_{t + 1} \zeta /2),\]</div>
-<p>Standard least squares regression statistics can be rationalized by positing a prior that is not informative. This is commonly done by using an “improper” priors that does not integrate to unity. <a class="footnote-reference brackets" href="#procedure" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a> Setting <span class="math notranslate nohighlight">\(\Lambda_0 = 0\)</span> effectively imposes a uniform but improper prior over <span class="math notranslate nohighlight">\(\beta\)</span>. Although <span class="math notranslate nohighlight">\(\Lambda_t\)</span>’s early in the sequence are singular, we can still update <span class="math notranslate nohighlight">\(\Lambda_{t+1} b_{t+1}\)</span> via <a class="reference internal" href="#equation-bupdate">(9.21)</a>; <span class="math notranslate nohighlight">\(b_{t+1}\)</span> are not uniquely determined until <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> becomes nonsingular. After enough observations have been accumulated to make <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> become nonsingular, the implied normal distributions for the unknown parameters become proper. When <span class="math notranslate nohighlight">\(\Lambda_0 = 0\)</span>, the specification of <span class="math notranslate nohighlight">\(b_0\)</span> is inconsequential and <span class="math notranslate nohighlight">\(b_{t+1}\)</span> becomes a standard least squares estimator. An “improper gamma” prior over <span class="math notranslate nohighlight">\(\sigma\)</span> that is often associated with an improper normal prior over <span class="math notranslate nohighlight">\(\beta\)</span> sets <span class="math notranslate nohighlight">\(c_0\)</span> to minus two and <span class="math notranslate nohighlight">\(d_0\)</span> to zero. This is accomplished by assuming a uniform prior distribution for the logarithm of the precision <span class="math notranslate nohighlight">\(\zeta\)</span> or for the logarithm of <span class="math notranslate nohighlight">\(\sigma^2\)</span>. With this combination of priors, <span class="math notranslate nohighlight">\(d_{t+1}\)</span> becomes a sum of squared regression residuals. <a class="footnote-reference brackets" href="#improper-prior" id="id22" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a></p>
+<p>Standard least squares regression statistics can be rationalized by positing a prior that is not informative. This is commonly done by using an “improper” priors that does not integrate to unity. <a class="footnote-reference brackets" href="#procedure" id="id21" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a> Setting <span class="math notranslate nohighlight">\(\Lambda_0 = 0\)</span> effectively imposes a uniform but improper prior over <span class="math notranslate nohighlight">\(\beta\)</span>. Although <span class="math notranslate nohighlight">\(\Lambda_t\)</span>’s early in the sequence are singular, we can still update <span class="math notranslate nohighlight">\(\Lambda_{t+1} b_{t+1}\)</span> via <a class="reference internal" href="#equation-bupdate">(5.21)</a>; <span class="math notranslate nohighlight">\(b_{t+1}\)</span> are not uniquely determined until <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> becomes nonsingular. After enough observations have been accumulated to make <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> become nonsingular, the implied normal distributions for the unknown parameters become proper. When <span class="math notranslate nohighlight">\(\Lambda_0 = 0\)</span>, the specification of <span class="math notranslate nohighlight">\(b_0\)</span> is inconsequential and <span class="math notranslate nohighlight">\(b_{t+1}\)</span> becomes a standard least squares estimator. An “improper gamma” prior over <span class="math notranslate nohighlight">\(\sigma\)</span> that is often associated with an improper normal prior over <span class="math notranslate nohighlight">\(\beta\)</span> sets <span class="math notranslate nohighlight">\(c_0\)</span> to minus two and <span class="math notranslate nohighlight">\(d_0\)</span> to zero. This is accomplished by assuming a uniform prior distribution for the logarithm of the precision <span class="math notranslate nohighlight">\(\zeta\)</span> or for the logarithm of <span class="math notranslate nohighlight">\(\sigma^2\)</span>. With this combination of priors, <span class="math notranslate nohighlight">\(d_{t+1}\)</span> becomes a sum of squared regression residuals. <a class="footnote-reference brackets" href="#improper-prior" id="id22" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a></p>
 <p>From the posterior of the coefficients of this transformed system we can compute posteriors of nonlinear functions of those coefficients. We accomplish this by using a random number generator repeatedly to take pseudo random draws from the posterior probability of the coefficients, forming those nonlinear functions, and then using the resulting histograms of those nonlinear functions to approximate the posterior probability distribution of those nonlinear functions. For example, many applied macroeconomic papers report impulse responses as a way to summarize model features. Impulse responses are nonlinear functions of the <span class="math notranslate nohighlight">\((\mathbb A, \mathbb B)\)</span>.</p>
 </section>
 <section id="var-example">
-<span id="section-var"></span><h3><span class="section-number">9.4.2. </span>VAR example<a class="headerlink" href="#var-example" title="Link to this heading">#</a></h3>
+<span id="section-var"></span><h3><span class="section-number">5.4.2. </span>VAR example<a class="headerlink" href="#var-example" title="Link to this heading">#</a></h3>
 <p>In <span id="id23">Hansen and Sargent [<a class="reference internal" href="cite.html#id314" title="Lars Peter Hansen and Thomas J. Sargent. Macroeconomic uncertainty prices when beliefs are tenuous. Journal of Econometrics, 223(1):222-250, 2021.">2021</a>]</span>, to identify long-term risk in consumption we imposed cointegration on a VAR.
 We inferred consequences of this restriction by simulating posterior distributions that measure long-run risk.
 We turn to that example now.</p>
 <p>We adapt the preceding approach along lines suggested by <span id="id24">Hansen <em>et al.</em> [<a class="reference internal" href="cite.html#id229" title="Lars Peter Hansen, John C. Heaton, and Nan Li. Consumption strikes back?: measuring long run risk. Journal of Political Economy, 2008.">2008</a>]</span>. We construct a trivariate VAR system in which
 (1) the logarithm of proprietor’s income plus corporate profits, (2) the logarithm of
-personal dividend income, and (3) the logarithm of consumption have the same trend growth rate and martingale increment. <a class="reference internal" href="#fig-cointegrated-timeseries"><span class="std std-numref">Fig. 9.1</span></a> reports log differences in two time series.</p>
+personal dividend income, and (3) the logarithm of consumption have the same trend growth rate and martingale increment. <a class="reference internal" href="#fig-cointegrated-timeseries"><span class="std std-numref">Fig. 5.1</span></a> reports log differences in two time series.</p>
 <figure class="align-default" id="fig-cointegrated-timeseries">
 <img alt="../_images/LPH2.png" src="../_images/LPH2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Time series for the i) logarithm of proprietor’s income plus corporate profits relative to consumption (blue) and ii) the logarithm of personal dividend income relative to consumption (red).</span><a class="headerlink" href="#fig-cointegrated-timeseries" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Time series for the i) logarithm of proprietor’s income plus corporate profits relative to consumption (blue) and ii) the logarithm of personal dividend income relative to consumption (red).</span><a class="headerlink" href="#fig-cointegrated-timeseries" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We deployed the following steps.</p>
@@ -907,32 +882,32 @@ Let selector matrix <span class="math notranslate nohighlight">\({\mathbb J}\)</
 <div class="math notranslate nohighlight">
 \[\Sigma  = {\mathbb A} \Sigma {\mathbb A}' + {\mathbb B}{\mathbb B}'.\]</div>
 <p>iii) <span class="math notranslate nohighlight">\(\log C_t, \log G_t, \log D_t\)</span> are cointegrated.
-Each of <span class="math notranslate nohighlight">\(\log C_t, \log G_t, \log D_t\)</span> is an additive functional in the sense of chapter <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>. Each has an additive decomposition into trend,
-martingale, and stationary components that can be constructed using a method described in chapter <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>. Trend and martingale components of the three series are identical by construction. The innovation to the martingale process is identified as the only shock having long-term consequences.</p>
+Each of <span class="math notranslate nohighlight">\(\log C_t, \log G_t, \log D_t\)</span> is an additive functional in the sense of chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>. Each has an additive decomposition into trend,
+martingale, and stationary components that can be constructed using a method described in chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>. Trend and martingale components of the three series are identical by construction. The innovation to the martingale process is identified as the only shock having long-term consequences.</p>
 <p>The conjugate prior approach described above does not generate a posterior for which either the prior or the implied posteriors for the matrix <span class="math notranslate nohighlight">\({\mathbb A}\)</span> has stable eigenvalues with probability one. We therefore modify that approach to impose that <span class="math notranslate nohighlight">\({\mathbb A}\)</span> is a stable matrix. We do this by rescaling the posterior probability so that it integrates to one over the region of the parameter space for which <span class="math notranslate nohighlight">\({\mathbb A}\)</span> is stable. We in effect condition on <span class="math notranslate nohighlight">\({\mathbb A}\)</span> being stable. This is easy to implement by rejection sampling.<a class="footnote-reference brackets" href="#rejectionsampling" id="id27" role="doc-noteref"><span class="fn-bracket">[</span>14<span class="fn-bracket">]</span></a></p>
 <p>The standard deviation of the martingale increment is a nonlinear function of parameters in <span class="math notranslate nohighlight">\(({\mathbb A}, {\mathbb B})\)</span>. We construct a posterior distribution via Monte Carlo simulation. We draw from the posterior of the multivariate regression system and, after conditioning on stability of the <span class="math notranslate nohighlight">\({\mathbb A}\)</span> matrix, compute the nonlinear functions of interest. From the simulation, we construct joint histograms to approximate posterior distributions of functions of interest.<a class="footnote-reference brackets" href="#changevariables" id="id28" role="doc-noteref"><span class="fn-bracket">[</span>15<span class="fn-bracket">]</span></a></p>
-<p>In <a class="reference internal" href="#fig-posterior"><span class="std std-numref">Fig. 9.2</span></a>, we show posterior histograms for the standard deviations of shocks to short-term consumption growth and of the martingale increment to consumption. The standard deviation of the short-term shock contribution is about one-half that of the standard deviation of the martingale increment. <a class="reference internal" href="#fig-posterior"><span class="std std-numref">Fig. 9.2</span></a> tells us that short-term risk can be inferred with much more accuracy than is long-term risk. This evidence says that while there <strong>could</strong> be a long-run risk component to consumption, it is poorly measured. The fat tail in right of the distribution of the long-run standard deviation is induced by Monte Carlo draws for which some eigenvalues of <span class="math notranslate nohighlight">\(\mathbb A\)</span> have absolute values very close to unity. <a class="footnote-reference brackets" href="#bounding-eigen" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></a></p>
+<p>In <a class="reference internal" href="#fig-posterior"><span class="std std-numref">Fig. 5.2</span></a>, we show posterior histograms for the standard deviations of shocks to short-term consumption growth and of the martingale increment to consumption. The standard deviation of the short-term shock contribution is about one-half that of the standard deviation of the martingale increment. <a class="reference internal" href="#fig-posterior"><span class="std std-numref">Fig. 5.2</span></a> tells us that short-term risk can be inferred with much more accuracy than is long-term risk. This evidence says that while there <strong>could</strong> be a long-run risk component to consumption, it is poorly measured. The fat tail in right of the distribution of the long-run standard deviation is induced by Monte Carlo draws for which some eigenvalues of <span class="math notranslate nohighlight">\(\mathbb A\)</span> have absolute values very close to unity. <a class="footnote-reference brackets" href="#bounding-eigen" id="id29" role="doc-noteref"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></a></p>
 <figure class="align-default" id="fig-posterior">
 <img alt="../_images/LPH3.png" src="../_images/LPH3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.2 </span><span class="caption-text">Posterior density for conditional standard deviation of consumption growth.</span><a class="headerlink" href="#fig-posterior" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Posterior density for conditional standard deviation of consumption growth.</span><a class="headerlink" href="#fig-posterior" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id40">
 <img alt="../_images/LPH4.png" src="../_images/LPH4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9.3 </span><span class="caption-text">Posterior distribution for the standard deviation of the martingale increment.</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Posterior distribution for the standard deviation of the martingale increment.</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="proof remark admonition" id="remark-5">
-<p class="admonition-title"><span class="caption-number">Remark 9.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 5.3 </span></p>
 <section class="remark-content" id="proof-content">
 <p><span id="id30">Carter and Kohn [<a class="reference internal" href="cite.html#id80" title="C. K. Carter and R. Kohn. On Gibbs sampling for state space models. Biometrika, 81(3):541–553, 1994. doi:10.1093/biomet/81.3.541.">1994</a>]</span> proposed an extension of the preceding method that is applicable to situations in which a state vector <span class="math notranslate nohighlight">\(X_t\)</span> is hidden. A <span id="id31">Carter and Kohn [<a class="reference internal" href="cite.html#id80" title="C. K. Carter and R. Kohn. On Gibbs sampling for state space models. Biometrika, 81(3):541–553, 1994. doi:10.1093/biomet/81.3.541.">1994</a>]</span> approach would iterate on the following steps:</p>
 <ul class="simple">
 <li><p>Conditioned on parameters and a fixed data sample, use inputs into the Kalman smoother to simulate hidden states.<a class="footnote-reference brackets" href="#kalman-footnote" id="id32" role="doc-noteref"><span class="fn-bracket">[</span>17<span class="fn-bracket">]</span></a></p>
 <ul>
 <li><p>First draw randomly <span class="math notranslate nohighlight">\(X_T\)</span> given <span class="math notranslate nohighlight">\(\{Z_t : t=1,2,... T \}\)</span> from the solution to the Kalman filtering problem.</p></li>
-<li><p>Working backwards, for <span class="math notranslate nohighlight">\(t=T-1, T-2,... 1\)</span>, draw <span class="math notranslate nohighlight">\(X_t\)</span> given <span class="math notranslate nohighlight">\(X_{t+1}\)</span> and <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> conditioned on <span class="math notranslate nohighlight">\(\{Z_\tau : \tau =1,2,... t \}\)</span> using the conditional expectation implied by <a class="reference internal" href="#equation-smooth-regression">(9.12)</a> and covariance matrix <a class="reference internal" href="#equation-smooth-covariance">(9.13)</a>.</p></li>
+<li><p>Working backwards, for <span class="math notranslate nohighlight">\(t=T-1, T-2,... 1\)</span>, draw <span class="math notranslate nohighlight">\(X_t\)</span> given <span class="math notranslate nohighlight">\(X_{t+1}\)</span> and <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> conditioned on <span class="math notranslate nohighlight">\(\{Z_\tau : \tau =1,2,... t \}\)</span> using the conditional expectation implied by <a class="reference internal" href="#equation-smooth-regression">(5.12)</a> and covariance matrix <a class="reference internal" href="#equation-smooth-covariance">(5.13)</a>.</p></li>
 </ul>
 </li>
 <li><p>Conditioned on data and hidden states, use the conjugate prior approach described above to simulate unknown parameters.</p></li>
@@ -942,7 +917,7 @@ martingale, and stationary components that can be constructed using a method des
 </div></section>
 </section>
 <section id="var-regimes">
-<h2><span class="section-number">9.5. </span>VAR Regimes<a class="headerlink" href="#var-regimes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.5. </span>VAR Regimes<a class="headerlink" href="#var-regimes" title="Link to this heading">#</a></h2>
 <p>Following <span id="id34"></span> and <span id="id35"></span>, suppose that there are multiple VAR regimes <span class="math notranslate nohighlight">\(({\mathbb A}_i, {\mathbb B}_i, {\mathbb D}_i, {\mathbb F}_i)\)</span> for <span class="math notranslate nohighlight">\(i=1,2,...,n\)</span>, where indices <span class="math notranslate nohighlight">\(i\)</span> are governed by a Markov process with transition matrix <span class="math notranslate nohighlight">\(\mathbb{P}\)</span>. In regime <span class="math notranslate nohighlight">\(i\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}X_{t+1} = {\mathbb A}_i X_t + {\mathbb B}_i W_{t+1} \\
@@ -976,9 +951,9 @@ Z_{t+1}  \ \ \text{density} &amp; &amp; Y_{t+1}  -Y_t \ \ \text{density}
 <li><p>Obtain <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> by dividing the <em>joint</em> density for <span class="math notranslate nohighlight">\((Y_{t+1}-Y_t,Z_{t+1})\)</span> conditioned on <span class="math notranslate nohighlight">\((X_t,Q_t)\)</span> by the <em>marginal</em> density for <span class="math notranslate nohighlight">\(Y_{t+1}-Y_t\)</span> conditioned on <span class="math notranslate nohighlight">\((X_t, Q_t)\)</span>. Division gives the density for <span class="math notranslate nohighlight">\(Z_{t+1}\)</span> conditioned <span class="math notranslate nohighlight">\((Y_{t+1}-Y_t, X_t,Q_t)\)</span>, which in this case is just a vector <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> of conditional probabilities. Thus, we are led to the recursion</p></li>
 </ol>
 <div class="math notranslate nohighlight" id="equation-newevolve">
-<span class="eqno">(9.22)<a class="headerlink" href="#equation-newevolve" title="Link to this equation">#</a></span>\[Q_{t+1} = \left( \frac{1}{Q_t\cdot \text{vec} \left\{ \psi_i(Y_{t+1}, X_t) \right\}}\right)
+<span class="eqno">(5.22)<a class="headerlink" href="#equation-newevolve" title="Link to this equation">#</a></span>\[Q_{t+1} = \left( \frac{1}{Q_t\cdot \text{vec} \left\{ \psi_i(Y_{t+1}, X_t) \right\}}\right)
 \mathbb{P}' \text{diag}(Q_t) \text{vec} \left\{ \psi_i(Y_{t+1}, X_t) \right\}.\]</div>
-<p>Taken together, steps (3) and (4) provide the one-step-transition equation for Markov state <span class="math notranslate nohighlight">\((X_{t+1}, Q_{t+1})\)</span>. As indicated in step (3), <span class="math notranslate nohighlight">\(Y_{t+1} \)</span> is a mixture of normally distributed random variables. As argued in step (4) the vector <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> is an exact function of <span class="math notranslate nohighlight">\(Y_{t+1} \)</span>, <span class="math notranslate nohighlight">\(Q_t\)</span>, and <span class="math notranslate nohighlight">\(X_t\)</span> that is given by the above formula <a class="reference internal" href="#equation-newevolve">(9.22)</a>.</p>
+<p>Taken together, steps (3) and (4) provide the one-step-transition equation for Markov state <span class="math notranslate nohighlight">\((X_{t+1}, Q_{t+1})\)</span>. As indicated in step (3), <span class="math notranslate nohighlight">\(Y_{t+1} \)</span> is a mixture of normally distributed random variables. As argued in step (4) the vector <span class="math notranslate nohighlight">\(Q_{t+1}\)</span> is an exact function of <span class="math notranslate nohighlight">\(Y_{t+1} \)</span>, <span class="math notranslate nohighlight">\(Q_t\)</span>, and <span class="math notranslate nohighlight">\(X_t\)</span> that is given by the above formula <a class="reference internal" href="#equation-newevolve">(5.22)</a>.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="kalmanfilter1" role="doc-footnote">
@@ -1008,7 +983,7 @@ Z_{t+1}  \ \ \text{density} &amp; &amp; Y_{t+1}  -Y_t \ \ \text{density}
 </aside>
 <aside class="footnote brackets" id="mixturemodels" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">7</a><span class="fn-bracket">]</span></span>
-<p>This stochastic process is not ergodic, being a mixture of statistical models like those described by <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#result:dynkin">Proposition 2.3</a>. In the present setting, conditioning on invariant events means knowing parameters, an assumption incompatible with posing a statistical learning problem.</p>
+<p>This stochastic process is not ergodic, being a mixture of statistical models like those described by <a class="reference internal" href="example_out_c1_v2.html#result:dynkin">Proposition 1.3</a>. In the present setting, conditioning on invariant events means knowing parameters, an assumption incompatible with posing a statistical learning problem.</p>
 </aside>
 <aside class="footnote brackets" id="cholesky" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id19">8</a><span class="fn-bracket">]</span></span>
@@ -1089,12 +1064,12 @@ Z_{t+1}  \ \ \text{density} &amp; &amp; Y_{t+1}  -Y_t \ \ \text{density}
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="example_out_c4_v2_enzo_and_ken.html"
+       href="example_out_c4_v2.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Processes with Markovian increments</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Processes with Markovian increments</p>
       </div>
     </a>
     <a class="right-next"
@@ -1102,7 +1077,7 @@ Z_{t+1}  \ \ \text{density} &amp; &amp; Y_{t+1}  -Y_t \ \ \text{density}
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Risk, Ambiguity, and Misspecification</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Risk, Ambiguity, and Misspecification</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1122,20 +1097,20 @@ Z_{t+1}  \ \ \text{density} &amp; &amp; Y_{t+1}  -Y_t \ \ \text{density}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sufficient-statistics-as-states">9.1. Sufficient Statistics as States</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-filter-and-smoother">9.2. Kalman Filter and Smoother</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#innovations-representation">9.2.1. Innovations Representation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-process">9.2.2. Likelihood process</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-smoother">9.2.3. Kalman smoother</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sufficient-statistics-as-states">5.1. Sufficient Statistics as States</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-filter-and-smoother">5.2. Kalman Filter and Smoother</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#innovations-representation">5.2.1. Innovations Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-process">5.2.2. Likelihood process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kalman-smoother">5.2.3. Kalman smoother</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixtures">9.3. Mixtures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-regression">9.4. Recursive Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugate-prior-updating">9.4.1. Conjugate prior updating</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#var-example">9.4.2. VAR example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixtures">5.3. Mixtures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recursive-regression">5.4. Recursive Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugate-prior-updating">5.4.1. Conjugate prior updating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#var-example">5.4.2. VAR example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#var-regimes">9.5. VAR Regimes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#var-regimes">5.5. VAR Regimes</a></li>
 </ul>
   </nav></div>
 

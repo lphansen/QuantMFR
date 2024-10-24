@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. GMM Estimation &#8212; Quant Macro Finance</title>
+    <title>11. GMM Estimation &#8212; Quant Macro Finance</title>
   
   
   
@@ -35,8 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8c1df6e1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -65,8 +65,8 @@
     <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/gmmcurrent_lars_v9.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="16. Bibliography" href="cite.html" />
-    <link rel="prev" title="14. Representing Marginal Valuation" href="marginal_valuation.html" />
+    <link rel="next" title="12. Multiplicative Functionals" href="ch_multfunctional_mdconvert.html" />
+    <link rel="prev" title="10. Representing Marginal Valuation" href="marginal_valuation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,43 +179,18 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">9. Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">13. Stochastic Responses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">14. Representing Marginal Valuation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">2. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">3. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">4. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">5. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">6. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">7. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">8. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">9. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">10. Representing Marginal Valuation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch_multfunctional_mdconvert.html">12. Multiplicative Functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">13. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
 <ul class="nav bd-sidenav">
@@ -388,12 +363,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">15.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation">15.2. Formulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-approximation">15.3. Central limit approximation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-value-approximation">15.4. Mean value approximation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gmm-efficiency-bound">15.5. GMM Efficiency Bound</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests">15.6. Statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation">11.2. Formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-approximation">11.3. Central limit approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-value-approximation">11.4. Mean value approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gmm-efficiency-bound">11.5. GMM Efficiency Bound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests">11.6. Statistical tests</a></li>
 </ul>
             </nav>
         </div>
@@ -406,24 +381,24 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="gmm-estimation">
-<span id="chap-book"></span><h1><span class="section-number">15. </span>GMM Estimation <a class="footnote-reference brackets" href="#note1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#gmm-estimation" title="Link to this heading">#</a></h1>
+<span id="chap-book"></span><h1><span class="section-number">11. </span>GMM Estimation <a class="footnote-reference brackets" href="#note1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#gmm-estimation" title="Link to this heading">#</a></h1>
 <p>Related papers:</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0049237X09705907">Hurwicz (1966)</a>: On the Structural Form of Interdependent Systems</p></li>
 </ol>
 <hr class="docutils" />
 <section id="introduction">
-<h2><span class="section-number">15.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Generalized method moments (GMM) estimation studies a family of estimators constructed from partially specified or partially misspecified models. Direct application of likelihood methods sometimes can be challenging to construct, and  GMM methods may be tractable alternatives. By studying an entire family of estimators, we are able to make relative accuracy comparisons among the entire family.</p>
 <p>This paper takes statistical consistency as given. Supporting arguments for this chapter can be obtained with direct extensions of the Law of Large Numbers. Such extensions often entail Laws of Large numbers applied to so-called random processes (indexed by say a parameter vector of interest) instead of a random vector.</p>
 <p>Throughout this chapter, we will condition on invariant events even though we will suppress this dependence when we write conditional expectations.  Given the partially specified or misspecified nature of the model, much more than a simple parameter vector is reflected by this conditioning.</p>
 </section>
 <section id="formulation">
-<h2><span class="section-number">15.2. </span>Formulation<a class="headerlink" href="#formulation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Formulation<a class="headerlink" href="#formulation" title="Link to this heading">#</a></h2>
 <p>We study a family of GMM estimators of an unknown parameter vector <span class="math notranslate nohighlight">\(\beta\)</span> constructed from theoretical restrictions on conditional or unconditional moments of functions <span class="math notranslate nohighlight">\(\phi\)</span> that depend on <span class="math notranslate nohighlight">\(\beta\)</span> and on a random vector <span class="math notranslate nohighlight">\(X_t\)</span> that is observable to an econometrician.</p>
 <p>As a starting point, we consider a class of restrictions large enough to include examples of both conditional and unconditional moment restrictions. Members of this class take the form</p>
 <div class="math notranslate nohighlight" id="equation-gmmpopulation">
-<span class="eqno">(15.1)<a class="headerlink" href="#equation-gmmpopulation" title="Link to this equation">#</a></span>\[E \left[ {A_t}' \phi(X_t, b) \right] = 0  \textrm{ if and only if } b = \beta\]</div>
+<span class="eqno">(11.1)<a class="headerlink" href="#equation-gmmpopulation" title="Link to this equation">#</a></span>\[E \left[ {A_t}' \phi(X_t, b) \right] = 0  \textrm{ if and only if } b = \beta\]</div>
 <p>for all sequences of selection matrices <span class="math notranslate nohighlight">\(A  \in \mathcal A\)</span> where <span class="math notranslate nohighlight">\(A = \{A_t : t \ge 1\} \)</span> and where</p>
 <ul class="simple">
 <li><p>the vector of functions <span class="math notranslate nohighlight">\(\phi\)</span> is <span class="math notranslate nohighlight">\(r\)</span> dimensional.</p></li>
@@ -432,17 +407,17 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(A_t\)</span> denotes a time <span class="math notranslate nohighlight">\(t\)</span> selection matrix for a subset of the valid moment restrictions that is used to construct a particular statistical estimator <span class="math notranslate nohighlight">\(b\)</span> of <span class="math notranslate nohighlight">\(\beta\)</span>.</p></li>
 <li><p>the mathematical expectation is taken with respect to a statistical model that generates the <span class="math notranslate nohighlight">\(\{X_t : t \ge 1 \}\)</span> process (captured implicitly by conditioning on invariant events).</p></li>
 </ul>
-<p>A sample counterpart of the population moment conditions <a class="reference internal" href="#equation-gmmpopulation">(15.1)</a> is</p>
+<p>A sample counterpart of the population moment conditions <a class="reference internal" href="#equation-gmmpopulation">(11.1)</a> is</p>
 <div class="math notranslate nohighlight" id="equation-gmmsample">
-<span class="eqno">(15.2)<a class="headerlink" href="#equation-gmmsample" title="Link to this equation">#</a></span>\[\frac 1 N \sum_{t=1}^N {A_t}'  \phi(X_t, b_N) = 0 .\]</div>
-<p>Applying a Law of Large Numbers to <a class="reference internal" href="#equation-gmmsample">(15.2)</a> motivates a “generalized method of moments” estimator <span class="math notranslate nohighlight">\(b_N\)</span> of the <span class="math notranslate nohighlight">\(k \times 1\)</span> vector <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<span class="eqno">(11.2)<a class="headerlink" href="#equation-gmmsample" title="Link to this equation">#</a></span>\[\frac 1 N \sum_{t=1}^N {A_t}'  \phi(X_t, b_N) = 0 .\]</div>
+<p>Applying a Law of Large Numbers to <a class="reference internal" href="#equation-gmmsample">(11.2)</a> motivates a “generalized method of moments” estimator <span class="math notranslate nohighlight">\(b_N\)</span> of the <span class="math notranslate nohighlight">\(k \times 1\)</span> vector <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
 <p>Different sequences of selection matrices <span class="math notranslate nohighlight">\(\{A_t : t \ge 1 \}\)</span> and <span class="math notranslate nohighlight">\(\{\widetilde A_t: t \ge 1\}\)</span> generally give rise to different properties for the estimator <span class="math notranslate nohighlight">\(b_N\)</span>.  An exception is when</p>
 <div class="math notranslate nohighlight">
 \[{\widetilde A}_t =  A_t{\mathbb L} \]</div>
 <p>for some <span class="math notranslate nohighlight">\(k \times k\)</span> nonsingular matrix <span class="math notranslate nohighlight">\({\mathbb L}\)</span> do distinct selection matrices <span class="math notranslate nohighlight">\({\widetilde A}_t\)</span> and <span class="math notranslate nohighlight">\(A_t\)</span> give rise to the same <span class="math notranslate nohighlight">\(b_N\)</span>.</p>
 <p>We study limiting properties of estimator <span class="math notranslate nohighlight">\(b_N\)</span> conditioned on a statistical model. In many settings, the parameter vector <span class="math notranslate nohighlight">\(\beta\)</span> only incompletely characterizes the statistical model. In such settings, we are led in effect to implement a version of what is known as <em>semi-parametric</em> estimation: while <span class="math notranslate nohighlight">\(\beta\)</span> is the finite-dimensional parameter vector that we want to estimate, we acknowledge that, in addition to <span class="math notranslate nohighlight">\(\beta\)</span>, a potentially infinite dimensional nuisance parameter vector pins down the complete statistical model on which we condition when we apply the law of large numbers and other limit theorems.</p>
 <div class="proof example admonition" id="ex:unconditional">
-<p class="admonition-title"><span class="caption-number">Example 15.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.1 </span></p>
 <section class="example-content" id="proof-content">
 <p><strong>Unconditional moment restrictions</strong></p>
 <p>Suppose that</p>
@@ -457,7 +432,7 @@ document.write(`
 <p>where <span class="math notranslate nohighlight">\(Z_t\)</span> is an <span class="math notranslate nohighlight">\(r\)</span> dimensional vector of <em>instrumental variables</em> and <span class="math notranslate nohighlight">\(\eta(Y_t, \beta)\)</span> is a scalar disturbance term in an equation of interest.  The vector of <em>instrumental variables</em> are presumed to be uncorrelated with <span class="math notranslate nohighlight">\(Z_t\)</span>.</p>
 </section>
 </div><div class="proof example admonition" id="ex:conditional">
-<p class="admonition-title"><span class="caption-number">Example 15.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.2 </span></p>
 <section class="example-content" id="proof-content">
 <p><strong>Conditional moment restrictions</strong></p>
 <p>Assume the conditional moment restrictions</p>
@@ -471,7 +446,7 @@ Then the preceding conditional moment restrictions are mathematically equivalent
 </section>
 </div><p>Collections <span class="math notranslate nohighlight">\(\mathcal A\)</span> of selection processes for both of these examples satisfy the following “linearity” restriction.</p>
 <p id="res1"><strong>Restriction 9.1.</strong> If <span class="math notranslate nohighlight">\(A^1\)</span> and <span class="math notranslate nohighlight">\(A^2\)</span> are both in <span class="math notranslate nohighlight">\(\mathcal A\)</span> and <span class="math notranslate nohighlight">\(\mathbb{L}_1\)</span> and <span class="math notranslate nohighlight">\(\mathbb{L}_2\)</span> are <span class="math notranslate nohighlight">\(k \times k\)</span> matrices of real numbers, then <span class="math notranslate nohighlight">\(A^1 \mathbb{L}_1 + A^2\mathbb{L}_2\)</span> is in <span class="math notranslate nohighlight">\(\mathcal A\)</span>.</p>
-<p>A common practice is to use the idea provided in <a class="reference internal" href="#ex:conditional">Example 15.2</a> while substantially restricting the set of moment conditions used for parameter estimation. Thus, from a collection of conditional moment restrictions, we can create unconditional moment restrictions like those in <a class="reference internal" href="#ex:unconditional">Example 15.1</a> and thereby reduce the class of GMM estimators under consideration. For instance, let <span class="math notranslate nohighlight">\(A_t^1\)</span> and <span class="math notranslate nohighlight">\(A_t^2\)</span> be two <em>ad hoc</em> choices of selection matrices. Form</p>
+<p>A common practice is to use the idea provided in <a class="reference internal" href="#ex:conditional">Example 11.2</a> while substantially restricting the set of moment conditions used for parameter estimation. Thus, from a collection of conditional moment restrictions, we can create unconditional moment restrictions like those in <a class="reference internal" href="#ex:unconditional">Example 11.1</a> and thereby reduce the class of GMM estimators under consideration. For instance, let <span class="math notranslate nohighlight">\(A_t^1\)</span> and <span class="math notranslate nohighlight">\(A_t^2\)</span> be two <em>ad hoc</em> choices of selection matrices. Form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\phi^+(X_t, b) = \begin{bmatrix} {A_t^1}' \\ {A_t^2}'  \end{bmatrix} \phi(X_t, b)\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(X_t\)</span> now includes variables used to construct <span class="math notranslate nohighlight">\(A_t^1\)</span> and <span class="math notranslate nohighlight">\(A_t^2\)</span>. We presume that no linear combination of columns of <span class="math notranslate nohighlight">\(A_t^2\)</span> duplicate any columns in <span class="math notranslate nohighlight">\(A_t^1\)</span>. Otherwise, we would omit such columns and adjust <span class="math notranslate nohighlight">\(\phi^+\)</span> accordingly. Let <span class="math notranslate nohighlight">\(r^+ \ge r\)</span> denote the remaining non-redundant columns. We use <span class="math notranslate nohighlight">\(r^+ \times k\)</span> selection matrices <span class="math notranslate nohighlight">\(\mathbb A\)</span> to form moment conditions</p>
@@ -479,9 +454,9 @@ Then the preceding conditional moment restrictions are mathematically equivalent
 \[{\mathbb A}'E\left( \phi^+(X_t, b)\right) = 0\]</div>
 <p>and study an associated family of GMM estimators. This strategy reduces an infinite number of moment conditions to a finite number. There are extensions of this approach. For instance, we could use more than two <span class="math notranslate nohighlight">\(A_t^j\)</span>’s to construct <span class="math notranslate nohighlight">\(\phi^+\)</span>.</p>
 <div class="proof remark admonition" id="momentmatch1">
-<p class="admonition-title"><span class="caption-number">Remark 15.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 11.1 </span></p>
 <section class="remark-content" id="proof-content">
-<p>“Moment matching” estimators are another special case of <a class="reference internal" href="#ex:unconditional">Example 15.1</a>.
+<p>“Moment matching” estimators are another special case of <a class="reference internal" href="#ex:unconditional">Example 11.1</a>.
 Suppose that</p>
 <div class="math notranslate nohighlight">
 \[\phi(X_t, b) = \psi(X_t) - \kappa(b)\]</div>
@@ -492,13 +467,13 @@ Suppose that</p>
 with parameter vector <span class="math notranslate nohighlight">\(\beta\)</span>. Often that statistical model is a “structural” economic model with nonlinearities and other complications that, for a given, <span class="math notranslate nohighlight">\(\beta\)</span> make it challenging to compute the moments <span class="math notranslate nohighlight">\(E\left[\psi(X_t) \right]\)</span> analytically. To proceed, the proposal is to approximate those moments for a given <span class="math notranslate nohighlight">\(b\)</span> by computing a sample mean from a long simulation of the statistical model at parameter vector <span class="math notranslate nohighlight">\(b\)</span>. By running simulations and computing associated sample means for many alternative <span class="math notranslate nohighlight">\(b\)</span> vectors, we can assemble an approximation to the function <span class="math notranslate nohighlight">\(\kappa(b)\)</span>. <span id="id6">[<a class="reference internal" href="cite.html#id302" title="Bong Soo Lee and Beth Fisher Ingram. Simulation estimation of time-series models. Journal of Econometrics, 47(2-3):197–205, 1991. doi:10.1016/0304-4076(91)90098-X.">Lee and Ingram, 1991</a>]</span> and <span id="id7">[<a class="reference internal" href="cite.html#id130" title="Darrell Duffie and Kenneth J. Singleton. Simulated Moments Estimation of Markov Models of Asset Prices. Econometrica, 61(4):929–952, 1993. doi:10.2307/2951768.">Duffie and Singleton, 1993</a>]</span> used versions of this approach. Notice that in contrast to some other applications of GMM estimation that allow the appearance of unknown nuisance parameters in the statistical model assumed to generate the data, this approach assumes that, given <span class="math notranslate nohighlight">\(b\)</span>, the model completely determines a sample path that we can at least simulate.</p>
 </section>
 </div><div class="proof remark admonition" id="remark-3">
-<p class="admonition-title"><span class="caption-number">Remark 15.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 11.2 </span></p>
 <section class="remark-content" id="proof-content">
-<p>“Indirect inference” works with two statistical models in hand: (1) a “structural economic model” with a vector of parameters <span class="math notranslate nohighlight">\(\beta\)</span> that characterize preferences, technology, information flows, and other features of the theoretical economic model; and (2) an “auxiliary model” with no pretense of being “structural” in terms of economic theory and having a vector of parameters <span class="math notranslate nohighlight">\(\delta\)</span> that let the model fit well. Although the structural model can be solved and simulated on a computer, it is too complicated to allow writing down its likelihood process analytically. The likelihood process for the auxiliary model can be calculated analytically. “Moments matching” estimation in the style of <span id="id8">[<a class="reference internal" href="cite.html#id159" title="A. Ronald Gallant and George Tauchen. Which Moments to Match? Econometric Theory, 12(4):657-681, October 1996. URL: https://ideas.repec.org/a/cup/etheor/v12y1996i04p657-681_00.html.">Gallant and Tauchen, 1996</a>]</span> proceeds in two steps, the first of which uses maximum likelihood estimation of parameters of the auxiliary model prepares a random vector <span class="math notranslate nohighlight">\(\psi(X_t)\)</span> whose moments are to be matched, the second of which proceeds as in <a class="reference internal" href="#momentmatch1">Remark 15.1</a> to use simulations of the structural model to approximate the function <span class="math notranslate nohighlight">\(\kappa (\beta)\)</span>. In the first step, the parameter vector <span class="math notranslate nohighlight">\(\delta\)</span> of the auxiliary model is estimated by the method of maximum likelihood and the sample path of the associated score vector is evaluated at the maximum likelihood estimate <span class="math notranslate nohighlight">\(\hat{\delta}\)</span>. As an input into the second step, the associated Fisher information matrix is computed. The second step forms a GMM criterion consisting of a quadratic form in the score vector with weighting matrix being the inverse of the Fisher information matrix computed in the first step. Repeated simulations of the structural model are used to search for a <span class="math notranslate nohighlight">\(b_N\)</span> that best matches score-criterion from the auxiliary model.</p>
+<p>“Indirect inference” works with two statistical models in hand: (1) a “structural economic model” with a vector of parameters <span class="math notranslate nohighlight">\(\beta\)</span> that characterize preferences, technology, information flows, and other features of the theoretical economic model; and (2) an “auxiliary model” with no pretense of being “structural” in terms of economic theory and having a vector of parameters <span class="math notranslate nohighlight">\(\delta\)</span> that let the model fit well. Although the structural model can be solved and simulated on a computer, it is too complicated to allow writing down its likelihood process analytically. The likelihood process for the auxiliary model can be calculated analytically. “Moments matching” estimation in the style of <span id="id8">[<a class="reference internal" href="cite.html#id159" title="A. Ronald Gallant and George Tauchen. Which Moments to Match? Econometric Theory, 12(4):657-681, October 1996. URL: https://ideas.repec.org/a/cup/etheor/v12y1996i04p657-681_00.html.">Gallant and Tauchen, 1996</a>]</span> proceeds in two steps, the first of which uses maximum likelihood estimation of parameters of the auxiliary model prepares a random vector <span class="math notranslate nohighlight">\(\psi(X_t)\)</span> whose moments are to be matched, the second of which proceeds as in <a class="reference internal" href="#momentmatch1">Remark 11.1</a> to use simulations of the structural model to approximate the function <span class="math notranslate nohighlight">\(\kappa (\beta)\)</span>. In the first step, the parameter vector <span class="math notranslate nohighlight">\(\delta\)</span> of the auxiliary model is estimated by the method of maximum likelihood and the sample path of the associated score vector is evaluated at the maximum likelihood estimate <span class="math notranslate nohighlight">\(\hat{\delta}\)</span>. As an input into the second step, the associated Fisher information matrix is computed. The second step forms a GMM criterion consisting of a quadratic form in the score vector with weighting matrix being the inverse of the Fisher information matrix computed in the first step. Repeated simulations of the structural model are used to search for a <span class="math notranslate nohighlight">\(b_N\)</span> that best matches score-criterion from the auxiliary model.</p>
 </section>
 </div></section>
 <section id="central-limit-approximation">
-<h2><span class="section-number">15.3. </span>Central limit approximation<a class="headerlink" href="#central-limit-approximation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Central limit approximation<a class="headerlink" href="#central-limit-approximation" title="Link to this heading">#</a></h2>
 <p>The process</p>
 <div class="math notranslate nohighlight">
 \[\left\{ \sum_{t=1}^N{A_t}'  \phi(X_t, \beta) : N \ge 1\right\} .\]</div>
@@ -525,9 +500,9 @@ with parameter vector <span class="math notranslate nohighlight">\(\beta\)</span
 \[G_t( A^1 {\mathbb L}_1 +  A^2{\mathbb L}_2) = ({\mathbb L}_1)' G_t(A^1) + ({\mathbb L}_1)'G_t(A^2)\]</div>
 <p>follows from the linearity of conditional expectations.</p>
 <div class="proof example admonition" id="example-4">
-<p class="admonition-title"><span class="caption-number">Example 15.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.3 </span></p>
 <section class="example-content" id="proof-content">
-<p>Consider again <a class="reference internal" href="#ex:unconditional">Example 15.1</a> in which  <span class="math notranslate nohighlight">\(A_t = \mathbb{A}\)</span> for all <span class="math notranslate nohighlight">\(t\ge 0\)</span> and</p>
+<p>Consider again <a class="reference internal" href="#ex:unconditional">Example 11.1</a> in which  <span class="math notranslate nohighlight">\(A_t = \mathbb{A}\)</span> for all <span class="math notranslate nohighlight">\(t\ge 0\)</span> and</p>
 <div class="math notranslate nohighlight">
 \[G_t(A) = \mathbb{A}' F_t\]</div>
 <p>where</p>
@@ -542,9 +517,9 @@ E \left[ \sum_{j=0}^\infty  \phi(X_{t+j}, \beta) \mid \mathfrak{A}_t \right] - E
 \[E\left[ G_t(A)G_t(A)' \right] = \mathbb{A}' \mathbb{V} \mathbb{A}  .\]</div>
 </section>
 </div><div class="proof example admonition" id="example-5">
-<p class="admonition-title"><span class="caption-number">Example 15.4 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.4 </span></p>
 <section class="example-content" id="proof-content">
-<p>In <a class="reference internal" href="#ex:conditional">Example 15.2</a></p>
+<p>In <a class="reference internal" href="#ex:conditional">Example 11.2</a></p>
 <div class="math notranslate nohighlight">
 \[E\left[\phi(Y_{t}, \beta) \mid {\mathfrak A}_{t-\ell} \right] = 0\]</div>
 <p>and hence</p>
@@ -558,7 +533,7 @@ Consequently</p>
 </section>
 </div></section>
 <section id="mean-value-approximation">
-<h2><span class="section-number">15.4. </span>Mean value approximation<a class="headerlink" href="#mean-value-approximation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>Mean value approximation<a class="headerlink" href="#mean-value-approximation" title="Link to this heading">#</a></h2>
 <p>Write</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\frac{1}{\sqrt{N}}
@@ -583,9 +558,9 @@ Consequently</p>
 \[\textbf{cov}(A) = \left[\nabla(A)'\right]^{-1} E\left[ G_t(A) G_t(A)' \right] \left[\nabla(A) \right]^{-1}\]</div>
 <p>We want to know how small we can make this matrix by choosing a selection process.</p>
 <div class="proof example admonition" id="example-6">
-<p class="admonition-title"><span class="caption-number">Example 15.5 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.5 </span></p>
 <section class="example-content" id="proof-content">
-<p>Consider again <a class="reference internal" href="#ex:unconditional">Example 15.1</a>.  In this case <span class="math notranslate nohighlight">\(A_t = {\mathbb A}\)</span> for all <span class="math notranslate nohighlight">\(t \ge 0\)</span> and</p>
+<p>Consider again <a class="reference internal" href="#ex:unconditional">Example 11.1</a>.  In this case <span class="math notranslate nohighlight">\(A_t = {\mathbb A}\)</span> for all <span class="math notranslate nohighlight">\(t \ge 0\)</span> and</p>
 <div class="math notranslate nohighlight">
 \[\nabla(A) =  {\mathbb D}' {\mathbb A}  \]</div>
 <p>where</p>
@@ -623,9 +598,9 @@ Construct</p>
 \end{align*} \]</div>
 <p>Notice that if <span class="math notranslate nohighlight">\(A_t = B_t\)</span>, then the right side is zero and the limiting distribution is degenerate.  This approximation is used to construct tests that account for having used GMM to estimate a parameter vector <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
 <div class="proof example admonition" id="example-7">
-<p class="admonition-title"><span class="caption-number">Example 15.6 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.6 </span></p>
 <section class="example-content" id="proof-content">
-<p>Consider again unconditional moment restrictions specified in <a class="reference internal" href="#ex:unconditional">Example 15.1</a>. Let the selection process for testing be constant over time so that
+<p>Consider again unconditional moment restrictions specified in <a class="reference internal" href="#ex:unconditional">Example 11.1</a>. Let the selection process for testing be constant over time so that
 <span class="math notranslate nohighlight">\(B_t = {\mathbb B}\)</span>. Then</p>
 <div class="math notranslate nohighlight">
 \[\frac 1 {\sqrt{N}} 
@@ -634,7 +609,7 @@ Construct</p>
 </section>
 </div></section>
 <section id="gmm-efficiency-bound">
-<h2><span class="section-number">15.5. </span>GMM Efficiency Bound<a class="headerlink" href="#gmm-efficiency-bound" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>GMM Efficiency Bound<a class="headerlink" href="#gmm-efficiency-bound" title="Link to this heading">#</a></h2>
 <p>Recall</p>
 <div class="math notranslate nohighlight">
 \[\textrm{cov}(A) = \left[\nabla(A)'\right]^{-1} E\left[ G_t(A) G_t(A)' \right] \left[\nabla (A) \right]^{-1}\]</div>
@@ -651,7 +626,7 @@ Thus, we have</p>
 </li>
 <li><p>Find an <span class="math notranslate nohighlight">\(A^d\)</span> such that for all <span class="math notranslate nohighlight">\(A \in {\mathcal A}\)</span></p>
 <div class="math notranslate nohighlight" id="equation-gmm-first">
-<span class="eqno">(15.3)<a class="headerlink" href="#equation-gmm-first" title="Link to this equation">#</a></span>\[\nabla(A) = E\left[ G_t(A^d) G_t(A)' \right]  .\]</div>
+<span class="eqno">(11.3)<a class="headerlink" href="#equation-gmm-first" title="Link to this equation">#</a></span>\[\nabla(A) = E\left[ G_t(A^d) G_t(A)' \right]  .\]</div>
 </li>
 <li><p>Form</p>
 <div class="math notranslate nohighlight">
@@ -670,24 +645,24 @@ Then</p>
 \[0 \leq E \left( \left[ G_t(A) - G_t(A^*) \right] \left[ G_t(A) - G_t(A^*) \right]' \right) = \textrm{cov}(A) - \left( E\left[ G_t(A^d) G_t(A^d)' \right]\right)^{-1} .\]</div>
 </li>
 </ol>
-<p id="res-eff-bound"><strong>Result 9.1.</strong> Given a solution to equation <a class="reference internal" href="#equation-gmm-first">(15.3)</a></p>
+<p id="res-eff-bound"><strong>Result 9.1.</strong> Given a solution to equation <a class="reference internal" href="#equation-gmm-first">(11.3)</a></p>
 <div class="math notranslate nohighlight" id="equation-eq-effbound105">
-<span class="eqno">(15.4)<a class="headerlink" href="#equation-eq-effbound105" title="Link to this equation">#</a></span>\[\inf_{A \in \mathcal A}   \textrm{cov}(A) = \left( E\left[ G_t(A^d) G_t(A^d)' \right]\right)^{-1}\]</div>
+<span class="eqno">(11.4)<a class="headerlink" href="#equation-eq-effbound105" title="Link to this equation">#</a></span>\[\inf_{A \in \mathcal A}   \textrm{cov}(A) = \left( E\left[ G_t(A^d) G_t(A^d)' \right]\right)^{-1}\]</div>
 <div class="proof remark admonition" id="remark-8">
-<p class="admonition-title"><span class="caption-number">Remark 15.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 11.3 </span></p>
 <section class="remark-content" id="proof-content">
 <p>In the result <a class="reference internal" href="#res-eff-bound"><span class="std std-ref">9.1</span></a> efficiency bound, we might be tempted to think that <span class="math notranslate nohighlight">\(G_t(A^d)\)</span> plays the same role that the “score vector” increment does in maximum likelihood estimation. But because there is a possibly infinite dimensional vector of nuisance parameters here, a better analogy is that <span class="math notranslate nohighlight">\(G_t(A^d)\)</span> acts much like the residual vector in a regression of parameters of interest score increments on nuisance parameter score increments.
 By undertaking to infer the parameter vector <span class="math notranslate nohighlight">\(\beta\)</span> from conditional or unconditional moment restrictions, we have purposefully pushed all nuisance parameters into the background.</p>
 </section>
 </div><div class="proof remark admonition" id="remark-9">
-<p class="admonition-title"><span class="caption-number">Remark 15.4 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 11.4 </span></p>
 <section class="remark-content" id="proof-content">
 <p>The representation</p>
 <div class="math notranslate nohighlight">
 \[E\left(\left[\frac {\partial \phi}{\partial b'} (X_t, \beta)\right]' A_t \right) = \nabla(A) = E\left[ G_t(A^d) G_t(A)' \right]  \]</div>
 <p>used to compute the efficiency bound is an application of the Riesz Representation Theorem. To understand this, introduce the <span class="math notranslate nohighlight">\(k\)</span>-dimensional coordinate vectors <span class="math notranslate nohighlight">\({\sf u}_i\)</span> for <span class="math notranslate nohighlight">\(i=1,2,...,k\)</span> and consider:</p>
 <div class="math notranslate nohighlight" id="equation-rrep">
-<span class="eqno">(15.5)<a class="headerlink" href="#equation-rrep" title="Link to this equation">#</a></span>\[({\sf u}_i)'\nabla(A) {\sf u}_j = E\left(\left[\frac {\partial \phi}{\partial b_i} (X_t, \beta)\right] \cdot  A_t {\sf u}_j\right) .\]</div>
+<span class="eqno">(11.5)<a class="headerlink" href="#equation-rrep" title="Link to this equation">#</a></span>\[({\sf u}_i)'\nabla(A) {\sf u}_j = E\left(\left[\frac {\partial \phi}{\partial b_i} (X_t, \beta)\right] \cdot  A_t {\sf u}_j\right) .\]</div>
 <p>Note that</p>
 <ul>
 <li><p>The integer <span class="math notranslate nohighlight">\(i\)</span> selects the coordinate of <span class="math notranslate nohighlight">\(b\)</span> with respect to which we are differentiating.</p></li>
@@ -711,12 +686,12 @@ By undertaking to infer the parameter vector <span class="math notranslate nohig
 </li>
 </ul>
 <p>The preceding construction pins down row <span class="math notranslate nohighlight">\(j\)</span> of <span class="math notranslate nohighlight">\(A^d\)</span>. Repeating an analogous construction for each <span class="math notranslate nohighlight">\(j = 1,2,...,k\)</span> gives the selection matrix <span class="math notranslate nohighlight">\(A^d\)</span>.</p>
-<p>The GMM efficiency bound presumed that we could solve equation <a class="reference internal" href="#equation-rrep">(15.5)</a>. The Riesz Representation Theorem requires that <span class="math notranslate nohighlight">\(R_t\)</span> be in a mean square closure of a linear space. Provided that the linear functionals <span class="math notranslate nohighlight">\(({\sf u}_i)'\nabla(A) {\sf u}_j\)</span> are mean square continuous, the efficiency bound can be represented in terms of the limit point of a sequence of GMM estimators associated with alternative selection processes even when the limit points are not attained.</p>
+<p>The GMM efficiency bound presumed that we could solve equation <a class="reference internal" href="#equation-rrep">(11.5)</a>. The Riesz Representation Theorem requires that <span class="math notranslate nohighlight">\(R_t\)</span> be in a mean square closure of a linear space. Provided that the linear functionals <span class="math notranslate nohighlight">\(({\sf u}_i)'\nabla(A) {\sf u}_j\)</span> are mean square continuous, the efficiency bound can be represented in terms of the limit point of a sequence of GMM estimators associated with alternative selection processes even when the limit points are not attained.</p>
 </section>
 </div><div class="proof example admonition" id="example-10">
-<p class="admonition-title"><span class="caption-number">Example 15.7 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.7 </span></p>
 <section class="example-content" id="proof-content">
-<p>Consider <a class="reference internal" href="#ex:unconditional">Example 15.1</a> in which we assumed that <span class="math notranslate nohighlight">\(A_t = \mathbb{A}\)</span>.  Then</p>
+<p>Consider <a class="reference internal" href="#ex:unconditional">Example 11.1</a> in which we assumed that <span class="math notranslate nohighlight">\(A_t = \mathbb{A}\)</span>.  Then</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{A}' \mathbb{V} \mathbb{A}^d =  \mathbb{A}'\mathbb{D} .\]</div>
 <p>Therefore,</p>
@@ -727,20 +702,20 @@ By undertaking to infer the parameter vector <span class="math notranslate nohig
 \[\left(\mathbb{D}'  \mathbb{V}^{-1} \mathbb{D}\right)^{-1} .  \]</div>
 </section>
 </div><div class="proof example admonition" id="ex:exampleeffb103">
-<p class="admonition-title"><span class="caption-number">Example 15.8 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.8 </span></p>
 <section class="example-content" id="proof-content">
-<p>Consider again <a class="reference internal" href="#ex:conditional">Example 15.2</a> in the special case in which <span class="math notranslate nohighlight">\(\ell = 1\)</span>.<br />
+<p>Consider again <a class="reference internal" href="#ex:conditional">Example 11.2</a> in the special case in which <span class="math notranslate nohighlight">\(\ell = 1\)</span>.<br />
 Let</p>
 <div class="math notranslate nohighlight">
 \[E \left[ \phi(X_t, \beta) \phi(X_t, \beta)' \mid {\mathfrak A}_{t-1} \right] = V_{t-1} \]</div>
 <p>wish to solve the following equation for <span class="math notranslate nohighlight">\(A_t^d\)</span></p>
 <div class="math notranslate nohighlight" id="equation-first-order">
-<span class="eqno">(15.6)<a class="headerlink" href="#equation-first-order" title="Link to this equation">#</a></span>\[E\left( {A_t^d}' V_{t-1} A_t \right) = \nabla(A) = 
+<span class="eqno">(11.6)<a class="headerlink" href="#equation-first-order" title="Link to this equation">#</a></span>\[E\left( {A_t^d}' V_{t-1} A_t \right) = \nabla(A) = 
 E\left(\left[\frac {\partial \phi}{\partial b'} (X_t, \beta)\right]' A_t \right) .\]</div>
 <p>Given the flexibility in the choice of the random <span class="math notranslate nohighlight">\(A_t\)</span> with entries that are <span class="math notranslate nohighlight">\({\mathcal A}_{t-1}\)</span> measurable, this equation is equivalent to</p>
 <div class="math notranslate nohighlight">
 \[V_{t-1} A_t^d = E\left( \left[\frac {\partial \phi}{\partial b'} (X_t, \beta)\right] \mid {\mathfrak A}_{t-1} \right)\]</div>
-<p>where we have taken transposes of the expressions in <a class="reference internal" href="#equation-first-order">(15.6)</a>. Thus</p>
+<p>where we have taken transposes of the expressions in <a class="reference internal" href="#equation-first-order">(11.6)</a>. Thus</p>
 <div class="math notranslate nohighlight">
 \[A_t^d = \left(V_{t-1}\right)^{-1} E\left( \left[\frac {\partial \phi}{\partial b'} (X_t, \beta)\right] \mid {\mathfrak A}_{t-1} \right) \]</div>
 <p>and the efficiency bound is:</p>
@@ -748,9 +723,9 @@ E\left(\left[\frac {\partial \phi}{\partial b'} (X_t, \beta)\right]' A_t \right)
 \[\left[  E\left( \left[\frac {\partial \phi}{\partial b'} (X_t, \beta)\right]' \mid {\mathfrak A}_{t-1} \right) \left(V_{t-1}\right)^{-1}E\left( \left[\frac {\partial \phi}{\partial b'} (X_t, \beta)\right] \mid {\mathfrak A}_{t-1} \right) \right]^{-1}.\]</div>
 </section>
 </div><div class="proof example admonition" id="ex:2sls">
-<p class="admonition-title"><span class="caption-number">Example 15.9 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.9 </span></p>
 <section class="example-content" id="proof-content">
-<p><strong>Two-stage least squares</strong>. Add the following special restrictions to <a class="reference internal" href="#ex:exampleeffb103">Example 15.8</a>. Suppose that <span class="math notranslate nohighlight">\(r=1\)</span> and that
+<p><strong>Two-stage least squares</strong>. Add the following special restrictions to <a class="reference internal" href="#ex:exampleeffb103">Example 11.8</a>. Suppose that <span class="math notranslate nohighlight">\(r=1\)</span> and that
 <span class="math notranslate nohighlight">\(V_{t-1} = \mathsf{v} &gt; 0\)</span> where <span class="math notranslate nohighlight">\(\mathsf{v}\)</span> is constant. Further suppose that</p>
 <div class="math notranslate nohighlight">
 \[\phi(X_t, b) = Y_t^1 - Y_t^2 \cdot b\]</div>
@@ -764,17 +739,17 @@ Notice that <span class="math notranslate nohighlight">\(\Pi\)</span> can be com
 <p>The scaling by <span class="math notranslate nohighlight">\(\frac{1}{\mathsf{v}}\)</span> is inconsequential to the construction of a selection process. The matrix of regression coefficients can be replaced by the finite sample least squares regression coefficients without altering the statistical efficiency.</p>
 </section>
 </div><div class="proof remark admonition" id="remark-13">
-<p class="admonition-title"><span class="caption-number">Remark 15.5 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 11.5 </span></p>
 <section class="remark-content" id="proof-content">
-<p><a class="reference internal" href="#ex:2sls">Example 15.9</a> has a special structure that does not prevail in some important applications. For instance, suppose that <span class="math notranslate nohighlight">\(V_{t-1}\)</span> depends on conditioning information so that a form of conditional heteroskedasticity is present. That dependence shows up in essential ways in how <span class="math notranslate nohighlight">\(A^d_t\)</span> should be constructed. Further, suppose that the expectation <span class="math notranslate nohighlight">\(E\left( X_t^2 \mid {\mathfrak A}_{t-1} \right)\)</span> potentially depends nonlinearly on <span class="math notranslate nohighlight">\(Z_{t-1}\)</span>. In that case, to attain or to approximate the efficiency bound, a least squares regression should account for potential nonlinearity. Finally, suppose that <span class="math notranslate nohighlight">\(\ell &gt; 1\)</span>. Then even if the covariance structure is homoskedastic and conditional expectations are linear, the two-squares least square approach will no longer be statistically efficient. We again have to deploy
-an appropriate martingale central limit approximation. In these circumstances, simply by mapping into the framework of <a class="reference internal" href="#ex:unconditional">Example 15.1</a>, we can improve efficiency relative to least squares or two-stage least squares, for instance, by letting</p>
+<p><a class="reference internal" href="#ex:2sls">Example 11.9</a> has a special structure that does not prevail in some important applications. For instance, suppose that <span class="math notranslate nohighlight">\(V_{t-1}\)</span> depends on conditioning information so that a form of conditional heteroskedasticity is present. That dependence shows up in essential ways in how <span class="math notranslate nohighlight">\(A^d_t\)</span> should be constructed. Further, suppose that the expectation <span class="math notranslate nohighlight">\(E\left( X_t^2 \mid {\mathfrak A}_{t-1} \right)\)</span> potentially depends nonlinearly on <span class="math notranslate nohighlight">\(Z_{t-1}\)</span>. In that case, to attain or to approximate the efficiency bound, a least squares regression should account for potential nonlinearity. Finally, suppose that <span class="math notranslate nohighlight">\(\ell &gt; 1\)</span>. Then even if the covariance structure is homoskedastic and conditional expectations are linear, the two-squares least square approach will no longer be statistically efficient. We again have to deploy
+an appropriate martingale central limit approximation. In these circumstances, simply by mapping into the framework of <a class="reference internal" href="#ex:unconditional">Example 11.1</a>, we can improve efficiency relative to least squares or two-stage least squares, for instance, by letting</p>
 <div class="math notranslate nohighlight">
 \[\phi(X_t, b) =  Z_{t-\ell}\left[Y_t^1 - \left(Y_t^2 \right)' b \right]\]</div>
-<p><span id="id9">[<a class="reference internal" href="cite.html#id222" title="Lars Peter Hansen and Kenneth J. Singleton. Efficient Estimation of Linear Asset-Pricing Models with Moving Average Errors. Journal of Business &amp; Economic Statistics, 14(1):53–68, 1996. doi:10.2307/1392099.">Hansen and Singleton, 1996</a>]</span> construct the efficiency bound in <a class="reference internal" href="#ex:conditional">Example 15.2</a> for a linear data generating process.</p>
+<p><span id="id9">[<a class="reference internal" href="cite.html#id222" title="Lars Peter Hansen and Kenneth J. Singleton. Efficient Estimation of Linear Asset-Pricing Models with Moving Average Errors. Journal of Business &amp; Economic Statistics, 14(1):53–68, 1996. doi:10.2307/1392099.">Hansen and Singleton, 1996</a>]</span> construct the efficiency bound in <a class="reference internal" href="#ex:conditional">Example 11.2</a> for a linear data generating process.</p>
 </section>
 </div></section>
 <section id="statistical-tests">
-<h2><span class="section-number">15.6. </span>Statistical tests<a class="headerlink" href="#statistical-tests" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.6. </span>Statistical tests<a class="headerlink" href="#statistical-tests" title="Link to this heading">#</a></h2>
 <p>First suppose that we have statistically efficient selection process. Recall the approximation</p>
 <div class="math notranslate nohighlight">
 \[\frac 1 {\sqrt{N}} 
@@ -787,14 +762,14 @@ an appropriate martingale central limit approximation. In these circumstances, s
 \[\widetilde {\nabla}(B) =  E\left[ G_t(A^d) G_t(B)' \right] .\]</div>
 <p>Using both of these representations:</p>
 <div class="math notranslate nohighlight" id="equation-increment-regress">
-<span class="eqno">(15.7)<a class="headerlink" href="#equation-increment-regress" title="Link to this equation">#</a></span>\[\frac 1 {\sqrt{N}} 
+<span class="eqno">(11.7)<a class="headerlink" href="#equation-increment-regress" title="Link to this equation">#</a></span>\[\frac 1 {\sqrt{N}} 
 \sum_{t=1}^N {B_t}' \phi(X_t, b_N)  \approx \frac 1 {\sqrt N} \sum_{t=1}^N  {\widehat G}_t(B)\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[{\widehat G}_t(B) \overset{\text{def}}{=} 
 {\widetilde G}_t(B) - 
 E\left[{\widetilde G}_t(B) G_t(A^d)'\right] \left( E\left[{ G}_t(A^d) G_t(A^d)'\right] \right)^{-1} G_t(A^d)     \]</div>
-<p>The term, <span class="math notranslate nohighlight">\({\widehat G}_t(B)\)</span>, that appears inside the sum on the right side of <a class="reference internal" href="#equation-increment-regress">(15.7)</a> is the population least squares residual from regressing <span class="math notranslate nohighlight">\({\widetilde G}_t(B)\)</span> onto <span class="math notranslate nohighlight">\(G_t(A^d)\)</span>. This regression residual can also be interpreted as a martingale increment for a stationary increments process.</p>
+<p>The term, <span class="math notranslate nohighlight">\({\widehat G}_t(B)\)</span>, that appears inside the sum on the right side of <a class="reference internal" href="#equation-increment-regress">(11.7)</a> is the population least squares residual from regressing <span class="math notranslate nohighlight">\({\widetilde G}_t(B)\)</span> onto <span class="math notranslate nohighlight">\(G_t(A^d)\)</span>. This regression residual can also be interpreted as a martingale increment for a stationary increments process.</p>
 <p>Suppose that <span class="math notranslate nohighlight">\({\widehat G}_t(B)\)</span> has a nonsingular covariance matrix. Consider the quadratic form used for building a test:</p>
 <div class="math notranslate nohighlight">
 \[{\frac 1 N} \left[\sum_{t=1}^N \phi(X_t, b_N)' B_t \right] \left(E \left[{\widehat G}_t(B){\widehat G}_t(B)' \right]\right)^{-1} \left[\sum_{t=1}^N {B_t}' \phi(X_t, b_N)\right] \Rightarrow \chi^2 ({\tilde k} ) .\]</div>
@@ -812,9 +787,9 @@ E\left[{\widetilde G}_t(B) G_t(A^d)'\right] \left( E\left[{ G}_t(A^d) G_t(A^d)'\
 \[E \left( \begin{bmatrix} {\widetilde G}_t(B) \cr G_t(A^d) \end{bmatrix} 
  \begin{bmatrix} {\widetilde G}_t(B)' &amp;  G_t(A^d)' \end{bmatrix} \right)\]</div>
 <div class="proof example admonition" id="example-14">
-<p class="admonition-title"><span class="caption-number">Example 15.10 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.10 </span></p>
 <section class="example-content" id="proof-content">
-<p>Consider <a class="reference internal" href="#ex:unconditional">Example 15.1</a> again. We have already shown that</p>
+<p>Consider <a class="reference internal" href="#ex:unconditional">Example 11.1</a> again. We have already shown that</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb A}^d = {\mathbb V}^{-1} {\mathbb D} .\]</div>
 <p>Suppose that we choose <span class="math notranslate nohighlight">\({\mathbb B}\)</span> with dimension <span class="math notranslate nohighlight">\(r \times (r-k)\)</span> so that</p>
@@ -832,14 +807,14 @@ E\left[{\widetilde G}_t(B) G_t(A^d)'\right] \left( E\left[{ G}_t(A^d) G_t(A^d)'\
 <p>an approximation that is useful for constructing confidence sets for GMM estimates of parameter vector <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
 </section>
 </div><div class="proof remark admonition" id="rem:old5.2">
-<p class="admonition-title"><span class="caption-number">Remark 15.6 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 11.6 </span></p>
 <section class="remark-content" id="proof-content">
-<p>To continue our study of <a class="reference internal" href="#ex:unconditional">Example 15.1</a>, form the population problem:</p>
+<p>To continue our study of <a class="reference internal" href="#ex:unconditional">Example 11.1</a>, form the population problem:</p>
 <div class="math notranslate nohighlight">
 \[\min_b E\left[ \phi(X_t, b) \right]' {\mathbb V}^{-1}  E \left[\phi(X_t,b)\right] .\]</div>
 <p>This has a minimizer at <span class="math notranslate nohighlight">\(b = \beta\)</span> provided that the unconditional moment conditions are satisfied.  If <span class="math notranslate nohighlight">\(b = \beta\)</span> is the only possible parameter vector that satisfies the population moment conditions, then <span class="math notranslate nohighlight">\(b = \beta\)</span> is the unique solution to the population minimization problem stated here.  Suppose that we construct an estimator by solving a minimization problem:</p>
 <div class="math notranslate nohighlight" id="equation-gmm-min">
-<span class="eqno">(15.8)<a class="headerlink" href="#equation-gmm-min" title="Link to this equation">#</a></span>\[\min_b  {\frac 1 N} \sum_{t=1}^N \phi(X_t,b)' {\mathbb V}^{-1} \sum_{t=1}^N \phi(X_t,b) .\]</div>
+<span class="eqno">(11.8)<a class="headerlink" href="#equation-gmm-min" title="Link to this equation">#</a></span>\[\min_b  {\frac 1 N} \sum_{t=1}^N \phi(X_t,b)' {\mathbb V}^{-1} \sum_{t=1}^N \phi(X_t,b) .\]</div>
 <p>First-order necessary conditions are</p>
 <div class="math notranslate nohighlight">
 \[{\frac 1 N} \sum_{t=1}^N \left[\frac {\partial \phi }{\partial b'}(X_t,b_N)  \right]' {\mathbb V}^{-1} \sum_{t=1}^N \phi(X_t,b_N) = 0 .\]</div>
@@ -849,22 +824,22 @@ E\left[{\widetilde G}_t(B) G_t(A^d)'\right] \left( E\left[{ G}_t(A^d) G_t(A^d)'\
 <p>where convergence is with probability one.  Thus, in this case  the selection matrix</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb A} = {\mathbb V}^{-1} {\mathbb D} \]</div>
-<p>provides an estimator that attains the efficiency bound.  The limiting distribution of the minimizer of criterion <a class="reference internal" href="#equation-gmm-min">(15.8)</a> is <span class="math notranslate nohighlight">\(\chi^2\)</span> with <span class="math notranslate nohighlight">\(r - k\)</span> degrees of freedom.</p>
+<p>provides an estimator that attains the efficiency bound.  The limiting distribution of the minimizer of criterion <a class="reference internal" href="#equation-gmm-min">(11.8)</a> is <span class="math notranslate nohighlight">\(\chi^2\)</span> with <span class="math notranslate nohighlight">\(r - k\)</span> degrees of freedom.</p>
 </section>
 </div><div class="proof remark admonition" id="remark-16">
-<p class="admonition-title"><span class="caption-number">Remark 15.7 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 11.7 </span></p>
 <section class="remark-content" id="proof-content">
-<p>There is an interesting variation of the approach described in <a class="reference internal" href="#rem:old5.2">Remark 15.6</a>. For any <span class="math notranslate nohighlight">\(b\)</span>, let <span class="math notranslate nohighlight">\(\mathbb{V}(b)\)</span> be the population covariance matrix in the martingale increment used in the Central Limit approximation for the process</p>
+<p>There is an interesting variation of the approach described in <a class="reference internal" href="#rem:old5.2">Remark 11.6</a>. For any <span class="math notranslate nohighlight">\(b\)</span>, let <span class="math notranslate nohighlight">\(\mathbb{V}(b)\)</span> be the population covariance matrix in the martingale increment used in the Central Limit approximation for the process</p>
 <div class="math notranslate nohighlight">
 \[\frac{1}{\sqrt{N}} \sum_{t=1}^N \phi(X_t, \beta) .\]</div>
 <p>Assume that <span class="math notranslate nohighlight">\(\mathbb{V}(b)\)</span> is nonsingular for every <span class="math notranslate nohighlight">\(b\)</span> in a parameter space. Form the population minimization problem:</p>
 <div class="math notranslate nohighlight">
 \[\min_b E\left[ \phi(X_t, b) \right]' \left[\mathbb{V}(b)\right]^{-1} E \left[\phi(X_t,b)\right] .\]</div>
 <p>If <span class="math notranslate nohighlight">\(b = \beta\)</span> is the only vector that satisfies the associated population first-order conditions, then <span class="math notranslate nohighlight">\(b = \beta\)</span> is again the unique solution to the above population minimization problem.</p>
-<p>Now form sample counterparts of both <span class="math notranslate nohighlight">\(E \left[\phi(X_t,b)\right]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{V}(b)\)</span> as functions of <span class="math notranslate nohighlight">\(b\)</span>. Minimizing a sample counterpart of the above population minimization problem gives rise to a “continuously-updated GMM estimator”. See <span id="id10">[<a class="reference internal" href="cite.html#id202" title="Lars Peter Hansen, John Heaton, and Amir Yaron. Finite-sample properties of some alternative GMM estimators. Journal of Business and Economic Statistics, 14(3):262–280, 1996. doi:10.1080/07350015.1996.10524656.">Hansen <em>et al.</em>, 1996</a>]</span>. The parameter vector and an appropriately scaled minimized objective function have the same limiting distributions as those described in <a class="reference internal" href="#rem:old5.2">Remark 15.6</a>.<a class="footnote-reference brackets" href="#gmmfootnote" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<p>Now form sample counterparts of both <span class="math notranslate nohighlight">\(E \left[\phi(X_t,b)\right]\)</span> and <span class="math notranslate nohighlight">\(\mathbb{V}(b)\)</span> as functions of <span class="math notranslate nohighlight">\(b\)</span>. Minimizing a sample counterpart of the above population minimization problem gives rise to a “continuously-updated GMM estimator”. See <span id="id10">[<a class="reference internal" href="cite.html#id202" title="Lars Peter Hansen, John Heaton, and Amir Yaron. Finite-sample properties of some alternative GMM estimators. Journal of Business and Economic Statistics, 14(3):262–280, 1996. doi:10.1080/07350015.1996.10524656.">Hansen <em>et al.</em>, 1996</a>]</span>. The parameter vector and an appropriately scaled minimized objective function have the same limiting distributions as those described in <a class="reference internal" href="#rem:old5.2">Remark 11.6</a>.<a class="footnote-reference brackets" href="#gmmfootnote" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 </section>
 </div><div class="proof example admonition" id="example-17">
-<p class="admonition-title"><span class="caption-number">Example 15.11 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 11.11 </span></p>
 <section class="example-content" id="proof-content">
 <p>Consider the following conditional moment restriction:</p>
 <div class="math notranslate nohighlight">
@@ -1888,15 +1863,15 @@ GMMbib
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>Representing Marginal Valuation</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Representing Marginal Valuation</p>
       </div>
     </a>
     <a class="right-next"
-       href="cite.html"
+       href="ch_multfunctional_mdconvert.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>Bibliography</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Multiplicative Functionals</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1916,12 +1891,12 @@ GMMbib
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">15.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation">15.2. Formulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-approximation">15.3. Central limit approximation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-value-approximation">15.4. Mean value approximation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gmm-efficiency-bound">15.5. GMM Efficiency Bound</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests">15.6. Statistical tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation">11.2. Formulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-approximation">11.3. Central limit approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-value-approximation">11.4. Mean value approximation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gmm-efficiency-bound">11.5. GMM Efficiency Bound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests">11.6. Statistical tests</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3. Markov Processes &#8212; Quant Macro Finance</title>
+    <title>2. Markov Processes &#8212; Quant Macro Finance</title>
   
   
   
@@ -35,8 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8c1df6e1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -65,8 +65,8 @@
     <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/example_out_c2_v2.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Markov Processes" href="example_out_c2_v2_enzo_and_ken.html" />
-    <link rel="prev" title="2. Stochastic Processes and Laws of Large Numbers" href="example_out_c1_v2_enzo_and_ken.html" />
+    <link rel="next" title="3. Stationary Increments" href="example_out_c3_v2.html" />
+    <link rel="prev" title="1. Stochastic Processes and Laws of Large Numbers" href="example_out_c1_v2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,43 +179,18 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">9. Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">13. Stochastic Responses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">14. Representing Marginal Valuation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">3. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">4. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">5. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">6. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">7. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">8. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">9. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">10. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">11. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch_multfunctional_mdconvert.html">12. Multiplicative Functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">13. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
 <ul class="nav bd-sidenav">
@@ -388,20 +363,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constituents">3.1. Constituents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">3.2. Stationarity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathcal-l-2-and-eigenfunctions">3.3. <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> and Eigenfunctions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodic-markov-processes">3.4. Ergodic Markov Processes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-events-for-a-markov-process">3.4.1. Invariant events for a Markov process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constituents">2.1. Constituents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">2.2. Stationarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathcal-l-2-and-eigenfunctions">2.3. <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> and Eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodic-markov-processes">2.4. Ergodic Markov Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-events-for-a-markov-process">2.4.1. Invariant events for a Markov process</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodicity">3.5. Periodicity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-state-markov-chains">3.6. Finite-State Markov Chains</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limited-dependence">3.7. Limited Dependence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-of-multi-period-forecasts">3.8. Limits of Multi-Period Forecasts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregressions">3.9. Vector Autoregressions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-vector-autoregressions">3.10. Estimating Vector Autoregressions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inventing-a-past-again">3.11. Inventing a Past Again</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodicity">2.5. Periodicity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-state-markov-chains">2.6. Finite-State Markov Chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limited-dependence">2.7. Limited Dependence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-of-multi-period-forecasts">2.8. Limits of Multi-Period Forecasts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregressions">2.9. Vector Autoregressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-vector-autoregressions">2.10. Estimating Vector Autoregressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inventing-a-past-again">2.11. Inventing a Past Again</a></li>
 </ul>
             </nav>
         </div>
@@ -414,13 +389,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="markov-processes">
-<span id="chap-markov"></span><h1><span class="section-number">3. </span>Markov Processes<a class="headerlink" href="#markov-processes" title="Link to this heading">#</a></h1>
+<span id="chap-markov"></span><h1><span class="section-number">2. </span>Markov Processes<a class="headerlink" href="#markov-processes" title="Link to this heading">#</a></h1>
 <p>We call a random vector <span class="math notranslate nohighlight">\(X_t\)</span> the <em>state</em> because it  describes probabilistically the position of a dynamic system at time <span class="math notranslate nohighlight">\(t\)</span> from the perspective of a model builder or an econometrician. We construct a consistent sequence of probability distributions <span class="math notranslate nohighlight">\(Pr_\ell\)</span> for a sequence of random vectors</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}X^{[\ell]} \doteq \begin{bmatrix} X_0 \\ X_1 \\ \vdots \\ X_\ell \end{bmatrix}\end{split}\]</div>
 <p>for all nonnegative integers <span class="math notranslate nohighlight">\(\ell\)</span> by specifying the following two elementary components of a <em>Markov process</em>: (i) a probability distribution for <span class="math notranslate nohighlight">\(X_0\)</span>, and (ii) a time-invariant distribution for <span class="math notranslate nohighlight">\(X_{t+1}\)</span> conditional on <span class="math notranslate nohighlight">\(X_t\)</span> for <span class="math notranslate nohighlight">\(t \geq 0\)</span>.   The vector <span class="math notranslate nohighlight">\(X_t\)</span> suffices for conditioning on the past history of the process.  All other probabilities are functions of these two distributions. By creatively defining the state vector <span class="math notranslate nohighlight">\(X_t\)</span>, a Markov specification includes many models used in applied research.</p>
 <section id="constituents">
-<h2><span class="section-number">3.1. </span>Constituents<a class="headerlink" href="#constituents" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.1. </span>Constituents<a class="headerlink" href="#constituents" title="Link to this heading">#</a></h2>
 <p>Assume a state space <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> and a transition distribution <span class="math notranslate nohighlight">\(P(dx^*|x)\)</span>. For example, <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> could be <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> or a subset of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.
 The transition distribution <span class="math notranslate nohighlight">\(P\)</span> is a conditional probability measure for each <span class="math notranslate nohighlight">\(X_t = x\)</span> in the state space,
 so it satisfies</p>
@@ -435,7 +410,7 @@ The conditional probability measure <span class="math notranslate nohighlight">\
 Often, but not always, the conditional distributions have densities against a common distribution <span class="math notranslate nohighlight">\(\lambda(dx^*)\)</span> to be used to integrate over states.
 That lets us use a <em>transition density</em> to represent the conditional probability measure.</p>
 <div class="proof example admonition" id="ex:ex01">
-<p class="admonition-title"><span class="caption-number">Example 3.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 2.1 </span></p>
 <section class="example-content" id="proof-content">
 <p>A first-order vector autoregression is a Markov process. In this example, we consider <span class="math notranslate nohighlight">\(n\)</span> such processes, indexed by <span class="math notranslate nohighlight">\(i\)</span>.
 The index <span class="math notranslate nohighlight">\(i\)</span> represents a discrete form of parameter uncertainty, and we may include <span class="math notranslate nohighlight">\(i\)</span> as an additional  time-invariant component of the state.<br />
@@ -445,7 +420,7 @@ Here  <span class="math notranslate nohighlight">\(P(dx^*|x, i )\)</span> is a n
 <p>for <span class="math notranslate nohighlight">\(t \geq 0\)</span>, where <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is a multivariate standard normally distributed random vector that is independent of <span class="math notranslate nohighlight">\(X_t, i\)</span>.</p>
 </section>
 </div><div class="proof example admonition" id="ex:ex02">
-<p class="admonition-title"><span class="caption-number">Example 3.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 2.2 </span></p>
 <section class="example-content" id="proof-content">
 <p>A discrete-state Markov chain consists of a
 <span class="math notranslate nohighlight">\(Q_0\)</span> represented as a row vector and a transition probability <span class="math notranslate nohighlight">\(P(dx^*|x)\)</span>  represented as a matrix  with one row and one column for each possible value of the state <span class="math notranslate nohighlight">\(x\)</span>.
@@ -455,22 +430,22 @@ this period’s state.  As with the VAR example, we include <span class="math no
 </div><p>It is useful to construct an operator by applying a one-step conditional expectation operator to functions of a Markov state. Let <span class="math notranslate nohighlight">\(f:{\mathcal X} \rightarrow {\mathbb R}\)</span>.
 For bounded <span class="math notranslate nohighlight">\(f\)</span>, define:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-toperatordef">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-eqn-toperatordef" title="Link to this equation">#</a></span>\[{\mathbb T} f (x) = E \left[ f(X_{t+1}) | X_t = x \right] = \int_{\{x^* \in {\mathcal X}\}}  f(x^*) P(d x^*|x).\]</div>
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-eqn-toperatordef" title="Link to this equation">#</a></span>\[{\mathbb T} f (x) = E \left[ f(X_{t+1}) | X_t = x \right] = \int_{\{x^* \in {\mathcal X}\}}  f(x^*) P(d x^*|x).\]</div>
 <p>The Law of Iterated Expectations justifies iterating on <span class="math notranslate nohighlight">\({\mathbb T}\)</span>  to form conditional expectations of the function <span class="math notranslate nohighlight">\(f\)</span> of the Markov state over longer horizons:</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb T}^j f(x) = E  \left[ f(X_{t+j}) | X_t = x \right].\]</div>
 <p>The operator <span class="math notranslate nohighlight">\({\mathbb T}\)</span>  gives an alternative way to represent the transitional dynamics for a Markov process. Indeed, by applying <span class="math notranslate nohighlight">\({\mathbb T}\)</span> to a suitable range of test functions <span class="math notranslate nohighlight">\(f\)</span>, we can construct a conditional probability measure.</p>
 <div class="proof theorem admonition" id="theorem-2">
-<p class="admonition-title"><span class="caption-number">Theorem 3.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 2.1 </span></p>
 <section class="theorem-content" id="proof-content">
 <p>Start with a conditional expectation operator <span class="math notranslate nohighlight">\({\mathbb T}\)</span> that maps a space of bounded functions into itself. We can use <span class="math notranslate nohighlight">\({\mathbb T}\)</span> to construct a conditional probability measure <span class="math notranslate nohighlight">\(P(dx^*|x)\)</span> provided that <span class="math notranslate nohighlight">\({\mathbb T}\)</span> is (a) well-defined on the space of bounded functions, (b) preserves the bound, (c) maps nonnegative functions into nonnegative functions, and (d) maps the unit function into the unit function.</p>
 </section>
 </div></section>
 <section id="stationarity">
-<h2><span class="section-number">3.2. </span>Stationarity<a class="headerlink" href="#stationarity" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.2. </span>Stationarity<a class="headerlink" href="#stationarity" title="Link to this heading">#</a></h2>
 <p>We can construct a stationary Markov process by carefully choosing the distribution of the initial state <span class="math notranslate nohighlight">\(X_0\)</span>.</p>
 <div class="proof definition admonition" id="def:stationdist">
-<p class="admonition-title"><span class="caption-number">Definition 3.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 2.1 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A probability measure <span class="math notranslate nohighlight">\(Q\)</span> over a state space <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> for a Markov process with transition probability <span class="math notranslate nohighlight">\(P\)</span> is a <strong>stationary distribution</strong> if it satisfies</p>
 <div class="math notranslate nohighlight">
@@ -478,7 +453,7 @@ For bounded <span class="math notranslate nohighlight">\(f\)</span>, define:</p>
 </section>
 </div><p>We will sometimes refer to a stationary density <span class="math notranslate nohighlight">\(q\)</span>. A density is always relative to a measure. With this in mind, let <span class="math notranslate nohighlight">\(\lambda\)</span> be a measure used to integrate over possible Markov states on the state space <span class="math notranslate nohighlight">\(\mathcal{X}\)</span>. Then a density <span class="math notranslate nohighlight">\(q\)</span> is a nonnegative (Borel measurable) function of the state for which <span class="math notranslate nohighlight">\(\int q(x) \lambda(dx) = 1\)</span>.</p>
 <div class="proof definition admonition" id="definition-4">
-<p class="admonition-title"><span class="caption-number">Definition 3.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 2.2 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>stationary density</strong> over a state space <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> for a Markov process
 with transition probability <span class="math notranslate nohighlight">\(P\)</span> is a probability density <span class="math notranslate nohighlight">\(q\)</span> with respect to a measure <span class="math notranslate nohighlight">\(\lambda\)</span> over the state space <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> that satisfies</p>
@@ -486,27 +461,27 @@ with transition probability <span class="math notranslate nohighlight">\(P\)</sp
 \[\int P(d x^*|x) q(x) \lambda(dx) = q(x^*) \lambda(dx^*).\]</div>
 </section>
 </div><div class="proof definition admonition" id="def:reversible">
-<p class="admonition-title"><span class="caption-number">Definition 3.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 2.3 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A Markov process with stationary density <span class="math notranslate nohighlight">\(q\)</span> and transition density <span class="math notranslate nohighlight">\(P(dx^*|x)\)</span> is said to be <strong>reversible</strong> if</p>
 <div class="math notranslate nohighlight" id="equation-eqn-reversible">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-eqn-reversible" title="Link to this equation">#</a></span>\[P(dx^*|x)q(x) \lambda(d x) = P(dx|x^*)q(x^*)  \lambda(d x^*).\]</div>
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-eqn-reversible" title="Link to this equation">#</a></span>\[P(dx^*|x)q(x) \lambda(d x) = P(dx|x^*)q(x^*)  \lambda(d x^*).\]</div>
 </section>
 </div><div class="proof example admonition" id="example-6">
-<p class="admonition-title"><span class="caption-number">Example 3.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 2.3 </span></p>
 <section class="example-content" id="proof-content">
 <p>Various sufficient conditions imply the existence of a stationary distribution. Given a transition distribution <span class="math notranslate nohighlight">\(P\)</span>, one such condition that is widely used to justify some calculations from numerical simulations is that the Markov process be <em>time reversible</em>, which means that</p>
 <div class="math notranslate nohighlight" id="equation-eqn-reversiblenew">
-<span class="eqno">(3.3)<a class="headerlink" href="#equation-eqn-reversiblenew" title="Link to this equation">#</a></span>\[P(dx^*|x) Q(dx) = P(dx|x^*) Q(dx^*)\]</div>
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-eqn-reversiblenew" title="Link to this equation">#</a></span>\[P(dx^*|x) Q(dx) = P(dx|x^*) Q(dx^*)\]</div>
 <p>for some probability distribution <span class="math notranslate nohighlight">\(Q\)</span> on <span class="math notranslate nohighlight">\(\mathcal{X}\)</span>. Because a transition distribution satisfies <span class="math notranslate nohighlight">\(\int_{\{ x \in \mathcal{X}\}}  P(dx|x^*) =1 \)</span>,</p>
 <div class="math notranslate nohighlight">
 \[\int_{\{ x \in \mathcal{X}\}} P(dx^*|x) Q(dx)  = \int_{\{ x \in \mathcal{X}\}} P(dx|x^*) Q(dx^*)  = Q(dx^*) ,\]</div>
-<p>so <span class="math notranslate nohighlight">\(Q\)</span> is a stationary distribution by <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#def:stationdist">Definition 4.1</a>. Restriction <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eqn-reversiblenew">(4.3)</a> implies that the process is time reversible in the sense that forward and backward transition distributions coincide. Time reversibility is special, so later we will explore other sufficient conditions for the existence of stationary distributions.<a class="footnote-reference brackets" href="#bayesianmarkov" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<p>so <span class="math notranslate nohighlight">\(Q\)</span> is a stationary distribution by <a class="reference internal" href="#def:stationdist">Definition 2.1</a>. Restriction <a class="reference internal" href="#equation-eqn-reversiblenew">(2.3)</a> implies that the process is time reversible in the sense that forward and backward transition distributions coincide. Time reversibility is special, so later we will explore other sufficient conditions for the existence of stationary distributions.<a class="footnote-reference brackets" href="#bayesianmarkov" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 </section>
 </div><div class="proof remark admonition" id="remark-7">
-<p class="admonition-title"><span class="caption-number">Remark 3.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 2.1 </span></p>
 <section class="remark-content" id="proof-content">
-<p>When a Markov process starts at a stationary distribution, we can construct the process <span class="math notranslate nohighlight">\(\{ X_t : t=1,2,...\}\)</span> with a measure-preserving transformation <span class="math notranslate nohighlight">\({\mathbb S}\)</span> of the type featured in chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>, section <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#sec-stochprocessconstructioni"><span class="std std-ref">Constructing a Stochastic Process</span></a>.</p>
+<p>When a Markov process starts at a stationary distribution, we can construct the process <span class="math notranslate nohighlight">\(\{ X_t : t=1,2,...\}\)</span> with a measure-preserving transformation <span class="math notranslate nohighlight">\({\mathbb S}\)</span> of the type featured in chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>, section <a class="reference internal" href="example_out_c1_v2.html#sec-stochprocessconstructioni"><span class="std std-ref">Constructing a Stochastic Process</span></a>.</p>
 </section>
 </div><p>Given a stationary distribution <span class="math notranslate nohighlight">\(Q\)</span>, form the space of functions <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span></p>
 <div class="math notranslate nohighlight">
@@ -516,8 +491,8 @@ with transition probability <span class="math notranslate nohighlight">\(P\)</sp
 \[\| f \| = \left[\int f(x)^2 Q(dx)\right]^{1/2} .\]</div>
 </section>
 <section id="mathcal-l-2-and-eigenfunctions">
-<span id="sec-eigfns"></span><h2><span class="section-number">3.3. </span><span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> and Eigenfunctions<a class="headerlink" href="#mathcal-l-2-and-eigenfunctions" title="Link to this heading">#</a></h2>
-<p>We connected ergodicity to a statistical notion of invariance in chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>.  The word invariance brings to mind a generalization of eigenvectors called eigenfunctions. Eigenfunctions of a linear mapping characterize an invariant subspace of functions such that the application of a linear mapping to any element of that space remains in the same subspace.  Eigenfunctions associated with a unit eigenvalue are themselves invariant under the mapping.  So perhaps it is not surprising that such eigenfunctions of <span class="math notranslate nohighlight">\({\mathbb T}\)</span> come in handy for studying ergodicity of Markov processes.</p>
+<span id="sec-eigfns"></span><h2><span class="section-number">2.3. </span><span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> and Eigenfunctions<a class="headerlink" href="#mathcal-l-2-and-eigenfunctions" title="Link to this heading">#</a></h2>
+<p>We connected ergodicity to a statistical notion of invariance in chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>.  The word invariance brings to mind a generalization of eigenvectors called eigenfunctions. Eigenfunctions of a linear mapping characterize an invariant subspace of functions such that the application of a linear mapping to any element of that space remains in the same subspace.  Eigenfunctions associated with a unit eigenvalue are themselves invariant under the mapping.  So perhaps it is not surprising that such eigenfunctions of <span class="math notranslate nohighlight">\({\mathbb T}\)</span> come in handy for studying ergodicity of Markov processes.</p>
 <p>Given a stationary distribution <span class="math notranslate nohighlight">\(Q\)</span>, form the space of functions</p>
 <div class="math notranslate nohighlight">
 \[{\mathcal L}^2 = \{ f:{\mathcal X} \rightarrow {\mathbb R} : \int f(x)^2 Q(dx)  &lt; \infty \} .\]</div>
@@ -527,14 +502,14 @@ with transition probability <span class="math notranslate nohighlight">\(P\)</sp
 <p>is a well-defined norm on <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span>.</p>
 <p>We now study eigenfunctions of the conditional expectation operator <span class="math notranslate nohighlight">\({\mathbb T}\)</span>.</p>
 <div class="proof definition admonition" id="definition-8">
-<p class="admonition-title"><span class="caption-number">Definition 3.4 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 2.4 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A function <span class="math notranslate nohighlight">\(f \in \mathcal{L}^2\)</span> that solves  <span class="math notranslate nohighlight">\(\mathbb{T}  f =  f\)</span>
 is  an eigenfunction of <span class="math notranslate nohighlight">\(\mathbb{T}\)</span>  associated with a unit eigenvalue.<a class="footnote-reference brackets" href="#eigenfunctionnote" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 </section>
 </div><p>The following proposition asserts that an eigenfunction  <span class="math notranslate nohighlight">\(\tilde{f}(X_t)\)</span> associated with a unit eigenvalue is constant as <span class="math notranslate nohighlight">\(X_t\)</span> moves through time.</p>
 <div class="proof proposition admonition" id="lem:uniteigen">
-<p class="admonition-title"><span class="caption-number">Proposition 3.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Proposition 2.1 </span></p>
 <section class="proposition-content" id="proof-content">
 <p>Suppose that <span class="math notranslate nohighlight">\(\tilde{f}\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\mathbb{T}\)</span> associated with a unit eigenvalue. Then <span class="math notranslate nohighlight">\(\{\tilde{f}(X_t) : t=0,1,...\}\)</span> is constant over time with probability one.</p>
 </section>
@@ -551,14 +526,14 @@ E\left([\tilde{f}(X_{t+1}) - \tilde{f}(X_t)]^2\right)  &amp; = &amp; E\left[\til
 </div>
 </section>
 <section id="ergodic-markov-processes">
-<span id="sec-markergodic"></span><h2><span class="section-number">3.4. </span>Ergodic Markov Processes<a class="headerlink" href="#ergodic-markov-processes" title="Link to this heading">#</a></h2>
-<p>Chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a> studied special statistical models that, because they are ergodic, are affiliated with a Law of Large Numbers in which limit points are constant across sample points <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span>. Section <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#sec-ergodic-decomp"><span class="std std-ref">Ergodic Decomposition</span></a> described other statistical models that are not ergodic and that are components of more general probability specifications that we used to express the idea that a statistical model is unknown.<a class="footnote-reference brackets" href="#unknownparameters" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> As we described, even when the statistical model is unknown, ergodic processes remain of interest as they are building blocks (specific statistical models) that are revealed over time.  We now explore ergodicity in the context of Markov processes.</p>
-<p>From <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#lem:uniteigen">Proposition 4.1</a> we know that time-series averages of an eigenfunction <span class="math notranslate nohighlight">\({\mathbb T} \tilde f = \tilde f\)</span> are invariant over time, so</p>
+<span id="sec-markergodic"></span><h2><span class="section-number">2.4. </span>Ergodic Markov Processes<a class="headerlink" href="#ergodic-markov-processes" title="Link to this heading">#</a></h2>
+<p>Chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a> studied special statistical models that, because they are ergodic, are affiliated with a Law of Large Numbers in which limit points are constant across sample points <span class="math notranslate nohighlight">\(\omega \in \Omega\)</span>. Section <a class="reference internal" href="example_out_c1_v2.html#sec-ergodic-decomp"><span class="std std-ref">Ergodic Decomposition</span></a> described other statistical models that are not ergodic and that are components of more general probability specifications that we used to express the idea that a statistical model is unknown.<a class="footnote-reference brackets" href="#unknownparameters" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> As we described, even when the statistical model is unknown, ergodic processes remain of interest as they are building blocks (specific statistical models) that are revealed over time.  We now explore ergodicity in the context of Markov processes.</p>
+<p>From <a class="reference internal" href="#lem:uniteigen">Proposition 2.1</a> we know that time-series averages of an eigenfunction <span class="math notranslate nohighlight">\({\mathbb T} \tilde f = \tilde f\)</span> are invariant over time, so</p>
 <div class="math notranslate nohighlight">
 \[{\frac 1 N} \sum_{t=1}^N \tilde f(X_t) = \tilde f(X).\]</div>
-<p>However, when <span class="math notranslate nohighlight">\({\tilde f}(x)\)</span> varies across sets of states <span class="math notranslate nohighlight">\(x\)</span> that occur with positive probability under <span class="math notranslate nohighlight">\(Q\)</span>, a time series average <span class="math notranslate nohighlight">\({\frac 1 N} \sum_{t=1}^N \tilde f(X_t)\)</span> can differ from <span class="math notranslate nohighlight">\(\int \tilde f(x) Q(dx)\)</span>. This happens when observations of <span class="math notranslate nohighlight">\(\tilde f(X_t)\)</span> along a sample path for <span class="math notranslate nohighlight">\(\{X_t\}\)</span> convey an inaccurate impression of how <span class="math notranslate nohighlight">\(f(X)\)</span> varies across the stationary distribution <span class="math notranslate nohighlight">\(Q(dx)\)</span>. See <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#ex:MC2">Example 4.5</a> below. We can exclude the possibility of such inaccurate impressions by imposing a restriction on the eigenfunction equation <span class="math notranslate nohighlight">\({\mathbb T}f = f\)</span>. % to state a sufficient condition for ergodicity.</p>
+<p>However, when <span class="math notranslate nohighlight">\({\tilde f}(x)\)</span> varies across sets of states <span class="math notranslate nohighlight">\(x\)</span> that occur with positive probability under <span class="math notranslate nohighlight">\(Q\)</span>, a time series average <span class="math notranslate nohighlight">\({\frac 1 N} \sum_{t=1}^N \tilde f(X_t)\)</span> can differ from <span class="math notranslate nohighlight">\(\int \tilde f(x) Q(dx)\)</span>. This happens when observations of <span class="math notranslate nohighlight">\(\tilde f(X_t)\)</span> along a sample path for <span class="math notranslate nohighlight">\(\{X_t\}\)</span> convey an inaccurate impression of how <span class="math notranslate nohighlight">\(f(X)\)</span> varies across the stationary distribution <span class="math notranslate nohighlight">\(Q(dx)\)</span>. See <a class="reference internal" href="#ex:MC2">Example 2.5</a> below. We can exclude the possibility of such inaccurate impressions by imposing a restriction on the eigenfunction equation <span class="math notranslate nohighlight">\({\mathbb T}f = f\)</span>. % to state a sufficient condition for ergodicity.</p>
 <div class="proof proposition admonition" id="prop:ergo">
-<p class="admonition-title"><span class="caption-number">Proposition 3.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Proposition 2.2 </span></p>
 <section class="proposition-content" id="proof-content">
 <p>When a unique solution to the equation</p>
 <div class="math notranslate nohighlight">
@@ -570,13 +545,13 @@ the one-period conditional expectation operator and <span class="math notranslat
 </section>
 </div><p>Evidently, ergodicity is a property that obtains relative to a stationary distribution <span class="math notranslate nohighlight">\(Q\)</span> of the Markov process. If there are multiple stationary distributions, it is possible that there is a unique constant function <span class="math notranslate nohighlight">\(f\)</span> that solves <span class="math notranslate nohighlight">\({\mathbb T}f = f\)</span> problem for one stationary distribution and that non-constant solutions exist for other stationary distributions.</p>
 <section id="invariant-events-for-a-markov-process">
-<h3><span class="section-number">3.4.1. </span>Invariant events for a Markov process<a class="headerlink" href="#invariant-events-for-a-markov-process" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.4.1. </span>Invariant events for a Markov process<a class="headerlink" href="#invariant-events-for-a-markov-process" title="Link to this heading">#</a></h3>
 <p>Consider an eigenfunction <span class="math notranslate nohighlight">\({\tilde f}\)</span> of <span class="math notranslate nohighlight">\({\mathbb T}\)</span> associated with a unit eigenvalue. Let <span class="math notranslate nohighlight">\(\phi : {\mathbb R} \rightarrow {\mathbb R}\)</span> be a bounded Borel measurable function. Since <span class="math notranslate nohighlight">\(\{ {\tilde f}(X_t) : t=0,1,2,... \}\)</span> is invariant over time, so is <span class="math notranslate nohighlight">\(\left\{ \phi\left[{\tilde f}(X_t)\right] : t=0,1,2, \ldots \right\}\)</span> and it is necessarily true that</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb T} (\phi \circ {\tilde f}) = \phi \circ {\tilde f}.\]</div>
 <p>Therefore, from an eigenfunction <span class="math notranslate nohighlight">\({\tilde f}\)</span> associated with a unit eigenvalue, we can construct other eigenfunctions,<a class="footnote-reference brackets" href="#eigen-footnote" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> for example</p>
 <div class="math notranslate nohighlight" id="equation-newjunk1">
-<span class="eqno">(3.4)<a class="headerlink" href="#equation-newjunk1" title="Link to this equation">#</a></span>\[\begin{split}\phi[{\tilde f}(x)] = \begin{cases} 
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-newjunk1" title="Link to this equation">#</a></span>\[\begin{split}\phi[{\tilde f}(x)] = \begin{cases} 
 1 &amp; \text{if} \ {\tilde f}(x) \in {\tilde {\mathfrak b}} \\
 0 &amp; \text{if} \ {\tilde f}(x) \notin {\tilde {\mathfrak b}} \end{cases}\end{split}\]</div>
 <p>for some Borel set <span class="math notranslate nohighlight">\({\tilde {\mathfrak b}}\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}\)</span>.</p>
@@ -588,11 +563,11 @@ the one-period conditional expectation operator and <span class="math notranslat
 \[{\mathfrak b} = \{ x : {\tilde f}(x) \in {\tilde {\mathfrak b}}  \}\]</div>
 <p>we can represent <span class="math notranslate nohighlight">\(\Lambda\)</span> as</p>
 <div class="math notranslate nohighlight" id="equation-invariantrep">
-<span class="eqno">(3.5)<a class="headerlink" href="#equation-invariantrep" title="Link to this equation">#</a></span>\[\Lambda = \{ \omega \in \Omega : X_0(\omega) \in {\mathfrak b} \}.\]</div>
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-invariantrep" title="Link to this equation">#</a></span>\[\Lambda = \{ \omega \in \Omega : X_0(\omega) \in {\mathfrak b} \}.\]</div>
 <p>Thus we have shown how to construct many non-degenerate eigenfunctions, starting from an initial such function.</p>
-<p>For Markov processes, all invariant events can be represented as in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-invariantrep">(4.5)</a>, which is expressed in terms of the initial state <span class="math notranslate nohighlight">\(X_0\)</span>. See <span id="id7">Doob [<a class="reference internal" href="cite.html#id127" title="J. L. Doob. Stochastic Processes. John Wiley and Sons, New York, 1953.">1953</a>]</span>. Thus, associated with an invariant event is a Borel set in <span class="math notranslate nohighlight">\({\mathcal X}\)</span>. Let <span class="math notranslate nohighlight">\({\mathfrak J}\)</span> denote the collection of Borel subsets of <span class="math notranslate nohighlight">\({\mathcal X}\)</span> for which <span class="math notranslate nohighlight">\(\Lambda\)</span> constructed as in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-invariantrep">(4.5)</a> is an invariant event. From these invariant events, we can also construct many non-degenerate eigenfunctions as indicator functions of sets in <span class="math notranslate nohighlight">\({\mathfrak J}\)</span>. Formally, if <span class="math notranslate nohighlight">\({\mathfrak b} \in {\mathfrak J}\)</span>, then the indicator function</p>
+<p>For Markov processes, all invariant events can be represented as in <a class="reference internal" href="#equation-invariantrep">(2.5)</a>, which is expressed in terms of the initial state <span class="math notranslate nohighlight">\(X_0\)</span>. See <span id="id7">Doob [<a class="reference internal" href="cite.html#id127" title="J. L. Doob. Stochastic Processes. John Wiley and Sons, New York, 1953.">1953</a>]</span>. Thus, associated with an invariant event is a Borel set in <span class="math notranslate nohighlight">\({\mathcal X}\)</span>. Let <span class="math notranslate nohighlight">\({\mathfrak J}\)</span> denote the collection of Borel subsets of <span class="math notranslate nohighlight">\({\mathcal X}\)</span> for which <span class="math notranslate nohighlight">\(\Lambda\)</span> constructed as in <a class="reference internal" href="#equation-invariantrep">(2.5)</a> is an invariant event. From these invariant events, we can also construct many non-degenerate eigenfunctions as indicator functions of sets in <span class="math notranslate nohighlight">\({\mathfrak J}\)</span>. Formally, if <span class="math notranslate nohighlight">\({\mathfrak b} \in {\mathfrak J}\)</span>, then the indicator function</p>
 <div class="math notranslate nohighlight" id="equation-neweigen">
-<span class="eqno">(3.6)<a class="headerlink" href="#equation-neweigen" title="Link to this equation">#</a></span>\[\begin{split}f(x) = \begin{cases} 
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-neweigen" title="Link to this equation">#</a></span>\[\begin{split}f(x) = \begin{cases} 
 1 &amp; \text{if} \ x \in {\mathfrak b} \\
 0 &amp; \text{if} \ x \notin {\mathfrak b} \end{cases}\end{split}\]</div>
 <p>satisfies</p>
@@ -600,12 +575,12 @@ the one-period conditional expectation operator and <span class="math notranslat
 \[{\mathbb T} f = f\]</div>
 <p>with <span class="math notranslate nohighlight">\(Q\)</span> probability one. Provided that the probability of <span class="math notranslate nohighlight">\(\Lambda\)</span> is neither zero nor one, then we have constructed a nonnegative function <span class="math notranslate nohighlight">\(f\)</span> that is strictly positive on a set of positive <span class="math notranslate nohighlight">\(Q\)</span> measure and zero on a set with strictly positive <span class="math notranslate nohighlight">\(Q\)</span> measure.</p>
 <p>More generally, when a Markov process <span class="math notranslate nohighlight">\(\left\{X_t: t \geq 0\right\}\)</span> is not ergodic, there exist bounded eigenfunctions with unit eigenvalues that are not constant with <span class="math notranslate nohighlight">\(Q\)</span> measure one. For a non-degenerate eigenfunction <span class="math notranslate nohighlight">\(\tilde{f}\)</span> with unit eigenvalue to be constant with <span class="math notranslate nohighlight">\(Q\)</span> measure one, it shouldn’t be possible for the Markov process permanently to get stuck in a subset of the state space which has probability different from one or zero.</p>
-<p>Suppose now we consider any Borel set <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span> of <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> that has <span class="math notranslate nohighlight">\(Q\)</span> measure that is neither zero nor one. Let <span class="math notranslate nohighlight">\(f\)</span> be constructed as in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-neweigen">(4.6)</a> without restricting <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span> to be in <span class="math notranslate nohighlight">\(\mathfrak{J}\)</span>. Then <span class="math notranslate nohighlight">\(\mathbb{T}^j\)</span> applied to <span class="math notranslate nohighlight">\(f\)</span> is the conditional probability of <span class="math notranslate nohighlight">\(\left\{X_j \in \mathfrak{b}\right\}\)</span> as of date zero. If we want time series averages to converge to unconditional expectations, we must require that the set <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span> be visited eventually with positive probability. To account properly for all possible future dates we use a mathematically convenient resolvent operator defined by</p>
+<p>Suppose now we consider any Borel set <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span> of <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> that has <span class="math notranslate nohighlight">\(Q\)</span> measure that is neither zero nor one. Let <span class="math notranslate nohighlight">\(f\)</span> be constructed as in <a class="reference internal" href="#equation-neweigen">(2.6)</a> without restricting <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span> to be in <span class="math notranslate nohighlight">\(\mathfrak{J}\)</span>. Then <span class="math notranslate nohighlight">\(\mathbb{T}^j\)</span> applied to <span class="math notranslate nohighlight">\(f\)</span> is the conditional probability of <span class="math notranslate nohighlight">\(\left\{X_j \in \mathfrak{b}\right\}\)</span> as of date zero. If we want time series averages to converge to unconditional expectations, we must require that the set <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span> be visited eventually with positive probability. To account properly for all possible future dates we use a mathematically convenient resolvent operator defined by</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{M} f(x)=(1-\lambda) \sum_{j=0}^{\infty} \lambda^j \mathbb{T}^j f.\]</div>
 <p>for some constant discount factor <span class="math notranslate nohighlight">\(0&lt;\lambda&lt;1\)</span>. Notice that If <span class="math notranslate nohighlight">\(\tilde{f}\)</span> is an eigenfunction of <span class="math notranslate nohighlight">\(\mathbb{T}\)</span> associated with a unit eigenvalue, then the same is true for <span class="math notranslate nohighlight">\(\mathbb{T}^j\)</span> and hence for <span class="math notranslate nohighlight">\(\mathbb{M}\)</span>. We translate the requirement that <span class="math notranslate nohighlight">\(\mathfrak{b}\)</span> be eventually visited to a restriction that applying <span class="math notranslate nohighlight">\(\mathbb{M}\)</span> the indicator function <span class="math notranslate nohighlight">\(f\)</span> yields a strictly positive function. The following statement extends this restriction to all nonnegative functions that are distinct from zero.</p>
 <div class="proof proposition admonition" id="prop:ergod100">
-<p class="admonition-title"><span class="caption-number">Proposition 3.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Proposition 2.3 </span></p>
 <section class="proposition-content" id="proof-content">
 <p>Suppose that for any <span class="math notranslate nohighlight">\(f \ge 0\)</span>
 such that <span class="math notranslate nohighlight">\(\int f(x) Q(dx) &gt; 0\)</span>, <span class="math notranslate nohighlight">\({\mathbb M} f(x) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(x \in {\mathcal X}\)</span> with <span class="math notranslate nohighlight">\(Q\)</span> measure one.  Then
@@ -616,75 +591,75 @@ any solution <span class="math notranslate nohighlight">\({\tilde f}\)</span> to
 <p>Proof. Consider an eigenfunction <span class="math notranslate nohighlight">\({\tilde f}\)</span> associated with a unit eigenvalue.  The function <span class="math notranslate nohighlight">\(f = \phi \circ {\tilde f}\)</span> necessarily satisfies:</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb M}f = f\]</div>
-<p>for any <span class="math notranslate nohighlight">\(\phi\)</span> of the form <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-newjunk1">(4.4)</a>.  If such an <span class="math notranslate nohighlight">\(f\)</span> also satisfies <span class="math notranslate nohighlight">\(\int f(x) Q(dx) &gt; 0\)</span>, then <span class="math notranslate nohighlight">\(f(x)=1\)</span>
+<p>for any <span class="math notranslate nohighlight">\(\phi\)</span> of the form <a class="reference internal" href="#equation-newjunk1">(2.4)</a>.  If such an <span class="math notranslate nohighlight">\(f\)</span> also satisfies <span class="math notranslate nohighlight">\(\int f(x) Q(dx) &gt; 0\)</span>, then <span class="math notranslate nohighlight">\(f(x)=1\)</span>
 with <span class="math notranslate nohighlight">\(Q\)</span> probability one.  Since this holds for any Borel set <span class="math notranslate nohighlight">\({\mathfrak b}\)</span> in <span class="math notranslate nohighlight">\({\mathbb R}\)</span>, <span class="math notranslate nohighlight">\({\tilde f}\)</span> must be constant with <span class="math notranslate nohighlight">\(Q\)</span> probability one.</p>
 </div>
-<p><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#prop:ergod100">Proposition 4.3</a> supplies a sufficient condition for ergodicity. A more restrictive  sufficient condition is that there exists an integer <span class="math notranslate nohighlight">\(m \geq 1\)</span> such that</p>
+<p><a class="reference internal" href="#prop:ergod100">Proposition 2.3</a> supplies a sufficient condition for ergodicity. A more restrictive  sufficient condition is that there exists an integer <span class="math notranslate nohighlight">\(m \geq 1\)</span> such that</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb T}^{m} f(x) &gt; 0\]</div>
 <p>for any <span class="math notranslate nohighlight">\(f \ge 0\)</span> such that <span class="math notranslate nohighlight">\(\int f(x) Q(dx) &gt; 0\)</span>
 on a set with <span class="math notranslate nohighlight">\(Q\)</span> measure one.</p>
 <div class="proof remark admonition" id="remark-12">
-<p class="admonition-title"><span class="caption-number">Remark 3.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 2.2 </span></p>
 <section class="remark-content" id="proof-content">
-<p>The sufficient conditions imposed in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#prop:ergod100">Proposition 4.3</a> imply a property called <em>irreducibility</em> relative to the probability measure <span class="math notranslate nohighlight">\(Q\)</span>. While this proposition presumes that <span class="math notranslate nohighlight">\(Q\)</span> is a stationary distribution, <em>irreducibility</em> allows for a more general specification of <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<p>The sufficient conditions imposed in <a class="reference internal" href="#prop:ergod100">Proposition 2.3</a> imply a property called <em>irreducibility</em> relative to the probability measure <span class="math notranslate nohighlight">\(Q\)</span>. While this proposition presumes that <span class="math notranslate nohighlight">\(Q\)</span> is a stationary distribution, <em>irreducibility</em> allows for a more general specification of <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 </section>
-</div><p><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#prop:ergod100">Proposition 4.3</a> provides a way to verify ergodicity. As discussed in chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>, ergodicity is a property of a statistical model. As statisticians or econometricians we often entertain a set of Markov models, each of which is ergodic. For each model, we can build a probability <span class="math notranslate nohighlight">\(Pr\)</span> using the canonical construction given at the outset of chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>. Convex combinations of these probabilities are measure-preserving but not necessarily ergodic when used in conjunction with the shift transformation <span class="math notranslate nohighlight">\({\mathbb S}\)</span>. We can take the ergodic Markov models to be the building blocks for a specification to be used in a statistical investigation. There can be a finite number of these building blocks or even a continuum of them represented in terms of an unknown parameter vector.</p>
+</div><p><a class="reference internal" href="#prop:ergod100">Proposition 2.3</a> provides a way to verify ergodicity. As discussed in chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>, ergodicity is a property of a statistical model. As statisticians or econometricians we often entertain a set of Markov models, each of which is ergodic. For each model, we can build a probability <span class="math notranslate nohighlight">\(Pr\)</span> using the canonical construction given at the outset of chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>. Convex combinations of these probabilities are measure-preserving but not necessarily ergodic when used in conjunction with the shift transformation <span class="math notranslate nohighlight">\({\mathbb S}\)</span>. We can take the ergodic Markov models to be the building blocks for a specification to be used in a statistical investigation. There can be a finite number of these building blocks or even a continuum of them represented in terms of an unknown parameter vector.</p>
 <div class="proof definition admonition" id="definition-13">
-<p class="admonition-title"><span class="caption-number">Definition 3.5 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 2.5 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The process <span class="math notranslate nohighlight">\(\{ X_t \}\)</span> is said to be irreducible with respect to <span class="math notranslate nohighlight">\(\widetilde{Q}\)</span> if for any <span class="math notranslate nohighlight">\(f \ge 0\)</span> such that <span class="math notranslate nohighlight">\(\int f(x) \widetilde{Q}(dx) &gt; 0\)</span>,
 <span class="math notranslate nohighlight">\({\mathbb{M}} f(x) &gt; 0\)</span> for all <span class="math notranslate nohighlight">\(x \in {\mathcal{X}}\)</span> with <span class="math notranslate nohighlight">\({\widetilde{Q}}\)</span> measure one.</p>
 </section>
 </div><div class="proof proposition admonition" id="proposition-14">
-<p class="admonition-title"><span class="caption-number">Proposition 3.4 </span></p>
+<p class="admonition-title"><span class="caption-number">Proposition 2.4 </span></p>
 <section class="proposition-content" id="proof-content">
 <p>When <span class="math notranslate nohighlight">\({\widetilde Q}\)</span> is a stationary distribution and <span class="math notranslate nohighlight">\(\left\{ X_t \right\}\)</span> is irreducible with respect to <span class="math notranslate nohighlight">\(\widetilde Q\)</span>, the process is necessarily ergodic.</p>
 </section>
 </div><div class="proof admonition" id="proof">
-<p>Proof. By imitating the proof of <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#prop:ergod100">Proposition 4.3</a>, we can establish that irreducibility rules out bounded eigenfunctions that are not constant with <span class="math notranslate nohighlight">\({\widetilde Q}\)</span> measure one.</p>
+<p>Proof. By imitating the proof of <a class="reference internal" href="#prop:ergod100">Proposition 2.3</a>, we can establish that irreducibility rules out bounded eigenfunctions that are not constant with <span class="math notranslate nohighlight">\({\widetilde Q}\)</span> measure one.</p>
 </div>
 </section>
 </section>
 <section id="periodicity">
-<h2><span class="section-number">3.5. </span>Periodicity<a class="headerlink" href="#periodicity" title="Link to this heading">#</a></h2>
-<p>Next, we study a notion of periodicity of a stationary and ergodic Markov process.<a class="footnote-reference brackets" href="#periodicity-footnote" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> To define periodicity of a Markov process, for a given positive integer <span class="math notranslate nohighlight">\(p\)</span> we construct a new Markov process by sampling an original process every <span class="math notranslate nohighlight">\(p\)</span> time periods. This is sometimes called ‘skip-sampling’ at sampling interval <span class="math notranslate nohighlight">\(p\)</span>.<a class="footnote-reference brackets" href="#skip-sampling-footnote" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a> With a view toward applying <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#lem:uniteigen">Proposition 4.1</a> to <span class="math notranslate nohighlight">\({\mathbb T}^p\)</span>, solve</p>
+<h2><span class="section-number">2.5. </span>Periodicity<a class="headerlink" href="#periodicity" title="Link to this heading">#</a></h2>
+<p>Next, we study a notion of periodicity of a stationary and ergodic Markov process.<a class="footnote-reference brackets" href="#periodicity-footnote" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> To define periodicity of a Markov process, for a given positive integer <span class="math notranslate nohighlight">\(p\)</span> we construct a new Markov process by sampling an original process every <span class="math notranslate nohighlight">\(p\)</span> time periods. This is sometimes called ‘skip-sampling’ at sampling interval <span class="math notranslate nohighlight">\(p\)</span>.<a class="footnote-reference brackets" href="#skip-sampling-footnote" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a> With a view toward applying <a class="reference internal" href="#lem:uniteigen">Proposition 2.1</a> to <span class="math notranslate nohighlight">\({\mathbb T}^p\)</span>, solve</p>
 <div class="math notranslate nohighlight" id="equation-perioddef">
-<span class="eqno">(3.7)<a class="headerlink" href="#equation-perioddef" title="Link to this equation">#</a></span>\[{\mathbb T}^p f = f\]</div>
-<p>for a function <span class="math notranslate nohighlight">\({\tilde f}\)</span>. We know from <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#lem:uniteigen">Proposition 4.1</a> that for an <span class="math notranslate nohighlight">\(\tilde f\)</span> that solves <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-perioddef">(4.7)</a>, <span class="math notranslate nohighlight">\(\{ {\tilde f}(X_t) : t=0, p, 2p, \ldots \}\)</span>
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-perioddef" title="Link to this equation">#</a></span>\[{\mathbb T}^p f = f\]</div>
+<p>for a function <span class="math notranslate nohighlight">\({\tilde f}\)</span>. We know from <a class="reference internal" href="#lem:uniteigen">Proposition 2.1</a> that for an <span class="math notranslate nohighlight">\(\tilde f\)</span> that solves <a class="reference internal" href="#equation-perioddef">(2.7)</a>, <span class="math notranslate nohighlight">\(\{ {\tilde f}(X_t) : t=0, p, 2p, \ldots \}\)</span>
 is invariant and so is <span class="math notranslate nohighlight">\(\{ {\tilde f}(X_t) : t=1,p+1,2p+1,...\}\)</span>. The process <span class="math notranslate nohighlight">\({\tilde f}(X_t)\)</span> is periodic with period <span class="math notranslate nohighlight">\(p\)</span> or <span class="math notranslate nohighlight">\(np\)</span> for any positive integer <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <div class="proof definition admonition" id="definition-15">
-<p class="admonition-title"><span class="caption-number">Definition 3.6 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 2.6 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <em>periodicity</em> of an irreducible Markov process <span class="math notranslate nohighlight">\(\left\{ X_t \right\}\)</span> with respect to <span class="math notranslate nohighlight">\({\widetilde Q}\)</span> is the smallest positive integer <span class="math notranslate nohighlight">\(p\)</span> such that there is a solution to equation <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-perioddef">(4.7)</a> that is not constant with <span class="math notranslate nohighlight">\({\widetilde Q}\)</span> measure one. When there is no such integer <span class="math notranslate nohighlight">\(p\)</span>, we say that the process is <em>aperiodic</em>.</p>
+<p>The <em>periodicity</em> of an irreducible Markov process <span class="math notranslate nohighlight">\(\left\{ X_t \right\}\)</span> with respect to <span class="math notranslate nohighlight">\({\widetilde Q}\)</span> is the smallest positive integer <span class="math notranslate nohighlight">\(p\)</span> such that there is a solution to equation <a class="reference internal" href="#equation-perioddef">(2.7)</a> that is not constant with <span class="math notranslate nohighlight">\({\widetilde Q}\)</span> measure one. When there is no such integer <span class="math notranslate nohighlight">\(p\)</span>, we say that the process is <em>aperiodic</em>.</p>
 </section>
 </div></section>
 <section id="finite-state-markov-chains">
-<span id="subsec-chain"></span><h2><span class="section-number">3.6. </span>Finite-State Markov Chains<a class="headerlink" href="#finite-state-markov-chains" title="Link to this heading">#</a></h2>
+<span id="subsec-chain"></span><h2><span class="section-number">2.6. </span>Finite-State Markov Chains<a class="headerlink" href="#finite-state-markov-chains" title="Link to this heading">#</a></h2>
 <p>Suppose that <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> consists of <span class="math notranslate nohighlight">\(n\)</span> possible states. We can label these states in a variety of ways, but for now we suppose that state <span class="math notranslate nohighlight">\(x_j\)</span> is the coordinate vector consisting entirely of zeros except in position <span class="math notranslate nohighlight">\(j\)</span>, where there is a one. Let <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> be an <span class="math notranslate nohighlight">\(n\)</span> by <span class="math notranslate nohighlight">\(n\)</span> transition matrix, where entry <span class="math notranslate nohighlight">\({i,j}\)</span> is the probability of moving from state <span class="math notranslate nohighlight">\(i\)</span> to state <span class="math notranslate nohighlight">\(j\)</span> in a single period. Thus, the entries of <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> are all nonnegative and</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{P} \textbf{1}_n = \textbf{1}_n,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\textbf{1}_n\)</span> is an <span class="math notranslate nohighlight">\(n\)</span>-dimensional vector of ones.</p>
 <p>Let <span class="math notranslate nohighlight">\(\textbf{q}\)</span> be an <span class="math notranslate nohighlight">\(n\)</span>-dimensional vector of probabilities. Stationarity requires that</p>
 <div class="math notranslate nohighlight" id="equation-qstab">
-<span class="eqno">(3.8)<a class="headerlink" href="#equation-qstab" title="Link to this equation">#</a></span>\[\textbf{q}'\mathbb{P} = \textbf{q}',\]</div>
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-qstab" title="Link to this equation">#</a></span>\[\textbf{q}'\mathbb{P} = \textbf{q}',\]</div>
 <p>where <span class="math notranslate nohighlight">\(\textbf{q}\)</span> is a row eigenvector (also called a left eigenvector) of <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> associated with a unit eigenvalue.</p>
 <p>We use a vector <span class="math notranslate nohighlight">\(\textbf{f}\)</span> to represent a function from the state space to the real line. Each coordinate of <span class="math notranslate nohighlight">\(\textbf{f}\)</span> gives the value of the function at the corresponding coordinate vector. Then the conditional expectation operator <span class="math notranslate nohighlight">\(\mathbb{T}\)</span> can be represented in terms of the transition matrix <span class="math notranslate nohighlight">\(\mathbb{P}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[E(\textbf{f} \cdot X_{t+1} | X_t = x) = (\mathbb{T}\textbf{f}) \cdot x = x'\mathbb{P} \textbf{f}.\]</div>
 <p>Now consider column eigenvectors called “right eigenvectors” of <span class="math notranslate nohighlight">\(\mathbb{P}\)</span> that are associated with a unit eigenvalue.</p>
 <div class="proof theorem admonition" id="prop:finiteP1">
-<p class="admonition-title"><span class="caption-number">Theorem 3.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 2.2 </span></p>
 <section class="theorem-content" id="proof-content">
 <p>Suppose that the only solutions to</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb T} {\bf f} = {\bf f}\]</div>
 <p>are of the form <span class="math notranslate nohighlight">\({\bf f} \propto \textbf{1}_n\)</span>, where <span class="math notranslate nohighlight">\(\propto\)</span> means ‘proportional to’.
-Then we can construct a process that is stationary and ergodic by initializing the process with density <span class="math notranslate nohighlight">\({\bf q}\)</span> determined by equation <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-qstab">(4.8)</a>.</p>
+Then we can construct a process that is stationary and ergodic by initializing the process with density <span class="math notranslate nohighlight">\({\bf q}\)</span> determined by equation <a class="reference internal" href="#equation-qstab">(2.8)</a>.</p>
 </section>
-</div><p>We can weaken the <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#prop:finiteP1">Theorem 4.2</a> sufficient condition for stationarity and ergodicity to allow nonconstant right eigenvectors. This weakening is of interest when there are multiple stationary distributions.</p>
+</div><p>We can weaken the <a class="reference internal" href="#prop:finiteP1">Theorem 2.2</a> sufficient condition for stationarity and ergodicity to allow nonconstant right eigenvectors. This weakening is of interest when there are multiple stationary distributions.</p>
 <div class="proof theorem admonition" id="prop:finiteP2">
-<p class="admonition-title"><span class="caption-number">Theorem 3.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 2.3 </span></p>
 <section class="theorem-content" id="proof-content">
 <p>Assume that there exists a real number <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> such that the right eigenvector <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> and a stationary distribution <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> satisfy</p>
 <div class="math notranslate nohighlight">
@@ -694,19 +669,19 @@ Then we can construct a process that is stationary and ergodic by initializing t
 </div><p>Notice that if <span class="math notranslate nohighlight">\({\sf q}_i\)</span> is zero, the contribution of <span class="math notranslate nohighlight">\({\sf f}_i\)</span> to the least squares objective can be neglected. This allows for non-constant <span class="math notranslate nohighlight">\(\mathbf{f}\)</span>’s, albeit in a limited way.</p>
 <p>Three examples illustrate ideas in these propositions.</p>
 <div class="proof example admonition" id="ex:MC1">
-<p class="admonition-title"><span class="caption-number">Example 3.4 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 2.4 </span></p>
 <section class="example-content" id="proof-content">
-<p>Recast <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#ex:period">Example 2.2</a> as a Markov chain with transition matrix
+<p>Recast <a class="reference internal" href="example_out_c1_v2.html#ex:period">Example 1.2</a> as a Markov chain with transition matrix
 <span class="math notranslate nohighlight">\({\mathbb P}=\begin{bmatrix}0 &amp; 1 \cr 1 &amp; 0\end{bmatrix}\)</span>. This chain has a unique stationary distribution <span class="math notranslate nohighlight">\( q=\begin{bmatrix}.5 &amp; .5 \end{bmatrix}'\)</span> and the invariant functions are <span class="math notranslate nohighlight">\(\begin{bmatrix} {\sf r} &amp; {\sf r} \end{bmatrix}'\)</span> for any scalar <span class="math notranslate nohighlight">\({\sf r}\)</span>. Therefore, the process initiated from the stationary distribution is ergodic. The process is periodic with period two since the matrix <span class="math notranslate nohighlight">\({\mathbb P}^2\)</span> is an identity matrix and all two dimensional vectors are eigenvectors associated with a unit eigenvalue.</p>
 </section>
 </div><div class="proof example admonition" id="ex:MC2">
-<p class="admonition-title"><span class="caption-number">Example 3.5 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 2.5 </span></p>
 <section class="example-content" id="proof-content">
-<p>Recast <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#ex:invariant">Example 2.3</a> as a Markov chain with transition matrix
+<p>Recast <a class="reference internal" href="example_out_c1_v2.html#ex:invariant">Example 1.3</a> as a Markov chain with transition matrix
 <span class="math notranslate nohighlight">\({\mathbb P}=\begin{pmatrix}1 &amp; 0 \\ 0 &amp; 1\end{pmatrix}\)</span>. This chain has a continuum of stationary distributions <span class="math notranslate nohighlight">\(\pi \begin{pmatrix}1 \\ 0 \end{pmatrix}+ (1- \pi )\begin{pmatrix}0 \\ 1 \end{pmatrix}\)</span> for any <span class="math notranslate nohighlight">\(\pi \in [0,1]\)</span> and invariant functions <span class="math notranslate nohighlight">\(\begin{pmatrix} {\sf r}_1 \\ {\sf r}_2 \end{pmatrix}\)</span> for any scalars <span class="math notranslate nohighlight">\({\sf r}_1, {\sf r}_2\)</span>. Therefore, when <span class="math notranslate nohighlight">\(\pi \in (0,1)\)</span> the process is not ergodic because if <span class="math notranslate nohighlight">\({\sf r}_1 \ne {\sf r}_2\)</span> the resulting invariant function fails to be constant across states that have positive probability under the stationary distribution associated with <span class="math notranslate nohighlight">\(\pi \in (0,1)\)</span>. When <span class="math notranslate nohighlight">\(\pi \in (0,1)\)</span>, nature chooses state <span class="math notranslate nohighlight">\(i=1\)</span> or <span class="math notranslate nohighlight">\(i=2\)</span> with probabilities <span class="math notranslate nohighlight">\(\pi, 1-\pi\)</span>, respectively, at time <span class="math notranslate nohighlight">\(0\)</span>. Thereafter, the chain remains stuck in the realized time <span class="math notranslate nohighlight">\(0\)</span> state. Its failure ever to visit the unrealized state prevents the sample average from converging to the population mean of an arbitrary function of the state.</p>
 </section>
 </div><div class="proof example admonition" id="ex:MC3">
-<p class="admonition-title"><span class="caption-number">Example 3.6 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 2.6 </span></p>
 <section class="example-content" id="proof-content">
 <p>A Markov chain with transition matrix</p>
 <div class="math notranslate nohighlight">
@@ -725,17 +700,17 @@ chain is ergodic.</p>
 </section>
 </div></section>
 <section id="limited-dependence">
-<h2><span class="section-number">3.7. </span>Limited Dependence<a class="headerlink" href="#limited-dependence" title="Link to this heading">#</a></h2>
-<p>Recall the conditional expectations operator <span class="math notranslate nohighlight">\({\mathbb T}\)</span> defined in equation <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eqn-toperatordef">(4.1)</a> for a space <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> of functions <span class="math notranslate nohighlight">\(f\)</span> of a Markov process with transition probability <span class="math notranslate nohighlight">\(P\)</span> and stationary distribution <span class="math notranslate nohighlight">\(Q\)</span> and for which <span class="math notranslate nohighlight">\(f(X_t)\)</span> has a finite second moment under <span class="math notranslate nohighlight">\(Q\)</span>:</p>
+<h2><span class="section-number">2.7. </span>Limited Dependence<a class="headerlink" href="#limited-dependence" title="Link to this heading">#</a></h2>
+<p>Recall the conditional expectations operator <span class="math notranslate nohighlight">\({\mathbb T}\)</span> defined in equation <a class="reference internal" href="#equation-eqn-toperatordef">(2.1)</a> for a space <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> of functions <span class="math notranslate nohighlight">\(f\)</span> of a Markov process with transition probability <span class="math notranslate nohighlight">\(P\)</span> and stationary distribution <span class="math notranslate nohighlight">\(Q\)</span> and for which <span class="math notranslate nohighlight">\(f(X_t)\)</span> has a finite second moment under <span class="math notranslate nohighlight">\(Q\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb T} f (x) = E \left[ f(X_{t+1}) \mid  X_t = x \right] = \int_{\{x^* \in {\mathcal X}\}}  f(x^*) P(d x^*|x) .\]</div>
 <p>We suppose that under the stationary distribution <span class="math notranslate nohighlight">\(Q\)</span>, the process is ergodic.</p>
 <p>Because it is often useful to work with random variables that have been ‘centered’ by subtracting out their means, we define the following subspace of <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-def-n">
-<span class="eqno">(3.9)<a class="headerlink" href="#equation-def-n" title="Link to this equation">#</a></span>\[{\mathcal N} = \left\{ f \in {\mathcal L}^2 :  \int f(x) Q(dx)   = 0 \right\}.\]</div>
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-def-n" title="Link to this equation">#</a></span>\[{\mathcal N} = \left\{ f \in {\mathcal L}^2 :  \int f(x) Q(dx)   = 0 \right\}.\]</div>
 <p>We use the same norm <span class="math notranslate nohighlight">\(\| f \| = \left[ \int f(x)^2 Q(dx)\right]^{1/2}\)</span> on both <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> and <span class="math notranslate nohighlight">\({\mathcal N}\)</span> too.</p>
 <div class="proof theorem admonition" id="theorem-21">
-<p class="admonition-title"><span class="caption-number">Theorem 3.4 </span></p>
+<p class="admonition-title"><span class="caption-number">Theorem 2.4 </span></p>
 <section class="theorem-content" id="proof-content">
 <p>The conditional expectation operator <span class="math notranslate nohighlight">\(\mathbb{T}\)</span> is said to be a <em>strong contraction</em> on <span class="math notranslate nohighlight">\(\mathcal{N}\)</span> if there exists <span class="math notranslate nohighlight">\(0 &lt; \rho &lt; 1\)</span> such that</p>
 <div class="math notranslate nohighlight">
@@ -744,7 +719,7 @@ chain is ergodic.</p>
 </section>
 </div><p>When <span class="math notranslate nohighlight">\(\mathbb{T}^m\)</span> is a strong contraction for some positive integer <span class="math notranslate nohighlight">\(m\)</span> and some <span class="math notranslate nohighlight">\(\rho \in (0,1)\)</span>, the Markov process is said to be <span class="math notranslate nohighlight">\(\rho\)</span>-mixing conditioned on the invariant events.</p>
 <div class="proof remark admonition" id="remark-22">
-<p class="admonition-title"><span class="caption-number">Remark 3.3 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 2.3 </span></p>
 <section class="remark-content" id="proof-content">
 <p><span class="math notranslate nohighlight">\({\mathbb T}\)</span> being a strong contraction on <span class="math notranslate nohighlight">\({\mathcal N}\)</span> limits intertemporal dependence of the Markov process <span class="math notranslate nohighlight">\(\{X_t\}\)</span>.</p>
 </section>
@@ -752,9 +727,9 @@ chain is ergodic.</p>
 <div class="math notranslate nohighlight">
 \[\left({\mathbb I} - {\mathbb T}\right)^{-1} f(x) = \sum_{j=0}^\infty {\mathbb T}^j f(x) = \sum_{j=0}^\infty E \left[ f(X_{t+j}) \vert X_t = x \right].\]</div>
 <div class="proof example admonition" id="example-23">
-<p class="admonition-title"><span class="caption-number">Example 3.7 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 2.7 </span></p>
 <section class="example-content" id="proof-content">
-<p>Consider the Markov chain setting of subsection <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#subsec-chain"><span class="std std-ref">Finite-State Markov Chains</span></a> with a transition matrix <span class="math notranslate nohighlight">\({\mathbb P}\)</span>.
+<p>Consider the Markov chain setting of subsection <a class="reference internal" href="#subsec-chain"><span class="std std-ref">Finite-State Markov Chains</span></a> with a transition matrix <span class="math notranslate nohighlight">\({\mathbb P}\)</span>.
 A stationary density <span class="math notranslate nohighlight">\({\bf q}\)</span> is a nonnegative vector that satisfies</p>
 <div class="math notranslate nohighlight">
 \[{\bf q}' {\mathbb P} = {\bf q}'\]</div>
@@ -767,12 +742,12 @@ This implies that the process is ergodic. It also rules out the presence of peri
 </section>
 </div></section>
 <section id="limits-of-multi-period-forecasts">
-<span id="sec-limitapprox"></span><h2><span class="section-number">3.8. </span>Limits of Multi-Period Forecasts<a class="headerlink" href="#limits-of-multi-period-forecasts" title="Link to this heading">#</a></h2>
+<span id="sec-limitapprox"></span><h2><span class="section-number">2.8. </span>Limits of Multi-Period Forecasts<a class="headerlink" href="#limits-of-multi-period-forecasts" title="Link to this heading">#</a></h2>
 <p>When a Markov process is aperiodic, there are interesting situations in which</p>
 <div class="math notranslate nohighlight" id="equation-limitexp">
-<span class="eqno">(3.10)<a class="headerlink" href="#equation-limitexp" title="Link to this equation">#</a></span>\[\lim_{j \rightarrow \infty} {\mathbb T}^j f(x) =  {\sf r}\]</div>
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-limitexp" title="Link to this equation">#</a></span>\[\lim_{j \rightarrow \infty} {\mathbb T}^j f(x) =  {\sf r}\]</div>
 <p>for some <span class="math notranslate nohighlight">\({\sf r} \in {\mathbb R}\)</span>, where convergence is either pointwise in <span class="math notranslate nohighlight">\(x\)</span> or in the <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> norm.
-Limit <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-limitexp">(4.10)</a> asserts that long-run forecasts do not depend on the current Markov state. <span id="id12">Meyn and Tweedie [<a class="reference internal" href="cite.html#id340" title="S. Meyn and R. Tweedie. Markov Chains and Stochastic Stability. Springer-Verlag, London, 1993.">1993</a>]</span> provide a comprehensive treatment of such convergence.
+Limit <a class="reference internal" href="#equation-limitexp">(2.10)</a> asserts that long-run forecasts do not depend on the current Markov state. <span id="id12">Meyn and Tweedie [<a class="reference internal" href="cite.html#id340" title="S. Meyn and R. Tweedie. Markov Chains and Stochastic Stability. Springer-Verlag, London, 1993.">1993</a>]</span> provide a comprehensive treatment of such convergence.
 Let <span class="math notranslate nohighlight">\(Q\)</span> be a stationary distribution. Then it is necessarily true that</p>
 <div class="math notranslate nohighlight">
 \[\int {\mathbb T}^j f(x) Q(dx)  = \int f(x) Q(dx)\]</div>
@@ -781,16 +756,16 @@ Let <span class="math notranslate nohighlight">\(Q\)</span> be a stationary dist
 \[{\sf r} = \int f(x) Q (dx),\]</div>
 <p>so that the limiting forecast is necessarily the mathematical expectation of <span class="math notranslate nohighlight">\(f(x)\)</span> under a stationary distribution.
 Here we have assumed that the limit point is a number and not a random variable; we have not assumed that the stationary distribution is unique.</p>
-<p>Notice that if <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-limitexp">(4.10)</a> is satisfied, then any function <span class="math notranslate nohighlight">\(f\)</span> that satisfies</p>
+<p>Notice that if <a class="reference internal" href="#equation-limitexp">(2.10)</a> is satisfied, then any function <span class="math notranslate nohighlight">\(f\)</span> that satisfies</p>
 <div class="math notranslate nohighlight">
 \[{\mathbb T} f = f\]</div>
 <p>is necessarily constant with probability one. Also, if <span class="math notranslate nohighlight">\(\int f(x) Q(dx) = 0\)</span> and convergence is sufficiently fast, then</p>
 <div class="math notranslate nohighlight" id="equation-eq-sum-limit">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-eq-sum-limit" title="Link to this equation">#</a></span>\[\lim_{N \rightarrow \infty} \sum_{j=0}^N {\mathbb T}^j f(x)\]</div>
-<p>is a well-defined function of the Markov state. We shall construct the limit in <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eq-sum-limit">(4.11)</a> when we extract martingales from additive functionals in chapter <a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>.</p>
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-eq-sum-limit" title="Link to this equation">#</a></span>\[\lim_{N \rightarrow \infty} \sum_{j=0}^N {\mathbb T}^j f(x)\]</div>
+<p>is a well-defined function of the Markov state. We shall construct the limit in <a class="reference internal" href="#equation-eq-sum-limit">(2.11)</a> when we extract martingales from additive functionals in chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>.</p>
 <p>A set of sufficient conditions for the convergence outcome</p>
 <div class="math notranslate nohighlight" id="equation-converge">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-converge" title="Link to this equation">#</a></span>\[\lim_{j \rightarrow \infty} {\mathbb T}^j f (x^*) \rightarrow \int f(x) Q(dx)\]</div>
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-converge" title="Link to this equation">#</a></span>\[\lim_{j \rightarrow \infty} {\mathbb T}^j f (x^*) \rightarrow \int f(x) Q(dx)\]</div>
 <p>for each <span class="math notranslate nohighlight">\(x^* \in {\mathcal X}\)</span> and each bounded <span class="math notranslate nohighlight">\(f\)</span> is:<a class="footnote-reference brackets" href="#convergence-footnote" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a></p>
 <p id="cond-suffice"><strong>Stability conditions:</strong></p>
 <p>A Markov process with stationary distribution <span class="math notranslate nohighlight">\(Q\)</span> satisfies:</p>
@@ -798,10 +773,10 @@ Here we have assumed that the limit point is a number and not a random variable;
 <p id="fellercond">(ii) <span class="math notranslate nohighlight">\({\mathbb T}\)</span> maps bounded continuous functions into bounded continuous functions, i.e., the Markov process is said to satisfy the Feller property.</p>
 <p id="condsupport">(iii) The support of <span class="math notranslate nohighlight">\(Q\)</span> has a nonempty interior in <span class="math notranslate nohighlight">\({\mathcal X}\)</span>.</p>
 <p id="drift">(iv) <span class="math notranslate nohighlight">\({\mathbb T} V(x) - V(x) \le -1\)</span> outside a compact subset of <span class="math notranslate nohighlight">\({\mathcal X}\)</span> for some nonnegative function <span class="math notranslate nohighlight">\(V\)</span>.</p>
-<p>We encountered condition <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#condi"><span class="std std-ref">(i)</span></a> in our section <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#sec-markergodic"><span class="std std-ref">Ergodic Markov Processes</span></a>. Condition <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#drift"><span class="std std-ref">(iv)</span></a> is a <strong>drift condition</strong> for stability that requires that we find a function <span class="math notranslate nohighlight">\(V\)</span> that satisfies the requisite inequality. Heuristically, the drift condition says that outside a compact subset of the state space, application of the conditional expectation operator pushes the function inward. The choice of <span class="math notranslate nohighlight">\(-1\)</span> as a comparison point is made only for convenience, since we can always multiply the function <span class="math notranslate nohighlight">\(V\)</span> by a number greater than one. Thus, <span class="math notranslate nohighlight">\(-1\)</span> could be replaced by any strictly negative number. In section <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#sec-var44"><span class="std std-ref">Vector Autoregressions</span></a>, we will apply conditions <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#condi"><span class="std std-ref">(i)</span></a> - <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#drift"><span class="std std-ref">(iv)</span></a>  to verify ergodicity of a vector autoregression.</p>
+<p>We encountered condition <a class="reference internal" href="#condi"><span class="std std-ref">(i)</span></a> in our section <a class="reference internal" href="#sec-markergodic"><span class="std std-ref">Ergodic Markov Processes</span></a>. Condition <a class="reference internal" href="#drift"><span class="std std-ref">(iv)</span></a> is a <strong>drift condition</strong> for stability that requires that we find a function <span class="math notranslate nohighlight">\(V\)</span> that satisfies the requisite inequality. Heuristically, the drift condition says that outside a compact subset of the state space, application of the conditional expectation operator pushes the function inward. The choice of <span class="math notranslate nohighlight">\(-1\)</span> as a comparison point is made only for convenience, since we can always multiply the function <span class="math notranslate nohighlight">\(V\)</span> by a number greater than one. Thus, <span class="math notranslate nohighlight">\(-1\)</span> could be replaced by any strictly negative number. In section <a class="reference internal" href="#sec-var44"><span class="std std-ref">Vector Autoregressions</span></a>, we will apply conditions <a class="reference internal" href="#condi"><span class="std std-ref">(i)</span></a> - <a class="reference internal" href="#drift"><span class="std std-ref">(iv)</span></a>  to verify ergodicity of a vector autoregression.</p>
 </section>
 <section id="vector-autoregressions">
-<span id="sec-var44"></span><h2><span class="section-number">3.9. </span>Vector Autoregressions<a class="headerlink" href="#vector-autoregressions" title="Link to this heading">#</a></h2>
+<span id="sec-var44"></span><h2><span class="section-number">2.9. </span>Vector Autoregressions<a class="headerlink" href="#vector-autoregressions" title="Link to this heading">#</a></h2>
 <p>A square matrix <span class="math notranslate nohighlight">\(\mathbb{A}\)</span> is said to be <em>stable</em> when all of its eigenvalues have absolute values that are strictly less than one. For a stable <span class="math notranslate nohighlight">\(\mathbb{A}\)</span>, suppose that</p>
 <div class="math notranslate nohighlight">
 \[X_{t+1} = \mathbb{A} X_t + \mathbb{B} W_{t+1},\]</div>
@@ -811,14 +786,14 @@ Here we have assumed that the limit point is a number and not a random variable;
 \[\mu_{t+1} = \mathbb{A} \mu_t.\]</div>
 <p>The mean <span class="math notranslate nohighlight">\(\mu\)</span> of a stationary distribution satisfies</p>
 <div class="math notranslate nohighlight" id="equation-stationary-mean">
-<span class="eqno">(3.13)<a class="headerlink" href="#equation-stationary-mean" title="Link to this equation">#</a></span>\[\mu = \mathbb{A} \mu.\]</div>
-<p>Because we have assumed that <span class="math notranslate nohighlight">\(\mathbb{A}\)</span> is a stable matrix, <span class="math notranslate nohighlight">\(\mu =0\)</span> is the only solution of <a class="reference internal" href="#equation-stationary-mean">(3.13)</a>, so the mean of the stationary distribution is <span class="math notranslate nohighlight">\(\mu = 0\)</span>.</p>
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-stationary-mean" title="Link to this equation">#</a></span>\[\mu = \mathbb{A} \mu.\]</div>
+<p>Because we have assumed that <span class="math notranslate nohighlight">\(\mathbb{A}\)</span> is a stable matrix, <span class="math notranslate nohighlight">\(\mu =0\)</span> is the only solution of <a class="reference internal" href="#equation-stationary-mean">(2.13)</a>, so the mean of the stationary distribution is <span class="math notranslate nohighlight">\(\mu = 0\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(\Sigma_{t} = E(X_t - \mu_t) (X_t - \mu_t)'\)</span> be the covariance matrix of <span class="math notranslate nohighlight">\(X_t\)</span>. Then</p>
 <div class="math notranslate nohighlight">
 \[\Sigma_{t+1} = \mathbb{A} \Sigma_t \mathbb{A}' + \mathbb{B}\mathbb{B}'.\]</div>
 <p>For <span class="math notranslate nohighlight">\(\Sigma_t = \Sigma\)</span> to be invariant over time, it must satisfy the discrete Lyapunov equation</p>
 <div class="math notranslate nohighlight" id="equation-eq-sylvester">
-<span class="eqno">(3.14)<a class="headerlink" href="#equation-eq-sylvester" title="Link to this equation">#</a></span>\[\Sigma = \mathbb{A} \Sigma \mathbb{A}' + \mathbb{B}\mathbb{B}'.\]</div>
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-eq-sylvester" title="Link to this equation">#</a></span>\[\Sigma = \mathbb{A} \Sigma \mathbb{A}' + \mathbb{B}\mathbb{B}'.\]</div>
 <p>When <span class="math notranslate nohighlight">\(\mathbb{A}\)</span> is a stable matrix, this equation has a unique solution for a positive semidefinite matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
 <p>Suppose that <span class="math notranslate nohighlight">\(\Sigma_0 = 0\)</span> (a matrix of zeros) and for <span class="math notranslate nohighlight">\(t \geq 1\)</span> define the matrix</p>
 <div class="math notranslate nohighlight">
@@ -826,37 +801,37 @@ Here we have assumed that the limit point is a number and not a random variable;
 <p>The limit of the sequence <span class="math notranslate nohighlight">\(\{\Sigma_t\}_{t=0}^{\infty}\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[\Sigma = \sum_{j=0}^{\infty} \mathbb{A}^j \mathbb{B}\mathbb{B}'(\mathbb{A}^j)',\]</div>
-<p>which can be verified to satisfy Lyapunov equation <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eq-sylvester">(4.13)</a>. Thus, <span class="math notranslate nohighlight">\(\Sigma\)</span> equals the covariance matrix of the stationary distribution.<a class="footnote-reference brackets" href="#covmatrix" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></a> Similarly, for all <span class="math notranslate nohighlight">\(\mu_0 = E X_0\)</span></p>
+<p>which can be verified to satisfy Lyapunov equation <a class="reference internal" href="#equation-eq-sylvester">(2.14)</a>. Thus, <span class="math notranslate nohighlight">\(\Sigma\)</span> equals the covariance matrix of the stationary distribution.<a class="footnote-reference brackets" href="#covmatrix" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></a> Similarly, for all <span class="math notranslate nohighlight">\(\mu_0 = E X_0\)</span></p>
 <div class="math notranslate nohighlight">
 \[\mu_t = \mathbb{A}^t \mu_0,\]</div>
 <p>converges to zero, the mean of the stationary distribution. The linear structure implies that the stationary distribution is Gaussian with mean <span class="math notranslate nohighlight">\(\mu\)</span> and covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p>
-<p>To verify ergodicity, we suppose that the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> of the stationary distribution has full rank and verify <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#cond-suffice"><span class="std std-ref">Stability conditions</span></a>. Condition <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#condsupport"><span class="std std-ref">(iii)</span></a> since the covariance matrix has fully rank. Furthermore, <span class="math notranslate nohighlight">\(\Sigma_t\)</span> has full rank for some <span class="math notranslate nohighlight">\(t\)</span>, which guarantees that the process is irreducible and aperiodic so that condition <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#condi"><span class="std std-ref">(i)</span></a> is satisfied. As a candidate for <span class="math notranslate nohighlight">\(V(x)\)</span> in condition <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#drift"><span class="std std-ref">(iv)</span></a>, take <span class="math notranslate nohighlight">\(V(x) = |x|^2\)</span>. Then</p>
+<p>To verify ergodicity, we suppose that the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> of the stationary distribution has full rank and verify <a class="reference internal" href="#cond-suffice"><span class="std std-ref">Stability conditions</span></a>. Condition <a class="reference internal" href="#condsupport"><span class="std std-ref">(iii)</span></a> since the covariance matrix has fully rank. Furthermore, <span class="math notranslate nohighlight">\(\Sigma_t\)</span> has full rank for some <span class="math notranslate nohighlight">\(t\)</span>, which guarantees that the process is irreducible and aperiodic so that condition <a class="reference internal" href="#condi"><span class="std std-ref">(i)</span></a> is satisfied. As a candidate for <span class="math notranslate nohighlight">\(V(x)\)</span> in condition <a class="reference internal" href="#drift"><span class="std std-ref">(iv)</span></a>, take <span class="math notranslate nohighlight">\(V(x) = |x|^2\)</span>. Then</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{T} V(x) = x'\mathbb{A}'\mathbb{A} x + \text{trace}(\mathbb{B}'\mathbb{B})\]</div>
 <p>so</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{T} V(x) - V(x) = x'(\mathbb{A}'\mathbb{A} - \mathbb{I})x + \text{trace}(\mathbb{B}'\mathbb{B}).\]</div>
-<p>That <span class="math notranslate nohighlight">\(\mathbb{A}\)</span> is a stable matrix implies that <span class="math notranslate nohighlight">\(\mathbb{A}'\mathbb{A} - \mathbb{I}\)</span> is negative definite, so that drift condition <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#drift"><span class="std std-ref">iv</span></a>  is satisfied for <span class="math notranslate nohighlight">\(|x|\)</span> sufficiently large.
-The Feller property <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#fellercond"><span class="std std-ref">(ii)</span></a>  can also be verified by applying the The Dominated Convergence Theorem, since the functions used for the verification are bounded and continuous.  Thus, having checked <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#cond-suffice"><span class="std std-ref">Stability conditions</span></a>, we have verified the ergodicity of the VAR.</p>
+<p>That <span class="math notranslate nohighlight">\(\mathbb{A}\)</span> is a stable matrix implies that <span class="math notranslate nohighlight">\(\mathbb{A}'\mathbb{A} - \mathbb{I}\)</span> is negative definite, so that drift condition <a class="reference internal" href="#drift"><span class="std std-ref">iv</span></a>  is satisfied for <span class="math notranslate nohighlight">\(|x|\)</span> sufficiently large.
+The Feller property <a class="reference internal" href="#fellercond"><span class="std std-ref">(ii)</span></a>  can also be verified by applying the The Dominated Convergence Theorem, since the functions used for the verification are bounded and continuous.  Thus, having checked <a class="reference internal" href="#cond-suffice"><span class="std std-ref">Stability conditions</span></a>, we have verified the ergodicity of the VAR.</p>
 </section>
 <section id="estimating-vector-autoregressions">
-<h2><span class="section-number">3.10. </span>Estimating Vector Autoregressions<a class="headerlink" href="#estimating-vector-autoregressions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.10. </span>Estimating Vector Autoregressions<a class="headerlink" href="#estimating-vector-autoregressions" title="Link to this heading">#</a></h2>
 <p>Let <span class="math notranslate nohighlight">\(Y_{t+1}\)</span> be one of the entries of <span class="math notranslate nohighlight">\(X_{t+1}\)</span>, and consider the regression equation:</p>
 <div class="math notranslate nohighlight">
 \[Y_{t+1} = \beta \cdot X_{t} + U_{t+1},\]</div>
-<p>where <span class="math notranslate nohighlight">\(U_{t+1}\)</span> is a least squares residual. To express uncertainty about <span class="math notranslate nohighlight">\(\beta\)</span> in the spirit of chapter <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>, we allow it to be random. Letting <span class="math notranslate nohighlight">\({\mathfrak J}\)</span> be the set of invariant events, we presume that the <em>random vector</em> <span class="math notranslate nohighlight">\(\beta\)</span> is measurable with respect to <span class="math notranslate nohighlight">\({\mathfrak J}\)</span>, meaning that it is revealed by events in <span class="math notranslate nohighlight">\({\mathfrak J}\)</span>.  For the case in which we have <span class="math notranslate nohighlight">\(n\)</span> possibly different models, the invariant events reveal which of the models generates the data.</p>
+<p>where <span class="math notranslate nohighlight">\(U_{t+1}\)</span> is a least squares residual. To express uncertainty about <span class="math notranslate nohighlight">\(\beta\)</span> in the spirit of chapter <a class="reference internal" href="example_out_c1_v2.html#chap-process"><span class="std std-ref">Stochastic Processes and Laws of Large Numbers</span></a>, we allow it to be random. Letting <span class="math notranslate nohighlight">\({\mathfrak J}\)</span> be the set of invariant events, we presume that the <em>random vector</em> <span class="math notranslate nohighlight">\(\beta\)</span> is measurable with respect to <span class="math notranslate nohighlight">\({\mathfrak J}\)</span>, meaning that it is revealed by events in <span class="math notranslate nohighlight">\({\mathfrak J}\)</span>.  For the case in which we have <span class="math notranslate nohighlight">\(n\)</span> possibly different models, the invariant events reveal which of the models generates the data.</p>
 <p>The first-order condition for minimizing the expected value of <span class="math notranslate nohighlight">\(U_{t+1}^2\)</span> requires that the regression residual <span class="math notranslate nohighlight">\(U_{t+1}\)</span> be orthogonal to <span class="math notranslate nohighlight">\(X_t\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[E\left( X_t U_{t+1} \vert {\mathfrak J} \right) = 0.\]</div>
 <p>Then</p>
 <div class="math notranslate nohighlight" id="equation-eq-lsorth101">
-<span class="eqno">(3.15)<a class="headerlink" href="#equation-eq-lsorth101" title="Link to this equation">#</a></span>\[E\left( X_{t}Y_{t+1} \vert {\mathfrak J} \right) = E\left[ X_{t} (X_{t})' \vert {\mathfrak J} \right] \beta ,\]</div>
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-eq-lsorth101" title="Link to this equation">#</a></span>\[E\left( X_{t}Y_{t+1} \vert {\mathfrak J} \right) = E\left[ X_{t} (X_{t})' \vert {\mathfrak J} \right] \beta ,\]</div>
 <p>which uniquely pins down the regression coefficient <span class="math notranslate nohighlight">\(\beta\)</span> provided that the matrix <span class="math notranslate nohighlight">\(E\left[ X_t (X_t)' \vert {\mathfrak J} \right]\)</span> is nonsingular with probability one. Notice that</p>
 <div class="math notranslate nohighlight">
 \[{\frac 1 N}\sum_{t=1}^N  X_{t} Y_{t+1} \rightarrow E\left( X_{t} Y_{t+1} \vert {\mathfrak J} \right)  \]</div>
 <div class="math notranslate nohighlight">
 \[{\frac 1 N}\sum_{t=1}^N  X_{t} (X_{t})' \rightarrow E\left( X_{t} (X_{t})' \vert {\mathfrak J} \right),\]</div>
-<p>where convergence is with probability one. Thus, from equation <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eq-lsorth101">(4.14)</a> it follows that a consistent estimator of <span class="math notranslate nohighlight">\(\beta\)</span> is a <span class="math notranslate nohighlight">\(b_N\)</span> that satisfies</p>
+<p>where convergence is with probability one. Thus, from equation <a class="reference internal" href="#equation-eq-lsorth101">(2.15)</a> it follows that a consistent estimator of <span class="math notranslate nohighlight">\(\beta\)</span> is a <span class="math notranslate nohighlight">\(b_N\)</span> that satisfies</p>
 <div class="math notranslate nohighlight">
 \[{\frac 1 N}\sum_{t=1}^N  X_{t} Y_{t+1} = {\frac 1 N}\sum_{t=1}^N  X_{t} (X_{t})' b_N.\]</div>
 <p>Solving for <span class="math notranslate nohighlight">\(b_N\)</span> gives the familiar least squares formula:</p>
@@ -865,8 +840,8 @@ The Feller property <a class="reference internal" href="example_out_c2_v2_enzo_a
 <p>Note how statements about the consistency of <span class="math notranslate nohighlight">\(b_N\)</span> are conditioned on <span class="math notranslate nohighlight">\({\mathfrak J}\)</span>.  This conditioning is necessary when we do not know which among a family vector autoregressions generates the data.</p>
 </section>
 <section id="inventing-a-past-again">
-<span id="sec-var-inf-past"></span><h2><span class="section-number">3.11. </span>Inventing a Past Again<a class="headerlink" href="#inventing-a-past-again" title="Link to this heading">#</a></h2>
-<p>In section <a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html#sec-inventing-past"><span class="std std-ref">Inventing an Infinite Past</span></a>, we invented an infinite past for a stochastic process. Here we invent an infinite past for a vector autoregression in a way that is equivalent to drawing an initial condition <span class="math notranslate nohighlight">\(X_0\)</span> at time <span class="math notranslate nohighlight">\(t=0\)</span> from the stationary distribution <span class="math notranslate nohighlight">\({\mathcal N}(0, \Sigma_\infty)\)</span>, where <span class="math notranslate nohighlight">\(\Sigma_\infty\)</span> solves the discrete Lyapunov equation <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-eq-sylvester">(4.13)</a>, namely, <span class="math notranslate nohighlight">\(\Sigma_\infty = {\mathbb A} \Sigma_\infty {\mathbb A}' + {\mathbb B} {\mathbb B}' \)</span>.</p>
+<span id="sec-var-inf-past"></span><h2><span class="section-number">2.11. </span>Inventing a Past Again<a class="headerlink" href="#inventing-a-past-again" title="Link to this heading">#</a></h2>
+<p>In section <a class="reference internal" href="example_out_c1_v2.html#sec-inventing-past"><span class="std std-ref">Inventing an Infinite Past</span></a>, we invented an infinite past for a stochastic process. Here we invent an infinite past for a vector autoregression in a way that is equivalent to drawing an initial condition <span class="math notranslate nohighlight">\(X_0\)</span> at time <span class="math notranslate nohighlight">\(t=0\)</span> from the stationary distribution <span class="math notranslate nohighlight">\({\mathcal N}(0, \Sigma_\infty)\)</span>, where <span class="math notranslate nohighlight">\(\Sigma_\infty\)</span> solves the discrete Lyapunov equation <a class="reference internal" href="#equation-eq-sylvester">(2.14)</a>, namely, <span class="math notranslate nohighlight">\(\Sigma_\infty = {\mathbb A} \Sigma_\infty {\mathbb A}' + {\mathbb B} {\mathbb B}' \)</span>.</p>
 <p>Thus, consider the vector autoregression</p>
 <div class="math notranslate nohighlight">
 \[X_{t+1} = {\mathbb A} X_t + {\mathbb B} W_{t+1}\]</div>
@@ -926,7 +901,7 @@ the strong contraction property prevails for any <span class="math notranslate n
 </aside>
 <aside class="footnote brackets" id="convergence-footnote" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">11</a><span class="fn-bracket">]</span></span>
-<p>Restriction <a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html#equation-converge">(4.12)</a> is stronger than ergodicity. It rules out periodic processes, although we know that periodic processes can be ergodic.</p>
+<p>Restriction <a class="reference internal" href="#equation-converge">(2.12)</a> is stronger than ergodicity. It rules out periodic processes, although we know that periodic processes can be ergodic.</p>
 </aside>
 <aside class="footnote brackets" id="covmatrix" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">12</a><span class="fn-bracket">]</span></span>
@@ -967,20 +942,20 @@ the strong contraction property prevails for any <span class="math notranslate n
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="example_out_c1_v2_enzo_and_ken.html"
+       href="example_out_c1_v2.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Stochastic Processes and Laws of Large Numbers</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Stochastic Processes and Laws of Large Numbers</p>
       </div>
     </a>
     <a class="right-next"
-       href="example_out_c2_v2_enzo_and_ken.html"
+       href="example_out_c3_v2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Markov Processes</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Stationary Increments</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1000,20 +975,20 @@ the strong contraction property prevails for any <span class="math notranslate n
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constituents">3.1. Constituents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">3.2. Stationarity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathcal-l-2-and-eigenfunctions">3.3. <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> and Eigenfunctions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodic-markov-processes">3.4. Ergodic Markov Processes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-events-for-a-markov-process">3.4.1. Invariant events for a Markov process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constituents">2.1. Constituents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">2.2. Stationarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathcal-l-2-and-eigenfunctions">2.3. <span class="math notranslate nohighlight">\({\mathcal L}^2\)</span> and Eigenfunctions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodic-markov-processes">2.4. Ergodic Markov Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-events-for-a-markov-process">2.4.1. Invariant events for a Markov process</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodicity">3.5. Periodicity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-state-markov-chains">3.6. Finite-State Markov Chains</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limited-dependence">3.7. Limited Dependence</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-of-multi-period-forecasts">3.8. Limits of Multi-Period Forecasts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregressions">3.9. Vector Autoregressions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-vector-autoregressions">3.10. Estimating Vector Autoregressions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inventing-a-past-again">3.11. Inventing a Past Again</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#periodicity">2.5. Periodicity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-state-markov-chains">2.6. Finite-State Markov Chains</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limited-dependence">2.7. Limited Dependence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limits-of-multi-period-forecasts">2.8. Limits of Multi-Period Forecasts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-autoregressions">2.9. Vector Autoregressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-vector-autoregressions">2.10. Estimating Vector Autoregressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inventing-a-past-again">2.11. Inventing a Past Again</a></li>
 </ul>
   </nav></div>
 

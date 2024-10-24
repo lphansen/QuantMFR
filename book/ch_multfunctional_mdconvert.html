@@ -1,0 +1,981 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>12. Multiplicative Functionals &#8212; Quant Macro Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8c1df6e1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/ch_multfunctional_mdconvert';</script>
+    <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/ch_multfunctional_mdconvert.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="13. Bibliography" href="cite.html" />
+    <link rel="prev" title="11. GMM Estimation" href="gmmcurrent_lars_v9.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/mfr.png" class="logo__image only-light" alt="Quant Macro Finance - Home"/>
+    <script>document.write(`<img src="../_static/mfr.png" class="logo__image only-dark" alt="Quant Macro Finance - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">2. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">3. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">4. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">5. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">6. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">7. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">8. Likelihoods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_stochastic_response.html">9. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">10. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">11. GMM Estimation </a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Multiplicative Functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">13. Bibliography</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/background.html">Background Reading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticity.html">Notebook: Discrete Time</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../continuous_global_solution/shockelasticitycontinuous.html">Notebook: Continuous Time</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Comparative Valuation Dynamics in Production Economies</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/manuscript.html">Manuscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/appendix.html">Online Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comparing_dsge/code.html">Computational Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Spillovers for Markets and Policy</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../uncertainty_spillovers/manuscript.html">Manuscript</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/book/ch_multfunctional_mdconvert.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Multiplicative Functionals</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-growth-and-decay">12.1. Geometric Growth and Decay</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-multiplicative-functionals">12.2. Special Multiplicative Functionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicative-martingales-and-likelihood-processes">12.3. Multiplicative martingales and likelihood processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factoring-multiplicative-functionals">12.4. Factoring Multiplicative functionals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-state-markov-increments">12.4.1. Finite State Markov Increments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-details-involving-multiplicity">12.5. Technical details involving multiplicity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-run-growth-rates">12.6. Long-run Growth Rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-and-extensions">12.7. Applications and Extensions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="multiplicative-functionals">
+<span id="chap-mult"></span><h1><span class="section-number">12. </span>Multiplicative Functionals<a class="headerlink" href="#multiplicative-functionals" title="Link to this heading">#</a></h1>
+<p>Chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a> described additive functionals of a Markov process. This chapter describes exponentials of additive functionals that we call <em>multiplicative functionals</em> and that we can use to model stochastic growth, stochastic discounting, and their interactions. After adjusting for geometric growth or decay, a multiplicative functional contains a martingale component that turns out to be a likelihood ratio process that is itself a special type of multiplicative functional called an exponential martingale. In chapter <a class="reference internal" href="example_out_c6_v2.html#chap-like"><span class="std std-ref">Likelihoods</span></a>, we shall see how a likelihood ratio process is used to construct an alternative probability model with Markov dynamics by simply multiplying an original probability measure by the likelihood ratio process. This procedure is widely used in asset pricing theory and helps us to represent stochastic components of growth and discounting that persist over long horizons. To analyze multiplicative functionals, we apply mathematical tools closely related to tools from the statistical theory of large deviations that we shall apply again in chapter <a class="reference internal" href="example_out_c6_v2.html#chap-like"><span class="std std-ref">Likelihoods</span></a>.</p>
+<section id="geometric-growth-and-decay">
+<h2><span class="section-number">12.1. </span>Geometric Growth and Decay<a class="headerlink" href="#geometric-growth-and-decay" title="Link to this heading">#</a></h2>
+<p>To construct a multiplicative functional, we start with an underlying Markov process <span class="math notranslate nohighlight">\(X\)</span> that has stationary distribution <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<div class="proof definition admonition" id="def:multfunctional">
+<p class="admonition-title"><span class="caption-number">Definition 12.1 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\{ Y_t\}\)</span> be an additive functional that as in Chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a> is described by <span class="math notranslate nohighlight">\(Y_{t+1} - Y_t = \kappa(X_t, W_{t+1})\)</span>, where <span class="math notranslate nohighlight">\(X_t\)</span> is the time <span class="math notranslate nohighlight">\(t\)</span> component of a Markov state vector and <span class="math notranslate nohighlight">\(W_{t+1}\)</span> is the time <span class="math notranslate nohighlight">\(t+1\)</span> value of an i.i.d. process of unanticipated shocks. We say that <span class="math notranslate nohighlight">\(\{M_t \} = \{ \exp(Y_t) \}\)</span> is a <strong>multiplicative functional</strong> parameterized by <span class="math notranslate nohighlight">\(\kappa\)</span>. When <span class="math notranslate nohighlight">\(Y_0\)</span> is a (Borel measurable) function of <span class="math notranslate nohighlight">\(X_0\)</span>, <span class="math notranslate nohighlight">\(M_0 &gt;0\)</span> is also a (Borel measurable) function of <span class="math notranslate nohighlight">\(X_0\)</span>.</p>
+</section>
+</div><p>An additive functional grows or decays <em>linearly</em>, so the exponential of an additive functional grows or decays <em>geometrically</em>. In Chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a> we constructed a Law of Large Numbers and a Central Limit Theorem for additive functionals. In this chapter, we use other mathematical tools to analyze the limiting behavior of multiplicative functionals.</p>
+</section>
+<section id="special-multiplicative-functionals">
+<span id="sec-threespecial"></span><h2><span class="section-number">12.2. </span>Special Multiplicative Functionals<a class="headerlink" href="#special-multiplicative-functionals" title="Link to this heading">#</a></h2>
+<p>We define the three primitive types of multiplicative functionals.</p>
+<div class="proof example admonition" id="exmult1">
+<p class="admonition-title"><span class="caption-number">Example 12.1 </span></p>
+<section class="example-content" id="proof-content">
+<p>Suppose that <span class="math notranslate nohighlight">\(\kappa = \bar \kappa\)</span> is constant and that <span class="math notranslate nohighlight">\(M_0\)</span> is a Borel measurable function of <span class="math notranslate nohighlight">\(X_0\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[M_t  = \exp\left( t \bar \kappa \right)M_0.\]</div>
+<p>This process grows or decays geometrically.</p>
+</section>
+</div><div class="proof example admonition" id="exmult2">
+<p class="admonition-title"><span class="caption-number">Example 12.2 </span></p>
+<section class="example-content" id="proof-content">
+<p>Suppose that</p>
+<div class="math notranslate nohighlight">
+\[E\left[ \exp \left[ \kappa \left( X_t, W_{t+1} \right) \right] \vert X_t \right] = 1.\]</div>
+<p>Then</p>
+<div class="math notranslate nohighlight" id="equation-eqn-multcomp2">
+<span class="eqno">(12.1)<a class="headerlink" href="#equation-eqn-multcomp2" title="Link to this equation">#</a></span>\[E\left(M_{t+1} \vert \mathcal{F}_t \right) = M_t .\]</div>
+<p>A multiplicative functional that satisfies <a class="reference internal" href="#equation-eqn-multcomp2">(12.1)</a> is called a <em>multiplicative martingale</em>.</p>
+</section>
+</div><div class="proof example admonition" id="exmult3">
+<p class="admonition-title"><span class="caption-number">Example 12.3 </span></p>
+<section class="example-content" id="proof-content">
+<p>Suppose that <span class="math notranslate nohighlight">\(M_t = \exp\left[h(X_t)\right]\)</span> where <span class="math notranslate nohighlight">\(h\)</span> is a Borel measurable function. The associated additive functional satisfies</p>
+<div class="math notranslate nohighlight">
+\[Y_{t+1} - Y_t = \log M_{t+1} - \log M_t = h(X_{t+1}) - h(X_t) = h\left[ \phi(X_t, W_{t+1} ) \right] - h(X_t)\]</div>
+<p>and so is parameterized by <span class="math notranslate nohighlight">\(\kappa(X_t, W_{t+1}) = h\left[ \phi(X_t, W_{t+1} ) \right] - h(X_t)\)</span> with initial condition <span class="math notranslate nohighlight">\(Y_0 = h(X_0)\)</span>.</p>
+</section>
+</div><p>When the process <span class="math notranslate nohighlight">\(\{X_t\}\)</span> is stationary and ergodic, multiplicative functional <a class="reference internal" href="#exmult1">Example 12.1</a> displays expected growth or decay, while multiplicative functionals <a class="reference internal" href="#exmult2">Example 12.2</a> and <a class="reference internal" href="#exmult3">Example 12.3</a> do not. Multiplicative functional <a class="reference internal" href="#exmult3">Example 12.3</a> is stationary, while <a class="reference internal" href="#exmult1">Example 12.1</a> and <a class="reference internal" href="#exmult2">Example 12.2</a> are not.</p>
+<p>We can construct other multiplicative functionals simply by multiplying two or more instances of these primitive ones. In the following section, we reverse that process: we take an arbitrary multiplicative functional and (multiplicatively) decompose it into instances of our three types of multiplicative functionals.</p>
+</section>
+<section id="multiplicative-martingales-and-likelihood-processes">
+<h2><span class="section-number">12.3. </span>Multiplicative martingales and likelihood processes<a class="headerlink" href="#multiplicative-martingales-and-likelihood-processes" title="Link to this heading">#</a></h2>
+<p>Multiplicative martingales induce alternative probabilities and are thus likelihood-ratio processes.</p>
+</section>
+<section id="factoring-multiplicative-functionals">
+<span id="sec-factorization"></span><h2><span class="section-number">12.4. </span>Factoring Multiplicative functionals<a class="headerlink" href="#factoring-multiplicative-functionals" title="Link to this heading">#</a></h2>
+<p>Following <span id="id1">[<a class="reference internal" href="cite.html#id217" title="Lars Peter Hansen and José A. Scheinkman. Long-term risk: an operator approach. Econometrica, 77(1):117-234, January 2009.">Hansen and Scheinkman, 2009</a>]</span> and <span id="id2">[<a class="reference internal" href="cite.html#id196" title="Lars Peter Hansen. Dynamic valuation decomposition within stochastic e­co­no­mies. Econometrica, 80(3):911–967, May 2012. Fisher–Schultz Lecture at the European Meetings of the Econometric Society.">Hansen, 2012</a>]</span>, we decompose a multiplicative functional into multiplicative components having the primitive types <a class="reference internal" href="#exmult1">Example 12.1</a>, <a class="reference internal" href="#exmult2">Example 12.2</a>, <a class="reference internal" href="#exmult3">Example 12.3</a>. As in definition <a class="reference internal" href="#def:multfunctional">Definition 12.1</a>, let <span class="math notranslate nohighlight">\(\{Y_t\}\)</span> be an additive functional and let <span class="math notranslate nohighlight">\(M_t = \exp(M_t)\)</span>. To bounded Borel measurable functions <span class="math notranslate nohighlight">\(f\)</span> of the Markov state, we apply a one-period operator <span class="math notranslate nohighlight">\(\mathbb{M}\)</span> defined by</p>
+<div class="math notranslate nohighlight" id="equation-mdef">
+<span class="eqno">(12.2)<a class="headerlink" href="#equation-mdef" title="Link to this equation">#</a></span>\[\mathbb{M}f(x) = E\left[ \exp(Y_{t+1} - Y_t) f(X_{t+1}) \vert X_t = x \right] = E\left[ \frac{M_{t+1}}{M_t} f(X_{t+1}) \vert X_t = x \right].\]</div>
+<p>A two-period operator is</p>
+<div class="math notranslate nohighlight" id="equation-eq-m2def">
+<span class="eqno">(12.3)<a class="headerlink" href="#equation-eq-m2def" title="Link to this equation">#</a></span>\[\mathbb{M}^2 f(x) = E\left[ \exp(Y_{t+2} - Y_t) f(X_{t+2}) \vert X_t = x \right] = E\left[ \frac{M_{t+2}}{M_t} f(X_{t+2}) \vert X_t = x \right],\]</div>
+<p>with corresponding definitions of <span class="math notranslate nohighlight">\(j\)</span>-period operators <span class="math notranslate nohighlight">\(\mathbb{M}^j\)</span>. For <span class="math notranslate nohighlight">\(f &gt; 0\)</span>, take the limiting growth rate to be</p>
+<div class="math notranslate nohighlight" id="equation-eqn-limgrowthrate">
+<span class="eqno">(12.4)<a class="headerlink" href="#equation-eqn-limgrowthrate" title="Link to this equation">#</a></span>\[\eta = \lim_{j\rightarrow \infty} \frac{1}{j} \log E\left[ \exp(Y_{t+j} - Y_t) f(X_{t+j}) \bigl | X_t = x \right] = \lim_{j\rightarrow \infty} \frac{1}{j} \log E\left[ \frac{M_{t+j}}{M_t} f(X_{t+j}) \bigl| X_t = x \right] = \lim_{j\rightarrow \infty} \frac{1}{j} \log \mathbb{M}^j f(x).\]</div>
+<p>Taking <span class="math notranslate nohighlight">\(f\)</span> to be unity implies that</p>
+<div class="math notranslate nohighlight" id="equation-eqn-etadef">
+<span class="eqno">(12.5)<a class="headerlink" href="#equation-eqn-etadef" title="Link to this equation">#</a></span>\[\eta = \lim_{j\rightarrow \infty} \frac{1}{j} \log E\left[ \frac{M_{t+j}}{M_t} \Bigl| X_t = x \right].\]</div>
+<p>We call <span class="math notranslate nohighlight">\(\eta\)</span> the expected asymptotic growth rate of the multiplicative functional <span class="math notranslate nohighlight">\(\{M_t\}_{t=0}^\infty\)</span>. Multiplying the multiplicative functional by <span class="math notranslate nohighlight">\(\exp(-\eta t)\)</span> removes expected asymptotic growth.</p>
+<p>To refine our characterization of a multiplicative functional, we pose:</p>
+<p id="prob-eigen"><strong>Eigenvalue-eigenfunction Problem:</strong>
+Solve</p>
+<div class="math notranslate nohighlight" id="equation-eqn-eigenmult">
+<span class="eqno">(12.6)<a class="headerlink" href="#equation-eqn-eigenmult" title="Link to this equation">#</a></span>\[\mathbb{M}{\tilde e}(x) = \exp\left( {\tilde \eta} \right) {\tilde e}(x)\]</div>
+<p>for an eigenvalue <span class="math notranslate nohighlight">\(\exp(\tilde \eta)\)</span> and a positive eigenfunction <span class="math notranslate nohighlight">\({\tilde e}\)</span>.</p>
+<p>We call the largest eigenvalue the principal eigenvalue and the associated eigenvector the principal eigenfunction of the operator <span class="math notranslate nohighlight">\(\mathbb{M}\)</span>.</p>
+<p>A positive eigenfunction <span class="math notranslate nohighlight">\({\tilde e}\)</span> is a function of the Markov state that can be expected to grow geometrically at the long-run growth rate <span class="math notranslate nohighlight">\(\eta = {\tilde \eta}\)</span>. Write the eigenfunction equation <a class="reference internal" href="#equation-eqn-eigenmult">(12.6)</a> as:</p>
+<div class="math notranslate nohighlight">
+\[E\left[ {\frac {{ M}_{t+1}}{{ M}_t}} {\tilde e}(X_{t+1}) \vert X_t \right] =  \exp\left( {\tilde \eta} \right) {\tilde e}(X_t).\]</div>
+<p>Solve for the principal eigenvalue and eigenvector. Then define</p>
+<div class="math notranslate nohighlight">
+\[{\frac {{\widetilde M}_{t+1}}{{\widetilde M}_t}} \equiv \exp(- {\tilde \eta}) {\frac {M_{t+1}{\tilde e}(X_{t+1})}{M_t {\tilde e}(X_t)}} = \exp\left[{\tilde \kappa}(X_t, W_{t+1}) \right].\]</div>
+<p>Evidently, <span class="math notranslate nohighlight">\({\frac {{\widetilde M}_{t+1}}{{\widetilde M}_t}}\)</span> has a conditional expectation equal to unity. Consequently, <span class="math notranslate nohighlight">\(\{ {\widetilde M}_t  \}\)</span> is a multiplicative martingale with <span class="math notranslate nohighlight">\(\widetilde M_0 = 1\)</span>.</p>
+<div class="proof theorem admonition" id="prop:factor">
+<p class="admonition-title"><span class="caption-number">Theorem 12.1 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\{ M_t \}\)</span> be a multiplicative functional.
+Suppose that the principal eigenvalue-eigenfunction <a class="reference internal" href="#prob-eigen"><span class="std std-ref">Problem</span></a> has a solution with principal eigenfunction
+<span class="math notranslate nohighlight">\({\tilde e}(X)\)</span>.
+Then the multiplicative functional
+is the product of three components that are instances of the primitive functionals in examples <a class="reference internal" href="#exmult1">Example 12.1</a>, <a class="reference internal" href="#exmult2">Example 12.2</a>, and <a class="reference internal" href="#exmult3">Example 12.3</a>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-multdecomposition">
+<span class="eqno">(12.7)<a class="headerlink" href="#equation-eqn-multdecomposition" title="Link to this equation">#</a></span>\[{\frac {M_t}{ M_0}} = \exp\left( {\tilde \eta} t \right) \left[ {\frac {{\widetilde M}_t}{{\widetilde M}_0 }} \right] \left[ {\frac {{\tilde e}(X_0)}{{\tilde e}(X_t) }} \right]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\{ {\widetilde M}_t \}\)</span> is a multiplicative martingale.</p>
+</section>
+</div><p>The decomposition of a multiplicative functional described in <a class="reference internal" href="#prop:factor">Theorem 12.1</a> is a counterpart to the <a class="reference internal" href="example_out_c4_v2.html#prop:decomp">Proposition 4.1</a> decomposition of an additive functional.</p>
+<div class="proof remark admonition" id="remark-5">
+<p class="admonition-title"><span class="caption-number">Remark 12.1 </span></p>
+<section class="remark-content" id="proof-content">
+<p>If there is a martingale component in an additive (in logarithms) decomposition, then there is necessarily a martingale in the corresponding multiplicative (in levels) <a class="reference internal" href="#prop:factor">Theorem 12.1</a> factorization, and conversely.</p>
+</section>
+</div><div class="proof theorem admonition" id="theorem-6">
+<p class="admonition-title"><span class="caption-number">Theorem 12.2 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Because <span class="math notranslate nohighlight">\(\widetilde M_0 = 1\)</span>, the multiplicative martingale <span class="math notranslate nohighlight">\(\widetilde M_t\)</span> is a likelihood ratio process.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-7">
+<p class="admonition-title"><span class="caption-number">Remark 12.2 </span></p>
+<section class="remark-content" id="proof-content">
+<p>We used the martingale in <a class="reference internal" href="example_out_c4_v2.html#prop:decomp">Proposition 4.1</a> to identify the permanent component of an additive functional in Chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>. In this chapter, we shall use the multiplicative martingale isolated by <a class="reference internal" href="#prop:factor">Theorem 12.1</a> to represent a change of probability measure.</p>
+</section>
+</div><p>The fact that the additive martingale <span class="math notranslate nohighlight">\(Y_t = \log(M_t)\)</span> has a variance that grows linearly over time contributes a component to the exponential trend of the multiplicative functional <span class="math notranslate nohighlight">\(\{M_t\}\)</span>. The following log-linear, log-normal model displays relevant mechanics.</p>
+<div class="proof example admonition" id="ex:VARmultfunctional">
+<p class="admonition-title"><span class="caption-number">Example 12.4 </span></p>
+<section class="example-content" id="proof-content">
+<p>Consider a stationary <span class="math notranslate nohighlight">\(X\)</span> process described by the VAR</p>
+<div class="math notranslate nohighlight">
+\[X_{t+1} = A X_t + B W_{t+1},\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is a stable matrix and
+<span class="math notranslate nohighlight">\(\{ W_{t+1} \}\)</span> is a sequence of independent and identically
+normally distributed random vectors with mean zero and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>.
+Let <span class="math notranslate nohighlight">\(\{Y_t\}\)</span> be the additive functional generated by</p>
+<div class="math notranslate nohighlight">
+\[Y_{t+1} - Y_t = \kappa(X_{t},W_{t+1}) = \nu + D \cdot X_t + F \cdot W_{t+1},\]</div>
+<p>where <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(F\)</span> are vectors with the same dimensions as <span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(W_{t+1}\)</span>, respectively.
+In Proposition <a class="reference internal" href="example_out_c4_v2.html#prop:decomp">Proposition 4.1</a> of Chapter <a class="reference internal" href="example_out_c4_v2.html#chap-add"><span class="std std-ref">Processes with Markovian increments</span></a>, we described the decomposition</p>
+<div class="math notranslate nohighlight" id="equation-adddecomp2">
+<span class="eqno">(12.8)<a class="headerlink" href="#equation-adddecomp2" title="Link to this equation">#</a></span>\[Y_{t} - Y_0 =  t\nu + \left[\sum_{j=1}^{t} \kappa_a(X_{j-1},W_{j})\right]   - g(X_{t}) + g(X_0)\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(\kappa_a(X_{t},W_{t+1}) = H \cdot W_{t+1}, H =  [F + B'(I-A')^{-1} D]\)</span>,
+and
+<span class="math notranslate nohighlight">\(g(x) = D'(I-A)^{-1} x\)</span>.
+Let <span class="math notranslate nohighlight">\(M_t = \exp(Y_t)\)</span>. Use equation <a class="reference internal" href="#equation-adddecomp2">(12.8)</a> to deduce</p>
+<div class="math notranslate nohighlight">
+\[\frac{M_t}{M_0} = \exp (t \nu) \exp \Bigl(\sum_{j=1}^t H \cdot W_j \Bigr) \exp \biggl( D'(I-A)^{-1} X_0 - D'(I-A)^{-1} X_t \biggr)\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\frac{M_t}{M_0} =  \exp\left( \tilde \eta t \right) \Biggl( \frac{\widetilde M_t}{\widetilde M_0}\Biggr) \left( \frac{\tilde e (X_0)} {\tilde e(X_t)} \right)\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\tilde \eta =  \nu + \frac{H \cdot H}{2} ,\]</div>
+<div class="math notranslate nohighlight">
+\[\widetilde M_t = \exp \biggl( \sum_{j=1}^t \biggl(H \cdot W_j -\frac{ H \cdot H }{2} \biggr) \biggr),  \quad \widetilde M_0 =1 ,\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\tilde e(x) = \exp[g(x)] = \exp \bigl[ D' (I - A)^{-1} x \bigr].\]</div>
+</section>
+</div><div class="proof example admonition" id="ex:tallarini">
+<p class="admonition-title"><span class="caption-number">Example 12.5 </span></p>
+<section class="example-content" id="proof-content">
+<p><span id="id3">[<a class="reference internal" href="cite.html#id411" title="Thomas D. Tallarini. Risk-sensitive real business cycles. Journal of Monetary Economics, 45(3):507–532, June 2000.">Tallarini, 2000</a>]</span> compared utility functionals associated with two models of per capita US consumption, each being a multiplicative process taking the form</p>
+<div class="math notranslate nohighlight" id="equation-eqn-tall101">
+<span class="eqno">(12.9)<a class="headerlink" href="#equation-eqn-tall101" title="Link to this equation">#</a></span>\[c_{t+1} = \mu + c_t + \sigma_{\epsilon} \epsilon_{t+1},\]</div>
+<p>but having different <span class="math notranslate nohighlight">\((\mu, \sigma_\epsilon)\)</span> parameter values, where <span class="math notranslate nohighlight">\(\{\epsilon_{t+1}\}_{t=0}^\infty\)</span> is an i.i.d. sequence of <span class="math notranslate nohighlight">\(\mathcal{N}(0,1)\)</span> random variables, <span class="math notranslate nohighlight">\(c_t = \log C_t\)</span>, and <span class="math notranslate nohighlight">\(C_t\)</span> is per capita consumption of nondurables and services. <span id="id4">[<a class="reference internal" href="cite.html#id411" title="Thomas D. Tallarini. Risk-sensitive real business cycles. Journal of Monetary Economics, 45(3):507–532, June 2000.">Tallarini, 2000</a>]</span> chose this random walk plus drift specification for log per capita consumption because it approximates post World War II U.S. data well. Consumption process <a class="reference internal" href="#equation-eqn-tall101">(12.9)</a> is an additive functional that is a special case of our VAR specification with <span class="math notranslate nohighlight">\(A=0, B=0, D = 0, F = \sigma_{\epsilon}\)</span>. Process <a class="reference internal" href="#equation-eqn-tall101">(12.9)</a> for <span class="math notranslate nohighlight">\(c_t\)</span> implies that</p>
+<div class="math notranslate nohighlight">
+\[C_{t+1} = C_t \exp(\mu) \exp(\sigma \epsilon_{t+1}) = C_t \exp\left(\mu + \frac{\sigma^2}{2} \right) m(\epsilon_{t+1})\]</div>
+<p>where <span class="math notranslate nohighlight">\(m(\epsilon_{t+1}) = \exp\left( \sigma \epsilon_{t+1} - \frac{\sigma^2}{2} \right) \geq 0\)</span> and <span class="math notranslate nohighlight">\(E m(\epsilon_{t+1} ) =1\)</span>, so that <span class="math notranslate nohighlight">\(m(\epsilon_{t+1})\)</span> is a likelihood ratio and</p>
+<div class="math notranslate nohighlight">
+\[E C_{t+1} | C_t = \exp\left( \mu + \frac{\sigma^2}{2} \right) C_t.\]</div>
+<p>The level of consumption is the stochastic process</p>
+<div class="math notranslate nohighlight" id="equation-eqn-tall102">
+<span class="eqno">(12.10)<a class="headerlink" href="#equation-eqn-tall102" title="Link to this equation">#</a></span>\[C_t = C_0\exp\left(\mu + \frac{\sigma_{\epsilon}^2}{2}\right) \exp\left( \sum_{j=1}^t \left(\sigma_\epsilon \epsilon_j - \frac{\sigma_{\epsilon}^2}{2}\right) \right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\exp\left( \sum_{j=1}^t \left(\sigma_\epsilon \epsilon_j - \frac{\sigma_{\epsilon}^2}{2}\right) \right) = \prod_{j=1}^t m(\epsilon_j)\)</span> is a multiplicative martingale with mean 1.<a class="footnote-reference brackets" href="#likelihoodratio" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p><span id="id6">[<a class="reference internal" href="cite.html#id411" title="Thomas D. Tallarini. Risk-sensitive real business cycles. Journal of Monetary Economics, 45(3):507–532, June 2000.">Tallarini, 2000</a>]</span> compared the utility consequences of two processes (or “consumption plans”) with identical exponential trends <span class="math notranslate nohighlight">\(\exp\left( \mu + \frac{\sigma^2}{2} \right)\)</span> but differing shock processes <span class="math notranslate nohighlight">\(m(\epsilon_{t+1})\)</span>, one being a risky plan with <span class="math notranslate nohighlight">\(m(\epsilon_{t+1}) = \exp\left( \sigma \epsilon_{t+1} - \frac{\sigma^2}{2} \right)\)</span> being a nontrivial random variable, the other being a no-risk process with <span class="math notranslate nohighlight">\(m(\epsilon_{t+1}) \equiv 1\)</span> for all <span class="math notranslate nohighlight">\(t \geq 0\)</span>. <span id="id7">[<a class="reference internal" href="cite.html#id411" title="Thomas D. Tallarini. Risk-sensitive real business cycles. Journal of Monetary Economics, 45(3):507–532, June 2000.">Tallarini, 2000</a>]</span> calibrated the risky plan A to match quarterly post World War II U.S. per capita aggregate consumption by setting <span class="math notranslate nohighlight">\(\sigma_{\epsilon} = \sigma_{\epsilon}^A \approx .005\)</span> and <span class="math notranslate nohighlight">\(\mu = \mu^A \approx .005\)</span>. Plan B is a hypothetical “no-risk” path that (i) sets <span class="math notranslate nohighlight">\(\sigma_\epsilon = \sigma_\epsilon^B =0\)</span> and <span class="math notranslate nohighlight">\(\mu = \mu^B = \mu^A + \frac{(\sigma_{\epsilon}^{A})^2}{2}\)</span>, and (ii) adjusts <span class="math notranslate nohighlight">\(C_0\)</span> downward to compensate for the reduced risk in plan B relative to plan A. According to equation <a class="reference internal" href="#equation-eqn-tall102">(12.10)</a>, the two plans have the same geometric growth rate <span class="math notranslate nohighlight">\(\mu^A + \frac{(\sigma_{\epsilon}^{A})^2}{2}\)</span>. But under plan <span class="math notranslate nohighlight">\(A\)</span>, the process <span class="math notranslate nohighlight">\(\{C_t\}_{t=0}^\infty\)</span> also has risk in the form of the multiplicative martingale <span class="math notranslate nohighlight">\(\exp\left( \sum_{j=1}^t \left(\sigma_\epsilon^A \epsilon_j - \frac{(\sigma_{\epsilon}^{A})^2}{2}\right) \right)\)</span>, a component that is absent from the no-risk plan B. Tallarini assumed that a representative consumer evaluates these alternative consumption plans <span class="math notranslate nohighlight">\(\{C_t\}_{t=0}^\infty\)</span> according to the following time <span class="math notranslate nohighlight">\(0\)</span> utility criterion that is the <span class="math notranslate nohighlight">\(A = B = D =0, F = \sigma_\epsilon\)</span> special case of the Proposition  risk-sensitive utility recursion</p>
+<div class="math notranslate nohighlight" id="equation-eqn-tall103">
+<span class="eqno">(12.11)<a class="headerlink" href="#equation-eqn-tall103" title="Link to this equation">#</a></span>\[U_0 = \frac{\beta}{1-\beta} \left[ \mu - \frac{\sigma_\epsilon^2}{2 \theta (1 - \beta)} \right] + c_0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta = \frac{-1}{(1-\beta)(1 - \gamma)}\)</span>, <span class="math notranslate nohighlight">\(\beta \in (0,1)\)</span> is a discount factor, <span class="math notranslate nohighlight">\(\gamma \geq 1\)</span> is a coefficient of relative risk aversion, and <span class="math notranslate nohighlight">\(\sigma_\epsilon\)</span> equals zero under plan B and <span class="math notranslate nohighlight">\(\sigma_\epsilon = \sigma^A \approx .005\)</span> under plan A. <span id="id8">[<a class="reference internal" href="cite.html#id411" title="Thomas D. Tallarini. Risk-sensitive real business cycles. Journal of Monetary Economics, 45(3):507–532, June 2000.">Tallarini, 2000</a>]</span> calculated a percentage reduction in <span class="math notranslate nohighlight">\(c_0^B\)</span>, the logarithm of initial plan B consumption, that would make the representative consumer indifferent between the risky plan A and the no-risk plan B. Utility indexes <span class="math notranslate nohighlight">\(U_0\)</span> under the two plans are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}U_0^A &amp; = \frac{\beta}{1 - \beta} \left[ \mu_A - \frac{\sigma_\epsilon^2}{2 \theta (1 - \beta)} \right] + c_0^A \\
+U_0^B &amp; = \frac{\beta}{1 - \beta} \left[ \mu_A + \frac{\sigma_\epsilon^2}{2} \right] + c_0^B\end{split}\]</div>
+<p>Taking <span class="math notranslate nohighlight">\(c_0^A\)</span> as a fixed value of <span class="math notranslate nohighlight">\(c_0\)</span> under plan <span class="math notranslate nohighlight">\(A\)</span>, equating <span class="math notranslate nohighlight">\(U_0^A\)</span> to <span class="math notranslate nohighlight">\(U_0^B\)</span>, and solving for <span class="math notranslate nohighlight">\(c_0^B \)</span> gives</p>
+<div class="math notranslate nohighlight" id="equation-eqn-tallwelfcosts">
+<span class="eqno">(12.12)<a class="headerlink" href="#equation-eqn-tallwelfcosts" title="Link to this equation">#</a></span>\[c_0^B - c_0^A = \frac{\beta}{1-\beta} \left[ \frac{- (\sigma_\epsilon^A)^2 \gamma }{2} \right].\]</div>
+<p>Formula <a class="reference internal" href="#equation-eqn-tallwelfcosts">(12.12)</a> tells us the percentage reduction in time <span class="math notranslate nohighlight">\(0\)</span> consumption that a representative consumer would be willing to accept in order not to bear the risk associated with the multiplicative martingale component of plan A.</p>
+</section>
+</div><div class="proof remark admonition" id="remark-10">
+<p class="admonition-title"><span class="caption-number">Remark 12.3 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Formula <a class="reference internal" href="#equation-eqn-tall103">(12.11)</a> is a special case of the time zero valuation function described in Proposition  that is appropriate for the special additive process for <span class="math notranslate nohighlight">\(\{\log C_t\}_{t=0}^\infty\)</span> assumed by <span id="id9">[<a class="reference internal" href="cite.html#id411" title="Thomas D. Tallarini. Risk-sensitive real business cycles. Journal of Monetary Economics, 45(3):507–532, June 2000.">Tallarini, 2000</a>]</span>.</p>
+</section>
+</div><div class="proof theorem admonition" id="theorem-11">
+<p class="admonition-title"><span class="caption-number">Theorem 12.3 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>(Forecasting a Multiplicative Functional, I)</p>
+<p>Let <span class="math notranslate nohighlight">\(\{Y_t\}\)</span> be the additive functional</p>
+<div class="math notranslate nohighlight" id="equation-eqn-addex1b2">
+<span class="eqno">(12.13)<a class="headerlink" href="#equation-eqn-addex1b2" title="Link to this equation">#</a></span>\[Y_{t+1} - Y_t = \kappa(X_{t},W_{t+1}) = \nu + D \cdot X_t + F \cdot W_{t+1},\]</div>
+<p>where <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(F\)</span> are vectors with the same dimensions as <span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(W_{t+1}\)</span>, respectively. It follows that</p>
+<div class="math notranslate nohighlight">
+\[\log Y_{t+j} - \log Y_t = j \nu + D (I + A + \cdots A^{j-1}) X_t + F W_{t+j}
++ (F + DB) W_{t+j-1} + (F + D(I+A)B) W_{t+j-2}
++ \cdots + (F + D(I + A + \cdots + A^{j-2}) B ) W_{t+1}\]</div>
+<p>which it is convenient to express as</p>
+<div class="math notranslate nohighlight">
+\[\log Y_{t+j} - \log Y_t = j \nu + \check G_j X_t + \sum_{k=0}^{t-1} \check H_k W_{t+j-k},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\check G_j\)</span> and <span class="math notranslate nohighlight">\(\check H_j\)</span> are defined to make this expression match the previous one. Where</p>
+<div class="math notranslate nohighlight">
+\[\Omega_j =\sum_{k=0}^{j-1} H_k \cdot H_k,\]</div>
+<p>it follows that</p>
+<div class="math notranslate nohighlight">
+\[\log Y_{t+j} - \log Y_t \sim {\mathcal N}(j \nu + \check G_j X_t, \Omega_j)\]</div>
+<p>and that</p>
+<div class="math notranslate nohighlight" id="equation-eqn-emultfunct">
+<span class="eqno">(12.14)<a class="headerlink" href="#equation-eqn-emultfunct" title="Link to this equation">#</a></span>\[E \left[ \frac{Y_{t+j}}{Y_t} \right]\Bigl| {\mathfrak F}_t = \exp\left( j v + \check G_j X_t + \frac{1}{2} \Omega_j\right).\]</div>
+</section>
+</div><div class="proof example admonition" id="example-12">
+<p class="admonition-title"><span class="caption-number">Example 12.6 </span></p>
+<section class="example-content" id="proof-content">
+<p>(Term Structure of Interest Rates, I)</p>
+<p>Let the Markov state <span class="math notranslate nohighlight">\(X_t\)</span> be governed by the VAR</p>
+<div class="math notranslate nohighlight">
+\[X_{t+1} = A X_t + B W_{t+1},\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is a stable matrix and
+<span class="math notranslate nohighlight">\(\{ W_{t+1} \}\)</span> is a sequence of independent and identically
+normally distributed random vectors with mean zero and covariance matrix <span class="math notranslate nohighlight">\(I\)</span>.
+Let consumption <span class="math notranslate nohighlight">\(\{C_t\}_{t=0}^\infty\)</span> be the additive functional generated by</p>
+<div class="math notranslate nohighlight">
+\[C_{t+1} - C_t =  \nu + D \cdot X_t + F \cdot W_{t+1}, \quad t \geq 0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(D\)</span> and <span class="math notranslate nohighlight">\(F\)</span> are vectors with the same dimensions as <span class="math notranslate nohighlight">\(X_t\)</span> and <span class="math notranslate nohighlight">\(W_{t+1}\)</span>, respectively.
+A consumer ranks consumption streams <span class="math notranslate nohighlight">\(\{C_t\}_{t=0}^\infty\)</span>
+according to</p>
+<div class="math notranslate nohighlight">
+\[E \left[ \sum_{t=0}^\infty \exp(-\delta t) \frac{C_t^{1-\gamma}}{1-\gamma} \right] \Bigg| { \mathfrak F}_0 ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta &gt;0\)</span> is a rate of time preference and <span class="math notranslate nohighlight">\(\gamma \geq 1\)</span> is a coefficient of relative risk aversion.
+This consumer has a stochastic discount factor process <span class="math notranslate nohighlight">\(\{S_t \}_{t=0}^\infty\)</span> governed by</p>
+<div class="math notranslate nohighlight">
+\[\log S_{t+1} - \log S_t = -\delta - \gamma (\log C_{t+1} - \log C_t )\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\log S_{t+1} - \log S_t = - (\delta + \gamma \nu) - \gamma(D \cdot X_t + F \cdot W_{t+1}) .\]</div>
+<p>We can apply formula <a class="reference internal" href="#equation-eqn-emultfunct">(12.14)</a> to compute the price of a claim at time <span class="math notranslate nohighlight">\(t\)</span> to a risk-free claim
+on one unit of consumption at time <span class="math notranslate nohighlight">\(t+1\)</span></p>
+<div class="math notranslate nohighlight">
+\[E \left[ \frac{S_{t+j}}{S_t} \right]\Big| {\mathfrak F}_t ,\]</div>
+<p>thereby acquiring a theory of the term structure of interest rates.</p>
+</section>
+</div><section id="finite-state-markov-increments">
+<h3><span class="section-number">12.4.1. </span>Finite State Markov Increments<a class="headerlink" href="#finite-state-markov-increments" title="Link to this heading">#</a></h3>
+<p>The case in which <span class="math notranslate nohighlight">\(X_t\)</span> is a finite-state Markov chain is also manageable computationally.</p>
+<div class="proof example admonition" id="ex:Markov_chain_mult">
+<p class="admonition-title"><span class="caption-number">Example 12.7 </span></p>
+<section class="example-content" id="proof-content">
+<p>(Finite state Markov chain)</p>
+<p>The stationary (or asymptotically stationary) stochastic process <span class="math notranslate nohighlight">\(X_t\)</span> is governed by a finite state Markov chain on state space
+<span class="math notranslate nohighlight">\({\mathbf S} = \{ s_1, s_2, \ldots, s_n \}\)</span>, where
+<span class="math notranslate nohighlight">\(s_i\)</span> is the <span class="math notranslate nohighlight">\(n \times 1\)</span> unit vector whose components are all zero except for <span class="math notranslate nohighlight">\(1\)</span> in the <span class="math notranslate nohighlight">\(i\)</span>th row.  The transition matrix
+is <span class="math notranslate nohighlight">\(P\)</span> where <span class="math notranslate nohighlight">\(P_{ij} = \textrm{Prob}( X_{t+1} = s_j | X_t = s_i)\)</span>.  We can represent the Markov chain as</p>
+<div class="math notranslate nohighlight">
+\[X_{t+1} = P' X_t + W_{t+1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(E (X_{t+1} | X_t ) = P' X_t \)</span>, <span class="math notranslate nohighlight">\(P'\)</span> denotes the transpose of <span class="math notranslate nohighlight">\(P\)</span>,  and <span class="math notranslate nohighlight">\(\{W_{t+1}\}\)</span> is an <span class="math notranslate nohighlight">\(n \times 1\)</span> vector process that satisfies <span class="math notranslate nohighlight">\(E ( W_{t+1} | X_t) = 0 \)</span>, which is therefore a
+martingale difference sequence adapted to <span class="math notranslate nohighlight">\(X_t, X_{t-1}, \ldots , X_0\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(G\)</span> be an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix whose <span class="math notranslate nohighlight">\((i,j)\)</span> entry <span class="math notranslate nohighlight">\(G_{ij}\)</span> is an additive net  growth rate  <span class="math notranslate nohighlight">\(Y_{t+1} - Y_t\)</span> experienced   when <span class="math notranslate nohighlight">\(X_{t+1} = s_j\)</span> and
+<span class="math notranslate nohighlight">\(X_t = s_i\)</span>.  The stochastic process <span class="math notranslate nohighlight">\(\{Y_t\}\)</span> is governed by the <em>additive functional</em></p>
+<div class="math notranslate nohighlight">
+\[Y_{t+1} - Y_t = (X_t)'G X_{t+1} .\]</div>
+<p>Let <span class="math notranslate nohighlight">\(M_t = \exp(Y_t)\)</span>.
+Define   a matrix <span class="math notranslate nohighlight">\({\sf M}\)</span> whose <span class="math notranslate nohighlight">\((i,j)\)</span>th element is <span class="math notranslate nohighlight">\({\sf M}_{ij} = \exp(G_{ij})`[^footnoteexp]. The stochastic process \)</span>{M_t}$ is governed by the <em>multiplicative functional</em>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-multfnmark">
+<span class="eqno">(12.15)<a class="headerlink" href="#equation-eqn-multfnmark" title="Link to this equation">#</a></span>\[{\frac {M_{t+1}}{M_t}} = \exp\left[ (X_t)' G X_{t+1} \right] = (X_t)'{\sf M} X_{t+1}.\]</div>
+<p>Associated with this multiplicative functional is the principal eigenvalue problem</p>
+<div class="math notranslate nohighlight">
+\[E\left[ {\frac {M_{t+1}}{M_t}}  \tilde e \cdot X_{t+1} | X_t = x \right] = \exp\left( \tilde \eta \right) \tilde e \cdot x.\]</div>
+<p>Write the <span class="math notranslate nohighlight">\(j^{th}\)</span> entry of <span class="math notranslate nohighlight">\({\tilde e}\)</span> as <span class="math notranslate nohighlight">\({\tilde e}_j\)</span>.   Notice that because <span class="math notranslate nohighlight">\(X_t\)</span> always assumes the value of one of the unit vectors <span class="math notranslate nohighlight">\(s_i, i =1, \ldots, n\)</span>, we can write</p>
+<div class="math notranslate nohighlight">
+\[(X_t)'{\sf M} X_{t+1} = {\sf M}_{ij}\]</div>
+<p>when <span class="math notranslate nohighlight">\(X_t = s_i\)</span> and <span class="math notranslate nohighlight">\(X_{t+1} = s_j\)</span>.
+Therefore, we can write the principal eigenvalue problem as</p>
+<div class="math notranslate nohighlight">
+\[\sum_j P_{ij} {\sf M}_{ij} \tilde e_j = \exp(\tilde \eta) \tilde e_i\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight" id="equation-eqn-peigmarkov">
+<span class="eqno">(12.16)<a class="headerlink" href="#equation-eqn-peigmarkov" title="Link to this equation">#</a></span>\[\widetilde P \tilde e = \exp(\tilde \eta) \tilde e\]</div>
+<p>where <span class="math notranslate nohighlight">\(\widetilde P_{ij} = P_{ij} {\sf M}_{ij}\)</span>.  We want the largest eigenvalue and  associated eigenvector of <a class="reference internal" href="#equation-eqn-peigmarkov">(12.16)</a>.
+After solving the principal eigenvalue problem, compute</p>
+<div class="math notranslate nohighlight" id="equation-eqn-tildemform">
+<span class="eqno">(12.17)<a class="headerlink" href="#equation-eqn-tildemform" title="Link to this equation">#</a></span>\[{\widetilde {\sf M}}_{ij} = \exp\left( - \tilde \eta \right) {\sf M}_{ij} \frac {e_j}{e_i}\]</div>
+<p>and form <span class="math notranslate nohighlight">\({\widetilde {\sf M}} = [{\widetilde {\sf M}}_{ij}]\)</span>.
+By construction, <span class="math notranslate nohighlight">\({\widetilde {\sf M}}\)</span> is a stochastic  matrix that we can
+use to form   increments <span class="math notranslate nohighlight">\((X_t)'{\widetilde {\sf M}} X_{t+1}\)</span> in a positive multiplicative martingale process <span class="math notranslate nohighlight">\(\{{\widetilde M_t}\}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-likemarkov">
+<span class="eqno">(12.18)<a class="headerlink" href="#equation-eqn-likemarkov" title="Link to this equation">#</a></span>\[{\frac {{\widetilde M}_{t+1}}{{\widetilde M}_t}} = (X_t)'{\widetilde {\sf M}} X_{t+1}.\]</div>
+<p>To achieve a <a class="reference internal" href="#prop:factor">Theorem 12.1</a> representation of  the multiplicative functional <span class="math notranslate nohighlight">\(M_t\)</span>, use formula <a class="reference internal" href="#equation-eqn-tildemform">(12.17)</a> for <span class="math notranslate nohighlight">\({\widetilde{\sf M}}_{ij}\)</span> to get
+<span class="math notranslate nohighlight">\(
+{\sf M}_{ij} = \exp\left( \tilde \eta \right) {\widetilde {\sf M}}_{ij}  \frac {e_i}{e_j} \)</span>
+so that we can write <a class="reference internal" href="#equation-eqn-multfnmark">(12.15)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-eqn-multplmarkfinal">
+<span class="eqno">(12.19)<a class="headerlink" href="#equation-eqn-multplmarkfinal" title="Link to this equation">#</a></span>\[{\frac {M_{t+1}}{M_t}} =  \exp\left( \tilde \eta \right) \left[(X_t)'{\widetilde {\sf M}} X_{t+1}\right]
+\left(  \frac {e \cdot X_t }{e \cdot X_{t+1}} \right) .\]</div>
+</section>
+</div><div class="proof remark admonition" id="remark-14">
+<p class="admonition-title"><span class="caption-number">Remark 12.4 </span></p>
+<section class="remark-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(i_t\)</span> be the index of the Markov state at time <span class="math notranslate nohighlight">\(t\)</span> and let <span class="math notranslate nohighlight">\(\{ i_0, i_1, \ldots, i_T\}\)</span> be a simulation of the (asymptotically stationary) Markov process for <span class="math notranslate nohighlight">\(\{X_t\}\)</span>. We can use <a class="reference internal" href="#equation-eqn-multfnmark">(12.15)</a> to generate a simulation of the multiplicative functional <span class="math notranslate nohighlight">\(M_t\)</span> and equation <a class="reference internal" href="#equation-eqn-likemarkov">(12.18)</a> to generate a simulation of the positive multiplicative martingale <span class="math notranslate nohighlight">\(\widetilde M_t\)</span>.</p>
+</section>
+</div><p><em>Construct some Python examples here and nearby</em></p>
+<div class="proof theorem admonition" id="fact:MC_mult_forecasting">
+<p class="admonition-title"><span class="caption-number">Theorem 12.4 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>(Forecasting a Multiplicative Functional, II)</p>
+<p>Let <span class="math notranslate nohighlight">\(\{M_t\}\)</span> be the multiplicative functional described in <a class="reference internal" href="#ex:Markov_chain_mult">Example 12.7</a> with transition matrix <span class="math notranslate nohighlight">\(P\)</span> and matrix <span class="math notranslate nohighlight">\(\mathsf{M}\)</span> defining multiplicative increments. Form a matrix <span class="math notranslate nohighlight">\(\widetilde P\)</span> whose <span class="math notranslate nohighlight">\(i,j\)</span> element is <span class="math notranslate nohighlight">\(P_{ij} \mathsf{M}_{ij}\)</span>. Then for integer <span class="math notranslate nohighlight">\(j \geq 1\)</span></p>
+<div class="math notranslate nohighlight" id="equation-eqn-mc-forecast">
+<span class="eqno">(12.20)<a class="headerlink" href="#equation-eqn-mc-forecast" title="Link to this equation">#</a></span>\[E \left[ M_{t+j} | M_t, X_t = s_i \right] =    \left( \sum_k \widetilde P^{(j)}_{i,k} \right) M_t ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\widetilde P^{(j)}\)</span> is the <span class="math notranslate nohighlight">\(j\)</span>th power of <span class="math notranslate nohighlight">\(\widetilde P\)</span>.</p>
+</section>
+</div><div class="proof example admonition" id="ex:Markchain_Lucas_1">
+<p class="admonition-title"><span class="caption-number">Example 12.8 </span></p>
+<section class="example-content" id="proof-content">
+<p>(Stochastically growing payouts)</p>
+<p>Assume the same Markov chain setting of example <a class="reference internal" href="#ex:Markov_chain_mult">Example 12.7</a>.
+Define a matrix <span class="math notranslate nohighlight">\(\sf{S}\)</span> whose <span class="math notranslate nohighlight">\((i,j)\)</span>th element is <span class="math notranslate nohighlight">\(\sf{S}_{ij} = \exp(G_{S,ij})\)</span>, where <span class="math notranslate nohighlight">\(G_{S,ij}\)</span> is a stochastic discount rate for moving from state <span class="math notranslate nohighlight">\(s_i\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> to state <span class="math notranslate nohighlight">\(s_j\)</span> at time <span class="math notranslate nohighlight">\(t+1\)</span>.<a class="footnote-reference brackets" href="#sconstruction" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> A stochastic discount factor process <span class="math notranslate nohighlight">\(\{S_t\}_{t=0}^\infty\)</span> is governed by the <em>multiplicative functional</em>:</p>
+<div class="math notranslate nohighlight">
+\[{\frac {S_{t+1}}{S_t}} = \exp\left[ (X_t)' G_S X_{t+1} \right] = (X_t)'{\sf S} X_{t+1}.\]</div>
+<p>Define a matrix <span class="math notranslate nohighlight">\(\sf{D}\)</span> whose <span class="math notranslate nohighlight">\((i,j)\)</span>th element is <span class="math notranslate nohighlight">\(\sf{D}_{ij} = \exp(G_{D,ij})\)</span>.
+A non-negative payout or dividend process <span class="math notranslate nohighlight">\(\{d_t\}_{t=0}^\infty\)</span> is governed by the <em>multiplicative functional</em>:</p>
+<div class="math notranslate nohighlight">
+\[{\frac {d_{t+1}}{d_t}} = \exp\left[ (X_t)' G_D X_{t+1} \right] = (X_t)'{\sf D} X_{t+1}.\]</div>
+<p>As in example <a class="reference internal" href="#ex:Markov_chain_mult">Example 12.7</a>, because <span class="math notranslate nohighlight">\(X_t\)</span> always assumes the value of one of the unit vectors <span class="math notranslate nohighlight">\(s_i, i =1, \ldots, n\)</span>, we can write</p>
+<p><span class="math notranslate nohighlight">\((X_t)'{\sf S} X_{t+1} = {\sf S}_{ij}\)</span>   and <span class="math notranslate nohighlight">\((X_t)'{\sf D} X_{t+1} = {\sf D}_{ij}\)</span></p>
+<p>when <span class="math notranslate nohighlight">\(X_t = s_i\)</span> and <span class="math notranslate nohighlight">\(X_{t+1} = s_j\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(p_t\)</span> be the price at the beginning of period <span class="math notranslate nohighlight">\(t\)</span> of a claim to the stochastically growing or shrinking stream of payouts <span class="math notranslate nohighlight">\(\{d_{t+j}\}_{j=0}^\infty\)</span>. It satisfies</p>
+<div class="math notranslate nohighlight">
+\[p_t = E\left[\frac{S_{t+1}}{S_t} (d_t + p_{t+1})\right] \Bigl| \mathfrak{F}_t ,\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\frac{p_t}{d_t} =
+E\left[\frac{S_{t+1}}{S_t}
+       \left(1 + \frac{d_{t+1}}{d_t} \frac{p_{t+1}}{d_{t+1}}\right)
+ \right] \Bigl| \mathfrak{F}_t  .\]</div>
+<p>where time <span class="math notranslate nohighlight">\(t\)</span> information set <span class="math notranslate nohighlight">\(\mathfrak{F}_t\)</span> includes <span class="math notranslate nohighlight">\(X_t, S_t, d_t\)</span>.
+Guessing that the price-dividend ratio <span class="math notranslate nohighlight">\(\frac{p_t}{d_t}\)</span> is a function of the Markov state <span class="math notranslate nohighlight">\(X_t\)</span> only, and letting it equal <span class="math notranslate nohighlight">\(v_i\)</span> when <span class="math notranslate nohighlight">\(X_t = s_i\)</span>, write the preceding equation as</p>
+<div class="math notranslate nohighlight">
+\[v_i =   \sum_{j=1}^n P_{ij} \left[  {\sf S}_{ij} \mathbf{1}  + \left( {\sf S}_{ij} \cdot {\sf D}_{ij} \right) v_j \right]\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[v = c + \widetilde{P} v ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(c = \widehat{P} \mathbf{1}\)</span> is by construction a nonnegative vector and we have defined nonnegative matrices <span class="math notranslate nohighlight">\(\widetilde{P} \in \mathbb{R}^{n \times n}\)</span> and <span class="math notranslate nohighlight">\(\widehat{P} \in \mathbb{R}^{n \times n}\)</span> by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\widetilde{P}_{ij} &amp;= P_{ij} {\sf S}_{ij} {\sf D}_{ij}, \\
+\widehat{P}_{ij} &amp;= P_{ij} {\sf S}_{ij},
+\end{aligned}\end{split}\]</div>
+<p>The equation <span class="math notranslate nohighlight">\(v = \widetilde{P} v + c\)</span> has a nonnegative solution if and only if all eigenvalues of <span class="math notranslate nohighlight">\(\widetilde{P}\)</span> are smaller than <span class="math notranslate nohighlight">\(1\)</span> in modulus.
+A sufficient condition for this is that all column sums, or that all the row sums, of <span class="math notranslate nohighlight">\(\widetilde{P}\)</span> are less than one, which holds when <span class="math notranslate nohighlight">\(G_S + G_D \ll 0\)</span>. This condition asserts that discounting overtakes growth in dividends.
+Given a solution <span class="math notranslate nohighlight">\(v\)</span>, the price-dividend ratio is a stationary process that is a fixed function of the Markov state:</p>
+<div class="math notranslate nohighlight">
+\[\frac{p_t}{d_t} = v_i \text{ when $X_t = s_i$}.\]</div>
+<p>Meanwhile, the asset price process and the dividend process are both multiplicative functionals that exhibit either multiplicative growth or decay.</p>
+</section>
+</div><div class="proof example admonition" id="ex:Markchain_Lucas_2">
+<p class="admonition-title"><span class="caption-number">Example 12.9 </span></p>
+<section class="example-content" id="proof-content">
+<p>(Lucas asset pricing model with growth)</p>
+<p>Consider the setting of example <a class="reference internal" href="#ex:Markchain_Lucas_1">Example 12.8</a>.
+Let <span class="math notranslate nohighlight">\(d_t = C_t\)</span>, aggregate consumption, and let</p>
+<div class="math notranslate nohighlight">
+\[\frac{S_{t+1}}{S_t} = \exp(-\delta) \left(\frac{C_{t+1}}{C_t} \right)^{-\gamma} ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta &gt; 0\)</span> is a rate of time preference and <span class="math notranslate nohighlight">\(\gamma \geq 1\)</span> is a coefficient of relative risk aversion.
+To obtain this special case of example <a class="reference internal" href="#ex:Markchain_Lucas_1">Example 12.8</a>, we set</p>
+<div class="math notranslate nohighlight">
+\[\textsf{S}_{ij} = \exp(-\delta) \textsf{D}_{ij}^{-\gamma} ,\]</div>
+<p>where we now interpret  <span class="math notranslate nohighlight">\(\textsf{D}_{ij}\)</span> as the multiplicative  rate of growth of the level of aggregate consumption between <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t+1\)</span>
+when <span class="math notranslate nohighlight">\(X_t = s_i\)</span> and <span class="math notranslate nohighlight">\(X_{t+1} = s_j\)</span>.</p>
+</section>
+</div><div class="proof example admonition" id="lab:term_struct_MC">
+<p class="admonition-title"><span class="caption-number">Example 12.10 </span></p>
+<section class="example-content" id="proof-content">
+<p>(Term structure of interest rates, II)</p>
+<p>Consider the framework of example <a class="reference internal" href="#ex:Markchain_Lucas_1">Example 12.8</a> or <a class="reference internal" href="#ex:Markchain_Lucas_2">Example 12.9</a>.
+When the Markov state <span class="math notranslate nohighlight">\(X_t = s_i\)</span> at time  <span class="math notranslate nohighlight">\(t\)</span>, the price of a risk-free zero-coupon bond paying one unit of consumption at time <span class="math notranslate nohighlight">\(t+j\)</span>
+is</p>
+<div class="math notranslate nohighlight">
+\[p_{j,t} = E \left[ \frac{S_{t+j}}{S_t}  \right] \Big| X_t = s_i .\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\widehat{P}_{ij} = P_{ij} {\sf S}_{ij}\)</span> and apply formula <a class="reference internal" href="#equation-eqn-mc-forecast">(12.20)</a> from fact <a class="reference internal" href="#fact:MC_mult_forecasting">Theorem 12.4</a>
+to deduce</p>
+<div class="math notranslate nohighlight">
+\[p_{j,t} =    \left( \sum_k \widehat P^{(j)}_{i,k} \right) ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\widehat P^{(j)}\)</span> is the <span class="math notranslate nohighlight">\(j\)</span>th power of the matrix <span class="math notranslate nohighlight">\(\widehat P\)</span>.</p>
+</section>
+</div></section>
+</section>
+<section id="technical-details-involving-multiplicity">
+<h2><span class="section-number">12.5. </span>Technical details involving multiplicity<a class="headerlink" href="#technical-details-involving-multiplicity" title="Link to this heading">#</a></h2>
+<p>When the <a class="reference internal" href="#prob-eigen"><span class="std std-ref">eigenfunction problem</span></a> has multiple solutions, there is a unique solution
+for which the process <span class="math notranslate nohighlight">\(\{ X_t \}\)</span> is stationary and ergodic under the implied change of measure, namely,
+the solution associated with the minimum eigenvalue.</p>
+<div class="proof theorem admonition" id="prop:unique">
+<p class="admonition-title"><span class="caption-number">Theorem 12.5 </span></p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\{ M_t \}\)</span> be a multiplicative functional. Suppose that <span class="math notranslate nohighlight">\((\tilde \eta, \tilde e)\)</span> solves <a class="reference internal" href="#prob-eigen"><span class="std std-ref">eigenfunction problem</span></a> and that under the change of measure <span class="math notranslate nohighlight">\(\widetilde P\)</span> implied by the associated martingale <span class="math notranslate nohighlight">\(\{ \widetilde M_t \}\)</span> the stochastic process <span class="math notranslate nohighlight">\(\{ X_t \}\)</span> is stationary and ergodic. Consider any other solution <span class="math notranslate nohighlight">\((\eta^*, e^*)\)</span> to <a class="reference internal" href="#prob-eigen"><span class="std std-ref">eigenfunction problem</span></a> with implied martingale <span class="math notranslate nohighlight">\(\{ M_t^* \}\)</span>. Then</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\eta^* \ge \tilde \eta\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\{ X_t \}\)</span> is stationary and ergodic under the change of measure <span class="math notranslate nohighlight">\(Pr^*\)</span> implied by the martingale <span class="math notranslate nohighlight">\(\{ M_t^* \}\)</span>, then <span class="math notranslate nohighlight">\(\eta^* = \tilde \eta\)</span>, <span class="math notranslate nohighlight">\(e^*\)</span> is proportional to <span class="math notranslate nohighlight">\(\tilde e\)</span>, and <span class="math notranslate nohighlight">\(M_t^* = \widetilde M_t\)</span> for all <span class="math notranslate nohighlight">\(t=0,1,... \)</span>.</p></li>
+</ol>
+</section>
+</div><p>First we show that <span class="math notranslate nohighlight">\(\eta^* \ge \tilde \eta\)</span>. Write:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{M}^t{e^*}(x) = \exp\left( \tilde \eta t \right) \widetilde{E} \left( \left[ \frac { \tilde e(X_0)}{\tilde e(X_t) } \right] {e^*}(X_t) \vert X_0=x \right) = \exp \left( \eta^* t \right) e^*(x) .\]</div>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[\widetilde{E} \left( \left[ \frac { e^*(X_t)}{\tilde e(X_t) } \right] \Biggl| X_0=x \right) = \exp \left( \eta^* t - \tilde \eta t \right) \left[ \frac {e^*(x)}{\tilde e(x)} \right] .\]</div>
+<p>If <span class="math notranslate nohighlight">\(\tilde \eta &gt; \eta^*\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\lim_{t \rightarrow \infty} \widetilde{E} \left( \left[ \frac { e^*(X_t)}{\tilde e(X_t) } \right] \Biggl| X_0=x \right) = 0.\]</div>
+<p>But this equality cannot be true because <span class="math notranslate nohighlight">\(\widetilde{Pr}\)</span> implies that <span class="math notranslate nohighlight">\(\{ X_t \}\)</span> is stationary and <span class="math notranslate nohighlight">\(\frac {e^*}{\tilde e}\)</span> is strictly positive. Therefore, inequality must be satisfied.</p>
+<p>Consider next the case in which <span class="math notranslate nohighlight">\(\eta^* &gt; \tilde \eta\)</span>. Write</p>
+<div class="math notranslate nohighlight">
+\[\frac {M_t}{ M_0} = \exp\left( \eta^* t \right) \left( \frac { M^*_t}{ M^*_0 } \right) \left( \frac {e^*(X_0)}{e^*(X_t) } \right),\]</div>
+<p>which implies that</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{M}^t\tilde e(x) = \exp\left( \eta^* t \right) E^* \left[ \left( \frac {e^*(X_0)}{e^*(X_t) } \right) \tilde e(X_t) | X_0=x \right] = \exp \left( \tilde \eta t \right) \tilde e(x) .\]</div>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[E^* \left( \left[ \frac { \tilde e(X_t)}{e^*(X_t) } \right] \Biggl| X_0=x \right) = \exp\left( \tilde \eta t - \eta^* t \right)\left[ \frac {\tilde e(x)}{e^*(x)}\right].\]</div>
+<p>Suppose that <span class="math notranslate nohighlight">\(\tilde \eta &lt; \eta^*\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\lim_{t \rightarrow \infty} E^* \left( \left[ \frac { \tilde e(X_t)}{e^*(X_t) } \right] \Biggl| X_0=x \right) = 0 ,\]</div>
+<p>so that <span class="math notranslate nohighlight">\(\{ X_t : t=0,1,... \}\)</span> cannot be stationary under the <span class="math notranslate nohighlight">\(Pr^*\)</span> measure. Next suppose that <span class="math notranslate nohighlight">\(\tilde \eta = \eta^*\)</span> and that <span class="math notranslate nohighlight">\(\frac {\tilde e(x)}{e^*(x)}\)</span> is not constant. Then</p>
+<div class="math notranslate nohighlight">
+\[E^* \left( \left[ \frac { \tilde e(X_t)}{e^*(X_t) } \right] \Biggl| X_0=x \right) = \frac {\tilde e(x)}{e^*(x)}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\{ X_t : t=0,1,... \}\)</span> cannot be ergodic under the <span class="math notranslate nohighlight">\(Pr^*\)</span> measure.</p>
+</section>
+<section id="long-run-growth-rates">
+<h2><span class="section-number">12.6. </span>Long-run Growth Rates<a class="headerlink" href="#long-run-growth-rates" title="Link to this heading">#</a></h2>
+<p>It is instructive to use the Proposition <a class="reference internal" href="#prop:factor">Theorem 12.1</a> factorization to study the behavior of <span class="math notranslate nohighlight">\({\mathbb M}^jf\)</span> for large <span class="math notranslate nohighlight">\(j\)</span>. Suppose that</p>
+<div class="math notranslate nohighlight" id="equation-eqn-fcondition">
+<span class="eqno">(12.21)<a class="headerlink" href="#equation-eqn-fcondition" title="Link to this equation">#</a></span>\[f &gt; 0 \textrm{ and } 0 &lt; {\widetilde E}\left[{\frac {f(X_t)} {{\tilde e}(X_t)}}\right] &lt; \infty.\]</div>
+<p>Then if <span class="math notranslate nohighlight">\(\{ X_t\}\)</span> is stationary and ergodic under <span class="math notranslate nohighlight">\({\widetilde P}r\)</span></p>
+<div class="math notranslate nohighlight">
+\[{\frac 1 j} \log {\mathbb M}^jf(x)  =
+{\tilde \eta} + {\frac 1 j} \log {\widetilde E} \left[  {\frac {f(X_j)} {{\tilde e}(X_j)}} \Big| X_0 = x \right]  - {\frac 1 j} \log {\tilde e} (x)
+ \le  {\tilde \eta}  + {\frac 1 j} \log \sum_{t=1}^j {\widetilde E} \left[  {\frac {f(X_t)} {{\tilde e}(X_t)}} \Big| X_0 = x \right]
+ - {\frac 1 j} \log {\tilde e}(x) \le {\tilde \eta}  +  {\frac 1 j} \log j + {\frac 1 j} \log {\frac 1 j} \sum_{t=1}^j
+{\widetilde E} \left[  {\frac {f(X_t)} {{\tilde e}(X_t)}} \Big| X_0 = x \right] - {\frac 1 j} \log {\tilde e}(x) .\]</div>
+<p>Consequently,</p>
+<div class="math notranslate nohighlight">
+\[\limsup_{j \rightarrow \infty} {\frac 1 j} \log {\mathbb M}^jf(x) \le {\tilde \eta} ,\]</div>
+<p>so <span class="math notranslate nohighlight">\({\tilde \eta}\)</span> is an upper bound on the growth rate for a class of functions <span class="math notranslate nohighlight">\(f\)</span> satisfying condition <a class="reference internal" href="#equation-eqn-fcondition">(12.21)</a>. The bound is attained when <span class="math notranslate nohighlight">\(f = {\tilde e}\)</span>. If in addition,</p>
+<div class="math notranslate nohighlight" id="equation-liminf">
+<span class="eqno">(12.22)<a class="headerlink" href="#equation-liminf" title="Link to this equation">#</a></span>\[\liminf_{j \rightarrow \infty}  {\widetilde E}\left[{\frac {f(X_j)} {{\tilde e}(X_j)}} \Big| X_0 = x \right] &gt; 0,\]</div>
+<p>then</p>
+<div class="math notranslate nohighlight">
+\[\liminf_{j \rightarrow \infty}   {\frac 1 j} \log {\mathbb M}^jf(x) = {\tilde \eta}\]</div>
+<p>and therefore</p>
+<div class="math notranslate nohighlight">
+\[\lim_{j \rightarrow \infty} {\frac 1 j} \log {\mathbb M}^jf(x) = {\tilde \eta}.\]</div>
+<p>We now consider the consequences of strengthening the ergodicity restriction with a stochastic stability condition.</p>
+<p>Under condition , we obtain a more refined approximation:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{j \rightarrow \infty} \exp (- {\tilde \eta} j ) {\mathbb M}^j f(x)  = \lim_{j \rightarrow \infty}  {\widetilde E}
+\left[  {\frac {f(X_j)} {{\tilde e}(X_j)}}  \Big| X_0 = x \right] {\tilde e}(x)
+ =  {\widetilde E}\left[{\frac {f(X_t)} {{\tilde e}(X_t)}}\right] \tilde e(x).\]</div>
+<p>Once we adjust for the impact of <span class="math notranslate nohighlight">\({\tilde \eta}\)</span>, the limiting function is proportional to <span class="math notranslate nohighlight">\({\tilde e}\)</span>. The function <span class="math notranslate nohighlight">\(f\)</span> determines only a scale factor <span class="math notranslate nohighlight">\({\widetilde E}\left[{\frac {f(X_t)} {{\tilde e}(X_t)}}\right] \tilde e(x)\)</span>.</p>
+</section>
+<section id="applications-and-extensions">
+<h2><span class="section-number">12.7. </span>Applications and Extensions<a class="headerlink" href="#applications-and-extensions" title="Link to this heading">#</a></h2>
+<p>We will apply and extend results in the chapter in a variety of ways in chapters <a class="reference internal" href="#like"><span class="xref myst">Likelihood-Based Inference</span></a> and <a class="reference internal" href="#elastic"><span class="xref myst">Elasticity and its Applications</span></a>.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="likelihoodratio" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
+<p>Therefore, it is a likelihood ratio process.</p>
+</aside>
+<aside class="footnote brackets" id="sconstruction" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">2</a><span class="fn-bracket">]</span></span>
+<p>This construction of <span class="math notranslate nohighlight">\(\sf{S}\)</span> again exploits the fact that <span class="math notranslate nohighlight">\(X_t\)</span> is a coordinate vector.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="gmmcurrent_lars_v9.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>GMM Estimation </p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cite.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Bibliography</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-growth-and-decay">12.1. Geometric Growth and Decay</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-multiplicative-functionals">12.2. Special Multiplicative Functionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicative-martingales-and-likelihood-processes">12.3. Multiplicative martingales and likelihood processes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factoring-multiplicative-functionals">12.4. Factoring Multiplicative functionals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-state-markov-increments">12.4.1. Finite State Markov Increments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technical-details-involving-multiplicity">12.5. Technical details involving multiplicity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-run-growth-rates">12.6. Long-run Growth Rates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-and-extensions">12.7. Applications and Extensions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lars Peter Hansen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

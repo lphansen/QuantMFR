@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. Stochastic Responses &#8212; Quant Macro Finance</title>
+    <title>9. Stochastic Responses &#8212; Quant Macro Finance</title>
   
   
   
@@ -35,8 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8c1df6e1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -65,8 +65,8 @@
     <link rel="canonical" href="https://lphansen.github.io/QuantMFR/book/chapter_stochastic_response.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="14. Representing Marginal Valuation" href="marginal_valuation.html" />
-    <link rel="prev" title="12. Likelihoods" href="example_out_c6_v2.html" />
+    <link rel="next" title="10. Representing Marginal Valuation" href="marginal_valuation.html" />
+    <link rel="prev" title="8. Likelihoods" href="example_out_c6_v2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,43 +179,18 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Risk, Uncertainty, and Value</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2.html">1. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c1_v2_enzo_and_ken.html">2. Stochastic Processes and Laws of Large Numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">3. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2_enzo_and_ken.html">4. Markov Processes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">5. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2_enzo_and_ken.html">6. Stationary Increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">7. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2_enzo_and_ken.html">8. Processes with Markovian increments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">9. Hidden Markov Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">10. Risk, Ambiguity, and Misspecification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">11. Exploring Recursive Utility</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">12. Likelihoods</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Stochastic Responses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">14. Representing Marginal Valuation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="cite.html">16. Bibliography</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../theory/uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/quickguide_update.html">Notebook: Expansion Suite</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="../theory/hkt.html">Example: Hansen, Khorrami and Tourre (2024)</a></li>
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="example_out_c2_v2.html">2. Markov Processes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c3_v2.html">3. Stationary Increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c4_v2.html">4. Processes with Markovian increments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c5_v2.html">5. Hidden Markov Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="decision_book_draft.html">6. Risk, Ambiguity, and Misspecification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exploring_recursive_utility.html">7. Exploring Recursive Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_out_c6_v2.html">8. Likelihoods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Stochastic Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="marginal_valuation.html">10. Representing Marginal Valuation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gmmcurrent_lars_v9.html">11. GMM Estimation </a></li>
+<li class="toctree-l1"><a class="reference internal" href="ch_multfunctional_mdconvert.html">12. Multiplicative Functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cite.html">13. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Shock Elasticities</span></p>
 <ul class="nav bd-sidenav">
@@ -388,16 +363,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">13.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">13.2. Discrete time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-markov-dynamics">13.2.1. Discrete-time Markov dynamics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-variational-dynamics">13.2.2. Discrete-time  variational dynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">9.2. Discrete time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-markov-dynamics">9.2.1. Discrete-time Markov dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-variational-dynamics">9.2.2. Discrete-time  variational dynamics</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-dynamics">13.3. Continuous-time dynamics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-diffusion-dynamics">13.3.1. Markov diffusion dynamics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-process">13.3.2. Variational process</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#responses-to-initial-shocks">13.3.3. Responses to initial shocks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-dynamics">9.3. Continuous-time dynamics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-diffusion-dynamics">9.3.1. Markov diffusion dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-process">9.3.2. Variational process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#responses-to-initial-shocks">9.3.3. Responses to initial shocks</a></li>
 </ul>
 </li>
 </ul>
@@ -412,43 +387,43 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="stochastic-responses">
-<h1><span class="section-number">13. </span>Stochastic Responses<a class="headerlink" href="#stochastic-responses" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Stochastic Responses<a class="headerlink" href="#stochastic-responses" title="Link to this heading">#</a></h1>
 <p><strong>Authors:</strong> Jaroslav Borovicka, Lars Peter Hansen, and Thomas J. Sargent</p>
 <p><strong>Date:</strong> September 2024
 <span class="math notranslate nohighlight">\(\newcommand{\eqdef}{\stackrel{\text{def}}{=}}\)</span></p>
 <section id="introduction">
-<h2><span class="section-number">13.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Impulse-response methods have been used by economists since <span id="id1">[<a class="reference internal" href="cite.html#id158" title="Ragar Frisch. Propagation problems and impulse problems in dynamic economics. In Economic Essays in Honour of Gustav Cassel, pages 171-205. Allen and Unwin, 1933.">Frisch, 1933</a>]</span> and in other disciplines. For nonlinear stochastic models, impulse responses are themselves stochastic.  Alternative approaches have been suggested in economics including <span id="id2">[<a class="reference internal" href="cite.html#id160" title="A R Gallant, P E Rossi, and G Tauchen. Nonlinear dynamic structures. Econometrica, 61:871-907, 1993. URL: http://www.jstor.org/stable/2951766.">Gallant <em>et al.</em>, 1993</a>]</span>,  <span id="id3">[<a class="reference internal" href="cite.html#id161" title="Gary Koop, M. Hashem Pesaran, and Simon M. Potter. Impulse response analysis in nonlinear multivariate models. Journal of Econometrics, 74:119-147, 1996. doi:10.1016/0304-4076(95)01753-4.">Koop <em>et al.</em>, 1996</a>]</span>, and <span id="id4">[<a class="reference internal" href="cite.html#id162" title="Gourieroux and Jasiak. Nonlinear innovations and impulse responses with application to var sensitivity. Annales d'Économie et de Statistique, 78:1-31, 2005. doi:10.2307/20079126.">Gourieroux and Jasiak, 2005</a>]</span>.  This chapter provides  stochastic responses in both discrete and continuous time for marginal changes in state variables and shocks.  The vast literature on vector autoregressions views these responses as ends in and of themselves.  Identified shocks as exogenous inputs into a dynamical system in effect <code class="docutils literal notranslate"><span class="pre">cause</span></code> movements in the vector time series of interest. Such measurements, while interesting, can have rather indirect connections to hypothetical interventions related to perspective policy changes that are at the heart of structural models.    Builders of dynamic stochastic equilibrium models use the construct of ‘structural’ in the sense  of <span id="id5">[<a class="reference internal" href="cite.html#id163" title="J Marschak. Cowles Commission Monograph 14: Studies in Econometric Methods, chapter Economic Measurements for Policy and Prediction, pages 1-26. Wiley, 1953.">Marschak, 1953</a>]</span>, <span id="id6">[<a class="reference internal" href="cite.html#id164" title="Leonid Hurwicz. On the structural form of interdependent systems. Logic, Methodology and Philosophy of Science Proceeding of the 1960 International Congress, 44:232-239, 1966. URL: http://www.sciencedirect.com/science/article/pii/S0049237X09705907, doi:http://dx.doi.org/10.1016/S0049-237X(09)70590-7.">Hurwicz, 1966</a>]</span>, and <span id="id7">[<a class="reference internal" href="cite.html#id320" title="Robert E. Jr Lucas. Econometric policy evaluation: a critique. Carnegie-Rochester Conference Series on Public Policy, 1:19 - 46, 1976. URL: http://www.sciencedirect.com/science/article/pii/S0167223176800036, doi:10.1016/S0167-2231(76)80003-6.">Lucas, 1976</a>]</span>.   They allow for investigating how a dynamical system changes when one portion of it is altered.  For us, these stochastic responses  are central inputs into marginal valuations that we will use for a variety of purposes.   In subsequent chapters, we provide extensive discussions of two types of such applications.     The first type
 provides asset-pricing type representations for endogenous  variables including various forms of capital.  These include policy relevant variables such as the social cost of climate change and the social value of research and development.   The second type generates what we call shock elasticities that help us characterize the building  blocks for exposures to uncertainty and prices of those exposures.</p>
 </section>
 <hr class="docutils" />
 <section id="discrete-time">
-<h2><span class="section-number">13.2. </span>Discrete time<a class="headerlink" href="#discrete-time" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>Discrete time<a class="headerlink" href="#discrete-time" title="Link to this heading">#</a></h2>
 <p>We first consider a discrete-time specification.</p>
 <section id="discrete-time-markov-dynamics">
-<h3><span class="section-number">13.2.1. </span>Discrete-time Markov dynamics<a class="headerlink" href="#discrete-time-markov-dynamics" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.2.1. </span>Discrete-time Markov dynamics<a class="headerlink" href="#discrete-time-markov-dynamics" title="Link to this heading">#</a></h3>
 <p>We start with Markov process</p>
 <div class="math notranslate nohighlight" id="equation-evolve">
-<span class="eqno">(13.1)<a class="headerlink" href="#equation-evolve" title="Link to this equation">#</a></span>\[\begin{split}X_{t+1}  = \psi(X_t, W_{t+1}), \\ 
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-evolve" title="Link to this equation">#</a></span>\[\begin{split}X_{t+1}  = \psi(X_t, W_{t+1}), \\ 
 Y_{t+1} - Y_t  = \kappa(X_t, W_{t+1}),\end{split}\]</div>
 <p>where there are <span class="math notranslate nohighlight">\(n\)</span> components of <span class="math notranslate nohighlight">\(X,\)</span>  <span class="math notranslate nohighlight">\(Y\)</span> is scalar, and <span class="math notranslate nohighlight">\(W\)</span> is <span class="math notranslate nohighlight">\(k\)</span> dimensional</p>
 </section>
 <section id="discrete-time-variational-dynamics">
-<h3><span class="section-number">13.2.2. </span>Discrete-time  variational dynamics<a class="headerlink" href="#discrete-time-variational-dynamics" title="Link to this heading">#</a></h3>
-<p>Let <span class="math notranslate nohighlight">\(\Lambda\)</span> denote the first variational process for <span class="math notranslate nohighlight">\(X\)</span>, and let <span class="math notranslate nohighlight">\(\Delta\)</span> denote the first variational process for <span class="math notranslate nohighlight">\(Y\)</span>. These variational processes are the ingredients to stochastic impulse responses to small changes in the underlying state variables. We compute them by “differentiating” in a generalized sense that accommodates the underling stochastic structure.  To obtain a recursive representation for <span class="math notranslate nohighlight">\((\Lambda, \Delta),\)</span>  we by differentiate <a class="reference internal" href="marginal_valuation.html#equation-evolve">(14.1)</a> and apply the chain rule:</p>
+<h3><span class="section-number">9.2.2. </span>Discrete-time  variational dynamics<a class="headerlink" href="#discrete-time-variational-dynamics" title="Link to this heading">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(\Lambda\)</span> denote the first variational process for <span class="math notranslate nohighlight">\(X\)</span>, and let <span class="math notranslate nohighlight">\(\Delta\)</span> denote the first variational process for <span class="math notranslate nohighlight">\(Y\)</span>. These variational processes are the ingredients to stochastic impulse responses to small changes in the underlying state variables. We compute them by “differentiating” in a generalized sense that accommodates the underling stochastic structure.  To obtain a recursive representation for <span class="math notranslate nohighlight">\((\Lambda, \Delta),\)</span>  we by differentiate <a class="reference internal" href="marginal_valuation.html#equation-evolve">(10.1)</a> and apply the chain rule:</p>
 <div class="math notranslate nohighlight" id="equation-var-evolve">
-<span class="eqno">(13.2)<a class="headerlink" href="#equation-var-evolve" title="Link to this equation">#</a></span>\[\begin{split}\Lambda_{t+1}  = \frac {\partial \psi}{\partial x'} (X_t, W_{t+1}) \Lambda_t \\ 
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-var-evolve" title="Link to this equation">#</a></span>\[\begin{split}\Lambda_{t+1}  = \frac {\partial \psi}{\partial x'} (X_t, W_{t+1}) \Lambda_t \\ 
 \Delta_{t+1} - \Delta_t  = \frac {\partial \kappa}{\partial x}(X_t, W_{t+1}) \cdot \Lambda_t .\end{split}\]</div>
 <p>In this calculation, <span class="math notranslate nohighlight">\(\Lambda_{t+1}\)</span> and <span class="math notranslate nohighlight">\(\Delta_{t+1}\)</span> are stochastic as they inherit the stochastic dependence of <span class="math notranslate nohighlight">\(X_{t+1}\)</span> and <span class="math notranslate nohighlight">\(Y_{t+1}.\)</span>  By differentiating the process at a given calendar date, we are allowing for date <span class="math notranslate nohighlight">\(t\)</span> variables to change as a function of date <span class="math notranslate nohighlight">\(t\)</span> information.</p>
 <p>To obtain alternative stochastic (local) impulse response functions, we initialize <span class="math notranslate nohighlight">\(({\Lambda_0}', \Delta_0)'\)</span> to be one of the coordinate vectors that depends on one of the initial states that we want to perturb. Then <span class="math notranslate nohighlight">\(({\Lambda_t}', \Delta_t)'\)</span> is the date <span class="math notranslate nohighlight">\(t\)</span> state vector stochastic response to the perturbation of the initial value of the component.</p>
 <p>To perturb <span class="math notranslate nohighlight">\(Y_0,\)</span> we can set <span class="math notranslate nohighlight">\(\Lambda_0 = 0\)</span> and <span class="math notranslate nohighlight">\(\Delta_0=1;\)</span> then <span class="math notranslate nohighlight">\(\Lambda_t = 0\)</span> and <span class="math notranslate nohighlight">\(\Delta_t = 1\)</span> for all <span class="math notranslate nohighlight">\(t\)</span>. Alternatively, if we initialize <span class="math notranslate nohighlight">\(\Lambda_0\)</span> be a coordinate vector and <span class="math notranslate nohighlight">\(\Delta_0 =0,\)</span> then the response <span class="math notranslate nohighlight">\(\Delta_t\)</span> will be a stochastic process.  The outcome of the coordinate vector initialization is a stochastic local impulse response to a marginal change in a particular state variable.</p>
 <div class="proof remark admonition" id="remark-0">
-<p class="admonition-title"><span class="caption-number">Remark 13.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 9.1 </span></p>
 <section class="remark-content" id="proof-content">
 <p>The evolution of the variational processes is nonstochastic if <span class="math notranslate nohighlight">\( \frac {\partial \psi}{\partial x'}\)</span> and <span class="math notranslate nohighlight">\( \frac {\partial \kappa}{\partial x}\)</span> are constant as  is true when <span class="math notranslate nohighlight">\(\psi\)</span> and <span class="math notranslate nohighlight">\(\kappa\)</span> are affine in <span class="math notranslate nohighlight">\(x\)</span>. Otherwise, variational processes are stochastic.</p>
 </section>
 </div><div class="proof example admonition" id="ex:quadratic">
-<p class="admonition-title"><span class="caption-number">Example 13.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 9.1 </span></p>
 <section class="example-content" id="proof-content">
 <p>Consider the following quadratic specification:</p>
 <div class="math notranslate nohighlight">
@@ -466,10 +441,10 @@ Y_{t+1} - Y_t &amp; = {\sf d} \cdot X_t + {\frac 1 2}  {X_t}'{\mathbb D} X_t + {
 </div></section>
 </section>
 <section id="continuous-time-dynamics">
-<h2><span class="section-number">13.3. </span>Continuous-time dynamics<a class="headerlink" href="#continuous-time-dynamics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>Continuous-time dynamics<a class="headerlink" href="#continuous-time-dynamics" title="Link to this heading">#</a></h2>
 <p>We now consider the continuous-time counterpart for Brownian motion shocks.</p>
 <section id="markov-diffusion-dynamics">
-<h3><span class="section-number">13.3.1. </span>Markov diffusion dynamics<a class="headerlink" href="#markov-diffusion-dynamics" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.1. </span>Markov diffusion dynamics<a class="headerlink" href="#markov-diffusion-dynamics" title="Link to this heading">#</a></h3>
 <p>As a part of a more general derivation, we begin with state dynamics modeled as a Markov diffusion:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
@@ -479,7 +454,7 @@ dY_t &amp; = \nu(X_t) dt + \varsigma(X_t) \cdot dW_t.
 <p>where <span class="math notranslate nohighlight">\(W\)</span> is now a <span class="math notranslate nohighlight">\(k\)</span>-dimensional standard Brownian motion.  We denote the filtration (family of specifications of conditioning information events) <span class="math notranslate nohighlight">\({\mathfrak F} \eqdef \left\{ {\mathfrak F}_t  : t\ge 0\right\}\)</span> constructed from the Brownian motion and any pertinent date zero information.</p>
 </section>
 <section id="variational-process">
-<h3><span class="section-number">13.3.2. </span>Variational process<a class="headerlink" href="#variational-process" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.2. </span>Variational process<a class="headerlink" href="#variational-process" title="Link to this heading">#</a></h3>
 <p>Following <span id="id8">[<a class="reference internal" href="cite.html#id442" title="Jaroslav Borovička, Lars Peter Hansen, and Jose A. Scheinkman. Shock elasticities and impulse responses. Mathematics and Financial Economics, 2014. doi:10.1007/s11579-014-0122-4.">Borovička <em>et al.</em>, 2014</a>]</span>, we construct marginal impulse response functions using what are called variational processes.  We build the dynamics for what is called the  first valuation  process, <span class="math notranslate nohighlight">\(\Lambda\)</span> by  following the construction in  <span id="id9">[<a class="reference internal" href="cite.html#id443" title="E Fournie, J M Lasry, J Lebuchoux, P L Lions, and N Touzi. Applications of Malliavin calculus to Monte Carlo methods in finance. Finance and Stochastics, 3:391-413, 1999.">Fournie <em>et al.</em>, 1999</a>]</span>.
 The first valuation  process tells the marginal impact on future <span class="math notranslate nohighlight">\(X\)</span> of a marginal change in one of the initial states analogous to the <span class="math notranslate nohighlight">\(\Lambda\)</span> process that we constructed in discrete time. Thus this process has the same number of components as <span class="math notranslate nohighlight">\(X\)</span>. By initializing the process at one of the alternative coordinate vectors, we again isolate an initial state of interest.<a class="footnote-reference brackets" href="#fn-variational-difference" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>The drift for the <span class="math notranslate nohighlight">\(i^{th}\)</span> component of <span class="math notranslate nohighlight">\(\Lambda\)</span> is</p>
@@ -494,18 +469,18 @@ The implied evolution of the process <span class="math notranslate nohighlight">
 \[d\Lambda_{t}^i = \left(\Lambda_t\right)'\frac{\partial \mu_i}{\partial x}(X_t) dt + \left({\Lambda_t}\right)'\frac{\partial \sigma_i}{\partial x}(X_t) dW_t.\]</div>
 <p>With the appropriate stacking, the drift for the composite process <span class="math notranslate nohighlight">\((X,\Lambda)\)</span> is:</p>
 <div class="math notranslate nohighlight" id="equation-variational-mean">
-<span class="eqno">(13.3)<a class="headerlink" href="#equation-variational-mean" title="Link to this equation">#</a></span>\[\begin{split}\mu^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \mu(x) \\ \lambda'{\frac {\partial \mu_i} {\partial x} }(x) \\
+<span class="eqno">(9.3)<a class="headerlink" href="#equation-variational-mean" title="Link to this equation">#</a></span>\[\begin{split}\mu^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \mu(x) \\ \lambda'{\frac {\partial \mu_i} {\partial x} }(x) \\
 ... \\ \lambda'{\frac {\partial \mu_n} {\partial x} }(x) \end{bmatrix},\end{split}\]</div>
 <p>and the composite matrix coefficient on <span class="math notranslate nohighlight">\(dW_t\)</span> is given by</p>
 <div class="math notranslate nohighlight" id="equation-variational-diffusion">
-<span class="eqno">(13.4)<a class="headerlink" href="#equation-variational-diffusion" title="Link to this equation">#</a></span>\[\begin{split}\sigma^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \sigma(x) \\  \lambda'\frac {\partial \sigma_1 }{\partial x}(x)\\ ... \\
+<span class="eqno">(9.4)<a class="headerlink" href="#equation-variational-diffusion" title="Link to this equation">#</a></span>\[\begin{split}\sigma^a(x,\lambda) \overset{\text{def}}{=} \begin{bmatrix} \sigma(x) \\  \lambda'\frac {\partial \sigma_1 }{\partial x}(x)\\ ... \\
 \lambda' \frac {\partial \sigma_n }{\partial x}(x) \end{bmatrix}.\end{split}\]</div>
 <p>Let <span class="math notranslate nohighlight">\(\Delta\)</span> be the scalar variational process associated with <span class="math notranslate nohighlight">\(Y.\)</span> Then</p>
 <div class="math notranslate nohighlight">
 \[d \Delta_t = \Lambda_t \cdot \frac {\partial \nu}{\partial x} (X_t)dt + {\Lambda_t}' \frac {\partial \varsigma}{\partial x'} dW_t \]</div>
 <p>Analogous to the discrete-time outcome, the variational dynamics depend explicit on the original diffusion dynamics.  As in discrete time, by initializing the vector <span class="math notranslate nohighlight">\(\Lambda_0\)</span> at a coordinate vector, the resulting processes give marginal responses to a corresponding state vector.</p>
 <div class="proof example admonition" id="ex:continuous">
-<p class="admonition-title"><span class="caption-number">Example 13.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 9.2 </span></p>
 <section class="example-content" id="proof-content">
 <p>Consider the case of linear dynamics:</p>
 <div class="math notranslate nohighlight">
@@ -537,7 +512,7 @@ The implied evolution of the process <span class="math notranslate nohighlight">
 <p>Also we will have cause to do a forward shift <span class="math notranslate nohighlight">\({\mathbb S}^\tau \)</span> of these process by which we shift the time units on all of the variables used in the the construction and the initialization period forward <span class="math notranslate nohighlight">\(\tau\)</span> time periods.</p>
 </section>
 <section id="responses-to-initial-shocks">
-<h3><span class="section-number">13.3.3. </span>Responses to initial shocks<a class="headerlink" href="#responses-to-initial-shocks" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.3. </span>Responses to initial shocks<a class="headerlink" href="#responses-to-initial-shocks" title="Link to this heading">#</a></h3>
 <p>So far, we have characterized stochastic responses to initial changes in the state variables.  From these, we deduce vector of responses to the initial shocks:</p>
 <div class="math notranslate nohighlight">
 \[\Phi =   \Lambda^a \sigma(X_0)   \hspace{.3cm} \Psi  = \Lambda^a \sigma(X_0)  + \varsigma(X_0) \]</div>
@@ -557,7 +532,7 @@ Y_t &amp; = \int_0^t  {\mathbb E}\left( {\mathbb S}^u \Psi_{t-u}  \mid {\mathfra
 \end{align*} \]</div>
 <p>Note that we form conditional expectations of time shifted  stochastic responses to form the random coefficients in the moving-average representations as given by <span class="math notranslate nohighlight">\({\mathbb E} \left( {\mathbb S}^u\Phi_{t-u} \mid {\mathfrak F}_u \right)\)</span> and <span class="math notranslate nohighlight">\({\mathbb E}\left( {\mathbb S}^u \Psi_{t-u}  \mid {\mathfrak F}_u \right)\)</span>.  When the responses turn out not to be stochastic, as in the case of the Remark 2 example, the conditional expectations and the shift are inconsequential.  In this case, we recover the familiar convolution formulas for moving-average representations.</p>
 <div class="proof remark admonition" id="remark-3">
-<p class="admonition-title"><span class="caption-number">Remark 13.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Remark 9.2 </span></p>
 <section class="remark-content" id="proof-content">
 <p>Many empirical researchers estimate directly what macroeconomists call Jorda projections.  These are implemented by regressing a forward sequence of  a scalar process  on current variable and a shock or particular interest.  One can interpret the ambition as wanting to infer impulse responses from direct regressions of future variables on  the initial ones. One can view the ambition as a way to measure impulse responses.  For instance, the aim could be to infer:</p>
 <div class="math notranslate nohighlight">
@@ -615,7 +590,7 @@ Y_t &amp; = \int_0^t  {\mathbb E}\left( {\mathbb S}^u \Psi_{t-u}  \mid {\mathfra
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Likelihoods</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Likelihoods</p>
       </div>
     </a>
     <a class="right-next"
@@ -623,7 +598,7 @@ Y_t &amp; = \int_0^t  {\mathbb E}\left( {\mathbb S}^u \Psi_{t-u}  \mid {\mathfra
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>Representing Marginal Valuation</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Representing Marginal Valuation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -643,16 +618,16 @@ Y_t &amp; = \int_0^t  {\mathbb E}\left( {\mathbb S}^u \Psi_{t-u}  \mid {\mathfra
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">13.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">13.2. Discrete time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-markov-dynamics">13.2.1. Discrete-time Markov dynamics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-variational-dynamics">13.2.2. Discrete-time  variational dynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time">9.2. Discrete time</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-markov-dynamics">9.2.1. Discrete-time Markov dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-variational-dynamics">9.2.2. Discrete-time  variational dynamics</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-dynamics">13.3. Continuous-time dynamics</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-diffusion-dynamics">13.3.1. Markov diffusion dynamics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-process">13.3.2. Variational process</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#responses-to-initial-shocks">13.3.3. Responses to initial shocks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-time-dynamics">9.3. Continuous-time dynamics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-diffusion-dynamics">9.3.1. Markov diffusion dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variational-process">9.3.2. Variational process</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#responses-to-initial-shocks">9.3.3. Responses to initial shocks</a></li>
 </ul>
 </li>
 </ul>

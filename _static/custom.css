@@ -21,3 +21,7 @@ div.input_area {
 div.prompt.output_prompt {
     width: 100% !important;
 }
+
+table td, table th {
+    text-align: center;
+}

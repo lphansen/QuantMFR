@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Example: Hansen, Khorrami and Tourre (2024) &#8212; Quant Macro Finance</title>
+    <title>Uncertain Expansion Example Notebook &#8212; Quant Macro Finance</title>
   
   
   
@@ -35,8 +35,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=b4b7a797" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=82c7aad8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8c1df6e1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -193,25 +193,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../book/chapter_stochastic_response.html">13. Stochastic Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../book/marginal_valuation.html">14. Representing Marginal Valuation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../book/gmmcurrent_lars_v9.html">15. GMM Estimation </a></li>
-<li class="toctree-l1"><a class="reference internal" href="../book/cite.html">16. Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/ch_multfunctional_mdconvert.html">16. Multiplicative Functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../book/cite.html">17. Bibliography</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Uncertainty Expansion</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="uncertainexpansion_update.html">Uncertain Expansion Theory</a></li>
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="quickguide_update.html">Notebook: Expansion Suite</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="notes/old_appendix.html">Appendix: Approximation formulas for the stochastic discount factor</a></li>
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example: Hansen, Khorrami and Tourre (2024)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Uncertain Expansion Example Notebook</a></li>
 
 
 
@@ -378,7 +368,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Example: Hansen, Khorrami and Tourre (2024)</h1>
+    <h1>Uncertain Expansion Example Notebook</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,8 +378,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Example: Hansen, Khorrami and Tourre (2024)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ak-model-with-recursive-utility">1 AK Model with Recursive Utility</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Example Notebook</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">1 Model Setup</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rewriting-first-order-conditions">1.2 Rewriting First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
 </ul>
 </li>
@@ -399,7 +389,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-function">2.3 Steady State Function <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-number-of-variables">2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">2.5 Model Parameters <a class="anchor" id="s2-5"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-consumption-growth">2.6 Log Consumption Growth  <a class="anchor" id="s2-6"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-functions">2.6 Additional Functions  <a class="anchor" id="s2-6"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-modelsol">2.7 Computing ModelSol <a class="anchor" id="s2-7"></a></a></li>
 </ul>
 </li>
@@ -431,9 +421,9 @@ document.write(`
                 <article class="bd-article">
                   
   <p><a href="https://colab.research.google.com/github/lphansen/RiskUncertaintyValue/blob/main/expansion_suite.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
-<section class="tex2jax_ignore mathjax_ignore" id="example-hansen-khorrami-and-tourre-2024">
-<h1><a class="toc-backref" href="#id2" role="doc-backlink">Example: Hansen, Khorrami and Tourre (2024)</a><a class="headerlink" href="#example-hansen-khorrami-and-tourre-2024" title="Link to this heading">#</a></h1>
-<p>We previously covered the small-noise expansion method and the recursive utility framework. This section covers the usage of <code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code>, an open source Python toolbox which uses these methods to solve discrete nonlinear DSGE models.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="uncertain-expansion-example-notebook">
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">Uncertain Expansion Example Notebook</a><a class="headerlink" href="#uncertain-expansion-example-notebook" title="Link to this heading">#</a></h1>
+<p>In Chapter 11, we described the small-noise expansion method and the recursive utility framework. This section covers the usage of <code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code>, an open source Python toolbox which uses these methods to solve discrete nonlinear DSGE models. We use an example model taken from Hansen, Khorrami and Tourre (2024).</p>
 <p>This notebook provides both written explanations and accompanying code. The simplest way to run the code is to open the Google Colab link at the top of this page. Otherwise, the reader can copy the code snippets onto their local machine.</p>
 <!-- For this notebook 
 
@@ -468,180 +458,145 @@ document.write(`
 <nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#example-hansen-khorrami-and-tourre-2024" id="id2">Example: Hansen, Khorrami and Tourre (2024)</a></p></li>
-<li><p><a class="reference internal" href="#ak-model-with-recursive-utility" id="id3">1 AK Model with Recursive Utility</a></p></li>
+<li><p><a class="reference internal" href="#uncertain-expansion-example-notebook" id="id2">Uncertain Expansion Example Notebook</a></p></li>
+<li><p><a class="reference internal" href="#model-setup" id="id3">1 Model Setup</a></p></li>
 <li><p><a class="reference internal" href="#inputs" id="id4">2 Inputs <a class="anchor" id="s2"></a></a></p></li>
 <li><p><a class="reference internal" href="#outputs" id="id5">3 Outputs</a></p></li>
 <li><p><a class="reference internal" href="#using-linquadvar-in-computation" id="id6">4 Using <code class="docutils literal notranslate"><span class="pre">LinQuadVar</span></code> in Computation <a class="anchor" id="s2"></a></a></p></li>
 </ul>
 </nav>
-<p>Consider the framework previously introduced:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\mathbb{E}[{N_{t+\epsilon}^*Q_{t+\epsilon}^* \psi_1(X_t, J_t, X_{t+\epsilon}, J_{t+\epsilon})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &amp;= 0 \tag{1}\\
-  \phi\left(X_t, X_{t+\epsilon}, J_t, {\sf q}W_{t+\epsilon}, {\sf q} \right) &amp;= 0 
-\tag{2} \end{align}
-\end{split}\]</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code> uses the function <code class="docutils literal notranslate"><span class="pre">uncertain_expansion</span></code> to approximate a solution to the above system locally. It takes the following inputs:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Input</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">eq</span></code></p></td>
-<td><p><em>callable</em></p></td>
-<td><p>Function which takes state and jump variables and outputs error of equilibrium conditions, i.e. RHS of equation (1)</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ss</span></code></p></td>
-<td><p><em>callable</em></p></td>
-<td><p>Function which takes model parameters and outputs steady-state values of state and jump variables</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">var_shape</span></code></p></td>
-<td><p><em>tuple of int</em></p></td>
-<td><p>Triple of integers <span class="math notranslate nohighlight">\((n_J,n_X,n_W)\)</span> where <span class="math notranslate nohighlight">\(n_J\)</span> is the number of jump variables, <span class="math notranslate nohighlight">\(n_X\)</span> is the number of state variables, and <span class="math notranslate nohighlight">\(n_W\)</span> is the number of shocks.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">args</span></code></p></td>
-<td><p><em>tuple of float or ndarray</em></p></td>
-<td><p>Array of preference and model parameters</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gc</span></code></p></td>
-<td><p><em>callable</em></p></td>
-<td><p>Function which takes in variables and outputs log-growth of consumption</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">args</span></code></p></td>
-<td><p>tuple of float/ndarray</p></td>
-<td><p>Preference and model parameters</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gc</span></code></p></td>
-<td><p><em>callable</em></p></td>
-<td><p>Function which takes in variables and outputs log-growth of consumption</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">approach</span></code></p></td>
-<td><p><em>string</em></p></td>
-<td><p>If equal to ‘1’, then solve the model using approach 1 (default, see Appendix C); If equal to ‘2’, then use approach 2 (see Appendix D). The function raises an exception if other values are provided</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">init_util</span></code></p></td>
-<td><p><em>dict, or None</em></p></td>
-<td><p>Dictionary for initialization of the expansion coefficients <span class="math notranslate nohighlight">\(\mu^0, \Upsilon_0^2, \Upsilon_1^2,\)</span> and <span class="math notranslate nohighlight">\(\Upsilon_2^2\)</span>. The keys are: <code class="docutils literal notranslate"><span class="pre">mu_0</span></code>, <code class="docutils literal notranslate"><span class="pre">Upsilon_0</span></code>, <code class="docutils literal notranslate"><span class="pre">Upsilon_1</span></code>, <code class="docutils literal notranslate"><span class="pre">Upsilon_2</span></code>. If <em>None</em>, zero matrices are used</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">iter_tol</span></code></p></td>
-<td><p><em>float</em></p></td>
-<td><p>Iteration stops when the maximum absolute difference between the approximated variables in the current and previous iteration is below <code class="docutils literal notranslate"><span class="pre">iter_tol</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_iter</span></code></p></td>
-<td><p><em>int</em></p></td>
-<td><p>Maximum number of iterations</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The output is of class <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code>, which stores the coefficients for the linear-quadratic approximation for the jump and state variables; continuation values; consumption growth; and log change of measure, as well as the steady-state values of each variables.</p>
-<p>We will now walk through the computation using a simple example.
-<br>
-<br></p>
+<p><span class="math notranslate nohighlight">\(\newcommand{\eqdef}{\stackrel{\text{def}}{=}}\)</span></p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="ak-model-with-recursive-utility">
-<h1><a class="toc-backref" href="#id3" role="doc-backlink">1 AK Model with Recursive Utility</a><a class="headerlink" href="#ak-model-with-recursive-utility" title="Link to this heading">#</a></h1>
-<p>This example is a discrete-time approximation of the model in Section 4.4 of <span id="id1">[<a class="reference internal" href="../book/cite.html#id444" title="Lars Peter Hansen, Paymon Khorrami, and Fabrice Tourre. Comparative valuation dynamics in production economies: long-run uncertainty, heterogeneity, and market frictions. Annual Review of Financial Economics, 2024.">Hansen <em>et al.</em>, 2024</a>]</span>.</p>
-<div class="math notranslate nohighlight">
-\[C_t + I_t = \alpha K_t\]</div>
-<p>Let  <span class="math notranslate nohighlight">\({\widehat K}_t = \log K_t,\)</span> <span class="math notranslate nohighlight">\({\widehat C}_t = \log C_t\)</span>, and <span class="math notranslate nohighlight">\(\widehat{Z}_t^2 = \log Z_t^2\)</span>.  Then</p>
+<section class="tex2jax_ignore mathjax_ignore" id="model-setup">
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">1 Model Setup</a><a class="headerlink" href="#model-setup" title="Link to this heading">#</a></h1>
+<p>We employ a discrete-time approximation of the single-capital model in Section 4.4 of <span id="id1">[<a class="reference internal" href="../book/cite.html#id444" title="Lars Peter Hansen, Paymon Khorrami, and Fabrice Tourre. Comparative valuation dynamics in production economies: long-run uncertainty, heterogeneity, and market frictions. Annual Review of Financial Economics, 2024.">Hansen <em>et al.</em>, 2024</a>]</span>, as outlined in Section 11.7.1.</p>
+<!-- ```{math}
+C_t + I_t = \alpha K_t
+``` -->
+<p>Let <span class="math notranslate nohighlight">\({\widehat K}_t = \log K_t,\)</span>, <span class="math notranslate nohighlight">\({\widehat C}_t = \log C_t\)</span>, <span class="math notranslate nohighlight">\(\widehat{Z}_t^2 = \log Z_t^2\)</span> and <span class="math notranslate nohighlight">\(D_t = \frac{I_t}{K_t}\)</span>. The model uses three states: <span class="math notranslate nohighlight">\(X_t = \begin{bmatrix}{\widehat K}_{t+1}-{\widehat K}_{t}, Z_t^1, \widehat{Z}_t^2\end{bmatrix}\)</span>, as well as two jump variables <span class="math notranslate nohighlight">\(J_t = \begin{bmatrix}{\widehat C}_t, D_t \end{bmatrix}\)</span>.</p>
+<p>The law of motions for the three states are:</p>
 <div class="math notranslate nohighlight" id="equation-equation1">
-<span class="eqno">(6)<a class="headerlink" href="#equation-equation1" title="Link to this equation">#</a></span>\[\begin{align} 
-{{\widehat K}_{t+\epsilon}} - {\widehat K}_t = \hspace{.2cm} &amp; \left[ {\frac 1 \zeta}  \log \left( 1 + \zeta \frac{I_t}{K_t} \right) + \beta_k Z_t^1 - \eta_k \right]\epsilon  \cr \hspace{.2cm} &amp; +  \sqrt{Z_t^2}  {\sigma}_k \cdot \left[W_{t+\epsilon}  - W_t\right] - \frac{1}{2}|\sigma_k|^2 Z_t^2 \epsilon
-\end{align} \]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-equation1" title="Link to this equation">#</a></span>\[\begin{align}
+{{\widehat K}_{t+\epsilon}} - {\widehat K}_t = \hspace{.2cm} &amp; \epsilon \left[ {\frac 1 \zeta}  \log \left( 1 + \zeta \frac{I_t}{K_t} \right) + \nu_k Z_{1,t} - \iota_k \right] \cr \hspace{.2cm} &amp;  - \frac{\epsilon}{2}|\sigma_k|^2 \exp\left( {Z}_{2,t} \right)  
+ +  \sqrt{\epsilon} \exp\left(\frac 1 2 { Z}_{2,t}  \right) {\sigma}_k  W_{t+1} 
+  \end{align} \]</div>
 <div class="math notranslate nohighlight" id="equation-equation2">
-<span class="eqno">(7)<a class="headerlink" href="#equation-equation2" title="Link to this equation">#</a></span>\[Z_{t+\epsilon}^1 -
-Z_{t}^1=  - \beta_{1} Z_t^1 \epsilon +  \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\epsilon} - W_t \right)\]</div>
-<div class="math notranslate nohighlight" id="equation-equationz2">
-<span class="eqno">(8)<a class="headerlink" href="#equation-equationz2" title="Link to this equation">#</a></span>\[\begin{align}
-{\widehat Z}_{t+\epsilon}^2 - {\widehat Z}_{t}^2 = \hspace{.2cm} &amp;   - \beta_2 \left[ 1 - {\mu_2} \exp\left( - {\widehat Z}_t^2 \right) \right] \epsilon \cr \hspace{.2cm}&amp;  - {\frac 1 2} |\sigma_2|^2  \exp\left( - {\widehat Z}_t^2 \right) \epsilon   
-+ \exp\left( - {\frac 1 2}  {\widehat Z}_t^2 \right) \sigma_2 \cdot \left(W_{t+\epsilon} - W_t \right)
-\end{align} \]</div>
-<p>Observe that <span class="math notranslate nohighlight">\(W_{t+\epsilon} - W_t \)</span> is normally distributed mean zero and covariance <span class="math notranslate nohighlight">\(\epsilon {\mathbb I}\)</span>.<br />
-Let <span class="math notranslate nohighlight">\(X_t = [Z_t^1 \hspace{.2cm} {\widehat Z}_t^2]\)</span> and <span class="math notranslate nohighlight">\(D_t = \frac{I_t}{K_t}.\)</span> Note that</p>
+<span class="eqno">(8)<a class="headerlink" href="#equation-equation2" title="Link to this equation">#</a></span>\[\begin{align}
+{Z}_{2,t+\epsilon} - {Z}_{2, t} =  \hspace{.2cm} &amp;   - \epsilon \nu_2 \left[ 1 - {\mu_2} \exp\left( - {Z}_{2,t} \right) \right]  \cr \hspace{.2cm}&amp;  - {\frac \epsilon 2} |\sigma_2|^2  \exp\left( - {Z}_{2,t} \right)   
++ \sqrt{\epsilon} \exp\left( - {\frac 1 2}  {Z}_{2,t} \right) \sigma_2 W_{t+1}. \end{align} \]</div>
+<div class="math notranslate nohighlight" id="equation-equation2">
+<span class="eqno">(8)<a class="headerlink" href="#equation-equation2" title="Link to this equation">#</a></span>\[\begin{align}
+{Z}_{2,t+\epsilon} - {Z}_{2, t} =  \hspace{.2cm} &amp;   - \epsilon \nu_2 \left[ 1 - {\mu_2} \exp\left( - {Z}_{2,t} \right) \right]  \cr \hspace{.2cm}&amp;  - {\frac \epsilon 2} |\sigma_2|^2  \exp\left( - {Z}_{2,t} \right)   
++ \sqrt{\epsilon} \exp\left( - {\frac 1 2}  {Z}_{2,t} \right) \sigma_2 W_{t+1}. \end{align} \]</div>
+<p>We can solve for the jump variables using the first-order condition for <span class="math notranslate nohighlight">\(D_t\)</span> and the output constraint:</p>
 <div class="math notranslate nohighlight" id="equation-equation3">
 <span class="eqno">(9)<a class="headerlink" href="#equation-equation3" title="Link to this equation">#</a></span>\[{\widehat C}_t = \log \left( \alpha - D_t \right) + {\widehat K}_t \]</div>
-<p>The first-order conditions for the investment-capital ratio imply that</p>
 <div class="math notranslate nohighlight" id="equation-equation4">
 <span class="eqno">(10)<a class="headerlink" href="#equation-equation4" title="Link to this equation">#</a></span>\[\begin{split}\begin{align*}
 0 &amp;= - (1-\beta) \exp\left[(1- \rho) \left({\widehat C}_t - {\widehat G}_t \right)\right] \left( \frac{1}{\alpha - D_t} \right) 
 \\&amp;+ \beta \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat G}_t \right)\right] \left(\frac{1}{1 + \zeta D_t} \right)    
 \end{align*}\end{split}\]</div>
-<p>The co-state equation is:</p>
-<div class="math notranslate nohighlight" id="equation-equation5">
-<span class="eqno">(11)<a class="headerlink" href="#equation-equation5" title="Link to this equation">#</a></span>\[\begin{align*}
-MX_t = \hspace{.2cm} &amp; \beta \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat V}_t \right)\right] 
+<!-- The co-state equation is:  
+```{math}
+:label: equation5
+\begin{align*}
+MX_t = \hspace{.2cm} & \beta \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat V}_t \right)\right] 
 {\mathbb E} 
 \left(
 \exp\left[(1 - \gamma) \left({\widehat V}_{t+1} - {\widehat R}_t \right) \right] \psi_{x'}^x MX_{t+1} \mid {\mathfrak A}_t \right) 
-\cr &amp; \hspace{.2cm} + \beta \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat V}_t \right)\right] \psi_{x'}^g 
-\end{align*}\]</div>
-<div class="math notranslate nohighlight" id="equation-equation6">
-<span class="eqno">(12)<a class="headerlink" href="#equation-equation6" title="Link to this equation">#</a></span>\[\begin{split}\psi_{x'}^x = \begin{pmatrix} 1-\beta_1 \epsilon &amp; \frac{1}{2} \exp\left(\frac 1 2 \widehat{Z}_t^2 \right) \sigma_1 \left(W_{t+\epsilon} - W_t \right) \\ 0 &amp; 1 + \left(-\beta_2  \mu_2 + \frac 1 2 |\sigma_2|^2 \right) \exp(-\widehat{Z}_t^2) \epsilon - \frac{1}{2} \exp\left(- \frac 1 2 \widehat{Z}_t^2 \right) \sigma_2 \left(W_{t+\epsilon} - W_t \right) \end{pmatrix}\end{split}\]</div>
-<div class="math notranslate nohighlight" id="equation-equation7">
-<span class="eqno">(13)<a class="headerlink" href="#equation-equation7" title="Link to this equation">#</a></span>\[\psi_{x'}^g = \begin{pmatrix} \beta_k \epsilon &amp; - \frac{1}{2}|\sigma_k|^2 \exp \left(\widehat{Z}_t^2\right) + \frac{1}{2} \exp\left(\frac 1 2 \widehat{Z}_t^2\right) \sigma_k\left(W_{t+\epsilon} - W_t \right)  \epsilon \end{pmatrix}\]</div>
+\cr & \hspace{.2cm} + \beta \exp\left[(1 - \rho) \left({\widehat R}_t - {\widehat V}_t \right)\right] \psi_{x'}^g 
+\end{align*}
+```
+
+```{math}
+:label: equation6
+\psi_{x'}^x = \begin{pmatrix} 1-\beta_1 \epsilon & \frac{1}{2} \exp\left(\frac 1 2 \widehat{Z}_t^2 \right) \sigma_1 \left(W_{t+\epsilon} - W_t \right) \\ 0 & 1 + \left(-\beta_2  \mu_2 + \frac 1 2 |\sigma_2|^2 \right) \exp(-\widehat{Z}_t^2) \epsilon - \frac{1}{2} \exp\left(- \frac 1 2 \widehat{Z}_t^2 \right) \sigma_2 \left(W_{t+\epsilon} - W_t \right) \end{pmatrix}
+```
+```{math}
+:label: equation7
+\psi_{x'}^g = \begin{pmatrix} \beta_k \epsilon & - \frac{1}{2}|\sigma_k|^2 \exp \left(\widehat{Z}_t^2\right) + \frac{1}{2} \exp\left(\frac 1 2 \widehat{Z}_t^2\right) \sigma_k\left(W_{t+\epsilon} - W_t \right)  \epsilon \end{pmatrix} -->
 <section id="rewriting-first-order-conditions">
 <h2>1.2 Rewriting First-Order Conditions <a class="anchor" id="s1-2"></a><a class="headerlink" href="#rewriting-first-order-conditions" title="Link to this heading">#</a></h2>
-<p>To prepare the inputs for our code, we rewrite the jump variable equations in the form <span class="math notranslate nohighlight">\(\mathbb{E}[{N_{t+\epsilon}^*Q_{t+\epsilon}^* \psi_1(X_t, J_t, X_{t+\epsilon}, J_{t+\epsilon})}|{\mathfrak{A}_t}]\)</span> <span class="math notranslate nohighlight">\(- \psi_2(X_t, J_t)\)</span> and the state variable equations in the form <span class="math notranslate nohighlight">\(\phi\left(X_t, X_{t+\epsilon}, J_t, {\sf q}W_{t+\epsilon}, {\sf q} \right)\)</span>.</p>
+<p>To input this model into our code, we need to write it in the form introduced in Section 11.9, <span class="math notranslate nohighlight">\(Q_t {\mathbb E} \left( N_{t+1} H_{t+1} \mid {\mathfrak A}_t \right)  + P_tL_{t}  -  M_t  = 0\)</span>, where</p>
 <div class="math notranslate nohighlight">
 \[
-    \mathbb{E} \left[N^*_{t + \epsilon}Q^*_{t + \epsilon} \beta  \left(\frac{C_{t + \epsilon}}{G_{t + \epsilon}}\right)^{-\rho} \left(\frac{G_{t + \epsilon}}{G_{t}}\right)^{1-\rho} \left(\frac{C_{t}}{G_{t}}\right)^{\rho} \frac{1}{1 + \zeta D_t} \epsilon \widetilde{MG}_{t+\epsilon} \right] - 1 = 0
+\begin{align*}
+Q_t \eqdef &amp; \hspace{.2cm}  \beta \exp\left[(1-\rho) \left( {\widehat R}_t - {\widehat V}_t \right) \right] \cr \cr
+P_t \eqdef &amp; \hspace{.2cm} (1-\beta) \exp\left[(\rho-1) \left( {\widehat V}_t - {\widehat G}_t \right) \right] \cr \cr
+H_{t+1}  \eqdef &amp; \hspace{.2cm} \begin{bmatrix} \psi_{d'}^x (D_t, X_t, W_{t+1})' &amp;  \psi_{d'}^g (D_t, X_t, W_{t+1}) \cr \psi_{x'}^x (D_t, X_t, W_{t+1})' &amp;  \psi_{g}^x (D_t, X_t, W_{t+1})' \cr 
+\psi_{g'}^x (D_t, X_t, W_{t+1})' &amp; 1 \end{bmatrix} \begin{bmatrix} MX_{t+1} \cr MG_{t+1} \end{bmatrix} 
+\ \cr \cr
+L_t \eqdef &amp; \hspace{.2cm} \begin{bmatrix}  \exp \left[ (1-\rho) \left({\widehat C}_t - {\widehat G}_t \right) \right]   
+ \begin{bmatrix}  \kappa_d(D_t,X_t)  \cr \kappa_x(D_t, X_t) \cr 1 \end{bmatrix}  \end{bmatrix} \cr
+M_t \eqdef &amp; \hspace{.2cm} \begin{bmatrix} 0 \cr MG_t \cr MX_t  \end{bmatrix} .
+\end{align*}
 \]</div>
-<p>The law of motion of costate <span class="math notranslate nohighlight">\(\widetilde{MG}\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[
-    \mathbb{E} \left[N^*_{t + \epsilon}Q^*_{t + \epsilon} \beta \left(\frac{C_{t + \epsilon}}{G_{t + \epsilon}}\right)^{-\rho} \left(\frac{G_{t + \epsilon}}{G_{t}}\right)^{1-\rho} \left(\frac{C_{t}}{G_{t}}\right)^{\rho} \widetilde{MG}_{t+\epsilon} \right ] - \widetilde{MG}_t + \frac{C_t}{G_t} = 0
-\]</div>
-<p>Finally, we can express our system of equations as</p>
+<!-- 
+\begin{align}
+\mathbb{E}[{N_{t+\epsilon}^*Q_{t+\epsilon}^* \psi_1(X_t, J_t, X_{t+\epsilon}, J_{t+\epsilon})}|{\mathfrak{A}_t}] - \psi_2(X_t, J_t)  &= 0 \tag{1}\\
+  \phi\left(X_t, X_{t+\epsilon}, J_t, {\sf q}W_{t+\epsilon}, {\sf q} \right) &= 0 
+\tag{2} \end{align}
+$$ -->
+<p>By noting that <span class="math notranslate nohighlight">\(MG_t=1\)</span>, we can express the model above simply as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\psi_1 = 
-\begin{bmatrix}
-0\\ 
-\beta  \left(\frac{C_{t + \epsilon}}{G_{t + \epsilon}}\right)^{-\rho} \left(\frac{G_{t + \epsilon}}{G_{t}}\right)^{1-\rho} \left(\frac{C_{t}}{G_{t}}\right)^{\rho} \frac{1}{1 + \zeta D_t} \epsilon \widetilde{MG}_{t+\epsilon} \\
-\beta \left(\frac{C_{t + \epsilon}}{G_{t + \epsilon}}\right)^{-\rho} \left(\frac{G_{t + \epsilon}}{G_{t}}\right)^{1-\rho} \left(\frac{C_{t}}{G_{t}}\right)^{\rho} \widetilde{MG}_{t+\epsilon}
+H_{t+1} = \begin{bmatrix} 0 \\
+\frac \epsilon {1+\zeta D_t}  
 \end{bmatrix}
 \end{split}\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
+L_{t} =  \begin{bmatrix}
+0 \\ \exp\left[(1-\rho)(\widehat{C}_t-\widehat{G}_t)\right] \frac 1 {\alpha-D_t}
+\end{bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U_t = \begin{bmatrix} \exp{(\widehat{C}_t - \widehat{K}_t)} + D_t - \alpha \\
+0
+\end{bmatrix}
+\end{split}\]</div>
+<!-- To prepare the inputs for our code, we rewrite the jump variable equations in the form $\mathbb{E}[{N_{t+\epsilon}^*Q_{t+\epsilon}^* \psi_1(X_t, J_t, X_{t+\epsilon}, J_{t+\epsilon})}|{\mathfrak{A}_t}]$ $- \psi_2(X_t, J_t)$ and the state variable equations in the form $\phi\left(X_t, X_{t+\epsilon}, J_t, {\sf q}W_{t+\epsilon}, {\sf q} \right)$. 
+ -->
+<!-- $$
+ -->
+<!-- 
+$$
 \psi_2 = 
 \begin{bmatrix}
 \frac{C_t}{G_t} + D_t - \alpha\\
 1\\
 \widetilde{MG}_t - \frac{C_t}{G_t}
 \end{bmatrix}
-\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}\phi=\begin{bmatrix} 
-&amp;{{\widehat K}_{t+\epsilon}} - {\widehat K}_t - \left[ {\frac 1 \zeta}  \log \left( 1 + \zeta \frac{I_t}{K_t} \right) + \beta_k Z_t^1 - \eta_k \right]\epsilon  -  \sqrt{Z_t^2}  {\sigma}_k \cdot \left[W_{t+\epsilon}  - W_t\right] + \frac{1}{2}|\sigma_k|^2 Z_t^2 \epsilon  \\
-&amp; Z_{t+\epsilon}^1 -
-Z_{t}^1 + \beta_{1} Z_t^1 \epsilon - \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\epsilon} - W_t \right) \\
-&amp; {\widehat Z}_{t+\epsilon}^2 - {\widehat Z}_{t}^2   + \beta_2 \left[ 1 - {\mu_2} \exp\left( - {\widehat Z}_t^2 \right) \right] \epsilon + {\frac 1 2} |\sigma_2|^2  \exp\left( - {\widehat Z}_t^2 \right) \epsilon  - \exp\left( - {\frac 1 2}  {\widehat Z}_t^2 \right) \sigma_2 \cdot \left(W_{t+\epsilon} - W_t \right) \\
-\end{bmatrix}\end{split}\]</div>
-<p>The model has three jump variables (In the expansion suite, <span class="math notranslate nohighlight">\(J_t\)</span> is used to represent the array of jump variables):</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\log C_t - \log G_t\)</span> : Log consumption over capital</p></li>
-<li><p><span class="math notranslate nohighlight">\(\log D_t\)</span> : Log investment over capital</p></li>
-<li><p><span class="math notranslate nohighlight">\(\log MG_t\)</span> : Log co-state variable</p></li>
-</ul>
-<p>and three state variables (In the expansion suite, <span class="math notranslate nohighlight">\(X_t\)</span> is used to represent state variables):</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\log G_{t+\epsilon} - \log G_{t}\)</span> : Log capital growth process</p></li>
-<li><p><span class="math notranslate nohighlight">\(Z_{t}^1\)</span> : Exogenous technology</p></li>
-<li><p><span class="math notranslate nohighlight">\(\hat{Z}_t^2\)</span> : Stochastic volatility</p></li>
-</ul>
-<br>
+$$ -->
+<p>We stack the system above with the state law of motions and solve the system given the explicit approximations for <span class="math notranslate nohighlight">\(Q_t\)</span> and <span class="math notranslate nohighlight">\(N_{t+1}\)</span> detailed in the appendix of Chapter 11.</p>
+<!-- $$
+\begin{bmatrix}
+&{{\widehat K}_{t+\epsilon}} - {\widehat K}_t - \left[ {\frac 1 \zeta}  \log \left( 1 + \zeta \frac{I_t}{K_t} \right) + \beta_k Z_t^1 - \eta_k \right]\epsilon  -  \sqrt{Z_t^2}  {\sigma}_k \cdot \left[W_{t+\epsilon}  - W_t\right] + \sqrt{\epsilon}\frac{1}{2}|\sigma_k|^2 Z_t^2 \\
+& Z_{t+\epsilon}^1 -
+Z_{t}^1 - \left(\epsilon \nu_2 \left[ 1 - {\mu_2} \exp\left( - {Z}_{2,t} \right) \right]  \cr \hspace{.2cm}&  - {\frac \epsilon 2} |\sigma_2|^2  \exp\left( - {Z}_{2,t} \right)   
++ \sqrt{\epsilon} \exp\left( - {\frac 1 2}  {Z}_{2,t} \right) \sigma_2 W_{t+1}\right) \\
+& {\widehat Z}_{t+\epsilon}^2 - {\widehat Z}_{t}^2   + \beta_2 \left[ 1 - {\mu_2} \exp\left( - {\widehat Z}_t^2 \right) \right] \epsilon + {\frac 1 2} |\sigma_2|^2  \exp\left( - {\widehat Z}_t^2 \right) \epsilon  - \sqrt{\epsilon} \exp\left( - {\frac 1 2}  {\widehat Z}_t^2 \right) \sigma_2 \cdot \left(W_{t+\epsilon} - W_t \right) \\
+\end{bmatrix}$$ -->
+<!-- The model has three jump variables (In the expansion suite, $J_t$ is used to represent the array of jump variables):
+- $\log C_t - \log G_t$ : Log consumption over capital
+- $\log D_t$ : Log investment over capital
+- $\log MG_t$ : Log co-state variable
+
+and three state variables (In the expansion suite, $X_t$ is used to represent state variables):
+- $\log G_{t+\epsilon} - \log G_{t}$ : Log capital growth process
+- $Z_{t}^1$ : Exogenous technology
+- $\hat{Z}_t^2$ : Stochastic volatility --><br>
 <br>
 <br>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="inputs">
 <h1><a class="toc-backref" href="#id4" role="doc-backlink">2 Inputs <a class="anchor" id="s2"></a></a><a class="headerlink" href="#inputs" title="Link to this heading">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">Expansion</span> <span class="pre">Suite</span></code> uses the function <code class="docutils literal notranslate"><span class="pre">uncertain_expansion</span></code> to approximate a solution to the above system locally. It takes the following inputs:</p>
+<p>The output is of class <code class="docutils literal notranslate"><span class="pre">ModelSolution</span></code>, which stores the coefficients for the linear-quadratic approximation for the jump and state variables; continuation values; consumption growth; and log change of measure, as well as the steady-state values of each variables.</p>
+<p>We will now walk through the computation using the example above.
+<br></p>
 <section id="libraries">
 <h2>2.1 Libraries <a class="anchor" id="s2-3"></a><a class="headerlink" href="#libraries" title="Link to this heading">#</a></h2>
 <p>Begin by installing the following libraries and downloading <code class="docutils literal notranslate"><span class="pre">RiskUncertaintyValue</span></code>, which contains the functions required to solve the model:</p>
@@ -669,6 +624,7 @@ Z_{t}^1 + \beta_{1} Z_t^1 \epsilon - \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\eps
 <span class="kn">from</span> <span class="nn">lin_quad_util</span> <span class="kn">import</span> <span class="n">E</span><span class="p">,</span> <span class="n">concat</span><span class="p">,</span> <span class="n">next_period</span><span class="p">,</span> <span class="n">cal_E_ww</span><span class="p">,</span> <span class="n">lq_sum</span><span class="p">,</span> <span class="n">N_tilde_measure</span><span class="p">,</span> <span class="n">E_N_tp1</span>
 <span class="kn">from</span> <span class="nn">uncertain_expansion</span> <span class="kn">import</span> <span class="n">uncertain_expansion</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
 </pre></div>
 </div>
 </div>
@@ -716,7 +672,12 @@ Z_{t}^1 + \beta_{1} Z_t^1 \epsilon - \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\eps
 <td><p>By default, this function returns the LHS of equation (1) and (2). Set mode to ‘psi1’, ‘psi2’, or ‘phi’ to return the corresponding function in the equilibrium conditions</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">args</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">recursive_ss</span></code></p></td>
+<td><p>array-like</p></td>
+<td><p>Steady-state values of <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(Q\)</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">args</span></code></p></td>
 <td><p>tuple of float/ndarray</p></td>
 <td><p>Preference and model parameters</p></td>
 <td></td>
@@ -725,114 +686,102 @@ Z_{t}^1 + \beta_{1} Z_t^1 \epsilon - \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\eps
 </table>
 </div>
 <p>While writing out <code class="docutils literal notranslate"><span class="pre">eq</span></code>, ensure that:</p>
+<!-- - The first components of `Var_t` and `Var_tp1` are fixed as `q_t` or `q_tp1`. -->
 <ul class="simple">
-<li><p>The first components of <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> are fixed as <code class="docutils literal notranslate"><span class="pre">q_t</span></code> or <code class="docutils literal notranslate"><span class="pre">q_tp1</span></code>.</p></li>
 <li><p>State variables follow jump variables.</p></li>
-<li><p>The number of jump variables (except <code class="docutils literal notranslate"><span class="pre">q_t</span></code> and <code class="docutils literal notranslate"><span class="pre">q_tp1</span></code>) equals the number of forward-looking equilibrium conditions.</p></li>
+<li><p>The number of jump variables equals the number of forward-looking equilibrium conditions.</p></li>
 <li><p>The number of state variables equals to the number of state evolution equations.</p></li>
 <li><p>All values are expressed as type <code class="docutils literal notranslate"><span class="pre">float</span></code>. Otherwise, this may cause type errors.</p></li>
 </ul>
-<p>Note that the log change of measure is skipped in the specification of equilibrium conditions.</p>
-<p>Notice that the first 3 parameters and <span class="math notranslate nohighlight">\(q\)</span> in variables should be defined and called in the given order.</p>
 <p>For the example model, we write:</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eq_onecap_3d</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eq_onecap_3d</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">recursive_ss</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
     
     <span class="c1"># Unpack model parameters</span>
-    <span class="c1"># Y_t = \hat{Z}_t^2</span>
     <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">beta_k</span><span class="p">,</span> <span class="n">beta_z</span><span class="p">,</span> <span class="n">sigma_k1</span><span class="p">,</span> <span class="n">sigma_k2</span><span class="p">,</span> <span class="n">sigma_k3</span><span class="p">,</span> <span class="n">sigma_z1</span><span class="p">,</span> <span class="n">sigma_z2</span><span class="p">,</span> <span class="n">sigma_z3</span><span class="p">,</span> <span class="n">sigma_y1</span><span class="p">,</span> <span class="n">sigma_y2</span><span class="p">,</span> <span class="n">sigma_y3</span><span class="p">,</span> <span class="n">beta_2</span><span class="p">,</span> <span class="n">mu_2</span><span class="p">,</span> <span class="n">ε</span> <span class="o">=</span> <span class="n">args</span>
     <span class="n">w1_tp1</span><span class="p">,</span> <span class="n">w2_tp1</span><span class="p">,</span> <span class="n">w3_tp1</span> <span class="o">=</span> <span class="n">W_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
     <span class="c1"># Unpack model variables</span>
-    <span class="n">q_t</span><span class="p">,</span> <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">mk_t</span><span class="p">,</span> <span class="n">gk_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">Y_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-    <span class="n">q_tp1</span><span class="p">,</span> <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">mk_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">Y_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">log_cmk_t</span><span class="p">,</span> <span class="n">log_imk_t</span><span class="p">,</span> <span class="n">gk_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">Y_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">log_cmk_tp1</span><span class="p">,</span> <span class="n">log_imk_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">Y_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> 
 
+    <span class="n">imk_t</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_imk_t</span><span class="p">)</span>
+    <span class="n">cmk_t</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_cmk_t</span><span class="p">)</span>
 
-    <span class="c1"># Intermedite varibles that facilitates computation</span>
-    <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="p">(</span><span class="n">cmk_tp1</span><span class="o">+</span><span class="n">gk_tp1</span><span class="o">-</span><span class="n">cmk_t</span><span class="p">)</span>
-    <span class="n">g_dep</span> <span class="o">=</span> <span class="n">ε</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">α_k</span> <span class="o">+</span> <span class="n">beta_k</span><span class="o">*</span><span class="n">Z_t</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_k1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_k2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_k3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y_t</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">Y_t</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">sigma_k1</span><span class="o">*</span><span class="n">w1_tp1</span><span class="o">+</span><span class="n">sigma_k2</span><span class="o">*</span><span class="n">w2_tp1</span><span class="o">+</span><span class="n">sigma_k3</span><span class="o">*</span><span class="n">w3_tp1</span><span class="p">)</span> 
-    <span class="n">term_y1</span> <span class="o">=</span> <span class="n">beta_2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">mu_2</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Y_t</span><span class="p">))</span> <span class="o">*</span> <span class="n">ε</span>
-    <span class="n">term_y2</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_y1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_y2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_y3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Y_t</span><span class="p">)</span> <span class="o">*</span> <span class="n">ε</span>
-    <span class="n">term_y3</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">Y_t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_y1</span><span class="o">*</span><span class="n">w1_tp1</span><span class="o">+</span><span class="n">sigma_y2</span><span class="o">*</span><span class="n">w2_tp1</span><span class="o">+</span><span class="n">sigma_y3</span><span class="o">*</span><span class="n">w3_tp1</span><span class="p">)</span>
+    <span class="n">q_t</span> <span class="o">=</span> <span class="n">β</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mf">1.</span><span class="o">-</span><span class="n">ρ</span><span class="p">)</span><span class="o">*</span><span class="n">recursive_ss</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">p_t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">β</span><span class="p">)</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">ρ</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="n">recursive_ss</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-    <span class="c1">## Forward-looking conditions</span>
-    <span class="n">psi1_1</span> <span class="o">=</span> <span class="mf">0.</span>
-    <span class="n">psi1_2</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">gk_tp1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">))</span> <span class="o">*</span> <span class="n">ε</span> <span class="o">*</span> <span class="n">mk_tp1</span>
-    <span class="c1"># psi1_2 = anp.exp(sdf_ex + gk_tp1) * 1/(1 + ϕ_2*anp.exp(imk_t)) * 1 * mk_tp1</span>
-    <span class="n">psi1_3</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">gk_tp1</span><span class="p">)</span> <span class="o">*</span> <span class="n">mk_tp1</span>
+    <span class="c1"># State evolution processes</span>
+    <span class="n">dgk</span> <span class="o">=</span> <span class="n">ε</span> <span class="o">*</span> <span class="p">(</span><span class="n">ϕ_1</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">ϕ_2</span><span class="o">*</span><span class="n">imk_t</span><span class="p">)</span><span class="o">-</span><span class="n">α_k</span> <span class="o">+</span> <span class="n">beta_k</span><span class="o">*</span><span class="n">Z_t</span> <span class="o">-</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_k1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_k2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_k3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y_t</span><span class="p">))</span> <span class="o">+</span>  <span class="n">anp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ε</span><span class="p">)</span> <span class="o">*</span><span class="p">(</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">Y_t</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">sigma_k1</span><span class="o">*</span><span class="n">w1_tp1</span><span class="o">+</span><span class="n">sigma_k2</span><span class="o">*</span><span class="n">w2_tp1</span><span class="o">+</span><span class="n">sigma_k3</span><span class="o">*</span><span class="n">w3_tp1</span><span class="p">)</span>
+    <span class="c1"># Equation for states at time t</span>
+    <span class="n">phi_1</span> <span class="o">=</span> <span class="n">gk_tp1</span> <span class="o">-</span> <span class="n">dgk</span>
+    <span class="n">phi_2</span> <span class="o">=</span> <span class="n">Z_tp1</span> <span class="o">-</span> <span class="n">Z_t</span> <span class="o">+</span> <span class="n">ε</span> <span class="o">*</span> <span class="p">(</span><span class="n">beta_z</span><span class="o">*</span><span class="n">Z_t</span><span class="p">)</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ε</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">Y_t</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">sigma_z1</span><span class="o">*</span><span class="n">w1_tp1</span> <span class="o">+</span> <span class="n">sigma_z2</span><span class="o">*</span><span class="n">w2_tp1</span><span class="o">+</span> <span class="n">sigma_z3</span><span class="o">*</span><span class="n">w3_tp1</span><span class="p">)</span>
+    <span class="n">phi_3</span> <span class="o">=</span> <span class="n">Y_tp1</span> <span class="o">-</span> <span class="n">Y_t</span> <span class="o">+</span> <span class="n">ε</span> <span class="o">*</span> <span class="n">beta_2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">mu_2</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Y_t</span><span class="p">))</span> \
+        <span class="o">+</span> <span class="n">q</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_y1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_y2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_y3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Y_t</span><span class="p">)</span> <span class="o">*</span> <span class="n">ε</span> \
+        <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">Y_t</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_y1</span><span class="o">*</span><span class="n">w1_tp1</span><span class="o">+</span><span class="n">sigma_y2</span><span class="o">*</span><span class="n">w2_tp1</span><span class="o">+</span><span class="n">sigma_y3</span><span class="o">*</span><span class="n">w3_tp1</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ε</span><span class="p">)</span>
 
-    <span class="n">psi2_1</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">cmk_t</span><span class="p">)</span> <span class="o">+</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">)</span>
-    <span class="n">psi2_2</span> <span class="o">=</span> <span class="mf">1.</span>
-    <span class="n">psi2_3</span> <span class="o">=</span> <span class="n">mk_t</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">cmk_t</span><span class="p">)</span>
+    <span class="c1">## Output constraint</span>
+    <span class="n">qnh_1</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">pl_1</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">u_1</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> <span class="o">+</span> <span class="n">cmk_t</span> <span class="o">+</span> <span class="n">imk_t</span>
 
-    <span class="c1"># State evoluion processes</span>
-    <span class="n">phi_1</span> <span class="o">=</span> <span class="n">gk_tp1</span> <span class="o">-</span> <span class="n">ϕ_1</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk_t</span><span class="p">))</span><span class="o">*</span><span class="n">ε</span> <span class="o">-</span> <span class="n">g_dep</span>
-    <span class="n">phi_2</span> <span class="o">=</span> <span class="n">Z_tp1</span> <span class="o">-</span> <span class="n">ε</span> <span class="o">*</span> <span class="p">(</span><span class="n">beta_z</span><span class="o">*</span><span class="n">Z_t</span><span class="p">)</span> <span class="o">-</span>  <span class="p">(</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">Y_t</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">sigma_z1</span><span class="o">*</span><span class="n">w1_tp1</span> <span class="o">+</span> <span class="n">sigma_z2</span><span class="o">*</span><span class="n">w2_tp1</span><span class="o">+</span> <span class="n">sigma_z3</span><span class="o">*</span><span class="n">w3_tp1</span><span class="p">)</span>
-    <span class="n">phi_3</span> <span class="o">=</span> <span class="n">Y_tp1</span> <span class="o">+</span> <span class="n">term_y1</span> <span class="o">+</span> <span class="n">term_y2</span> <span class="o">-</span> <span class="n">term_y3</span>
+    <span class="c1">## Investment FOC</span>
+    <span class="n">qnh_2</span> <span class="o">=</span>  <span class="n">ε</span><span class="o">/</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="n">ϕ_2</span><span class="o">*</span><span class="n">imk_t</span><span class="p">)</span> 
+    <span class="n">pl_2</span> <span class="o">=</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mf">1.</span><span class="o">-</span><span class="n">ρ</span><span class="p">)</span><span class="o">*</span><span class="n">log_cmk_t</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">imk_t</span><span class="p">)</span>
+    <span class="n">u_2</span> <span class="o">=</span> <span class="mf">0.</span>
+
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">qnh_1</span><span class="p">,</span> <span class="n">qnh_2</span><span class="p">])</span> 
     
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;psi1&#39;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">psi1_1</span><span class="p">,</span> <span class="n">psi1_2</span><span class="p">,</span> <span class="n">psi1_3</span><span class="p">])</span>
-    
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;L&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pl_1</span><span class="p">,</span> <span class="n">pl_2</span><span class="p">])</span> 
+
     <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
-        <span class="n">psi1_1</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">q_tp1</span><span class="p">)</span> <span class="o">-</span> <span class="n">psi2_1</span><span class="p">,</span>
-        <span class="n">psi1_2</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">q_tp1</span><span class="p">)</span> <span class="o">-</span> <span class="n">psi2_2</span><span class="p">,</span>
-        <span class="n">psi1_3</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">q_tp1</span><span class="p">)</span> <span class="o">-</span> <span class="n">psi2_3</span><span class="p">,</span>
+        <span class="n">q_t</span><span class="o">*</span><span class="n">qnh_1</span> <span class="o">-</span> <span class="n">u_1</span><span class="p">,</span>
+        <span class="n">q_t</span><span class="o">*</span><span class="n">qnh_2</span> <span class="o">+</span> <span class="n">p_t</span><span class="o">*</span> <span class="n">pl_2</span> <span class="o">-</span> <span class="n">u_2</span><span class="p">,</span>
         <span class="n">phi_1</span><span class="p">,</span> <span class="n">phi_2</span><span class="p">,</span> <span class="n">phi_3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 <section id="steady-state-function">
 <h2>2.3 Steady State Function <a class="anchor" id="s2-3"></a><a class="headerlink" href="#steady-state-function" title="Link to this heading">#</a></h2>
 <p>This function takes model parameters as input and outputs the steady states for each variable following the variable order specified in <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code>. To find the steady state, we remove the time subscripts from each variable and solve the system of equations.</p>
-<p>Note that the first entry of the output array will always be 0, since the steady state of <code class="docutils literal notranslate"><span class="pre">q_t</span></code> is 0.</p>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<!-- Note that the first entry of the output array will always be 0, since the steady state of `q_t` is 0. --><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ss_onecap_3d</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+<span class="k">def</span> <span class="nf">ss_onecap_3d</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">return_recursive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">beta_k</span><span class="p">,</span> <span class="n">beta_z</span><span class="p">,</span> <span class="n">sigma_k1</span><span class="p">,</span> <span class="n">sigma_k2</span><span class="p">,</span> <span class="n">sigma_k3</span><span class="p">,</span> <span class="n">sigma_z1</span><span class="p">,</span> <span class="n">sigma_z2</span><span class="p">,</span> <span class="n">sigma_z3</span><span class="p">,</span> <span class="n">sigma_y1</span><span class="p">,</span> <span class="n">sigma_y2</span><span class="p">,</span> <span class="n">sigma_y3</span><span class="p">,</span> <span class="n">beta_2</span><span class="p">,</span> <span class="n">mu_2</span><span class="p">,</span> <span class="n">ε</span> <span class="o">=</span> <span class="n">args</span>
 
-    <span class="c1"># y = -np.log(beta_2/(beta_2*mu_2 - 0.5 * (sigma_y1**2 + sigma_y2**2 + sigma_y3**2)))</span>
-    <span class="c1"># y = -12.133751983950548</span>
-    <span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">Y_t</span><span class="p">):</span>
-        <span class="n">term_y1</span> <span class="o">=</span> <span class="n">beta_2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">mu_2</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Y_t</span><span class="p">))</span> <span class="o">*</span> <span class="n">ε</span>
-        <span class="n">term_y2</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_y1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_y2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_y3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Y_t</span><span class="p">)</span> <span class="o">*</span> <span class="n">ε</span>
-        <span class="k">return</span> <span class="n">term_y1</span> <span class="o">+</span> <span class="n">term_y2</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="o">-</span><span class="mf">2.5</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">vmk</span><span class="p">,</span> <span class="n">imk</span><span class="p">,</span> <span class="n">log_cmk</span><span class="p">,</span> <span class="n">log_gk</span> <span class="o">=</span> <span class="n">x</span>
 
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">imk</span><span class="p">):</span>
-        <span class="n">g_k</span> <span class="o">=</span> <span class="n">ε</span> <span class="o">*</span> <span class="p">(</span><span class="n">ϕ_1</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span><span class="o">+</span> <span class="n">ϕ_2</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">-</span> <span class="n">α_k</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_k1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_k2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_k3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-        <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="n">g_k</span>
-        <span class="n">cmk</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span>
-        <span class="n">mk</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span>  <span class="o">+</span> <span class="n">g_k</span><span class="p">)</span><span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">*</span> <span class="n">ε</span><span class="p">)</span>
-        <span class="c1"># mk = 1./(anp.exp(sdf_ex  + g_k)* 1/(1 + ϕ_2*anp.exp(imk)) * 1)</span>
-        <span class="k">return</span> <span class="n">mk</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">cmk</span><span class="p">)</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">g_k</span><span class="p">)</span> <span class="o">*</span> <span class="n">mk</span>
+        <span class="n">recursive</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ρ</span><span class="p">)</span> <span class="o">*</span> <span class="n">vmk</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ρ</span><span class="p">)</span> <span class="o">*</span> <span class="n">log_cmk</span><span class="p">)</span> <span class="o">-</span> <span class="n">β</span> <span class="o">*</span> <span class="p">(</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ρ</span><span class="p">)</span> <span class="o">*</span><span class="n">vmk</span><span class="p">)</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">ρ</span><span class="p">)</span> <span class="o">*</span> <span class="n">log_gk</span><span class="p">))</span>
+        <span class="n">foc</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">β</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span> <span class="n">ρ</span><span class="p">)</span> <span class="o">*</span> <span class="n">log_gk</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span> <span class="n">ϕ_2</span> <span class="o">*</span> <span class="n">imk</span><span class="p">)</span> <span class="o">+</span>  <span class="n">β</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">ρ</span><span class="p">)</span><span class="o">*</span><span class="n">log_gk</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">imk</span><span class="p">)</span>
+        <span class="n">capital_growth</span> <span class="o">=</span> <span class="n">log_gk</span> <span class="o">-</span> <span class="n">ε</span> <span class="o">*</span> <span class="p">(</span><span class="n">ϕ_1</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">ϕ_2</span> <span class="o">*</span> <span class="n">imk</span><span class="p">)</span> <span class="o">-</span> <span class="n">α_k</span><span class="p">)</span>
+        <span class="n">output_constraint</span> <span class="o">=</span> <span class="n">log_cmk</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">imk</span><span class="p">)</span>
 
-    <span class="n">imk</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="o">-</span><span class="mi">1000</span><span class="p">,</span><span class="o">-</span><span class="mf">2.5</span><span class="p">)</span>
-    <span class="n">cmk</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span>
-    <span class="n">g_k</span> <span class="o">=</span> <span class="n">ε</span> <span class="o">*</span> <span class="p">(</span><span class="n">ϕ_1</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">ϕ_2</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">-</span> <span class="n">α_k</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma_k1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_k2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma_k3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-    <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="n">g_k</span>
-    <span class="n">mk</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="p">(</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">sdf_ex</span> <span class="o">+</span> <span class="n">g_k</span><span class="p">)</span><span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">ϕ_2</span><span class="o">*</span><span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">imk</span><span class="p">))</span> <span class="o">*</span> <span class="n">ε</span><span class="p">)</span>
-    <span class="c1"># mk = 1./(anp.exp(sdf_ex + g_k)* 1/(1 + ϕ_2*anp.exp(imk)) * 1)</span>
+        <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">recursive</span><span class="p">,</span> <span class="n">foc</span><span class="p">,</span> <span class="n">capital_growth</span><span class="p">,</span> <span class="n">output_constraint</span><span class="p">])</span>
 
-    <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="n">cmk</span><span class="p">,</span> <span class="n">imk</span><span class="p">,</span> <span class="n">mk</span><span class="p">,</span> <span class="n">g_k</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+    <span class="n">initial_guess</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.0664766959220647</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.86035793</span><span class="p">,</span> <span class="mf">0.02330655</span><span class="p">]</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">)</span>
+
+    <span class="n">vmk</span><span class="p">,</span> <span class="n">imk</span><span class="p">,</span> <span class="n">log_cmk</span><span class="p">,</span> <span class="n">log_gk</span> <span class="o">=</span> <span class="n">root</span>
+    <span class="n">log_imk</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">imk</span><span class="p">)</span>
+
+    <span class="c1">#Assemble variables for equilibrium conditions</span>
+    <span class="n">rmv</span> <span class="o">=</span> <span class="n">log_gk</span>
+    <span class="n">log_y</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mu_2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">return_recursive</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">rmv</span><span class="p">,</span> <span class="n">vmk</span><span class="p">,</span> <span class="n">log_cmk</span><span class="p">,</span> <span class="n">log_imk</span><span class="p">,</span> <span class="n">log_gk</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">log_y</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">anp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">log_cmk</span><span class="p">,</span> <span class="n">log_imk</span><span class="p">,</span> <span class="n">log_gk</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">log_y</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 <section id="specifying-number-of-variables">
@@ -845,7 +794,7 @@ Z_{t}^1 + \beta_{1} Z_t^1 \epsilon - \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\eps
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -867,7 +816,8 @@ Z_{t}^1 + \beta_{1} Z_t^1 \epsilon - \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\eps
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_k1</span> <span class="o">=</span> <span class="mf">0.92</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Params</span>
+<span class="n">sigma_k1</span> <span class="o">=</span> <span class="mf">0.92</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">sigma_k2</span> <span class="o">=</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">anp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">sigma_k3</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">sigma_z1</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -886,17 +836,15 @@ Z_{t}^1 + \beta_{1} Z_t^1 \epsilon - \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\eps
 <span class="n">ϕ_2</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="n">beta_k</span> <span class="o">=</span> <span class="mf">0.04</span>
 <span class="n">beta_z</span> <span class="o">=</span> <span class="mf">0.056</span>
-<span class="n">beta_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.056</span><span class="p">)</span>
-<span class="n">beta_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.194</span><span class="p">)</span>
+<span class="n">beta_2</span> <span class="o">=</span> <span class="mf">0.194</span>
+<span class="n">ε</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">mu_2</span> <span class="o">=</span> <span class="mf">6.3</span> <span class="o">*</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">))</span>
 
 <span class="n">α_k</span> <span class="o">=</span> <span class="mf">0.04</span>
-<span class="n">β</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">delta</span><span class="p">)</span>
-<span class="c1"># γ = 1.0001</span>
-<span class="n">γ</span> <span class="o">=</span> <span class="mf">8.0</span>
-<span class="c1"># ρ = 1.0</span>
+<span class="n">γ</span> <span class="o">=</span> <span class="mf">8.</span>
+<span class="n">γ</span> <span class="o">=</span> <span class="mf">1.001</span>
 <span class="n">ρ</span> <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">ε</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">β</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ε</span> <span class="o">*</span> <span class="n">delta</span><span class="p">)</span>
 
 <span class="n">args</span> <span class="o">=</span> <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">beta_k</span><span class="p">,</span> <span class="n">beta_z</span><span class="p">,</span> <span class="n">sigma_k1</span><span class="p">,</span> <span class="n">sigma_k2</span><span class="p">,</span> <span class="n">sigma_k3</span><span class="p">,</span> <span class="n">sigma_z1</span><span class="p">,</span> <span class="n">sigma_z2</span><span class="p">,</span> <span class="n">sigma_z3</span><span class="p">,</span> <span class="n">sigma_y1</span><span class="p">,</span> <span class="n">sigma_y2</span><span class="p">,</span> <span class="n">sigma_y3</span><span class="p">,</span> <span class="n">beta_2</span><span class="p">,</span> <span class="n">mu_2</span><span class="p">,</span> <span class="n">ε</span> 
 </pre></div>
@@ -905,42 +853,44 @@ Z_{t}^1 + \beta_{1} Z_t^1 \epsilon - \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\eps
 </details>
 </div>
 </section>
-<section id="log-consumption-growth">
-<h2>2.6 Log Consumption Growth  <a class="anchor" id="s2-6"></a><a class="headerlink" href="#log-consumption-growth" title="Link to this heading">#</a></h2>
-<p>Finally, we need to specify how to compute the log-growth of consumption <span class="math notranslate nohighlight">\(\log{C_{t+\epsilon}/C_t}\)</span> using the defined variables <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code> in the equilibrium conditions.</p>
-<p>In this example, we simply use the decomposition:</p>
+<section id="additional-functions">
+<h2>2.6 Additional Functions  <a class="anchor" id="s2-6"></a><a class="headerlink" href="#additional-functions" title="Link to this heading">#</a></h2>
+<p>Finally, we specify how to compute the log-growth of consumption <span class="math notranslate nohighlight">\(\log{C_{t+\epsilon}/C_t}\)</span>, log-growth of capital <span class="math notranslate nohighlight">\(\log{G_{t+\epsilon}/G_t}\)</span> and log-consumption-capital ratio <span class="math notranslate nohighlight">\(\log{C_{t}/G_t}\)</span> as a function of the defined variables <code class="docutils literal notranslate"><span class="pre">Var_t</span></code> and <code class="docutils literal notranslate"><span class="pre">Var_tp1</span></code>, which will be useful in computing the approximations for <span class="math notranslate nohighlight">\(N_{t+1}\)</span> and <span class="math notranslate nohighlight">\(Q_t\)</span>. The log-growth of capital is already a state variable in this particular specification, but we list it here for more general purposes.</p>
+<p>To compute log-growth of consumption, we simply use the decomposition:</p>
 <div class="math notranslate nohighlight">
 \[
 \log{C_{t+\epsilon}/C_t} = \log{C_{t+\epsilon}/K_{t+\epsilon}} + \log{K_{t+\epsilon}/K_t} - \log{C_t/K_t}
 \]</div>
-<ul class="simple">
-<li><p>The reason to specify log consumtion growth is that we need to approximate recursive utility as described in the notes section 3.2.2 and section 3.2.3</p></li>
-<li><p>In habit formation models, <span class="math notranslate nohighlight">\(C_t\)</span> is replaced with <span class="math notranslate nohighlight">\(U_t\)</span>, in which case we would specify the log growth process for <span class="math notranslate nohighlight">\(U_t\)</span> correspondingly.</p></li>
-</ul>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
+<!-- - The reason to specify log consumtion growth is that we need to approximate recursive utility as described in the notes section 3.2.2 and section 3.2.3
+- In habit formation models, $C_t$ is replaced with $U_t$, in which case we would specify the log growth process for $U_t$ correspondingly. -->
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gc_onecap_3d</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-    
-    <span class="c1"># Unpack model parameters</span>
-    <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">beta_k</span><span class="p">,</span> <span class="n">beta_z</span><span class="p">,</span> <span class="n">sigma_k1</span><span class="p">,</span> <span class="n">sigma_k2</span><span class="p">,</span> <span class="n">sigma_k3</span><span class="p">,</span> <span class="n">sigma_z1</span><span class="p">,</span> <span class="n">sigma_z2</span><span class="p">,</span> <span class="n">sigma_z3</span><span class="p">,</span> <span class="n">sigma_y1</span><span class="p">,</span> <span class="n">sigma_y2</span><span class="p">,</span> <span class="n">sigma_y3</span><span class="p">,</span> <span class="n">beta_2</span><span class="p">,</span> <span class="n">mu_2</span><span class="p">,</span> <span class="n">ε</span> <span class="o">=</span> <span class="n">args</span>
-
     <span class="c1"># Unpack model variables</span>
-    <span class="n">q_t</span><span class="p">,</span> <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">mk_t</span><span class="p">,</span> <span class="n">gk_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">Y_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-    <span class="n">q_tp1</span><span class="p">,</span> <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">mk_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">Y_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">gk_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">Y_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">Y_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> 
 
     <span class="c1"># Compute log consumption growth</span>
     <span class="n">gc_tp1</span> <span class="o">=</span> <span class="n">cmk_tp1</span> <span class="o">+</span> <span class="n">gk_tp1</span> <span class="o">-</span> <span class="n">cmk_t</span>
     
     <span class="k">return</span> <span class="n">gc_tp1</span>
+
+<span class="k">def</span> <span class="nf">gk_onecap_3d</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="c1"># Unpack model variables</span>
+    <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">gk_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">Y_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">Y_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> 
+    
+    <span class="k">return</span> <span class="n">gk_tp1</span>
+
+<span class="k">def</span> <span class="nf">cmk_onecap_3d</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="c1"># Unpack model variables</span>
+    <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">gk_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">Y_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">Y_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> 
+    
+    <span class="k">return</span> <span class="n">cmk_t</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 <section id="computing-modelsol">
@@ -958,16 +908,19 @@ Z_{t}^1 + \beta_{1} Z_t^1 \epsilon - \sqrt{Z_t^2} \sigma_1 \cdot \left(W_{t+\eps
 <span class="n">eq</span> <span class="o">=</span> <span class="n">eq_onecap_3d</span>
 <span class="n">ss</span> <span class="o">=</span> <span class="n">ss_onecap_3d</span>
 <span class="n">gc</span> <span class="o">=</span> <span class="n">gc_onecap_3d</span>
-<span class="c1"># var_shape = (3, 3, 3)</span>
-<span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">beta_k</span><span class="p">,</span> <span class="n">beta_z</span><span class="p">,</span> <span class="n">sigma_k1</span><span class="p">,</span> <span class="n">sigma_k2</span><span class="p">,</span> <span class="n">sigma_k3</span><span class="p">,</span> <span class="n">sigma_z1</span><span class="p">,</span> <span class="n">sigma_z2</span><span class="p">,</span> <span class="n">sigma_z3</span><span class="p">,</span> <span class="n">sigma_y1</span><span class="p">,</span> <span class="n">sigma_y2</span><span class="p">,</span> <span class="n">sigma_y3</span><span class="p">,</span> <span class="n">beta_2</span><span class="p">,</span> <span class="n">mu_2</span><span class="p">,</span> <span class="n">ε</span><span class="p">)</span>
+<span class="n">gk</span> <span class="o">=</span> <span class="n">gk_onecap_3d</span>
+<span class="n">cmk_app</span> <span class="o">=</span> <span class="n">cmk_onecap_3d</span>
 <span class="n">approach</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span> <span class="c1"># See Exploring Recursive Utility Appendix for difference about approach &#39;1&#39; and &#39;2&#39;</span>
-<span class="n">ModelSol</span> <span class="o">=</span> <span class="n">uncertain_expansion</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span> <span class="n">var_shape</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">gc</span><span class="p">,</span> <span class="n">approach</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">ModelSol</span> <span class="o">=</span> <span class="n">uncertain_expansion</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span> <span class="n">var_shape</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">gc</span><span class="p">,</span> <span class="n">gk</span><span class="p">,</span> <span class="n">cmk_app</span><span class="p">,</span> <span class="n">approach</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 1: error = 0.05990188
-Iteration 2: error = 1.38777878e-17
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 1: error = 0.170925932
+Iteration 2: error = 0.00105362328
+Iteration 3: error = 4.511323e-06
+Iteration 4: error = 2.31767153e-08
+Iteration 5: error = 1.19068866e-10
 </pre></div>
 </div>
 </div>
@@ -975,244 +928,22 @@ Iteration 2: error = 1.38777878e-17
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_X</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">n_W</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_W</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_W</span><span class="p">),</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">gkmean</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;ss&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">ymean</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;ss&#39;</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span>
-<span class="c1"># ymean = 2.0</span>
-<span class="n">ymean</span> <span class="o">=</span> <span class="mf">1e-5</span>
-<span class="n">gkmean</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">def</span> <span class="nf">evaluate_z1</span><span class="p">(</span><span class="n">z1</span><span class="p">):</span>
-    <span class="c1"># gkmean = ε * (ϕ_1 * anp.log(1.+ ϕ_2 * anp.exp(imk)) - α_k - 0.5 * (sigma_k1**2 + sigma_k2**2 + sigma_k3**2)*anp.exp(ymean))</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">gkmean</span><span class="p">,</span><span class="n">z1</span><span class="p">,</span><span class="n">ymean</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_X</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">gkmean</span><span class="p">,</span><span class="n">z1</span><span class="p">,</span><span class="n">ymean</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_X</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;JX_tp1&#39;</span><span class="p">](</span><span class="o">*</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">w</span><span class="p">))</span>
-
-<span class="n">z1_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">variables_z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">evaluate_z1</span><span class="p">(</span><span class="n">z1</span><span class="p">)</span> <span class="k">for</span> <span class="n">z1</span> <span class="ow">in</span> <span class="n">z1_grid</span><span class="p">])</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z1_grid</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">variables_z1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$C/K$&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z1_grid</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">variables_z1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$I/K$&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;X1_tp1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coeffs</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;$I/K$&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;x&#39;: array([[-0.       ,  0.0371442, -0.       ],
+        [-0.       ,  0.944    , -0.       ],
+        [-0.       , -0.       ,  0.806    ]]),
+ &#39;w&#39;: array([[ 0.00799924,  0.00347793, -0.        ],
+        [-0.        ,  0.04956051, -0.        ],
+        [-0.        , -0.        ,  0.42784065]]),
+ &#39;c&#39;: array([[0.00000016],
+        [0.        ],
+        [0.        ]])}
 </pre></div>
 </div>
-<img alt="../_images/a198c8708e83688e0473bfafe4f1d927f66b3e92519b9e5a4ce0d60b64540ae2.png" src="../_images/a198c8708e83688e0473bfafe4f1d927f66b3e92519b9e5a4ce0d60b64540ae2.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z2_grid</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-14.50865774, -14.47139633, -14.43413492, -14.39687351, -14.3596121 , -14.3223507 , -14.28508929, -14.24782788, -14.21056647, -14.17330506, -14.13604365, -14.09878224, -14.06152083,
-       -14.02425943, -13.98699802, -13.94973661, -13.9124752 , -13.87521379, -13.83795238, -13.80069097, -13.76342957, -13.72616816, -13.68890675, -13.65164534, -13.61438393, -13.57712252,
-       -13.53986111, -13.50259971, -13.4653383 , -13.42807689, -13.39081548, -13.35355407, -13.31629266, -13.27903125, -13.24176985, -13.20450844, -13.16724703, -13.12998562, -13.09272421,
-       -13.0554628 , -13.01820139, -12.98093998, -12.94367858, -12.90641717, -12.86915576, -12.83189435, -12.79463294, -12.75737153, -12.72011012, -12.68284872, -12.64558731, -12.6083259 ,
-       -12.57106449, -12.53380308, -12.49654167, -12.45928026, -12.42201886, -12.38475745, -12.34749604, -12.31023463, -12.27297322, -12.23571181, -12.1984504 , -12.16118899, -12.12392759,
-       -12.08666618, -12.04940477, -12.01214336, -11.97488195, -11.93762054, -11.90035913, -11.86309773, -11.82583632, -11.78857491, -11.7513135 , -11.71405209, -11.67679068, -11.63952927,
-       -11.60226787, -11.56500646, -11.52774505, -11.49048364, -11.45322223, -11.41596082, -11.37869941, -11.34143801, -11.3041766 , -11.26691519, -11.22965378, -11.19239237, -11.15513096,
-       -11.11786955, -11.08060814, -11.04334674, -11.00608533, -10.96882392, -10.93156251, -10.8943011 , -10.85703969, -10.81977828])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_X</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">n_W</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_W</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_W</span><span class="p">),</span><span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">gkmean</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;ss&#39;</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">evaluate_z2</span><span class="p">(</span><span class="n">z2</span><span class="p">):</span>
-    <span class="c1"># gkmean = ε * (ϕ_1 * anp.log(1.+ ϕ_2 * anp.exp(imk)) - α_k - 0.5 * (sigma_k1**2 + sigma_k2**2 + sigma_k3**2)*anp.exp(ymean))</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">gkmean</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">z2</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_X</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">gkmean</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">z2</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_X</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">ModelSol</span><span class="p">[</span><span class="s1">&#39;JX_tp1&#39;</span><span class="p">](</span><span class="o">*</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">w</span><span class="p">))</span>
-
-<span class="n">z2_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.0000005</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.00002</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">variables_z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">evaluate_z2</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span> <span class="k">for</span> <span class="n">z2</span> <span class="ow">in</span> <span class="n">z2_grid</span><span class="p">])</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z2_grid</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">variables_z2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$C/K$&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z2_grid</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">variables_z2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$I/K$&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;$I/K$&#39;)
-</pre></div>
-</div>
-<img alt="../_images/d343481ceb64378bd789b9b600dabd7079e226224bc0b77994c9e1ca3c09848b.png" src="../_images/d343481ceb64378bd789b9b600dabd7079e226224bc0b77994c9e1ca3c09848b.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_main</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/Users/chh/BFI Dropbox/Chun Hei Hung/MFR_RP/QuantMFR/theory/RiskUncertaintyValue/data/res_continuous.npz&quot;</span><span class="p">)</span>
-<span class="n">dent</span> <span class="o">=</span> <span class="n">res_main</span><span class="p">[</span><span class="s1">&#39;g&#39;</span><span class="p">]</span>
-<span class="n">Z</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">res_main</span><span class="p">[</span><span class="s1">&#39;zz&#39;</span><span class="p">],</span> <span class="n">res_main</span><span class="p">[</span><span class="s1">&#39;yy&#39;</span><span class="p">]</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">res_main</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span>
-<span class="n">cons</span> <span class="o">=</span> <span class="n">res_main</span><span class="p">[</span><span class="s1">&#39;cons&#39;</span><span class="p">]</span>
-<span class="n">phi</span> <span class="o">=</span> <span class="n">res_main</span><span class="p">[</span><span class="s1">&#39;phi&#39;</span><span class="p">]</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="n">res_main</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span>
-<span class="n">eta</span> <span class="o">=</span> <span class="n">res_main</span><span class="p">[</span><span class="s1">&#39;eta&#39;</span><span class="p">]</span>
-<span class="n">sigma_k</span> <span class="o">=</span> <span class="n">res_main</span><span class="p">[</span><span class="s1">&#39;sigma_k&#39;</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">cdf</span><span class="p">(</span><span class="n">dent</span><span class="p">,</span> <span class="n">statespace</span><span class="p">,</span> <span class="n">statename</span><span class="p">):</span>
-
-    <span class="n">inverseCDFs</span> <span class="o">=</span> <span class="p">{}</span>
-    
-    <span class="n">nRange</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">statespace</span><span class="p">)))</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">statespace</span><span class="p">):</span>
-        <span class="n">axes</span>     <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">i</span><span class="p">,</span><span class="n">nRange</span><span class="p">))</span>
-        <span class="n">condDent</span> <span class="o">=</span> <span class="n">dent</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">axes</span><span class="p">))</span>
-        <span class="c1"># cumden   = np.cumsum(condDent.copy())</span>
-        <span class="c1"># cdf      = interpolate.interp1d(cumden, state, fill_value= (state.min(), state.max()), bounds_error = True)</span>
-        <span class="n">inverseCDFs</span><span class="p">[</span><span class="n">statename</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">condDent</span>
-        
-    <span class="k">return</span> <span class="n">inverseCDFs</span>
-
-<span class="n">marginal_quantile</span> <span class="o">=</span> <span class="n">cdf</span><span class="p">(</span><span class="n">dent</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Z</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Y</span><span class="p">)],</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_W</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_W</span><span class="p">),</span><span class="n">size</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">)</span>
-<span class="n">JX_sim</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="n">Ws</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="c1"># First subplot - $C/K$</span>
-<span class="n">counts</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">JX_sim</span><span class="p">[</span><span class="mi">1000</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>  <span class="c1"># Histogram with probability</span>
-<span class="n">probabilities</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># Normalize counts to get probabilities</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># Clear the old plot</span>
-
-<span class="c1"># Plot probabilities</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">probabilities</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bins</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Discrete density&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$C/K$&#39;</span><span class="p">)</span>
-
-<span class="c1"># Plot continuous density on the same axes (in different color)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cons</span><span class="p">[:,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">dent</span><span class="p">[:,</span> <span class="mi">50</span><span class="p">]</span> <span class="o">/</span> <span class="n">dent</span><span class="p">[:,</span> <span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Continuous density&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="c1"># Second subplot - $I/K$</span>
-<span class="n">counts</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">JX_sim</span><span class="p">[</span><span class="mi">1000</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>  <span class="c1"># Histogram with probability</span>
-<span class="n">probabilities</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># Normalize counts to get probabilities</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># Clear the old plot</span>
-
-<span class="c1"># Plot probabilities</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">probabilities</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bins</span><span class="p">),</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Discrete density&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$I/K$&#39;</span><span class="p">)</span>
-
-<span class="c1"># Plot continuous density on the same axes (in different color)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">[:,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">dent</span><span class="p">[:,</span> <span class="mi">50</span><span class="p">]</span> <span class="o">/</span> <span class="n">dent</span><span class="p">[:,</span> <span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Continuous density&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;$\gamma=8,\rho=1.5$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/density_comparison_gamma8_rho15.png&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/bcb147470a2acc09591610dcf77144d98ae41bdf33ef96732c2f587bb58e0ab1.png" src="../_images/bcb147470a2acc09591610dcf77144d98ae41bdf33ef96732c2f587bb58e0ab1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log_SDF_ex</span><span class="p">(</span><span class="n">Var_t</span><span class="p">,</span> <span class="n">Var_tp1</span><span class="p">,</span> <span class="n">W_tp1</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-
-    <span class="c1"># Log stochastic discount factor exclusive of the change of measure N and Q.</span>
-
-    <span class="c1"># Parameters for the model </span>
-    <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">beta_k</span><span class="p">,</span> <span class="n">beta_z</span><span class="p">,</span> <span class="n">sigma_k1</span><span class="p">,</span> <span class="n">sigma_k2</span><span class="p">,</span> <span class="n">sigma_k3</span><span class="p">,</span> <span class="n">sigma_z1</span><span class="p">,</span> <span class="n">sigma_z2</span><span class="p">,</span> <span class="n">sigma_z3</span><span class="p">,</span> <span class="n">sigma_y1</span><span class="p">,</span> <span class="n">sigma_y2</span><span class="p">,</span> <span class="n">sigma_y3</span><span class="p">,</span> <span class="n">beta_2</span><span class="p">,</span> <span class="n">mu_2</span><span class="p">,</span> <span class="n">ε</span> <span class="o">=</span> <span class="n">args</span>
-
-    <span class="c1"># Variables: (q_t, q_tp1 is excluded when using the method in `ModelSolution`) </span>
-    <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">mk_t</span><span class="p">,</span> <span class="n">gk_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">Y_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-    <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">mk_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">Y_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-
-    <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="p">(</span><span class="n">cmk_tp1</span><span class="o">+</span><span class="n">gk_tp1</span><span class="o">-</span><span class="n">cmk_t</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">sdf_ex</span>
-
-<span class="n">expo_elas</span><span class="p">,</span> <span class="n">price_elas</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">elasticities</span><span class="p">(</span><span class="n">log_SDF_ex</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">states</span><span class="p">,</span> <span class="n">controls</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">IRF</span><span class="p">(</span><span class="n">T</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">shock</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import matplotlib.pyplot as plt</span>
-
-<span class="n">time_periods</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>  <span class="c1"># 40 time periods starting from 1</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># Adjust the figure size as needed</span>
-
-<span class="c1"># Plotting Exposure Elasticity in the first subfigure</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">expo_elas</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exposure Elasticity&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exposure Elasticity&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$I/K$ exposure elasticity&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Plotting Exposure Elasticity in the first subfigure</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">expo_elas</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exposure Elasticity&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exposure Elasticity&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$C/K$ exposure elasticity&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Plotting Price Elasticity in the second subfigure</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">price_elas</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Price Elasticity&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price Elasticity&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Price elasticity&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># # Plotting IRF in the third subfigure</span>
-<span class="c1"># axs[2].plot(time_periods, controls[:, 0], label=&#39;IRF&#39;, marker=&#39;^&#39;)</span>
-<span class="c1"># axs[2].set_xlabel(&#39;Time Period&#39;)</span>
-<span class="c1"># axs[2].set_ylabel(&#39;Impulse Response&#39;)</span>
-<span class="c1"># axs[2].set_title(&#39;IRF Over Time&#39;)</span>
-<span class="c1"># axs[2].grid(True)</span>
-<span class="c1"># axs[0].set_ylim(0,0.008)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.003</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.25</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.009</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/1da81b9e716b0c66ffd1933fa3101e453fe5017d7a6355325f96ea65d4538233.png" src="../_images/1da81b9e716b0c66ffd1933fa3101e453fe5017d7a6355325f96ea65d4538233.png" />
 </div>
 </div>
 <br>
@@ -1281,7 +1012,8 @@ Iteration 2: error = 1.38777878e-17
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;x&#39;: array([[ 0.04344641, -0.        ]]), &#39;c&#39;: array([[-0.02117949]])}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;c&#39;: array([[-0.06496742]]),
+ &#39;x&#39;: array([[ 0.        ,  0.17006158, -0.        ]])}
 </pre></div>
 </div>
 </div>
@@ -1392,18 +1124,19 @@ Iteration 2: error = 1.38777878e-17
     <span class="c1"># Log stochastic discount factor exclusive of the change of measure N and Q.</span>
 
     <span class="c1"># Parameters for the model </span>
-    <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">beta_k</span><span class="p">,</span> <span class="n">beta_z</span><span class="p">,</span> <span class="n">sigma_k1</span><span class="p">,</span> <span class="n">sigma_k2</span><span class="p">,</span> <span class="n">sigma_z</span> <span class="o">=</span> <span class="n">args</span>
+    <span class="n">γ</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ϕ_1</span><span class="p">,</span> <span class="n">ϕ_2</span><span class="p">,</span> <span class="n">α_k</span><span class="p">,</span> <span class="n">beta_k</span><span class="p">,</span> <span class="n">beta_z</span><span class="p">,</span> <span class="n">sigma_k1</span><span class="p">,</span> <span class="n">sigma_k2</span><span class="p">,</span> <span class="n">sigma_k3</span><span class="p">,</span> <span class="n">sigma_z1</span><span class="p">,</span> <span class="n">sigma_z2</span><span class="p">,</span> <span class="n">sigma_z3</span><span class="p">,</span> <span class="n">sigma_y1</span><span class="p">,</span> <span class="n">sigma_y2</span><span class="p">,</span> <span class="n">sigma_y3</span><span class="p">,</span> <span class="n">beta_2</span><span class="p">,</span> <span class="n">mu_2</span><span class="p">,</span> <span class="n">ε</span> <span class="o">=</span> <span class="n">args</span>
 
     <span class="c1"># Variables: (q_t, q_tp1 is excluded when using the method in `ModelSolution`) </span>
-    <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">mk_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">gk_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-    <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">mk_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">cmk_t</span><span class="p">,</span> <span class="n">imk_t</span><span class="p">,</span> <span class="n">gk_t</span><span class="p">,</span> <span class="n">Z_t</span><span class="p">,</span> <span class="n">Y_t</span> <span class="o">=</span> <span class="n">Var_t</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">cmk_tp1</span><span class="p">,</span> <span class="n">imk_tp1</span><span class="p">,</span> <span class="n">gk_tp1</span><span class="p">,</span> <span class="n">Z_tp1</span><span class="p">,</span> <span class="n">Y_tp1</span> <span class="o">=</span> <span class="n">Var_tp1</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
     <span class="n">sdf_ex</span> <span class="o">=</span> <span class="n">anp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">β</span><span class="p">)</span> <span class="o">-</span> <span class="n">ρ</span><span class="o">*</span><span class="p">(</span><span class="n">cmk_tp1</span><span class="o">+</span><span class="n">gk_tp1</span><span class="o">-</span><span class="n">cmk_t</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="n">sdf_ex</span>
 
-<span class="n">expo_elas</span><span class="p">,</span> <span class="n">price_elas</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">elasticities</span><span class="p">(</span><span class="n">log_SDF_ex</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">states</span><span class="p">,</span> <span class="n">controls</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">IRF</span><span class="p">(</span><span class="n">T</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">shock</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> 
+<span class="n">expo_elas</span><span class="p">,</span> <span class="n">price_elas</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">elasticities</span><span class="p">(</span><span class="n">log_SDF_ex</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">expo_elas_1</span><span class="p">,</span> <span class="n">price_elas_1</span> <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">elasticities</span><span class="p">(</span><span class="n">log_SDF_ex</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">shock</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">first_order</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">states</span><span class="p">,</span> <span class="n">controls</span><span class="p">,</span> <span class="n">states1</span><span class="p">,</span> <span class="n">controls1</span>  <span class="o">=</span> <span class="n">ModelSol</span><span class="o">.</span><span class="n">IRF</span><span class="p">(</span><span class="n">T</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">shock</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -1416,32 +1149,42 @@ Iteration 2: error = 1.38777878e-17
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import matplotlib.pyplot as plt</span>
 
 <span class="n">time_periods</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span>  <span class="c1"># 40 time periods starting from 1</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># Adjust the figure size as needed</span>
 
 <span class="c1"># Plotting Exposure Elasticity in the first subfigure</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">expo_elas</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exposure Elasticity&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time Period&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">expo_elas</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exposure Elasticity&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exposure Elasticity&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$I/K$ exposure elasticity&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plotting Exposure Elasticity in the first subfigure</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">expo_elas</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exposure Elasticity&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exposure Elasticity&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Exposure Elasticity Over Time&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$C/K$ exposure elasticity&quot;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Plotting Price Elasticity in the second subfigure</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">price_elas</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Price Elasticity&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time Period&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price Elasticity&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Price Elasticity Over Time&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Plotting IRF in the third subfigure</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">controls</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IRF&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time Period&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Impulse Response&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;IRF Over Time&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_periods</span><span class="p">,</span> <span class="n">price_elas</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Price Elasticity&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price Elasticity&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Price elasticity&quot;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.004</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.009</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;years&#39;</span><span class="p">)</span>
+<span class="c1"># plt.suptitle(&#39;Discrete&#39;)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1449,7 +1192,7 @@ Iteration 2: error = 1.38777878e-17
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d8a90ee6aa6a3a85711ed1e0e909a8d720421b454d822e2436d689d170f64d26.png" src="../_images/d8a90ee6aa6a3a85711ed1e0e909a8d720421b454d822e2436d689d170f64d26.png" />
+<img alt="../_images/eec8e8aa712f8f2c61b105ff43aa053d054d9567d9c00eb0505f8a8064e868a5.png" src="../_images/eec8e8aa712f8f2c61b105ff43aa053d054d9567d9c00eb0505f8a8064e868a5.png" />
 </div>
 </details>
 </div>
@@ -1682,8 +1425,8 @@ Iteration 2: error = 1.38777878e-17
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Example: Hansen, Khorrami and Tourre (2024)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ak-model-with-recursive-utility">1 AK Model with Recursive Utility</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Uncertain Expansion Example Notebook</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#model-setup">1 Model Setup</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rewriting-first-order-conditions">1.2 Rewriting First-Order Conditions <a class="anchor" id="s1-2"></a></a></li>
 </ul>
 </li>
@@ -1693,7 +1436,7 @@ Iteration 2: error = 1.38777878e-17
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-function">2.3 Steady State Function <a class="anchor" id="s2-3"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-number-of-variables">2.4 Specifying Number of Variables <a class="anchor" id="s2-4"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">2.5 Model Parameters <a class="anchor" id="s2-5"></a></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-consumption-growth">2.6 Log Consumption Growth  <a class="anchor" id="s2-6"></a></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-functions">2.6 Additional Functions  <a class="anchor" id="s2-6"></a></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-modelsol">2.7 Computing ModelSol <a class="anchor" id="s2-7"></a></a></li>
 </ul>
 </li>
